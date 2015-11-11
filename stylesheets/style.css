@@ -1,3 +1,9 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
 /* Reset and normalize */
 button, iframe, img {
   border: 0; }
@@ -84,8 +90,9 @@ img {
 
 /* Flexbox Grid */
 body {
-  background: pink;
-  font-family: UnicaWeb, serif; }
+  background: #F13E3F;
+  font-family: UnicaWeb, serif;
+  color: #F1FFCD; }
 
 h1 {
   font-size: 3vw;

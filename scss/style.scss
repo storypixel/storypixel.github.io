@@ -1,10 +1,14 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
 @import "reset";
 @import "unica";
 @import "grid";
 
 body {
-  background: pink;
+  background: #F13E3F;
   font-family: UnicaWeb, serif;
+  color: #F1FFCD;
 }
 
 @mixin h1 {
