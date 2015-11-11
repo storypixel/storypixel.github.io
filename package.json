@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-sass": "*",
+    "browser-sync": "*",
+    "gulp-filter": "*"
+  }
+}

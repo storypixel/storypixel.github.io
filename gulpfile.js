@@ -12,38 +12,38 @@ var filter      = require('gulp-filter');
 
 // Browser-sync task, only cares about compiled CSS
 gulp.task('browser-sync', function() {
-    browserSync({
-        notify: true,
-        //proxy: "http://localhost:3000",
-        server: {
-            baseDir: "./",
-            injectChanges: true // this is new
-        },
-        port: 3000
+  browserSync({
+    notify: true,
+    //proxy: "http://localhost:3000",
+    server: {
+      baseDir: "./",
+      injectChanges: true // this is new
+    },
+    port: 3000
 
-        // ui: {
-        //   port: 6969
-        // },
-        // port: 6968
-    });
+    // ui: {
+    //   port: 6969
+    // },
+    // port: 6968
+  });
 });
 
 gulp.task('html', function() {
-    return gulp.src('./*.html')
-        .pipe(reload({stream:true})); // inject into browsers
+  return gulp.src('./*.html')
+  .pipe(reload({stream:true})); // inject into browsers
 });
 
 
 // Sass task, will run when any SCSS files change.
-gulp.task('sass', function () {
-    return gulp.src('./stylesheets/style.scss')
-        .pipe(sass({includePaths: ['scss']})) // compile sass
-        .pipe(gulp.dest('./stylesheets')) // write to css dir
-        .pipe(reload({stream:true})); // inject into browsers
+gulp.task('styles', function () {
+  return gulp.src('./scss/style.scss')
+  .pipe(sass({includePaths: ['scss']})) // compile sass
+  .pipe(gulp.dest('./stylesheets')) // write to css dir
+  .pipe(reload({stream:true})); // inject into browsers
 });
 
 // Default task to be run with `gulp`
-gulp.task('default', ['sass', 'browser-sync'], function () {
-    gulp.watch("./stylesheets/*.scss", ['sass']);
-    gulp.watch("./*.html", ['html']);
+gulp.task('default', ['styles', 'browser-sync'], function () {
+  gulp.watch("./scss/*.scss", ['styles']);
+  gulp.watch("./*.html", ['html']);
 });
