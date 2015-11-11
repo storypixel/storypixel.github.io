@@ -61,6 +61,47 @@ img {
   max-width: 100%;
   height: auto; }
 
+@font-face {
+  font-family: UnicaWeb;
+  src: url("../fonts/neue-haas-unica-regular.eot");
+  src: url("../fonts/neue-haas-unica-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/neue-haas-unica-regular.woff") format("woff"), url("../fonts/neue-haas-unica-regular.ttf") format("truetype"), url("../fonts/neue-haas-unica-regular.svg#neue-haas-unica-regular") format("svg");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: UnicaWeb;
+  src: url("../fonts/neue-haas-unica-light.eot");
+  src: url("../fonts/neue-haas-unica-light.eot?#iefix") format("embedded-opentype"), url("../fonts/neue-haas-unica-light.woff") format("woff"), url("../fonts/neue-haas-unica-light.ttf") format("truetype"), url("../fonts/neue-haas-unica-light.svg#neue-haas-unica-light") format("svg");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: UnicaWeb;
+  src: url("../fonts/neue-haas-unica-medium.eot");
+  src: url("../fonts/neue-haas-unica-medium.eot?#iefix") format("embedded-opentype"), url("../fonts/neue-haas-unica-medium.woff") format("woff"), url("../fonts/neue-haas-unica-medium.ttf") format("truetype"), url("../fonts/neue-haas-unica-medium.svg#neue-haas-unica-medium") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
 /* Flexbox Grid */
 body {
-  background: pink; }
+  background: pink;
+  font-family: UnicaWeb, serif; }
+
+h1 {
+  font-size: 3vw;
+  font-family: BigCaslon, sans-serif;
+  margin-bottom: .5rem; }
+
+h2 a {
+  text-decoration: underline; }
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 100vh;
+  text-align: center; }
+
+.message {
+  flex: 0 1 auto;
+  align-self: center; }

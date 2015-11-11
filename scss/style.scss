@@ -1,6 +1,42 @@
 @import "reset";
+@import "unica";
 @import "grid";
 
 body {
   background: pink;
+  font-family: UnicaWeb, serif;
+}
+
+@mixin h1 {
+  font-size: 3vw;
+  font-family: BigCaslon, sans-serif;
+}
+
+@mixin h2 {
+}
+
+h1 {
+  @include h1;
+  margin-bottom: .5rem;
+}
+
+h2 {
+  @include h2;
+  a {
+    text-decoration: underline;
+
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 100vh;
+  text-align: center;
+}
+
+.message {
+  flex: 0 1 auto;
+  align-self: center;
 }

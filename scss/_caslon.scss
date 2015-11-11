@@ -1,0 +1,32 @@
+$font-path: '../fonts/';
+
+@font-face {
+    font-family: BigCaslon;
+    src: url($font-path + 'BigCaslonRom.eot');
+    src: url($font-path + 'BigCaslonRom.eot?#iefix') format('embedded-opentype'),
+         url($font-path + 'BigCaslonRom.woff') format('woff'),
+         url($font-path + 'BigCaslonRom.ttf') format('truetype'),
+         url($font-path + 'BigCaslonRom.svg#BigCaslonRom') format('svg');
+    font-weight: 400;
+    font-style: normal; }
+
+@font-face {
+    font-family: BigCaslon;
+    src: url($font-path + 'BigCaslonRom.eot');
+    src: url($font-path + 'BigCaslonRom.eot?#iefix') format('embedded-opentype'),
+         url($font-path + 'BigCaslonRom.woff') format('woff'),
+         url($font-path + 'BigCaslonRom.ttf') format('truetype'),
+         url($font-path + 'BigCaslonRom.svg#BigCaslonRom') format('svg');
+    font-weight: 200;
+    font-style: normal; }
+
+@font-face {
+    font-family: BigCaslon;
+    src: url($font-path + 'BigCaslonRom.eot');
+    src: url($font-path + 'BigCaslonRom.eot?#iefix') format('embedded-opentype'),
+         url($font-path + 'BigCaslonRom.woff') format('woff'),
+         url($font-path + 'BigCaslonRom.ttf') format('truetype'),
+         url($font-path + 'BigCaslonRom.svg#BigCaslonRom') format('svg');
+    font-weight: bold;
+    font-style: normal; }
+
