@@ -9,11 +9,16 @@ body {
   background: #F13E3F;
   font-family: UnicaWeb, serif;
   color: #F1FFCD;
+  line-height: 1.5;
 }
 
 @mixin h1 {
-  font-size: 3vw;
   font-family: BigCaslon, sans-serif;
+  font-size: 24px;
+
+  @media (min-width: 640px) {
+    font-size: 3vw;
+  }
 }
 
 @mixin h2 {
@@ -22,6 +27,7 @@ body {
 h1 {
   @include h1;
   margin-bottom: .5rem;
+
 }
 
 h2 {

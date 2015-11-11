@@ -92,12 +92,16 @@ img {
 body {
   background: #F13E3F;
   font-family: UnicaWeb, serif;
-  color: #F1FFCD; }
+  color: #F1FFCD;
+  line-height: 1.5; }
 
 h1 {
-  font-size: 3vw;
   font-family: BigCaslon, sans-serif;
+  font-size: 24px;
   margin-bottom: .5rem; }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 3vw; } }
 
 h2 a {
   text-decoration: underline; }
