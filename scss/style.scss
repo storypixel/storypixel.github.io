@@ -15,9 +15,16 @@ body {
 @mixin h1 {
   font-family: BigCaslon, sans-serif;
   font-size: 24px;
+  span {
+    display: none;
+  }
 
   @media (min-width: 640px) {
     font-size: 3vw;
+
+    span {
+      display: inline;
+    }
   }
 }
 
@@ -44,6 +51,7 @@ h2 {
   flex-direction: row;
   height: 100vh;
   text-align: center;
+  padding: 1rem;
 }
 
 .message {
