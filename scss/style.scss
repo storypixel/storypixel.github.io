@@ -1,9 +1,10 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
-@import "reset";
-@import "unica";
-@import "grid";
+@import "base/reset";
+@import "base/grid";
+@import "shared/unica";
+@import "shared/caslon";
 
 body {
   background: #F13E3F;
@@ -15,6 +16,7 @@ body {
 @mixin h1 {
   font-family: BigCaslon, sans-serif;
   font-size: 24px;
+
   span {
     display: none;
   }
@@ -28,20 +30,15 @@ body {
   }
 }
 
-@mixin h2 {
-}
-
 h1 {
   @include h1;
   margin-bottom: .5rem;
-
 }
 
 h2 {
   @include h2;
   a {
     text-decoration: underline;
-
   }
 }
 
