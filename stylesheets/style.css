@@ -67,6 +67,7 @@ img {
   max-width: 100%;
   height: auto; }
 
+/* Flexbox Grid */
 @font-face {
   font-family: UnicaWeb;
   src: url("../fonts/neue-haas-unica-regular.eot");
@@ -88,7 +89,27 @@ img {
   font-weight: bold;
   font-style: normal; }
 
-/* Flexbox Grid */
+@font-face {
+  font-family: BigCaslon;
+  src: url("../fonts/BigCaslonRom.eot");
+  src: url("../fonts/BigCaslonRom.eot?#iefix") format("embedded-opentype"), url("../fonts/BigCaslonRom.woff") format("woff"), url("../fonts/BigCaslonRom.ttf") format("truetype"), url("../fonts/BigCaslonRom.svg#BigCaslonRom") format("svg");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: BigCaslon;
+  src: url("../fonts/BigCaslonRom.eot");
+  src: url("../fonts/BigCaslonRom.eot?#iefix") format("embedded-opentype"), url("../fonts/BigCaslonRom.woff") format("woff"), url("../fonts/BigCaslonRom.ttf") format("truetype"), url("../fonts/BigCaslonRom.svg#BigCaslonRom") format("svg");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: BigCaslon;
+  src: url("../fonts/BigCaslonRom.eot");
+  src: url("../fonts/BigCaslonRom.eot?#iefix") format("embedded-opentype"), url("../fonts/BigCaslonRom.woff") format("woff"), url("../fonts/BigCaslonRom.ttf") format("truetype"), url("../fonts/BigCaslonRom.svg#BigCaslonRom") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
 body {
   background: #F13E3F;
   font-family: UnicaWeb, serif;

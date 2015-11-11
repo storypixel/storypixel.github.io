@@ -30,6 +30,10 @@ body {
   }
 }
 
+@mixin h2 {
+
+}
+
 h1 {
   @include h1;
   margin-bottom: .5rem;
