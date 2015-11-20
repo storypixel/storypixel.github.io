@@ -1,0 +1,140 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+@import "base/variables";
+@import "base/reset";
+@import "base/grid";
+@import "shared/mixins";
+@import "shared/unica";
+@import "shared/caslon";
+
+body {
+  font-family: UnicaWeb, serif;
+  line-height: 1.5;
+}
+
+@mixin h1 {
+  font-family: BigCaslon, sans-serif;
+  @include font-size(h1);
+}
+
+@mixin h2 {
+
+}
+
+h1 {
+  @include h1;
+  margin-bottom: .5rem;
+}
+
+h2 {
+  @include h2;
+}
+
+#sausage,
+#currframe {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+
+  position: fixed;
+  z-index: 1000;
+}
+
+#currframe {
+  background-color: blue;
+}
+
+.sheet {
+  //display: flex;
+  display:block;
+}
+
+.sheet--x {
+  width: 800vw;
+  position: absolute;
+  //@include flex-flow(row wrap);
+}
+
+.sheet--y {
+  //@include flex-flow(row wrap);
+  height: 800vw;
+  background: yellow;
+  opacity: .5;
+  width: 100%;
+}
+
+
+.sheet__westward,
+.sheet__eastward {
+  min-height: 50vh;
+  height: 50vh;
+}
+
+.sheet__westward {
+  background: lighten(orange, 40);
+  right: 0;
+}
+
+.sheet__eastward {
+  background: lighten(green, 40);
+}
+
+.window {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.window__westward {
+  right: 50%;
+}
+
+.window__eastward {
+  left: 50%;
+}
+
+.cell {
+  // background: yellow;
+  // min-height: 50vh;
+  // min-width: 50vw;
+
+  .sheet__scrolling & {
+    //visibility: hidden;
+    opacity: 0.5;
+  }
+
+  &.a {
+    background: purple;
+  }
+
+  &.b {
+    background: orange;
+  }
+}
+
+// :w
+// }
+//
+// .cell-6h {
+//   min-height: 50%;
+// }
+
+.panel {
+  @include display(flex);
+  @include flex-flow(column wrap);
+  min-height: 50vh;
+  height: 50vh;
+  min-width: 50vw;
+  width: 50vw;
+  float: left;
+
+  // we want the scrolling to be matched
+  .sheet__scrolling & {
+    min-height: 50vw;
+    height: 50vw;
+  }
+}

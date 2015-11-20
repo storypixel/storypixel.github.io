@@ -1,0 +1,23 @@
+
+// Responsive font-size mixin
+@mixin font-size($font-size) {
+  // Omit the media query to avoid problems in bad browsers
+  // @include media($mobile) {
+  //   font-size: map-get(map-get($font-sizes, mobile), $font-size);
+  // }
+
+  font-size: map-get(map-get($font-sizes, mobile), $font-size);
+
+  @include media($medium) {
+    font-size: map-get(map-get($font-sizes, medium), $font-size);
+  }
+
+  @include media($large) {
+    font-size: map-get(map-get($font-sizes, large), $font-size);
+  }
+
+  @include media($xlarge) {
+    font-size: map-get(map-get($font-sizes, xlarge), $font-size);
+  }
+}
+

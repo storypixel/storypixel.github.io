@@ -1,0 +1,97 @@
+/* Flexbox Grid */
+
+// Neat Breakpoints
+$gutter: golden-ratio(1rem, 1); // Gutter between each two columns
+
+$border-box-sizing: true; // Makes all elements have a border-box layout
+
+// Grid
+$grid-columns: 12;
+
+$mobile-breakpoint: rem(0);
+$small-breakpoint: rem(640);
+$medium-breakpoint: rem(1024);
+$medium-down-breakpoint: rem(1024 - 1);
+$large-breakpoint: rem(1440);
+$xlarge-breakpoint: rem(1920);
+$xxlarge-breakpoint: rem(2200);
+
+$max-width: $xlarge-breakpoint;
+
+$mobile: new-breakpoint(min-width $mobile-breakpoint);
+$mobile-up: new-breakpoint(min-width $mobile-breakpoint);
+$small: new-breakpoint(min-width $small-breakpoint);
+$medium-down: new-breakpoint(max-width ($medium-down-breakpoint));
+$medium: new-breakpoint(min-width $medium-breakpoint);
+$large: new-breakpoint(min-width $large-breakpoint);
+$xlarge: new-breakpoint(min-width $xlarge-breakpoint);
+$xxlarge: new-breakpoint(min-width $xxlarge-breakpoint);
+
+$breakpoints: (
+  'mobile'  : ( min-width: rem(0) ),
+  'small'   : ( min-width: rem(640) ),
+  'medium'  : ( min-width: rem(1024) ),
+  'large'   : ( min-width: rem(1440) ),
+  'xlarge'  : ( min-width: rem(1920) ),
+  'xxlarge' : ( min-width: rem(2200) )
+);
+
+@mixin media($name) {
+  $value: map-get($breakpoints, $name);
+
+  @if map-has-key($breakpoints, $name) {
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from '#{$name}'. "
+        + "Please make sure it is defined in '$breakpoints' map.";
+  }
+}
+
+@mixin make-col ($col:false, $height: false, $width: false) {
+  // Just build a column base
+  @if $col == false {
+
+  }
+
+  // Build the specific width or height requirements
+  @if $col != false {
+    $percent: percentage($col/$grid-columns);
+    @if $height == true {
+      min-height: $percent;
+      height: $percent;
+    }
+
+    @if $width == true {
+      min-width: $percent;
+      width: $percent;
+    }
+  }
+}
+
+// Not specific to breakpoints
+.cell {
+  @include flex(0 1 auto);
+  min-height: 100%;
+  height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+// look into Singularity
+// For breakpoints
+@each $breakpoint in map-keys($breakpoints) {
+  @include media(quote($breakpoint)) {
+    @for $i from 1 through $grid-columns {
+      .#{$breakpoint}-#{$i}w {
+        @include make-col($i, $width: true);
+      }
+      .#{$breakpoint}-#{$i}h {
+        @include make-col($i, $height: true);
+      }
+    }
+  }
+}

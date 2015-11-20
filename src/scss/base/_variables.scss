@@ -1,0 +1,83 @@
+@import "neat/neat-helpers";
+
+// Neat Breakpoints
+$column: golden-ratio(1rem, 3); // Column width
+$gutter: golden-ratio(1rem, 1); // Gutter between each two columns
+
+$border-box-sizing: true; // Makes all elements have a border-box layout
+$default-feature: min-width; // Default @media feature for the breakpoint() mixin
+$default-layout-direction: LTR;
+
+// Grid
+$grid-columns: 12;
+$visual-grid: false;
+
+$mobile-breakpoint: rem(0);
+$small-breakpoint: rem(640);
+$medium-breakpoint: rem(1024);
+$medium-down-breakpoint: rem(1024 - 1);
+$large-breakpoint: rem(1440);
+$xlarge-breakpoint: rem(1920);
+$xxlarge-breakpoint: rem(2200);
+
+$max-width: $xlarge-breakpoint;
+
+$mobile: new-breakpoint(min-width $mobile-breakpoint);
+$mobile-up: new-breakpoint(min-width $mobile-breakpoint);
+$small: new-breakpoint(min-width $small-breakpoint);
+$medium-down: new-breakpoint(max-width ($medium-down-breakpoint));
+$medium: new-breakpoint(min-width $medium-breakpoint);
+$large: new-breakpoint(min-width $large-breakpoint);
+$xlarge: new-breakpoint(min-width $xlarge-breakpoint);
+$xxlarge: new-breakpoint(min-width $xxlarge-breakpoint);
+
+$font-sizes: (
+  xlarge: (
+    h1: 51px,
+    h2: 41px,
+    h3: 33px,
+    h4: 26px,
+    h5: 21px,
+    h6: 16px,
+    base: 21px,
+    large: 26px,
+    small: 16px,
+    cta: 21px
+  ),
+  large: (
+    h1: 44px,
+    h2: 35px,
+    h3: 28px,
+    h4: 23px,
+    h5: 18px,
+    h6: 14px,
+    base: 18px,
+    large: 20px,
+    small: 14px,
+    cta: 18px
+  ),
+  medium: (
+    h1: 39px,
+    h2: 31px,
+    h3: 25px,
+    h4: 20px,
+    h5: 16px,
+    h6: 13px,
+    base: 16px,
+    large: 18px,
+    small: 13px,
+    cta: 16px
+  ),
+  mobile: (
+    h1: 39px,
+    h2: 31px,
+    h3: 25px,
+    h4: 20px,
+    h5: 16px,
+    h6: 13px,
+    base: 16px,
+    large: 18px,
+    small: 13px,
+    cta: 16px
+  )
+);
