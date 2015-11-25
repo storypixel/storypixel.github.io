@@ -74,6 +74,19 @@ gulp.task('styles', function () {
   .pipe(reload({stream:true})); // inject into browsers
 });
 
+/*
+.eot
+.otf
+.svg
+.ttf
+.woff2
+.woff
+ * */
+gulp.task('copyfiles', function() {
+    gulp.src('./src/**/*.{ttf,woff,woff2,eof,svg,jpg,jpeg,png,gif}')
+    .pipe(gulp.dest('./build'));
+});
+
 // WEB SERVER
 gulp.task('serve', function () {
   browserSync({
@@ -84,6 +97,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['styles', 'watch'], function () {
+  gulp.watch("./src/**/*.{ttf,woff,woff2,eof,svg,jpg,jpeg,png,gif}", ['copyfiles']);
   gulp.watch("./src/scss/**/*.scss", ['styles']);
   gulp.watch("./*.html", ['html']);
 });

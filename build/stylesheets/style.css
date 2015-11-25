@@ -596,9 +596,26 @@ h1 {
 
 .sheet--y {
   height: 800vw;
-  background: yellow;
+  background: whitesmoke;
   opacity: .5;
   width: 100%; }
+
+.center-test {
+  position: absolute; }
+  .sheet__westward .center-test {
+    right: 0;
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%); }
+  .sheet__eastward .center-test {
+    left: 0;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
 
 .sheet__westward,
 .sheet__eastward {
@@ -606,7 +623,7 @@ h1 {
   height: 50vh; }
 
 .sheet__westward {
-  background: #ffedcc;
+  background: #e6e6e6;
   right: 0; }
 
 .sheet__eastward {
@@ -630,10 +647,10 @@ h1 {
   opacity: 0.5; }
 
 .cell.a {
-  background: purple; }
+  background: lightgray; }
 
 .cell.b {
-  background: orange; }
+  background: gray; }
 
 .panel {
   display: -webkit-box;

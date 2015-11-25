@@ -59,11 +59,23 @@ h2 {
 .sheet--y {
   //@include flex-flow(row wrap);
   height: 800vw;
-  background: yellow;
+  background: whitesmoke;
   opacity: .5;
   width: 100%;
 }
 
+.center-test {
+  position: absolute;
+  .sheet__westward & {
+    right: 0;
+    @include transform(translateX(50%));
+  }
+
+  .sheet__eastward & {
+    left: 0;
+    @include transform(translateX(-50%));
+  }
+}
 
 .sheet__westward,
 .sheet__eastward {
@@ -72,7 +84,7 @@ h2 {
 }
 
 .sheet__westward {
-  background: lighten(orange, 40);
+  background: lighten(gray, 40);
   right: 0;
 }
 
@@ -108,11 +120,11 @@ h2 {
   }
 
   &.a {
-    background: purple;
+    background: lightgray;
   }
 
   &.b {
-    background: orange;
+    background: gray;
   }
 }
 
