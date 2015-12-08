@@ -576,17 +576,6 @@ h1 {
   font-size: 39px;
   margin-bottom: .5rem; }
 
-#sausage,
-#currframe {
-  height: 10px;
-  width: 10px;
-  background-color: red;
-  position: fixed;
-  z-index: 1000; }
-
-#currframe {
-  background-color: blue; }
-
 .sheet {
   display: block; }
 
@@ -596,9 +585,11 @@ h1 {
 
 .sheet--y {
   height: 800vw;
-  background: whitesmoke;
+  background: gray;
   opacity: .5;
-  width: 100%; }
+  width: 100%;
+  position: relative;
+  z-index: 1000; }
 
 .center-test {
   position: absolute; }
@@ -667,7 +658,17 @@ h1 {
   height: 50vh;
   min-width: 50vw;
   width: 50vw;
-  float: left; }
+  float: left;
+  position: relative; }
   .sheet__scrolling .panel {
     min-height: 50vw;
     height: 50vw; }
+
+.sam {
+  position: absolute;
+  top: 25%;
+  right: 0%; }
+
+.sam2 {
+  right: auto;
+  left: 0%; }

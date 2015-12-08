@@ -31,20 +31,6 @@ h2 {
   @include h2;
 }
 
-#sausage,
-#currframe {
-  height: 10px;
-  width: 10px;
-  background-color: red;
-
-  position: fixed;
-  z-index: 1000;
-}
-
-#currframe {
-  background-color: blue;
-}
-
 .sheet {
   //display: flex;
   display:block;
@@ -59,9 +45,11 @@ h2 {
 .sheet--y {
   //@include flex-flow(row wrap);
   height: 800vw;
-  background: whitesmoke;
+  background: gray;
   opacity: .5;
   width: 100%;
+  position: relative;
+  z-index: 1000;
 }
 
 .center-test {
@@ -143,10 +131,23 @@ h2 {
   min-width: 50vw;
   width: 50vw;
   float: left;
+  position: relative;
 
   // we want the scrolling to be matched
   .sheet__scrolling & {
     min-height: 50vw;
     height: 50vw;
   }
+}
+
+// Internal elements
+.sam {
+  position: absolute;
+  top: 25%;
+  right: 0%;
+}
+
+.sam2 {
+  right: auto;
+  left: 0%;
 }
