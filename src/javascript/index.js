@@ -1,37 +1,40 @@
 var $window = $(window);
 
+var scrollPercent = 0;
+
+var scrollTop,
+  scrollScalar,
+  sheetEast = document.getElementById('sheet-east'),
+  sheetWest = document.getElementById('sheet-west'),
+  sheetWidth = sheetEast.offsetWidth,
+  sheetOffset,
+  s = ""; // style string
+var scrollScalar;
+var widthEl = sheetEast.offsetWidth;
+var panelCount = $('#sheet-east .panel').length;
+var panelWidth = $('#sheet-east .panel')[0].offsetWidth;
+
+var snapTolerance = .2; //
+var lerpTargetX = 0,
+  currentOffset = 0;
+
+var scrollScalar = (document.body.scrollTop / (document.body.clientHeight - window.innerHeight)),
+  sheetOffset = sheetWidth * scrollScalar;
+
+var s;
+var ds = 0;
+
+var isScrolling = false;
+
+var diff = 0;
+var diffTolerance = 0;
+var panelNum = 0;
+
+var lerpRate = 0.0;
+
 function doit() {
-  var scrollTop,
-    scrollScalar,
-    sheetEast = document.getElementById('sheet-east'),
-    sheetWest = document.getElementById('sheet-west'),
-    sheetWidth = sheetEast.offsetWidth,
-    sheetOffset,
-    s = ""; // style string
-  var scrollScalar;
-  var widthEl = sheetEast.offsetWidth;
-  var panelCount = $('#sheet-east .panel').length;
-  var panelWidth = $('#sheet-east .panel')[0].offsetWidth;
 
-  var snapTolerance = .2; //
-  var lerpTargetX = 0,
-    currentOffset = 0;
 
-  var scrollPercent = document.body.scrollTop / (document.body.clientHeight - window.innerHeight);
-
-  var scrollScalar = (document.body.scrollTop / (document.body.clientHeight - window.innerHeight)),
-    sheetOffset = sheetWidth * scrollScalar;
-
-  var s;
-  var ds = 0;
-
-  var isScrolling = false;
-
-  var diff = 0;
-  var diffTolerance = 0;
-  var panelNum = 0;
-
-  var lerpRate = 0.1;
 
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
@@ -39,64 +42,47 @@ function doit() {
 
   $(window).scroll(function() {
     lerpRate = 0.1;
+    //console.log(widthEl + '.');
     //lerpTargetX = document.body.scrollTop + window.innerHeight;
-    scrollPercent = document.body.scrollTop / (document.body.clientHeight - window.innerHeight);
+    // scrollPercent = document.body.scrollTop / (document.body.clientHeight - window.innerHeight);
+    //
+    // lerpTargetX = scrollPercent * widthEl;
 
-    lerpTargetX = scrollPercent * widthEl;
-
+    //console.log('scrollPercent: ' + scrollPercent);
     //console.log(lerpTargetX + 'v' + $window.scrollTop());
     //console.log(document.body.clientHeight - window.innerHeight);
     // var scrollTop = $(window).scrollTop();
     // var docHeight = $(document).height();
     // var winHeight = $(window).height();
-    //console.log(scrollPercent);
-    isScrolling = true;
-    clearTimeout($.data(this, 'scrollTimer'));
-    $.data(this, 'scrollTimer', setTimeout(function() {
-      // do something
-      return false; // disable this scroll snap
-      console.log("Haven't scrolled in 250ms!");
-      // $.proxy(snapFlush, that)
-      lerpRate = 0.07;
-      lerpTargetX = document.body.scrollTop;
-
-      diff = lerpTargetX % panelWidth;
-      diffTolerance = diff / panelWidth;
-      panelNum = Math.floor(lerpTargetX / panelWidth);
-
-      if (diffTolerance < snapTolerance) {
-        document.body.scrollTop = panelNum * panelWidth;
-      } else if (diffTolerance > (1 - snapTolerance)) {
-        document.body.scrollTop = (1 + panelNum) * panelWidth;
-      }
-
-    }, 250));
+    // isScrolling = true;
+    // clearTimeout($.data(this, 'scrollTimer'));
+    // $.data(this, 'scrollTimer', setTimeout(function() {
+    //   // do something
+    //   return false; // disable this scroll snap
+    //   console.log("Haven't scrolled in 250ms!");
+    //   // $.proxy(snapFlush, that)
+    //   lerpRate = 0.07;
+    //   lerpTargetX = document.body.scrollTop;
+    //
+    //   diff = lerpTargetX % panelWidth;
+    //   diffTolerance = diff / panelWidth;
+    //   panelNum = Math.floor(lerpTargetX / panelWidth);
+    //
+    //   if (diffTolerance < snapTolerance) {
+    //     document.body.scrollTop = panelNum * panelWidth;
+    //   } else if (diffTolerance > (1 - snapTolerance)) {
+    //     document.body.scrollTop = (1 + panelNum) * panelWidth;
+    //   }
+    //
+    // }, 250));
   });
 
 
   function update() {
-    ds = lerp(ds, lerpTargetX, lerpRate);
 
-
-    s = 'translate3d(' + -ds + 'px, 0, 0)';
-
-    sheetEast.style.WebkitTransform = s;
-    sheetEast.style.MozTransform = s;
-    sheetEast.style.OTransform = s;
-    sheetEast.style.msTransform = s;
-    sheetEast.style.transform = s;
-
-    s = 'translate3d(' + ds + 'px, 0, 0)';
-    sheetWest.style.WebkitTransform = s;
-    sheetWest.style.MozTransform = s;
-    sheetWest.style.OTransform = s;
-    sheetWest.style.msTransform = s;
-    sheetWest.style.transform = s;
-
-    requestAnimationFrame(update);
   }
 
-  requestAnimationFrame(update);
+  //requestAnimationFrame(update);
 
 }
 
@@ -121,9 +107,30 @@ doit();
       relativeScrollTop = 0,
       currentKeyframe = 0,
       keyframes = [{
-        'wrapper': '#intro',
+        'wrapper': '.panel-1x',
         'duration': '100%',
-        'animations': [{
+        'animations': [
+
+          {
+            'selector': '.tt--left',
+            'left': [0, '100%'],
+            'classesToAdd': [{
+              'state-1': '0%'
+            }, {
+              'state-2': '100%'
+            }]
+          },
+          {
+            'selector': '.tt--right',
+            'right': [0, '100%'],
+            'classesToAdd': [{
+              'state-1': '0%'
+            }, {
+              'state-2': '100%'
+            }]
+          },
+
+          {
           'selector': '.name',
           'translateY': -140,
           'opacity': 0
@@ -144,12 +151,26 @@ doit();
           'opacity': [1, 0]
         }]
       }, {
-        'wrapper': '#explosion',
-        'duration': '150%',
-        'animations': [{
-          'selector': '.explosion-byline',
-          'translateY': '-25%',
-          'opacity': [0, 1.75] // hack to accelrate opacity speed
+        'wrapper': '.panel-2x',
+        'duration': '100%',
+        'animations': [
+          {
+            'selector': '.xtt--right',
+            'right': [0, '100%'],
+            'classesToAdd': [{
+              'state-1': '0%'
+            }, {
+              'state-2': '100%'
+            }]
+          },
+          {
+          'selector': '.xtt--left',
+          'right': [0, '100%'],
+          'classesToAdd': [{
+            'state-1': '0%'
+          }, {
+            'state-2': '100%'
+          }]
         }, {
           'selector': '.sam',
           'opacity': [0, 1.75] // hack to accelrate opacity speed
@@ -323,8 +344,12 @@ doit();
                   if (typeof value[k] === "string") {
                     if (key === 'translateY') {
                       value[k] = convertPercentToPx(value[k], 'y');
-                    } else {
+                    } else if (key === "translateX") {
                       value[k] = convertPercentToPx(value[k], 'x');
+                    } else if (key === "left") {
+                      value[k] = convertPercentToPx(value[k], 'y');
+                    } else if (key === "right") {
+                      value[k] = convertPercentToPx(value[k], 'y');
                     }
                   } else if (typeof value[k] === "object") {
                     if (key === 'classesToAdd') {
@@ -364,6 +389,10 @@ doit();
           return 0;
         case 'opacity':
           return 1;
+        case 'left':
+          return null;
+        case 'right':
+          return null;
         default:
           return null;
       }
@@ -374,10 +403,35 @@ doit();
     updatePage = function() {
       window.requestAnimationFrame(function() {
         setScrollTops();
-        if (scrollTop > 0 && scrollTop <= (bodyHeight - windowHeight)) {
+        if (scrollTop >= 0 && scrollTop <= (bodyHeight - windowHeight)) {
           animateElements();
           setKeyframe();
         }
+
+        //console.log(windowHeight + ' v ' + window.innerHeight);
+
+        scrollPercent = 1 - document.body.scrollTop / (document.body.clientHeight - window.innerHeight);
+
+        lerpTargetX = scrollPercent * widthEl;
+
+        ds = lerpTargetX; // lerp(ds, lerpTargetX, lerpRate);
+
+
+        s = 'translate3d(' + -ds + 'px, 0, 0)';
+
+        sheetEast.style.WebkitTransform = s;
+        sheetEast.style.MozTransform = s;
+        sheetEast.style.OTransform = s;
+        sheetEast.style.msTransform = s;
+        sheetEast.style.transform = s;
+
+        s = 'translate3d(' + ds + 'px, 0, 0)';
+        sheetWest.style.WebkitTransform = s;
+        sheetWest.style.MozTransform = s;
+        sheetWest.style.OTransform = s;
+        sheetWest.style.msTransform = s;
+        sheetWest.style.transform = s;
+
       });
     }
 
@@ -387,50 +441,59 @@ doit();
     }
 
     animateElements = function() {
-      var animation, translateY, translateX, scale, rotate, opacity;
-      for (var i = 0; i < keyframes[currentKeyframe].animations.length; i++) {
+      var animation, translateY, translateX, scale, rotate, opacity, left, right, anilength;
+
+      anilength = keyframes[currentKeyframe].animations.length;
+
+      console.log(currentKeyframe);
+
+      for (var i = 0; i < anilength; i++) {
         animation = keyframes[currentKeyframe].animations[i];
         translateY = calcPropValue(animation, 'translateY');
         translateX = calcPropValue(animation, 'translateX');
         scale = calcPropValue(animation, 'scale');
         rotate = calcPropValue(animation, 'rotate');
         opacity = calcPropValue(animation, 'opacity');
+        left = calcPropValue(animation, 'left');
+        right = calcPropValue(animation, 'right');
 
         // console.log(prevKeyframesDurations);
         // console.log(animation);
+        if (right) {
+         // console.log(right);
+        }
 
         $(animation.selector).css({
           'transform': 'translate3d(' + translateX + 'px, ' + translateY + 'px, 0) scale(' + scale + ') rotate(' + rotate + 'deg)',
-          'opacity': opacity
+          'opacity': opacity,
+          'left': left,
+          'right': right
         }).each(function(i, target) {
           (animation.classesToAdd || []).forEach(function(el, i) {
-            // if (el[1])
-            // console.log('...');
-            // console.log(el[1]);
-
-            if (scrollTop >= (el[1] + prevKeyframesDurations) && $(target).hasClass(el[0]) === false) {
-              console.log("we should add " + el[0]);
+            if (ds >= (el[1] + prevKeyframesDurations) && $(target).hasClass(el[0]) === false) {
+              // console.log("we should add " + el[0] + ', ' + el[1] + '(' + prevKeyframesDurations + '). scrollTop is ' + scrollTop);
               $(target).addClass(el[0]);
-            } else if (scrollTop < (el[1] + prevKeyframesDurations) && $(target).hasClass(el[0]) === true) {
-              console.log("we should remove " + el[0]);
+            } else if (ds < (el[1] + prevKeyframesDurations) && $(target).hasClass(el[0]) === true) {
+              // console.log("we should remove " + el[0] + ', ' + el[1] + '(' + prevKeyframesDurations + '). scrollTop is ' + scrollTop);
               $(target).removeClass(el[0]);
             }
-
           })
-
-
-
         });
-
       }
     }
 
     calcPropValue = function(animation, property) {
       var value = animation[property];
-      if (value) {
+      if (value && property !== 'left' && property !== 'right') {
         value = easeInOutQuad(relativeScrollTop, value[0], (value[1] - value[0]), keyframes[currentKeyframe].duration);
-      } else {
+      } else if (!value) {
         value = getDefaultPropertyValue(property);
+      } else {
+
+        value = relativeScrollTop; // easeLinear(relativeScrollTop, value[0], (value[1] - value[0]), keyframes[currentKeyframe].duration);
+
+        // console.log('min is '+value[0] + ' and max is '+value[1]);
+        // value = Math.max(value[0], Math.min(relativeScrollTop, value[1]));
       }
       // value = +value.toFixed(2)
       // TEMPORARILY REMOVED CAUSE SCALE DOESN'T WORK WITHA AGRESSIVE ROUNDING LIKE THIS
@@ -442,15 +505,53 @@ doit();
       return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
     };
 
+    // easeLinear = function (t, b, c, d) {
+    //   return c * t / d + b;
+    // }
+
+    neatenLastKeyframe = function (d) {
+      var animation, translateY, translateX, scale, rotate, opacity, left, right, anilength, index;
+
+      index = (d > 0) ? 1 : 0;
+
+      anilength = keyframes[currentKeyframe].animations.length;
+
+      for (var i = 0; i < anilength; i++) {
+        animation = keyframes[currentKeyframe].animations[i];
+        translateY = animation['translateY'][index] || animation['translateY'];
+        translateX = animation['translateX'][index] || animation['translateX'];
+        scale = animation['scale'][index] || animation['scale'];
+        rotate = animation['rotate'][index] || animation['rotate'];
+        opacity = animation['opacity'][index] || animation['opacity'];
+        left = animation['left'][index] || animation['left'];
+        right = animation['right'][index] || animation['right'];
+
+        // console.log(prevKeyframesDurations);
+        // console.log(animation);
+        if (right) {
+         console.log(right);
+        }
+
+        $(animation.selector).css({
+          'transform': 'translate3d(' + translateX + 'px, ' + translateY + 'px, 0) scale(' + scale + ') rotate(' + rotate + 'deg)',
+          'opacity': opacity,
+          'left': left,
+          'right': right
+        });
+      }
+    }
+
     setKeyframe = function() {
       if (scrollTop > (keyframes[currentKeyframe].duration + prevKeyframesDurations)) {
+        //neatenLastKeyframe(1);
         prevKeyframesDurations += keyframes[currentKeyframe].duration;
         currentKeyframe++;
-        showCurrentWrappers();
+        //showCurrentWrappers();
       } else if (scrollTop < prevKeyframesDurations) {
+        //neatenLastKeyframe(-1);
         currentKeyframe--;
         prevKeyframesDurations -= keyframes[currentKeyframe].duration;
-        showCurrentWrappers();
+        //showCurrentWrappers();
       }
     }
 
@@ -468,7 +569,7 @@ doit();
 
     convertPercentToPx = function(value, axis) {
       if (typeof value === "string" && value.match(/%/g)) {
-        if (axis === 'y') value = (parseFloat(value) / 100) * windowHeight;
+        if (axis === 'y') value = (parseFloat(value) / 100) * panelWidth; //windowHeight;
         if (axis === 'x') value = (parseFloat(value) / 100) * windowWidth;
       }
       return value;

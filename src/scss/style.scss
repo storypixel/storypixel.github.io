@@ -8,6 +8,8 @@
 @import "shared/unica";
 @import "shared/caslon";
 
+$bg-color: #fff;
+
 body {
   font-family: UnicaWeb, serif;
   line-height: 1.5;
@@ -44,40 +46,59 @@ h2 {
 
 .sheet--y {
   //@include flex-flow(row wrap);
-  height: 800vw;
-  background: gray;
+  height: calc(800vw + 100vh); // this is what allows us to use 50% correctly in the classesToAdd values
+  background: $bg-color;
   opacity: .5;
   width: 100%;
   position: relative;
-  z-index: 1000;
+  z-index: 0;
+
 }
 
 .center-test {
-  position: absolute;
-  .sheet__westward & {
-    right: 0;
-    @include transform(translateX(50%));
-  }
+}
 
-  .sheet__eastward & {
-    left: 0;
-    @include transform(translateX(-50%));
+.tt--left,
+.tt--right {
+  position: absolute;
+  white-space: nowrap;
+  top: 50vh;
+  @include transform(translateY(-50%) !important);
+  z-index: 1;
+}
+
+.tt--left {
+
+  @include transform(translateX(-50%) !important);
+  left: 0;
+
+  &.state-1 {
+    //opacity: .5;
   }
 }
+
+.tt--right  {
+  right: 0;
+  @include transform(translateX(50%) !important);
+  &.state-1 {
+    //position: fixed;
+  }
+}
+
 
 .sheet__westward,
 .sheet__eastward {
-  min-height: 50vh;
-  height: 50vh;
+  min-height: 100vh;
+  height: 100vh;
 }
 
 .sheet__westward {
-  background: lighten(gray, 40);
+  background: lighten($bg-color, 40);
   right: 0;
 }
 
 .sheet__eastward {
-  background: lighten(green, 40);
+  background: $bg-color; //lighten(green, 40);
 }
 
 .window {
@@ -108,11 +129,11 @@ h2 {
   }
 
   &.a {
-    background: lightgray;
+    background: rgba(0,0,0,.1);
   }
 
   &.b {
-    background: gray;
+    background: $bg-color;
   }
 }
 
@@ -126,12 +147,14 @@ h2 {
 .panel {
   @include display(flex);
   @include flex-flow(column wrap);
-  min-height: 50vh;
-  height: 50vh;
+  min-height: 100vh;
+  height: 100vh;
   min-width: 50vw;
   width: 50vw;
+  //:w
   float: left;
   position: relative;
+  background: blue;
 
   // we want the scrolling to be matched
   .sheet__scrolling & {
@@ -145,6 +168,9 @@ h2 {
   position: absolute;
   top: 25%;
   right: 0%;
+  &.testing-1 {
+    color: red;
+  }
 }
 
 .sam2 {

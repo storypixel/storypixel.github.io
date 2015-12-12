@@ -584,41 +584,52 @@ h1 {
   position: absolute; }
 
 .sheet--y {
-  height: 800vw;
-  background: gray;
+  height: calc(800vw + 100vh);
+  background: #fff;
   opacity: .5;
   width: 100%;
   position: relative;
-  z-index: 1000; }
+  z-index: 0; }
 
-.center-test {
-  position: absolute; }
-  .sheet__westward .center-test {
-    right: 0;
-    -webkit-transform: translateX(50%);
-    -moz-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    -o-transform: translateX(50%);
-    transform: translateX(50%); }
-  .sheet__eastward .center-test {
-    left: 0;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%); }
+.tt--left,
+.tt--right {
+  position: absolute;
+  white-space: nowrap;
+  top: 50vh;
+  -webkit-transform: translateY(-50%) !important;
+  -moz-transform: translateY(-50%) !important;
+  -ms-transform: translateY(-50%) !important;
+  -o-transform: translateY(-50%) !important;
+  transform: translateY(-50%) !important;
+  z-index: 1; }
+
+.tt--left {
+  -webkit-transform: translateX(-50%) !important;
+  -moz-transform: translateX(-50%) !important;
+  -ms-transform: translateX(-50%) !important;
+  -o-transform: translateX(-50%) !important;
+  transform: translateX(-50%) !important;
+  left: 0; }
+
+.tt--right {
+  right: 0;
+  -webkit-transform: translateX(50%) !important;
+  -moz-transform: translateX(50%) !important;
+  -ms-transform: translateX(50%) !important;
+  -o-transform: translateX(50%) !important;
+  transform: translateX(50%) !important; }
 
 .sheet__westward,
 .sheet__eastward {
-  min-height: 50vh;
-  height: 50vh; }
+  min-height: 100vh;
+  height: 100vh; }
 
 .sheet__westward {
-  background: #e6e6e6;
+  background: white;
   right: 0; }
 
 .sheet__eastward {
-  background: #4dff4d; }
+  background: #fff; }
 
 .window {
   position: fixed;
@@ -638,10 +649,10 @@ h1 {
   opacity: 0.5; }
 
 .cell.a {
-  background: lightgray; }
+  background: rgba(0, 0, 0, 0.1); }
 
 .cell.b {
-  background: gray; }
+  background: #fff; }
 
 .panel {
   display: -webkit-box;
@@ -654,12 +665,13 @@ h1 {
   -webkit-flex-flow: column wrap;
   -moz-flex-flow: column wrap;
   flex-flow: column wrap;
-  min-height: 50vh;
-  height: 50vh;
+  min-height: 100vh;
+  height: 100vh;
   min-width: 50vw;
   width: 50vw;
   float: left;
-  position: relative; }
+  position: relative;
+  background: blue; }
   .sheet__scrolling .panel {
     min-height: 50vw;
     height: 50vw; }
@@ -668,6 +680,8 @@ h1 {
   position: absolute;
   top: 25%;
   right: 0%; }
+  .sam.testing-1 {
+    color: red; }
 
 .sam2 {
   right: auto;
