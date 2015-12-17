@@ -568,16 +568,18 @@ img {
   font-style: normal; }
 
 body {
-  font-family: UnicaWeb, serif;
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-family: BigCaslon, sans-serif;
+  color: white; }
 
 h1 {
-  font-family: BigCaslon, sans-serif;
-  font-size: 39px;
+  font-family: UnicaWeb, serif;
+  font-size: 8vw;
   margin-bottom: .5rem; }
 
 .sheet {
-  display: block; }
+  display: block;
+  background-image: linear-gradient(-90deg, #0e5cde, #04a7e5, #1fc4d2, #1fc4d2, #21d5c2, #21d5c2, #26d8ae, #26d8ae, #37d986, #76db2f, #8adb26, #bfdf27, #bfdf27, #e0da30, #ecc031, #f5ab28, #fd7d20, #ff0707); }
 
 .sheet--x {
   width: 800vw;
@@ -591,8 +593,7 @@ h1 {
   position: relative;
   z-index: 0; }
 
-.tt--left,
-.tt--right {
+.tt {
   position: absolute;
   white-space: nowrap;
   top: 50vh;
@@ -603,7 +604,8 @@ h1 {
   transform: translateY(-50%) !important;
   z-index: 1; }
 
-.tt--left {
+.tt--left,
+.tt--left2 {
   -webkit-transform: translateX(-50%) !important;
   -moz-transform: translateX(-50%) !important;
   -ms-transform: translateX(-50%) !important;
@@ -611,7 +613,8 @@ h1 {
   transform: translateX(-50%) !important;
   left: 0; }
 
-.tt--right {
+.tt--right,
+.tt--right2 {
   right: 0;
   -webkit-transform: translateX(50%) !important;
   -moz-transform: translateX(50%) !important;
@@ -625,11 +628,7 @@ h1 {
   height: 100vh; }
 
 .sheet__westward {
-  background: white;
   right: 0; }
-
-.sheet__eastward {
-  background: #fff; }
 
 .window {
   position: fixed;
@@ -648,12 +647,6 @@ h1 {
 .sheet__scrolling .cell {
   opacity: 0.5; }
 
-.cell.a {
-  background: rgba(0, 0, 0, 0.1); }
-
-.cell.b {
-  background: #fff; }
-
 .panel {
   display: -webkit-box;
   display: -moz-box;
@@ -670,8 +663,7 @@ h1 {
   min-width: 50vw;
   width: 50vw;
   float: left;
-  position: relative;
-  background: blue; }
+  position: relative; }
   .sheet__scrolling .panel {
     min-height: 50vw;
     height: 50vw; }

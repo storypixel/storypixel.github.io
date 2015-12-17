@@ -30,18 +30,19 @@ var diff = 0;
 var diffTolerance = 0;
 var panelNum = 0;
 
-var lerpRate = 0.0;
+var lerpRate = 0.04;
+
+  function lerp(start, end, amt) {
+
+    return (1 - amt) * start + amt * end;
+  }
 
 function doit() {
 
 
 
-  function lerp(start, end, amt) {
-    return (1 - amt) * start + amt * end;
-  }
 
   $(window).scroll(function() {
-    lerpRate = 0.1;
     //console.log(widthEl + '.');
     //lerpTargetX = document.body.scrollTop + window.innerHeight;
     // scrollPercent = document.body.scrollTop / (document.body.clientHeight - window.innerHeight);
@@ -110,7 +111,6 @@ doit();
         'wrapper': '.panel-1x',
         'duration': '100%',
         'animations': [
-
           {
             'selector': '.tt--left',
             'left': [0, '100%'],
@@ -128,35 +128,18 @@ doit();
             }, {
               'state-2': '100%'
             }]
-          },
-
-          {
-          'selector': '.name',
-          'translateY': -140,
-          'opacity': 0
-        }, {
-          'selector': '.sam',
-          'classesToAdd': [{
-            'testing-1': '50%'
-          }, {
-            'test-2': '100%'
-          }],
-          'opacity': [1, 0] // hack to accelrate opacity speed
-        }, {
-          'selector': '.byline',
-          'translateY': -110,
-          'opacity': 0
-        }, {
-          'selector': '.twitter',
-          'opacity': [1, 0]
         }]
       }, {
         'wrapper': '.panel-2x',
         'duration': '100%',
+        'animations': []
+      }, {
+        'wrapper': '#explosion',
+        'duration': '200%',
         'animations': [
           {
-            'selector': '.xtt--right',
-            'right': [0, '100%'],
+            'selector': '.tt--left2',
+            'left': [0, '200%'],
             'classesToAdd': [{
               'state-1': '0%'
             }, {
@@ -164,124 +147,14 @@ doit();
             }]
           },
           {
-          'selector': '.xtt--left',
-          'right': [0, '100%'],
-          'classesToAdd': [{
-            'state-1': '0%'
-          }, {
-            'state-2': '100%'
+            'selector': '.tt--right2',
+            'right': [0, '200%'],
+            'classesToAdd': [{
+              'state-1': '0%'
+            }, {
+              'state-2': '100%'
+            }]
           }]
-        }, {
-          'selector': '.sam',
-          'opacity': [0, 1.75] // hack to accelrate opacity speed
-        }, {
-          'selector': '#domExplosionList',
-          'translateY': '-70%',
-          'opacity': [0, 1] // hack to accelrate opacity speed
-        }]
-      }, {
-        'wrapper': '#explosion',
-        'duration': '150%',
-        'animations': [{
-          'selector': '.dei-1',
-          'translateY': '-15%',
-          'translateX': '-10%',
-          'opacity': [1, 0],
-          'scale': 2,
-        }, {
-          'selector': '.dei-2',
-          'translateY': '-5%',
-          'translateX': '-4%',
-          'opacity': [1, 0] // hack to decelrate opacity speed
-        }, {
-          'selector': '.dei-3',
-          'translateY': '-9%',
-          'translateX': '2%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.2,
-        }, {
-          'selector': '.dei-4',
-          'translateY': '-17%',
-          'translateX': '8%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.5,
-        }, {
-          'selector': '.dei-5',
-          'translateY': '-2%',
-          'translateX': '-15%',
-          'opacity': [1, 0],
-          'scale': 2,
-        }, {
-          'selector': '.dei-6',
-          'translateY': '-1%',
-          'translateX': '-7%',
-          'opacity': [1, 0], // hack to decelrate opacity speed
-          'scale': 1.2,
-        }, {
-          'selector': '.dei-7',
-          'translateY': '-4%',
-          'translateX': '2%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.1,
-        }, {
-          'selector': '.dei-8',
-          'translateY': '-3%',
-          'translateX': '12%',
-          'classesToAdd': [{
-            'testing-1': '50%'
-          }, {
-            'test-2': '100%'
-          }],
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.8,
-        }, {
-          'selector': '.dei-9',
-          'translateY': '3%',
-          'translateX': '-12%',
-          'opacity': [1, 0],
-          'scale': 1.5,
-        }, {
-          'selector': '.dei-10',
-          'translateY': '5%',
-          'translateX': '-4%',
-          'opacity': [1, 0] // hack to decelrate opacity speed
-        }, {
-          'selector': '.dei-11',
-          'translateY': '8%',
-          'translateX': '6%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.4,
-        }, {
-          'selector': '.dei-12',
-          'translateY': '1%',
-          'translateX': '20%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.9,
-        }, {
-          'selector': '.dei-13',
-          'translateY': '8%',
-          'translateX': '-12%',
-          'opacity': [1, 0],
-          'scale': 1.8,
-        }, {
-          'selector': '.dei-14',
-          'translateY': '4%',
-          'translateX': '-3%',
-          'opacity': [1, 0], // hack to decelrate opacity speed
-          'scale': 1.3,
-        }, {
-          'selector': '.dei-15',
-          'translateY': '14%',
-          'translateX': '5%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 1.7,
-        }, {
-          'selector': '.dei-16',
-          'translateY': '6%',
-          'translateX': '9%',
-          'opacity': [1, 0], // hack to accelrate opacity speed
-          'scale': 2,
-        }]
       }]
 
     /*  Construction
@@ -326,9 +199,9 @@ doit();
         }
       }
       //$body.height(bodyHeight);
-      $window.scroll(0);
+      //console.log('page built');
       currentWrapper = wrappers[0];
-      $(currentWrapper).show();
+      //$(currentWrapper).show();
     }
 
     convertAllPropsToPx = function() {
@@ -490,7 +363,10 @@ doit();
         value = getDefaultPropertyValue(property);
       } else {
 
-        value = relativeScrollTop; // easeLinear(relativeScrollTop, value[0], (value[1] - value[0]), keyframes[currentKeyframe].duration);
+        //value = easeInOutQuad(relativeScrollTop, value[0], (value[1] - value[0]), keyframes[currentKeyframe].duration);
+        value =  lerp(value[0] || animation[property].lastValue || 0, relativeScrollTop, lerpRate);
+        animation[property].lastValue = value;
+        //value = relativeScrollTop; // easeLinear(relativeScrollTop, value[0], (value[1] - value[0]), keyframes[currentKeyframe].duration);
 
         // console.log('min is '+value[0] + ' and max is '+value[1]);
         // value = Math.max(value[0], Math.min(relativeScrollTop, value[1]));
@@ -584,6 +460,7 @@ doit();
         || 'onmsgesturechange' in window; // works on ie10
     }
 
+    window.location = "#"; // to top
     init();
 
   })

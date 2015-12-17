@@ -33,7 +33,7 @@ $xxlarge: new-breakpoint(min-width $xxlarge-breakpoint);
 
 $font-sizes: (
   xlarge: (
-    h1: 51px,
+    h1: 50vw,//51px,
     h2: 41px,
     h3: 33px,
     h4: 26px,
@@ -45,7 +45,7 @@ $font-sizes: (
     cta: 21px
   ),
   large: (
-    h1: 44px,
+    h1: 50vw, //44px,
     h2: 35px,
     h3: 28px,
     h4: 23px,
@@ -57,7 +57,7 @@ $font-sizes: (
     cta: 18px
   ),
   medium: (
-    h1: 39px,
+    h1: 50vw, //39px,
     h2: 31px,
     h3: 25px,
     h4: 20px,
@@ -69,7 +69,7 @@ $font-sizes: (
     cta: 16px
   ),
   mobile: (
-    h1: 39px,
+    h1: 8vw, //39px,
     h2: 31px,
     h3: 25px,
     h4: 20px,
