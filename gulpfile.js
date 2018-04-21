@@ -42,8 +42,24 @@ gulp.task('styles', function () {
   .pipe(reload({stream:true})); // inject into browsers
 });
 
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+
+gulp.task('es6', () =>
+    gulp.src('es6/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(concat('all.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist'))
+);
+
 // Default task to be run with `gulp`
 gulp.task('default', ['styles', 'browser-sync'], function () {
-  gulp.watch("./scss/*.scss", ['styles']);
+  gulp.watch("./scss/*/*.scss", ['styles']);
   gulp.watch("./*.html", ['html']);
+  gulp.watch("./es6/**/*.js", ['es6']);
 });
