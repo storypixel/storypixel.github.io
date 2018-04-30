@@ -1,0 +1,124 @@
+// Deeply sets ink color for links. $color is the color we want our link to strongly be
+@mixin set-link-color($color, $hover-color: null) {
+    &,
+    &:link,
+    &:visited,
+    &:enabled:hover, // no disabled hover
+    &:active {
+      color: $color;
+    }
+  
+    @if $hover-color {
+      &:enabled:hover { // no disabled hover
+        color: $hover-color;
+      }
+    }
+  }
+  
+  // TODO: add some debugging measures to verify first-font-sizes are equal to every
+  // set of font sizes
+  $first-font-sizes: map-get($font-sizes, 'xs');
+  $font-size-keys: map_keys($first-font-sizes);
+  $font-size-bps: map_keys($font-sizes);
+  $breakpoint-bps: map_keys($breakpoints);
+  
+  @mixin font-size-content($font-size-key) {
+    // Font size for mobile
+    font-size: map-get(map-get($font-sizes, $base-column-name), $font-size-key);
+  
+    // Font sizes for each breakpoint
+    @each $font-size-bp in $font-size-bps {
+      @if ($font-size-bp != $base-column-name) {
+        @include media('screen', $break-dir+map-get($breakpoints, $font-size-bp)) {
+          font-size:  map-get(map-get($font-sizes, $font-size-bp), $font-size-key);
+        }
+      }
+    }
+  }
+  
+  // Responsive font-size mixin
+  // If $extends is true, then use the @extends method
+  // If $extends is false, then use the @include method (which cascades like regular css)
+  @mixin font-size($font-size, $extends: true) {
+    @if $extends == true {
+      @extend %font-size-#{$font-size};
+    } @else {
+      @include font-size-content($font-size);
+    }
+  }
+  
+  // Make a bunch of placeholders for font. Placeholders greatly reduce filesize for font-sizing
+  @each $font-size-key in $font-size-keys {
+    %font-size-#{$font-size-key} { // e.g. %font-size-small
+      @include font-size-content($font-size-key);
+    }
+  }
+  
+  @mixin p() {
+    color: $font-color-prm;
+    font-family: $base-font-family;
+    // font-size: $base-font-size;
+    @include font-size(sm);
+    line-height: $font-line-primary;
+    font-weight: $font-weight-base;
+    // word-spacing: 0.08em;
+    // letter-spacing: 0.01em;
+  }
+  
+  /* The extends below allow us to apply h5 to nav items for example */
+  /* Because extends currently have cascading drawbacks and do not work inside media queries, write mixins */
+  @mixin h1($matt: null) {
+    @include font-size(xl);
+    font-family: $h1-font-family;
+    //letter-spacing: -0.02em;
+    //font-size: $h1-font-size;
+    font-weight: $font-weight-lt;
+  
+    @if $matt {
+      font-weight: $font-weight-900; // no conf in planning design system atm so one-off it
+      line-height: $font-line-heading;
+    }
+  
+    .template--mannello-2018-02 & {
+      font-weight: $font-weight-900; // no conf in planning design system atm so one-off it
+      line-height: $font-line-heading;
+    }
+  }
+  
+  @mixin h2() {
+    @include font-size(xs);
+    font-family: $h2-font-family;
+    // font-size: $h2-font-size;
+    font-weight: $font-weight-900;
+  }
+  
+  @mixin h3() {
+    @include h2();
+    // @include font-size(xs);
+    // font-family: $h3-font-family;
+    // // font-size: $h3-font-size;
+    // font-weight: 600;
+  }
+  
+  @mixin h4() {
+    @include font-size(md);
+    font-family: $h4-font-family;
+    // font-size: $h4-font-size;
+    font-weight: 600;
+  }
+  
+  @mixin h5() {
+    // font-size: $h5-font-size;
+    @include font-size(sm);
+    font-family: $h5-font-family;
+    font-weight: 300;
+  }
+  
+  @mixin h6() {
+    @include font-size(sm);
+    font-family: $h6-font-family;
+    // font-size: $h6-font-size;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  

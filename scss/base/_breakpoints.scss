@@ -1,0 +1,22 @@
+// Transitional variables. Will be brought in line with what exists
+$breakpoints: (
+        'xs': 0, // this will be outside a media query
+        'sm': 480px,
+        'md': 768px,
+        'lg': 1024px,
+        'xl': 1180px
+);
+
+// Shorthand for the media library. Abstracting away from raw syntax to make it terse
+@mixin bp($breakpoint-name: 'xs', $bp-prefix: '>=') {
+    @if variable-exists($break-dir) {
+      $bp-prefix: $break-dir;
+    }
+  
+    $breakpoint: map-get($breakpoints, $breakpoint-name);
+  
+    @include media('screen', '#{$bp-prefix + $breakpoint}') {
+      @content;
+    }
+  }
+  

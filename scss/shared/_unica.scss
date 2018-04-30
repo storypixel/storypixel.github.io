@@ -1,4 +1,4 @@
-$font-path: '../fonts/';
+$font-path: '../../fonts/';
 
 @font-face {
     font-family: UnicaWeb;
@@ -29,4 +29,3 @@ $font-path: '../fonts/';
          url($font-path + 'neue-haas-unica-medium.svg#neue-haas-unica-medium') format('svg');
     font-weight: bold;
     font-style: normal; }
-

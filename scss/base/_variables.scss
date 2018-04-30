@@ -1,50 +1,153 @@
+// V4
+$lawful-good: #FFF; //Lawful Good
+$lawful-good-faded: transparentize($lawful-good, .5); //Lawful Good
+$lawful-good-fadest: transparentize($lawful-good, .15); //Lawful Good
+$neutral-good: #F5F5F5; //Neutral Good
+$chaotic-good: #7c7c7c; //Chaotic Good
+$chaotic-neutral: #999; //Lawful Neutral
+$lawful-neutral: #444; //Chaotic Neutral
+$chaotic-evil: #000; //Chaotic Evil
+$chaotic-evil-faded: transparentize($chaotic-evil, .8);
+
+// Sizes
+// $app-size-xx: 0.625rem;  // 10px
+$app-size-xx: 0.6875rem; // 11px
+$app-size-xs: 0.75rem;   // 12px
+$app-size-ss: 0.875rem;      // 14px Primary Font
+$app-size-sm: 1rem;      // 16px Primary Font
+$app-size-md: 1.333rem;  // 21px Subheaders
+$app-size-lg: 1.75rem;   // 28px Headers
+$app-size-xl: 2.375rem;  // 38px
+
+$menu-height-mobile: 47px; // $app-size-xl;
+
+// The variable that we use to determine font sizes at different break points.
+/* NOTE: the order of these variables is significant because the order drives the eventual definitions of the placeholders, which is used via @extends later to save filesize */
 $font-sizes: (
-  xlarge: (
-    h1: 51px,
-    h2: 41px,
-    h3: 33px,
-    h4: 26px,
-    h5: 21px,
-    h6: 16px,
-    base: 21px,
-    large: 26px,
-    small: 16px,
-    cta: 21px
+  'xl': (// Breakpoint
+    xx: $app-size-xx,
+    xs: $app-size-xs,
+    ss: $app-size-ss,
+    sm: $app-size-sm,
+    md: $app-size-md,
+    lg: $app-size-lg,
+    xl: $app-size-xl
   ),
-  large: (
-    h1: 44px,
-    h2: 35px,
-    h3: 28px,
-    h4: 23px,
-    h5: 18px,
-    h6: 14px,
-    base: 18px,
-    large: 20px,
-    small: 14px,
-    cta: 18px
+  'lg': (// Breakpoi
+    xx: $app-size-xx,
+    xs: $app-size-xs,
+    ss: $app-size-ss,
+    sm: $app-size-sm,
+    md: $app-size-md,
+    lg: $app-size-lg,
+    xl: $app-size-xl
   ),
-  medium: (
-    h1: 39px,
-    h2: 31px,
-    h3: 25px,
-    h4: 20px,
-    h5: 16px,
-    h6: 13px,
-    base: 16px,
-    large: 18px,
-    small: 13px,
-    cta: 16px
+  'md': (// Breakpoi
+    xx: $app-size-xx,
+    xs: $app-size-xs,
+    ss: $app-size-ss,
+    sm: $app-size-sm,
+    md: $app-size-md,
+    lg: $app-size-lg,
+    xl: $app-size-xl
   ),
-  mobile: (
-    h1: 39px,
-    h2: 31px,
-    h3: 25px,
-    h4: 20px,
-    h5: 16px,
-    h6: 13px,
-    base: 16px,
-    large: 18px,
-    small: 13px,
-    cta: 16px
+  'sm': (// Breakpoi
+    xx: $app-size-xx,
+    xs: $app-size-xs,
+    ss: $app-size-ss,
+    sm: $app-size-sm,
+    md: $app-size-md,
+    lg: $app-size-lg,
+    xl: $app-size-xl
+  ),
+  'xs': (// Breakpoi
+    xx: $app-size-xx,
+    xs: $app-size-xs,
+    ss: $app-size-ss,
+    sm: $app-size-sm,
+    md: $app-size-md,
+    lg: $app-size-lg,
+    xl: $app-size-xl * .75
   )
 );
+
+// Matt's approved padding values for buttons deprecated
+$app-btn-sm: $app-size-xx;
+$app-btnpad-sm: 1.375rem;
+$app-btn-md: $app-size-xs;
+$app-btnpad-md: 1.75rem;
+$app-btn-mt: $app-size-sm;
+$app-btnpad-mt: 2.25rem;
+$app-btn-lg: 1.25rem;
+$app-btnpad-lg: .875rem;
+
+// Matt's approved padding values
+$app-pad-ln: 0.0625rem;
+$app-pad-xx: 0.188rem;   // 3px
+$app-pad-xs: 0.313rem;   // 5px
+$app-pad-sm: 0.625rem;   // 10px
+$app-pad-mt: 1rem;       // 16px
+$app-pad-md: 1.25rem;    // 20px
+$app-pad-lg: 2.5rem;     // 40px
+$app-pad-xl: 5rem;       // 80px
+
+$font-line-small: 1;
+$font-line-heading: 1.2;
+$font-line-block: 1.3;
+$font-line-normal: 1.6875;
+$font-line-base: $font-line-block;
+$font-line-primary: $font-line-normal;
+$font-line-secondary: $font-line-heading;
+
+$font-weight-lt: 100;
+$font-weight-md: 300;
+$font-weight-bd: 700;
+
+// Wacky style bonanza
+$font-weight-100: 100;
+$font-weight-300: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-700: 700;
+$font-weight-900: 900;
+
+$font-weight-base: $font-weight-300; 
+
+// Transitional variables. Will be brought in line with what exists
+$breakpoints: (
+        'xs': 0, // this will be outside a media query
+        'sm': 480px,
+        'md': 768px,
+        'lg': 1024px,
+        'xl': 1180px
+);
+
+// This is used and active
+$max-widths: (
+        // keys must match $breakpoint names
+        'xs': 100%,
+        'sm': 100%,
+        'md': 90%,
+        'lg': 52rem,
+        'xl': 64rem
+) !default;
+
+// Grid variables for acegrid
+$column-gutter: $app-pad-md; // this trickles down to the grid
+$base-column-name: 'xs'; // The equivalent for mobile size, the default. could be ''
+$break-dir: '>=' !default;
+
+// Typography
+$sans-serif: 'museo-sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: $sans-serif; // 'corner-store', Georgia, Cambria, "Times New Roman", Times, serif;
+$mono: 'PTMono', monospace;
+$base-font-family: $sans-serif;
+$light-font-family: $sans-serif;
+$sc-font-family: $sans-serif;
+$header-font-family: $base-font-family;
+$h1-font-family: $base-font-family;
+$h2-font-family: $base-font-family;
+$h3-font-family: $base-font-family;
+$h4-font-family: $base-font-family;
+$h5-font-family: $base-font-family;
+$h6-font-family: $sc-font-family;

@@ -1,45 +1,12 @@
-@import "base/reset";
-// @import "base/grid";
+
+@import "../../node_modules/nanoreset/nanoreset.css"; // this needs the periods because this css is not included it's actualled imported per css spec
+@import "node_modules/include-media/dist/include-media"; // for a capable media plugin
+@import "base/variables";
+@import "base/breakpoints";
+@import "base/type-mixins";
 @import "shared/framing";
+@import "shared/type";
 @import "shared/unica";
 @import "shared/caslon";
-
-body {
-  //background: #F13E3F;
-  font-family: UnicaWeb, serif;
-  //color: #F1FFCD;
-  line-height: 1.5;
-}
-
-// @mixin h1 {
-//   font-family: BigCaslon, sans-serif;
-//   font-size: 24px;
-//
-//   span {
-//     display: none;
-//   }
-//
-//   @media (min-width: 640px) {
-//     font-size: 3vw;
-//
-//     span {
-//       display: inline;
-//     }
-//   }
-// }
-//
-// @mixin h2 {
-//
-// }
-//
-// h1 {
-//   @include h1;
-//   margin-bottom: .5rem;
-// }
-//
-// h2 {
-//   @include h2;
-//   a {
-//     text-decoration: underline;
-//   }
-// }
+@import "shared/home";
+@import "base/breakpoints";
