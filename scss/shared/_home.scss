@@ -239,10 +239,14 @@ h2 {
   .words {
     grid-template-columns: 1fr 1fr;
   }
-  .cell-1 {
+  .cell-code {
     background-image: url("https://media.giphy.com/media/DXeT5OCgTzos0/giphy.gif");
     background-size: cover;
     transform: translateY(-50%);
+    border-radius: 50%;
+    max-width: 25vw;
+    margin-left: 12.5vw;
+    max-height: 25vw;
   }
 }
 

@@ -326,10 +326,14 @@ h2 {
 .thought-2 .words {
   grid-template-columns: 1fr 1fr; }
 
-.thought-2 .cell-1 {
+.thought-2 .cell-code {
   background-image: url("https://media.giphy.com/media/DXeT5OCgTzos0/giphy.gif");
   background-size: cover;
-  transform: translateY(-50%); }
+  transform: translateY(-50%);
+  border-radius: 50%;
+  max-width: 25vw;
+  margin-left: 12.5vw;
+  max-height: 25vw; }
 
 .thought-0 {
   background-color: #bf4d40; }
