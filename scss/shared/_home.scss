@@ -240,7 +240,11 @@ h2 {
 
 .thought-2 {
   .words {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 3fr;
+
+    @include bp(lg) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .cell-code {

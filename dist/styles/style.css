@@ -365,7 +365,11 @@ h2 {
     padding: 20px; }
 
 .thought-2 .words {
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: 1fr 3fr; }
+
+@media screen and (min-width: 1024px) {
+  .thought-2 .words {
+    grid-template-columns: 1fr 1fr; } }
 
 .thought-2 .cell-code {
   background-image: url("https://media.giphy.com/media/DXeT5OCgTzos0/giphy.gif");
