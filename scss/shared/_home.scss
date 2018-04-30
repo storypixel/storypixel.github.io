@@ -20,25 +20,23 @@ h2 {
   height: 0;
   top: 0;
   mix-blend-mode: darken;
-
-  span {
-    display: inline-block;
-    white-space: nowrap;
-    @extend .p-10;
-  }
-  
 }
 
 .thought-category__inner {
+  @extend .p-10;
+  display: inline-block;
+  white-space: nowrap;
   background: black;
-  width: 20vw;
+  min-width: 20vw;
 }
 
 .thought {
-  height: 100vh;
   display: grid;
   align-items: stretch;
   text-align: left;
+  @include bp(md) {
+    height: 100vh;
+  }
 }
 
 .thought-currently {
@@ -56,16 +54,21 @@ h2 {
 }
 
 .thought-space {
-  overflow: hidden;
+  @include bp(md) {
+    overflow: visible;
+  }
 }
 
 .words {
-  @include font-size(lg);
+  @include font-size(sm, false);
   height: 50vh;
   align-items: center;
   display: grid;
   grid-gap: 0;
   grid-template-columns: 1fr 3fr 1fr;
+  @include bp(md) {
+  @include font-size(lg, false);
+  }
 }
 
 .illy {
@@ -106,6 +109,10 @@ h2 {
   mix-blend-mode: luminosity;
   top: 10vh;
   max-width: 300px;
+  opacity: .1;
+  @include bp(md) {
+    opacity: 1;
+  }
 }
 
 .illy-puff {
@@ -131,14 +138,18 @@ h2 {
   min-width: 200px;
   background: black;
   mix-blend-mode: normal;
-  top: 50%;
-  left: 10vw;
   bottom: auto;
+  left: -5vw;
   position: absolute;
+  top: 100%;
   .illy-img {
     opacity: 1;
     max-width: 800px;
     margin-bottom: -20px;
+  }
+  @include bp(md) {
+  left: 10vw;
+    top: 50%;
   }
 }
 
