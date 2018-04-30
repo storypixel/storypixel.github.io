@@ -54,8 +54,9 @@ h2 {
 }
 
 .thought-space {
-    overflow: hidden;
-    max-width: 100vw;
+  overflow: hidden;
+  max-width: 100%;
+
   @include bp(md) {
     overflow: visible;
   }
