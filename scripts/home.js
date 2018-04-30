@@ -65,4 +65,14 @@
     console.log("boom")
     }, false);
 
-document.addEventListener("DOMContentLoaded", init);
+// document.addEventListener("DOMContentLoaded", init);
+
+if( document.readyState === 'complete' ) {
+  console.log( 'document is already ready, just execute code here' );
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', function () {
+      console.log( 'document was not ready, place code here' );
+      init();
+  });
+}
