@@ -13,11 +13,13 @@
     let className = "thought-wrapper";
     let sections = document.querySelectorAll(".thought-wrapper");
 
-    function doSomething(scroll_pos) {
+    function updateProgress(scroll_pos) {
       let scrolledPast = Array.from(sections).filter((el) => { el.getBoundingClientRect().top <= 0; });
       let activeThoughtWrapper = scrolledPast[scrolledPast.length - 1]
-      let topOfActive = activeThoughtWrapper.getBoundingClientRect().top
+      if (activeThoughtWrapper) {
+      let topOfActive =  activeThoughtWrapper.getBoundingClientRect().top
       document.getElementById('progress').style.width = 100 * -topOfActive/activeThoughtWrapper.offsetHeight+'vw';
+      } 
     }
     
     window.addEventListener('scroll', function(e) {
@@ -25,7 +27,7 @@
 
       if (!ticking) {
         window.requestAnimationFrame(function() {
-          doSomething(last_known_scroll_position);
+          updateProgress(last_known_scroll_position);
           ticking = false;
         });
         ticking = true;

@@ -13,13 +13,16 @@ function initProgressBar() {
   var className = "thought-wrapper";
   var sections = document.querySelectorAll(".thought-wrapper");
 
-  function doSomething(scroll_pos) {
+  function updateProgress(scroll_pos) {
     var scrolledPast = Array.from(sections).filter(function (el) {
       el.getBoundingClientRect().top <= 0;
     });
     var activeThoughtWrapper = scrolledPast[scrolledPast.length - 1];
-    var topOfActive = activeThoughtWrapper.getBoundingClientRect().top;
-    document.getElementById('progress').style.width = 100 * -topOfActive / activeThoughtWrapper.offsetHeight + 'vw';
+
+    if (activeThoughtWrapper) {
+      var topOfActive = activeThoughtWrapper.getBoundingClientRect().top;
+      document.getElementById('progress').style.width = 100 * -topOfActive / activeThoughtWrapper.offsetHeight + 'vw';
+    }
   }
 
   window.addEventListener('scroll', function (e) {
@@ -27,7 +30,7 @@ function initProgressBar() {
 
     if (!ticking) {
       window.requestAnimationFrame(function () {
-        doSomething(last_known_scroll_position);
+        updateProgress(last_known_scroll_position);
         ticking = false;
       });
       ticking = true;
