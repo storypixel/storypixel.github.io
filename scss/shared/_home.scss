@@ -113,8 +113,16 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
   .illy-img {
     position: relative;
+  }
+
+  @include bp(lg) {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 

@@ -272,9 +272,16 @@ h2 {
 .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px; }
   .illy-puff .illy-img, .illy-currently .illy-img, .illy-sleep .illy-img, .illy-skull .illy-img, .illy-jeremy .illy-img, .illy-motorcyle .illy-img {
     position: relative; }
+
+@media screen and (min-width: 1024px) {
+  .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
+    margin-top: 0;
+    margin-bottom: 0; } }
 
 .illy-darrows {
   mix-blend-mode: luminosity;
