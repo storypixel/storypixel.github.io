@@ -1,27 +1,27 @@
 @import "https://unpkg.com/nanoreset/nanoreset.min.css";
 /* NOTE: the order of these variables is significant because the order drives the eventual definitions of the placeholders, which is used via @extends later to save filesize */
-.title,
-.thought-category, h2 {
+h2, .title,
+.thought-category {
   font-size: 0.75rem; }
 
 @media screen and (min-width: 1180px) {
-  .title,
-  .thought-category, h2 {
+  h2, .title,
+  .thought-category {
     font-size: 0.75rem; } }
 
 @media screen and (min-width: 1024px) {
-  .title,
-  .thought-category, h2 {
+  h2, .title,
+  .thought-category {
     font-size: 0.75rem; } }
 
 @media screen and (min-width: 768px) {
-  .title,
-  .thought-category, h2 {
+  h2, .title,
+  .thought-category {
     font-size: 0.75rem; } }
 
 @media screen and (min-width: 480px) {
-  .title,
-  .thought-category, h2 {
+  h2, .title,
+  .thought-category {
     font-size: 0.75rem; } }
 
 h1 {
@@ -80,6 +80,11 @@ small,
 .grid {
   display: grid;
   grid-gap: 20px; }
+
+h2 {
+  margin: 0;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900; }
 
 .trick {
   display: inline-block;
@@ -149,11 +154,6 @@ small,
   src: url("../fonts/BigCaslonRom.eot?#iefix") format("embedded-opentype"), url("../fonts/BigCaslonRom.woff") format("woff"), url("../fonts/BigCaslonRom.ttf") format("truetype"), url("../fonts/BigCaslonRom.svg#BigCaslonRom") format("svg");
   font-weight: bold;
   font-style: normal; }
-
-h2 {
-  margin: 0;
-  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 900; }
 
 .p-10, .thought-category__inner, .title {
   padding: 10px; }
@@ -245,6 +245,20 @@ h2 {
   .words {
     font-size: 1.75rem; } }
 
+.illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  .illy-puff .illy-img, .illy-currently .illy-img, .illy-sleep .illy-img, .illy-skull .illy-img, .illy-jeremy .illy-img, .illy-motorcyle .illy-img {
+    position: relative; }
+
+@media screen and (min-width: 1024px) {
+  .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
+    margin-top: 0;
+    margin-bottom: 0; } }
+
 .illy {
   margin: 0;
   align-self: flex-end;
@@ -263,35 +277,21 @@ h2 {
   bottom: 0;
   left: 0;
   width: 100%;
-  opacity: .4;
+  opacity: 0.4;
   pointer-events: none;
   filter: invert(100%); }
   .thought-0 .illy-img {
     opacity: 1; }
 
-.illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px; }
-  .illy-puff .illy-img, .illy-currently .illy-img, .illy-sleep .illy-img, .illy-skull .illy-img, .illy-jeremy .illy-img, .illy-motorcyle .illy-img {
-    position: relative; }
-
-@media screen and (min-width: 1024px) {
-  .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
-    margin-top: 0;
-    margin-bottom: 0; } }
-
 .illy-darrows {
   mix-blend-mode: luminosity;
   top: 10vh;
   max-width: 300px;
-  opacity: .1; }
+  opacity: 0.1; }
 
 @media screen and (min-width: 1024px) {
   .illy-darrows {
-    opacity: .4; } }
+    opacity: 0.4; } }
 
 .illy-puff .illy-img {
   filter: none;
@@ -339,7 +339,7 @@ h2 {
 
 .illy-calligraphy .illy-img {
   filter: none;
-  opacity: .2; }
+  opacity: 0.2; }
 
 .illy-holy .illy-img {
   filter: none; }
