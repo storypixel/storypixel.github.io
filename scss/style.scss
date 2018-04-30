@@ -1,5 +1,5 @@
 
-@import "../../node_modules/nanoreset/nanoreset.css"; // this needs the periods because this css is not included it's actualled imported per css spec
+@import "https://unpkg.com/nanoreset/nanoreset.min.css"; // this needs the periods because this css is not included it's actualled imported per css spec
 @import "node_modules/include-media/dist/include-media"; // for a capable media plugin
 @import "base/variables";
 @import "base/breakpoints";
