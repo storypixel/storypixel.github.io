@@ -892,7 +892,7 @@ h2 {
   margin: 0;
   display: block;
   display: block;
-  width: 10px;
+  width: 0;
   z-index: 40;
   position: absolute;
   top: 0;
