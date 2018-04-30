@@ -157,8 +157,8 @@ h2 {
   height: 15vw;
   min-height: 200px;
   min-width: 200px;
-  background: black;
-  mix-blend-mode: normal;
+  background: purple;
+  mix-blend-mode: darken;
   bottom: auto;
   left: -5vw;
   position: absolute;
@@ -213,8 +213,9 @@ h2 {
   justify-content: flex-end;
   margin-right: 10vw;
   .illy-img {
-    max-width: 40vw;
+    max-width: 80vw;
     top: -50%;
+    opacity: 1;
     filter: none;
   }
 }
