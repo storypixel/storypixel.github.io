@@ -241,7 +241,9 @@ h2 {
   .words {
     font-size: 1.75rem; } }
   .words div {
-    z-index: 40; }
+    z-index: 40;
+    padding-top: 40px;
+    padding-bottom: 40px; }
 
 .illy {
   margin: 0;
