@@ -182,7 +182,7 @@ h2 {
   align-items: stretch;
   text-align: left; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .thought {
     height: 100vh; } }
 
@@ -193,7 +193,7 @@ h2 {
   overflow: hidden;
   max-width: 100%; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .thought-space {
     overflow: visible; } }
 
@@ -221,23 +221,23 @@ h2 {
   .words {
     font-size: 1rem; } }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .words {
     font-size: 1.75rem; } }
 
-@media screen and (min-width: 768px) and (min-width: 1180px) {
+@media screen and (min-width: 1024px) and (min-width: 1180px) {
   .words {
     font-size: 1.75rem; } }
 
-@media screen and (min-width: 768px) and (min-width: 1024px) {
+@media screen and (min-width: 1024px) and (min-width: 1024px) {
   .words {
     font-size: 1.75rem; } }
 
-@media screen and (min-width: 768px) and (min-width: 768px) {
+@media screen and (min-width: 1024px) and (min-width: 768px) {
   .words {
     font-size: 1.75rem; } }
 
-@media screen and (min-width: 768px) and (min-width: 480px) {
+@media screen and (min-width: 1024px) and (min-width: 480px) {
   .words {
     font-size: 1.75rem; } }
 
@@ -275,7 +275,7 @@ h2 {
   max-width: 300px;
   opacity: .1; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .illy-darrows {
     opacity: 1; } }
 
@@ -306,7 +306,7 @@ h2 {
     max-width: 800px;
     margin-bottom: -20px; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .illy-currently {
     left: 10vw;
     top: 50%; } }

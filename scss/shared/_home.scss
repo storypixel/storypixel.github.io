@@ -34,7 +34,7 @@ h2 {
   display: grid;
   align-items: stretch;
   text-align: left;
-  @include bp(md) {
+  @include bp(lg) {
     height: 100vh;
   }
 }
@@ -56,8 +56,7 @@ h2 {
 .thought-space {
   overflow: hidden;
   max-width: 100%;
-
-  @include bp(md) {
+  @include bp(lg) {
     overflow: visible;
   }
 }
@@ -69,7 +68,7 @@ h2 {
   display: grid;
   grid-gap: 0;
   grid-template-columns: 1fr 3fr 1fr;
-  @include bp(md) {
+  @include bp(lg) {
   @include font-size(lg, false);
   }
 }
@@ -113,7 +112,7 @@ h2 {
   top: 10vh;
   max-width: 300px;
   opacity: .1;
-  @include bp(md) {
+  @include bp(lg) {
     opacity: 1;
   }
 }
@@ -150,7 +149,7 @@ h2 {
     max-width: 800px;
     margin-bottom: -20px;
   }
-  @include bp(md) {
+  @include bp(lg) {
   left: 10vw;
     top: 50%;
   }
