@@ -164,6 +164,7 @@ h2 {
 
 .thought-category {
   position: sticky;
+  position: -webkit-sticky;
   margin: 0;
   text-align: right;
   z-index: 200;
@@ -320,9 +321,11 @@ h2 {
   to {
     transform: rotate(360deg) scale(0.7); } }
 
-.illy-sleep .illy-img {
-  animation: spin 20s ease-in-out 1s infinite alternate;
-  max-width: 500px; }
+.illy-sleep {
+  overflow: hidden; }
+  .illy-sleep .illy-img {
+    animation: spin 20s ease-in-out 1s infinite alternate;
+    max-width: 500px; }
 
 .illy-calligraphy .illy-img {
   filter: none;
@@ -346,9 +349,7 @@ h2 {
   justify-content: flex-start; }
   .illy-motorcyle .illy-img {
     top: -50%;
-    max-width: 700px;
-    min-width: 450px;
-    margin-left: 10vw; }
+    max-width: 700px; }
 
 .title {
   position: fixed;

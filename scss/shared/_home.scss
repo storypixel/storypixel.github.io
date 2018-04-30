@@ -14,6 +14,7 @@ h2 {
 
 .thought-category {
   position: sticky;
+  position: -webkit-sticky;
   margin: 0;
   text-align: right;
   z-index: 200;
@@ -167,6 +168,7 @@ h2 {
 
 .illy-sleep {
   @extend %illy-flex;
+  overflow: hidden;
   .illy-img {
     animation: spin 20s ease-in-out 1s infinite alternate;
     max-width: 500px;
@@ -210,7 +212,7 @@ h2 {
   .illy-img {
     top: -50%;
     max-width: 700px;
-    margin-left: 10vw;
+    // margin-left: 10vw;
   }
 }
 
