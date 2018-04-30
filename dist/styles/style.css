@@ -240,6 +240,8 @@ h2 {
 @media screen and (min-width: 1024px) and (min-width: 480px) {
   .words {
     font-size: 1.75rem; } }
+  .words div {
+    z-index: 40; }
 
 .illy {
   margin: 0;

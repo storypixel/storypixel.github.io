@@ -69,7 +69,10 @@ h2 {
   grid-gap: 0;
   grid-template-columns: 1fr 3fr 1fr;
   @include bp(lg) {
-  @include font-size(lg, false);
+    @include font-size(lg, false);
+  }
+  div {
+    z-index: 40;
   }
 }
 
