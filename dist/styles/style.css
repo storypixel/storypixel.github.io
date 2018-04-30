@@ -189,6 +189,10 @@ h2 {
 .thought-currently {
   position: relative; }
 
+.thought-space {
+  overflow: hidden;
+  max-width: 100vw; }
+
 @media screen and (min-width: 768px) {
   .thought-space {
     overflow: visible; } }
