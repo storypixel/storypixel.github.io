@@ -190,8 +190,7 @@ h2 {
   position: relative; }
 
 .thought-space {
-  overflow: hidden;
-  max-width: 100%; }
+  max-width: 100vw; }
 
 @media screen and (min-width: 1024px) {
   .thought-space {
@@ -281,7 +280,7 @@ h2 {
 
 @media screen and (min-width: 1024px) {
   .illy-darrows {
-    opacity: 1; } }
+    opacity: .4; } }
 
 .illy-puff .illy-img {
   filter: none;

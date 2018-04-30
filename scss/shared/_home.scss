@@ -54,8 +54,8 @@ h2 {
 }
 
 .thought-space {
-  overflow: hidden;
-  max-width: 100%;
+  // overflow: hidden;
+  max-width: 100vw;
   @include bp(lg) {
     overflow: visible;
   }
@@ -118,7 +118,7 @@ h2 {
   max-width: 300px;
   opacity: .1;
   @include bp(lg) {
-    opacity: 1;
+    opacity: .4;
   }
 }
 
