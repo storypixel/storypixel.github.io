@@ -23,8 +23,8 @@ h2 {
 
   span {
     display: inline-block;
+    white-space: nowrap;
     @extend .p-10;
-  // background: gray;
   }
   
 }
@@ -56,15 +56,7 @@ h2 {
 }
 
 .thought-space {
-  // overflow-x: hidden;
-  // position: absolute;
-  // top: 0;
-  // width: 100%;
-  // height: 100%;
-  // overflow: auto;
-  // scroll-snap-points-y: repeat(100%);
-  // scroll-snap-type: proximity;
-  // scroll-snap-destination: 100% 0%;
+  overflow: hidden;
 }
 
 .words {
@@ -231,14 +223,10 @@ h2 {
 }
 
 .thought-2 {
-  // @for $i from 0 through 10 {
-  //   .xcell-#{$i} {
-  //     background: hsla($i*45, 50%, 50%, 1);
-  //   }
-  // }
   .words {
     grid-template-columns: 1fr 1fr;
   }
+
   .cell-code {
     background-image: url("https://media.giphy.com/media/DXeT5OCgTzos0/giphy.gif");
     background-size: cover;
