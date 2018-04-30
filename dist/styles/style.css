@@ -376,7 +376,7 @@ h2 {
   background-size: cover;
   transform: translateY(-50%);
   border-radius: 50%;
-  max-width: 25vw;
+  min-width: 25vw;
   margin-left: 12.5vw;
   max-height: 25vw; }
 
