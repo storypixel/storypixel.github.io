@@ -64,18 +64,21 @@ h2 {
 
 .words {
   @include font-size(sm, false);
-  height: 50vh;
   align-items: center;
   display: grid;
   grid-gap: 0;
   grid-template-columns: 1fr 3fr 1fr;
-  @include bp(lg) {
-    @include font-size(lg, false);
-  }
+
+  // kludge
   div {
     z-index: 40;
     padding-top: 40px;
     padding-bottom: 40px;
+  }
+
+  @include bp(lg) {
+    height: 50vh;
+    @include font-size(lg, false);
   }
 }
 
@@ -85,9 +88,11 @@ h2 {
   align-items: center;
   justify-content: center;
   display: flex;
-  height: 50vh;
   mix-blend-mode: overlay;
   position: relative;
+  @include bp(lg) {
+    height: 50vh;
+  }
 }
 
 .illy-img {
