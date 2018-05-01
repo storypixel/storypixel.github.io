@@ -279,19 +279,22 @@
 }
 
 .progress-bar {
-  @include bp(lg) {
     padding: 0;
     margin: 0;
     // transition: all .2s linear;
     // transition: all .2s linear;
     width: 0;
-    z-index: 40;
+    z-index: 11111111111110;
     position: absolute;
     top: 0;
     bottom: -3px;
     right: 0;
     background-color: hsla(0, 0%, 100%, 0);
+    border-top: 3px white solid;
+
+    @include bp(lg) {
+      display: block;
+    border-top: none;
     border-bottom: 3px white solid;
-    display: block;
-  }
+    }
 }

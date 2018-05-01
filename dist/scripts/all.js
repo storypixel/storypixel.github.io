@@ -3,19 +3,21 @@
 // Wait until stuff loads
 function init() {
   organizeThoughts();
-  initProgressBar();
+  initScrollTasks();
 } // Set up scrolling action
 
 
-function initProgressBar() {
+function initScrollTasks() {
   var last_known_scroll_position = 0;
   var ticking = false;
-  var className = "thought-wrapper";
   var sections = document.querySelectorAll(".thought-wrapper");
+  var thoughts = document.querySelectorAll(".thought");
+
+  function processActives() {}
 
   function updateProgress(scroll_pos) {
     var scrolledPast = Array.from(sections).filter(function (el) {
-      el.getBoundingClientRect().top <= 0;
+      return el.getBoundingClientRect().top <= 0;
     });
     var activeThoughtWrapper = scrolledPast[scrolledPast.length - 1];
 
@@ -25,12 +27,23 @@ function initProgressBar() {
     }
   }
 
+  function watchThoughts(scroll_pos) {
+    var className = "active";
+    var scrolledPast = Array.from(thoughts).forEach(function (el) {
+      if (el.getBoundingClientRect().top <= 0) {
+        console.log("this el has top less than 0", el.getBoundingClientRect().bottom);
+        if (el.classList) el.classList.add(className);else el.className += ' ' + className;
+      }
+    });
+  }
+
   window.addEventListener('scroll', function (e) {
     last_known_scroll_position = window.scrollY;
 
     if (!ticking) {
       window.requestAnimationFrame(function () {
         updateProgress(last_known_scroll_position);
+        watchThoughts(last_known_scroll_position);
         ticking = false;
       });
       ticking = true;
