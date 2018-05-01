@@ -245,17 +245,17 @@ h2 {
   .words {
     font-size: 1.75rem; } }
 
-.illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
+.illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-fig8, .illy-jeremy, .illy-motorcyle {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px; }
-  .illy-puff .illy-img, .illy-currently .illy-img, .illy-sleep .illy-img, .illy-skull .illy-img, .illy-jeremy .illy-img, .illy-motorcyle .illy-img {
+  .illy-puff .illy-img, .illy-currently .illy-img, .illy-sleep .illy-img, .illy-skull .illy-img, .illy-fig8 .illy-img, .illy-jeremy .illy-img, .illy-motorcyle .illy-img {
     position: relative; }
 
 @media screen and (min-width: 1024px) {
-  .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-jeremy, .illy-motorcyle {
+  .illy-puff, .illy-currently, .illy-sleep, .illy-skull, .illy-fig8, .illy-jeremy, .illy-motorcyle {
     margin-top: 0;
     margin-bottom: 0; } }
 
@@ -344,8 +344,14 @@ h2 {
 .illy-holy .illy-img {
   filter: none; }
 
-.illy-skull .illy-img {
-  max-width: 50vw; }
+.illy-skull {
+  z-index: 666; }
+  .illy-skull .illy-img {
+    max-width: 50vw; }
+
+.illy-fig8 .illy-img {
+  max-width: 50vw;
+  filter: none; }
 
 .illy-jeremy {
   justify-content: flex-end;
