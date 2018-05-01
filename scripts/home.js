@@ -12,11 +12,11 @@ function initScrollTasks() {
 
   let sections = document.querySelectorAll(".thought-wrapper");
   let thoughts = document.querySelectorAll(".thought");
+  var activeNodes = [];
 
   function processActives() {
     
   }
-
 
   function updateProgress(scroll_pos) {
     let scrolledPast = Array.from(sections).filter((el) => {

@@ -226,8 +226,8 @@ h2 {
 
 @media screen and (min-width: 1024px) {
   .words {
-    height: 50vh;
-    font-size: 1.75rem; } }
+    font-size: 1.75rem;
+    height: 50vh; } }
 
 @media screen and (min-width: 1024px) and (min-width: 1180px) {
   .words {
@@ -361,6 +361,10 @@ h2 {
   .illy-motorcyle .illy-img {
     top: -50%;
     max-width: 700px; }
+
+@media screen and (min-width: 1024px) {
+  .illy-motorcyle .illy-img {
+    margin-left: 10vw; } }
 
 .title {
   position: fixed;

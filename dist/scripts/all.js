@@ -12,6 +12,7 @@ function initScrollTasks() {
   var ticking = false;
   var sections = document.querySelectorAll(".thought-wrapper");
   var thoughts = document.querySelectorAll(".thought");
+  var activeNodes = [];
 
   function processActives() {}
 

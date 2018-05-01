@@ -66,8 +66,8 @@
   }
 
   @include bp(lg) {
-    height: 50vh;
     @include font-size(lg, false);
+    height: 50vh;
   }
 }
 
@@ -96,6 +96,7 @@
   display: flex;
   mix-blend-mode: overlay;
   position: relative;
+
   @include bp(lg) {
     height: 50vh;
   }
@@ -163,6 +164,7 @@
   }
 }
 
+// For the sleeping animation
 @keyframes spin {
   from {
     transform: rotate(0) scale(1);
@@ -219,7 +221,9 @@
   .illy-img {
     top: -50%;
     max-width: 700px;
-    // margin-left: 10vw;
+    @include bp(lg) {
+      margin-left: 10vw;
+    }
   }
 }
 
