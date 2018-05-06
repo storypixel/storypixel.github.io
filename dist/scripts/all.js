@@ -33,13 +33,11 @@ function initScrollTasks() {
     var scrolledPast = Array.from(thoughts).forEach(function (el) {
       var d = document.documentElement;
       var offset = d.scrollTop + window.innerHeight;
-      var height = d.offsetHeight;
-      console.log('offset = ' + offset);
-      console.log('height = ' + height);
-
-      if (offset === height) {
-        console.log('At the bottom');
-      }
+      var height = d.offsetHeight; // console.log('offset = ' + offset);
+      // console.log('height = ' + height);
+      // if (offset === height) {
+      //   console.log('At the bottom');
+      // }
 
       if (el.getBoundingClientRect().top <= d.clientHeight / 2) {
         // console.log("this el has top less than 0", el.getBoundingClientRect().bottom )
