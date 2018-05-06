@@ -1,3 +1,4 @@
+$standard-transition: all .35s ease-in;
 .p-10 {
   padding: 10px;
 }
@@ -60,7 +61,9 @@
 
   // kludge
   div {
+    transition: $standard-transition;
     z-index: 40;
+    opacity: 0; // setting up for animation
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -68,6 +71,12 @@
   @include bp(lg) {
     @include font-size(lg, false);
     height: 50vh;
+  }
+
+  .active & {
+    div {
+      opacity: 1;
+    }
   }
 }
 
@@ -215,6 +224,7 @@
   @extend %illy-flex;
   justify-content: flex-end;
   margin-right: 10vw;
+
   .illy-img {
     max-width: 80vw;
     top: -50%;

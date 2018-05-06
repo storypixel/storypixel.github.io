@@ -31,8 +31,18 @@ function initScrollTasks() {
   function watchThoughts(scroll_pos) {
     var className = "active";
     var scrolledPast = Array.from(thoughts).forEach(function (el) {
-      if (el.getBoundingClientRect().top <= 0) {
-        console.log("this el has top less than 0", el.getBoundingClientRect().bottom);
+      var d = document.documentElement;
+      var offset = d.scrollTop + window.innerHeight;
+      var height = d.offsetHeight;
+      console.log('offset = ' + offset);
+      console.log('height = ' + height);
+
+      if (offset === height) {
+        console.log('At the bottom');
+      }
+
+      if (el.getBoundingClientRect().top <= d.clientHeight / 2) {
+        // console.log("this el has top less than 0", el.getBoundingClientRect().bottom )
         if (el.classList) el.classList.add(className);else el.className += ' ' + className;
       }
     });
@@ -50,6 +60,7 @@ function initScrollTasks() {
       ticking = true;
     }
   });
+  watchThoughts(0);
 } // Put color classes on the .thought items. Color classes gen'd by SCSS
 
 
