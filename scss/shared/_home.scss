@@ -112,10 +112,11 @@ $standard-transition: all .35s ease-in;
 }
 
 .illy-img {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  max-width: 1000px;
   opacity: 0.4;
   pointer-events: none;
   filter: invert(100%);
