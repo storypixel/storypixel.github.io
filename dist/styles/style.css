@@ -1,4 +1,4 @@
-@import "https://unpkg.com/nanoreset/nanoreset.min.css";
+@import url(../../node_modules/nanoreset/nanoreset.min.css);
 /* NOTE: the order of these variables is significant because the order drives the eventual definitions of the placeholders, which is used via @extends later to save filesize */
 h2, .title,
 .thought-category {
