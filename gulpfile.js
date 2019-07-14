@@ -1,14 +1,14 @@
 /**
-* This example:
-*  Uses the built-in BrowserSync server for HTML files
-*  Watches & compiles SASS files
-*  Watches & injects CSS files
-*/
+ * This example:
+ *  Uses the built-in BrowserSync server for HTML files
+ *  Watches & compiles SASS files
+ *  Watches & injects CSS files
+ */
 var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
-var gulp        = require('gulp');
-var sass        = require('gulp-sass');
-var filter      = require('gulp-filter');
+var reload = browserSync.reload;
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var filter = require('gulp-filter');
 
 var clean = require('gulp-clean');
 var jshint = require('gulp-jshint');
@@ -34,62 +34,89 @@ var bases = {
 // };
 
 var paths = {
-  scripts: ['scripts/**/*.js', /*'node_modules/scrollsnap-polyfill/dist/scrollsnap-polyfill.bundled.js',*/ '!scripts/libs/**/*.js'],
-  libs: [/*'node_modules/scrollsnap-polyfill/dist/scrollsnap-polyfill.js'*/],
+  scripts: [
+    'scripts/**/*.js',
+    /*'node_modules/scrollsnap-polyfill/dist/scrollsnap-polyfill.bundled.js',*/ '!scripts/libs/**/*.js',
+  ],
+  libs: [
+    /*'node_modules/scrollsnap-polyfill/dist/scrollsnap-polyfill.js'*/
+  ],
   styles: ['styles/**/*.css'],
   scss: ['scss/**/*.scss', 'scss/*.scss'],
   html: ['index.html', '404.html'],
   images: ['images/**/*.png', 'images/**/*.svg'],
-  extras: ['crossdomain.xml', 'humans.txt', 'manifest.appcache', 'robots.txt', 'favicon.ico'],
+  extras: [
+    'crossdomain.xml',
+    'humans.txt',
+    'manifest.appcache',
+    'robots.txt',
+    'favicon.ico',
+  ],
 };
 
 // Delete the dist directory
 gulp.task('clean', function() {
-  return gulp.src(bases.dist)
-  .pipe(clean());
+  return gulp.src(bases.dist).pipe(clean());
 });
 
 // Process scripts and concatenate them into one output file
-gulp.task('scripts', ['clean'], function() {
-  gulp.src(paths.scripts, {cwd: bases.app})
-  .pipe(jshint())
-  .pipe(jshint.reporter('default'))
-  .pipe(uglify())
-  .pipe(concat('app.min.js'))
-  .pipe(gulp.dest(bases.dist + 'scripts'));
+// gulp.task('scripts', ['clean'], function() {
+gulp.task('scripts', gulp.series('clean'), function() {
+  gulp
+    .src(paths.scripts, { cwd: bases.app })
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(uglify())
+    .pipe(concat('app.min.js'))
+    .pipe(gulp.dest(bases.dist + 'scripts'));
 });
+
+// gulp.task('a', ['b', 'c'], function () { // do something })
+// To convert this for gulp@4.0
+// gulp.task('a', gulp.series(gulp.parallel('b', 'c'), function () {
+//   // do something
+// }))
 
 // Imagemin images and ouput them in dist
-gulp.task('imagemin', ['clean'], function() {
-  gulp.src(paths.images, {cwd: bases.app})
-  .pipe(imagemin())
-  .pipe(gulp.dest(bases.dist + 'images/'));
-});
+// gulp.task('imagemin', ['clean'], function() {
+gulp.task(
+  'imagemin',
+  gulp.series(gulp.series('clean'), function() {
+    gulp
+      .src(paths.images, { cwd: bases.app })
+      .pipe(imagemin())
+      .pipe(gulp.dest(bases.dist + 'images/'));
+  })
+);
 
 // Copy all other files to dist directly
-gulp.task('copy', ['clean'], function() {
-  // Copy html
-  // gulp.src(paths.html, {cwd: bases.app})
-  // .pipe(gulp.dest(bases.dist));
+// gulp.task('copy', ['clean'], function() {
+gulp.task(
+  'copy',
+  gulp.series(gulp.series('clean'), function() {
+    // Copy html
+    // gulp.src(paths.html, {cwd: bases.app})
+    // .pipe(gulp.dest(bases.dist));
 
-  // Copy styles
-  // gulp.src(paths.styles, {cwd: bases.app})
-  // .pipe(gulp.dest(bases.dist + 'styles'));
+    // Copy styles
+    // gulp.src(paths.styles, {cwd: bases.app})
+    // .pipe(gulp.dest(bases.dist + 'styles'));
 
-  // Copy lib scripts, maintaining the original directory structure
-  // gulp.src(paths.libs, {cwd: 'app/**'})
-  // .pipe(gulp.dest(bases.dist));
+    // Copy lib scripts, maintaining the original directory structure
+    // gulp.src(paths.libs, {cwd: 'app/**'})
+    // .pipe(gulp.dest(bases.dist));
 
-  gulp.src(paths.images, {cwd: bases.app})
-  .pipe(gulp.dest(bases.dist + 'images'));
-  // Copy extra html5bp files
-  gulp.src(paths.extras, {cwd: bases.app})
-  .pipe(gulp.dest(bases.dist));
-});
+    gulp
+      .src(paths.images, { cwd: bases.app })
+      .pipe(gulp.dest(bases.dist + 'images'));
+    // Copy extra html5bp files
+    gulp.src(paths.extras, { cwd: bases.app }).pipe(gulp.dest(bases.dist));
+  })
+);
 
 // A development task to run anytime a file changes
 gulp.task('watch', function() {
-  gulp.watch('app/**/*', ['scripts', 'copy']);
+  gulp.watch(bases.app, gulp.parallel('scripts', 'copy'));
 });
 
 // Define the default task as a sequence of the above tasks
@@ -102,9 +129,9 @@ gulp.task('browser-sync', function() {
     //proxy: "http://localhost:3000",
     server: {
       baseDir: bases.app,
-      injectChanges: true // this is new
+      injectChanges: true, // this is new
     },
-    port: 3000
+    port: 3000,
 
     // ui: {
     //   port: 6969
@@ -114,52 +141,70 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src(paths.html)
-  .pipe(reload({stream:true})); // inject into browsers
+  return gulp.src(paths.html).pipe(reload({ stream: true })); // inject into browsers
 });
 
-
 // Sass task, will run when any SCSS files change.
-gulp.task('styles', function () {
-  return gulp.src('./scss/style.scss')
-  .pipe(sass({includePaths: ['scss']})) // compile sass
-  .pipe(gulp.dest(bases.dist + 'styles')) // write to css dir
-  .pipe(reload({stream:true})); // inject into browsers
+gulp.task('styles', function() {
+  return gulp
+    .src('./scss/style.scss')
+    .pipe(sass({ includePaths: ['scss'] })) // compile sass
+    .pipe(gulp.dest(bases.dist + 'styles')) // write to css dir
+    .pipe(reload({ stream: true })); // inject into browsers
 });
 
 gulp.task('es6', function() {
-  return gulp.src(paths.scripts)
-  .pipe(sourcemaps.init())
-  .pipe(babel({
-			presets: ['@babel/env']
-		}))
+  return gulp
+    .src(paths.scripts)
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        presets: ['@babel/env'],
+      })
+    )
 
-  .pipe(concat('all.js'))
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(bases.dist + 'scripts'))
-  .pipe(reload({stream:true}));
+    .pipe(concat('all.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(bases.dist + 'scripts'))
+    .pipe(reload({ stream: true }));
 });
 
 const image = require('gulp-image');
 
-gulp.task('image', function () {
-  gulp.src(paths.images)
-  .pipe(image())
-  .pipe(gulp.dest(bases.dist + 'images'))
-  .pipe(reload({stream:true})); // inject into browsers
+gulp.task('image', function() {
+  gulp
+    .src(paths.images)
+    .pipe(image())
+    .pipe(gulp.dest(bases.dist + 'images'))
+    .pipe(reload({ stream: true })); // inject into browsers
 });
-
 
 // Delete the dist directory
 gulp.task('clean', function() {
-  return gulp.src(bases.dist)
-  .pipe(clean());
+  return gulp.src(bases.dist).pipe(clean());
 });
 
 // Default task to be run with `gulp`
-gulp.task('default', ['styles', 'browser-sync'], function () {
-  gulp.watch(paths.scss, ['styles']);
-  gulp.watch(paths.html, ['html']);
-  gulp.watch(paths.scripts, ['es6']);
-  gulp.watch(paths.images, ['image']);
-});
+// gulp.task('default', ['styles', 'browser-sync'], function () {
+//   gulp.watch(paths.scss, ['styles']);
+//   gulp.watch(paths.html, ['html']);
+//   gulp.watch(paths.scripts, ['es6']);
+//   gulp.watch(paths.images, ['image']);
+// });
+
+// Default task to be run with `gulp`
+gulp.task(
+  'default',
+  gulp.series(gulp.parallel('styles', 'browser-sync'), function() {
+    gulp.watch(paths.scss, ['styles']);
+    gulp.watch(paths.html, ['html']);
+    gulp.watch(paths.scripts, ['es6']);
+    gulp.watch(paths.images, ['image']);
+  })
+);
+
+// gulp.task('a', ['b', 'c'], function () { // do something })
+// // To convert this for gulp@4.0
+// gulp.task('a', gulp.series(gulp.parallel('b', 'c'), function () {
+//   // do something
+// }))

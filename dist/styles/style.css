@@ -309,6 +309,9 @@ h2 {
 .thought-category__inner {
   opacity: .85; }
 
+a:hover, a:active, a:link, a:visited {
+  color: #FFF; }
+
 @font-face {
   font-family: UnicaWeb;
   src: url("../../fonts/neue-haas-unica-regular.eot");
@@ -585,7 +588,7 @@ h2 {
   align-items: center;
   justify-content: center; }
   .words .cell {
-    padding: 20px; }
+    padding: 40px; }
 
 .thought-2 .words {
   grid-template-columns: 1fr 3fr; }

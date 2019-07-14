@@ -33,3 +33,12 @@ h2 {
 .thought-category__inner {
     opacity: .85;
 }
+
+a {
+  &:hover,
+  &:active,
+  &:link,
+  &:visited {
+    color: $lawful-good; 
+  }
+}
