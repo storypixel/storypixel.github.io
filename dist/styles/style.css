@@ -309,8 +309,13 @@ h2 {
 .thought-category__inner {
   opacity: .85; }
 
-a:hover, a:active, a:link, a:visited {
-  color: #FFF; }
+a {
+  transition: all .3s ease-in-out; }
+  a:hover, a:active, a:link, a:visited {
+    color: #FFF;
+    text-decoration-color: rgba(255, 255, 255, 0.3); }
+  a:hover {
+    text-decoration-color: rgba(255, 255, 255, 0.7); }
 
 @font-face {
   font-family: UnicaWeb;
