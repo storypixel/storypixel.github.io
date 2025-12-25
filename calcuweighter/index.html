@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcuweighter - Stop Doing Math at the Gym</title>
+  <meta name="description" content="Snap a photo, speak your sets, or tap percentages. Calcuweighter instantly calculates your barbell weights and shows exact plate breakdowns. No math, no typing, just lift.">
+  <meta property="og:title" content="Calcuweighter - Stop Doing Math at the Gym">
+  <meta property="og:description" content="The fastest barbell calculator for lifters. Photo scanning, voice input, and instant plate breakdowns.">
+  <meta property="og:type" content="website">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --teal: #349e9e;
+      --teal-dark: #2a7e7e;
+      --teal-light: #4fc0c0;
+      --wood: #f0ebe5;
+      --text-dark: #1a1a1a;
+      --text-mid: #4a4a4a;
+      --text-light: #7a7a7a;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--wood);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header */
+    header {
+      background: var(--white);
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: -0.5px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: var(--teal-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(52, 158, 158, 0.3);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--teal);
+      border: 2px solid var(--teal);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      color: var(--white);
+      padding: 5rem 1rem 4rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1.5px;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .app-store-badge {
+      display: inline-block;
+      height: 50px;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .app-store-badge:hover {
+      opacity: 1;
+    }
+
+    /* Hero Features */
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .hero-feature {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-feature h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-feature p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+    }
+
+    /* Screenshots Section */
+    .screenshots {
+      padding: 5rem 1rem;
+      background: var(--white);
+    }
+
+    .screenshots-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      font-size: 1.25rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .screenshot-carousel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .screenshot-item {
+      text-align: center;
+    }
+
+    .screenshot-item img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .screenshot-item h4 {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .screenshot-item p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 5rem 1rem;
+      background: var(--wood);
+    }
+
+    .features-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .feature-card p {
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 5rem 1rem;
+      background: var(--white);
+    }
+
+    .how-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .steps {
+      margin-top: 3rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .step-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .step-content p {
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+      color: var(--white);
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+
+    .cta-section-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-section p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .cta-section .cta-button {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+      background: var(--white);
+      color: var(--teal);
+    }
+
+    .cta-section .cta-button:hover {
+      background: var(--wood);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      opacity: 0.6;
+      font-size: 0.9rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      .hero-features {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .screenshot-carousel {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">Calcuweighter</div>
+      <a href="#download" class="cta-button">Download</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Stop Doing Math at the Gym</h1>
+      <p class="tagline">Snap a photo, speak your sets, or tap percentages. Your weights, calculated instantly.</p>
+
+      <div class="hero-buttons">
+        <a href="#download" class="cta-button">Get Calcuweighter</a>
+        <a href="#features" class="cta-button secondary">Learn More</a>
+      </div>
+
+      <div class="hero-features">
+        <div class="hero-feature">
+          <h3><span class="icon">📸</span> Photo Magic</h3>
+          <p>Snap the gym's whiteboard. App reads percentages and calculates your weights. No typing.</p>
+        </div>
+        <div class="hero-feature">
+          <h3><span class="icon">🎤</span> Voice Input</h3>
+          <p>Just speak "80, 85, 90" and see your weights instantly. Completely hands-free.</p>
+        </div>
+        <div class="hero-feature">
+          <h3><span class="icon">⚡</span> Zero Mental Math</h3>
+          <p>Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots">
+    <div class="screenshots-content">
+      <div class="section-header">
+        <h2>Built for Lifters, By a Lifter</h2>
+        <p>Clean interface, powerful features, zero friction between you and your workout.</p>
+      </div>
+
+      <div class="screenshot-carousel">
+        <div class="screenshot-item">
+          <img src="images/05_main_with_prs.png" alt="Main calculator screen with PRs">
+          <h4>Quick Access to Your PRs</h4>
+          <p>Instant percentage calculations</p>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/04_percentage_grid.png" alt="Percentage grid selector">
+          <h4>Tap Grid Selection</h4>
+          <p>25-100% in easy tap grid</p>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/07_plate_breakdown.png" alt="Plate breakdown view">
+          <h4>Visual Plate Breakdown</h4>
+          <p>Exactly which plates to load</p>
+        </div>
+        <div class="screenshot-item">
+          <img src="images/08_voice_input.png" alt="Voice input interface">
+          <h4>Voice Input</h4>
+          <p>Speak your percentages hands-free</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="features-content">
+      <div class="section-header">
+        <h2>Everything You Need, Nothing You Don't</h2>
+        <p>Focused on making your gym time better, not wasting it.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">💪</div>
+          <h3>PR History & Charts</h3>
+          <p>Track your personal records over time. See your progress with clear visual charts. Watch yourself get stronger.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🔧</div>
+          <h3>Equipment Customization</h3>
+          <p>Set your bar weight (35, 45, or 55 lbs). Define available plates. Works with any gym setup. Supports lb or kg.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🎯</div>
+          <h3>Smart Plate Loading</h3>
+          <p>Always shows the most efficient plate combination. Accounts for your bar weight. Clear visual breakdown per side.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🎨</div>
+          <h3>Clean Retro Aesthetic</h3>
+          <p>Beautiful wood-grain design that feels right at home in the gym. Easy to read at a glance.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🚫</div>
+          <h3>No BS</h3>
+          <p>No ads. No account required. No subscriptions. No tracking. Just a tool that works.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h3>Works Offline</h3>
+          <p>Everything runs locally on your device. Your PRs stay on your phone. Works anywhere, anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="how-content">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Three simple steps to never do gym math again.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Add Your PRs</h3>
+            <p>Enter your one-rep max for each lift. Takes 30 seconds. Your PRs are saved locally and ready whenever you need them.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Pick Your Method</h3>
+            <p>Snap a photo of the workout board, speak your percentages, or tap them on the grid. Whatever's fastest for your flow.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Load the Bar</h3>
+            <p>See exactly which plates go on each side. No guessing, no calculating, no wasted time. Just load and lift.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="download">
+    <div class="cta-section-content">
+      <h2>Ready to Stop Doing Math?</h2>
+      <p>Download Calcuweighter and get back to what matters: lifting heavy things.</p>
+      <a href="#" class="cta-button">Download on the App Store</a>
+      <p style="margin-top: 1.5rem; font-size: 0.95rem; opacity: 0.8;">Free. No ads. No account needed.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="support.html">Support</a>
+        <a href="../privacy/calcuweighter.html">Privacy Policy</a>
+        <a href="mailto:support@iamnotsam.com">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Storypixel. Made by a lifter who hates doing math at the gym.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
