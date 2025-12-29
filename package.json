@@ -1,23 +1,18 @@
 {
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "babel-core": "^6.26.3",
-    "browser-sync": "^2.26.7",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "browser-sync": "^3.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-filter": "^6.0.0",
-    "gulp-image": "^5.1.0",
-    "gulp-imagemin": "^6.0.0",
-    "gulp-jshint": "^2.1.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-filter": "^7.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "include-media": "^1.4.9",
-    "jshint": "^2.10.2",
+    "include-media": "^2.0.0",
     "nanoreset": "^3.0.2",
-    "scrollsnap-polyfill": "^0.1.0"
+    "sass": "^1.69.0"
   }
 }

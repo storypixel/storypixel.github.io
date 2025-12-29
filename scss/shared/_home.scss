@@ -299,7 +299,7 @@ $standard-transition: all .35s ease-in;
       background-color: hsl(
         (330 + $i * 12) % 360,
         50%,
-        min(45%+ ($i * 5%), 50%)
+        min(45% + ($i * 5%), 50%)
       );
     }
 
