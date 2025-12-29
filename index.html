@@ -3,101 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon | I Am Not Sam</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'museo-sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #000;
-      color: #00ff41;
-    }
-
-    .container {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 8vw, 4rem);
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff4180;
-    }
-
-    p {
-      font-size: 1.1rem;
-      opacity: 0.7;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-    }
-
-    .dots {
-      margin: 2.5rem 0;
-    }
-
-    .dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background: #00ff41;
-      border-radius: 50%;
-      margin: 0 6px;
-      animation: pulse 1.5s ease-in-out infinite;
-      box-shadow: 0 0 8px #00ff41;
-    }
-
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.3); }
-    }
-
-    .archive-link {
-      margin-top: 3rem;
-    }
-
-    .archive-link a {
-      color: #00ff41;
-      opacity: 0.3;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: opacity 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .archive-link a:hover {
-      opacity: 0.8;
-      text-shadow: 0 0 8px #00ff41;
-    }
-  </style>
+  <title>I Am Not Sam — Field Notes</title>
+  <meta name="description" content="Field notes and facts from Sam (Jeremy) Wilson.">
+  <link rel="stylesheet" href="stylesheets/monospace-reset.css">
+  <link rel="stylesheet" href="stylesheets/monospace.css">
+  <link rel="stylesheet" href="stylesheets/site.css">
+  <script src="scripts/pixel-bg.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Coming Soon</h1>
-    <p>something new is brewing</p>
-    <div class="dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+  <header class="hero" id="top">
+    <p class="hero-quote">"The sky above the port was the color of television, tuned to a dead channel."<span class="hero-quote__source"> -- William Gibson, Neuromancer</span></p>
+    <h1 class="hero-title">
+      <span>I</span>
+      <span>AM</span>
+      <span>NOT</span>
+      <span>SAM</span>
+    </h1>
+    <p class="lead">Facts and small stories from Sam (Jeremy) Wilson, a dev in Austin, Texas.</p>
+    <div class="hero__meta">
+      <span class="tag">Austin, TX</span>
+      <span class="tag">Apps / UX / Code</span>
+      <span class="tag">Version 2</span>
     </div>
-    <div class="archive-link">
-      <a href="/versions/v1/">view previous site</a>
-    </div>
-  </div>
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">[01] About myself <span>(2)</span></a>
+      <a href="#code">[02] Involving my code <span>(5)</span></a>
+      <a href="#random">[03] Of a random kind <span>(2)</span></a>
+      <a href="#creative">[04] On creative habits <span>(3)</span></a>
+      <a href="#soft">[05] About my softer side <span>(3)</span></a>
+      <a href="#assorted">[06] Assorted <span>(4)</span></a>
+      <a href="#recreation">[07] On my recreation <span>(4)</span></a>
+    </nav>
+  </header>
+
+  <main class="sections">
+    <section id="about" class="section">
+      <h2>[01] About myself</h2>
+      <ul class="fact-list">
+        <li class="fact">
+          I am Sam Wilson, a dev living in Austin, Texas. The calligraphy on the office whiteboards is my fault. Pumped on
+          <a href="https://medium.com/@samwilson_73699/strategy-vs-tactics-in-dodgeball-eb62caf36c6f" target="_blank" rel="noopener noreferrer">dodgeball</a>.
+        </li>
+        <li class="fact">
+          I used to have a dog named Puff and he had issues with chronic licking.
+        </li>
+      </ul>
+    </section>
+
+    <section id="code" class="section">
+      <h2>[02] Involving my code</h2>
+      <ul class="fact-list">
+        <li class="fact">
+          Even in the editor, I have the user in mind. JavaScript is the means, but good experience is always my goal.
+          Currently enjoying React, Vue, WebAssembly, Mithril, and Android development.
+        </li>
+        <li class="fact">
+          I work at <a href="https://digital.heb.com" target="_blank" rel="noopener noreferrer">H-E-B Digital</a> where I help craft online experiences
+          which connect our customers to their goals. It is a wonderful place to work because people genuinely just want to do right by the customers.
+        </li>
+        <li class="fact">
+          My real name is Jeremy. My grandmother just called me Sam so much I thought it was my name. She did this, in part, to irk my father
+          who chose and liked the name Jeremy.
+        </li>
+        <li class="fact">
+          <p>I started app development at a concierge kiosk startup in 2001. My Flash interface was in local news footage. I was over
+          the moon. My mom cared but no one else really did.</p>
+          <p>Near the end a sales guy came up to me and said, in the context of a huge contract for becoming a data provider, "Hey I told
+          Lycos we know XML. Do we?"</p>
+        </li>
+        <li class="fact">
+          In 2004 I transitioned from Flash to JavaScript, HTML, and CSS. At the time ExpressionEngine was a big deal, so I worked a lot in that.
+          About then years later I was hired to their small remote team, EllisLab. There is something to be said
+          for the pocket cultures within the tech and design space. I learned a lot and met some great folks.
+        </li>
+      </ul>
+    </section>
+
+    <section id="random" class="section">
+      <h2>[03] Of a random kind</h2>
+      <ul class="fact-list">
+        <li class="fact">
+          In my early twenties, most nights I'd lose track of time while working. Afterwards I'd go to Wendy's because it was next to the office,
+          and get a burger and fries. Maybe I did this too much because one day I was doing pull-ups casually and passed out.
+          This was the moment that got me into fitness and nutrition.
+        </li>
+        <li class="fact">
+          I have an amazing girlfriend named Laura she's the funniest person I know with the best eyebrows on the planet.
+        </li>
+      </ul>
+    </section>
+
+    <section id="creative" class="section">
+      <h2>[04] On creative habits</h2>
+      <ul class="fact-list">
+        <li class="fact">
+          For me, the harder the creative work is to start, the less likely it is I'll do it. It's why I love calligraphy. It's easy
+          to do something cool quickly. Oil painting, while amazing and fun, has a higher threshold of effort therefore I don't paint much.
+        </li>
+        <li class="fact">
+          Cooking, especially baking, is something I really enjoy and a creative outlet. My best cookies involve sage and apricot.
+        </li>
+        <li class="fact">
+          One of my happy spaces is Figure 8 coffee shop, and not just because I'm addicted to three espressos per diem. Which I totally am.
+        </li>
+      </ul>
+    </section>
+
+    <section id="soft" class="section">
+      <h2>[05] About my softer side</h2>
+      <ul class="fact-list">
+        <li class="fact">
+          Growing up in a small town in Kentucky, most folks were extroverted. And although I lived in a slightly larger Lexington for several years,
+          I moved to Pittsburgh. Here I experienced some culture shock, which I kinda needed. Though it wasn't for me long-term, I came out of Pittsburgh
+          with crucial friendships and experiences that I can't imagine missing out on.
+        </li>
+        <li class="fact">
+          The way my children revere me reminds me that they share in all of my successes as well as any of my failures. The risk inherent in anything
+          I consider is shared by them. It's a good thing.
+        </li>
+        <li class="fact">
+          I've had a few times in my life where I've struggled with mental health. Therapy and exercise helped the most. I keep a tiny notebook in my
+          back pocket when times are tough.
+        </li>
+      </ul>
+    </section>
+
+    <section id="assorted" class="section">
+      <h2>[06] Assorted</h2>
+      <ul class="fact-list">
+        <li class="fact">I like 90's sci-fi and cyberpunk worlds, but I live in a hobbit-like house.</li>
+        <li class="fact">I get seasick easily, which makes kayaking a bit of a problem.</li>
+        <li class="fact">I keep old sketchbooks around as evidence that I actually did things.</li>
+        <li class="fact">A day is a success when I got to learn, build, move, and make someone laugh.</li>
+      </ul>
+    </section>
+
+    <section id="recreation" class="section">
+      <h2>[07] On my recreation</h2>
+      <ul class="fact-list">
+        <li class="fact">I'm training for my first powerlifting meet. So far bench is my favorite lift.</li>
+        <li class="fact">I try to draw something at least once a week, even if it's tiny.</li>
+        <li class="fact">I'm always up for a weekend road trip, especially if there's a weird roadside attraction.</li>
+        <li class="fact">I'm a fan of tech that disappears and lets you just do the thing.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#top">Back to top</a>
+  </footer>
 </body>
 </html>
