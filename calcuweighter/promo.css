@@ -21,14 +21,6 @@ body.promo {
   gap: 1.5ch;
 }
 
-.promo-icon {
-  width: 72px;
-  height: 72px;
-  border: var(--border-thickness) solid var(--text-color);
-  padding: 4px;
-  background: transparent;
-}
-
 .promo-hero .hero-title {
   font-size: 40px;
   line-height: 40px;
@@ -188,10 +180,5 @@ body.promo {
   .promo-hero .hero-title {
     font-size: 32px;
     line-height: 32px;
-  }
-
-  .promo-icon {
-    width: 56px;
-    height: 56px;
   }
 }

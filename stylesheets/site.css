@@ -190,6 +190,51 @@ a:hover {
   margin-top: var(--line-height);
 }
 
+.fact-choice {
+  margin-top: calc(var(--line-height) * 0.6);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  align-items: center;
+}
+
+.fact-pick {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-color-alt);
+  cursor: pointer;
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: inherit;
+  text-decoration: none;
+}
+
+.fact-pick[aria-pressed="true"] {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.fact-pick:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-thickness);
+  text-decoration-color: currentColor;
+}
+
+.fact-reveal {
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fact.is-revealed.is-wrong .fact-reveal {
+  color: var(--text-color-alt);
+}
+
 .footer {
   margin-top: calc(var(--line-height) * 2);
   padding-top: var(--line-height);
