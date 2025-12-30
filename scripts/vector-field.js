@@ -190,10 +190,18 @@
   }
 
   function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    // Use documentElement for more reliable mobile sizing
+    width = document.documentElement.clientWidth || window.innerWidth;
+    height = document.documentElement.clientHeight || window.innerHeight;
+
+    // Set canvas size
     canvas.width = width;
     canvas.height = height;
+
+    // Also set via style to ensure it fills the space
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
     gl.viewport(0, 0, width, height);
   }
 
