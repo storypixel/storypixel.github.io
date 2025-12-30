@@ -45,10 +45,12 @@ html {
 
 body {
   background: transparent;
-  border: var(--border-thickness) solid var(--text-color);
+  border-left: var(--border-thickness) solid var(--text-color);
+  border-right: var(--border-thickness) solid var(--text-color);
   box-shadow: none;
   position: relative;
-  margin: calc(var(--line-height) * 1.2) 0;
+  margin: 0;
+  min-height: 100vh;
 }
 
 a {
@@ -66,6 +68,7 @@ a:hover {
   padding: calc(var(--line-height) * 1.2) 2ch;
   background: transparent;
   box-shadow: none;
+  margin-top: calc(var(--line-height) * 7);
 }
 
 .hero-title {
@@ -251,9 +254,20 @@ a:hover {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   image-rendering: pixelated;
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+#vector-field-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
   mix-blend-mode: normal;
   opacity: 1;
 }
