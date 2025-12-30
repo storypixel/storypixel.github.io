@@ -24,7 +24,10 @@
   console.log("WebGL initialized successfully");
 
   let width, height;
-  const particleCount = 10000; // Many more particles with WebGL!
+
+  // Detect mobile for performance optimization
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const particleCount = isMobile ? 3000 : 10000; // Fewer particles on mobile
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   // Vertex shader - positions particles
@@ -190,19 +193,26 @@
   }
 
   function resize() {
-    // Use documentElement for more reliable mobile sizing
-    width = document.documentElement.clientWidth || window.innerWidth;
-    height = document.documentElement.clientHeight || window.innerHeight;
+    // Better mobile viewport handling for Safari
+    if (isMobile && window.visualViewport) {
+      width = window.visualViewport.width;
+      height = window.visualViewport.height;
+    } else {
+      width = window.innerWidth;
+      height = window.innerHeight;
+    }
 
-    // Set canvas size
+    // Set canvas internal resolution
     canvas.width = width;
     canvas.height = height;
 
-    // Also set via style to ensure it fills the space
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
+    // Set canvas display size
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
 
     gl.viewport(0, 0, width, height);
+
+    console.log('Canvas resized:', width, 'x', height);
   }
 
   function init() {
@@ -217,5 +227,12 @@
   }
 
   window.addEventListener("resize", resize);
+
+  // Handle Safari mobile viewport changes (address bar show/hide)
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", resize);
+    window.visualViewport.addEventListener("scroll", resize);
+  }
+
   document.addEventListener("DOMContentLoaded", init);
 })();
