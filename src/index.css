@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --text-secondary: #888888;
+  --accent-color: #ffffff;
+  --font-family: 'Inter', sans-serif;
+  --spacing-container: 8vw;
+  --transition-bezier: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-phone-container {
+  position: absolute;
+  top: 50%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 1400px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .project-phone-container {
+    left: 70%;
+    width: 600px;
+    height: 1000px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-phone-container {
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 500px;
+    /* On mobile, we might want it to not poke out as much or at all if it blocks text */
+    /* But the user specifically said "isn't taking up so much... viewing area" */
+  }
+}
