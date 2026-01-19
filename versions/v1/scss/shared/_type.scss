@@ -1,0 +1,51 @@
+h2 {
+  margin: 0;
+  @include h2();
+}
+
+.trick {
+    display: inline-block;
+    position: relative;
+    color: hsla(0, 100%, 100%, .75);
+    margin-left: 3px;
+    margin-right: 3px;
+    // background: gray;
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: 2px;
+        background: hsla(180, 100%, 100%, 1);
+        box-shadow: 1px 1px 0px red;
+        width: calc(100% + 10px);
+        left: -5px;
+        top: 50%;
+    }
+}
+
+.title,
+.thought-category {
+    @include h2();
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.thought-category__inner {
+    opacity: .85;
+}
+
+a {
+  transition: all .3s ease-in-out;
+
+  &:hover,
+  &:active,
+  &:link,
+  &:visited {
+    color: $lawful-good; 
+    text-decoration-color: rgba(255, 255, 255, .3);
+  }
+
+  &:hover {
+    text-decoration-color: rgba(255, 255, 255, .7);
+  }
+}
