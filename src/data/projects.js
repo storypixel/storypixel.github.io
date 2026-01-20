@@ -1,10 +1,29 @@
+// Centralized project data for Work grid and ProjectDetail pages
+
 export const projects = [
     {
-        id: 1,
+        id: 'calcuweighter',
         title: 'Calcuweighter',
         category: 'iOS App / Watch App',
         size: 'full',
         image: '/images/calcuweighter-model-1.png',
+        color: '#1c1c1e',
+        url: '/calcuweighter',
+    },
+];
+
+export const projectDetails = {
+    calcuweighter: {
+        title: 'Calcuweighter',
+        category: 'iOS App / Watch App',
+        color: '#1c1c1e',
+        skills: ['SwiftUI', 'iOS Development', 'WatchOS', 'Vision AI', 'Speech Recognition'],
+        year: '2024-2025',
+        role: 'Design & Development',
+        roleBlurb: 'Built a powerful percentages calculator for strength training with camera OCR, voice input, and Apple Watch companion app.',
+        description: 'A powerful percentages calculator for strength training. Enter your PRs and instantly see what weight to load for any percentage. Calcuweighter allows you to snap a photo of your workout whiteboard to automatically identify lifts, supports hands-free voice input, and visualizes plate loading. Includes a companion Apple Watch app.',
+        workDescription: 'Every session used to involve the same frustrating dance: staring at the gym whiteboard, pulling out my phone, opening the calculator app, and doing fractional math just to figure out what plates to put on the bar. I wanted a tool that felt invisible. No typing, no mental gymnastics. Just point a camera at the whiteboard or speak the percentages, and instantly see the exact plate layout.',
+        hero: '/images/calcuweighter-model-1.png',
         heroImages: [
             '/images/calcuweighter-model-1.png',
             '/images/calcuweighter-model-2.png',
@@ -19,157 +38,12 @@ export const projects = [
             '/images/calcuweighter/06-percentage-grid.png',
             '/images/calcuweighter/07-multiple-lifts.png'
         ],
-        color: '#1c1c1e', // Dark iOS style background
-        textColor: '#fff',
-        description: 'Stop doing math at the gym. Simply snap a photo of your workout whiteboard, and Calcuweighter instantly identifies percentage-based lifts. It then calculates the exact weights you need based on your saved PRs. Features include hands-free voice input, plate loading visualization, and Apple Watch support.',
-        client: 'Personal Project',
-        year: '2026',
-        startDate: '2025-12-01',
-        endDate: '2026-01-15',
-        url: '/calcuweighter',
-        role: 'Design & Development'
+        gallery: [
+            '/images/calcuweighter-model-1.png',
+            '/images/calcuweighter-model-2.png',
+            '/images/calcuweighter-model-3.png',
+            '/images/calcuweighter-model-4.png',
+        ],
+        appStoreUrl: 'https://apps.apple.com/app/id6756983846',
     },
-    {
-        id: 2,
-        title: 'Project Two',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#2a2a2a',
-        textColor: '#fff',
-        description: 'The second of twelve personal projects planned for this year.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 3,
-        title: 'Project Three',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#222',
-        textColor: '#fff',
-        description: 'The third of twelve personal projects planned for this year.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 4,
-        title: 'Project Four',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#1a1a1a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 5,
-        title: 'Project Five',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#2a2a2a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 6,
-        title: 'Project Six',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#222',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 7,
-        title: 'Project Seven',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#1a1a1a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 8,
-        title: 'Project Eight',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#2a2a2a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 9,
-        title: 'Project Nine',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#222',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 10,
-        title: 'Project Ten',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#1a1a1a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 11,
-        title: 'Project Eleven',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#2a2a2a',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    },
-    {
-        id: 12,
-        title: 'Project Twelve',
-        category: 'Coming Soon',
-        size: 'half',
-        image: '',
-        color: '#222',
-        textColor: '#fff',
-        description: 'Coming soon.',
-        client: 'Personal Project',
-        year: '2025',
-        role: 'TBD'
-    }
-];
+};

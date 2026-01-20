@@ -1,0 +1,75 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--spacing-container);
+    padding-top: 6rem;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    gap: var(--grid-gap);
+    align-items: start;
+    margin-top: 10vh;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    grid-column: 1 / 3; /* Span year + title columns */
+}
+
+.hero-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.hero-years {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.hero-headline {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    max-width: 14ch;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+    margin: 0;
+    grid-column: 3 / 5; /* Span description + category columns */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero-left {
+        grid-column: 1;
+    }
+
+    .hero-headline {
+        grid-column: 2 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 8rem;
+    }
+
+    .hero-content {
+        margin-top: 5vh;
+    }
+
+    .hero-left {
+        grid-column: 1;
+    }
+
+    .hero-headline {
+        grid-column: 1;
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        max-width: 100%;
+    }
+}

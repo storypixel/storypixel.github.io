@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import './Hero.css';
 
 const Hero = () => {
     const container = {
@@ -20,42 +21,28 @@ const Hero = () => {
             opacity: 1,
             transition: {
                 duration: 0.8,
-                ease: [0.16, 1, 0.3, 1], // Custom bezier for premium feel
+                ease: [0.16, 1, 0.3, 1],
             }
         },
     };
 
     return (
-        <section style={{
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: '0 var(--spacing-container)',
-        }}>
+        <section className="hero-section">
             <motion.div
+                className="hero-content"
                 variants={container}
                 initial="hidden"
                 animate="show"
             >
-                <motion.p variants={item} style={{
-                    fontSize: '14px',
-                    color: 'var(--text-secondary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    marginBottom: '2rem'
-                }}>
-                    Sam Wilson — Portfolio
-                </motion.p>
+                {/* Left: Selected Work Label */}
+                <motion.div className="hero-left" variants={item}>
+                    <span className="hero-label">Selected Work</span>
+                    <span className="hero-years">2004 - Present</span>
+                </motion.div>
 
-                <motion.h1 variants={item} style={{
-                    fontSize: 'clamp(3rem, 8vw, 6rem)',
-                    lineHeight: '1.1',
-                    fontWeight: '500',
-                    maxWidth: '20ch',
-                    letterSpacing: '-0.02em',
-                }}>
-                    I make apps and stuff on the internet.
+                {/* Right: Headline */}
+                <motion.h1 className="hero-headline" variants={item}>
+                    Building high-quality apps and digital experiences
                 </motion.h1>
             </motion.div>
         </section>

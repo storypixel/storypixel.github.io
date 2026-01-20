@@ -4,9 +4,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Stage, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Disable Three.js color management to get true colors
-THREE.ColorManagement.enabled = false;
-
 const PhoneModel = ({ screenshots }) => {
     const group = useRef();
     const [index, setIndex] = useState(0);
@@ -23,12 +20,12 @@ const PhoneModel = ({ screenshots }) => {
     // useTexture will suspend.
     const texture = useTexture(textureUrl || '/images/calcuweighter-main.png');
 
-    // Set texture properties immediately (not in useEffect which may run late)
+    // Set texture properties immediately
     if (texture) {
         texture.flipY = true;
         texture.center.set(0, 0);
         texture.rotation = 0;
-        // With ColorManagement disabled, don't set colorSpace
+        texture.colorSpace = THREE.SRGBColorSpace;
         texture.needsUpdate = true;
     }
 

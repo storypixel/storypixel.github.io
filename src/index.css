@@ -1,13 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg-color: #050505;
+  --bg-color: #1a1a1a;
   --text-color: #ffffff;
   --text-secondary: #888888;
   --accent-color: #ffffff;
-  --font-family: 'Inter', sans-serif;
-  --spacing-container: 8vw;
+  --accent-blue: #007AFF;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --spacing-container: 2.5rem;
   --transition-bezier: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Universal grid system */
+  --grid-columns: 80px 280px 1fr 160px;
+  --grid-gap: 2rem;
+}
+
+/* Universal page grid */
+.page-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: var(--grid-gap);
+  padding-left: var(--spacing-container);
+  padding-right: var(--spacing-container);
+}
+
+/* Content grid for sections - aligns with nav */
+.content-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: var(--grid-gap);
+}
+
+/* Section label in first two columns */
+.section-label {
+  grid-column: 1 / 3;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main content spans columns 3-4 */
+.section-content {
+  grid-column: 3 / 5;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --grid-columns: 1fr 1fr;
+  }
+
+  .section-label {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+
+  .section-content {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --grid-columns: 1fr;
+    --spacing-container: 1.5rem;
+  }
 }
 
 *,
@@ -18,6 +76,13 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
@@ -25,6 +90,16 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  min-width: 100%;
 }
 
 img {
@@ -37,6 +112,16 @@ a {
   text-decoration: none;
 }
 
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+/* Phone container for promo pages */
 .project-phone-container {
   position: absolute;
   top: 50%;
@@ -62,7 +147,5 @@ a {
     top: 50%;
     width: 300px;
     height: 500px;
-    /* On mobile, we might want it to not poke out as much or at all if it blocks text */
-    /* But the user specifically said "isn't taking up so much... viewing area" */
   }
 }

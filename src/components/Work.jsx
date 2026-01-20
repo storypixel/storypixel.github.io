@@ -1,74 +1,51 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { projects } from '../data/projects';
+import { projects, projectDetails } from '../data/projects';
 import './Work.css';
 
 const Work = () => {
     return (
         <section className="work-section">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2rem' }}>
-                <div>
-                    <h2 style={{ fontSize: '2rem', fontWeight: '400', marginBottom: '0.5rem' }}>12 Apps in 12 Months</h2>
-                    <p style={{ color: 'var(--text-secondary)' }}>A personal challenge for 2025</p>
-                </div>
-                <span style={{ color: 'var(--text-secondary)' }}>2025</span>
-            </div>
-
-            <div className="work-grid">
-                {projects.map((project, index) => (
-                    <Link
-                        key={project.id}
-                        to={`/work/${project.id}`}
-                        style={{ display: 'block' }}
-                    >
-                        <motion.div
-                            className={`project-card ${project.size === 'full' ? 'full-width' : ''}`}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-10%" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            style={{
-                                backgroundColor: project.color,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: project.image ? 'flex-end' : 'center',
-                                alignItems: project.image ? 'stretch' : 'center',
-                                position: 'relative'
-                            }}
+            <div className="work-list">
+                {projects.map((project, index) => {
+                    const details = projectDetails[project.id];
+                    return (
+                        <Link
+                            key={project.id}
+                            to={project.url || `/work/${project.id}`}
+                            className="project-item"
                         >
-                            {project.image ? (
-                                <div className="project-image-container" style={{ height: '100%' }}>
-                                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-5%" }}
+                                transition={{ duration: 0.6, delay: index * 0.05 }}
+                            >
+                                <div className="project-meta">
+                                    <span className="project-year">{details?.year || '2024'}</span>
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <p className="project-description">
+                                        {details?.description || project.category}
+                                    </p>
+                                    <span className="project-category">{project.category}</span>
                                 </div>
-                            ) : (
-                                <div style={{
-                                    padding: '2rem',
-                                    textAlign: 'center',
-                                    opacity: 0.3,
-                                    width: '100%',
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}>
-                                    <span style={{ fontSize: '4rem', display: 'block', marginBottom: '1rem' }}>{project.id}</span>
-                                    <span>Coming Soon</span>
+                                <div
+                                    className="project-image-wrapper"
+                                    style={{ backgroundColor: project.color }}
+                                >
+                                    <motion.img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="project-image"
+                                        whileHover={{ scale: 1.02 }}
+                                        transition={{ duration: 0.4 }}
+                                    />
                                 </div>
-                            )}
-
-                            <div className="project-info">
-                                <h3 className="project-title" style={{ color: project.textColor || '#fff' }}>
-                                    {project.title}
-                                </h3>
-                                <p className="project-category" style={{ color: project.textColor ? 'rgba(255,255,255,0.6)' : '#888' }}>
-                                    {project.category}
-                                </p>
-                            </div>
-                        </motion.div>
-                    </Link>
-                ))}
+                            </motion.div>
+                        </Link>
+                    );
+                })}
             </div>
         </section>
     );
