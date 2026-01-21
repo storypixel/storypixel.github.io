@@ -77,28 +77,48 @@ const About = () => {
                 </Link>
             </motion.div>
 
-            <motion.div
-                className="cycling-gradient"
-                style={{
-                    width: '100%',
-                    aspectRatio: '1',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
-                <img
-                    src="/not-sam.svg"
-                    alt="Sam Wilson"
-                    style={{ width: '60%', height: 'auto', opacity: 0.8 }}
-                />
-            </motion.div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <motion.div
+                    style={{
+                        width: '100%',
+                        aspectRatio: '1',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                    }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <img
+                        src="/images/storypixel.jpeg"
+                        alt="Sam Wilson"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                </motion.div>
+                <motion.div
+                    className="cycling-gradient"
+                    style={{
+                        width: '100%',
+                        aspectRatio: '1',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                >
+                    <img
+                        src="/not-sam.svg"
+                        alt="Sam Wilson illustration"
+                        style={{ width: '60%', height: 'auto', opacity: 0.8 }}
+                    />
+                </motion.div>
+            </div>
         </section>
     );
 };
