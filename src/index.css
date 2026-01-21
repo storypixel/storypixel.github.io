@@ -1,4 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Neue Haas Unica';
+  src: url('/fonts/neue-haas-unica-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Unica';
+  src: url('/fonts/neue-haas-unica-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Unica';
+  src: url('/fonts/neue-haas-unica-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --bg-color: #1a1a1a;
@@ -7,7 +29,7 @@
   --accent-color: #ffffff;
   --accent-blue: #007AFF;
   --border-color: rgba(255, 255, 255, 0.1);
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: 'Neue Haas Unica', -apple-system, BlinkMacSystemFont, sans-serif;
   --spacing-container: 2.5rem;
   --transition-bezier: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -179,27 +201,39 @@ html.lenis {
 @keyframes gradientCycle {
   0% {
     background-position: 0% 50%;
+    filter: hue-rotate(0deg);
   }
   50% {
     background-position: 100% 50%;
+    filter: hue-rotate(180deg);
   }
   100% {
     background-position: 0% 50%;
+    filter: hue-rotate(360deg);
   }
 }
 
 .cycling-gradient {
   background: linear-gradient(
     135deg,
-    #1a1a2e,
-    #16213e,
-    #0f3460,
-    #1a1a2e,
-    #2d2d44,
-    #1a1a2e
+    #4a90a4,
+    #7b68ee,
+    #6a5acd,
+    #20b2aa,
+    #4169e1,
+    #4a90a4
   );
   background-size: 400% 400%;
-  animation: gradientCycle 15s ease infinite;
+  animation: gradientCycle 5s ease infinite;
+}
+
+/* About section illustrations */
+.section-illustration {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.about-section-block:hover .section-illustration {
+  transform: translateY(-15%);
 }
 
 /* Phone container for promo pages */

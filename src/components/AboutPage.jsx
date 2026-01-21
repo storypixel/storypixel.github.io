@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
-const Section = ({ title, children, delay }) => (
+const Section = ({ title, children, delay, illustration }) => (
     <motion.div
-        className="content-grid"
+        className="content-grid about-section-block"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -14,12 +14,32 @@ const Section = ({ title, children, delay }) => (
             paddingTop: '4rem',
             paddingBottom: '4rem',
             borderTop: '1px solid var(--border-color)',
+            borderBottom: '1px solid var(--border-color)',
+            position: 'relative',
+            overflow: 'hidden',
         }}
     >
         <h3 className="section-label">{title}</h3>
-        <div className="section-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="section-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '50ch' }}>
             {children}
         </div>
+        {illustration && (
+            <img
+                src={illustration}
+                alt=""
+                className="section-illustration"
+                style={{
+                    position: 'absolute',
+                    bottom: '-15%',
+                    right: '5%',
+                    width: '400px',
+                    height: 'auto',
+                    opacity: 1,
+                    pointerEvents: 'none',
+                    filter: 'brightness(0)',
+                }}
+            />
+        )}
     </motion.div>
 );
 
@@ -78,7 +98,7 @@ const AboutPage = () => {
                             transition={{ delay: 0.3, duration: 0.8 }}
                         >
                             <p style={{ fontSize: '1.25rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                                I am Sam Wilson, a dev living in Austin, Texas. The calligraphy on the office whiteboards is my fault.
+                                I am Sam Wilson, a creative technologist living in Austin, Texas. The calligraphy on the office whiteboards is my fault.
                             </p>
                             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                                 I work at H-E-B Digital where I help craft online experiences which connect our customers to their goals. It is a wonderful place to work because people genuinely just want to do right by the customers.
@@ -118,7 +138,7 @@ const AboutPage = () => {
 
                 {/* Extended Bio Sections - using universal grid */}
                 <div style={{ padding: '0 var(--spacing-container)' }}>
-                    <Section title="Code" delay={0.1}>
+                    <Section title="Code" delay={0.1} illustration="/images/flash.svg">
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             Even in the editor, I have the user in mind. JavaScript is the means, but good experience is always my goal. Currently enjoying React, Vue, WebAssembly, Mithril, and Android development.
                         </p>
@@ -130,7 +150,7 @@ const AboutPage = () => {
                         </p>
                     </Section>
 
-                    <Section title="Random" delay={0.2}>
+                    <Section title="Random" delay={0.2} illustration="/images/puff.svg">
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             I used to have a dog named Puff and he had issues with chronic licking.
                         </p>
@@ -142,7 +162,7 @@ const AboutPage = () => {
                         </p>
                     </Section>
 
-                    <Section title="Creative Habits" delay={0.3}>
+                    <Section title="Creative Habits" delay={0.3} illustration="/images/fig8.svg">
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             For me, the harder the creative work is to start, the less likely it is I'll do it. It's why I love calligraphy. It's easy to do something cool quickly.
                         </p>
@@ -154,7 +174,7 @@ const AboutPage = () => {
                         </p>
                     </Section>
 
-                    <Section title="Recreation" delay={0.4}>
+                    <Section title="Recreation" delay={0.4} illustration="/images/motorcycle.svg">
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             Exercise is underrated. Training from Jhonphillip Yonan (not a misspelling) gave me back the command of my body.
                         </p>
