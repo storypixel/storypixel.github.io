@@ -10,12 +10,8 @@ const About = () => {
     ];
 
     return (
-        <section style={{
+        <section className="about-section" style={{
             padding: '10vh var(--spacing-container)',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '4rem',
-            alignItems: 'center',
             borderTop: '1px solid #222',
             marginTop: '4rem'
         }}>

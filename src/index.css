@@ -121,6 +121,60 @@ html.lenis {
   scroll-behavior: auto;
 }
 
+/* About section grid */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-section > *:last-child {
+    order: -1;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* About page layout */
+.about-page-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: var(--grid-gap);
+  padding-left: var(--spacing-container);
+  padding-right: var(--spacing-container);
+}
+
+.about-page-image {
+  grid-column: 1 / 3;
+}
+
+.about-page-content {
+  grid-column: 3 / 5;
+}
+
+@media (max-width: 768px) {
+  .about-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page-image {
+    grid-column: 1;
+    max-width: 300px;
+    margin: 0 auto 2rem;
+  }
+
+  .about-page-content {
+    grid-column: 1;
+  }
+}
+
 /* Cycling gradient animation */
 @keyframes gradientCycle {
   0% {

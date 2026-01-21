@@ -47,15 +47,14 @@ const AboutPage = () => {
                 </div>
 
                 {/* Main content grid */}
-                <div className="page-grid" style={{ marginBottom: '6rem' }}>
+                <div className="about-page-grid" style={{ marginBottom: '6rem' }}>
                     {/* Image in columns 1-2 */}
                     <motion.div
-                        className="cycling-gradient"
+                        className="cycling-gradient about-page-image"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
                         style={{
-                            gridColumn: '1 / 3',
                             aspectRatio: '3/4',
                             borderRadius: '12px',
                             overflow: 'hidden',
@@ -72,7 +71,7 @@ const AboutPage = () => {
                     </motion.div>
 
                     {/* Bio content in columns 3-4 */}
-                    <div style={{ gridColumn: '3 / 5', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    <div className="about-page-content" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
