@@ -55,14 +55,6 @@
     opacity: 0.3;
 }
 
-.hero-attribution {
-    grid-column: 3 / -1;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-top: 1.5rem;
-    font-style: italic;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
     .hero-left {

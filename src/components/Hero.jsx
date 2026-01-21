@@ -44,9 +44,6 @@ const Hero = () => {
                 <motion.h1 className="hero-headline" variants={item}>
                     Sam just being Sam. Knows nothing. Believes in nothing. Except craft cocktails.
                 </motion.h1>
-                <motion.span className="hero-attribution" variants={item}>
-                    — John G. Whiteley
-                </motion.span>
             </motion.div>
         </section>
     );
