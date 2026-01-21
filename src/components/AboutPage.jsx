@@ -50,13 +50,13 @@ const AboutPage = () => {
                 <div className="page-grid" style={{ marginBottom: '6rem' }}>
                     {/* Image in columns 1-2 */}
                     <motion.div
+                        className="cycling-gradient"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
                         style={{
                             gridColumn: '1 / 3',
                             aspectRatio: '3/4',
-                            background: '#222',
                             borderRadius: '12px',
                             overflow: 'hidden',
                             display: 'flex',
@@ -110,8 +110,8 @@ const AboutPage = () => {
                             transition={{ delay: 0.5, duration: 0.8 }}
                         >
                             <h3 style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Contact</h3>
-                            <a href="mailto:jeremy@storypixel.io" style={{ fontSize: '1rem', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                                jeremy@storypixel.io
+                            <a href="mailto:sam@iamnotsam.com" style={{ fontSize: '1rem', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                                sam@iamnotsam.com
                             </a>
                         </motion.div>
                     </div>

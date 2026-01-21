@@ -158,7 +158,7 @@ const CalcuweighterPromo = () => {
                     <div style={{ padding: '0 var(--spacing-container)' }}>
                         {[
                             { number: '01', title: 'Photo Magic', text: "Snap the gym's whiteboard. App reads percentages and calculates your weights." },
-                            { number: '02', title: 'Voice Input', text: 'Just speak "80, 85, 90" and see your weights instantly. Completely hands-free.' },
+                            { number: '02', title: 'Voice Input', text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and see your plate breakdowns instantly. Completely hands-free.' },
                             { number: '03', title: 'Zero Mental Math', text: 'Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.' }
                         ].map((feature, i) => (
                             <motion.div

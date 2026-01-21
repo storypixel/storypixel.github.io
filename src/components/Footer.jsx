@@ -25,10 +25,10 @@ const Footer = () => {
                         lineHeight: '1.3',
                         marginBottom: '1rem',
                     }}>
-                        Let's build something together.
+                        Thanks for stopping by.
                     </p>
                     <a
-                        href="mailto:jeremy@storypixel.io?subject=Hello"
+                        href="mailto:sam@iamnotsam.com?subject=Hello"
                         style={{
                             display: 'inline-block',
                             fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
@@ -40,7 +40,7 @@ const Footer = () => {
                         onMouseEnter={(e) => e.target.style.opacity = '0.7'}
                         onMouseLeave={(e) => e.target.style.opacity = '1'}
                     >
-                        Get in touch
+                        Say hello
                     </a>
                 </div>
 

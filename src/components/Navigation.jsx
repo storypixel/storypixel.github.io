@@ -24,7 +24,7 @@ const Navigation = () => {
 
             {/* Right: Navigation Links */}
             <div className="nav-links">
-                <a href="mailto:jeremy@storypixel.io" className="nav-link">
+                <a href="mailto:sam@iamnotsam.com" className="nav-link">
                     Email <span className="nav-arrow">┐</span>
                 </a>
                 <Link to="/about" className="nav-link">

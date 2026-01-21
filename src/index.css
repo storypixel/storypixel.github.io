@@ -121,6 +121,33 @@ html.lenis {
   scroll-behavior: auto;
 }
 
+/* Cycling gradient animation */
+@keyframes gradientCycle {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cycling-gradient {
+  background: linear-gradient(
+    135deg,
+    #1a1a2e,
+    #16213e,
+    #0f3460,
+    #1a1a2e,
+    #2d2d44,
+    #1a1a2e
+  );
+  background-size: 400% 400%;
+  animation: gradientCycle 15s ease infinite;
+}
+
 /* Phone container for promo pages */
 .project-phone-container {
   position: absolute;

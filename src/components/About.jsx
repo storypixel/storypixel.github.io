@@ -82,10 +82,10 @@ const About = () => {
             </motion.div>
 
             <motion.div
+                className="cycling-gradient"
                 style={{
                     width: '100%',
                     aspectRatio: '1',
-                    background: '#222',
                     borderRadius: '12px',
                     overflow: 'hidden',
                     display: 'flex',
