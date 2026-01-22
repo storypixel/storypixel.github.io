@@ -61,6 +61,8 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
 
 /* Main content spans columns 3-4 */

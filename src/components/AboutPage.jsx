@@ -20,7 +20,7 @@ const Section = ({ title, children, delay, illustration }) => (
         }}
     >
         <h3 className="section-label">{title}</h3>
-        <div className="section-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '50ch' }}>
+        <div className="section-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '50ch', position: 'relative', zIndex: 1 }}>
             {children}
         </div>
         {illustration && (
