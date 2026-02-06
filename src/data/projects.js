@@ -17,7 +17,7 @@ export const projectDetails = {
         title: 'Calcuweighter',
         category: 'iOS App / Watch App',
         color: '#1c1c1e',
-        skills: ['SwiftUI', 'iOS Development', 'WatchOS', 'Vision AI', 'Speech Recognition'],
+        skills: ['SwiftUI', 'iOS Development', 'WatchOS', 'Speech Recognition'],
         year: '2025',
         role: 'Design & Development',
         roleBlurb: 'Built a powerful percentages calculator for strength training with camera OCR, voice input, and Apple Watch companion app.',

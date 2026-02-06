@@ -75,7 +75,7 @@ const Privacy = () => {
 
                     <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Voice Input Feature</h2>
                     <p>
-                        Audio is processed on-device using Apple's Speech Recognition. Transcribed text may be sent to AI APIs for interpretation.
+                        Audio is processed on-device using Apple's Speech Recognition. Transcribed text is interpreted locally.
                     </p>
 
                     <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>What We Don't Collect</h2>

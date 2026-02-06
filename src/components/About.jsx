@@ -55,7 +55,7 @@ const About = () => {
                     Hey, I'm Sam Wilson.
                 </h3>
                 <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '45ch', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                    (But my real name is Jeremy). I'm a creative technologist living in Austin, Texas. I craft digital experiences using code, AI, and a bit of obsession with user experience.
+                    (But my real name is Jeremy). I'm a creative technologist living in Austin, Texas. I craft digital experiences using code and a bit of obsession with user experience.
                 </p>
                 <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '45ch', marginBottom: '2rem', lineHeight: '1.6' }}>
                     Currently working at H-E-B Digital where I help connect customers to their goals through thoughtful digital experiences.

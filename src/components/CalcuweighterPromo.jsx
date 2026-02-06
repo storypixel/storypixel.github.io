@@ -274,6 +274,55 @@ const CalcuweighterPromo = () => {
                     </div>
                 </section>
 
+                {/* Support Section */}
+                <section id="support" style={{
+                    padding: '6rem 0',
+                    borderTop: '1px solid var(--border-color)',
+                }}>
+                    <div className="page-grid">
+                        <span className="section-label" style={{ paddingTop: '0.5rem' }}>
+                            Support
+                        </span>
+                        <div className="section-content">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                style={{
+                                    fontSize: '2.5rem',
+                                    fontWeight: 400,
+                                    lineHeight: 1.2,
+                                    marginBottom: '2rem',
+                                }}
+                            >
+                                Need Help?
+                            </motion.h2>
+                            <div style={{
+                                color: 'var(--text-secondary)',
+                                fontSize: '1rem',
+                                lineHeight: 1.7,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '1.5rem',
+                                maxWidth: '55ch',
+                            }}>
+                                <p>
+                                    Having trouble with Calcuweighter? Here are a few tips:
+                                </p>
+                                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                    <li><strong style={{ color: 'var(--text-primary)' }}>Camera not reading text?</strong> Ensure good lighting and hold the phone steady.</li>
+                                    <li><strong style={{ color: 'var(--text-primary)' }}>Voice not working?</strong> Grant microphone access when the app prompts you.</li>
+                                    <li><strong style={{ color: 'var(--text-primary)' }}>Something else?</strong> Try deleting and reinstalling the app.</li>
+                                </ul>
+                                <p>
+                                    Still stuck? Reach out at <a href="mailto:sam@iamnotsam.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>sam@iamnotsam.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Privacy Link */}
                 <div className="page-grid" style={{
                     paddingTop: '2rem',

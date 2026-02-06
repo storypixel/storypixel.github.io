@@ -115,11 +115,11 @@ const AboutPage = () => {
                         >
                             <h3 style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Expertise</h3>
                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '1rem' }}>
+                                <li>Android Development</li>
                                 <li>iOS / Swift Development</li>
                                 <li>React & Vue</li>
                                 <li>User Experience</li>
                                 <li>Web Development</li>
-                                <li>Android Development</li>
                             </ul>
                         </motion.div>
 
