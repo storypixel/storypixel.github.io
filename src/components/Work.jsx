@@ -30,17 +30,22 @@ const Work = () => {
                                     </p>
                                     <span className="project-category">{project.category}</span>
                                 </div>
-                                <div
-                                    className="project-image-wrapper"
-                                    style={{ backgroundColor: project.color }}
-                                >
-                                    <motion.img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="project-image"
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.4 }}
-                                    />
+                                <div className="project-images-grid">
+                                    {(details?.heroImages || [project.image]).slice(0, 3).map((img, imgIndex) => (
+                                        <div
+                                            key={imgIndex}
+                                            className="project-image-wrapper"
+                                            style={{ backgroundColor: project.color }}
+                                        >
+                                            <motion.img
+                                                src={img}
+                                                alt={`${project.title} ${imgIndex + 1}`}
+                                                className="project-image"
+                                                whileHover={{ scale: 1.02 }}
+                                                transition={{ duration: 0.4 }}
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </motion.div>
                         </Link>

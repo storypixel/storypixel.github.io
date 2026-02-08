@@ -53,10 +53,16 @@
     text-align: right;
 }
 
-/* Project Image */
+/* Project Images Grid */
+.project-images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
 .project-image-wrapper {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 3/4;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -116,7 +122,12 @@
         font-size: 1.5rem;
     }
 
+    .project-images-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
     .project-image-wrapper {
-        aspect-ratio: 4/3;
+        aspect-ratio: 3/4;
     }
 }
