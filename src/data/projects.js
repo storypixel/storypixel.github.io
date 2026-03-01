@@ -10,6 +10,15 @@ export const projects = [
         color: '#1c1c1e',
         url: '/calcuweighter',
     },
+    {
+        id: 'roomscroll',
+        title: 'Roomscroll',
+        category: 'VS Code Extension',
+        size: 'full',
+        image: '/images/roomscroll/roomscroll-hero.png',
+        color: '#080a0c',
+        url: '/roomscroll',
+    },
 ];
 
 export const projectDetails = {
@@ -45,5 +54,23 @@ export const projectDetails = {
             '/images/calcuweighter-model-4.png',
         ],
         appStoreUrl: 'https://apps.apple.com/app/id6756983846',
+    },
+    roomscroll: {
+        title: 'Roomscroll',
+        category: 'VS Code Extension',
+        color: '#080a0c',
+        skills: ['TypeScript', 'WebCodecs API', 'HLS Streaming', 'VS Code Extensions'],
+        year: '2025',
+        role: 'Design & Development',
+        roleBlurb: 'Built a VS Code extension that fills your screen with live outdoor TV streams while Claude is thinking.',
+        description: 'A VS Code extension that displays a surveillance grid of live outdoor TV streams while your AI assistant is working. Hardware-accelerated video decoding, custom MPEG-TS demuxer, and a retro surveillance aesthetic.',
+        workDescription: 'Long AI coding sessions mean a lot of idle waiting. I wanted something ambient and interesting to watch during those gaps, without leaving my editor. Roomscroll turns that dead time into a window to the outside world.',
+        hero: '/images/roomscroll/roomscroll-hero.png',
+        heroImages: [
+            '/images/roomscroll/roomscroll-hero.png',
+            '/images/roomscroll/roomscroll-3x2.png',
+            '/images/roomscroll/roomscroll-grid-4x3.png',
+        ],
+        marketplaceUrl: 'https://marketplace.visualstudio.com/items?itemName=storypixel.roomscroll',
     },
 };

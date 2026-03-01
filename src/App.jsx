@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import AboutPage from './components/AboutPage';
 import Privacy from './components/Privacy';
 import CalcuweighterPromo from './components/CalcuweighterPromo';
+import RoomscrollPromo from './components/RoomscrollPromo';
 import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/privacy" element={<Privacy />} />
                         <Route path="/calcuweighter" element={<CalcuweighterPromo />} />
+                        <Route path="/roomscroll" element={<RoomscrollPromo />} />
                     </Routes>
                 </main>
             </ReactLenis>
