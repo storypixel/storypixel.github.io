@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Tracker — Ultra Minimal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f0f0f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  h1 { font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: #555; margin-bottom: 40px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(375px, 375px));
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .mc { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .ml { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #666; }
+
+  .phone {
+    width: 375px;
+    height: 812px;
+    border-radius: 44px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    background: #fff;
+    border: 3px solid #e8e8e8;
+  }
+
+  .sb {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #bbb;
+  }
+
+  /* HOME - just a big button */
+  .m-home {
+    height: calc(100% - 54px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 48px;
+  }
+
+  .m-plus {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 300;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .m-plus:hover { border-color: #222; color: #222; }
+
+  .m-stats {
+    text-align: center;
+  }
+
+  .m-stat-big {
+    font-size: 48px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .m-stat-label {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+  }
+
+  .m-last {
+    font-size: 13px;
+    color: #bbb;
+    text-align: center;
+  }
+
+  .m-nav {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 48px;
+  }
+
+  .m-nav-item {
+    font-size: 11px;
+    color: #ccc;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .m-nav-item.act { color: #222; }
+
+  /* LOG */
+  .m-log {
+    height: calc(100% - 54px);
+    padding: 24px 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .m-log h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .m-field { margin-bottom: 32px; }
+
+  .m-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 14px;
+  }
+
+  .m-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .mchip {
+    padding: 10px 18px;
+    border-radius: 100px;
+    background: #fff;
+    border: 1.5px solid #e8e8e8;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .mchip.sel {
+    border-color: #222;
+    color: #222;
+    font-weight: 500;
+  }
+
+  .mchip.add { border-style: dashed; color: #ccc; }
+
+  .m-range-group { margin-bottom: 24px; }
+
+  .m-range-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .m-range-label {
+    font-size: 13px;
+    color: #999;
+    min-width: 76px;
+  }
+
+  .m-range-bar {
+    flex: 1;
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    margin: 0 16px;
+    position: relative;
+  }
+
+  .m-range-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  .m-range-fill.exp { background: #222; width: 68%; }
+  .m-range-fill.act { background: #4CAF50; width: 42%; }
+
+  .m-range-dot {
+    position: absolute;
+    top: -6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #222;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .m-range-dot.exp { right: calc(32% - 8px); }
+  .m-range-dot.act { right: calc(58% - 8px); border-color: #4CAF50; }
+
+  .m-range-val {
+    font-size: 24px;
+    font-weight: 600;
+    min-width: 36px;
+    text-align: right;
+    color: #222;
+  }
+
+  .m-range-val.act { color: #4CAF50; }
+
+  .m-notes {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #e8e8e8;
+    padding: 12px 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: #222;
+    outline: none;
+    background: transparent;
+  }
+
+  .m-notes::placeholder { color: #ccc; }
+
+  .m-btn {
+    margin-top: auto;
+    padding: 18px;
+    background: #111;
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+
+  /* DONE */
+  .m-done {
+    height: calc(100% - 54px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .m-done-check {
+    font-size: 64px;
+    margin-bottom: 24px;
+    animation: dropIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes dropIn {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  .m-done h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+  }
+
+  .m-done p {
+    font-size: 15px;
+    color: #999;
+  }
+
+  .m-done-bar {
+    width: 100%;
+    margin-top: 48px;
+    padding: 24px;
+    border-top: 1px solid #f0f0f0;
+    animation: fadeIn 0.5s ease-out 0.3s both;
+  }
+
+  @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+  .m-done-bar .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #bbb;
+    margin-bottom: 10px;
+  }
+
+  .m-bar-visual {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .m-bar-track {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .m-bar-expected {
+    position: absolute;
+    left: 68%;
+    top: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    background: #fff;
+  }
+
+  .m-bar-actual {
+    height: 100%;
+    width: 42%;
+    background: #4CAF50;
+    border-radius: 4px;
+  }
+
+  .m-bar-label { font-size: 12px; color: #999; }
+  .m-bar-label strong { color: #4CAF50; }
+
+  /* PROGRESS */
+  .m-prog {
+    height: calc(100% - 54px);
+    padding: 24px 28px 30px;
+    overflow-y: auto;
+  }
+
+  .m-prog h2 { font-size: 28px; font-weight: 600; color: #111; margin-bottom: 4px; letter-spacing: -0.5px; }
+  .m-prog .sub { font-size: 14px; color: #999; margin-bottom: 28px; }
+
+  .mp-pills { display: flex; gap: 4px; margin-bottom: 24px; }
+  .mp-pill {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #999;
+    background: transparent;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 100px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .mp-pill.act { border-color: #222; color: #222; }
+
+  .mp-chart {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .mp-chart svg { width: 100%; height: 140px; }
+
+  .mp-legend { display: flex; gap: 24px; margin-top: 12px; }
+  .mp-leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #999; }
+  .mp-dot { width: 8px; height: 2px; border-radius: 1px; }
+  .mp-dot.e { background: #222; }
+  .mp-dot.a { background: #4CAF50; }
+
+  .mp-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .mp-num { text-align: center; }
+  .mp-num:not(:last-child) { border-right: 1px solid #f0f0f0; }
+  .mp-num-val { font-size: 32px; font-weight: 600; color: #111; }
+  .mp-num-val.green { color: #4CAF50; }
+  .mp-num-label { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  .mp-list { }
+  .mp-list-title { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #bbb; margin-bottom: 16px; }
+
+  .mp-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #f8f8f8;
+  }
+
+  .mp-row-name { font-size: 14px; color: #555; flex: 1; }
+  .mp-row-count { font-size: 14px; color: #222; font-weight: 600; margin-right: 12px; }
+
+  .mp-row-trend {
+    font-size: 12px;
+    color: #4CAF50;
+  }
+</style>
+</head>
+<body>
+<h1>V4 · Ultra Minimal — Black & white, maximum restraint</h1>
+<div class="grid">
+
+  <div class="mc">
+    <div class="ml">Home</div>
+    <div class="phone">
+      <div class="sb"><span>9:41</span><span>84%</span></div>
+      <div class="m-home">
+        <div class="m-plus">+</div>
+        <div class="m-stats">
+          <div class="m-stat-big">3</div>
+          <div class="m-stat-label">this week</div>
+        </div>
+        <div class="m-last">Last: doorknob · 2h ago</div>
+        <div class="m-nav">
+          <div class="m-nav-item act">Log</div>
+          <div class="m-nav-item">Progress</div>
+          <div class="m-nav-item">Triggers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mc">
+    <div class="ml">Quick Log</div>
+    <div class="phone">
+      <div class="sb"><span>9:41</span><span>84%</span></div>
+      <div class="m-log">
+        <h2>Log it.</h2>
+        <div class="m-field">
+          <div class="m-label">What</div>
+          <div class="m-chips">
+            <div class="mchip sel">Doorknob</div>
+            <div class="mchip">No wash</div>
+            <div class="mchip">Didn't check</div>
+            <div class="mchip">Intrusive</div>
+            <div class="mchip add">+ add</div>
+          </div>
+        </div>
+        <div class="m-field">
+          <div class="m-label">Anxiety</div>
+          <div class="m-range-group">
+            <div class="m-range-row">
+              <div class="m-range-label">Expected</div>
+              <div class="m-range-bar">
+                <div class="m-range-fill exp"></div>
+                <div class="m-range-dot exp"></div>
+              </div>
+              <div class="m-range-val">68</div>
+            </div>
+            <div class="m-range-row">
+              <div class="m-range-label">Actual</div>
+              <div class="m-range-bar">
+                <div class="m-range-fill act"></div>
+                <div class="m-range-dot act"></div>
+              </div>
+              <div class="m-range-val act">42</div>
+            </div>
+          </div>
+        </div>
+        <input class="m-notes" placeholder="Notes (optional)">
+        <button class="m-btn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mc">
+    <div class="ml">Logged</div>
+    <div class="phone">
+      <div class="sb"><span>9:41</span><span>84%</span></div>
+      <div class="m-done">
+        <div>
+          <div class="m-done-check">✓</div>
+          <h2>Logged</h2>
+          <p>Doorknob · 68 → 42</p>
+        </div>
+        <div class="m-done-bar">
+          <div class="label">Expected vs actual</div>
+          <div class="m-bar-visual">
+            <div class="m-bar-track">
+              <div class="m-bar-actual"></div>
+              <div class="m-bar-expected"></div>
+            </div>
+          </div>
+          <div class="m-bar-label" style="margin-top:8px">Peaked <strong>26 below</strong> what you expected</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mc">
+    <div class="ml">Progress</div>
+    <div class="phone">
+      <div class="sb"><span>9:41</span><span>84%</span></div>
+      <div class="m-prog">
+        <h2>Progress</h2>
+        <div class="sub">February 2026</div>
+        <div class="mp-pills">
+          <div class="mp-pill">W</div>
+          <div class="mp-pill act">M</div>
+          <div class="mp-pill">All</div>
+        </div>
+        <div class="mp-chart">
+          <svg viewBox="0 0 280 130">
+            <line x1="0" y1="32" x2="280" y2="32" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="0" y1="65" x2="280" y2="65" stroke="#f5f5f5" stroke-width="1"/>
+            <line x1="0" y1="98" x2="280" y2="98" stroke="#f5f5f5" stroke-width="1"/>
+            <polyline points="0,26 40,32 80,38 120,34 160,46 200,44 240,52 280,48" fill="none" stroke="#222" stroke-width="1.5" stroke-linecap="round"/>
+            <polyline points="0,38 40,50 80,58 120,54 160,70 200,74 240,82 280,86" fill="none" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="280" cy="48" r="3" fill="#222"/>
+            <circle cx="280" cy="86" r="3" fill="#4CAF50"/>
+          </svg>
+          <div class="mp-legend">
+            <div class="mp-leg"><div class="mp-dot e"></div>Expected</div>
+            <div class="mp-leg"><div class="mp-dot a"></div>Actual</div>
+          </div>
+        </div>
+        <div class="mp-numbers">
+          <div class="mp-num"><div class="mp-num-val green">↓18</div><div class="mp-num-label">Avg peak</div></div>
+          <div class="mp-num"><div class="mp-num-val">12</div><div class="mp-num-label">Entries</div></div>
+          <div class="mp-num"><div class="mp-num-val">5</div><div class="mp-num-label">Triggers</div></div>
+        </div>
+        <div class="mp-list">
+          <div class="mp-list-title">Triggers</div>
+          <div class="mp-row"><div class="mp-row-name">Doorknob</div><div class="mp-row-count">8</div><div class="mp-row-trend">↓ 12 avg</div></div>
+          <div class="mp-row"><div class="mp-row-name">Didn't check</div><div class="mp-row-count">5</div><div class="mp-row-trend">↓ 8 avg</div></div>
+          <div class="mp-row"><div class="mp-row-name">Intrusive thought</div><div class="mp-row-count">3</div><div class="mp-row-trend">↓ 22 avg</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>
