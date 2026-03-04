@@ -11,6 +11,8 @@ import Privacy from './components/Privacy';
 import CalcuweighterPromo from './components/CalcuweighterPromo';
 import RoomscrollPromo from './components/RoomscrollPromo';
 import ScrollToTop from './components/ScrollToTop';
+import PasswordGate from './components/clients/PasswordGate';
+import ERPPrototype from './components/clients/ERPPrototype';
 
 function HomePage() {
     return (
@@ -36,6 +38,11 @@ function App() {
                         <Route path="/privacy" element={<Privacy />} />
                         <Route path="/calcuweighter" element={<CalcuweighterPromo />} />
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
+                        <Route path="/clients/ocd" element={
+                            <PasswordGate password="ocd">
+                                <ERPPrototype />
+                            </PasswordGate>
+                        } />
                     </Routes>
                 </main>
             </ReactLenis>
