@@ -5,21 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
-/* --- Reset --- */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body, #root {
-  height: 100%;
-  overflow: hidden;
-  background: #1a1a2e;
-}
-
-/* --- Design Tokens --- */
-:root {
+/* --- Prototype Layout (phone + notes side by side) --- */
+.erp-prototype-layout {
   --erp-font: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
   --erp-bg: linear-gradient(180deg, #e8f0f8, #f4eefa);
   --erp-blue: #b8d4f0;
@@ -36,18 +23,16 @@ html, body, #root {
   --erp-radius-chip: 28px;
   --erp-radius-card: 20px;
   --erp-radius-circle: 50%;
-}
 
-/* --- Prototype Layout (phone + notes side by side) --- */
-.erp-prototype-layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
-  height: 100%;
+  height: 100vh;
   background: #1a1a2e;
   padding: 2rem;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 @media (max-width: 800px) {

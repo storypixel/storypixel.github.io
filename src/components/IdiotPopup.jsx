@@ -32,7 +32,7 @@ const IdiotPopup = ({ children }) => {
 
     return (
         <>
-            <span onClick={trigger} style={{ cursor: 'pointer' }}>
+            <span onClick={trigger} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                 {children}
             </span>
 
