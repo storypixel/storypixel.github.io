@@ -10,6 +10,7 @@ import AboutPage from './components/AboutPage';
 import Privacy from './components/Privacy';
 import CalcuweighterPromo from './components/CalcuweighterPromo';
 import RoomscrollPromo from './components/RoomscrollPromo';
+import CookiePage from './components/CookiePage';
 import ScrollToTop from './components/ScrollToTop';
 import PasswordGate from './components/clients/PasswordGate';
 import ERPPrototype from './components/clients/ERPPrototype';
@@ -43,6 +44,7 @@ function App() {
                                 <ERPPrototype />
                             </PasswordGate>
                         } />
+                        <Route path="/cookies" element={<CookiePage />} />
                     </Routes>
                 </main>
             </ReactLenis>

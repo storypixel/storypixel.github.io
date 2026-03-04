@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Skull } from '@phosphor-icons/react';
+import IdiotPopup from './IdiotPopup';
 import './Hero.css';
 
 const Hero = () => {
@@ -41,9 +43,12 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Right: Headline */}
-                <motion.h1 className="hero-headline" variants={item}>
-                    Sam just being Sam. Knows nothing. Believes in nothing. Except craft cocktails.
-                </motion.h1>
+                <motion.div className="hero-quote-block" variants={item}>
+                    <h1 className="hero-headline">
+                        Sam just being Sam. Knows nothing. Believes in nothing. Except craft cocktails.
+                    </h1>
+                    <p className="hero-attribution">Someone who peaked early at being wrong <IdiotPopup><Skull size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
+                </motion.div>
             </motion.div>
         </section>
     );

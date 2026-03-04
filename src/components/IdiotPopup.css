@@ -1,0 +1,16 @@
+.idiot-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.idiot-image {
+    max-width: 40vw;
+    max-height: 60vh;
+    object-fit: contain;
+}
