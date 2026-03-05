@@ -75,16 +75,7 @@ const CalcuweighterPromo = () => {
                     </div>
 
                     {/* Content Overlay */}
-                    <div style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        width: '100%',
-                        height: '100%',
-                        padding: '4rem',
-                        gap: '2rem'
-                    }}>
+                    <div className="calcuweighter-hero-grid">
                         {/* Left: Text */}
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <motion.h1 variants={item} style={{
@@ -122,12 +113,7 @@ const CalcuweighterPromo = () => {
                         </div>
 
                         {/* Right: 3D Phone */}
-                        <div style={{
-                            height: '600px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
+                        <div className="calcuweighter-phone">
                             <Phone3D screenshots={[
                                 '/images/calcuweighter/01-onboarding.png',
                                 '/images/calcuweighter/05-main-workout.png',
@@ -249,7 +235,7 @@ const CalcuweighterPromo = () => {
                     borderTop: '1px solid var(--border-color)',
                 }}>
                     <div className="page-grid" style={{ alignItems: 'center' }}>
-                        <div style={{ gridColumn: '1 / 3' }}>
+                        <div className="cta-text-col">
                             <p style={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '0.5rem' }}>
                                 Ready to simplify your workouts?
                             </p>
@@ -257,7 +243,7 @@ const CalcuweighterPromo = () => {
                                 Available on iOS and Apple Watch
                             </p>
                         </div>
-                        <div style={{ gridColumn: '3 / 5', display: 'flex', justifyContent: 'flex-end' }}>
+                        <div className="cta-btn-col">
                             <a href="https://apps.apple.com/app/id6756983846" style={{
                                 display: 'inline-block',
                                 background: '#fff',

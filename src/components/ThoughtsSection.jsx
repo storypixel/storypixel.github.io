@@ -48,17 +48,10 @@ const ThoughtsSection = () => {
                             className="thought-row"
                         >
                             <div className="page-grid" style={{ padding: 0 }}>
-                                <span style={{
-                                    fontSize: '0.75rem',
-                                    color: 'var(--text-secondary)',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.05em',
-                                    paddingTop: '0.3rem',
-                                    gridColumn: '1 / 3',
-                                }}>
+                                <span className="thought-date-col">
                                     {post.dateDisplay}
                                 </span>
-                                <div style={{ gridColumn: '3 / 5' }}>
+                                <div className="thought-content-col">
                                     <h3 style={{
                                         fontSize: '1.4rem',
                                         fontWeight: 400,

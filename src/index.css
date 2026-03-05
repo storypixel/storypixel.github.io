@@ -238,6 +238,85 @@ html.lenis {
   transform: translateY(-15%);
 }
 
+/* CalcuweighterPromo hero grid */
+.calcuweighter-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.calcuweighter-phone {
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .calcuweighter-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    align-items: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .calcuweighter-phone {
+    height: 350px;
+  }
+}
+
+/* CalcuweighterPromo footer CTA responsive columns */
+.cta-text-col {
+  grid-column: 1 / 3;
+}
+
+.cta-btn-col {
+  grid-column: 3 / 5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .cta-text-col {
+    grid-column: 1 / -1;
+  }
+
+  .cta-btn-col {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+/* ThoughtsSection responsive columns */
+.thought-date-col {
+  grid-column: 1 / 3;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 0.3rem;
+}
+
+.thought-content-col {
+  grid-column: 3 / 5;
+}
+
+@media (max-width: 1024px) {
+  .thought-date-col {
+    grid-column: 1 / -1;
+  }
+
+  .thought-content-col {
+    grid-column: 1 / -1;
+  }
+}
+
 /* Phone container for promo pages */
 .project-phone-container {
   position: absolute;
