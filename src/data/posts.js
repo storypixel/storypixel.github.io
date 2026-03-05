@@ -41,16 +41,6 @@ export const posts = [
                 ],
             },
             {
-                type: 'reviews',
-                label: 'Reviews',
-                reviews: [
-                    { name: 'storypixel9467', text: "It's incredible, use fresh sage if you can and highest quality no-sugar-added apricots e.g. Trader Joe's organic Turkish unsulphured." },
-                    { name: 'robynruffi', text: "I have been making these cookies for a while now and they never disappoint! The sage adds an earthy element that enhances the apricots and the cornmeal gives them a wonderful bit of crunch. These are my son's favorite cookie." },
-                    { name: 'aperloe', text: "So, so good. The sage gives the cookies a really unique taste, yet they're not over the top. They're great for potlucks, picnics, BBQs, since they're a mix between sweet and savory." },
-                    { name: 'kldckldc', text: "Darn good cookies made as written. In fact, my hair stylist requests these cookies instead of a tip! Use the finer cornmeal and you will be fine." },
-                ],
-            },
-            {
                 type: 'footnote',
                 text: 'Originally published in Gourmet, August 2004. Via Epicurious.',
             },
