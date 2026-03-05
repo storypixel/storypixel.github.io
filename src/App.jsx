@@ -11,6 +11,9 @@ import Privacy from './components/Privacy';
 import CalcuweighterPromo from './components/CalcuweighterPromo';
 import RoomscrollPromo from './components/RoomscrollPromo';
 import CookiePage from './components/CookiePage';
+import ThoughtsSection from './components/ThoughtsSection';
+import ThoughtsPage from './components/ThoughtsPage';
+import ThoughtPost from './components/ThoughtPost';
 import ScrollToTop from './components/ScrollToTop';
 import PasswordGate from './components/clients/PasswordGate';
 import ERPPrototype from './components/clients/ERPPrototype';
@@ -22,6 +25,7 @@ function HomePage() {
             <Hero />
             <Work />
             <About />
+            <ThoughtsSection />
             <Footer />
         </>
     );
@@ -45,6 +49,8 @@ function App() {
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />
+                        <Route path="/thoughts" element={<ThoughtsPage />} />
+                        <Route path="/thoughts/:slug" element={<ThoughtPost />} />
                     </Routes>
                 </main>
             </ReactLenis>
