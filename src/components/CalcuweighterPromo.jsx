@@ -41,7 +41,7 @@ const CalcuweighterPromo = () => {
                     borderRadius: '16px',
                     overflow: 'hidden',
                     background: '#000'
-                }}>
+                }} className="calcuweighter-hero-section">
                     {/* Collage Background */}
                     <div style={{
                         position: 'absolute',
@@ -105,7 +105,8 @@ const CalcuweighterPromo = () => {
                                     borderRadius: '50px',
                                     fontWeight: 500,
                                     textDecoration: 'none',
-                                    fontSize: '1rem'
+                                    fontSize: '1rem',
+                                    whiteSpace: 'nowrap'
                                 }}>
                                     Get Calcuweighter
                                 </a>
