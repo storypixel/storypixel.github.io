@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import Phone3D from './Phone3D';
 
-const CalcuweighterPromo = () => {
+const CalcuweightPromo = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -108,7 +108,7 @@ const CalcuweighterPromo = () => {
                                     fontSize: '1rem',
                                     whiteSpace: 'nowrap'
                                 }}>
-                                    Get Calcuweighter
+                                    Get Calcuweight
                                 </a>
                             </motion.div>
                         </div>
@@ -223,7 +223,7 @@ const CalcuweighterPromo = () => {
                                     I've been lifting for years, and every session used to involve the same frustrating dance: staring at the gym whiteboard, pulling out my phone, opening the calculator app, and doing fractional math just to figure out what plates to put on the bar. It was a constant distraction that took me out of the zone.
                                 </p>
                                 <p>
-                                    I wanted a tool that felt invisible. No typing, no mental gymnastics. Just point a camera at the whiteboard or speak the percentages, and instantly see the exact plate layout. I built Calcuweighter to solve my own problem, so I could focus on the lift, not the math.
+                                    I wanted a tool that felt invisible. No typing, no mental gymnastics. Just point a camera at the whiteboard or speak the percentages, and instantly see the exact plate layout. I built Calcuweight to solve my own problem, so I could focus on the lift, not the math.
                                 </p>
                             </div>
                         </div>
@@ -295,7 +295,7 @@ const CalcuweighterPromo = () => {
                                 maxWidth: '55ch',
                             }}>
                                 <p>
-                                    Having trouble with Calcuweighter? Here are a few tips:
+                                    Having trouble with Calcuweight? Here are a few tips:
                                 </p>
                                 <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                     <li><strong style={{ color: 'var(--text-primary)' }}>Camera not reading text?</strong> Ensure good lighting and hold the phone steady.</li>
@@ -326,4 +326,4 @@ const CalcuweighterPromo = () => {
     );
 };
 
-export default CalcuweighterPromo;
+export default CalcuweightPromo;

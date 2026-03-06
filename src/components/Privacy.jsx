@@ -53,7 +53,7 @@ const Privacy = () => {
                         <strong>Last updated: December 26, 2024</strong>
                     </p>
                     <p>
-                        Calcuweighter is a barbell plate calculator app developed by Storypixel.
+                        Calcuweight is a barbell plate calculator app developed by Storypixel.
                     </p>
 
                     <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Data Stored Locally</h2>

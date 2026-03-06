@@ -3,7 +3,7 @@
 export const projects = [
     {
         id: 'calcuweighter',
-        title: 'Calcuweighter',
+        title: 'Calcuweight',
         category: 'iOS App / Watch App',
         size: 'full',
         image: '/images/calcuweighter-model-1.png',
@@ -23,14 +23,14 @@ export const projects = [
 
 export const projectDetails = {
     calcuweighter: {
-        title: 'Calcuweighter',
+        title: 'Calcuweight',
         category: 'iOS App / Watch App',
         color: '#1c1c1e',
         skills: ['SwiftUI', 'iOS Development', 'WatchOS', 'Speech Recognition'],
         year: '2025',
         role: 'Design & Development',
         roleBlurb: 'Built a powerful percentages calculator for strength training with camera OCR, voice input, and Apple Watch companion app.',
-        description: 'A powerful percentages calculator for strength training. Enter your PRs and instantly see what weight to load for any percentage. Calcuweighter allows you to snap a photo of your workout whiteboard to automatically identify lifts, supports hands-free voice input, and visualizes plate loading. Includes a companion Apple Watch app.',
+        description: 'A powerful percentages calculator for strength training. Enter your PRs and instantly see what weight to load for any percentage. Calcuweight allows you to snap a photo of your workout whiteboard to automatically identify lifts, supports hands-free voice input, and visualizes plate loading. Includes a companion Apple Watch app.',
         workDescription: 'Every session used to involve the same frustrating dance: staring at the gym whiteboard, pulling out my phone, opening the calculator app, and doing fractional math just to figure out what plates to put on the bar. I wanted a tool that felt invisible. No typing, no mental gymnastics. Just point a camera at the whiteboard or speak the percentages, and instantly see the exact plate layout.',
         hero: '/images/calcuweighter-model-1.png',
         heroImages: [

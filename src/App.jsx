@@ -16,7 +16,7 @@ import ERPPrototype from './components/clients/ERPPrototype';
 
 // Lazy-load heavy 3D pages (Three.js ~1.2MB)
 const AboutPage = lazy(() => import('./components/AboutPage'));
-const CalcuweighterPromo = lazy(() => import('./components/CalcuweighterPromo'));
+const CalcuweightPromo = lazy(() => import('./components/CalcuweightPromo'));
 const RoomscrollPromo = lazy(() => import('./components/RoomscrollPromo'));
 const CookiePage = lazy(() => import('./components/CookiePage'));
 
@@ -44,7 +44,7 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/privacy" element={<Privacy />} />
-                        <Route path="/calcuweighter" element={<CalcuweighterPromo />} />
+                        <Route path="/calcuweighter" element={<CalcuweightPromo />} />
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
