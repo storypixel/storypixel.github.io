@@ -1,6 +1,6 @@
-# Calcuweighter Landing Page
+# Calcuweight Landing Page
 
-Marketing website for the Calcuweighter iOS app.
+Marketing website for the Calcuweight iOS app.
 
 ## Files
 
