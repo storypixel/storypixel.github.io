@@ -350,3 +350,26 @@ html.lenis {
     height: 500px;
   }
 }
+
+/* Calcuweighter CTA grid */
+.cw-cta-text {
+  grid-column: 1 / 3;
+}
+
+.cw-cta-button {
+  grid-column: 3 / 5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .cw-cta-text {
+    grid-column: 1 / -1;
+  }
+
+  .cw-cta-button {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+}

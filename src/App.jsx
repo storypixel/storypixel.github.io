@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import Navigation from './components/Navigation';
@@ -6,17 +6,19 @@ import Hero from './components/Hero';
 import Work from './components/Work';
 import About from './components/About';
 import Footer from './components/Footer';
-import AboutPage from './components/AboutPage';
 import Privacy from './components/Privacy';
-import CalcuweighterPromo from './components/CalcuweighterPromo';
-import RoomscrollPromo from './components/RoomscrollPromo';
-import CookiePage from './components/CookiePage';
 import ThoughtsSection from './components/ThoughtsSection';
 import ThoughtsPage from './components/ThoughtsPage';
 import ThoughtPost from './components/ThoughtPost';
 import ScrollToTop from './components/ScrollToTop';
 import PasswordGate from './components/clients/PasswordGate';
 import ERPPrototype from './components/clients/ERPPrototype';
+
+// Lazy-load heavy 3D pages (Three.js ~1.2MB)
+const AboutPage = lazy(() => import('./components/AboutPage'));
+const CalcuweighterPromo = lazy(() => import('./components/CalcuweighterPromo'));
+const RoomscrollPromo = lazy(() => import('./components/RoomscrollPromo'));
+const CookiePage = lazy(() => import('./components/CookiePage'));
 
 function HomePage() {
     return (
@@ -37,6 +39,7 @@ function App() {
             <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
                 <ScrollToTop />
                 <main>
+                    <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutPage />} />
@@ -52,6 +55,7 @@ function App() {
                         <Route path="/thoughts" element={<ThoughtsPage />} />
                         <Route path="/thoughts/:slug" element={<ThoughtPost />} />
                     </Routes>
+                    </Suspense>
                 </main>
             </ReactLenis>
         </Router>

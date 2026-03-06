@@ -328,7 +328,7 @@ const RoomscrollPromo = () => {
                     borderTop: '1px solid var(--border-color)',
                 }}>
                     <div className="page-grid" style={{ alignItems: 'center' }}>
-                        <div style={{ gridColumn: '1 / 3' }}>
+                        <div className="cw-cta-text">
                             <p style={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '0.5rem' }}>
                                 Try Roomscroll
                             </p>
@@ -336,7 +336,7 @@ const RoomscrollPromo = () => {
                                 Free on the VS Code Marketplace
                             </p>
                         </div>
-                        <div style={{ gridColumn: '3 / 5', display: 'flex', justifyContent: 'flex-end' }}>
+                        <div className="cw-cta-button">
                             <a href="https://marketplace.visualstudio.com/items?itemName=storypixel.roomscroll" style={{
                                 display: 'inline-block',
                                 background: '#fff',

@@ -235,8 +235,8 @@ const CalcuweighterPromo = () => {
                     padding: '4rem 0',
                     borderTop: '1px solid var(--border-color)',
                 }}>
-                    <div className="page-grid" style={{ alignItems: 'center' }}>
-                        <div className="cta-text-col">
+                    <div className="page-grid cw-cta-grid" style={{ alignItems: 'center' }}>
+                        <div className="cw-cta-text">
                             <p style={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '0.5rem' }}>
                                 Ready to simplify your workouts?
                             </p>
@@ -244,7 +244,7 @@ const CalcuweighterPromo = () => {
                                 Available on iOS and Apple Watch
                             </p>
                         </div>
-                        <div className="cta-btn-col">
+                        <div className="cw-cta-button">
                             <a href="https://apps.apple.com/app/id6756983846" style={{
                                 display: 'inline-block',
                                 background: '#fff',
