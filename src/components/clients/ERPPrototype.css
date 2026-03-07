@@ -219,6 +219,38 @@ html, body, #root {
   line-height: 1.4;
 }
 
+/* --- Date Input --- */
+.erp-date-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.erp-date-label {
+  font-family: var(--erp-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+}
+
+.erp-date-input {
+  font-family: var(--erp-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erp-text-dark);
+  background: rgba(200, 184, 232, 0.15);
+  border: 1.5px solid rgba(200, 184, 232, 0.3);
+  border-radius: 10px;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.erp-date-input:focus {
+  border-color: var(--erp-purple);
+}
+
 /* --- Chips --- */
 .erp-chips {
   display: flex;

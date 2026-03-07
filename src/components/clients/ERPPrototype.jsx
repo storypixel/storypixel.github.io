@@ -15,9 +15,9 @@ const CARD_NOTES = [
   {
     title: 'Trigger Selection',
     notes: [
+      'Date defaults to today — fast for logging right after an exposure, editable for retroactive entries',
       '"Something else" opens a free-text field so users aren\'t limited to presets',
       'Chip list grows over time as user adds custom triggers — becomes personalized',
-      'Bubble icon changes from ? to ! when a trigger is selected (feedback)',
     ],
   },
   {
@@ -296,6 +296,7 @@ export default function ERPPrototype() {
   const [hint, setHint] = useState(null);
 
   // Card data
+  const [exposureDate, setExposureDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [triggers, setTriggers] = useState([]);
   const [triggerItems, setTriggerItems] = useState(TRIGGERS);
   const [alarmsBody, setAlarmsBody] = useState([]);
@@ -344,6 +345,7 @@ export default function ERPPrototype() {
   const reset = () => {
     setCard(0);
     setDirection(-1);
+    setExposureDate(new Date().toISOString().slice(0, 10));
     setTriggers([]);
     setTriggerItems(TRIGGERS);
     setAlarmsBody([]);
@@ -395,6 +397,16 @@ export default function ERPPrototype() {
         <p className="erp-card-step">Step 1 of 6</p>
         <h2 className="erp-card-title">What triggered you?</h2>
         <p className="erp-card-subtitle">Tap all that apply</p>
+      </div>
+      <div className="erp-date-row">
+        <label className="erp-date-label" htmlFor="exposure-date">Date</label>
+        <input
+          id="exposure-date"
+          type="date"
+          className="erp-date-input"
+          value={exposureDate}
+          onChange={(e) => setExposureDate(e.target.value)}
+        />
       </div>
       <SiriWaveBubble active={triggers.length > 0} />
       <ChipGroup
@@ -571,6 +583,11 @@ export default function ERPPrototype() {
           <p className="erp-card-subtitle">Tap any section to edit</p>
         </div>
         <div className="erp-review-list">
+          <button className="erp-review-section" onClick={() => goTo(0)}>
+            <span className="erp-review-label">Date</span>
+            <span className="erp-review-items">{new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+            <span className="erp-review-edit">Edit</span>
+          </button>
           <ReviewSection label="Triggers" items={triggers} onTap={() => goTo(0)} />
           <ReviewSection label="Body" items={alarmsBody} onTap={() => goTo(1)} />
           <ReviewSection label="Emotions" items={alarmsEmotion} onTap={() => goTo(1)} />
