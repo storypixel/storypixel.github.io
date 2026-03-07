@@ -12,7 +12,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+/* Scoped to ERP prototype only — do NOT use html/body/root selectors here,
+   they leak into the entire site and override the main background color. */
+.erp-prototype-root {
   height: 100%;
   overflow: hidden;
   background: #1a1a2e;
