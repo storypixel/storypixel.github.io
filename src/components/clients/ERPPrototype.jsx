@@ -13,9 +13,17 @@ const COPING = ['Sat with it', 'Deep breaths', 'Delayed ritual', 'Talked it out'
 // --- Design notes per card ---
 const CARD_NOTES = [
   {
+    title: 'Date Selection',
+    notes: [
+      'One tap for the common case — "Today" auto-advances to triggers',
+      'Recent days shown by weekday name for quick retroactive logging',
+      '"Pick a date" opens native calendar for anything older',
+      'Not numbered as a step — it\'s context, not therapy',
+    ],
+  },
+  {
     title: 'Trigger Selection',
     notes: [
-      'Date defaults to today — fast for logging right after an exposure, editable for retroactive entries',
       '"Something else" opens a free-text field so users aren\'t limited to presets',
       'Chip list grows over time as user adds custom triggers — becomes personalized',
     ],
@@ -244,42 +252,6 @@ function VoiceButton() {
   );
 }
 
-// --- Date Pill ---
-function DatePill({ exposureDate, onChange }) {
-  const [editing, setEditing] = useState(false);
-  const inputRef = useRef(null);
-  const today = new Date().toISOString().slice(0, 10);
-  const isToday = exposureDate === today;
-
-  const label = isToday
-    ? 'Today'
-    : new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-  const handleClick = () => {
-    if (inputRef.current) {
-      inputRef.current.showPicker();
-    }
-    setEditing(true);
-  };
-
-  return (
-    <button className="erp-date-pill" onClick={handleClick}>
-      <span className="erp-date-pill-label">{label}</span>
-      <input
-        ref={inputRef}
-        type="date"
-        className="erp-date-pill-input"
-        value={exposureDate}
-        onChange={(e) => {
-          onChange(e.target.value);
-          setEditing(false);
-        }}
-        onBlur={() => setEditing(false)}
-      />
-    </button>
-  );
-}
-
 // --- Progress Dots ---
 function ProgressDots({ current, total }) {
   return (
@@ -358,7 +330,7 @@ export default function ERPPrototype() {
   }, [card]);
 
   const goNext = useCallback(() => {
-    if (card < 5) {
+    if (card < 6) {
       returnToReview.current = false;
       setDirection(1);
       setCard((c) => c + 1);
@@ -369,7 +341,7 @@ export default function ERPPrototype() {
     if (returnToReview.current) {
       returnToReview.current = false;
       setDirection(1);
-      setCard(5);
+      setCard(6);
       return;
     }
     if (card > 0) {
@@ -422,12 +394,60 @@ export default function ERPPrototype() {
 
   const diff = expectedAnxiety - peakAnxiety;
 
+  const today = new Date().toISOString().slice(0, 10);
+  const recentDays = [];
+  for (let i = 1; i <= 5; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    recentDays.push({
+      value: d.toISOString().slice(0, 10),
+      label: d.toLocaleDateString('en-US', { weekday: 'long' }),
+    });
+  }
+
   const cards = [
-    // Card 0: Trigger
-    <div className="erp-card" key="trigger">
+    // Card 0: Date
+    <div className="erp-card" key="date">
       <div className="erp-nav">
         <span />
-        <DatePill exposureDate={exposureDate} onChange={setExposureDate} />
+        <span />
+      </div>
+      <div className="erp-card-header">
+        <h2 className="erp-card-title">When was this?</h2>
+      </div>
+      <div className="erp-date-options">
+        <button
+          className={`erp-date-option erp-date-today ${exposureDate === today ? 'selected' : ''}`}
+          onClick={() => { setExposureDate(today); goNext(); }}
+        >
+          Today
+        </button>
+        {recentDays.map((d) => (
+          <button
+            key={d.value}
+            className={`erp-date-option ${exposureDate === d.value ? 'selected' : ''}`}
+            onClick={() => { setExposureDate(d.value); goNext(); }}
+          >
+            {d.label}
+          </button>
+        ))}
+        <label className="erp-date-option erp-date-calendar">
+          Pick a date...
+          <input
+            type="date"
+            className="erp-date-hidden-input"
+            value={exposureDate}
+            onChange={(e) => { setExposureDate(e.target.value); goNext(); }}
+          />
+        </label>
+      </div>
+    </div>,
+
+    // Card 1: Trigger
+    <div className="erp-card" key="trigger">
+      <div className="erp-nav">
+        <button className="erp-back" onClick={goBack}>&larr; Back</button>
+        <span />
       </div>
       <div className="erp-card-header">
         <p className="erp-card-step">Step 1 of 6</p>
@@ -596,7 +616,7 @@ export default function ERPPrototype() {
       </button>
     </div>,
 
-    // Card 5: Review & Save
+    // Card 6: Review & Save
     <div className="erp-card erp-card--review" key="review">
       <div className="erp-review-scroll">
         <div className="erp-nav">
@@ -611,22 +631,22 @@ export default function ERPPrototype() {
         <div className="erp-review-list">
           <button className="erp-review-section" onClick={() => goTo(0)}>
             <span className="erp-review-label">Date</span>
-            <span className="erp-review-items">{exposureDate === new Date().toISOString().slice(0, 10) ? 'Today' : new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+            <span className="erp-review-items">{exposureDate === today ? 'Today' : new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
             <span className="erp-review-edit">Edit</span>
           </button>
-          <ReviewSection label="Triggers" items={triggers} onTap={() => goTo(0)} />
-          <ReviewSection label="Body" items={alarmsBody} onTap={() => goTo(1)} />
-          <ReviewSection label="Emotions" items={alarmsEmotion} onTap={() => goTo(1)} />
-          <ReviewSection label="Thoughts" items={beliefs} onTap={() => goTo(2)} />
-          <ReviewSection label="Coping" items={coping} onTap={() => goTo(3)} />
+          <ReviewSection label="Triggers" items={triggers} onTap={() => goTo(1)} />
+          <ReviewSection label="Body" items={alarmsBody} onTap={() => goTo(2)} />
+          <ReviewSection label="Emotions" items={alarmsEmotion} onTap={() => goTo(2)} />
+          <ReviewSection label="Thoughts" items={beliefs} onTap={() => goTo(3)} />
+          <ReviewSection label="Coping" items={coping} onTap={() => goTo(4)} />
           {note && (
-            <button className="erp-review-section" onClick={() => goTo(3)}>
+            <button className="erp-review-section" onClick={() => goTo(4)}>
               <span className="erp-review-label">Note</span>
               <span className="erp-review-items">{note}</span>
               <span className="erp-review-edit">Edit</span>
             </button>
           )}
-          <button className="erp-review-section erp-review-anxiety" onClick={() => goTo(4)}>
+          <button className="erp-review-section erp-review-anxiety" onClick={() => goTo(5)}>
             <span className="erp-review-label">Anxiety</span>
             <span className="erp-review-anxiety-row">
               <span className="erp-review-anxiety-stat">
@@ -662,7 +682,7 @@ export default function ERPPrototype() {
     <div className="erp-prototype-layout">
       <div className="erp-phone-frame">
         <div className="erp-phone-shell">
-          <ProgressDots current={card} total={6} />
+          <ProgressDots current={card} total={7} />
           <div
             className="erp-card-container"
             ref={containerRef}

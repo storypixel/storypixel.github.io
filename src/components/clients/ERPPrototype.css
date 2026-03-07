@@ -219,34 +219,60 @@ html, body, #root {
   line-height: 1.4;
 }
 
-/* --- Date Pill --- */
-.erp-date-pill {
-  position: relative;
+/* --- Date Options --- */
+.erp-date-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.erp-date-option {
   font-family: var(--erp-font);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--erp-text-muted);
-  background: rgba(200, 184, 232, 0.15);
-  border: 1px solid rgba(200, 184, 232, 0.25);
-  border-radius: 20px;
-  padding: 4px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--erp-text-body);
+  background: rgba(200, 184, 232, 0.1);
+  border: 1.5px solid rgba(200, 184, 232, 0.2);
+  border-radius: 14px;
+  padding: 14px 20px;
   cursor: pointer;
   transition: all 0.2s;
+  text-align: left;
 }
 
-.erp-date-pill:hover {
-  background: rgba(200, 184, 232, 0.25);
+.erp-date-option:hover {
+  background: rgba(200, 184, 232, 0.2);
+  border-color: rgba(200, 184, 232, 0.4);
 }
 
-.erp-date-pill-label {
-  pointer-events: none;
+.erp-date-option.selected {
+  background: var(--erp-purple);
+  color: #1a1a2e;
+  border-color: var(--erp-purple);
+  font-weight: 600;
 }
 
-.erp-date-pill-input {
+.erp-date-today {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--erp-text-dark);
+  background: rgba(200, 184, 232, 0.18);
+  border-color: rgba(200, 184, 232, 0.3);
+}
+
+.erp-date-calendar {
+  color: var(--erp-text-muted);
+  font-size: 14px;
+  position: relative;
+}
+
+.erp-date-hidden-input {
   position: absolute;
   inset: 0;
   opacity: 0;
   width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 
