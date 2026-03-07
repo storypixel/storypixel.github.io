@@ -244,6 +244,42 @@ function VoiceButton() {
   );
 }
 
+// --- Date Pill ---
+function DatePill({ exposureDate, onChange }) {
+  const [editing, setEditing] = useState(false);
+  const inputRef = useRef(null);
+  const today = new Date().toISOString().slice(0, 10);
+  const isToday = exposureDate === today;
+
+  const label = isToday
+    ? 'Today'
+    : new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.showPicker();
+    }
+    setEditing(true);
+  };
+
+  return (
+    <button className="erp-date-pill" onClick={handleClick}>
+      <span className="erp-date-pill-label">{label}</span>
+      <input
+        ref={inputRef}
+        type="date"
+        className="erp-date-pill-input"
+        value={exposureDate}
+        onChange={(e) => {
+          onChange(e.target.value);
+          setEditing(false);
+        }}
+        onBlur={() => setEditing(false)}
+      />
+    </button>
+  );
+}
+
 // --- Progress Dots ---
 function ProgressDots({ current, total }) {
   return (
@@ -391,22 +427,12 @@ export default function ERPPrototype() {
     <div className="erp-card" key="trigger">
       <div className="erp-nav">
         <span />
-        <span />
+        <DatePill exposureDate={exposureDate} onChange={setExposureDate} />
       </div>
       <div className="erp-card-header">
         <p className="erp-card-step">Step 1 of 6</p>
         <h2 className="erp-card-title">What triggered you?</h2>
         <p className="erp-card-subtitle">Tap all that apply</p>
-      </div>
-      <div className="erp-date-row">
-        <label className="erp-date-label" htmlFor="exposure-date">Date</label>
-        <input
-          id="exposure-date"
-          type="date"
-          className="erp-date-input"
-          value={exposureDate}
-          onChange={(e) => setExposureDate(e.target.value)}
-        />
       </div>
       <SiriWaveBubble active={triggers.length > 0} />
       <ChipGroup
@@ -585,7 +611,7 @@ export default function ERPPrototype() {
         <div className="erp-review-list">
           <button className="erp-review-section" onClick={() => goTo(0)}>
             <span className="erp-review-label">Date</span>
-            <span className="erp-review-items">{new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+            <span className="erp-review-items">{exposureDate === new Date().toISOString().slice(0, 10) ? 'Today' : new Date(exposureDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
             <span className="erp-review-edit">Edit</span>
           </button>
           <ReviewSection label="Triggers" items={triggers} onTap={() => goTo(0)} />
