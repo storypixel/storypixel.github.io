@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLenis } from 'lenis/react';
 import SiriWave from 'siriwave';
 import './ERPPrototype.css';
 
@@ -18,7 +17,6 @@ const CARD_NOTES = [
     notes: [
       '"Something else" opens a free-text field so users aren\'t limited to presets',
       'Chip list grows over time as user adds custom triggers — becomes personalized',
-      'Chips are also admin-controlled — therapist can curate the preset list per patient from a dashboard',
       'Bubble icon changes from ? to ! when a trigger is selected (feedback)',
     ],
   },
@@ -292,48 +290,10 @@ function ReviewSection({ label, items, onTap }) {
 // Main Prototype
 // ======================
 export default function ERPPrototype() {
-  // Disable Lenis smooth scroll — this page manages its own layout
-  const lenis = useLenis();
-  useEffect(() => {
-    if (lenis) lenis.stop();
-    // Force height chain for mobile full-bleed
-    const html = document.documentElement;
-    const body = document.body;
-    const root = document.getElementById('root');
-    const els = [html, body, root].filter(Boolean);
-    els.forEach(el => {
-      el.style.setProperty('height', '100%', 'important');
-      el.style.setProperty('overflow', 'hidden', 'important');
-    });
-    // Also target Lenis wrapper if present
-    const lenisWrapper = document.querySelector('[data-lenis-wrapper]');
-    if (lenisWrapper) {
-      lenisWrapper.style.setProperty('height', '100%', 'important');
-      lenisWrapper.style.setProperty('overflow', 'hidden', 'important');
-    }
-    const lenisContent = document.querySelector('[data-lenis-content]');
-    if (lenisContent) {
-      lenisContent.style.setProperty('height', '100%', 'important');
-    }
-    return () => {
-      if (lenis) lenis.start();
-      els.forEach(el => {
-        el.style.removeProperty('height');
-        el.style.removeProperty('overflow');
-      });
-      if (lenisWrapper) {
-        lenisWrapper.style.removeProperty('height');
-        lenisWrapper.style.removeProperty('overflow');
-      }
-      if (lenisContent) {
-        lenisContent.style.removeProperty('height');
-      }
-    };
-  }, [lenis]);
-
   const [card, setCard] = useState(0);
   const [direction, setDirection] = useState(1);
   const returnToReview = useRef(false);
+  const [hint, setHint] = useState(null);
 
   // Card data
   const [triggers, setTriggers] = useState([]);
@@ -351,6 +311,7 @@ export default function ERPPrototype() {
   const [note, setNote] = useState('');
 
   // Swipe detection
+  const touchStartY = useRef(null);
   const containerRef = useRef(null);
 
   const goTo = useCallback((target) => {
@@ -398,7 +359,17 @@ export default function ERPPrototype() {
     setNote('');
   };
 
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
 
+  const handleTouchEnd = (e) => {
+    if (touchStartY.current === null) return;
+    const diff = touchStartY.current - e.changedTouches[0].clientY;
+    touchStartY.current = null;
+    if (diff > 60) goNext();
+    else if (diff < -60) goBack();
+  };
 
   const toggleItem = (list, setList, allItems, setAllItems) => (item) => {
     if (list.includes(item)) {
@@ -429,11 +400,37 @@ export default function ERPPrototype() {
       <ChipGroup
         items={triggerItems}
         selected={triggers}
-        onToggle={toggleItem(triggers, setTriggers, triggerItems, setTriggerItems)}
+        onToggle={(item) => {
+          setHint(null);
+          toggleItem(triggers, setTriggers, triggerItems, setTriggerItems)(item);
+        }}
         showAdd
         addPlaceholder="Add trigger..."
       />
-      <button className="erp-next-btn" onClick={goNext} disabled={triggers.length === 0}>
+      <AnimatePresence>
+        {hint && (
+          <motion.p
+            className="erp-hint"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.25 }}
+          >
+            {hint}
+          </motion.p>
+        )}
+      </AnimatePresence>
+      <button
+        className="erp-next-btn"
+        onClick={() => {
+          if (triggers.length === 0) {
+            setHint('Tap one or more triggers above to continue');
+          } else {
+            setHint(null);
+            goNext();
+          }
+        }}
+      >
         Next
       </button>
     </div>,
@@ -626,6 +623,8 @@ export default function ERPPrototype() {
           <div
             className="erp-card-container"
             ref={containerRef}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div

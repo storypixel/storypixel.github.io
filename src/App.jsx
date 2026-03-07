@@ -12,7 +12,7 @@ import ThoughtsPage from './components/ThoughtsPage';
 import ThoughtPost from './components/ThoughtPost';
 import ScrollToTop from './components/ScrollToTop';
 import PasswordGate from './components/clients/PasswordGate';
-import ERPPrototype from './components/clients/ERPPrototype';
+import ERPDemo from './components/clients/ERPDemo';
 
 // Lazy-load heavy 3D pages (Three.js ~1.2MB)
 const AboutPage = lazy(() => import('./components/AboutPage'));
@@ -48,7 +48,7 @@ function App() {
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
-                                <ERPPrototype />
+                                <ERPDemo />
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />

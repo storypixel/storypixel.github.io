@@ -1,0 +1,645 @@
+/* ============================================
+   OCD ERP Tracker — Admin / Therapist View
+   ============================================ */
+
+/* --- Admin Header Bar --- */
+.admin-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 0 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.admin-header-label {
+  font-family: var(--erp-font);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--erp-text-muted);
+}
+
+.admin-header-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--erp-purple);
+  opacity: 0.4;
+}
+
+/* --- Patient List --- */
+.admin-patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.admin-patient-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  font-family: var(--erp-font);
+  background: var(--erp-card-bg);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(200, 184, 232, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-patient-card:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.admin-patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--erp-chip-selected);
+  color: white;
+  font-family: var(--erp-font);
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-patient-avatar.large {
+  width: 56px;
+  height: 56px;
+  font-size: 18px;
+}
+
+/* --- Avatar Edit Badge --- */
+.admin-patient-avatar.has-edit {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.admin-patient-avatar.has-edit:active {
+  transform: scale(0.9);
+}
+
+.admin-avatar-edit-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--erp-text-body);
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-patient-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-patient-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--erp-text-dark);
+}
+
+.admin-patient-meta {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--erp-text-body);
+}
+
+.admin-patient-last {
+  font-size: 12px;
+  color: var(--erp-text-muted);
+}
+
+.admin-patient-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* --- Add Patient Button --- */
+.admin-add-patient-btn {
+  font-family: var(--erp-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--erp-text-body);
+  background: none;
+  border: 2px dashed rgba(200, 184, 232, 0.3);
+  border-radius: 16px;
+  padding: 18px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.admin-add-patient-btn:hover {
+  border-color: var(--erp-purple);
+  color: var(--erp-text-dark);
+}
+
+.admin-add-patient-btn:active {
+  transform: scale(0.98);
+}
+
+/* --- Trend Badge --- */
+.admin-trend-badge {
+  font-family: var(--erp-font);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* --- Mini Chart --- */
+.admin-mini-chart {
+  display: block;
+}
+
+/* --- Patient Header --- */
+.admin-patient-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.admin-patient-header .erp-card-title {
+  margin-bottom: 4px;
+}
+
+/* --- Stats Row --- */
+.admin-stats-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.admin-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--erp-card-bg);
+  backdrop-filter: blur(4px);
+  border-radius: 14px;
+  padding: 14px 8px;
+  border: 1px solid rgba(200, 184, 232, 0.15);
+}
+
+.admin-stat-num {
+  font-family: var(--erp-font);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--erp-text-dark);
+}
+
+.admin-stat-label {
+  font-family: var(--erp-font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--erp-text-muted);
+  text-align: center;
+}
+
+/* --- Tab Bar --- */
+.admin-tab-bar {
+  display: flex;
+  gap: 4px;
+  background: rgba(138, 120, 180, 0.08);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.admin-tab {
+  flex: 1;
+  font-family: var(--erp-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-tab.active {
+  background: white;
+  color: var(--erp-text-dark);
+  box-shadow: 0 2px 8px rgba(100, 80, 160, 0.1);
+}
+
+/* --- Session List --- */
+.admin-session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-session-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  font-family: var(--erp-font);
+  background: var(--erp-card-bg);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(200, 184, 232, 0.15);
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-session-card:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.admin-session-top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-session-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+}
+
+.admin-session-triggers {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erp-text-dark);
+}
+
+/* --- Anxiety Bar --- */
+.admin-anxiety-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-anxiety-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-anxiety-bar-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--erp-text-muted);
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.admin-anxiety-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(138, 120, 180, 0.1);
+  overflow: hidden;
+}
+
+.admin-anxiety-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.admin-anxiety-bar-fill.blue {
+  background: linear-gradient(90deg, #b8d4f0, #a8c4e8);
+}
+
+.admin-anxiety-bar-fill.green {
+  background: linear-gradient(90deg, #68b88a, #58a87a);
+}
+
+.admin-anxiety-bar-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--erp-text-dark);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.admin-anxiety-diff {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--erp-green);
+  text-align: right;
+}
+
+/* --- Config Section --- */
+.admin-config-section {
+  margin-bottom: 8px;
+}
+
+.admin-custom-chip {
+  border: 1.5px dashed rgba(255, 255, 255, 0.3) !important;
+}
+
+.admin-chips-tab {
+  padding-bottom: 16px;
+}
+
+/* --- Profile Tab --- */
+.admin-profile-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-profile-tab .admin-form {
+  margin-bottom: 16px;
+}
+
+/* --- Empty State --- */
+.admin-empty-state {
+  font-family: var(--erp-font);
+  font-size: 14px;
+  color: var(--erp-text-muted);
+  text-align: center;
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* --- Form --- */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.admin-form-label {
+  font-family: var(--erp-font);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--erp-text-muted);
+  margin-top: 12px;
+}
+
+.admin-form-label:first-child {
+  margin-top: 0;
+}
+
+.admin-form-input {
+  font-family: var(--erp-font);
+  font-size: 16px;
+  color: var(--erp-text-dark);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(200, 184, 232, 0.25);
+  border-radius: 14px;
+  padding: 14px 18px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.admin-form-input:focus {
+  border-color: var(--erp-purple);
+}
+
+.admin-form-input::placeholder {
+  color: var(--erp-text-muted);
+}
+
+/* --- Info Tab --- */
+.admin-info-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(200, 184, 232, 0.15);
+}
+
+.admin-info-label {
+  font-family: var(--erp-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+}
+
+.admin-info-value {
+  font-family: var(--erp-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erp-text-dark);
+}
+
+.admin-info-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* --- Action Buttons --- */
+.admin-action-btn {
+  font-family: var(--erp-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--erp-text-body);
+  background: var(--erp-card-bg);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(200, 184, 232, 0.2);
+  border-radius: var(--erp-radius-chip);
+  padding: 14px 24px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-action-btn:active {
+  transform: scale(0.97);
+}
+
+.admin-action-btn.warning {
+  color: #c89040;
+  border-color: rgba(200, 144, 64, 0.2);
+}
+
+.admin-action-btn.warning:active {
+  background: rgba(200, 144, 64, 0.08);
+}
+
+.admin-action-btn.restore {
+  color: var(--erp-green);
+  border-color: rgba(104, 184, 138, 0.2);
+}
+
+.admin-action-btn.restore:active {
+  background: rgba(104, 184, 138, 0.08);
+}
+
+.admin-action-btn.danger {
+  color: #d45050;
+  border-color: rgba(212, 80, 80, 0.2);
+}
+
+.admin-action-btn.danger:active {
+  background: rgba(212, 80, 80, 0.08);
+}
+
+/* --- Invite Options --- */
+.admin-invite-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-invite-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  font-family: var(--erp-font);
+  background: var(--erp-card-bg);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(200, 184, 232, 0.2);
+  border-radius: 16px;
+  padding: 18px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-invite-btn:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.admin-invite-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #b8d4f0, #c8b8e8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-invite-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-invite-method {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--erp-text-dark);
+}
+
+.admin-invite-detail {
+  font-size: 13px;
+  color: var(--erp-text-muted);
+}
+
+/* --- Archived Section --- */
+.admin-archived-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--erp-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--erp-text-muted);
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(200, 184, 232, 0.15);
+  padding: 14px 4px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.admin-archived-toggle:active {
+  opacity: 0.7;
+}
+
+.admin-archived-chevron {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.admin-archived-chevron.open {
+  transform: rotate(180deg);
+}
+
+.admin-archived-list {
+  margin-bottom: 16px;
+}
+
+.admin-patient-card.archived {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
+.admin-patient-avatar.archived {
+  background: rgba(138, 120, 180, 0.2);
+  color: var(--erp-text-muted);
+}
+
+/* --- Toast --- */
+.admin-toast {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  font-family: var(--erp-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: var(--erp-text-dark);
+  border-radius: 14px;
+  padding: 14px 20px;
+  text-align: center;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}

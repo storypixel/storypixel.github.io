@@ -5,8 +5,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
-/* --- Prototype Layout (phone + notes side by side) --- */
-.erp-prototype-layout {
+/* --- Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+/* --- Design Tokens --- */
+:root {
   --erp-font: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
   --erp-bg: linear-gradient(180deg, #e8f0f8, #f4eefa);
   --erp-blue: #b8d4f0;
@@ -23,16 +36,18 @@
   --erp-radius-chip: 28px;
   --erp-radius-card: 20px;
   --erp-radius-circle: 50%;
+}
 
+/* --- Prototype Layout (phone + notes side by side) --- */
+.erp-prototype-layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
-  height: 100vh;
+  height: 100%;
   background: #1a1a2e;
   padding: 2rem;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 @media (max-width: 800px) {
@@ -95,7 +110,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
 .erp-card::-webkit-scrollbar {
@@ -471,6 +485,20 @@
 .erp-next-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* --- Hint Message --- */
+.erp-hint {
+  font-family: var(--erp-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erp-text-muted);
+  text-align: center;
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  background: rgba(200, 184, 232, 0.12);
+  border-radius: 12px;
+  line-height: 1.4;
 }
 
 /* --- Trigger Card (Card 1) --- */
