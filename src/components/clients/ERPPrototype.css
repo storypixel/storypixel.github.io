@@ -223,48 +223,107 @@ html, body, #root {
 .erp-date-options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.erp-date-option {
-  font-family: var(--erp-font);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--erp-text-body);
-  background: rgba(200, 184, 232, 0.1);
-  border: 1.5px solid rgba(200, 184, 232, 0.2);
-  border-radius: 14px;
-  padding: 14px 20px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: left;
-}
-
-.erp-date-option:hover {
-  background: rgba(200, 184, 232, 0.2);
-  border-color: rgba(200, 184, 232, 0.4);
-}
-
-.erp-date-option.selected {
-  background: var(--erp-purple);
-  color: #1a1a2e;
-  border-color: var(--erp-purple);
-  font-weight: 600;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .erp-date-today {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--erp-text-dark);
-  background: rgba(200, 184, 232, 0.18);
-  border-color: rgba(200, 184, 232, 0.3);
+  font-family: var(--erp-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(200, 184, 232, 0.15);
+  border: none;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.erp-date-calendar {
+.erp-date-today:active {
+  background: rgba(200, 184, 232, 0.3);
+}
+
+.erp-date-today.selected {
+  background: rgba(200, 184, 232, 0.25);
+}
+
+.erp-date-today-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--erp-text-dark);
+}
+
+.erp-date-today-sub {
+  font-size: 13px;
+  font-weight: 500;
   color: var(--erp-text-muted);
-  font-size: 14px;
+}
+
+.erp-date-recents {
+  background: rgba(200, 184, 232, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.erp-date-recent {
+  font-family: var(--erp-font);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 13px 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(200, 184, 232, 0.12);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.erp-date-recent:last-child {
+  border-bottom: none;
+}
+
+.erp-date-recent:active,
+.erp-date-recent.selected {
+  background: rgba(200, 184, 232, 0.15);
+}
+
+.erp-date-recent-day {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--erp-text-body);
+  flex: 1;
+  text-align: left;
+}
+
+.erp-date-recent-date {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--erp-text-muted);
+  margin-right: 8px;
+}
+
+.erp-date-recent-chevron {
+  font-size: 18px;
+  color: rgba(200, 184, 232, 0.5);
+  font-weight: 300;
+}
+
+.erp-date-other {
+  font-family: var(--erp-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.erp-date-other-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erp-text-muted);
 }
 
 .erp-date-hidden-input {

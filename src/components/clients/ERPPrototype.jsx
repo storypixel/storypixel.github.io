@@ -417,22 +417,27 @@ export default function ERPPrototype() {
       </div>
       <div className="erp-date-options">
         <button
-          className={`erp-date-option erp-date-today ${exposureDate === today ? 'selected' : ''}`}
-          onClick={() => { setExposureDate(today); goNext(); }}
+          className={`erp-date-today ${exposureDate === today ? 'selected' : ''}`}
+          onClick={() => setExposureDate(today)}
         >
-          Today
+          <span className="erp-date-today-label">Today</span>
+          <span className="erp-date-today-sub">{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
         </button>
-        {recentDays.map((d) => (
-          <button
-            key={d.value}
-            className={`erp-date-option ${exposureDate === d.value ? 'selected' : ''}`}
-            onClick={() => { setExposureDate(d.value); goNext(); }}
-          >
-            {d.label}
-          </button>
-        ))}
-        <label className="erp-date-option erp-date-calendar">
-          Pick a date...
+        <div className="erp-date-recents">
+          {recentDays.map((d, i) => (
+            <button
+              key={d.value}
+              className={`erp-date-recent ${exposureDate === d.value ? 'selected' : ''}`}
+              onClick={() => setExposureDate(d.value)}
+            >
+              <span className="erp-date-recent-day">{d.label}</span>
+              <span className="erp-date-recent-date">{new Date(d.value + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+              <span className="erp-date-recent-chevron">&rsaquo;</span>
+            </button>
+          ))}
+        </div>
+        <label className="erp-date-other">
+          <span className="erp-date-other-label">Other date...</span>
           <input
             type="date"
             className="erp-date-hidden-input"
@@ -441,6 +446,9 @@ export default function ERPPrototype() {
           />
         </label>
       </div>
+      <button className="erp-next-btn" onClick={goNext}>
+        Next
+      </button>
     </div>,
 
     // Card 1: Trigger
