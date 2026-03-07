@@ -5,6 +5,34 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 import { getPost } from '../data/posts';
 
+// Parse simple markdown-style links [text](url) into clickable elements
+function RichText({ children }) {
+    if (typeof children !== 'string') return children;
+    const parts = children.split(/(\[[^\]]+\]\([^)]+\))/g);
+    return parts.map((part, i) => {
+        const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+        if (match) {
+            return (
+                <a
+                    key={i}
+                    href={match[2]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                        color: 'var(--text-color)',
+                        borderBottom: '1px solid var(--text-secondary)',
+                        paddingBottom: '1px',
+                        transition: 'border-color 0.2s ease',
+                    }}
+                >
+                    {match[1]}
+                </a>
+            );
+        }
+        return <span key={i}>{part}</span>;
+    });
+}
+
 const ThoughtPost = () => {
     const { slug } = useParams();
     const post = getPost(slug);
@@ -118,7 +146,7 @@ const ThoughtPost = () => {
                                             maxWidth: '55ch',
                                         }}>
                                             {section.paragraphs.map((para, i) => (
-                                                <p key={i}>{para}</p>
+                                                <p key={i}><RichText>{para}</RichText></p>
                                             ))}
                                         </div>
                                     </div>
@@ -294,7 +322,7 @@ const ThoughtPost = () => {
                                 }}
                             >
                                 <span style={{ gridColumn: '1 / -1' }}>
-                                    {section.text}
+                                    <RichText>{section.text}</RichText>
                                 </span>
                             </motion.div>
                         );

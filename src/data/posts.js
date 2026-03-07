@@ -20,26 +20,26 @@ export const posts = [
                 type: 'text',
                 label: 'Claude Code',
                 paragraphs: [
-                    'The two headliners: /loop and /remote-control. The /loop command lets you schedule recurring prompts inside a session — "check this deployment every 5 minutes" or "remind me at 3pm." It\'s cron for your coding session, built on CronCreate/CronList/CronDelete tools. The catch: it\'s session-scoped. Close the terminal, lose the schedule.',
-                    '/remote-control is the bigger deal for daily use. Start a Claude Code session on your desktop, type /remote-control, and you get a URL you can open on your phone. Full session handoff — approve permissions, see output, give input, all from mobile. This is Anthropic\'s answer to "how do I use my coding agent when I\'m not at my desk."',
-                    'Other notable fixes: prompt cache preservation during compaction (cheaper long sessions), 74% reduction in prompt re-renders, VS Code spark icon for session management, and native MCP server management via /mcp in VS Code. They also fixed the annoying API 400 errors with third-party gateways.',
+                    'The two headliners: [/loop](https://code.claude.com/docs/en/scheduled-tasks) and [/remote-control](https://winbuzzer.com/2026/02/28/anthropic-remote-control-claude-code-mobile-access-xcxwbn/). The /loop command lets you schedule recurring prompts inside a session — "check this deployment every 5 minutes" or "remind me at 3pm." It\'s cron for your coding session, built on CronCreate/CronList/CronDelete tools. The catch: it\'s session-scoped. Close the terminal, lose the schedule.',
+                    '/remote-control is the bigger deal for daily use. Start a [Claude Code](https://code.claude.com) session on your desktop, type /remote-control, and you get a URL you can open on your phone. Full session handoff — approve permissions, see output, give input, all from mobile. This is Anthropic\'s answer to "how do I use my coding agent when I\'m not at my desk."',
+                    'Other notable fixes: prompt cache preservation during compaction (cheaper long sessions), 74% reduction in prompt re-renders, VS Code spark icon for session management, and native MCP server management via /mcp in VS Code. They also fixed the annoying API 400 errors with third-party gateways. [Full release notes here.](https://releasebot.io/updates/anthropic/claude-code)',
                 ],
             },
             {
                 type: 'text',
                 label: 'OpenClaw',
                 paragraphs: [
-                    'Version 2026.3.2 landed. The release continues the pattern of steady infrastructure improvements — better session management, more reliable cron delivery, and channel stability. OpenClaw\'s strength remains what Claude Code can\'t do natively: persistent 24/7 operation, multi-channel messaging (Telegram, Signal, Discord, 20+ channels), durable cron jobs that survive restarts, and multi-agent orchestration.',
-                    'The Anthropic skills repo also went public this week with official skill templates including an MCP builder skill. Worth browsing if you\'re writing skills for either platform.',
+                    '[OpenClaw](https://github.com/openclaw/openclaw) version 2026.3.2 landed. The release continues the pattern of steady infrastructure improvements — better session management, more reliable cron delivery, and channel stability. OpenClaw\'s strength remains what Claude Code can\'t do natively: persistent 24/7 operation, multi-channel messaging (Telegram, Signal, Discord, 20+ channels), durable cron jobs that survive restarts, and multi-agent orchestration.',
+                    'The [Anthropic skills repo](https://github.com/anthropics/skills) also went public this week with official skill templates including an MCP builder skill. Worth browsing if you\'re writing skills for either platform.',
                 ],
             },
             {
                 type: 'text',
                 label: 'Ecosystem',
                 paragraphs: [
-                    'The planning-with-files pattern from OthmanAdi hit 6,600+ stars — it\'s the Manus approach to persistent planning: write your plan to files, not memory. Context window is RAM, filesystem is disk. Simple idea, surprisingly effective.',
-                    'VoltAgent dropped awesome-claude-code-subagents with 100+ specialized agent templates (security auditor, code reviewer, debugger, devops engineer, multi-agent coordinator). Good reference library for anyone spawning sub-agents.',
-                    'The "replace OpenClaw" discourse kicked off on r/ClaudeCode. Someone posted that /remote-control "negates the need for OpenClaw." The verdict from builders actually running both: Claude Code is great for coding sessions you want to access from your phone. OpenClaw is for always-on personal agents with messaging, scheduling, and multi-agent comms. Different tools, different jobs. You can run both.',
+                    'The [planning-with-files](https://github.com/OthmanAdi/planning-with-files) pattern from OthmanAdi hit 6,600+ stars — it\'s the Manus approach to persistent planning: write your plan to files, not memory. Context window is RAM, filesystem is disk. Simple idea, surprisingly effective.',
+                    '[VoltAgent](https://github.com/VoltAgent/awesome-claude-code-subagents) dropped awesome-claude-code-subagents with 100+ specialized agent templates (security auditor, code reviewer, debugger, devops engineer, multi-agent coordinator). Good reference library for anyone spawning sub-agents.',
+                    'The "replace OpenClaw" discourse [kicked off on r/ClaudeCode](https://www.reddit.com/r/ClaudeCode/comments/1rew8t0/remotecontrol_negates_the_need_for_openclaw/). Someone posted that /remote-control "negates the need for OpenClaw." The verdict from builders actually running both: Claude Code is great for coding sessions you want to access from your phone. OpenClaw is for always-on personal agents with messaging, scheduling, and multi-agent comms. Different tools, different jobs. You can run both.',
                 ],
             },
             {
