@@ -18,7 +18,7 @@ const PhoneModel = ({ screenshots }) => {
 
     // Use a placeholder if no texture, but try-catch in case of load error?
     // useTexture will suspend.
-    const texture = useTexture(textureUrl || '/images/calcuweighter-main.png');
+    const texture = useTexture(textureUrl || '/images/calcuweight-main.png');
 
     // Set texture properties immediately
     if (texture) {

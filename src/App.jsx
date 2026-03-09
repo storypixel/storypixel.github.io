@@ -44,7 +44,7 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/privacy" element={<Privacy />} />
-                        <Route path="/calcuweighter" element={<CalcuweightPromo />} />
+                        <Route path="/calcuweight" element={<CalcuweightPromo />} />
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">

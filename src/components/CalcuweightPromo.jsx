@@ -41,7 +41,7 @@ const CalcuweightPromo = () => {
                     borderRadius: '16px',
                     overflow: 'hidden',
                     background: '#000'
-                }} className="calcuweighter-hero-section">
+                }} className="calcuweight-hero-section">
                     {/* Collage Background */}
                     <div style={{
                         position: 'absolute',
@@ -55,10 +55,10 @@ const CalcuweightPromo = () => {
                         filter: 'grayscale(100%) brightness(0.7)'
                     }}>
                         {[
-                            '/images/calcuweighter-model-1.png',
-                            '/images/calcuweighter-model-2.png',
-                            '/images/calcuweighter-model-3.png',
-                            '/images/calcuweighter-model-4.png'
+                            '/images/calcuweight-model-1.png',
+                            '/images/calcuweight-model-2.png',
+                            '/images/calcuweight-model-3.png',
+                            '/images/calcuweight-model-4.png'
                         ].map((src, i) => (
                             <div key={i} style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
                                 <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -75,7 +75,7 @@ const CalcuweightPromo = () => {
                     </div>
 
                     {/* Content Overlay */}
-                    <div className="calcuweighter-hero-grid">
+                    <div className="calcuweight-hero-grid">
                         {/* Left: Text */}
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <motion.h1 variants={item} style={{
@@ -114,12 +114,12 @@ const CalcuweightPromo = () => {
                         </div>
 
                         {/* Right: 3D Phone */}
-                        <div className="calcuweighter-phone">
+                        <div className="calcuweight-phone">
                             <Phone3D screenshots={[
-                                '/images/calcuweighter/01-onboarding.png',
-                                '/images/calcuweighter/05-main-workout.png',
-                                '/images/calcuweighter/06-percentage-grid.png',
-                                '/images/calcuweighter/07-multiple-lifts.png'
+                                '/images/calcuweight/01-onboarding.png',
+                                '/images/calcuweight/05-main-workout.png',
+                                '/images/calcuweight/06-percentage-grid.png',
+                                '/images/calcuweight/07-multiple-lifts.png'
                             ]} />
                         </div>
                     </div>

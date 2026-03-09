@@ -239,7 +239,7 @@ html.lenis {
 }
 
 /* CalcuweightPromo hero grid */
-.calcuweighter-hero-grid {
+.calcuweight-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
@@ -250,7 +250,7 @@ html.lenis {
   z-index: 1;
 }
 
-.calcuweighter-phone {
+.calcuweight-phone {
   height: 600px;
   display: flex;
   align-items: center;
@@ -258,7 +258,7 @@ html.lenis {
 }
 
 @media (max-width: 768px) {
-  .calcuweighter-hero-grid {
+  .calcuweight-hero-grid {
     grid-template-columns: 1fr;
     padding: 1.5rem;
     align-items: flex-start;
@@ -266,11 +266,11 @@ html.lenis {
     padding-bottom: 3rem;
   }
 
-  .calcuweighter-phone {
+  .calcuweight-phone {
     height: 350px;
   }
 
-  .calcuweighter-hero-section {
+  .calcuweight-hero-section {
     margin-left: 1rem !important;
     margin-right: 1rem !important;
   }
