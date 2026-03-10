@@ -77,7 +77,7 @@ const CalcuweightPromo = () => {
                     {/* Content Overlay */}
                     <div className="calcuweight-hero-grid">
                         {/* Left: Text */}
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
                             <motion.h1 variants={item} style={{
                                 fontSize: 'clamp(3rem, 5vw, 4.5rem)',
                                 fontWeight: 400,
@@ -97,7 +97,7 @@ const CalcuweightPromo = () => {
                                 The ultimate percentage calculator for strength training. Get instant plate math via voice, camera, or touch.
                             </motion.p>
                             <motion.div variants={item}>
-                                <a href="https://apps.apple.com/app/id6756983846" style={{
+                                <a href="https://apps.apple.com/app/id6756983846" target="_blank" rel="noopener noreferrer" style={{
                                     display: 'inline-block',
                                     background: '#fff',
                                     color: '#000',
@@ -106,7 +106,9 @@ const CalcuweightPromo = () => {
                                     fontWeight: 500,
                                     textDecoration: 'none',
                                     fontSize: '1rem',
-                                    whiteSpace: 'nowrap'
+                                    whiteSpace: 'nowrap',
+                                    position: 'relative',
+                                    zIndex: 10
                                 }}>
                                     Get Calcuweight
                                 </a>
