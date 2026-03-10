@@ -79,7 +79,7 @@ const CalcuweightPromo = () => {
                         {/* Left: Text */}
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
                             <motion.h1 variants={item} style={{
-                                fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                                fontSize: 'clamp(2rem, 8vw, 4.5rem)',
                                 fontWeight: 400,
                                 lineHeight: 1.1,
                                 marginBottom: '1.5rem',
@@ -88,9 +88,9 @@ const CalcuweightPromo = () => {
                                 Focus on Lifting,<br />Not Math
                             </motion.h1>
                             <motion.p variants={item} style={{
-                                fontSize: '1.1rem',
+                                fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                                 color: 'rgba(255,255,255,0.7)',
-                                maxWidth: '90%',
+                                maxWidth: '100%',
                                 marginBottom: '2.5rem',
                                 lineHeight: 1.6
                             }}>
@@ -149,7 +149,7 @@ const CalcuweightPromo = () => {
                             { number: '01', title: 'Photo Magic', text: "Snap the gym's whiteboard. App reads percentages and calculates your weights." },
                             { number: '02', title: 'Voice Input', text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and see your plate breakdowns instantly. Completely hands-free.' },
                             { number: '03', title: 'Zero Mental Math', text: 'Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.' }
-                        ].map((feature, i) => (
+                        ].map((feature, i, arr) => (
                             <motion.div
                                 key={i}
                                 className="content-grid"
@@ -158,7 +158,7 @@ const CalcuweightPromo = () => {
                                 viewport={{ once: true, margin: "-10%" }}
                                 transition={{ duration: 0.6, delay: i * 0.1 }}
                                 style={{
-                                    borderBottom: '1px solid var(--border-color)',
+                                    borderBottom: i < arr.length - 1 ? '1px solid var(--border-color)' : 'none',
                                     paddingTop: '2rem',
                                     paddingBottom: '2rem',
                                 }}
@@ -297,15 +297,10 @@ const CalcuweightPromo = () => {
                                 maxWidth: '55ch',
                             }}>
                                 <p>
-                                    Having trouble with Calcuweight? Here are a few tips:
+                                    I built this and I actually want to hear from you if something's off. Shoot me an email and I'll get back to you.
                                 </p>
-                                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                    <li><strong style={{ color: 'var(--text-primary)' }}>Camera not reading text?</strong> Ensure good lighting and hold the phone steady.</li>
-                                    <li><strong style={{ color: 'var(--text-primary)' }}>Voice not working?</strong> Grant microphone access when the app prompts you.</li>
-                                    <li><strong style={{ color: 'var(--text-primary)' }}>Something else?</strong> Try deleting and reinstalling the app.</li>
-                                </ul>
                                 <p>
-                                    Still stuck? Reach out at <a href="mailto:sam@iamnotsam.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>sam@iamnotsam.com</a>
+                                    <a href="mailto:sam@iamnotsam.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>sam@iamnotsam.com</a>
                                 </p>
                             </div>
                         </div>
@@ -319,7 +314,7 @@ const CalcuweightPromo = () => {
                     fontSize: '0.85rem',
                     color: 'var(--text-secondary)',
                 }}>
-                    <Link to="/privacy" style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+                    <Link to="/privacy" style={{ textDecoration: 'underline', textUnderlineOffset: '2px', whiteSpace: 'nowrap' }}>
                         Privacy Policy
                     </Link>
                 </div>

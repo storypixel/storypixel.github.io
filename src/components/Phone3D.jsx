@@ -146,7 +146,7 @@ const Phone3D = ({ screenshots }) => {
             >
                 <Suspense fallback={null}>
                     {/* Stage creates a nice studio environment and centers/scales the model */}
-                    <Stage environment="city" intensity={1.0} adjustCamera={0.8}>
+                    <Stage environment="city" intensity={1.0} adjustCamera={0.9}>
                         <PhoneModel screenshots={screenshots} />
                     </Stage>
                 </Suspense>
