@@ -251,7 +251,7 @@ html.lenis {
 }
 
 .calcuweight-phone {
-  height: 600px;
+  height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,7 +267,7 @@ html.lenis {
   }
 
   .calcuweight-phone {
-    height: 350px;
+    height: 500px;
   }
 
   .calcuweight-hero-section {

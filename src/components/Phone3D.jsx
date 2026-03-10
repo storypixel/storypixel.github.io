@@ -135,7 +135,7 @@ const Phone3D = ({ screenshots }) => {
     if (!screenshots && !window.location.href.includes('localhost')) return null;
 
     return (
-        <div style={{ width: '100%', height: '100%', minHeight: '600px', cursor: 'grab' }}>
+        <div style={{ width: '100%', height: '100%', minHeight: '500px', cursor: 'grab' }}>
             <Canvas
                 gl={{
                     preserveDrawingBuffer: true,
@@ -146,7 +146,7 @@ const Phone3D = ({ screenshots }) => {
             >
                 <Suspense fallback={null}>
                     {/* Stage creates a nice studio environment and centers/scales the model */}
-                    <Stage environment="city" intensity={1.0} adjustCamera={1.2}>
+                    <Stage environment="city" intensity={1.0} adjustCamera={0.8}>
                         <PhoneModel screenshots={screenshots} />
                     </Stage>
                 </Suspense>
