@@ -2,6 +2,61 @@
 
 export const posts = [
     {
+        slug: 'ai-roundup-2026-03-20',
+        title: 'AI Roundup — Week of March 20, 2026',
+        date: '2026-03-20',
+        dateDisplay: 'March 2026',
+        excerpt: 'Claude gets memory for everyone, Opus 4.6 hits 128k output, voice mode lands in Claude Code, and Anthropic doubles usage limits through March 27.',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Anthropic had a monster week. Memory went GA for all users, Claude Code got voice mode and a massive token ceiling bump, and they\'re running a usage limit doubler through March 27. Meanwhile, OpenAI shipped GPT-5.4 mini and Google dropped Gemini 3.1 Flash-Lite. The pace is relentless.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Platform',
+                paragraphs: [
+                    'The headline: [memory from chat history](https://support.claude.com/en/articles/12138966-release-notes) is now available for all Claude users, including free tier. Claude remembers your name, writing style, preferences, and ongoing projects across conversations. For anyone using Claude daily, this is a fundamental shift in the experience.',
+                    'Self-serve Enterprise plans are now live — any org can purchase directly on Anthropic\'s site with no sales call required. Plans include Claude, Claude Code, and Cowork.',
+                    'Usage limits are [doubled across all plans](https://releasebot.io/updates/anthropic/claude) (Free, Pro, Max, Team) from March 15-27 during non-peak hours, with doubled limits all day on weekends. Doesn\'t count toward weekly caps. If you\'ve been hitting rate limits, now\'s your window.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Code',
+                paragraphs: [
+                    '[Voice mode](https://pasqualepillitteri.it/en/news/381/claude-code-march-2026-updates) is rolling out to all users. Activate with /voice, hold spacebar to talk, release to send. Push-to-talk, not always-listening. It\'s surprisingly natural for thinking out loud about architecture or talking through a bug.',
+                    'The bigger infrastructure move: default output tokens bumped to 64k, model upper bound to 128k for Opus 4.6. Long-form code generation just got a lot more room to breathe.',
+                    'Other notable additions: /effort command to set model effort level, MCP elicitation support (servers can request structured input mid-task via interactive dialogs), new allowRead sandbox setting, and lsof/pgrep/tput/ss/fd added to bash auto-approval. Fewer permission prompts for read-only ops.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'The Competition',
+                paragraphs: [
+                    'OpenAI shipped [GPT-5.4 mini](https://releasebot.io/updates/openai) on March 17, available in ChatGPT for Free and Go users via Thinking mode. GPT-5.4 nano is API-only at $0.20/M input tokens — aggressively cheap.',
+                    'Google released [Gemini 3.1 Flash-Lite](https://llm-stats.com/llm-updates), an efficiency model with 2.5x faster response times and 45% faster output generation vs. earlier Gemini versions. Priced at $0.25/M input tokens. The low-cost inference race continues.',
+                    'The industry tracked 271+ model releases in Q1 2026 alone — roughly three new AI models every single day. The firehose shows no signs of slowing.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'What It Means',
+                paragraphs: [
+                    'Memory going GA is the most consequential change this week. It turns Claude from a tool you use into an assistant that knows you. Combined with doubled limits and 128k output tokens, Anthropic is clearly pushing toward Claude as a persistent daily companion, not just a prompt-and-response interface.',
+                    'The pricing pressure from GPT-5.4 nano and Gemini Flash-Lite is real, but Anthropic seems to be competing on capability and experience rather than cost. Smart play when you\'re already on the Max plan.',
+                ],
+            },
+            {
+                type: 'footnote',
+                text: 'Published by Sam Wilson. Sources: releasebot.io, code.claude.com, support.claude.com, llm-stats.com',
+            },
+        ],
+    },
+    {
         slug: 'ai-roundup-2026-03-07',
         title: 'AI Roundup — Week of March 7, 2026',
         date: '2026-03-07',
