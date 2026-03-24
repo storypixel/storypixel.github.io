@@ -49,18 +49,37 @@ const ChiaPromo = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         width: '100%',
-                        padding: '4rem',
-                        textAlign: 'center'
+                        padding: '4rem 2rem',
+                        textAlign: 'center',
+                        gap: '2rem'
                     }}>
-                        <motion.img
+                        {/* Logo repeated in different colors */}
+                        <motion.div
                             variants={item}
-                            src="/images/chia/chia-logo-white.png"
-                            alt="Chia"
-                            style={{ width: 320, marginBottom: '2rem' }}
-                        />
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                marginBottom: '1rem'
+                            }}
+                        >
+                            {['#ffffff', 'rgba(255,255,255,0.25)', 'rgba(255,255,255,0.08)'].map((color, i) => (
+                                <img
+                                    key={i}
+                                    src="/images/chia/chia-logo.svg"
+                                    alt={i === 0 ? 'Chia' : ''}
+                                    style={{
+                                        width: 260 - i * 40,
+                                        filter: i === 0 ? 'none' : `brightness(0) invert(1) opacity(${i === 1 ? 0.25 : 0.08})`,
+                                        opacity: i === 0 ? 1 : i === 1 ? 0.25 : 0.08,
+                                    }}
+                                />
+                            ))}
+                        </motion.div>
                         <motion.p
                             variants={item}
-                            style={{ color: '#888', fontSize: '0.9rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem' }}
+                            style={{ color: '#888', fontSize: '0.9rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}
                         >
                             CSS Framework
                         </motion.p>
