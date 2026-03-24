@@ -54,9 +54,9 @@ const ChiaPromo = () => {
                     }}>
                         <motion.img
                             variants={item}
-                            src="/images/chia/chia-hero.png"
+                            src="/images/chia/chia-logo-white.png"
                             alt="Chia"
-                            style={{ width: 280, marginBottom: '2rem', borderRadius: 8 }}
+                            style={{ width: 320, marginBottom: '2rem' }}
                         />
                         <motion.p
                             variants={item}
