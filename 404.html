@@ -1,29 +1,17 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/not-sam.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sam Wilson | I Am Not Sam</title>
-  <script type="module" crossorigin src="/assets/index-CvGitFMl.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-D4QWGx82.js">
-  <link rel="modulepreload" crossorigin href="/assets/three-CbER0GNn.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-D1WS8yyq.css">
-</head>
-
-<body>
-  <div id="root"></div>
-  <script>
-    // GitHub Pages SPA redirect handler
-    (function() {
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect !== location.href) {
-        history.replaceState(null, null, redirect);
-      }
-    })();
-  </script>
-</body>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Single Page App redirect for GitHub Pages
+      // Stores the path in sessionStorage and redirects to root
+      // index.html will then navigate to the correct route
+      sessionStorage.redirect = location.href;
+      location.replace(location.origin);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
 </html>
