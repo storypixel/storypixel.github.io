@@ -18,121 +18,68 @@ const ChiaPromo = () => {
         show: { y: 0, opacity: 1, transition: { duration: 0.5 } }
     };
 
+    const panels = [
+        { bg: '#2a4a38', label: 'Forest' },
+        { bg: '#1a1a1a', label: 'Carbon' },
+        { bg: '#41747B', label: 'Teal' },
+    ];
+
     return (
-        <article style={{ minHeight: '100vh', paddingBottom: '10vh' }}>
+        <article className="chia-promo">
             <Navigation />
 
             <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                style={{ paddingTop: '8rem' }}
+                className="chia-promo-body"
             >
-                {/* Hero Section */}
-                <section style={{
-                    position: 'relative',
-                    minHeight: '70vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '6rem',
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    background: '#1a1a1a'
-                }}>
-                    <div style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '100%',
-                        padding: '4rem 2rem',
-                        textAlign: 'center',
-                        gap: '2rem'
-                    }}>
-                        {/* Logo repeated in different colors */}
-                        <motion.div
-                            variants={item}
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                marginBottom: '1rem'
-                            }}
+                {/* Hero: Three color panels with logo */}
+                <motion.section variants={item} className="chia-hero">
+                    {panels.map((panel, i) => (
+                        <div
+                            key={i}
+                            className="chia-hero-panel"
+                            style={{ backgroundColor: panel.bg }}
                         >
-                            {['#ffffff', 'rgba(255,255,255,0.25)', 'rgba(255,255,255,0.08)'].map((color, i) => (
-                                <img
-                                    key={i}
-                                    src="/images/chia/chia-logo.svg"
-                                    alt={i === 0 ? 'Chia' : ''}
-                                    style={{
-                                        width: 260 - i * 40,
-                                        filter: i === 0 ? 'none' : `brightness(0) invert(1) opacity(${i === 1 ? 0.25 : 0.08})`,
-                                        opacity: i === 0 ? 1 : i === 1 ? 0.25 : 0.08,
-                                    }}
-                                />
-                            ))}
-                        </motion.div>
-                        <motion.p
-                            variants={item}
-                            style={{ color: '#888', fontSize: '0.9rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}
-                        >
-                            CSS Framework
-                        </motion.p>
-                        <motion.h1
-                            variants={item}
-                            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 300, lineHeight: 1.1, letterSpacing: '-0.03em', maxWidth: 600 }}
-                        >
-                            Plain CSS.<br />No build step.<br />No dependencies.
-                        </motion.h1>
-                    </div>
-                </section>
+                            <img
+                                src="/images/chia/chia-logo.svg"
+                                alt={i === 0 ? 'Chia' : ''}
+                                className="chia-hero-logo"
+                            />
+                        </div>
+                    ))}
+                </motion.section>
 
-                {/* Details */}
-                <section style={{
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    marginBottom: '6rem'
-                }}>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'var(--grid-columns, 80px 280px 1fr 160px)',
-                        gap: '2rem'
-                    }}>
-                        <motion.div variants={item} style={{ gridColumn: '1 / 3' }}>
-                            <p style={{ color: '#888', fontSize: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Details</p>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
-                                <div><span style={{ color: '#888' }}>Year</span> <span style={{ marginLeft: '1rem' }}>2026</span></div>
-                                <div><span style={{ color: '#888' }}>Role</span> <span style={{ marginLeft: '1rem' }}>Design & Development</span></div>
-                                <div><span style={{ color: '#888' }}>Stack</span> <span style={{ marginLeft: '1rem' }}>CSS, Open Props, Custom Properties</span></div>
-                            </div>
+                {/* Title + tagline */}
+                <section className="chia-intro">
+                    <div className="chia-intro-grid">
+                        <motion.div variants={item} className="chia-intro-meta">
+                            <p className="chia-meta-label">Details</p>
+                            <dl className="chia-meta-list">
+                                <div className="chia-meta-row">
+                                    <dt>Year</dt><dd>2026</dd>
+                                </div>
+                                <div className="chia-meta-row">
+                                    <dt>Role</dt><dd>Design & Development</dd>
+                                </div>
+                                <div className="chia-meta-row">
+                                    <dt>Stack</dt><dd>CSS, Open Props, Custom Properties</dd>
+                                </div>
+                            </dl>
                         </motion.div>
-                        <motion.div variants={item} style={{ gridColumn: '3 / -1' }}>
-                            <p style={{ color: '#888', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                        <motion.div variants={item} className="chia-intro-content">
+                            <p className="chia-intro-desc">
                                 After fighting Tailwind specificity wars on a production app, I extracted the useful patterns into a standalone CSS framework. No build step, no JavaScript, no utility class soup. Just real selectors with flat specificity that work anywhere.
                             </p>
-                            <p style={{ color: '#888', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                                Components use <code style={{ color: '#fff', background: 'rgba(255,255,255,0.08)', padding: '0.15rem 0.4rem', borderRadius: 4, fontSize: '0.85rem' }}>data-slot</code> attribute selectors instead of classes. Variants with <code style={{ color: '#fff', background: 'rgba(255,255,255,0.08)', padding: '0.15rem 0.4rem', borderRadius: 4, fontSize: '0.85rem' }}>data-variant</code>. Flat specificity, easy overrides, works with any framework or none at all.
+                            <p className="chia-intro-desc">
+                                Components use <code className="chia-code">data-slot</code> attribute selectors instead of classes. Variants with <code className="chia-code">data-variant</code>. Flat specificity, easy overrides, works with any framework or none at all.
                             </p>
-                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                                <a
-                                    href="https://iamnotsam.com/chia/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{ color: '#fff', fontSize: '0.9rem', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 2 }}
-                                >
+                            <div className="chia-links">
+                                <a href="https://iamnotsam.com/chia/" target="_blank" rel="noopener noreferrer" className="chia-link-primary">
                                     Live Demo &nearr;
                                 </a>
-                                <a
-                                    href="https://github.com/storypixel/chia"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{ color: '#888', fontSize: '0.9rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: 2 }}
-                                >
+                                <a href="https://github.com/storypixel/chia" target="_blank" rel="noopener noreferrer" className="chia-link-secondary">
                                     GitHub &nearr;
                                 </a>
                             </div>
@@ -141,45 +88,29 @@ const ChiaPromo = () => {
                 </section>
 
                 {/* Modules */}
-                <section style={{
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    marginBottom: '6rem',
-                    borderTop: '1px solid rgba(255,255,255,0.1)',
-                    paddingTop: '3rem'
-                }}>
-                    <motion.p variants={item} style={{ color: '#888', fontSize: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '2rem' }}>
-                        Modules
-                    </motion.p>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '2.5rem' }}>
+                <section className="chia-section">
+                    <motion.p variants={item} className="chia-section-label">Modules</motion.p>
+                    <div className="chia-modules">
                         {[
                             { name: 'tokens.css', desc: 'Design tokens for typography, radius, color, spacing, and transitions.' },
                             { name: 'reset.css', desc: 'Modern CSS reset with sensible defaults. No design opinions.' },
                             { name: 'components.css', desc: 'UI components via data-slot selectors. Button, card, badge, input, avatar.' },
                             { name: 'utilities.css', desc: 'Minimal layout utilities. Flex, grid, gap, padding, margin.' },
+                            { name: 'grid.css', desc: 'CSS Grid system. Auto-fill, fixed columns, named layouts, breakpoints.' },
                             { name: 'animations.css', desc: 'Keyframes for fade, slide, scale, collapse, ping, shimmer, spin.' },
-                            { name: 'prose.css', desc: 'Rich text typography via .prose class. For editors and markdown.' },
                         ].map(mod => (
-                            <motion.div key={mod.name} variants={item}>
-                                <p style={{ fontSize: '0.95rem', fontWeight: 500, marginBottom: '0.4rem' }}>{mod.name}</p>
-                                <p style={{ color: '#888', fontSize: '0.85rem', lineHeight: 1.5 }}>{mod.desc}</p>
+                            <motion.div key={mod.name} variants={item} className="chia-module">
+                                <p className="chia-module-name">{mod.name}</p>
+                                <p className="chia-module-desc">{mod.desc}</p>
                             </motion.div>
                         ))}
                     </div>
                 </section>
 
                 {/* Philosophy */}
-                <section style={{
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    marginBottom: '6rem',
-                    borderTop: '1px solid rgba(255,255,255,0.1)',
-                    paddingTop: '3rem'
-                }}>
-                    <motion.p variants={item} style={{ color: '#888', fontSize: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '2rem' }}>
-                        Philosophy
-                    </motion.p>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '2.5rem' }}>
+                <section className="chia-section">
+                    <motion.p variants={item} className="chia-section-label">Philosophy</motion.p>
+                    <div className="chia-modules">
                         {[
                             { name: 'One selector per rule', desc: 'No compound selectors. No nesting. Every rule targets exactly one thing.' },
                             { name: 'No !important', desc: 'Flat specificity so the cascade works for you, not against you.' },
@@ -188,19 +119,145 @@ const ChiaPromo = () => {
                             { name: 'No build step', desc: 'Import the CSS file. Works in a CDN link tag. No PostCSS, no config.' },
                             { name: 'Framework agnostic', desc: 'React, Vue, Svelte, plain HTML. Styles elements, not components.' },
                         ].map(p => (
-                            <motion.div key={p.name} variants={item}>
-                                <p style={{ fontSize: '0.95rem', fontWeight: 500, marginBottom: '0.4rem' }}>{p.name}</p>
-                                <p style={{ color: '#888', fontSize: '0.85rem', lineHeight: 1.5 }}>{p.desc}</p>
+                            <motion.div key={p.name} variants={item} className="chia-module">
+                                <p className="chia-module-name">{p.name}</p>
+                                <p className="chia-module-desc">{p.desc}</p>
                             </motion.div>
                         ))}
                     </div>
                 </section>
 
                 {/* Back */}
-                <div style={{ marginLeft: 'var(--spacing-container)', marginBottom: '4rem' }}>
-                    <Link to="/" style={{ color: '#888', fontSize: '0.9rem' }}>&larr; Back</Link>
+                <div className="chia-back">
+                    <Link to="/">&larr; Back</Link>
                 </div>
             </motion.div>
+
+            <style>{`
+                .chia-promo { min-height: 100vh; padding-bottom: 10vh; }
+                .chia-promo-body { padding-top: 8rem; }
+
+                .chia-hero {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 0.75rem;
+                    margin: 0 var(--spacing-container, 2.5rem) 6rem;
+                }
+                .chia-hero-panel {
+                    aspect-ratio: 4/3;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 2rem;
+                    overflow: hidden;
+                }
+                .chia-hero-logo {
+                    width: 80%;
+                    max-width: 240px;
+                    height: auto;
+                    object-fit: contain;
+                }
+
+                .chia-intro {
+                    margin: 0 var(--spacing-container, 2.5rem) 6rem;
+                }
+                .chia-intro-grid {
+                    display: grid;
+                    grid-template-columns: var(--grid-columns, 80px 280px 1fr 160px);
+                    gap: 2rem;
+                }
+                .chia-intro-meta { grid-column: 1 / 3; }
+                .chia-intro-content { grid-column: 3 / -1; }
+
+                .chia-meta-label {
+                    color: #888;
+                    font-size: 0.75rem;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    margin-bottom: 0.75rem;
+                }
+                .chia-meta-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    font-size: 0.9rem;
+                }
+                .chia-meta-row { display: flex; gap: 1rem; }
+                .chia-meta-row dt { color: #888; min-width: 3rem; }
+
+                .chia-intro-desc {
+                    color: #888;
+                    font-size: 0.9rem;
+                    line-height: 1.6;
+                    margin-bottom: 1.5rem;
+                }
+                .chia-code {
+                    color: #fff;
+                    background: rgba(255,255,255,0.08);
+                    padding: 0.15rem 0.4rem;
+                    border-radius: 4px;
+                    font-size: 0.85rem;
+                }
+                .chia-links {
+                    display: flex;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                }
+                .chia-link-primary {
+                    color: #fff;
+                    font-size: 0.9rem;
+                    border-bottom: 1px solid rgba(255,255,255,0.3);
+                    padding-bottom: 2px;
+                }
+                .chia-link-secondary {
+                    color: #888;
+                    font-size: 0.9rem;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    padding-bottom: 2px;
+                }
+
+                .chia-section {
+                    margin: 0 var(--spacing-container, 2.5rem) 6rem;
+                    border-top: 1px solid rgba(255,255,255,0.1);
+                    padding-top: 3rem;
+                }
+                .chia-section-label {
+                    color: #888;
+                    font-size: 0.75rem;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    margin-bottom: 2rem;
+                }
+                .chia-modules {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                    gap: 2.5rem;
+                }
+                .chia-module-name {
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    margin-bottom: 0.4rem;
+                }
+                .chia-module-desc {
+                    color: #888;
+                    font-size: 0.85rem;
+                    line-height: 1.5;
+                }
+
+                .chia-back {
+                    margin-left: var(--spacing-container, 2.5rem);
+                    margin-bottom: 4rem;
+                }
+                .chia-back a { color: #888; font-size: 0.9rem; }
+
+                @media (max-width: 768px) {
+                    .chia-hero { grid-template-columns: 1fr; }
+                    .chia-intro-grid { grid-template-columns: 1fr; }
+                    .chia-intro-meta { grid-column: 1; }
+                    .chia-intro-content { grid-column: 1; }
+                }
+            `}</style>
         </article>
     );
 };
