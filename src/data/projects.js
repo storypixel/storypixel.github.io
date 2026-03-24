@@ -19,6 +19,15 @@ export const projects = [
         color: '#080a0c',
         url: '/roomscroll',
     },
+    {
+        id: 'chia',
+        title: 'Chia',
+        category: 'CSS Framework',
+        size: 'full',
+        image: '/images/chia/chia-hero.png',
+        color: '#1a1a1a',
+        url: '/chia',
+    },
 ];
 
 export const projectDetails = {
@@ -72,5 +81,22 @@ export const projectDetails = {
             '/images/roomscroll/roomscroll-grid-4x3.png',
         ],
         marketplaceUrl: 'https://marketplace.visualstudio.com/items?itemName=storypixel.roomscroll',
+    },
+    chia: {
+        title: 'Chia',
+        category: 'CSS Framework',
+        color: '#1a1a1a',
+        skills: ['CSS', 'Design Systems', 'Open Props', 'Custom Properties'],
+        year: '2026',
+        role: 'Design & Development',
+        roleBlurb: 'A plain CSS component library. No Tailwind, no build step, no dependencies.',
+        description: 'A framework-agnostic CSS component library that uses data-slot attribute selectors and CSS custom properties. Tokens, reset, animations, prose, utilities, and components in six standalone modules.',
+        workDescription: 'After fighting Tailwind specificity wars on a production app, I extracted the useful patterns into a standalone CSS framework. No build step, no JavaScript, no utility class soup. Just real selectors with flat specificity that work anywhere.',
+        hero: '/images/chia/chia-hero.png',
+        heroImages: [
+            '/images/chia/chia-hero.png',
+        ],
+        liveUrl: 'https://iamnotsam.com/chia/',
+        githubUrl: 'https://github.com/storypixel/chia',
     },
 };

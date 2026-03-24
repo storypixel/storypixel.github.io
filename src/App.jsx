@@ -19,6 +19,7 @@ const AboutPage = lazy(() => import('./components/AboutPage'));
 const CalcuweightPromo = lazy(() => import('./components/CalcuweightPromo'));
 const RoomscrollPromo = lazy(() => import('./components/RoomscrollPromo'));
 const CookiePage = lazy(() => import('./components/CookiePage'));
+const ChiaPromo = lazy(() => import('./components/ChiaPromo'));
 
 function HomePage() {
     return (
@@ -46,6 +47,7 @@ function App() {
                         <Route path="/privacy" element={<Privacy />} />
                         <Route path="/calcuweight" element={<CalcuweightPromo />} />
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
+                        <Route path="/chia" element={<ChiaPromo />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
                                 <ERPDemo />
