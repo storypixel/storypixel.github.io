@@ -45,7 +45,7 @@ const Hero = () => {
                 {/* Right: Headline */}
                 <motion.div className="hero-quote-block" variants={item}>
                     <h1 className="hero-headline">
-                        With so much power now brought by machines, we have to find a refuge in our humanity. It's about our creativity, our intuition, our human qualities.
+                        {"With so much power now brought by machines, we have to find a refuge in our humanity. It\u2019s about our creativity, our intuition, our human qualities."}
                     </h1>
                     <p className="hero-attribution">Garry Kasparov</p>
                 </motion.div>
