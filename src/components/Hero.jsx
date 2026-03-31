@@ -45,9 +45,9 @@ const Hero = () => {
                 {/* Right: Headline */}
                 <motion.div className="hero-quote-block" variants={item}>
                     <h1 className="hero-headline">
-                        Sam just being Sam. Knows nothing. Believes in nothing. Except craft cocktails.
+                        With so much power now brought by machines, we have to find a refuge in our humanity. It's about our creativity, our intuition, our human qualities.
                     </h1>
-                    <p className="hero-attribution">Someone who peaked early at being wrong <IdiotPopup><Skull size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
+                    <p className="hero-attribution">Garry Kasparov</p>
                 </motion.div>
             </motion.div>
         </section>
