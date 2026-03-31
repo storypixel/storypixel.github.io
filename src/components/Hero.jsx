@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Skull } from '@phosphor-icons/react';
+import { Crown } from '@phosphor-icons/react';
 import IdiotPopup from './IdiotPopup';
 import './Hero.css';
 
@@ -47,7 +47,7 @@ const Hero = () => {
                     <h1 className="hero-headline">
                         {"With so much power now brought by machines, we have to find a refuge in our humanity. It\u2019s about our creativity, our intuition, our human qualities."}
                     </h1>
-                    <p className="hero-attribution">Garry Kasparov</p>
+                    <p className="hero-attribution">Garry Kasparov <IdiotPopup><Crown size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
                 </motion.div>
             </motion.div>
         </section>
