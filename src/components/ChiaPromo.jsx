@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowUpRight, ArrowLeft } from '@phosphor-icons/react';
 import Navigation from './Navigation';
 
 const ChiaPromo = () => {
@@ -18,12 +19,6 @@ const ChiaPromo = () => {
         show: { y: 0, opacity: 1, transition: { duration: 0.5 } }
     };
 
-    const panels = [
-        { bg: '#2a4a38', label: 'Forest' },
-        { bg: '#1a1a1a', label: 'Carbon' },
-        { bg: '#41747B', label: 'Teal' },
-    ];
-
     return (
         <article className="chia-promo">
             <Navigation />
@@ -34,21 +29,17 @@ const ChiaPromo = () => {
                 animate="show"
                 className="chia-promo-body"
             >
-                {/* Hero: Three color panels with logo */}
+                {/* Hero: Logo panels + site screenshot */}
                 <motion.section variants={item} className="chia-hero">
-                    {panels.map((panel, i) => (
-                        <div
-                            key={i}
-                            className="chia-hero-panel"
-                            style={{ backgroundColor: panel.bg }}
-                        >
-                            <img
-                                src="/images/chia/chia-logo.svg"
-                                alt={i === 0 ? 'Chia' : ''}
-                                className="chia-hero-logo"
-                            />
-                        </div>
-                    ))}
+                    <div className="chia-hero-panel" style={{ backgroundColor: '#2a4a38' }}>
+                        <img src="/images/chia/chia-logo.svg" alt="Chia" className="chia-hero-logo" />
+                    </div>
+                    <div className="chia-hero-panel chia-hero-screenshot">
+                        <img src="/images/chia/chia-site-screenshot.png" alt="Chia documentation site" className="chia-hero-screenshot-img" />
+                    </div>
+                    <div className="chia-hero-panel" style={{ backgroundColor: '#41747B' }}>
+                        <img src="/images/chia/chia-logo.svg" alt="" className="chia-hero-logo" />
+                    </div>
                 </motion.section>
 
                 {/* Title + tagline */}
@@ -77,10 +68,10 @@ const ChiaPromo = () => {
                             </p>
                             <div className="chia-links">
                                 <a href="https://iamnotsam.com/chia/" target="_blank" rel="noopener noreferrer" className="chia-link-primary">
-                                    Live Demo &nearr;
+                                    Live Demo <ArrowUpRight size={16} weight="bold" />
                                 </a>
                                 <a href="https://github.com/storypixel/chia" target="_blank" rel="noopener noreferrer" className="chia-link-secondary">
-                                    GitHub &nearr;
+                                    GitHub <ArrowUpRight size={16} weight="bold" />
                                 </a>
                             </div>
                         </motion.div>
@@ -129,7 +120,7 @@ const ChiaPromo = () => {
 
                 {/* Back */}
                 <div className="chia-back">
-                    <Link to="/">&larr; Back</Link>
+                    <Link to="/"><ArrowLeft size={16} weight="bold" /> Back</Link>
                 </div>
             </motion.div>
 
@@ -157,6 +148,16 @@ const ChiaPromo = () => {
                     max-width: 240px;
                     height: auto;
                     object-fit: contain;
+                }
+                .chia-hero-screenshot {
+                    padding: 0;
+                    background: #1a1a1a;
+                }
+                .chia-hero-screenshot-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 12px;
                 }
 
                 .chia-intro {

@@ -2,6 +2,62 @@
 
 export const posts = [
     {
+        slug: 'ai-roundup-2026-04-10',
+        title: 'AI Roundup — Week of April 10, 2026',
+        date: '2026-04-10',
+        dateDisplay: 'April 2026',
+        excerpt: 'Anthropic ships Managed Agents, Cowork goes GA, the MCP vs Skills debate heats up, and Microsoft open-sources an agent governance toolkit.',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Anthropic dropped a triple launch this week: Managed Agents in public beta, Cowork graduating to GA, and a Claude Code update. Meanwhile, the community is fighting about MCP vs Skills, Microsoft is open-sourcing agent governance tools, and a research paper on viral misalignment in multi-agent systems is making the rounds. Three weeks of signal compressed into one digest.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Platform',
+                paragraphs: [
+                    '[Managed Agents](https://www.anthropic.com/engineering/managed-agents) hit public beta. Deploy production agents without managing infrastructure yourself. A credential proxy keeps secrets out of the harness, and there are Notion and Asana integrations out of the box. This is essentially what folks have been building manually with CortextOS, OpenClaw, and similar frameworks \u2014 Anthropic is now offering a hosted version.',
+                    '[Cowork](https://claude.ai/cowork) is out of research preview and available on all paid plans. Enterprise controls are the headline: role-based access, per-group spend limits, and usage analytics. PayPal published a case study on scaling from pilot to enterprise-wide deployment.',
+                    'The Mythos model story is worth noting. A reportedly withheld model that Anthropic says poses cybersecurity risks \u2014 official language says models have "surpassed all but the most skilled humans at finding and exploiting software vulnerabilities." Whether this is genuine safety caution or competitive positioning is an exercise for the reader.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Code',
+                paragraphs: [
+                    'Smaller update this cycle compared to the March wave. SessionEnd hook timeout is now configurable via an environment variable. Plugin install fix in REPL mode. The `/claude-api` skill was updated to cover Managed Agents.',
+                    'The community drama was more interesting than the release: a [Vercel Claude Code plugin](https://news.ycombinator.com/item?id=47704881) was caught sending prompts as telemetry. 267 points on HN and a lot of people auditing their plugin configs. Worth checking what you have installed.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Ecosystem',
+                paragraphs: [
+                    'The MCP vs Skills debate went mainstream. An HN post titled "[I still prefer MCP over skills](https://news.ycombinator.com/item?id=47712718)" pulled 256 points and 213 comments. The argument: MCP servers are more portable and composable. Skills are faster to author but locked to Claude Code. If you run both \u2014 and you should \u2014 the rule of thumb is MCP for tools (databases, APIs, browsers) and skills for workflows (deployment checklists, code review, project-specific conventions).',
+                    'Microsoft open-sourced two things worth watching: a [SQL MCP Server](https://github.com/microsoft/mssql-mcp-server) for structured, role-aware database access without NL2SQL fragility, and an [agent governance toolkit](https://github.com/microsoft/agent-governance-toolkit) with kill switches and audit trails. AWS followed with agentic root-cause analysis tooling. The infrastructure layer for managing AI agents \u2014 not just building them \u2014 is starting to take shape.',
+                    '[GitButler raised $17M](https://blog.gitbutler.com/series-a) to build "what comes after Git." 181 points, 402 comments on HN. Version control designed for the agent era, where you might have three agents working on different parts of the same codebase simultaneously. Early, but the problem is real.',
+                    'A research paper on viral misalignment in multi-agent systems went viral itself. The premise: subliminal prompt injection in one agent can cascade through a fleet. Relevant if you\'re running any kind of multi-agent setup. Worth reading the full paper before dismissing it.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'What It Means',
+                paragraphs: [
+                    'Anthropic is doing what every platform company eventually does: absorbing the ecosystem. Managed Agents competes directly with the community frameworks that grew around Claude\'s gaps. Cowork GA competes with every "AI for enterprise" startup. The credential proxy in Managed Agents solves a problem that every DIY agent builder has hacked around.',
+                    'The governance tooling from Microsoft and AWS is the signal to watch. When the infrastructure giants start shipping kill switches and audit trails for AI agents, it means they expect agents in production at scale. We\'re past the "should we use agents?" phase and into "how do we govern them?"',
+                    'The MCP vs Skills debate will resolve itself the way most format wars do: you\'ll use both. The important thing is that the ecosystem is standardizing on interop patterns, not fragmenting into incompatible islands.',
+                ],
+            },
+            {
+                type: 'footnote',
+                text: 'Published by Sam Wilson. Sources: anthropic.com, news.ycombinator.com, github.com/microsoft, blog.gitbutler.com',
+            },
+        ],
+    },
+    {
         slug: 'ai-roundup-2026-03-20',
         title: 'AI Roundup — Week of March 20, 2026',
         date: '2026-03-20',

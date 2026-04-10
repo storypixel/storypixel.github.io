@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import MeshGradient from './MeshGradient';
 
 const Section = ({ title, children, delay, illustration }) => (
     <motion.div
@@ -45,53 +46,32 @@ const Section = ({ title, children, delay, illustration }) => (
 
 const AboutPage = () => {
     return (
-        <article style={{ minHeight: '100vh', paddingBottom: '10vh' }}>
-            <Navigation />
+        <>
+            <MeshGradient />
+            <article style={{ minHeight: '100vh', paddingBottom: '10vh', position: 'relative', zIndex: 1, background: 'transparent' }}>
+                <Navigation />
 
-            <div style={{ paddingTop: '8rem' }}>
-                {/* Hero section with grid */}
-                <div className="page-grid" style={{ marginBottom: '4rem' }}>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        style={{
-                            gridColumn: '1 / 3',
-                            fontSize: 'clamp(3rem, 6vw, 5rem)',
-                            lineHeight: 1.1,
-                            fontWeight: 400,
-                        }}
-                    >
-                        Facts.
-                    </motion.h1>
-                </div>
+                <div style={{ paddingTop: '8rem' }}>
+                    {/* Hero section with grid */}
+                    <div className="page-grid" style={{ marginBottom: '4rem' }}>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            style={{
+                                gridColumn: '1 / -1',
+                                fontSize: 'clamp(3rem, 6vw, 5rem)',
+                                lineHeight: 1.1,
+                                fontWeight: 400,
+                            }}
+                        >
+                            Facts.
+                        </motion.h1>
+                    </div>
 
-                {/* Main content grid */}
-                <div className="about-page-grid" style={{ marginBottom: '6rem' }}>
-                    {/* Image in columns 1-2 */}
-                    <motion.div
-                        className="cycling-gradient about-page-image"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                        style={{
-                            aspectRatio: '3/4',
-                            borderRadius: '12px',
-                            overflow: 'hidden',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <img
-                            src="/not-sam.svg"
-                            alt="Sam Wilson"
-                            style={{ width: '60%', height: 'auto', opacity: 0.8 }}
-                        />
-                    </motion.div>
-
-                    {/* Bio content in columns 3-4 */}
-                    <div className="about-page-content" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    {/* Bio content - single column, no image */}
+                    <div style={{ padding: '0 var(--spacing-container)', marginBottom: '6rem', maxWidth: '65ch' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -136,7 +116,7 @@ const AboutPage = () => {
                     </div>
                 </div>
 
-                {/* Extended Bio Sections - using universal grid */}
+                    {/* Extended Bio Sections - using universal grid */}
                 <div style={{ padding: '0 var(--spacing-container)' }}>
                     <Section title="Code" delay={0.1} illustration="/images/flash.svg">
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
@@ -188,9 +168,10 @@ const AboutPage = () => {
                             I am not Sam, but I go by that name and I make apps and stuff on the internet. Thanks for visiting my site.
                         </p>
                     </Section>
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </>
     );
 };
 
