@@ -1,0 +1,1 @@
+import{j as a}from"./vendor-D4QWGx82.js";const t=({html:o,title:r="demo",style:s})=>a.jsx("iframe",{title:r,srcDoc:o,sandbox:"allow-scripts allow-same-origin",style:{width:"100%",height:"100%",border:"none",background:"transparent",display:"block",...s}});export{t as I};
