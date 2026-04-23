@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import MeshGradient from './MeshGradient';
+import { posts } from '../data/posts';
 
 const Section = ({ title, children, delay, illustration }) => (
     <motion.div
@@ -167,6 +168,46 @@ const AboutPage = () => {
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             I am not Sam, but I go by that name and I make apps and stuff on the internet. Thanks for visiting my site.
                         </p>
+                    </Section>
+
+                    <Section title="Writing" delay={0.5}>
+                        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                            Older posts live here. AI roundups, a cookie recipe I have been making since 2004, and whatever else was on my mind that week.
+                        </p>
+                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '0.5rem' }}>
+                            {posts.map((post) => (
+                                <li key={post.slug}>
+                                    <Link
+                                        to={`/thoughts/${post.slug}`}
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            gap: '1.5rem',
+                                            paddingBottom: '0.5rem',
+                                            borderBottom: '1px solid var(--border-color)',
+                                            fontSize: '0.95rem',
+                                        }}
+                                    >
+                                        <span>{post.title}</span>
+                                        <span style={{ color: 'var(--text-secondary)', flexShrink: 0 }}>
+                                            {post.dateDisplay}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <Link
+                            to="/thoughts"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '0.5rem',
+                                fontSize: '0.9rem',
+                                borderBottom: '1px solid #444',
+                                paddingBottom: '4px',
+                            }}
+                        >
+                            All writing
+                        </Link>
                     </Section>
                     </div>
                 </div>

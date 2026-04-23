@@ -7,7 +7,9 @@ import Work from './components/Work';
 import About from './components/About';
 import Footer from './components/Footer';
 import Privacy from './components/Privacy';
-import ThoughtsSection from './components/ThoughtsSection';
+import ExperimentsSection from './components/ExperimentsSection';
+import ExperimentsPage from './components/ExperimentsPage';
+import ExperimentPost from './components/ExperimentPost';
 import ThoughtsPage from './components/ThoughtsPage';
 import ThoughtPost from './components/ThoughtPost';
 import ScrollToTop from './components/ScrollToTop';
@@ -28,7 +30,7 @@ function HomePage() {
             <Hero />
             <Work />
             <About />
-            <ThoughtsSection />
+            <ExperimentsSection />
             <Footer />
         </>
     );
@@ -54,6 +56,8 @@ function App() {
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />
+                        <Route path="/experiments" element={<ExperimentsPage />} />
+                        <Route path="/experiments/:slug" element={<ExperimentPost />} />
                         <Route path="/thoughts" element={<ThoughtsPage />} />
                         <Route path="/thoughts/:slug" element={<ThoughtPost />} />
                     </Routes>

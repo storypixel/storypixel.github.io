@@ -27,8 +27,8 @@ const Navigation = () => {
                 <a href="mailto:sam@iamnotsam.com" className="nav-link">
                     Email <span className="nav-arrow">┐</span>
                 </a>
-                <Link to="/thoughts" className="nav-link">
-                    Thoughts <span className="nav-arrow">┐</span>
+                <Link to="/experiments" className="nav-link">
+                    Experiments <span className="nav-arrow">┐</span>
                 </Link>
                 <Link to="/about" className="nav-link">
                     About <span className="nav-arrow">┐</span>

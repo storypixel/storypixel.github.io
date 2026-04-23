@@ -2,6 +2,63 @@
 
 export const posts = [
     {
+        slug: 'ai-roundup-2026-04-17',
+        title: 'AI Roundup — Week of April 17, 2026',
+        date: '2026-04-17',
+        dateDisplay: 'April 2026',
+        excerpt: 'Anthropic ships Claude Opus 4.7, Qwen drops open weights that beat it at some tasks, OpenAI reframes Codex, and the dev-tool trust layer takes three body blows in one week.',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Opus 4.7 is out and the discourse is louder than usual. Part of that is the model — 87.6% on SWE-bench is hard to argue with — and part of it is Qwen dropping open weights that beat Opus on select tasks the same week. Meanwhile the dev-tool trust conversation is having a genuinely bad week: Laravel injecting ads into agents, SDL banning AI-written commits, and a Cloudflare platform bug that quietly burned $34k in eight days. The agents are getting better and the ground underneath them is getting more interesting.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Platform',
+                paragraphs: [
+                    '[Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7) launched on April 16. 87.6% on SWE-bench Verified, 94.2% on GPQA, 1M token context, 3.3\u00d7 vision resolution, priced flat at $5/$25 per million tokens. GA on the API, Bedrock, Vertex AI, and Microsoft Foundry from day one. 1,816 points on HN; the comment thread is mostly developers comparing concrete results on their own workloads.',
+                    'Two wrinkles worth knowing before you migrate. First, [prompts tuned for 4.6 may break on 4.7](https://bsky.app/profile/kautious.com/post/3mjowmq2gkd26) \u2014 Anthropic flagged this in the release notes. Second, the new tokenizer maps the same input to roughly 1.0\u20131.35\u00d7 more tokens, so real-world costs can rise even though list pricing is unchanged. Benchmark your actual harness before declaring victory.',
+                    'The [Mythos](https://www.reuters.com/technology/white-house-give-us-agencies-anthropic-mythos-access-bloomberg-news-reports-2026-04-16/) story continued: the White House is requesting access for US agencies, and Anthropic\'s public framing is that the model "can rapidly identify \u2014 and potentially create \u2014 new cyberthreats." The line between safety-motivated access control and federal-government go-to-market is thinner than it was three months ago.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Code',
+                paragraphs: [
+                    'Quiet release cycle on Claude Code itself, but the community shipped. [SPICE simulation via Claude Code + LeCroy MCP](https://lucasgerads.com/blog/lecroy-mcp-spice-demo/) is the demo of the week \u2014 a full electronics verification loop, oscilloscope and all, driven from a terminal agent. 94 points on HN. MCP is quietly eating every category where an agent needs a physical or proprietary tool interface.',
+                    '[Marky](https://github.com/GRVYDEV/marky), a lightweight Markdown viewer designed specifically for agentic coding workflows, landed on HN with 62 points. Small, sharp tools for the inner loop are becoming their own genre.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Ecosystem',
+                paragraphs: [
+                    '[Qwen3.6-35B-A3B](https://qwen.ai/blog?id=qwen3.6-35b-a3b) dropped as open weights, 1,146 points on HN. Simon Willison ran a head-to-head and reported that [Qwen drew a better pelican SVG than Opus 4.7 on his laptop](https://simonwillison.net/2026/Apr/16/qwen-beats-opus/). One synthetic test is one synthetic test, but open weights that are competitive on laptop-class hardware the same week the flagship closed model ships is the kind of pressure that keeps the price-per-token curve moving.',
+                    '[OpenAI rebranded Codex for almost everything](https://openai.com/index/codex-for-almost-everything/) \u2014 general-purpose agentic workhorse across coding, research, and analysis (913 HN points). Separately, [GPT-Rosalind](https://openai.com/index/introducing-gpt-rosalind/) shipped as a life-sciences research model. The "one vertical model per industry" play from OpenAI is starting to look like a strategy, not a series of one-offs.',
+                    'Cloudflare shipped two infrastructure pieces: the [AI Platform](https://blog.cloudflare.com/ai-platform/), an inference layer designed for agents, and [Artifacts](https://blog.cloudflare.com/artifacts-git-for-agents-beta/), a Git-flavored versioned storage system where multiple agents can commit and branch against shared state. Google contributed the [Android CLI](https://android-developers.googleblog.com/2026/04/build-android-apps-3x-faster-using-any-agent.html), an agent-native toolchain for Android apps claiming a 3\u00d7 speedup.',
+                    'Three data points on dev-tool trust in the same week. [Laravel raised money and started injecting ads directly into agent output](https://techstackups.com/articles/laravel-raised-money-and-now-injects-ads-directly-into-your-agent/) \u2014 198 points, 115 comments, overwhelmingly negative. [SDL banned AI-written commits](https://github.com/libsdl-org/SDL/issues/15350) \u2014 125 points, 122 comments, heated both ways. And a [Cloudflare Durable Object alarm loop quietly burned $34k in 8 days with zero platform warnings](https://news.ycombinator.com/item?id=47787042). Different vectors, same signal: the tooling layer is learning that agents mean the blast radius of bad defaults is much larger than the blast radius of bad UX.',
+                    'Two more worth your click. [Andon Labs gave an AI a 3-year retail lease](https://andonlabs.com/blog/andon-market-launch) and asked it to turn a profit \u2014 194 points, 272 comments; the experiment design is genuinely interesting. And [antirez argues AI cybersecurity is not proof of work](https://antirez.com/news/163) \u2014 a thoughtful counterweight to the Mythos coverage, pointing out that auto-finding vulns is not the same thing as the craft of finding them.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'What It Means',
+                paragraphs: [
+                    'The Opus 4.7 / Qwen 3.6 pair is the headline. The closed frontier keeps moving \u2014 87.6% on SWE-bench was, until this week, an aspirational number \u2014 and open weights keep arriving a few months later at a hardware tier that\'s accessible to normal humans. The gap is narrower and the choice is real.',
+                    'The dev-tool trust story is the one worth paying attention to. Laravel, SDL, and the Cloudflare alarm bug are three different failure modes \u2014 incentive misalignment, governance friction, and platform defaults \u2014 but they all point at the same thing: when agents multiply the throughput of every tool in the chain, the cost of getting the tool wrong multiplies too. The governance tooling we saw from Microsoft and AWS last week wasn\'t premature.',
+                    'Finally, the migration cost on Opus 4.7 is a tell. Anthropic is now confident enough in the upgrade path to ship a release that openly breaks prompts tuned for the prior version and meaningfully shifts the token-to-cost ratio. That\'s a healthy signal \u2014 frontier labs that are scared of losing users don\'t ship like that.',
+                ],
+            },
+            {
+                type: 'footnote',
+                text: 'Published by Sam Wilson. Sources: anthropic.com, news.ycombinator.com, qwen.ai, simonwillison.net, openai.com, blog.cloudflare.com, android-developers.googleblog.com, reuters.com, antirez.com, andonlabs.com.',
+            },
+        ],
+    },
+    {
         slug: 'ai-roundup-2026-04-10',
         title: 'AI Roundup — Week of April 10, 2026',
         date: '2026-04-10',
