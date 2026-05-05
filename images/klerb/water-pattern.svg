@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="120" viewBox="0 0 160 120">
+  <!--
+    Hand-drawn water crests for the shipped lane background. Sideways
+    seagull-like marks (q-curve to peak, q-curve back down) scattered
+    in three loose rows. Same opacity + density as lawn-pattern.svg so
+    the two lanes feel like a single cartography layer, not two
+    different art directions.
+  -->
+  <g fill="none" stroke="#1d4ed8" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.18">
+    <!-- row 1 -->
+    <path d="M14 22 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M58 16 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M104 24 q5 -5 10 0 q5 5 10 0"/>
+    <!-- row 2 -->
+    <path d="M30 52 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M82 46 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M126 56 q5 -5 10 0 q5 5 10 0"/>
+    <!-- row 3 -->
+    <path d="M16 82 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M64 90 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M110 84 q5 -5 10 0 q5 5 10 0"/>
+    <!-- row 4 -->
+    <path d="M40 112 q5 -5 10 0 q5 5 10 0"/>
+    <path d="M92 116 q5 -5 10 0 q5 5 10 0"/>
+  </g>
+</svg>
