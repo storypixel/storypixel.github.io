@@ -1,184 +1,138 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import Phone3D from './Phone3D';
+import './CalcuweightPromo.css';
+
+const HERO_IMAGES = [
+    '/images/calcuweight-model-1.png',
+    '/images/calcuweight-model-2.png',
+    '/images/calcuweight-model-3.png',
+    '/images/calcuweight-model-4.png',
+];
+
+const PHONE_SCREENSHOTS = [
+    '/images/calcuweight/01-onboarding.webp',
+    '/images/calcuweight/05-main-workout.webp',
+    '/images/calcuweight/06-percentage-grid.webp',
+    '/images/calcuweight/07-multiple-lifts.webp',
+];
+
+const FEATURES = [
+    {
+        number: '01',
+        title: 'Photo Magic',
+        text: "Snap the gym's whiteboard. App reads percentages and calculates your weights.",
+    },
+    {
+        number: '02',
+        title: 'Voice Input',
+        text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and see your plate breakdowns instantly. Completely hands-free.',
+    },
+    {
+        number: '03',
+        title: 'Zero Mental Math',
+        text: 'Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.',
+    },
+];
+
+const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+};
+
+const reveal = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+};
 
 const CalcuweightPromo = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const container = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-    };
-
-    const item = {
-        hidden: { y: 20, opacity: 0 },
-        show: { y: 0, opacity: 1, transition: { duration: 0.5 } }
-    };
-
     return (
-        <article style={{ minHeight: '100vh', paddingBottom: '10vh' }}>
+        <article className="calcuweight-page">
             <Navigation />
 
             <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                style={{ paddingTop: '8rem' }}
+                className="calcuweight-page-body"
             >
-                {/* Hero Section */}
-                <section style={{
-                    position: 'relative',
-                    minHeight: '80vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '6rem',
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    background: '#000'
-                }} className="calcuweight-hero-section">
-                    {/* Collage Background */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        zIndex: 0,
-                        opacity: 0.3,
-                        filter: 'grayscale(100%) brightness(0.7)'
-                    }}>
-                        {[
-                            '/images/calcuweight-model-1.png',
-                            '/images/calcuweight-model-2.png',
-                            '/images/calcuweight-model-3.png',
-                            '/images/calcuweight-model-4.png'
-                        ].map((src, i) => (
-                            <div key={i} style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
-                                <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <section className="calcuweight-hero-section">
+                    <div className="calcuweight-hero-media" aria-hidden="true">
+                        {HERO_IMAGES.map((src) => (
+                            <div key={src} className="calcuweight-hero-media-panel">
+                                <img src={src} alt="" loading="eager" decoding="async" />
                             </div>
                         ))}
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            background: 'linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)'
-                        }} />
+                        <div className="calcuweight-hero-vignette" />
                     </div>
 
-                    {/* Content Overlay */}
                     <div className="calcuweight-hero-grid">
-                        {/* Left: Text */}
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 2 }}>
-                            <motion.h1 variants={item} style={{
-                                fontSize: 'clamp(2rem, 8vw, 4.5rem)',
-                                fontWeight: 400,
-                                lineHeight: 1.1,
-                                marginBottom: '1.5rem',
-                                color: '#fff'
-                            }}>
+                        <div className="calcuweight-hero-copy">
+                            <motion.h1 variants={item} className="calcuweight-hero-title">
                                 Focus on Lifting,<br />Not Math
                             </motion.h1>
-                            <motion.p variants={item} style={{
-                                fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
-                                color: 'rgba(255,255,255,0.7)',
-                                maxWidth: '100%',
-                                marginBottom: '2.5rem',
-                                lineHeight: 1.6
-                            }}>
+                            <motion.p variants={item} className="calcuweight-hero-subtitle">
                                 The ultimate percentage calculator for strength training. Get instant plate math via voice, camera, or touch.
                             </motion.p>
                             <motion.div variants={item}>
-                                <a href="https://apps.apple.com/app/id6756983846" target="_blank" rel="noopener noreferrer" style={{
-                                    display: 'inline-block',
-                                    background: '#fff',
-                                    color: '#000',
-                                    padding: '1rem 2rem',
-                                    borderRadius: '50px',
-                                    fontWeight: 500,
-                                    textDecoration: 'none',
-                                    fontSize: '1rem',
-                                    whiteSpace: 'nowrap',
-                                    position: 'relative',
-                                    zIndex: 10
-                                }}>
+                                <a
+                                    href="https://apps.apple.com/app/id6756983846"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="calcuweight-button"
+                                >
                                     Get Calcuweight
                                 </a>
                             </motion.div>
                         </div>
 
-                        {/* Right: 3D Phone */}
                         <div className="calcuweight-phone">
-                            <Phone3D screenshots={[
-                                '/images/calcuweight/01-onboarding.png',
-                                '/images/calcuweight/05-main-workout.png',
-                                '/images/calcuweight/06-percentage-grid.png',
-                                '/images/calcuweight/07-multiple-lifts.png'
-                            ]} />
+                            <Phone3D screenshots={PHONE_SCREENSHOTS} />
                         </div>
                     </div>
                 </section>
 
-                {/* Features Section - using universal grid */}
-                <section style={{
-                    padding: '4rem 0',
-                    borderTop: '1px solid var(--border-color)',
-                }}>
+                <section className="calcuweight-section">
                     <div className="page-grid">
                         <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
+                            {...reveal}
                             className="section-label"
                         >
                             Features
                         </motion.h2>
                     </div>
 
-                    <div style={{ padding: '0 var(--spacing-container)' }}>
-                        {[
-                            { number: '01', title: 'Photo Magic', text: "Snap the gym's whiteboard. App reads percentages and calculates your weights." },
-                            { number: '02', title: 'Voice Input', text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and see your plate breakdowns instantly. Completely hands-free.' },
-                            { number: '03', title: 'Zero Mental Math', text: 'Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.' }
-                        ].map((feature, i, arr) => (
+                    <div className="calcuweight-feature-list">
+                        {FEATURES.map((feature, i) => (
                             <motion.div
-                                key={i}
-                                className="content-grid"
+                                key={feature.number}
+                                className="content-grid calcuweight-feature-row"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-10%" }}
+                                viewport={{ once: true, margin: '-10%' }}
                                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                                style={{
-                                    borderBottom: i < arr.length - 1 ? '1px solid var(--border-color)' : 'none',
-                                    paddingTop: '2rem',
-                                    paddingBottom: '2rem',
-                                }}
                             >
-                                <span className="section-label" style={{ paddingTop: '0.25rem' }}>
+                                <span className="section-label calcuweight-feature-number">
                                     {feature.number}
                                 </span>
                                 <div className="section-content">
-                                    <h3 style={{
-                                        fontSize: '1.5rem',
-                                        fontWeight: '500',
-                                        marginBottom: '0.75rem',
-                                    }}>
+                                    <h3 className="calcuweight-feature-title">
                                         {feature.title}
                                     </h3>
-                                    <p style={{
-                                        color: 'var(--text-secondary)',
-                                        maxWidth: '50ch',
-                                        lineHeight: '1.6',
-                                    }}>
+                                    <p className="calcuweight-copy">
                                         {feature.text}
                                     </p>
                                 </div>
@@ -187,40 +141,19 @@ const CalcuweightPromo = () => {
                     </div>
                 </section>
 
-                {/* Why I Built This Section - using universal grid */}
-                <section style={{
-                    padding: '6rem 0',
-                    borderTop: '1px solid var(--border-color)',
-                }}>
+                <section className="calcuweight-section calcuweight-section-large">
                     <div className="page-grid">
-                        <span className="section-label" style={{ paddingTop: '0.5rem' }}>
+                        <span className="section-label calcuweight-section-marker">
                             Background
                         </span>
                         <div className="section-content">
                             <motion.h2
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                style={{
-                                    fontSize: '2.5rem',
-                                    fontWeight: 400,
-                                    lineHeight: 1.2,
-                                    marginBottom: '2rem',
-                                    maxWidth: '20ch',
-                                }}
+                                {...reveal}
+                                className="calcuweight-section-title"
                             >
                                 Why I Built This
                             </motion.h2>
-                            <div style={{
-                                color: 'var(--text-secondary)',
-                                fontSize: '1rem',
-                                lineHeight: 1.7,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '1.5rem',
-                                maxWidth: '55ch',
-                            }}>
+                            <div className="calcuweight-copy-stack">
                                 <p>
                                     I've been lifting for years, and every session used to involve the same frustrating dance: staring at the gym whiteboard, pulling out my phone, opening the calculator app, and doing fractional math just to figure out what plates to put on the bar. It was a constant distraction that took me out of the zone.
                                 </p>
@@ -232,89 +165,55 @@ const CalcuweightPromo = () => {
                     </div>
                 </section>
 
-                {/* Footer CTA - using universal grid */}
-                <section style={{
-                    padding: '4rem 0',
-                    borderTop: '1px solid var(--border-color)',
-                }}>
-                    <div className="page-grid cw-cta-grid" style={{ alignItems: 'center' }}>
-                        <div className="cw-cta-text">
-                            <p style={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '0.5rem' }}>
+                <section className="calcuweight-section calcuweight-cta-section">
+                    <div className="page-grid calcuweight-cta-grid">
+                        <div className="calcuweight-cta-text">
+                            <p className="calcuweight-cta-title">
                                 Ready to simplify your workouts?
                             </p>
-                            <p style={{ color: 'var(--text-secondary)' }}>
+                            <p className="calcuweight-copy">
                                 Available on iOS and Apple Watch
                             </p>
                         </div>
-                        <div className="cw-cta-button">
-                            <a href="https://apps.apple.com/app/id6756983846" style={{
-                                display: 'inline-block',
-                                background: '#fff',
-                                color: '#000',
-                                padding: '1rem 2rem',
-                                borderRadius: '50px',
-                                fontWeight: 500,
-                                textDecoration: 'none',
-                                fontSize: '1rem'
-                            }}>
+                        <div className="calcuweight-cta-button">
+                            <a
+                                href="https://apps.apple.com/app/id6756983846"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="calcuweight-button"
+                            >
                                 Download on App Store
                             </a>
                         </div>
                     </div>
                 </section>
 
-                {/* Support Section */}
-                <section id="support" style={{
-                    padding: '6rem 0',
-                    borderTop: '1px solid var(--border-color)',
-                }}>
+                <section id="support" className="calcuweight-section calcuweight-section-large">
                     <div className="page-grid">
-                        <span className="section-label" style={{ paddingTop: '0.5rem' }}>
+                        <span className="section-label calcuweight-section-marker">
                             Support
                         </span>
                         <div className="section-content">
                             <motion.h2
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                style={{
-                                    fontSize: '2.5rem',
-                                    fontWeight: 400,
-                                    lineHeight: 1.2,
-                                    marginBottom: '2rem',
-                                }}
+                                {...reveal}
+                                className="calcuweight-section-title"
                             >
                                 Need Help?
                             </motion.h2>
-                            <div style={{
-                                color: 'var(--text-secondary)',
-                                fontSize: '1rem',
-                                lineHeight: 1.7,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '1.5rem',
-                                maxWidth: '55ch',
-                            }}>
+                            <div className="calcuweight-copy-stack">
                                 <p>
                                     I built this and I actually want to hear from you if something's off. Shoot me an email and I'll get back to you.
                                 </p>
                                 <p>
-                                    <a href="mailto:sam@iamnotsam.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>sam@iamnotsam.com</a>
+                                    <a href="mailto:sam@iamnotsam.com" className="calcuweight-text-link">sam@iamnotsam.com</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Privacy Link */}
-                <div className="page-grid" style={{
-                    paddingTop: '2rem',
-                    borderTop: '1px solid var(--border-color)',
-                    fontSize: '0.85rem',
-                    color: 'var(--text-secondary)',
-                }}>
-                    <Link to="/privacy" style={{ textDecoration: 'underline', textUnderlineOffset: '2px', whiteSpace: 'nowrap' }}>
+                <div className="page-grid calcuweight-legal">
+                    <Link to="/privacy" className="calcuweight-text-link">
                         Privacy Policy
                     </Link>
                 </div>

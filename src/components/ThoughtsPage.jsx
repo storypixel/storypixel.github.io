@@ -52,7 +52,7 @@ const ThoughtsPage = () => {
 
                 {/* Post list */}
                 <div>
-                    {posts.map((post, index) => (
+                    {posts.map((post) => (
                         <motion.div
                             key={post.slug}
                             variants={item}

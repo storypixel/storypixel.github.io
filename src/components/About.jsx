@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useGlitch } from 'react-powerglitch';
 
 const About = () => {
-    const glitch = useGlitch({
+    const { ref: glitchRef } = useGlitch({
         playMode: 'hover',
         createContainers: true,
         hideOverflow: true,
@@ -119,7 +119,7 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <div ref={glitch.ref} style={{ width: '100%', height: '100%', position: 'relative' }}>
+                    <div ref={glitchRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
                         {/* Base photo */}
                         <img
                             src="/images/storypixel.jpeg"

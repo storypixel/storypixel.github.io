@@ -156,7 +156,7 @@ function SiriWaveBubble({ active }) {
       width: 200,
       height: 200,
       speed: 0.03,
-      amplitude: active ? 1.2 : 0.3,
+      amplitude: 0.3,
       frequency: 4,
       color: '#8a70c0',
       autostart: true,
@@ -424,7 +424,7 @@ export default function ERPPrototype() {
           <span className="erp-date-today-sub">{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
         </button>
         <div className="erp-date-recents">
-          {recentDays.map((d, i) => (
+          {recentDays.map((d) => (
             <button
               key={d.value}
               className={`erp-date-recent ${exposureDate === d.value ? 'selected' : ''}`}

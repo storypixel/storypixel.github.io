@@ -2,6 +2,122 @@
 
 export const posts = [
     {
+        slug: 'ai-roundup-2026-05-01',
+        title: 'AI Roundup — Week of May 1, 2026',
+        date: '2026-05-01',
+        dateDisplay: 'May 2026',
+        excerpt: 'Apple ships internal CLAUDE.md files inside their Support app, the OpenClaw incident lights up HN, the UK AISI publishes its GPT-5.5 cyber evaluation, agent harnesses keep proliferating, and a real coding agent finds a real WireGuard bug in production GKE.',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Three threads this week. The trust layer keeps cracking — Apple shipped internal Claude Code workflow files inside their consumer iOS app, Anthropic is in a public discourse spiral over commit-message refusals, and OpenAI quietly restricted access to one of the same model classes they criticized Anthropic for restricting. The agent-harness ecosystem keeps proliferating in a notably uncoordinated way: Codex CLI added their version of the Ralph loop, somebody shipped a full coding-agent harness in 400 lines of shell, and a "shared context board for teams and agents" hit Show HN. And the cyber-capabilities arms race is moving from rumor to evaluation — the UK AI Security Institute published a frontier eval of GPT-5.5, and a Shai-Hulud-themed supply-chain attack landed inside PyTorch Lightning.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'The trust layer is having a week',
+                paragraphs: [
+                    'The story that ate HN was the [OpenClaw incident](https://news.ycombinator.com/item?id=fc6cc645b8363523) — 1,199 points and 661 comments arguing about whether Claude Code refuses requests or charges extra usage if your commit messages mention "OpenClaw," a reference Anthropic apparently doesn\'t love. Whether the behavior is intentional, a model artifact, or partial misreporting, the discourse damage is done. The whole point of a coding agent is that it\'s a tool, not a referee, and the moment users believe the tool has institutional opinions about which words they\'re allowed to type, the trust falls off a cliff.',
+                    'The other half of the trust story is funnier. Apple [accidentally shipped CLAUDE.md files inside the Apple Support app](https://news.ycombinator.com/item?id=28388b08f271cbd4) — the same project-instructions format Claude Code uses for per-repo guidance, sitting in a production iOS bundle. Embarrassing for Apple, validating for the format. The signal is Apple is using Claude Code internally enough that workflow artifacts leak into shipped binaries, which is the kind of accidental endorsement the marketing team can\'t buy.',
+                    'And [OpenAI restricted access to Cyber](https://news.ycombinator.com/item?id=d29e68d8d0daa29f) shortly after publicly criticizing Anthropic for restricting Mythos. The hypocrisy beat writes itself. The deeper read: cyber-capable model access is being walled off by everyone, regardless of which lab is currently pretending to be the open one.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'AI Security Institute on GPT-5.5',
+                paragraphs: [
+                    'The UK AISI published [their evaluation of GPT-5.5\'s cyber capabilities](https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/), the same group that previously evaluated Claude Mythos. This is the slow grind of frontier-model evaluation moving from vibes-on-Twitter to real institutional reports. Read it for the methodology — the scoring framework matters more than any individual capability score, because the framework is what gets reused for the next model and the model after that.',
+                    'In the same news cycle, [the Shai-Hulud supply-chain attack landed in PyTorch Lightning](https://news.ycombinator.com/item?id=250fb6959f84e97a) — 409 HN points. If you run training pipelines, audit your dependency tree. The IOC list and affected versions are still being pinned down as of writing.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Agent harnesses keep proliferating',
+                paragraphs: [
+                    'OpenAI\'s Codex CLI [shipped /goal](https://simonwillison.net/2026/Apr/30/codex-goals/) in 0.128.0 — their version of the Ralph loop pattern. You set a goal, Codex keeps executing until an evaluator says it\'s done. This is the same pattern cortextOS has been running as `/loop` for months; nice to see it baked into a major vendor CLI. Worth looking at whether the cortextOS agents that already use codex as their runtime should swap to native /goal instead of wrapping their own loop.',
+                    '[Pu.sh](https://news.ycombinator.com/item?id=9ae766d153362cd0) is a complete coding-agent harness in 400 lines of shell. Show HN, 84 points. Worth reading for the minimum-viable-harness pattern — what\'s actually load-bearing, what\'s ceremony, what could be cut from a 5,000-line agent framework. Not because shell is the right answer, but because the answer to "what do you actually need" tends to be smaller than the answer to "what feels safe to build."',
+                    '[Kanwas](https://github.com/kanwas-ai/kanwas) — open-source shared context board for teams and agents — is in the same shape. Coordination surface for multiple agents working on the same context, durable across sessions. Show HN, 56 points. The interesting question is whether shared-context-board is a feature of every agent framework or a discrete service that agent frameworks plug into.',
+                    '[AINews\'s "Agents for Everything Else"](https://www.latent.space/p/ainews-agents-for-everything-else) is the meta-read on this whole space — Codex for knowledge work, Claude for creative work, the split is hardening. Useful framing if you\'re routing tasks across model providers.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Real agents finding real bugs',
+                paragraphs: [
+                    'Lovable.dev published [a writeup of their agent finding a WireGuard bug in Google Kubernetes Engine](https://lovable.dev/blog/hunting-networking-bugs-in-kubernetes). Concrete proof point — not a benchmark, not a contrived eval, an actual production-relevant networking bug found by an autonomous coding agent. Worth reading for the workflow more than the bug itself. The shape of "agent does the long tail of debugging, human reviews the conclusion" is starting to hold.',
+                    'For balance: [Agentic coding is burning me out](https://news.ycombinator.com/item?id=1b2848729987c718) (24 points but a lot of comment-thread fatigue) — the other side of the agent-everywhere posture. Worth reading if you, like me, are running a fleet of agents and occasionally wondering whether the productivity is real or whether you\'re just running a more elaborate to-do list with extra steps.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Worth a look',
+                paragraphs: [
+                    '[Andrew Kelley on detecting LLM-assisted PRs](https://simonwillison.net/2026/Apr/30/andrew-kelley/) — Zig\'s anti-AI policy is enforceable in part because LLM-assisted code makes a different shape of mistake than human-assisted code. Whether you agree with the policy or not, the fingerprint observation is interesting. [Mozilla opposing Chrome\'s LLM Prompt API](https://news.ycombinator.com/item?id=107898ed3affa3c9) — the next platform-politics fight, in the same shape as previous Chrome-vs-everyone fights. [Mike, open-source legal AI](https://news.ycombinator.com/item?id=152cf9324520f06b) — agent verticals are where the next wave of fundable startups lives, and legal is a fertile one.',
+                    'On the cultural side: [The More Young People Use AI, the More They Hate It](https://news.ycombinator.com/item?id=2c58a877918cd19a) — sentiment shift worth tracking. The thing about a technology becoming infrastructure is that nobody loves infrastructure; they just complain when it\'s broken. [DataCenter.FM](https://news.ycombinator.com/item?id=023f9111e315c0e2) — ambient app of AI-bubble data center sounds. The internet remains undefeated.',
+                ],
+            },
+        ],
+    },
+    {
+        slug: 'ai-roundup-2026-04-24',
+        title: 'AI Roundup — Week of April 24, 2026',
+        date: '2026-04-24',
+        dateDisplay: 'April 2026',
+        excerpt: 'Anthropic publishes a candid postmortem on two months of Claude Code quality complaints, OpenAI ships GPT-5.5 with a Codex "superapp," DeepSeek V4 lands at a fraction of the price, and the ecosystem rushes to wire them together within 24 hours.',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Two stories shaped this week. First, Anthropic admitted what a lot of people had been saying out loud for weeks — Claude Code had been measurably worse for two months, the complaints were grounded in real bugs, and here is the fix. Second, OpenAI dropped GPT-5.5 and an integrated Codex "superapp," reframing the code-generation story as an all-in-one tool rather than an API you wire up yourself. Within 24 hours the independent dev tooling had already hijacked the new Codex auth path to route API calls through it. The ground moves fast; the moat is narrow.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Anthropic — Claude Code quality postmortem',
+                paragraphs: [
+                    'On April 23, Anthropic published [a detailed postmortem](https://www.anthropic.com/engineering/april-23-postmortem) on the two-month stretch where Claude Code users were reporting worse outputs. The verdict: the complaints were accurate, and the causes were multiple. A context-handling regression was one culprit — Claude Code was silently truncating or misordering the code it used as context for reviews, which showed up as worse answers for no obvious reason. Fixed on April 10 in v2.1.101.',
+                    'The more interesting admission is about [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7): the postmortem notes "a notable behavioral quirk" in the model itself, separate from the tooling bug. Anthropic framed it carefully — the model hasn\'t been retrained, but the system prompt and harness around it have been adjusted to work around the quirk. Simon Willison\'s take is [here](https://simonwillison.net/2026/Apr/24/recent-claude-code-quality-reports/); the HN thread pulled 775 points and 604 comments, skeptical but mostly reading the postmortem as the right kind of candor.',
+                    'One meta-point worth calling out: the fleet of CortextOS agents running on this site have been using Opus 4.7 throughout. We didn\'t experience the worst of the quality drop because we stayed on the Claude Code CLI rather than the API, and because our system prompts are heavy — the harness absorbed the quirk. Still, worth re-benchmarking anything 4.7-specific now that the workaround is in place.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'OpenAI — GPT-5.5 + Codex Superapp',
+                paragraphs: [
+                    'OpenAI shipped [GPT-5.5](https://openai.com/index/introducing-gpt-5-5) on April 23 with a pitch that leans hard on coding, research, and data analysis. The [system card](https://openai.com/index/gpt-5-5-system-card) accompanied it along with a [Bio Bug Bounty](https://openai.com/index/gpt-5-5-bio-bug-bounty) offering up to $25,000 for universal jailbreaks on bio-safety risks — a notable concession that they expect red teams to find things.',
+                    'The more important shift is Codex. OpenAI is [positioning Codex as a superapp](https://www.latent.space/p/ainews-gpt-55-and-openai-codex-superapp) — not just an API, but an integrated tool that sits between the model and your editor/CLI. Willison got preview access and called GPT-5.5 "fast, effective and highly capable" in [his pelican benchmark](https://simonwillison.net/2026/Apr/23/gpt-5-5/).',
+                    'Twenty-four hours after launch, Willison also shipped [llm-openai-via-codex 0.1a0](https://simonwillison.net/2026/Apr/23/llm-openai-via-codex/), which hijacks the Codex CLI\'s credentials to route API calls back through the LLM tool. It\'s a pointed little hack — the "superapp" framing only works if the credentials stay siloed in Codex, and they don\'t.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'DeepSeek V4 — frontier-adjacent, a fraction of the price',
+                paragraphs: [
+                    'DeepSeek released the [first of the V4 series](https://simonwillison.net/2026/Apr/24/deepseek-v4/) on April 24 — two preview models with a million-token context window designed specifically for agentic workflows. Willison\'s framing: "almost on the frontier, a fraction of the price." The [HuggingFace writeup](https://huggingface.co/blog/deepseekv4) emphasizes the long-context-for-agents angle over raw benchmarks.',
+                    'Geopolitical noise continues: [Huawei pledged "full support"](https://www.scmp.com/tech/big-tech/article/3351239/) for DeepSeek with new chips the same week, and the US accused China of "[industrial-scale AI theft](https://arstechnica.com/tech-policy/2026/04/us-accuses-china-of-industrial-scale-ai-theft-china-says-its-slander/)." Expect a Trump-Xi summit conversation that rhymes with sanctions on H-tier compute.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Claude Code — quiet feature drops',
+                paragraphs: [
+                    'Parallel to the postmortem, Claude Code shipped three useful things this week per [Releasebot](https://releasebot.io/updates/anthropic/claude-code): **1-hour and forced 5-minute prompt caching controls**, a **session recap** feature, and **Skill tool access to built-in slash commands**. The caching controls matter for long-running agent sessions (most of our fleet) — explicit TTL beats implicit heuristic cache management every time. Session recap is new in the CLI and reads like Anthropic finally accepting that people are using these sessions as persistent memory surfaces.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Worth a look',
+                paragraphs: [
+                    '[LiteParse for the web](https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/) — LlamaIndex\'s Node CLI tool for PDF text extraction, now running entirely in the browser. [russellromney/honker](https://simonwillison.net/2026/Apr/24/honker/) — Postgres NOTIFY/LISTEN semantics for SQLite, written as a Rust extension. [Bluesky\'s For You feed writeup](https://simonwillison.net/2026/Apr/24/serving-the-for-you-feed/) — custom algorithm feeds as a first-class feature, which is the kind of protocol-level design Twitter never tried.',
+                    'Infrastructure side, [a GitHub multi-service incident](https://www.githubstatus.com/incidents/myrbk7jvvs6p) pulled 257 HN points. Worth a glance if any of your CI saw flakes. And [Ars Technica\'s newsroom AI policy](https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/) — worth reading as a template if you\'re drafting one for yourself.',
+                ],
+            },
+        ],
+    },
+    {
         slug: 'ai-roundup-2026-04-17',
         title: 'AI Roundup — Week of April 17, 2026',
         date: '2026-04-17',

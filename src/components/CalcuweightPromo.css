@@ -1,0 +1,266 @@
+.calcuweight-page {
+  min-height: 100vh;
+  padding-bottom: 10vh;
+}
+
+.calcuweight-page-body {
+  padding-top: 8rem;
+}
+
+.calcuweight-hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  margin: 0 var(--spacing-container) 6rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+}
+
+.calcuweight-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  opacity: 0.3;
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.calcuweight-hero-media-panel {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.calcuweight-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.calcuweight-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.calcuweight-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+  gap: 2rem;
+  width: 100%;
+  min-height: 80vh;
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.calcuweight-hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calcuweight-hero-title {
+  max-width: 11ch;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.calcuweight-hero-subtitle {
+  max-width: 34rem;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.calcuweight-button {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.calcuweight-phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36rem;
+}
+
+.phone-3d {
+  width: 100%;
+  height: 100%;
+  min-height: 32rem;
+  cursor: grab;
+  touch-action: manipulation;
+}
+
+.calcuweight-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.calcuweight-section-large {
+  padding: 6rem 0;
+}
+
+.calcuweight-section-marker,
+.calcuweight-feature-number {
+  padding-top: 0.4rem;
+}
+
+.calcuweight-section-title {
+  max-width: 20ch;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.calcuweight-feature-list {
+  padding: 0 var(--spacing-container);
+}
+
+.calcuweight-feature-row {
+  padding: 2rem 0;
+}
+
+.calcuweight-feature-row:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calcuweight-feature-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.calcuweight-copy,
+.calcuweight-copy-stack {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.calcuweight-copy {
+  max-width: 50ch;
+}
+
+.calcuweight-copy-stack {
+  display: flex;
+  max-width: 55ch;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calcuweight-cta-grid {
+  align-items: center;
+}
+
+.calcuweight-cta-text {
+  grid-column: 1 / 3;
+}
+
+.calcuweight-cta-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.calcuweight-cta-button {
+  grid-column: 3 / 5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.calcuweight-text-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.calcuweight-legal {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .calcuweight-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calcuweight-phone {
+    min-height: 31rem;
+  }
+
+  .calcuweight-cta-text,
+  .calcuweight-cta-button {
+    grid-column: 1 / -1;
+  }
+
+  .calcuweight-cta-button {
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .calcuweight-hero-section {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .calcuweight-hero-grid {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .calcuweight-hero-copy {
+    align-items: center;
+  }
+
+  .calcuweight-hero-title {
+    font-size: 2.75rem;
+  }
+
+  .calcuweight-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .calcuweight-phone {
+    min-height: 27rem;
+  }
+
+  .phone-3d {
+    min-height: 27rem;
+  }
+}
