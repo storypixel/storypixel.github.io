@@ -7,7 +7,6 @@ import Work from './components/Work';
 import About from './components/About';
 import Footer from './components/Footer';
 import Privacy from './components/Privacy';
-import ExperimentsSection from './components/ExperimentsSection';
 import ExperimentsPage from './components/ExperimentsPage';
 import ExperimentPost from './components/ExperimentPost';
 import ThoughtsPage from './components/ThoughtsPage';
@@ -22,6 +21,9 @@ const CalcuweightPromo = lazy(() => import('./components/CalcuweightPromo'));
 const RoomscrollPromo = lazy(() => import('./components/RoomscrollPromo'));
 const CookiePage = lazy(() => import('./components/CookiePage'));
 const ChiaPromo = lazy(() => import('./components/ChiaPromo'));
+const KlerbPromo = lazy(() => import('./components/KlerbPromo'));
+const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
+const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
 
 function HomePage() {
     return (
@@ -30,7 +32,6 @@ function HomePage() {
             <Hero />
             <Work />
             <About />
-            <ExperimentsSection />
             <Footer />
         </>
     );
@@ -50,6 +51,9 @@ function App() {
                         <Route path="/calcuweight" element={<CalcuweightPromo />} />
                         <Route path="/roomscroll" element={<RoomscrollPromo />} />
                         <Route path="/chia" element={<ChiaPromo />} />
+                        <Route path="/klerb" element={<KlerbPromo />} />
+                        <Route path="/phenyl" element={<PhenylPromo />} />
+                        <Route path="/sureladder" element={<SureladderPromo />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
                                 <ERPDemo />
