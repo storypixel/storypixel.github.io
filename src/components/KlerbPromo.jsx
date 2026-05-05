@@ -24,47 +24,26 @@ const KlerbPromo = () => {
 
             <motion.div variants={container} initial="hidden" animate="show" style={{ paddingTop: '8rem' }}>
                 {/* Hero */}
-                <section style={{
-                    position: 'relative',
-                    minHeight: '80vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '6rem',
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    background: '#0a4d2e'
-                }}>
-                    <div style={{
-                        position: 'absolute',
-                        top: 0, left: 0, width: '100%', height: '100%',
-                        zIndex: 0, opacity: 0.35, filter: 'brightness(0.7)'
-                    }}>
-                        <img src="/images/klerb/klerb-hero.png" alt=""
-                             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <section className="promo-hero" style={{ background: '#0a4d2e' }}>
+                    <div className="promo-hero-bg" style={{ opacity: 0.35 }}>
+                        <img src="/images/klerb/klerb-hero.png" alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(10,77,46,0.95) 0%, rgba(10,77,46,0.6) 50%, rgba(10,77,46,0.2) 100%)'
                         }} />
                     </div>
 
-                    <div style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'grid', gridTemplateColumns: '1fr 1fr',
-                        width: '100%', height: '100%',
-                        padding: '4rem', gap: '2rem'
-                    }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div className="promo-hero-content">
+                        <div className="promo-hero-text">
                             <motion.h1 variants={item} style={{
-                                fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                                fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
                                 fontWeight: 400, lineHeight: 1.1,
                                 marginBottom: '1.5rem', color: '#fff'
                             }}>
                                 Small rooms,<br />real people.
                             </motion.h1>
                             <motion.p variants={item} style={{
-                                fontSize: '1.1rem',
+                                fontSize: '1.05rem',
                                 color: 'rgba(255,255,255,0.75)',
                                 maxWidth: '90%', marginBottom: '2.5rem', lineHeight: 1.6
                             }}>
@@ -82,18 +61,10 @@ const KlerbPromo = () => {
                             </motion.div>
                         </div>
 
-                        <motion.div variants={item} style={{
-                            display: 'flex', alignItems: 'center', justifyContent: 'center'
-                        }}>
-                            <div style={{
-                                borderRadius: '8px', overflow: 'hidden',
-                                boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                maxWidth: '100%'
-                            }}>
+                        <motion.div variants={item} className="promo-hero-screenshot">
+                            <div>
                                 <img src="/images/klerb/klerb-discover.png"
-                                     alt="Klerb discover view"
-                                     style={{ width: '100%', height: 'auto', display: 'block' }} />
+                                     alt="Klerb discover view" />
                             </div>
                         </motion.div>
                     </div>

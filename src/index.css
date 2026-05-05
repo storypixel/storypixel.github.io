@@ -284,3 +284,91 @@ html.lenis {
     margin-top: 1rem;
   }
 }
+
+/* Promo hero (Klerb / Phenyl / Sureladder) */
+.promo-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6rem;
+  margin-left: var(--spacing-container);
+  margin-right: var(--spacing-container);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.promo-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  filter: brightness(0.7);
+}
+
+.promo-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.promo-hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  gap: 2rem;
+}
+
+.promo-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.promo-hero-screenshot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo-hero-screenshot > div {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 100%;
+}
+
+.promo-hero-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .promo-hero {
+    min-height: auto;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .promo-hero-content {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .promo-hero-screenshot {
+    order: -1;
+  }
+}

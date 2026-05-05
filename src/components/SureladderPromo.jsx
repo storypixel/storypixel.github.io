@@ -24,44 +24,26 @@ const SureladderPromo = () => {
 
             <motion.div variants={container} initial="hidden" animate="show" style={{ paddingTop: '8rem' }}>
                 {/* Hero */}
-                <section style={{
-                    position: 'relative',
-                    minHeight: '80vh',
-                    display: 'flex', alignItems: 'center',
-                    marginBottom: '6rem',
-                    marginLeft: 'var(--spacing-container)',
-                    marginRight: 'var(--spacing-container)',
-                    borderRadius: '16px', overflow: 'hidden',
-                    background: '#1c1a2e'
-                }}>
-                    <div style={{
-                        position: 'absolute', inset: 0,
-                        zIndex: 0, opacity: 0.3, filter: 'brightness(0.8)'
-                    }}>
-                        <img src="/images/sureladder/sureladder-hero.png" alt=""
-                             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <section className="promo-hero" style={{ background: '#1c1a2e' }}>
+                    <div className="promo-hero-bg" style={{ opacity: 0.3 }}>
+                        <img src="/images/sureladder/sureladder-hero.png" alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(28,26,46,0.95) 0%, rgba(28,26,46,0.65) 50%, rgba(28,26,46,0.25) 100%)'
                         }} />
                     </div>
 
-                    <div style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'grid', gridTemplateColumns: '1fr 1fr',
-                        width: '100%', height: '100%',
-                        padding: '4rem', gap: '2rem'
-                    }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div className="promo-hero-content">
+                        <div className="promo-hero-text">
                             <motion.h1 variants={item} style={{
-                                fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                                fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
                                 fontWeight: 400, lineHeight: 1.1,
                                 marginBottom: '1.5rem', color: '#fff'
                             }}>
                                 ERP therapy,<br />one rung at a time.
                             </motion.h1>
                             <motion.p variants={item} style={{
-                                fontSize: '1.1rem',
+                                fontSize: '1.05rem',
                                 color: 'rgba(255,255,255,0.75)',
                                 maxWidth: '90%', marginBottom: '2.5rem', lineHeight: 1.6
                             }}>
@@ -82,18 +64,9 @@ const SureladderPromo = () => {
                             </motion.div>
                         </div>
 
-                        <motion.div variants={item} style={{
-                            display: 'flex', alignItems: 'center', justifyContent: 'center'
-                        }}>
-                            <div style={{
-                                borderRadius: '8px', overflow: 'hidden',
-                                boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                maxWidth: '100%'
-                            }}>
-                                <img src="/images/sureladder/sureladder-erp.png"
-                                     alt="Sureladder ERP screen"
-                                     style={{ width: '100%', height: 'auto', display: 'block' }} />
+                        <motion.div variants={item} className="promo-hero-screenshot">
+                            <div>
+                                <img src="/images/sureladder/sureladder-erp.png" alt="Sureladder ERP screen" />
                             </div>
                         </motion.div>
                     </div>
