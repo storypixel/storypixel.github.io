@@ -2,6 +2,70 @@
 
 export const posts = [
     {
+        slug: 'ai-roundup-2026-05-08',
+        title: 'AI Roundup — Week of May 8, 2026',
+        date: '2026-05-08',
+        dateDisplay: 'May 2026',
+        excerpt: 'Anthropic closes a 300MW SpaceX/xAI compute deal and doubles Claude Code limits, ships Agent Skills as a first-class primitive, and Mozilla ships 271 Firefox fixes from Claude Mythos with almost no false positives. AI security is officially shipping. Voice gets a new SOTA, hallucination liability moves from theory to lawsuits, and the agent ecosystem converges on "control flow, not more prompts."',
+        sections: [
+            {
+                type: 'text',
+                label: null,
+                paragraphs: [
+                    'Three threads this week. Compute is the headline structural shift — Anthropic landed a deal with SpaceX/xAI for ~300MW (~220k GPUs) coming online within the month, used it to double Claude Code 5-hour rate limits across Pro/Max/Team/Enterprise, raised API limits broadly, and shipped Agent Skills as the official primitive for packaging modular instructions. If you live inside Claude Code, your effective ceiling just moved. AI security stopped being interesting and started shipping — Mozilla landed 271 Firefox fixes from Claude Mythos with "almost no false positives" and is fully bought in, and OpenAI countered with GPT-5.5-Cyber under Trusted Access. And the agent-architecture consensus is hardening around control flow over prompts: the most upvoted essay on HN this week was "Agents need control flow, not more prompts," and Anthropic\'s own Agent Skills + MCP-in-Claude-Code walkthroughs read like the same thesis from the model-vendor side.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Compute is the story',
+                paragraphs: [
+                    'Anthropic closed a deal with SpaceX/xAI for [all the capacity of their new data center](https://www.itpro.com/software/development/anthropic-claude-code-usage-limits-increase-spacex-compute-deal) — 300MW, ~220,000 NVIDIA GPUs, online within the month — and used it to [double Claude Code\'s 5-hour rate limits](https://arstechnica.com/ai/2026/05/anthropic-raises-claude-code-usage-limits-credits-new-deal-with-spacex/) for Pro, Max, Team, and seat-based Enterprise plans. API limits went up broadly too. Simon Willison\'s [read on the deal](https://simonwillison.net/2026/May/7/xai-anthropic/#atom-everything) is that this was the actual headline of the week\'s "Code w/ Claude" event — a structural shift in how much agent work is economically viable per session.',
+                    'The compute story doesn\'t stand alone. The same week shipped [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — Anthropic\'s official primitive for packaging modular instructions, scripts, and templates that Claude loads on demand. Read it if you\'re building anything Claude-driven; this is the doc that turns "ad-hoc system-prompt sprawl" into a real composable surface. Pair it with Anthropic\'s own [MCP in Claude Code walkthrough](https://youtube.com/watch?v=VMF4InsZm9I) on connecting Claude Code to GitHub, databases, and APIs.',
+                    'The money quote, from where I sit running a fleet of agents: more compute + a real skill primitive + better tooling means the constraints that pinned agent-deployment economics three months ago are not the constraints anymore. Plan accordingly.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'AI security goes from interesting to shipping',
+                paragraphs: [
+                    '[Mozilla shipped 271 fixes from Claude Mythos with "almost no false positives"](https://hacks.mozilla.org/2026/05/behind-the-scenes-hardening-firefox/) and says it has "completely bought in" on AI-assisted vulnerability discovery. ([Ars coverage](https://arstechnica.com/information-technology/2026/05/mozilla-says-271-vulnerabilities-found-by-mythos-have-almost-no-false-positives/) · [Simon Willison](https://simonwillison.net/2026/May/7/firefox-claude-mythos/#atom-everything).) This is a real-world deployment number from a serious browser vendor, not a benchmark. The "AI security tools are too noisy to ship" era is ending faster than expected.',
+                    'OpenAI countered with [GPT-5.5-Cyber under Trusted Access](https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber) for verified defenders. The competitive shape is now obvious: cyber-capable models are walled off behind verification by every frontier lab, and the question is which lab\'s wall scales fastest.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Agent architecture is consolidating',
+                paragraphs: [
+                    'The most upvoted post on HN this week was [Agents need control flow, not more prompts](https://bsuh.bearblog.dev/agents-need-control-flow/) — 491 points. Adjacent and reinforcing: [Principles for agent-native CLIs](https://twitter.com/trevin/status/2051316002730991795), Addy Osmani\'s [Agentic Engineering essay](https://addyosmani.com/blog/agentic-engineering/), and [Agent Harness Kit](https://ahk.cardor.dev) for MCP-based multi-agent workflows.',
+                    'The thesis is the same one Anthropic just shipped Agent Skills against: give the agent a deterministic skeleton and bounded primitives, not a longer system prompt. The field is converging on this from both directions — practitioners writing essays about it on the demand side, model vendors shipping the primitives on the supply side. If you\'re still reaching for "make the system prompt longer" as your first lever, you\'re reaching for the lever the rest of the field is putting down.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Voice has a new SOTA',
+                paragraphs: [
+                    'OpenAI shipped [GPT-Realtime-2, GPT-Translate, and a new Whisper](https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api) — reasoning, translation, and transcription in one realtime API. The [Latent Space coverage](https://www.latent.space/p/ainews-gpt-realtime-2-translate-and) is the right read for "what does this enable that didn\'t exist last week." Indie counterpoint worth flagging: [a Dynamous community member got Whisper down to ~0.5s end-to-end](https://community.dynamous.ai/c/project-showcases/i-got-whisper-down-to-0-5s-end-to-end-and-wrapped-it-in-a-desktop-app) and wrapped it in a desktop app. Voice is becoming a real interaction surface, not a demo. The "always-on dictation that\'s actually fast" use case is now in reach for a hobbyist.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Hallucination liability moves from theory to lawsuits',
+                paragraphs: [
+                    'A [Canadian fiddler is suing Google](https://www.theguardian.com/music/2026/may/05/canadian-ashley-macisaac-fiddler-musician-singer-songwriter-sues-google-ai-sex-offender-ntwnfb) after AI Overviews labeled him a sex offender. Two [Home Affairs officials in South Africa were suspended](https://www.citizen.co.za/news/home-affairs-officials-suspended-ai-hallucinations/) after submitting AI-hallucinated legal arguments. And [AI slop is killing online communities](https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/) — 698 points on HN this week. The second-order costs are mounting.',
+                    'The first-order question is settled: yes, models hallucinate. The second-order question, which is starting to drive actual policy, is who pays when they do — and "the user" is no longer the only available answer. If you ship an LLM feature in front of users, this is the risk surface to map.',
+                ],
+            },
+            {
+                type: 'text',
+                label: 'Worth a look',
+                paragraphs: [
+                    '[Natural Language Autoencoders: Turning Claude\'s Thoughts into Text](https://www.anthropic.com/research/natural-language-autoencoders) — Anthropic interpretability work, 302 points on HN. Concrete progress on "what is the model actually computing" — the kind of paper that moves the alignment conversation a small but real step forward. [AlphaEvolve impact update](https://deepmind.google/blog/alphaevolve-impact/) — DeepMind\'s Gemini-powered coding agent now producing publishable research results across multiple fields. [antirez/ds4](https://github.com/antirez/ds4) — antirez ships a Mac-native local inference engine for DeepSeek-4 Flash on Metal. On-device LLMs keep getting more practical, and antirez has an unusual eye for what minimum-viable looks like.',
+                    'And a useful piece of homework: [GPT-5.5 cost-per-token analysis](https://openrouter.ai/announcements/gpt55-cost-analysis) — concrete math. Read it before migrating any production workload to the new tier.',
+                ],
+            },
+        ],
+    },
+    {
         slug: 'ai-roundup-2026-05-01',
         title: 'AI Roundup — Week of May 1, 2026',
         date: '2026-05-01',
