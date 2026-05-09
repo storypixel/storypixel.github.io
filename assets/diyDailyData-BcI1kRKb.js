@@ -1,0 +1,1 @@
+const a="2026-05-09",n=[{id:"ticker",label:"B",name:"Market Tape",note:"Fastest markets read, data first."}],s=Date.now().toString(36);function i(e){return`/client-previews/diy-daily/${a}-${e}.html?v=${s}`}function r(e){return n.find(t=>t.id===e)}export{i as a,n as e,r as f};
