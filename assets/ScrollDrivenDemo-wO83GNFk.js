@@ -1,4 +1,4 @@
-import{j as e}from"./vendor-D4QWGx82.js";import{I as t}from"./IsolatedFrame-BCqEn53j.js";const i=typeof CSS<"u"&&CSS.supports&&CSS.supports("animation-timeline: view()"),n=`<!doctype html>
+import{j as e}from"./vendor-BOqPA3_B.js";import{I as t}from"./IsolatedFrame-C3kJprwT.js";const i=typeof CSS<"u"&&CSS.supports&&CSS.supports("animation-timeline: view()"),n=`<!doctype html>
 <html>
 <head>
 <meta charset="utf-8" />
