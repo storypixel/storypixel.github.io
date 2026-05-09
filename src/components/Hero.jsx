@@ -45,7 +45,7 @@ const Hero = () => {
                 {/* Right: Headline */}
                 <motion.div className="hero-quote-block" variants={item}>
                     <h1 className="hero-headline">
-                        {"Handcrafted experiences, designed with purpose and powered by agentic intelligence."}
+                        {"The Genius of Handcraft in the Age of Agentic"}
                     </h1>
                     <p className="hero-attribution">Sam Wilson / Storypixel <IdiotPopup><Crown size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
                 </motion.div>
