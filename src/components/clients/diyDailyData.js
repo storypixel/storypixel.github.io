@@ -16,8 +16,13 @@ export const examples = [
   },
 ];
 
+// One cache-buster per page load. Static HTML files are cached aggressively by
+// GitHub Pages / Fastly + browsers; appending a unique query string forces a
+// fresh fetch each visit so a re-deploy is visible without manual refresh.
+const cacheBuster = Date.now().toString(36);
+
 export function exampleHtmlPath(exampleId) {
-  return `/client-previews/diy-daily/${issueDate}-${exampleId}.html`;
+  return `/client-previews/diy-daily/${issueDate}-${exampleId}.html?v=${cacheBuster}`;
 }
 
 export function findExample(id) {
