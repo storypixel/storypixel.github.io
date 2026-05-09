@@ -24,6 +24,7 @@ const ChiaPromo = lazy(() => import('./components/ChiaPromo'));
 const KlerbPromo = lazy(() => import('./components/KlerbPromo'));
 const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
 const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
+const DIYDailyExamples = lazy(() => import('./components/clients/DIYDailyExamples'));
 
 function HomePage() {
     return (
@@ -57,6 +58,11 @@ function App() {
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
                                 <ERPDemo />
+                            </PasswordGate>
+                        } />
+                        <Route path="/clients/diy-daily" element={
+                            <PasswordGate password="diy">
+                                <DIYDailyExamples />
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />
