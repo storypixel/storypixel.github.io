@@ -1,5 +1,4 @@
 .diy-detail-root {
-  min-height: 100vh;
   background: #12161b;
   color: #f8fafc;
   padding: 6rem var(--spacing-container) 3rem;
@@ -72,16 +71,16 @@
   background: #eef3f5;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
-  overflow: hidden;
-  flex: 1;
-  min-height: calc(100vh - 14rem);
+  overflow: auto;
 }
 
 .diy-detail-frame {
   width: 100%;
-  height: 100%;
+  min-width: 640px;
+  height: 4500px;
   border: 0;
   background: #ffffff;
+  display: block;
 }
 
 @media (max-width: 900px) {
@@ -93,10 +92,6 @@
 
   .diy-detail-rawlink {
     justify-self: start;
-  }
-
-  .diy-detail-frame-wrap {
-    min-height: 720px;
   }
 }
 
