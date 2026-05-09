@@ -1,0 +1,1 @@
+import{u as t,b as s,j as r,N as i}from"./vendor-BOqPA3_B.js";import{f as l,a as o}from"./diyDailyData-qrtMhE6z.js";function p(){const{exampleId:e}=t(),a=l(e);return s.useEffect(()=>{a&&window.location.replace(o(a.id))},[a]),a?null:r.jsx(i,{to:"/clients/diy-daily",replace:!0})}export{p as default};
