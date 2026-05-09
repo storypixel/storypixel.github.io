@@ -1,46 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './DIYDailyExamples.css';
-
-const issueDate = '2026-05-09';
-
-const examples = [
-  {
-    id: 'coin',
-    label: 'A',
-    name: 'Coin Masthead',
-    note: 'Logo-forward, most explicitly DIY Money.',
-  },
-  {
-    id: 'ticker',
-    label: 'B',
-    name: 'Market Tape',
-    note: 'Fastest markets read, data first.',
-  },
-  {
-    id: 'letter',
-    label: 'C',
-    name: 'Quint Letter',
-    note: 'Editorial first, quieter data support.',
-  },
-  {
-    id: 'homepage',
-    label: 'D',
-    name: 'Homepage Echo',
-    note: 'Closest to diymoney.org brand language.',
-  },
-  {
-    id: 'ledger',
-    label: 'E',
-    name: 'Morning Ledger',
-    note: 'Clean daily briefing format.',
-  },
-  {
-    id: 'signal',
-    label: 'F',
-    name: 'Signal Stack',
-    note: 'Markets-native structure with a strong L3 block.',
-  },
-];
+import { examples, exampleHtmlPath } from './diyDailyData';
 
 export default function DIYDailyExamples() {
   return (
@@ -59,7 +20,8 @@ export default function DIYDailyExamples() {
 
       <section className="diy-client-gallery" aria-label="DIY Daily email examples">
         {examples.map((example) => {
-          const src = `/client-previews/diy-daily/${issueDate}-${example.id}.html`;
+          const src = exampleHtmlPath(example.id);
+          const detailPath = `/clients/diy-daily/${example.id}`;
           return (
             <article className="diy-client-example" key={example.id}>
               <div className="diy-client-example-header">
@@ -67,7 +29,7 @@ export default function DIYDailyExamples() {
                   <span className="diy-client-label">Example {example.label}</span>
                   <h2>{example.name}</h2>
                 </div>
-                <a href={src} target="_blank" rel="noreferrer">Open</a>
+                <Link to={detailPath}>Open</Link>
               </div>
               <p>{example.note}</p>
               <div className="diy-client-frame-wrap">

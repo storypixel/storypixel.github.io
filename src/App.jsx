@@ -25,6 +25,7 @@ const KlerbPromo = lazy(() => import('./components/KlerbPromo'));
 const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
 const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
 const DIYDailyExamples = lazy(() => import('./components/clients/DIYDailyExamples'));
+const DIYDailyExample = lazy(() => import('./components/clients/DIYDailyExample'));
 
 function HomePage() {
     return (
@@ -63,6 +64,11 @@ function App() {
                         <Route path="/clients/diy-daily" element={
                             <PasswordGate password="diy">
                                 <DIYDailyExamples />
+                            </PasswordGate>
+                        } />
+                        <Route path="/clients/diy-daily/:exampleId" element={
+                            <PasswordGate password="diy">
+                                <DIYDailyExample />
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />
