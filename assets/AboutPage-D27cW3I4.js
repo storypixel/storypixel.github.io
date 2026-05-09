@@ -1,4 +1,4 @@
-import{b as l,j as e,m as n,L as c}from"./vendor-BOqPA3_B.js";import{N as m,p as h}from"./index-BB5vTrQM.js";import{C as x,a as o,u as y}from"./three-DZmJ_Chg.js";const v=()=>{const t=l.useRef(),a=l.useMemo(()=>({uTime:{value:0},uColor1:{value:new o("#1a1a2e")},uColor2:{value:new o("#4a90a4")},uColor3:{value:new o("#7b68ee")},uColor4:{value:new o("#20b2aa")},uColor5:{value:new o("#2d1b69")}}),[]),s=`
+import{b as l,j as e,m as n,L as c}from"./vendor-BOqPA3_B.js";import{N as m,p as h}from"./index-CwxhpOCc.js";import{C as x,a as o,u as y}from"./three-DZmJ_Chg.js";const v=()=>{const t=l.useRef(),a=l.useMemo(()=>({uTime:{value:0},uColor1:{value:new o("#1a1a2e")},uColor2:{value:new o("#4a90a4")},uColor3:{value:new o("#7b68ee")},uColor4:{value:new o("#20b2aa")},uColor5:{value:new o("#2d1b69")}}),[]),s=`
         varying vec2 vUv;
         void main() {
             vUv = uv;
