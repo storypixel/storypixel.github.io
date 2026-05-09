@@ -9,40 +9,10 @@ export const issueDate = '2026-05-09';
 
 export const examples = [
   {
-    id: 'coin',
-    label: 'A',
-    name: 'Coin Masthead',
-    note: 'Logo-forward, most explicitly DIY Money.',
-  },
-  {
     id: 'ticker',
     label: 'B',
     name: 'Market Tape',
     note: 'Fastest markets read, data first.',
-  },
-  {
-    id: 'letter',
-    label: 'C',
-    name: 'Quint Letter',
-    note: 'Editorial first, quieter data support.',
-  },
-  {
-    id: 'homepage',
-    label: 'D',
-    name: 'Homepage Echo',
-    note: 'Closest to diymoney.org brand language.',
-  },
-  {
-    id: 'ledger',
-    label: 'E',
-    name: 'Morning Ledger',
-    note: 'Clean daily briefing format.',
-  },
-  {
-    id: 'signal',
-    label: 'F',
-    name: 'Signal Stack',
-    note: 'Markets-native structure with a strong L3 block.',
   },
 ];
 
