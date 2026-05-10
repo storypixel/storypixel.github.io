@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DIY Daily — Dashboard Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DIY Daily — Dashboard Wireframe
+       Vanilla CSS. Token-based. One class per selector.
+       Convention follows Klerb's framework rules.
+       ═══════════════════════════════════════════════════════════ */
+
+    :root {
+      /* ── DIY Money palette ─────────────────────────────── */
+      --diy-navy: #182B43;
+      --diy-navy-soft: #203b52;
+      --diy-navy-line: #274f63;
+      --diy-gold: #EFAC20;
+      --diy-gold-soft: #f8d372;
+      --diy-ice: #EEF3F5;
+      --diy-bg: #fffaf2;
+      --diy-paper: #ffffff;
+      --diy-up: #177245;
+      --diy-down: #b3261e;
+      --diy-up-soft: #6bd49a;
+      --diy-down-soft: #ff8a80;
+      --diy-text: #172f3d;
+      --diy-muted: #6b7280;
+      --diy-border: #e2ded5;
+
+      /* ── Spacing (Klerb scale) ─────────────────────────── */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+
+      /* ── Type ──────────────────────────────────────────── */
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+
+      --leading-tight: 1.25;
+      --leading-snug: 1.4;
+      --leading-normal: 1.55;
+      --leading-relaxed: 1.7;
+
+      --tracking-display: -0.02em;
+      --tracking-body: 0;
+      --tracking-caps: 0.05em;
+
+      --font-normal: 400;
+      --font-medium: 500;
+      --font-semibold: 600;
+      --font-bold: 700;
+
+      /* ── Radius ────────────────────────────────────────── */
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      /* ── Motion ────────────────────────────────────────── */
+      --motion-duration-fast: 120ms;
+      --motion-duration-normal: 200ms;
+      --motion-duration-slow: 320ms;
+      --motion-duration-xslow: 480ms;
+      --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+      --motion-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+      --motion-ease-out: cubic-bezier(0, 0, 0, 1);
+
+      --shadow-card: 0 1px 2px rgba(24, 43, 67, 0.04), 0 4px 12px rgba(24, 43, 67, 0.06);
+      --shadow-floating: 0 4px 12px rgba(24, 43, 67, 0.08), 0 16px 32px rgba(24, 43, 67, 0.12);
+
+      --layout-column-max: 640px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background: var(--diy-bg);
+      color: var(--diy-text);
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      letter-spacing: var(--tracking-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100dvh;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ── Top bar ─────────────────────────────────────────── */
+
+    .topbar {
+      align-items: center;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 250, 242, 0.85);
+      border-bottom: 1px solid var(--diy-border);
+      display: flex;
+      gap: var(--space-4);
+      height: 56px;
+      justify-content: space-between;
+      padding: 0 var(--space-6);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-brand {
+      align-items: center;
+      color: var(--diy-navy);
+      display: flex;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      gap: var(--space-2);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .topbar-meta {
+      align-items: center;
+      color: var(--diy-muted);
+      display: flex;
+      font-size: var(--text-sm);
+      gap: var(--space-4);
+    }
+
+    .topbar-status {
+      align-items: center;
+      color: var(--diy-up);
+      display: flex;
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      gap: var(--space-2);
+    }
+
+    .topbar-dot {
+      animation: pulse 2400ms var(--motion-ease-standard) infinite;
+      background: var(--diy-up);
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── Page layout ─────────────────────────────────────── */
+
+    .page {
+      margin: 0 auto;
+      max-width: var(--layout-column-max);
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    .stage {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .stage-section {
+      animation: fade-up var(--motion-duration-xslow) var(--motion-ease-emphasized) backwards;
+    }
+
+    .stage-section[data-stagger="1"] { animation-delay: 60ms; }
+    .stage-section[data-stagger="2"] { animation-delay: 120ms; }
+    .stage-section[data-stagger="3"] { animation-delay: 180ms; }
+    .stage-section[data-stagger="4"] { animation-delay: 240ms; }
+    .stage-section[data-stagger="5"] { animation-delay: 300ms; }
+    .stage-section[data-stagger="6"] { animation-delay: 360ms; }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Email card (the rendered email IS the edit surface) ── */
+
+    .email {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .email-masthead {
+      background: var(--diy-navy);
+      color: var(--diy-paper);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding: var(--space-6) var(--space-6) var(--space-5);
+    }
+
+    .email-date {
+      color: var(--diy-gold);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .email-title {
+      color: var(--diy-paper);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-display);
+      line-height: var(--leading-tight);
+      margin: 0;
+    }
+
+    .email-byline {
+      color: var(--diy-gold-soft);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-body);
+    }
+
+    .email-section {
+      border-top: 1px solid var(--diy-border);
+      padding: var(--space-6);
+    }
+
+    .email-section[data-first] { border-top: 0; }
+
+    .email-section-heading {
+      color: var(--diy-navy);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-body);
+      margin: 0 0 var(--space-4) 0;
+    }
+
+    .email-section-meta {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-caps);
+      margin: 0 0 var(--space-3) 0;
+      text-transform: uppercase;
+    }
+
+    /* ── Futures grid (read-only) ──────────────────────── */
+
+    .futures {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 540px) {
+      .futures { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .futures-cell {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding: var(--space-3);
+      transition: border-color var(--motion-duration-normal) var(--motion-ease-standard);
+    }
+
+    .futures-cell:hover {
+      border-color: var(--diy-gold);
+    }
+
+    .futures-label {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .futures-value {
+      color: var(--diy-navy);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-display);
+    }
+
+    .futures-delta {
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .futures-delta[data-direction="up"] { color: var(--diy-up); }
+    .futures-delta[data-direction="down"] { color: var(--diy-down); }
+
+    .futures-bar {
+      background: var(--diy-border);
+      border-radius: var(--radius-sm);
+      height: 3px;
+      margin-top: var(--space-2);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .futures-bar-fill {
+      animation: bar-grow var(--motion-duration-xslow) var(--motion-ease-emphasized) forwards;
+      border-radius: var(--radius-sm);
+      height: 100%;
+      transform-origin: left center;
+    }
+
+    .futures-bar-fill[data-direction="up"] { background: var(--diy-up-soft); }
+    .futures-bar-fill[data-direction="down"] { background: var(--diy-down-soft); }
+
+    @keyframes bar-grow {
+      from { width: 0%; }
+    }
+
+    /* ── Ranked headlines (editable) ───────────────────── */
+
+    .headlines {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .headline {
+      align-items: flex-start;
+      background: var(--diy-paper);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: grab;
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      position: relative;
+      transition:
+        background-color var(--motion-duration-normal) var(--motion-ease-standard),
+        border-color var(--motion-duration-normal) var(--motion-ease-standard),
+        transform var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .headline:hover {
+      background: var(--diy-ice);
+      border-color: var(--diy-border);
+    }
+
+    .headline:hover .headline-actions {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .headline-rank {
+      color: var(--diy-gold);
+      font-size: var(--text-xs);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-caps);
+      min-width: 1.5rem;
+      padding-top: 2px;
+      text-transform: uppercase;
+    }
+
+    .headline-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: var(--space-1);
+      min-width: 0;
+    }
+
+    .headline-title {
+      color: var(--diy-text);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      line-height: var(--leading-snug);
+    }
+
+    .headline-source {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+    }
+
+    .headline-actions {
+      display: flex;
+      gap: var(--space-1);
+      opacity: 0;
+      transform: translateX(4px);
+      transition:
+        opacity var(--motion-duration-normal) var(--motion-ease-standard),
+        transform var(--motion-duration-normal) var(--motion-ease-standard);
+    }
+
+    .headline-action {
+      align-items: center;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--diy-muted);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: inherit;
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+      gap: var(--space-1);
+      height: 28px;
+      justify-content: center;
+      padding: 0 var(--space-2);
+      transition:
+        background-color var(--motion-duration-fast) var(--motion-ease-standard),
+        color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .headline-action:hover {
+      background: var(--diy-paper);
+      border-color: var(--diy-border);
+      color: var(--diy-navy);
+    }
+
+    .headline-action[data-variant="danger"]:hover {
+      color: var(--diy-down);
+    }
+
+    /* ── On-tap (read-only) ────────────────────────────── */
+
+    .ontap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ontap-item {
+      align-items: baseline;
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+    }
+
+    .ontap-time {
+      color: var(--diy-gold);
+      flex-shrink: 0;
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      min-width: 5rem;
+      text-transform: uppercase;
+    }
+
+    .ontap-title {
+      color: var(--diy-text);
+      font-size: var(--text-sm);
+      line-height: var(--leading-snug);
+    }
+
+    /* ── Q Update (editable paragraph) ──────────────────── */
+
+    .q-update {
+      background: var(--diy-ice);
+      border-left: 3px solid var(--diy-gold);
+      padding: var(--space-5) var(--space-6);
+      position: relative;
+    }
+
+    .q-update-paragraph {
+      color: var(--diy-navy);
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+      outline: none;
+    }
+
+    .q-update-paragraph:focus {
+      background: rgba(239, 172, 32, 0.06);
+      border-radius: var(--radius-sm);
+    }
+
+    .q-update-meta {
+      align-items: center;
+      color: var(--diy-muted);
+      display: flex;
+      font-size: var(--text-xs);
+      gap: var(--space-3);
+      justify-content: space-between;
+      margin-top: var(--space-3);
+    }
+
+    .q-update-count {
+      align-items: center;
+      display: inline-flex;
+      font-variant-numeric: tabular-nums;
+      gap: var(--space-1);
+    }
+
+    .q-update-count-bar {
+      background: var(--diy-border);
+      border-radius: var(--radius-sm);
+      height: 4px;
+      overflow: hidden;
+      width: 60px;
+    }
+
+    .q-update-count-fill {
+      background: var(--diy-gold);
+      border-radius: var(--radius-sm);
+      height: 100%;
+      transition: width var(--motion-duration-normal) var(--motion-ease-standard);
+      width: 85%;
+    }
+
+    .q-update-source {
+      color: var(--diy-muted);
+      cursor: help;
+    }
+
+    .q-update-source:hover {
+      color: var(--diy-navy);
+    }
+
+    /* ── Footer (read-only) ─────────────────────────────── */
+
+    .email-footer {
+      background: var(--diy-navy);
+      color: var(--diy-paper);
+      padding: var(--space-5) var(--space-6);
+    }
+
+    .email-footer-byline {
+      color: var(--diy-paper);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+
+    .email-footer-tag {
+      color: var(--diy-gold);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-caps);
+      margin-top: var(--space-1);
+      text-transform: uppercase;
+    }
+
+    /* ── Below-email controls ───────────────────────────── */
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-top: var(--space-2);
+    }
+
+    .control-row {
+      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .control-label {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .control-input {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-md);
+      color: var(--diy-text);
+      font-family: inherit;
+      font-size: var(--text-base);
+      padding: var(--space-3) var(--space-4);
+      transition:
+        border-color var(--motion-duration-normal) var(--motion-ease-standard),
+        box-shadow var(--motion-duration-normal) var(--motion-ease-standard);
+      width: 100%;
+    }
+
+    .control-input:focus {
+      border-color: var(--diy-gold);
+      box-shadow: 0 0 0 3px rgba(239, 172, 32, 0.18);
+      outline: none;
+    }
+
+    .control-helper {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      line-height: var(--leading-snug);
+    }
+
+    .subject-row {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .subject-row .control-input {
+      flex: 1;
+    }
+
+    .subject-variants {
+      align-items: center;
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-md);
+      color: var(--diy-navy);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: inherit;
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+      gap: var(--space-1);
+      letter-spacing: var(--tracking-caps);
+      padding: 0 var(--space-3);
+      text-transform: uppercase;
+      transition:
+        background-color var(--motion-duration-fast) var(--motion-ease-standard),
+        border-color var(--motion-duration-fast) var(--motion-ease-standard);
+      white-space: nowrap;
+    }
+
+    .subject-variants:hover {
+      background: var(--diy-ice);
+      border-color: var(--diy-gold);
+    }
+
+    /* ── Add-source paste-bin ───────────────────────────── */
+
+    .source-bin {
+      align-items: center;
+      background: rgba(239, 172, 32, 0.06);
+      border: 1px dashed var(--diy-gold);
+      border-radius: var(--radius-md);
+      color: var(--diy-navy);
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      transition: background-color var(--motion-duration-normal) var(--motion-ease-standard);
+    }
+
+    .source-bin:hover {
+      background: rgba(239, 172, 32, 0.12);
+    }
+
+    .source-bin-icon {
+      color: var(--diy-gold);
+      font-size: var(--text-lg);
+      line-height: 1;
+    }
+
+    .source-bin-text {
+      color: var(--diy-muted);
+      flex: 1;
+      font-size: var(--text-sm);
+    }
+
+    .source-bin-input {
+      background: transparent;
+      border: 0;
+      color: var(--diy-text);
+      font-family: inherit;
+      font-size: var(--text-sm);
+      outline: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    .source-bin-input::placeholder {
+      color: var(--diy-muted);
+    }
+
+    /* ── Push CTA ──────────────────────────────────────── */
+
+    .push-row {
+      align-items: center;
+      display: flex;
+      gap: var(--space-3);
+      justify-content: space-between;
+      margin-top: var(--space-4);
+    }
+
+    .push-meta {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      line-height: var(--leading-snug);
+    }
+
+    .push-button {
+      align-items: center;
+      background: var(--diy-navy);
+      border: 1px solid var(--diy-navy);
+      border-radius: var(--radius-md);
+      color: var(--diy-paper);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: inherit;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      gap: var(--space-2);
+      letter-spacing: var(--tracking-caps);
+      padding: var(--space-3) var(--space-5);
+      text-transform: uppercase;
+      transition:
+        background-color var(--motion-duration-normal) var(--motion-ease-standard),
+        box-shadow var(--motion-duration-normal) var(--motion-ease-standard),
+        transform var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .push-button:hover {
+      background: #213a5a;
+      box-shadow: var(--shadow-floating);
+      transform: translateY(-1px);
+    }
+
+    .push-button:active {
+      transform: translateY(0);
+    }
+
+    .push-arrow {
+      transition: transform var(--motion-duration-normal) var(--motion-ease-emphasized);
+    }
+
+    .push-button:hover .push-arrow {
+      transform: translateX(2px);
+    }
+
+    /* ── Footnote / wireframe banner ────────────────────── */
+
+    .wireframe-banner {
+      background: var(--diy-navy);
+      color: var(--diy-paper);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-caps);
+      padding: var(--space-2) var(--space-6);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .wireframe-banner-tag {
+      color: var(--diy-gold);
+      margin-right: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-banner">
+    <span class="wireframe-banner-tag">●</span>
+    Wireframe — DIY Daily authoring dashboard, single-screen edit surface
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-brand">DIY Daily</div>
+    <div class="topbar-meta">
+      <span>Saturday, May 9 · Send by 8:00 AM ET</span>
+    </div>
+    <div class="topbar-status">
+      <span class="topbar-dot"></span>
+      Saved 5:01
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="stage">
+      <article class="email stage-section" data-stagger="1">
+        <div class="email-masthead">
+          <div class="email-date">Saturday, May 9, 2026</div>
+          <h1 class="email-title">DIY Daily</h1>
+          <div class="email-byline">Quint Tatro · DIY Money Host</div>
+        </div>
+
+        <section class="email-section" data-first>
+          <h2 class="email-section-heading">Futures Snapshot</h2>
+          <div class="futures">
+            <div class="futures-cell">
+              <span class="futures-label">S&amp;P</span>
+              <span class="futures-value">7,420.5</span>
+              <span class="futures-delta" data-direction="up">+57.50 · +0.78%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="up" style="width: 35%"></div></div>
+            </div>
+            <div class="futures-cell">
+              <span class="futures-label">Nasdaq</span>
+              <span class="futures-value">29,333</span>
+              <span class="futures-delta" data-direction="up">+651.50 · +2.27%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="up" style="width: 100%"></div></div>
+            </div>
+            <div class="futures-cell">
+              <span class="futures-label">Oil</span>
+              <span class="futures-value">$94.68</span>
+              <span class="futures-delta" data-direction="down">−0.13 · −0.14%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="down" style="width: 8%"></div></div>
+            </div>
+            <div class="futures-cell">
+              <span class="futures-label">10Y</span>
+              <span class="futures-value">4.36%</span>
+              <span class="futures-delta" data-direction="down">−0.03 · −0.77%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="down" style="width: 28%"></div></div>
+            </div>
+            <div class="futures-cell">
+              <span class="futures-label">BTC</span>
+              <span class="futures-value">$80,505</span>
+              <span class="futures-delta" data-direction="up">+304.18 · +0.39%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="up" style="width: 18%"></div></div>
+            </div>
+            <div class="futures-cell">
+              <span class="futures-label">USD</span>
+              <span class="futures-value">97.77</span>
+              <span class="futures-delta" data-direction="down">−0.18 · −0.18%</span>
+              <div class="futures-bar"><div class="futures-bar-fill" data-direction="down" style="width: 10%"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="email-section">
+          <h2 class="email-section-heading">What happened</h2>
+          <p class="email-section-meta">5 ranked · hover a card to swap, edit, or remove</p>
+          <ul class="headlines">
+            <li class="headline">
+              <span class="headline-rank">01</span>
+              <div class="headline-body">
+                <span class="headline-title">Jobs Report, Chip-Stock Rally Power Stocks to New Records</span>
+                <span class="headline-source">WSJ Markets · 8:32 AM ET</span>
+              </div>
+              <div class="headline-actions">
+                <button class="headline-action" type="button">⤺ Swap</button>
+                <button class="headline-action" type="button">✎ Edit</button>
+                <button class="headline-action" type="button" data-variant="danger">Remove</button>
+              </div>
+            </li>
+            <li class="headline">
+              <span class="headline-rank">02</span>
+              <div class="headline-body">
+                <span class="headline-title">Bank of America says stocks like Apple have plenty of upside following earnings</span>
+                <span class="headline-source">CNBC Markets · 7:14 AM ET</span>
+              </div>
+              <div class="headline-actions">
+                <button class="headline-action" type="button">⤺ Swap</button>
+                <button class="headline-action" type="button">✎ Edit</button>
+                <button class="headline-action" type="button" data-variant="danger">Remove</button>
+              </div>
+            </li>
+            <li class="headline">
+              <span class="headline-rank">03</span>
+              <div class="headline-body">
+                <span class="headline-title">Investors are snapping up muni funds at fastest pace in 5 years</span>
+                <span class="headline-source">MarketWatch MarketPulse · 6:48 AM ET</span>
+              </div>
+              <div class="headline-actions">
+                <button class="headline-action" type="button">⤺ Swap</button>
+                <button class="headline-action" type="button">✎ Edit</button>
+                <button class="headline-action" type="button" data-variant="danger">Remove</button>
+              </div>
+            </li>
+            <li class="headline">
+              <span class="headline-rank">04</span>
+              <div class="headline-body">
+                <span class="headline-title">Applied Materials among stocks reporting next week with earnings momentum</span>
+                <span class="headline-source">WSJ Markets · 6:32 AM ET</span>
+              </div>
+              <div class="headline-actions">
+                <button class="headline-action" type="button">⤺ Swap</button>
+                <button class="headline-action" type="button">✎ Edit</button>
+                <button class="headline-action" type="button" data-variant="danger">Remove</button>
+              </div>
+            </li>
+            <li class="headline">
+              <span class="headline-rank">05</span>
+              <div class="headline-body">
+                <span class="headline-title">Jobless claims fall to lowest level since mid-May</span>
+                <span class="headline-source">CNBC Markets · 8:30 AM ET</span>
+              </div>
+              <div class="headline-actions">
+                <button class="headline-action" type="button">⤺ Swap</button>
+                <button class="headline-action" type="button">✎ Edit</button>
+                <button class="headline-action" type="button" data-variant="danger">Remove</button>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="email-section">
+          <h2 class="email-section-heading">What's on Tap</h2>
+          <ul class="ontap">
+            <li class="ontap-item">
+              <span class="ontap-time">2:00 PM ET</span>
+              <span class="ontap-title">FOMC Press Release</span>
+            </li>
+            <li class="ontap-item">
+              <span class="ontap-time">After hours</span>
+              <span class="ontap-title">Coinbase — Cryptocurrencies update call</span>
+            </li>
+            <li class="ontap-item">
+              <span class="ontap-time">Mon · pre</span>
+              <span class="ontap-title">CEG: Constellation Energy — EPS est $2.56</span>
+            </li>
+            <li class="ontap-item">
+              <span class="ontap-time">Mon · pre</span>
+              <span class="ontap-title">B: Barrick Mining — EPS est $0.74</span>
+            </li>
+            <li class="ontap-item">
+              <span class="ontap-time">Mon · after</span>
+              <span class="ontap-title">SPG: Simon Property Group — EPS est $2.98</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="email-section q-update">
+          <h2 class="email-section-heading">Q Update</h2>
+          <p class="email-section-meta">click to edit · AI draft anchored on 4 voice samples</p>
+          <p class="q-update-paragraph" contenteditable="true" id="qUpdate">Today futures are higher with Nasdaq leading up over 2%. The headline number on jobs came in at +115k against expectations near 55k — a clean beat — but the wage line hit +3.6% YoY against a 3.8% estimate. That's the trick. For years a hot jobs print meant the Fed had to stay hawkish and stocks sold off. This morning the market read it differently: hot hiring with cooling wages is the soft-landing dream, and the Fed can stay patient. Watch the FOMC press release this afternoon — a dovish read despite the strong labor print is what this rally is banking on.</p>
+          <div class="q-update-meta">
+            <span class="q-update-count">
+              <span id="wordCount">94</span> / 110 words
+              <span class="q-update-count-bar"><span class="q-update-count-fill" id="wordBar"></span></span>
+            </span>
+            <span class="q-update-source">↶ AI ghost · diff</span>
+          </div>
+        </section>
+
+        <footer class="email-footer">
+          <div class="email-footer-byline">Quint Tatro</div>
+          <div class="email-footer-tag">DIY Money Host</div>
+        </footer>
+      </article>
+
+      <div class="stage-section controls" data-stagger="2">
+        <div class="control-row">
+          <label class="control-label" for="subject">Subject line</label>
+          <div class="subject-row">
+            <input class="control-input" id="subject" type="text" value="Cooling Wages Greenlight the Bulls">
+            <button class="subject-variants" type="button">3 options ⌄</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label class="control-label" for="preheader">Preheader</label>
+          <input class="control-input" id="preheader" type="text" value="Today futures are higher with Nasdaq leading up over 2%…">
+        </div>
+
+        <label class="source-bin" for="sourceLink">
+          <span class="source-bin-icon">+</span>
+          <input class="source-bin-input" id="sourceLink" placeholder="Paste a URL to fold into tomorrow's source pool" type="url">
+        </label>
+
+        <div class="push-row">
+          <span class="push-meta">Pushes to your Mailchimp account · audience locked to test list until production flag</span>
+          <button class="push-button" type="button">
+            Push to Mailchimp
+            <span class="push-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Word counter — runtime CSS only for the bar fill width.
+    (function () {
+      var paragraph = document.getElementById('qUpdate');
+      var count = document.getElementById('wordCount');
+      var bar = document.getElementById('wordBar');
+      if (!paragraph || !count || !bar) return;
+
+      function tick() {
+        var words = paragraph.innerText.trim().split(/\s+/).filter(Boolean).length;
+        count.textContent = String(words);
+        // 110-word target; bar fills proportionally, soft cap at 100%.
+        bar.style.width = Math.min(100, (words / 110) * 100) + '%';
+      }
+
+      paragraph.addEventListener('input', tick);
+      tick();
+    })();
+  </script>
+</body>
+</html>
