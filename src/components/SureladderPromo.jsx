@@ -26,7 +26,7 @@ const SureladderPromo = () => {
                 {/* Hero */}
                 <section className="promo-hero" style={{ background: '#1c1a2e' }}>
                     <div className="promo-hero-bg" style={{ opacity: 0.3 }}>
-                        <img src="/images/sureladder/sureladder-hero.png" alt="" />
+                        <img src="/images/sureladder/sureladder-card2.png" alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(28,26,46,0.95) 0%, rgba(28,26,46,0.65) 50%, rgba(28,26,46,0.25) 100%)'
@@ -125,7 +125,7 @@ const SureladderPromo = () => {
                         gap: '1.5rem'
                     }}>
                         {[
-                            '/images/sureladder/sureladder-kaley.png',
+                            '/images/sureladder/sureladder-erp.png',
                             '/images/sureladder/sureladder-card2.png',
                             '/images/sureladder/sureladder-card3.png',
                         ].map((src, i) => (
