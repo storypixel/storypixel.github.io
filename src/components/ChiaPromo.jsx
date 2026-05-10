@@ -169,11 +169,12 @@ const ChiaPromo = () => {
                 }
                 .chia-intro-grid {
                     display: grid;
-                    grid-template-columns: var(--grid-columns, 80px 280px 1fr 160px);
-                    gap: 2rem;
+                    grid-template-columns: minmax(12rem, 20rem) minmax(0, 1fr);
+                    gap: clamp(2rem, 6vw, 5rem);
+                    align-items: start;
                 }
-                .chia-intro-meta { grid-column: 1 / 3; }
-                .chia-intro-content { grid-column: 3 / -1; }
+                .chia-intro-meta,
+                .chia-intro-content { min-width: 0; }
 
                 .chia-meta-label {
                     color: var(--text-secondary);
@@ -189,9 +190,18 @@ const ChiaPromo = () => {
                     font-size: 0.9rem;
                     margin: 0;
                 }
-                .chia-meta-row { display: flex; gap: 1rem; }
-                .chia-meta-row dt { color: var(--text-secondary); min-width: 3rem; }
-                .chia-meta-row dd { margin: 0; }
+                .chia-meta-row {
+                    display: grid;
+                    grid-template-columns: 4rem minmax(0, 1fr);
+                    gap: 1rem;
+                    align-items: start;
+                }
+                .chia-meta-row dt { color: var(--text-secondary); }
+                .chia-meta-row dd {
+                    margin: 0;
+                    line-height: 1.35;
+                    overflow-wrap: anywhere;
+                }
 
                 .chia-intro-desc {
                     color: var(--text-secondary);
@@ -210,6 +220,7 @@ const ChiaPromo = () => {
                     display: flex;
                     gap: 1rem;
                     flex-wrap: wrap;
+                    margin-top: 0.5rem;
                 }
                 .chia-link-primary {
                     color: #fff;
@@ -258,11 +269,12 @@ const ChiaPromo = () => {
                 }
                 .chia-back a { color: var(--text-secondary); font-size: 0.9rem; }
 
+                @media (max-width: 900px) {
+                    .chia-intro-grid { grid-template-columns: 1fr; }
+                }
+
                 @media (max-width: 768px) {
                     .chia-hero { grid-template-columns: 1fr; }
-                    .chia-intro-grid { grid-template-columns: 1fr; }
-                    .chia-intro-meta { grid-column: 1; }
-                    .chia-intro-content { grid-column: 1; }
                 }
             `}</style>
         </article>
