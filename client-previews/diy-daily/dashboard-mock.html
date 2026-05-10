@@ -792,37 +792,211 @@
       border-color: var(--diy-gold);
     }
 
-    /* ── Add-source paste-bin ───────────────────────────── */
+    /* ── Sources repository ─────────────────────────────── */
 
-    .source-bin {
-      align-items: center;
-      background: rgba(239, 172, 32, 0.06);
-      border: 1px dashed var(--diy-gold);
-      border-radius: var(--radius-md);
-      color: var(--diy-navy);
-      display: flex;
-      gap: var(--space-3);
-      padding: var(--space-4);
-      transition: background-color var(--motion-duration-normal) var(--motion-ease-standard);
+    .sources {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
     }
 
-    .source-bin:hover {
+    .sources-header {
+      align-items: baseline;
+      border-bottom: 1px solid var(--diy-border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6) var(--space-4);
+    }
+
+    .sources-title {
+      color: var(--diy-navy);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-display);
+      margin: 0;
+    }
+
+    .sources-meta {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .sources-meta-status {
+      color: var(--diy-up);
+      font-weight: var(--font-semibold);
+    }
+
+    .source-list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .source-row {
+      align-items: center;
+      border-bottom: 1px solid var(--diy-border);
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: 1.5rem 2.5rem 1fr auto auto auto;
+      padding: var(--space-3) var(--space-6);
+      transition: background-color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .source-row:hover {
+      background: var(--diy-ice);
+    }
+
+    .source-row[data-disabled] {
+      opacity: 0.55;
+    }
+
+    .source-row:last-child {
+      border-bottom: 0;
+    }
+
+    .source-drag {
+      color: var(--diy-muted);
+      cursor: grab;
+      font-size: var(--text-base);
+      line-height: 1;
+      text-align: center;
+      user-select: none;
+    }
+
+    .source-priority {
+      align-items: center;
+      background: var(--diy-ice);
+      border-radius: var(--radius-pill, 9999px);
+      color: var(--diy-navy);
+      display: inline-flex;
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+      font-weight: var(--font-bold);
+      height: 22px;
+      justify-content: center;
+      letter-spacing: var(--tracking-caps);
+      width: 22px;
+    }
+
+    .source-priority[data-priority="1"] {
+      background: rgba(239, 172, 32, 0.2);
+      color: var(--diy-navy);
+    }
+
+    .source-priority[data-priority="2"] {
+      background: rgba(24, 43, 67, 0.08);
+    }
+
+    .source-priority[data-priority="3"] {
+      background: rgba(24, 43, 67, 0.04);
+      color: var(--diy-muted);
+    }
+
+    .source-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .source-name {
+      color: var(--diy-text);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      line-height: var(--leading-snug);
+    }
+
+    .source-url {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .source-stat {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .source-status {
+      align-items: center;
+      display: inline-flex;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+    }
+
+    .source-status-dot {
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+
+    .source-status[data-state="ok"] .source-status-dot { background: var(--diy-up); }
+    .source-status[data-state="warn"] .source-status-dot { background: var(--diy-gold); }
+    .source-status[data-state="down"] .source-status-dot { background: var(--diy-down); }
+
+    .source-row-action {
+      align-items: center;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--diy-muted);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: inherit;
+      font-size: var(--text-xs);
+      gap: var(--space-1);
+      height: 26px;
+      justify-content: center;
+      padding: 0 var(--space-2);
+      transition:
+        background-color var(--motion-duration-fast) var(--motion-ease-standard),
+        color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .source-row-action:hover {
+      background: var(--diy-paper);
+      border-color: var(--diy-border);
+      color: var(--diy-navy);
+    }
+
+    .source-row-action[data-variant="danger"]:hover {
+      color: var(--diy-down);
+    }
+
+    .source-add {
+      align-items: center;
+      background: rgba(239, 172, 32, 0.06);
+      border-top: 1px dashed var(--diy-gold);
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-6);
+      transition: background-color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .source-add:hover {
       background: rgba(239, 172, 32, 0.12);
     }
 
-    .source-bin-icon {
+    .source-add-icon {
       color: var(--diy-gold);
-      font-size: var(--text-lg);
+      font-size: var(--text-xl);
       line-height: 1;
     }
 
-    .source-bin-text {
-      color: var(--diy-muted);
-      flex: 1;
-      font-size: var(--text-sm);
-    }
-
-    .source-bin-input {
+    .source-add-input {
       background: transparent;
       border: 0;
       color: var(--diy-text);
@@ -833,8 +1007,175 @@
       width: 100%;
     }
 
-    .source-bin-input::placeholder {
+    .source-add-input::placeholder { color: var(--diy-muted); }
+
+    /* ── Empty state ────────────────────────────────────── */
+
+    .source-empty {
       color: var(--diy-muted);
+      padding: var(--space-6);
+      text-align: left;
+    }
+
+    .source-empty-headline {
+      color: var(--diy-navy);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      margin: 0 0 var(--space-2) 0;
+    }
+
+    .source-empty-body {
+      color: var(--diy-muted);
+      font-size: var(--text-sm);
+      line-height: var(--leading-snug);
+      margin: 0;
+    }
+
+    /* ── Voice corpus (Quint's own content) ─────────────── */
+
+    .corpus {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .corpus-header {
+      align-items: baseline;
+      border-bottom: 1px solid var(--diy-border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6) var(--space-4);
+    }
+
+    .corpus-title {
+      color: var(--diy-navy);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-display);
+      margin: 0;
+    }
+
+    .corpus-meta {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .corpus-list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .corpus-row {
+      align-items: center;
+      border-bottom: 1px solid var(--diy-border);
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: 2.25rem 1fr auto auto;
+      padding: var(--space-3) var(--space-6);
+      transition: background-color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .corpus-row:last-child { border-bottom: 0; }
+    .corpus-row:hover { background: var(--diy-ice); }
+
+    .corpus-icon {
+      align-items: center;
+      background: rgba(239, 172, 32, 0.16);
+      border-radius: var(--radius-sm);
+      color: var(--diy-navy);
+      display: flex;
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      height: 30px;
+      justify-content: center;
+      width: 30px;
+    }
+
+    .corpus-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .corpus-name {
+      color: var(--diy-text);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+
+    .corpus-detail {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      line-height: var(--leading-snug);
+    }
+
+    .corpus-stat {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .corpus-action {
+      align-items: center;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--diy-muted);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: inherit;
+      font-size: var(--text-xs);
+      gap: var(--space-1);
+      height: 26px;
+      justify-content: center;
+      padding: 0 var(--space-2);
+      transition:
+        background-color var(--motion-duration-fast) var(--motion-ease-standard),
+        color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .corpus-action:hover {
+      background: var(--diy-paper);
+      border-color: var(--diy-border);
+      color: var(--diy-navy);
+    }
+
+    @media (max-width: 540px) {
+      .corpus-row {
+        grid-template-columns: 2rem 1fr auto;
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .corpus-stat { display: none; }
+
+      .corpus-header { padding: var(--space-4) var(--space-4) var(--space-3); }
+    }
+
+    @media (max-width: 540px) {
+      .source-row {
+        grid-template-columns: 1.5rem 2.25rem 1fr auto;
+        padding: var(--space-3) var(--space-4);
+      }
+
+      .source-stat,
+      .source-status {
+        display: none;
+      }
+
+      .sources-header { padding: var(--space-4) var(--space-4) var(--space-3); }
+      .source-add { padding: var(--space-4); }
     }
 
     /* ── Push CTA ──────────────────────────────────────── */
@@ -1114,10 +1455,74 @@
           <input class="control-input" id="preheader" type="text" value="Today futures are higher with Nasdaq leading up over 2%…">
         </div>
 
-        <label class="source-bin" for="sourceLink">
-          <span class="source-bin-icon">+</span>
-          <input class="source-bin-input" id="sourceLink" placeholder="Paste a URL to fold into tomorrow's source pool" type="url">
-        </label>
+        <section class="sources" aria-label="Sources">
+          <header class="sources-header">
+            <h2 class="sources-title">Sources</h2>
+            <span class="sources-meta">Quint's secret-sauce context · empty until populated</span>
+          </header>
+          <div class="source-empty">
+            <p class="source-empty-headline">No sources yet.</p>
+            <p class="source-empty-body">This is where Quint stack-ranks the sites and feeds he actually reads each morning. The dashboard never suggests defaults — these have to come from him. As they accumulate, the agent uses this list (and only this list) for "What happened" ranking + L3 grounding.</p>
+          </div>
+          <label class="source-add" for="sourceAdd">
+            <span class="source-add-icon">+</span>
+            <input class="source-add-input" id="sourceAdd" placeholder="Paste a URL or RSS feed Quint trusts — he ranks it after adding" type="url">
+          </label>
+        </section>
+
+        <section class="corpus" aria-label="Voice corpus">
+          <header class="corpus-header">
+            <h2 class="corpus-title">Voice corpus</h2>
+            <span class="corpus-meta">Quint's own properties · used to anchor L3 voice few-shot</span>
+          </header>
+          <ul class="corpus-list">
+            <li class="corpus-row">
+              <span class="corpus-icon" aria-hidden="true">D</span>
+              <div class="corpus-body">
+                <span class="corpus-name">DIY Money — site</span>
+                <span class="corpus-detail">diymoney.org · articles, show notes, mission framing for brand voice</span>
+              </div>
+              <span class="corpus-stat">~40 paragraphs</span>
+              <button class="corpus-action" type="button">Refresh</button>
+            </li>
+            <li class="corpus-row">
+              <span class="corpus-icon" aria-hidden="true">P</span>
+              <div class="corpus-body">
+                <span class="corpus-name">DIY Money — podcast archive</span>
+                <span class="corpus-detail">Apple / Podbean · since Jan 2019 · Whisper-transcribed, segmented by Quint speaker turns</span>
+              </div>
+              <span class="corpus-stat">~280 episodes</span>
+              <button class="corpus-action" type="button">Refresh</button>
+            </li>
+            <li class="corpus-row">
+              <span class="corpus-icon" aria-hidden="true">J</span>
+              <div class="corpus-body">
+                <span class="corpus-name">Joule blog letters</span>
+                <span class="corpus-detail">joulefinancial.com/author/quint · long-form market commentary archive</span>
+              </div>
+              <span class="corpus-stat">12 letters</span>
+              <button class="corpus-action" type="button">Refresh</button>
+            </li>
+            <li class="corpus-row">
+              <span class="corpus-icon" aria-hidden="true">Q</span>
+              <div class="corpus-body">
+                <span class="corpus-name">Past Q Updates</span>
+                <span class="corpus-detail">DIY Daily archive · grows daily as Quint ships</span>
+              </div>
+              <span class="corpus-stat">1 paragraph (today)</span>
+              <button class="corpus-action" type="button">View</button>
+            </li>
+            <li class="corpus-row">
+              <span class="corpus-icon" aria-hidden="true">X</span>
+              <div class="corpus-body">
+                <span class="corpus-name">@QuintTatro on X</span>
+                <span class="corpus-detail">tone signal, less paragraph structure · enabled but lower-weight</span>
+              </div>
+              <span class="corpus-stat">~200 posts</span>
+              <button class="corpus-action" type="button">Refresh</button>
+            </li>
+          </ul>
+        </section>
 
         <div class="push-row">
           <span class="push-meta">Pushes to your Mailchimp account · audience locked to test list until production flag</span>
