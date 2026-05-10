@@ -29,16 +29,16 @@ const ChiaPromo = () => {
                 animate="show"
                 className="chia-promo-body"
             >
-                {/* Hero: Logo panels + site screenshot */}
+                {/* Hero: kitchen sink screenshots */}
                 <motion.section variants={item} className="chia-hero">
-                    <div className="chia-hero-panel" style={{ backgroundColor: '#2a4a38' }}>
-                        <img src="/images/chia/chia-logo.svg" alt="Chia" className="chia-hero-logo" />
+                    <div className="chia-hero-panel chia-hero-screenshot">
+                        <img src="/images/chia/chia-kitchen-dashboard.png" alt="Chia dashboard components" className="chia-hero-screenshot-img" />
                     </div>
                     <div className="chia-hero-panel chia-hero-screenshot">
-                        <img src="/images/chia/chia-site-screenshot.png" alt="Chia documentation site" className="chia-hero-screenshot-img" />
+                        <img src="/images/chia/chia-kitchen-controls.png" alt="Chia form controls and buttons" className="chia-hero-screenshot-img" />
                     </div>
-                    <div className="chia-hero-panel" style={{ backgroundColor: '#41747B' }}>
-                        <img src="/images/chia/chia-logo.svg" alt="" className="chia-hero-logo" />
+                    <div className="chia-hero-panel chia-hero-screenshot">
+                        <img src="/images/chia/chia-kitchen-table.png" alt="Chia data table and badges" className="chia-hero-screenshot-img" />
                     </div>
                 </motion.section>
 
@@ -73,6 +73,9 @@ const ChiaPromo = () => {
                                 <a href="https://github.com/storypixel/chia" target="_blank" rel="noopener noreferrer" className="chia-link-secondary">
                                     GitHub <ArrowUpRight size={16} weight="bold" />
                                 </a>
+                                <Link to="/chia/kitchen-sink" className="chia-link-secondary">
+                                    Kitchen Sink <ArrowUpRight size={16} weight="bold" />
+                                </Link>
                             </div>
                         </motion.div>
                     </div>
@@ -135,8 +138,8 @@ const ChiaPromo = () => {
                     margin: 0 var(--spacing-container, 2.5rem) 6rem;
                 }
                 .chia-hero-panel {
-                    aspect-ratio: 4/3;
-                    border-radius: 12px;
+                    aspect-ratio: 3/4;
+                    border-radius: 8px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -152,12 +155,13 @@ const ChiaPromo = () => {
                 .chia-hero-screenshot {
                     padding: 0;
                     background: #1a1a1a;
+                    border: 1px solid rgba(255,255,255,0.08);
                 }
                 .chia-hero-screenshot-img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    border-radius: 12px;
+                    border-radius: 8px;
                 }
 
                 .chia-intro {
@@ -172,7 +176,7 @@ const ChiaPromo = () => {
                 .chia-intro-content { grid-column: 3 / -1; }
 
                 .chia-meta-label {
-                    color: #888;
+                    color: var(--text-secondary);
                     font-size: 0.75rem;
                     letter-spacing: 0.05em;
                     text-transform: uppercase;
@@ -183,12 +187,14 @@ const ChiaPromo = () => {
                     flex-direction: column;
                     gap: 0.5rem;
                     font-size: 0.9rem;
+                    margin: 0;
                 }
                 .chia-meta-row { display: flex; gap: 1rem; }
-                .chia-meta-row dt { color: #888; min-width: 3rem; }
+                .chia-meta-row dt { color: var(--text-secondary); min-width: 3rem; }
+                .chia-meta-row dd { margin: 0; }
 
                 .chia-intro-desc {
-                    color: #888;
+                    color: var(--text-secondary);
                     font-size: 0.9rem;
                     line-height: 1.6;
                     margin-bottom: 1.5rem;
@@ -212,7 +218,7 @@ const ChiaPromo = () => {
                     padding-bottom: 2px;
                 }
                 .chia-link-secondary {
-                    color: #888;
+                    color: var(--text-secondary);
                     font-size: 0.9rem;
                     border-bottom: 1px solid rgba(255,255,255,0.1);
                     padding-bottom: 2px;
@@ -224,7 +230,7 @@ const ChiaPromo = () => {
                     padding-top: 3rem;
                 }
                 .chia-section-label {
-                    color: #888;
+                    color: var(--text-secondary);
                     font-size: 0.75rem;
                     letter-spacing: 0.05em;
                     text-transform: uppercase;
@@ -241,7 +247,7 @@ const ChiaPromo = () => {
                     margin-bottom: 0.4rem;
                 }
                 .chia-module-desc {
-                    color: #888;
+                    color: var(--text-secondary);
                     font-size: 0.85rem;
                     line-height: 1.5;
                 }
@@ -250,7 +256,7 @@ const ChiaPromo = () => {
                     margin-left: var(--spacing-container, 2.5rem);
                     margin-bottom: 4rem;
                 }
-                .chia-back a { color: #888; font-size: 0.9rem; }
+                .chia-back a { color: var(--text-secondary); font-size: 0.9rem; }
 
                 @media (max-width: 768px) {
                     .chia-hero { grid-template-columns: 1fr; }

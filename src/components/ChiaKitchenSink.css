@@ -1,0 +1,582 @@
+.chia-ks {
+  --chia-bg: #121816;
+  --chia-panel: #18231f;
+  --chia-panel-strong: #20372d;
+  --chia-text: #f6fff8;
+  --chia-muted: rgba(246, 255, 248, 0.68);
+  --chia-faint: rgba(246, 255, 248, 0.1);
+  --chia-green: #8fd7a8;
+  --chia-teal: #8bd5d8;
+  --chia-amber: #e7c66d;
+  --chia-blue: #9fbdf7;
+  --chia-violet: #c8adff;
+  --chia-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+
+  min-height: 100vh;
+  color: var(--chia-text);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(143, 215, 168, 0.22), transparent 34rem),
+    radial-gradient(circle at 82% 0%, rgba(139, 213, 216, 0.18), transparent 28rem),
+    linear-gradient(135deg, #111613 0%, #162820 52%, #111716 100%);
+  font-family: var(--font-family);
+  padding: 32px 32px 560px;
+}
+
+.chia-ks * {
+  box-sizing: border-box;
+}
+
+.chia-ks button,
+.chia-ks input,
+.chia-ks select {
+  font: inherit;
+}
+
+.chia-ks-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 18px;
+  width: min(1320px, 100%);
+  min-height: 860px;
+  margin: 0 auto 32px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  background: rgba(12, 17, 15, 0.72);
+  box-shadow: var(--chia-shadow);
+  overflow: hidden;
+}
+
+.chia-ks-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 24px;
+  border-right: 1px solid var(--chia-faint);
+  background: rgba(9, 14, 12, 0.42);
+}
+
+.chia-ks-brand {
+  display: flex;
+  align-items: center;
+  min-height: 92px;
+}
+
+.chia-ks-brand img {
+  width: 142px;
+  height: auto;
+}
+
+.chia-ks-nav {
+  display: grid;
+  gap: 6px;
+}
+
+.chia-ks-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--chia-muted);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.chia-ks-nav a[data-active='true'] {
+  color: var(--chia-text);
+  background: rgba(143, 215, 168, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(143, 215, 168, 0.18);
+}
+
+.chia-ks-sidebar-card {
+  margin-top: auto;
+  padding: 16px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.chia-ks-sidebar-card p,
+.chia-ks-sidebar-card span {
+  margin: 0;
+  color: var(--chia-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.chia-ks-sidebar-card strong {
+  display: block;
+  margin: 8px 0 4px;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.chia-ks-main {
+  min-width: 0;
+  padding: 24px;
+}
+
+.chia-ks-topbar,
+.chia-ks-actions,
+.chia-ks-hero-actions,
+.chia-ks-button-row,
+.chia-ks-check-row {
+  display: flex;
+  align-items: center;
+}
+
+.chia-ks-topbar {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chia-ks-actions,
+.chia-ks-hero-actions,
+.chia-ks-button-row,
+.chia-ks-check-row {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chia-ks-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(440px, 100%);
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  color: var(--chia-muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chia-ks-search input,
+.chia-ks-form input,
+.chia-ks-form select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(246, 255, 248, 0.14);
+  color: var(--chia-text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.chia-ks-search input {
+  border: 0;
+  padding: 0;
+  outline: 0;
+  background: transparent;
+}
+
+[data-slot='button'],
+[data-slot='icon-button'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(246, 255, 248, 0.14);
+  border-radius: 8px;
+  color: var(--chia-text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-slot='button'] {
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+[data-slot='icon-button'] {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+[data-slot='button'][data-variant='primary'] {
+  color: #0f1814;
+  border-color: transparent;
+  background: var(--chia-green);
+}
+
+[data-slot='button'][data-variant='secondary'] {
+  background: rgba(139, 213, 216, 0.12);
+}
+
+[data-slot='button'][data-variant='ghost'] {
+  color: var(--chia-muted);
+  background: transparent;
+}
+
+[data-slot='badge'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  width: max-content;
+  padding: 0 9px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 999px;
+  color: var(--chia-muted);
+  font-size: 12px;
+  line-height: 1;
+}
+
+[data-slot='badge'][data-variant='green'] {
+  color: #d8ffe1;
+  border-color: rgba(143, 215, 168, 0.32);
+  background: rgba(143, 215, 168, 0.12);
+}
+
+[data-slot='badge'][data-variant='blue'] {
+  color: #dce7ff;
+  border-color: rgba(159, 189, 247, 0.32);
+  background: rgba(159, 189, 247, 0.12);
+}
+
+[data-slot='badge'][data-variant='amber'] {
+  color: #fff2c6;
+  border-color: rgba(231, 198, 109, 0.34);
+  background: rgba(231, 198, 109, 0.12);
+}
+
+.chia-ks-hero-card,
+.chia-ks-metric,
+.chia-ks-task,
+.chia-ks-panel,
+.chia-ks-callout {
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.chia-ks-hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  min-height: 270px;
+  padding: 28px;
+  background:
+    linear-gradient(135deg, rgba(143, 215, 168, 0.16), rgba(139, 213, 216, 0.08)),
+    var(--chia-panel);
+}
+
+.chia-ks-hero-card h1 {
+  max-width: 650px;
+  margin: 22px 0 14px;
+  font-size: clamp(42px, 6vw, 74px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.chia-ks-hero-card p {
+  max-width: 560px;
+  margin: 0;
+  color: var(--chia-muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.chia-ks-hero-actions {
+  align-self: end;
+  justify-content: flex-end;
+}
+
+.chia-ks-metrics,
+.chia-ks-task-grid,
+.chia-ks-panel-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.chia-ks-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.chia-ks-metric {
+  padding: 18px;
+}
+
+.chia-ks-metric span {
+  color: var(--chia-muted);
+  font-size: 13px;
+}
+
+.chia-ks-metric strong {
+  display: block;
+  margin-top: 22px;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.chia-ks-metric[data-accent='green'] strong {
+  color: var(--chia-green);
+}
+
+.chia-ks-metric[data-accent='blue'] strong {
+  color: var(--chia-blue);
+}
+
+.chia-ks-metric[data-accent='amber'] strong {
+  color: var(--chia-amber);
+}
+
+.chia-ks-task-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.chia-ks-task {
+  padding: 18px;
+}
+
+.chia-ks-task h2 {
+  min-height: 58px;
+  margin: 18px 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.chia-ks-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(246, 255, 248, 0.08);
+  overflow: hidden;
+}
+
+.chia-ks-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--chia-green), var(--chia-teal));
+}
+
+.chia-ks-panel-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(1320px, 100%);
+  margin: 0 auto;
+}
+
+.chia-ks-panel {
+  min-height: 720px;
+  padding: 24px;
+  box-shadow: var(--chia-shadow);
+}
+
+.chia-ks-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.chia-ks-panel-header p {
+  margin: 0 0 8px;
+  color: var(--chia-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.chia-ks-panel-header h2 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.chia-ks-form {
+  display: grid;
+  gap: 18px;
+}
+
+.chia-ks-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--chia-muted);
+  font-size: 13px;
+}
+
+.chia-ks-form input,
+.chia-ks-form select {
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
+}
+
+.chia-ks-form input[type='checkbox'],
+.chia-ks-form input[type='radio'] {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  flex: 0 0 16px;
+  accent-color: var(--chia-green);
+}
+
+.chia-ks-segmented {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.chia-ks-segmented legend {
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+  color: var(--chia-muted);
+  font-size: 13px;
+}
+
+.chia-ks-segmented label,
+.chia-ks-check-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  color: var(--chia-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.chia-ks-check-row {
+  align-items: stretch;
+}
+
+.chia-ks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.chia-ks-table th,
+.chia-ks-table td {
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--chia-faint);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.chia-ks-table th {
+  color: var(--chia-muted);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.chia-ks-note,
+.chia-ks-callout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.chia-ks-note {
+  margin-top: 4px;
+  color: var(--chia-violet);
+  background: rgba(200, 173, 255, 0.1);
+}
+
+.chia-ks-note p {
+  margin: 0;
+  color: var(--chia-muted);
+  line-height: 1.5;
+}
+
+.chia-ks-token-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.chia-ks-token {
+  display: grid;
+  gap: 10px;
+  min-height: 92px;
+  padding: 12px;
+  border: 1px solid var(--chia-faint);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.chia-ks-token span {
+  display: block;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.chia-ks-token p {
+  margin: 0;
+  color: var(--chia-muted);
+  font-size: 13px;
+}
+
+.chia-ks-token[data-tone='green'] span {
+  background: var(--chia-green);
+}
+
+.chia-ks-token[data-tone='teal'] span {
+  background: var(--chia-teal);
+}
+
+.chia-ks-token[data-tone='amber'] span {
+  background: var(--chia-amber);
+}
+
+.chia-ks-token[data-tone='violet'] span {
+  background: var(--chia-violet);
+}
+
+.chia-ks-callout {
+  margin-top: 28px;
+  color: var(--chia-green);
+  background: rgba(143, 215, 168, 0.1);
+}
+
+.chia-ks-callout p {
+  margin: 0;
+  color: var(--chia-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .chia-ks {
+    padding: 16px 16px 520px;
+  }
+
+  .chia-ks-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .chia-ks-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--chia-faint);
+  }
+
+  .chia-ks-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .chia-ks-hero-card,
+  .chia-ks-metrics,
+  .chia-ks-task-grid,
+  .chia-ks-panel-grid,
+  .chia-ks-token-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chia-ks-hero-actions {
+    justify-content: flex-start;
+  }
+}

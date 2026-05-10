@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -7,8 +7,7 @@ import Work from './components/Work';
 import About from './components/About';
 import Footer from './components/Footer';
 import Privacy from './components/Privacy';
-import ExperimentsPage from './components/ExperimentsPage';
-import ExperimentPost from './components/ExperimentPost';
+import ProjectsPage from './components/ProjectsPage';
 import ThoughtsPage from './components/ThoughtsPage';
 import ThoughtPost from './components/ThoughtPost';
 import ScrollToTop from './components/ScrollToTop';
@@ -21,6 +20,7 @@ const CalcuweightPromo = lazy(() => import('./components/CalcuweightPromo'));
 const RoomscrollPromo = lazy(() => import('./components/RoomscrollPromo'));
 const CookiePage = lazy(() => import('./components/CookiePage'));
 const ChiaPromo = lazy(() => import('./components/ChiaPromo'));
+const ChiaKitchenSink = lazy(() => import('./components/ChiaKitchenSink'));
 const KlerbPromo = lazy(() => import('./components/KlerbPromo'));
 const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
 const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
@@ -56,6 +56,7 @@ function App() {
                         <Route path="/klerb" element={<KlerbPromo />} />
                         <Route path="/phenyl" element={<PhenylPromo />} />
                         <Route path="/sureladder" element={<SureladderPromo />} />
+                        <Route path="/projects" element={<ProjectsPage />} />
                         <Route path="/clients/ocd" element={
                             <PasswordGate password="ocd">
                                 <ERPDemo />
@@ -72,8 +73,8 @@ function App() {
                             </PasswordGate>
                         } />
                         <Route path="/cookies" element={<CookiePage />} />
-                        <Route path="/experiments" element={<ExperimentsPage />} />
-                        <Route path="/experiments/:slug" element={<ExperimentPost />} />
+                        <Route path="/chia/kitchen-sink" element={<ChiaKitchenSink />} />
+                        <Route path="/experiments/*" element={<Navigate to="/projects" replace />} />
                         <Route path="/thoughts" element={<ThoughtsPage />} />
                         <Route path="/thoughts/:slug" element={<ThoughtPost />} />
                     </Routes>

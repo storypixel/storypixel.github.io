@@ -45,9 +45,9 @@ const Hero = () => {
                 {/* Right: Headline */}
                 <motion.div className="hero-quote-block" variants={item}>
                     <h1 className="hero-headline">
-                        {"The Genius of Handcraft in the Age of Agentic"}
+                        {"People ignore design that ignores people."}
                     </h1>
-                    <p className="hero-attribution">Sam Wilson / Storypixel <IdiotPopup><Crown size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
+                    <p className="hero-attribution">Frank Chimero <IdiotPopup><Crown size={14} weight="fill" className="hero-skull" /></IdiotPopup></p>
                 </motion.div>
             </motion.div>
         </section>

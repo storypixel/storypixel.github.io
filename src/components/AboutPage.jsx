@@ -172,7 +172,7 @@ const AboutPage = () => {
 
                     <Section title="Writing" delay={0.5}>
                         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                            Older posts live here. AI roundups, a cookie recipe I have been making since 2004, and whatever else was on my mind that week.
+                            Older writing lives here, including a cookie recipe I have been making since 2004.
                         </p>
                         <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '0.5rem' }}>
                             {posts.map((post) => (

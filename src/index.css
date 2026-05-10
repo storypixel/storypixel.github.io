@@ -25,7 +25,7 @@
 :root {
   --bg-color: #1a1a1a;
   --text-color: #ffffff;
-  --text-secondary: #888888;
+  --text-secondary: rgba(255, 255, 255, 0.68);
   --accent-color: #ffffff;
   --accent-blue: #007AFF;
   --border-color: rgba(255, 255, 255, 0.1);

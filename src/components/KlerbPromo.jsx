@@ -26,7 +26,7 @@ const KlerbPromo = () => {
                 {/* Hero */}
                 <section className="promo-hero" style={{ background: '#0a4d2e' }}>
                     <div className="promo-hero-bg" style={{ opacity: 0.35 }}>
-                        <img src="/images/klerb/klerb-feed.png" alt="" />
+                        <img src="/images/klerb/klerb-members.png" alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(10,77,46,0.95) 0%, rgba(10,77,46,0.6) 50%, rgba(10,77,46,0.2) 100%)'
@@ -63,8 +63,8 @@ const KlerbPromo = () => {
 
                         <motion.div variants={item} className="promo-hero-screenshot">
                             <div>
-                                <img src="/images/klerb/klerb-classroom.png"
-                                     alt="Klerb classroom view" />
+                                <img src="/images/klerb/klerb-members-directory.png"
+                                     alt="Klerb members directory" />
                             </div>
                         </motion.div>
                     </div>
@@ -126,8 +126,8 @@ const KlerbPromo = () => {
                             borderRadius: '12px', overflow: 'hidden',
                             border: '1px solid rgba(255,255,255,0.05)'
                         }}>
-                        <img src="/images/klerb/klerb-events.png"
-                             alt="Klerb community events view"
+                        <img src="/images/klerb/klerb-members.png"
+                             alt="Klerb members page"
                              style={{ width: '100%', height: 'auto', display: 'block' }} />
                     </motion.div>
                 </section>
