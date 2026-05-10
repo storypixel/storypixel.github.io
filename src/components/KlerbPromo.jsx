@@ -2,6 +2,14 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import { projectDetails } from '../data/projects';
+
+const KLERB_SCREENSHOTS = projectDetails.klerb.heroImages.slice(0, 3);
+const KLERB_SCREENSHOT_ALTS = [
+    'Klerb members directory',
+    'Klerb members page with sidebar',
+    'Klerb member roles table',
+];
 
 const KlerbPromo = () => {
     useEffect(() => {
@@ -26,7 +34,7 @@ const KlerbPromo = () => {
                 {/* Hero */}
                 <section className="promo-hero" style={{ background: '#0a4d2e' }}>
                     <div className="promo-hero-bg" style={{ opacity: 0.35 }}>
-                        <img src="/images/klerb/klerb-members.png" alt="" />
+                        <img src={KLERB_SCREENSHOTS[0]} alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(10,77,46,0.95) 0%, rgba(10,77,46,0.6) 50%, rgba(10,77,46,0.2) 100%)'
@@ -63,8 +71,8 @@ const KlerbPromo = () => {
 
                         <motion.div variants={item} className="promo-hero-screenshot">
                             <div>
-                                <img src="/images/klerb/klerb-members-directory.png"
-                                     alt="Klerb members directory" />
+                                <img src={KLERB_SCREENSHOTS[0]}
+                                     alt={KLERB_SCREENSHOT_ALTS[0]} />
                             </div>
                         </motion.div>
                     </div>
@@ -115,21 +123,38 @@ const KlerbPromo = () => {
                     </div>
                 </section>
 
-                {/* Full-width screenshot */}
+                {/* Screenshots */}
                 <section style={{ padding: '4rem var(--spacing-container)', borderTop: '1px solid var(--border-color)' }}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                    <div
                         style={{
-                            borderRadius: '12px', overflow: 'hidden',
-                            border: '1px solid rgba(255,255,255,0.05)'
-                        }}>
-                        <img src="/images/klerb/klerb-members.png"
-                             alt="Klerb members page"
-                             style={{ width: '100%', height: 'auto', display: 'block' }} />
-                    </motion.div>
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                            gap: '1rem',
+                        }}
+                    >
+                        {KLERB_SCREENSHOTS.map((src, i) => (
+                            <motion.div
+                                key={src}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.1 }}
+                                style={{
+                                    aspectRatio: '3 / 4',
+                                    borderRadius: '8px',
+                                    overflow: 'hidden',
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    background: '#0a4d2e',
+                                }}
+                            >
+                                <img
+                                    src={src}
+                                    alt={KLERB_SCREENSHOT_ALTS[i]}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Background */}

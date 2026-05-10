@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import { projectDetails } from '../data/projects';
+
+const ROOMSCROLL_SCREENSHOTS = projectDetails.roomscroll.heroImages.slice(0, 3);
 
 const RoomscrollPromo = () => {
     useEffect(() => {
@@ -53,7 +56,7 @@ const RoomscrollPromo = () => {
                         filter: 'brightness(0.7)'
                     }}>
                         <img
-                            src="/images/roomscroll/roomscroll-hero.png"
+                            src={ROOMSCROLL_SCREENSHOTS[0]}
                             alt=""
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
@@ -131,7 +134,7 @@ const RoomscrollPromo = () => {
                                 maxWidth: '100%',
                             }}>
                                 <img
-                                    src="/images/roomscroll/roomscroll-3x2.png"
+                                    src={ROOMSCROLL_SCREENSHOTS[1]}
                                     alt="Roomscroll surveillance grid showing live outdoor streams"
                                     style={{
                                         width: '100%',
@@ -222,7 +225,7 @@ const RoomscrollPromo = () => {
                         }}
                     >
                         <img
-                            src="/images/roomscroll/roomscroll-grid-4x3.png"
+                            src={ROOMSCROLL_SCREENSHOTS[2]}
                             alt="Roomscroll 4x3 grid with 12 live streams"
                             style={{ width: '100%', height: 'auto', display: 'block' }}
                         />

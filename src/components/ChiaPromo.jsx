@@ -3,6 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowLeft } from '@phosphor-icons/react';
 import Navigation from './Navigation';
+import { projectDetails } from '../data/projects';
+
+const CHIA_SCREENSHOTS = projectDetails.chia.heroImages.slice(0, 3);
+const CHIA_SCREENSHOT_ALTS = [
+    'Chia dashboard components',
+    'Chia form controls and buttons',
+    'Chia data table and badges',
+];
 
 const ChiaPromo = () => {
     useEffect(() => {
@@ -31,15 +39,11 @@ const ChiaPromo = () => {
             >
                 {/* Hero: kitchen sink screenshots */}
                 <motion.section variants={item} className="chia-hero">
-                    <div className="chia-hero-panel chia-hero-screenshot">
-                        <img src="/images/chia/chia-kitchen-dashboard.png" alt="Chia dashboard components" className="chia-hero-screenshot-img" />
-                    </div>
-                    <div className="chia-hero-panel chia-hero-screenshot">
-                        <img src="/images/chia/chia-kitchen-controls.png" alt="Chia form controls and buttons" className="chia-hero-screenshot-img" />
-                    </div>
-                    <div className="chia-hero-panel chia-hero-screenshot">
-                        <img src="/images/chia/chia-kitchen-table.png" alt="Chia data table and badges" className="chia-hero-screenshot-img" />
-                    </div>
+                    {CHIA_SCREENSHOTS.map((src, index) => (
+                        <div key={src} className="chia-hero-panel chia-hero-screenshot">
+                            <img src={src} alt={CHIA_SCREENSHOT_ALTS[index]} className="chia-hero-screenshot-img" />
+                        </div>
+                    ))}
                 </motion.section>
 
                 {/* Title + tagline */}

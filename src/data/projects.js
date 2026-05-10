@@ -24,7 +24,7 @@ export const projects = [
         title: 'Chia',
         category: 'CSS Framework',
         size: 'full',
-        image: '/images/chia/chia-hero.png',
+        image: '/images/chia/chia-kitchen-dashboard.png',
         color: '#1a1a1a',
         url: '/chia',
     },

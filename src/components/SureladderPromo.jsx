@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import { projectDetails } from '../data/projects';
+
+const SURELADDER_SCREENSHOTS = projectDetails.sureladder.heroImages.slice(0, 3);
 
 const SureladderPromo = () => {
     useEffect(() => {
@@ -26,7 +29,7 @@ const SureladderPromo = () => {
                 {/* Hero */}
                 <section className="promo-hero" style={{ background: '#1c1a2e' }}>
                     <div className="promo-hero-bg" style={{ opacity: 0.3 }}>
-                        <img src="/images/sureladder/sureladder-card2.png" alt="" />
+                        <img src={SURELADDER_SCREENSHOTS[1] || SURELADDER_SCREENSHOTS[0]} alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(28,26,46,0.95) 0%, rgba(28,26,46,0.65) 50%, rgba(28,26,46,0.25) 100%)'
@@ -66,7 +69,7 @@ const SureladderPromo = () => {
 
                         <motion.div variants={item} className="promo-hero-screenshot">
                             <div>
-                                <img src="/images/sureladder/sureladder-erp.png" alt="Sureladder ERP screen" />
+                                <img src={SURELADDER_SCREENSHOTS[0]} alt="Sureladder ERP screen" />
                             </div>
                         </motion.div>
                     </div>
@@ -124,11 +127,7 @@ const SureladderPromo = () => {
                         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                         gap: '1.5rem'
                     }}>
-                        {[
-                            '/images/sureladder/sureladder-erp.png',
-                            '/images/sureladder/sureladder-card2.png',
-                            '/images/sureladder/sureladder-card3.png',
-                        ].map((src, i) => (
+                        {SURELADDER_SCREENSHOTS.map((src, i) => (
                             <motion.div
                                 key={src}
                                 initial={{ opacity: 0, y: 30 }}

@@ -3,14 +3,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import Phone3D from './Phone3D';
+import { projectDetails } from '../data/projects';
 import './CalcuweightPromo.css';
 
-const HERO_IMAGES = [
-    '/images/calcuweight-model-1.png',
-    '/images/calcuweight-model-2.png',
-    '/images/calcuweight-model-3.png',
-    '/images/calcuweight-model-4.png',
-];
+const HERO_IMAGES = projectDetails.calcuweight.heroImages.slice(0, 3);
 
 const PHONE_SCREENSHOTS = [
     '/images/calcuweight/01-onboarding.webp',

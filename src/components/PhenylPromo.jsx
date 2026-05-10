@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import { projectDetails } from '../data/projects';
+
+const PHENYL_SCREENSHOTS = projectDetails.phenyl.heroImages.slice(0, 3);
 
 const PhenylPromo = () => {
     useEffect(() => {
@@ -26,7 +29,7 @@ const PhenylPromo = () => {
                 {/* Hero */}
                 <section className="promo-hero" style={{ background: '#1a1410' }}>
                     <div className="promo-hero-bg" style={{ opacity: 0.45 }}>
-                        <img src="/images/phenyl/phenyl-home.png" alt="" />
+                        <img src={PHENYL_SCREENSHOTS[0]} alt="" />
                         <div style={{
                             position: 'absolute', inset: 0,
                             background: 'linear-gradient(to right, rgba(26,20,16,0.95) 0%, rgba(26,20,16,0.65) 50%, rgba(26,20,16,0.25) 100%)'
@@ -63,7 +66,7 @@ const PhenylPromo = () => {
 
                         <motion.div variants={item} className="promo-hero-screenshot">
                             <div style={{ borderColor: 'rgba(245,232,216,0.1)' }}>
-                                <img src="/images/phenyl/phenyl-hero.png" alt="Phenyl app interface" />
+                                <img src={PHENYL_SCREENSHOTS[1]} alt="Phenyl app interface" />
                             </div>
                         </motion.div>
                     </div>
@@ -125,7 +128,7 @@ const PhenylPromo = () => {
                             borderRadius: '12px', overflow: 'hidden',
                             border: '1px solid rgba(255,255,255,0.05)'
                         }}>
-                        <img src="/images/phenyl/phenyl-klerb.png"
+                        <img src={PHENYL_SCREENSHOTS[2]}
                              alt="Phenyl on klerb.io"
                              style={{ width: '100%', height: 'auto', display: 'block' }} />
                     </motion.div>
