@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DIY Daily — Finance AI Tools Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --diy-navy: #182B43;
+      --diy-navy-soft: #203b52;
+      --diy-navy-line: #274f63;
+      --diy-gold: #EFAC20;
+      --diy-gold-soft: #f8d372;
+      --diy-ice: #EEF3F5;
+      --diy-bg: #fffaf2;
+      --diy-paper: #ffffff;
+      --diy-up: #177245;
+      --diy-down: #b3261e;
+      --diy-text: #172f3d;
+      --diy-muted: #6b7280;
+      --diy-border: #e2ded5;
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.5rem;
+
+      --tracking-display: -0.02em;
+      --tracking-caps: 0.06em;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      --shadow-card: 0 1px 2px rgba(23,47,61,0.04), 0 6px 16px -8px rgba(23,47,61,0.10);
+      --shadow-card-hover: 0 1px 2px rgba(23,47,61,0.06), 0 12px 28px -12px rgba(23,47,61,0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background: var(--diy-bg);
+      color: var(--diy-text);
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero {
+      background: var(--diy-navy);
+      color: var(--diy-ice);
+      padding: var(--space-16) var(--space-8) var(--space-12);
+      border-bottom: 4px solid var(--diy-gold);
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--diy-gold);
+      margin: 0 0 var(--space-4);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-4xl);
+      font-weight: 500;
+      letter-spacing: var(--tracking-display);
+      line-height: 1.1;
+      margin: 0 0 var(--space-5);
+    }
+
+    .hero-lede {
+      max-width: 720px;
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: rgba(238,243,245,0.85);
+      margin: 0 0 var(--space-6);
+    }
+
+    .hero-meta {
+      font-size: var(--text-sm);
+      color: rgba(238,243,245,0.6);
+    }
+
+    .hero-meta strong {
+      color: var(--diy-gold-soft);
+      font-weight: 600;
+    }
+
+    /* ── Filter strip ─────────────────────── */
+    .filters {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-8) var(--space-4);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+    }
+
+    .filter-label {
+      font-weight: 600;
+      color: var(--diy-muted);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      font-size: var(--text-xs);
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .filter-pill[data-tier="installed"] { background: #d3f0e0; color: #0e5e35; }
+    .filter-pill[data-tier="oss"] { background: #e8e0fa; color: #4a2db3; }
+    .filter-pill[data-tier="gated"] { background: #fae3d3; color: #9c4a18; }
+
+    /* ── Grid ─────────────────────────────── */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-8) var(--space-16);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: var(--space-10) var(--space-5) var(--space-8); }
+      .hero-title { font-size: var(--text-3xl); }
+      .filters, main { padding-left: var(--space-5); padding-right: var(--space-5); }
+    }
+
+    /* ── Card ─────────────────────────────── */
+    .card {
+      background: var(--diy-paper);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      box-shadow: var(--shadow-card);
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: var(--tracking-display);
+      line-height: 1.2;
+      margin: 0;
+      color: var(--diy-navy);
+    }
+
+    .card-pill {
+      flex-shrink: 0;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+    }
+
+    .card-pill[data-tier="installed"] { background: #d3f0e0; color: #0e5e35; }
+    .card-pill[data-tier="oss"] { background: #e8e0fa; color: #4a2db3; }
+    .card-pill[data-tier="gated"] { background: #fae3d3; color: #9c4a18; }
+
+    .card-tagline {
+      font-size: var(--text-sm);
+      color: var(--diy-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .card-section {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--diy-navy);
+      margin: var(--space-3) 0 0;
+    }
+
+    .card-body {
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .card-code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--diy-ice);
+      border: 1px solid var(--diy-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2) var(--space-3);
+      color: var(--diy-navy);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.5;
+    }
+
+    .card-output {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--diy-navy);
+      color: var(--diy-ice);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.5;
+    }
+
+    .card-output strong { color: var(--diy-gold-soft); }
+
+    .card-opinion {
+      background: #fffaeb;
+      border-left: 3px solid var(--diy-gold);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 0;
+    }
+
+    .card-opinion strong { color: var(--diy-navy); }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--diy-border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+    }
+
+    .card-link {
+      color: var(--diy-navy);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--diy-navy-line);
+      padding-bottom: 1px;
+    }
+
+    .card-link:hover {
+      color: var(--diy-gold);
+      border-bottom-color: var(--diy-gold);
+    }
+
+    .card-cost {
+      color: var(--diy-muted);
+      font-weight: 500;
+    }
+
+    .card-cost strong { color: var(--diy-up); font-weight: 700; }
+
+    /* ── Footnote ─────────────────────────── */
+    .footnote {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 var(--space-8) var(--space-16);
+      font-size: var(--text-sm);
+      color: var(--diy-muted);
+      line-height: 1.6;
+    }
+
+    .footnote-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      color: var(--diy-navy);
+      margin: 0 0 var(--space-4);
+      letter-spacing: var(--tracking-display);
+    }
+
+    @media (max-width: 640px) {
+      .footnote { padding-left: var(--space-5); padding-right: var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">DIY Daily — overnight scan</p>
+    <h1 class="hero-title">Finance-AI tools, sized for our build</h1>
+    <p class="hero-lede">Twelve places agentic-finance is showing up right now. Some I installed and ran live; some are gated SaaS I documented from public material. Each card answers: what is it, can we use it for DIY Daily's pulp-to-newsletter loop, what does it cost, where's the upstream.</p>
+    <p class="hero-meta">Compiled <strong>2026-05-09</strong> by fingers · context: Sam's "wiggum loop until we have a gallery to explore" directive · <strong>green = installed and run</strong>, <strong>purple = OSS cloned</strong>, <strong>orange = gated SaaS / doc-only</strong></p>
+  </div>
+</header>
+
+<section class="filters" aria-label="Tier legend">
+  <span class="filter-label">Tiers:</span>
+  <span class="filter-pill" data-tier="installed">Installed &amp; ran</span>
+  <span class="filter-pill" data-tier="oss">OSS cloned</span>
+  <span class="filter-pill" data-tier="gated">Gated / doc-only</span>
+</section>
+
+<main>
+  <div class="grid">
+
+    <!-- ─────────── 1. Anthropic Financial Services ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Anthropic Financial Services</h2>
+        <span class="card-pill" data-tier="oss">OSS cloned</span>
+      </div>
+      <p class="card-tagline">Ten ready-to-run agent templates shipped May 5 — pitch builder, market researcher, earnings reviewer, KYC screener, GL reconciler, etc. Plugin or Managed Agent.</p>
+
+      <p class="card-section">What I cloned</p>
+      <pre class="card-code">git clone https://github.com/anthropics/financial-services.git</pre>
+
+      <p class="card-section">10 agent cookbooks present</p>
+      <p class="card-body">earnings-reviewer · gl-reconciler · kyc-screener · market-researcher · meeting-prep-agent · model-builder · month-end-closer · pitch-agent · statement-auditor · valuation-reviewer</p>
+
+      <p class="card-section">market-researcher (closest fit for us)</p>
+      <pre class="card-output">name: market-researcher
+model: claude-opus-4-7
+mcp_servers:
+  - capiq    (gated)
+  - factset  (gated)
+callable_agents:
+  - sector-reader   (untrusted-doc reader, no Write)
+  - comps-spreader  (orchestrator)
+  - <strong>note-writer</strong>     (only leaf with Write tool)</pre>
+
+      <p class="card-opinion"><strong>Verdict:</strong> the closest direct comp to DIY Daily's mechanic. <strong>Sector → industry overview → peer comps → ideas shortlist → research note.</strong> Three-tier security isolation (untrusted-doc reader vs. orchestrator vs. write-holder) is the right pattern to crib for our pulp pane. License walls (CapIQ + FactSet) can be swapped out for the public MCPs we documented.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://github.com/anthropics/financial-services" target="_blank">github.com/anthropics/financial-services</a>
+        <span class="card-cost"><strong>Free</strong> · MIT-style; data licenses sold separately</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 2. OpenBB Platform ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">OpenBB Platform</h2>
+        <span class="card-pill" data-tier="installed">Installed &amp; ran</span>
+      </div>
+      <p class="card-tagline">Open-source Bloomberg-alternative. One Pythonic API wraps 30+ data providers — yfinance, FRED, SEC, BLS, CFTC, Tiingo, Alpha Vantage, Intrinio, Benzinga, Federal Reserve. Free.</p>
+
+      <p class="card-section">Install</p>
+      <pre class="card-code">uv venv .venv-openbb --python 3.13
+source .venv-openbb/bin/activate
+uv pip install openbb</pre>
+
+      <p class="card-section">Live test (2026-05-09)</p>
+      <pre class="card-output">>>> obb.equity.price.historical('NVDA',
+        start_date='2026-05-05',
+        end_date='2026-05-08',
+        provider='yfinance')
+2026-05-05  close= <strong>196.50</strong>
+2026-05-06  close= <strong>207.83</strong>
+2026-05-07  close= <strong>211.50</strong>
+
+>>> obb.news.company('NVDA', limit=3)
+- The Nasdaq's top winners are now running
+  hotter than in 2000: Chart of the Day
+- The Memory Shortage Is Coming for Big Tech's
+  Bottom Line. This Company Will Hold Up Better
+- Prediction: The Helium Crunch Will Accelerate
+  the Reshoring of AI...</pre>
+
+      <p class="card-opinion"><strong>Verdict:</strong> the killer card. One pip install gets us prices + news + econ data + filings + insider trades + crypto + commodities — all 30+ providers behind a single Python interface. <strong>This becomes DIY Daily's pulp-aggregator backbone.</strong> Add Quint's keys for premium providers (Benzinga, Intrinio) and the same code switches sources. Open-source, no lock-in, MIT.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://openbb.co" target="_blank">openbb.co</a>
+        <a class="card-link" href="https://github.com/OpenBB-finance/OpenBB" target="_blank">github</a>
+        <span class="card-cost"><strong>Free</strong> · paid Pro tier for cloud features</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 3. Alpha Vantage ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Alpha Vantage</h2>
+        <span class="card-pill" data-tier="installed">Installed &amp; ran</span>
+      </div>
+      <p class="card-tagline">NASDAQ-licensed data provider with a free tier (25 req/day). Has one of the few first-party MCP servers for finance — agents can ask for prices/indicators in plain English.</p>
+
+      <p class="card-section">Got a key (free, instant)</p>
+      <pre class="card-code">curl "https://www.alphavantage.co/query?\
+function=GLOBAL_QUOTE&symbol=NVDA&apikey=YO...XQG"</pre>
+
+      <p class="card-section">Live test (2026-05-09)</p>
+      <pre class="card-output">{
+  "Global Quote": {
+    "01. symbol": "NVDA",
+    "02. open":   "213.0300",
+    "03. high":   "217.8000",
+    "04. low":    "212.8900",
+    "05. price":  <strong>"215.2000"</strong>,
+    "06. volume": "136421361",
+    "07. latest trading day": "2026-05-08",
+    "09. change": <strong>"3.7000"</strong>,
+    "10. change percent":
+                  <strong>"1.7494%"</strong>
+  }
+}</pre>
+
+      <p class="card-opinion"><strong>Verdict:</strong> $0 to start, real exchange-licensed quotes, official MCP. The official MCP is the one to plug into Claude Code if we want quote-fetching as a first-class tool. Free tier is tight (25/day) but adequate for the morning brief; bumps to ~$50/mo for serious volume.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://www.alphavantage.co" target="_blank">alphavantage.co</a>
+        <a class="card-link" href="https://mcp.alphavantage.co" target="_blank">official MCP</a>
+        <span class="card-cost"><strong>Free 25/day</strong> · $50+/mo for real volume</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 4. TradingAgents (OSS) ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">TradingAgents</h2>
+        <span class="card-pill" data-tier="oss">OSS cloned</span>
+      </div>
+      <p class="card-tagline">Multi-agent LLM trading framework from Tauric Research. Academic paper (arXiv 2412.20138). v0.2.4 just shipped April 2026 — structured-output agents, LangGraph checkpoints, persistent decision log.</p>
+
+      <p class="card-section">Cloned</p>
+      <pre class="card-code">git clone https://github.com/TauricResearch/TradingAgents.git</pre>
+
+      <p class="card-section">Architecture</p>
+      <pre class="card-output">tradingagents/
+├── agents/
+│   ├── analysts/      # market, fundamentals, news, social
+│   ├── researchers/   # bull, bear
+│   ├── managers/      # research manager, portfolio manager
+│   ├── risk_mgmt/
+│   └── trader/
+├── dataflows/
+├── graph/             # LangGraph workflow
+└── llm_clients/       # Claude, GPT-5.x,
+                       # Gemini 3.x, Grok, DeepSeek,
+                       # Qwen, GLM, OpenRouter</pre>
+
+      <p class="card-opinion"><strong>Verdict:</strong> different shape — they're trying to <em>place trades</em>, not write a newsletter — but the multi-agent pattern (analysts → researchers → managers → trader, with bull/bear pairs) maps cleanly to DIY Daily's "draft → contrarian critique → editor sign-off" loop. <strong>Steal the bull/bear adversarial pair</strong> for the L3 paragraph: one agent argues Quint's bull case, one argues bear, the synthesis becomes the editorial.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://github.com/TauricResearch/TradingAgents" target="_blank">github</a>
+        <a class="card-link" href="https://arxiv.org/abs/2412.20138" target="_blank">paper</a>
+        <span class="card-cost"><strong>Free</strong> · Apache-style license</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 5. Tiingo MCP ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Tiingo MCP</h2>
+        <span class="card-pill" data-tier="installed">Installed &amp; ran</span>
+      </div>
+      <p class="card-tagline">Community MCP server wrapping Tiingo's API. Stocks, forex, crypto, news, fundamentals, corporate actions. 17 tools, 4 resources, 5 prompts. Free tier covers daily quotes + news.</p>
+
+      <p class="card-section">Install</p>
+      <pre class="card-code">uvx tiingo-mcp
+# add to Claude Code MCP config:
+# "tiingo": { "command": "uvx",
+#             "args": ["tiingo-mcp"],
+#             "env": { "TIINGO_API_KEY": "..." }}</pre>
+
+      <p class="card-section">Tools available</p>
+      <pre class="card-output">get_stock_metadata()
+get_stock_prices()       # OHLCV historical
+get_realtime_price()     # IEX top-of-book
+get_intraday_prices()    # 1m–1h intervals
+get_forex_quote()
+get_forex_prices()
+get_crypto_*
+get_news()
+get_fundamentals()
+get_corporate_actions()</pre>
+
+      <p class="card-opinion"><strong>Verdict:</strong> good split-tool MCP — agents query exactly the slice they need rather than scrolling through a giant doc. Tiingo's free tier is the cleanest US-equity history we tested (split &amp; dividend adjusted, error-checked). Pair with Alpha Vantage for redundancy: AV for current quote, Tiingo for clean history, news from either.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://github.com/wshobson/tiingo-mcp" target="_blank">github</a>
+        <a class="card-link" href="https://www.tiingo.com" target="_blank">tiingo.com</a>
+        <span class="card-cost"><strong>Free tier</strong> · $10–$50/mo for premium</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 6. Polygon.io ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Polygon.io</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">Real-time + historical market data, US equities + options + crypto + forex. MCP integration via Composio / Rube. Free tier exists; live trades behind paid tier.</p>
+
+      <p class="card-section">MCP install path</p>
+      <pre class="card-code"># via Claude Skill marketplace
+claude skill install polygon-io-financial-automation
+# or direct API:
+# curl -H "Authorization: Bearer $POLYGON_KEY" \
+#   https://api.polygon.io/v2/aggs/ticker/NVDA/...</pre>
+
+      <p class="card-section">Endpoints</p>
+      <p class="card-body">Aggregates (OHLCV at any timeframe), last trade, last quote, options chain, ticker news, market holidays, splits, dividends, financials, market status.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> cleaner real-time API than Alpha Vantage, but the free tier rate-limits hard and locks out live trades — fine for the morning brief use-case which only needs T+1 prices. Skip in v1; revisit if Quint wants intraday alerts later.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://polygon.io" target="_blank">polygon.io</a>
+        <a class="card-link" href="https://mcpmarket.com/tools/skills/polygon-io-financial-automation-1" target="_blank">MCP skill</a>
+        <span class="card-cost"><strong>Free 5/min</strong> · $99+/mo for real-time</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 7. Bloomberg AskB ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Bloomberg AskB</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">"Biggest rethink of the Terminal in Bloomberg history" per CTO Shawn Edwards (Fortune, April 2026). Natural-language agent that builds investment screens, drafts research reports with sophisticated financial modeling, and produces bull/bear cases on the fly.</p>
+
+      <p class="card-section">Closest comp to a Jarvis-for-finance</p>
+      <p class="card-body">Hooks the entire Bloomberg data corpus + the journalist-grade news flow underneath. Encodes domain experts' "tacit knowledge" via human-graded evals (bond covenant experts, equity analysts, market structure wonks, BBG journalists). Pull-based interface — "ask me," not "anticipate for me."</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Terminal-locked. ~$24k/seat/yr. No public API. AskB cannot be embedded.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> the gold standard for institutional. <strong>Pattern to crib:</strong> the bull/bear research-report synthesis is exactly DIY Daily's L3-paragraph mechanic, scaled up. AskB's evals approach (humans grade agent outputs against expert benchmarks) is what Quint's voice-corpus + edit-history loop becomes long-term.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://fortune.com/2026/04/28/bloomberg-askb-ai-agents-lessons-from-bloomberg-cto-shawn-edwards-eye-on-ai/" target="_blank">Fortune coverage</a>
+        <span class="card-cost">$24k/seat/yr · Terminal-locked</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 8. Rogo ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Rogo</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">Late-stage finance-pro chat agent. $2B valn, $160M Series D in April 2026. Built by ex-IB junior bankers around a kitchen table in 2021. Connects internal docs + external data via integrations.</p>
+
+      <p class="card-section">2026 traction signals</p>
+      <p class="card-body">GPT 5.5 + Opus 4.7 in product · EU AI Act compliant · ISO/IEC 42001 certified · Fitch Solutions partnership · Acquired Plux (European market expansion) and Offset (security) · Goldman Sachs &amp; major IBs as customers.</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Enterprise-only sales motion. No self-serve. Demo-request gated.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> closest "Cursor for finance pros" — chat over your firm's internal docs + market data. <strong>Pattern to crib:</strong> their data-onboarding flow (firms upload internal docs and licensed feeds, Rogo gates by role). Our equivalent: Quint uploads his archive (DIY Money transcripts, Joule blog, X feed) once; AI works against it forever.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://rogo.ai" target="_blank">rogo.ai</a>
+        <a class="card-link" href="https://www.bloomberg.com/news/features/2026-04-29/junior-bankers-sick-of-grunt-work-build-2-billion-ai-tool-to-do-the-job" target="_blank">Bloomberg profile</a>
+        <span class="card-cost">Enterprise-only · pricing on request</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 9. Hebbia ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Hebbia</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">"Matrix" UI — agentic doc-synthesis at portfolio scale. Sentence-level citations. Customers run portfolio-wide agent passes for buried risks (unrestricted-subsidiary "drops," subordination clauses, etc.).</p>
+
+      <p class="card-section">What's distinct</p>
+      <p class="card-body">Reasons over thousands of proprietary documents at once. Workflow automation across analysis + content creation. Multi-document reasoning (PDFs, slides, spreadsheets, research reports) in a single query.</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Enterprise-only. Custom deployments for hedge funds + private credit shops.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> Matrix UI is the right surface for the "what do all 14 sources I trust say about today's jobs print" question. <strong>Pattern to crib:</strong> the matrix layout (rows = entities, columns = questions, cells = AI answers + cite). For DIY Daily, that's rows = headlines, columns = (relevance to holdings? matches a theory? worth commentary?), cells = AI verdict + source link.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://www.hebbia.com" target="_blank">hebbia.com</a>
+        <span class="card-cost">Enterprise-only · pricing on request</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 10. AlphaSense ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">AlphaSense</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">Search engine over premium financial content — broker research + expert-call transcripts + company filings. "Generative Grid" compares up to 400 documents in one query.</p>
+
+      <p class="card-section">Premium content library</p>
+      <p class="card-body">Broker research (sell-side morning notes from major IBs), expert-call transcripts, earnings transcripts, SEC filings, news. Generative AI built specifically for finance use-cases.</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Enterprise-only, ~$15–30k+/yr per seat. Premium content library is licensed; can't be syndicated downstream.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> the premier "search across stuff Quint cares about" tool, but content-licensed-out for DIY Daily's audience. <strong>Pattern to crib:</strong> the Generative Grid is a great UX for "compare these 8 stories about the jobs print." If Quint keeps an AlphaSense seat post-Joule, this becomes a paste-and-summarize source on the dashboard.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://www.alpha-sense.com" target="_blank">alpha-sense.com</a>
+        <span class="card-cost">$15k–30k+/seat/yr · enterprise-only</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 11. Moody's MCP ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Moody's MCP</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">Anthropic Finance Agents launch partner (May 5, 2026). Brings proprietary credit ratings + data on 600M+ public + private companies into Claude as an MCP application.</p>
+
+      <p class="card-section">Use cases</p>
+      <p class="card-body">Compliance, credit analysis, business development, KYC. Sits inside Claude's interface — Moody's tools and UI surface natively, not just data.</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Moody's account required. CreditView subscription gates the data behind authenticated access.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> credit + private-company data is <em>massive</em> coverage that nothing else open-source comes close to. <strong>Not relevant for DIY Daily v1</strong> (Quint's audience is public-equity retail), but if the project ever pivots to RIA-tooling or M&amp;A signal, this is day-one. The MCP-app-not-just-connector framing matters: it embeds the provider's UI inside the agent.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://www.anthropic.com/news/finance-agents" target="_blank">launch announcement</a>
+        <span class="card-cost">Moody's account required</span>
+      </div>
+    </article>
+
+    <!-- ─────────── 12. Guidepoint MCP ─────────── -->
+    <article class="card">
+      <div class="card-head">
+        <h2 class="card-title">Guidepoint MCP</h2>
+        <span class="card-pill" data-tier="gated">Gated / doc-only</span>
+      </div>
+      <p class="card-tagline">Anthropic launch partner (May 6, 2026). 100,000+ expert-interview transcripts available inside Claude. Every insight attributed and linked back to its source in Guidepoint360.</p>
+
+      <p class="card-section">What it unlocks</p>
+      <p class="card-body">Primary research at agent speed — "what are tier-1 auto suppliers saying about Q3 demand?" answered with sourced expert quotes, not LLM speculation.</p>
+
+      <p class="card-section">Why we can't use it directly</p>
+      <p class="card-body">Guidepoint client subscription required (typical buy-side / consulting tier). Standalone access requested via sales@guidepoint.com.</p>
+
+      <p class="card-opinion"><strong>Verdict:</strong> the closest commercial answer to "give Quint primary research that's not LLM-default." For DIY Daily v1 we can't subscribe, but the <strong>pattern is the gold standard</strong>: signal grounded in attributable expert quotes, not a model's training-data echo. Our open-source equivalent: Quint's own podcast transcripts + his CNBC clips become the primary-source corpus.</p>
+
+      <div class="card-footer">
+        <a class="card-link" href="https://finance.yahoo.com/sectors/technology/articles/guidepoint-launches-mcp-claude-embedding-203900774.html" target="_blank">Yahoo Finance launch</a>
+        <span class="card-cost">Guidepoint subscription · enterprise-only</span>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footnote">
+  <h2 class="footnote-title">What this maps to for DIY Daily</h2>
+  <p>The four green cards above (Anthropic Financial Services / OpenBB / Alpha Vantage / Tiingo MCP) plus TradingAgents in purple form a complete v1 stack — pulp aggregation, multi-provider data wrapping, multi-agent draft critique. Zero license walls for a single-author morning-brief workflow. The eight orange cards are mostly aspirational reference for v2+: every one of them has a pattern worth stealing (matrix UI, bull/bear synthesis, expert-grounded sourcing) without buying the license.</p>
+  <p>The honest read: <strong>we're not data-poor; we're triage-poor</strong>. OpenBB + Alpha Vantage + the four major free RSS sources already give Quint more raw signal than he can metabolize in a 5-AM window. The dashboard's job is the cross-ref-against-holdings + voice-conditioned commentary layer — that's where the moat is. Build there, not on the data side.</p>
+  <p style="margin-top: var(--space-6); font-size: var(--text-xs); color: var(--diy-muted);">Compiled overnight 2026-05-09 by fingers · sourced primarily from official upstream docs, Anthropic launch posts, Bloomberg / Fortune / Hebbia / AlphaSense corporate materials.</p>
+</footer>
+
+</body>
+</html>
