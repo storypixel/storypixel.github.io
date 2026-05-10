@@ -32,14 +32,11 @@ const Footer = () => {
                         style={{
                             display: 'inline-block',
                             fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                            fontWeight: '400',
-                            borderBottom: '2px solid #fff',
-                            paddingBottom: '4px',
-                            transition: 'opacity 0.3s ease',
-                        }}
-                        onMouseEnter={(e) => e.target.style.opacity = '0.7'}
-                        onMouseLeave={(e) => e.target.style.opacity = '1'}
-                    >
+	                            fontWeight: '400',
+	                            borderBottom: '2px solid #fff',
+	                            paddingBottom: '4px',
+	                        }}
+	                    >
                         Say hello
                     </a>
                 </div>

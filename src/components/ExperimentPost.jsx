@@ -323,14 +323,11 @@ const ExperimentPost = () => {
                         to="/experiments"
                         style={{
                             fontSize: '0.9rem',
-                            borderBottom: '1px solid #444',
-                            paddingBottom: '4px',
-                            display: 'inline-block',
-                            transition: 'border-color 0.3s ease',
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#fff'}
-                        onMouseLeave={(e) => e.currentTarget.style.borderColor = '#444'}
-                    >
+	                            borderBottom: '1px solid #444',
+	                            paddingBottom: '4px',
+	                            display: 'inline-block',
+	                        }}
+	                    >
                         All experiments
                     </Link>
                 </motion.div>

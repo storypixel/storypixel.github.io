@@ -76,8 +76,6 @@ const ExperimentsPage = () => {
                                         paddingTop: '2.5rem',
                                         paddingBottom: '2.5rem',
                                     }}
-                                    whileHover={{ x: 4 }}
-                                    transition={{ duration: 0.2 }}
                                 >
                                     <span
                                         className="section-label"

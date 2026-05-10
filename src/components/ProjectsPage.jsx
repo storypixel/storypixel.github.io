@@ -42,12 +42,10 @@ const ProjectsPage = () => {
                             className="project-image-wrapper"
                             style={{ backgroundColor: project.color }}
                         >
-                            <motion.img
+                            <img
                                 src={img}
                                 alt={`${project.title} ${imgIndex + 1}`}
                                 className="project-image"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ duration: 0.4 }}
                             />
                         </div>
                     ))}
@@ -59,8 +57,6 @@ const ProjectsPage = () => {
             variants: item,
             className: 'project-item',
             style: { display: 'block' },
-            whileHover: { x: 4 },
-            transition: { duration: 0.2 },
         };
 
         if (project.external && project.url) {

@@ -32,12 +32,10 @@ const Work = () => {
                                         className="project-image-wrapper"
                                         style={{ backgroundColor: project.color }}
                                     >
-                                        <motion.img
+                                        <img
                                             src={img}
                                             alt={`${project.title} ${imgIndex + 1}`}
                                             className="project-image"
-                                            whileHover={{ scale: 1.02 }}
-                                            transition={{ duration: 0.4 }}
                                         />
                                     </div>
                                 ))}

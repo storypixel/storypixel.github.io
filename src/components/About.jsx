@@ -1,35 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useGlitch } from 'react-powerglitch';
 
 const About = () => {
-    const { ref: glitchRef } = useGlitch({
-        playMode: 'hover',
-        createContainers: true,
-        hideOverflow: true,
-        timing: {
-            duration: 2000,
-            iterations: Infinity,
-        },
-        glitchTimeSpan: {
-            start: 0.1,
-            end: 0.9,
-        },
-        shake: {
-            velocity: 15,
-            amplitudeX: 0.05,
-            amplitudeY: 0.05,
-        },
-        slice: {
-            count: 8,
-            velocity: 20,
-            minHeight: 0.02,
-            maxHeight: 0.2,
-            hueRotate: true,
-        },
-    });
-
     const sideProjects = [
         { name: 'H-E-B Digital', url: 'https://digital.heb.com' },
         { name: 'GitHub', url: 'https://github.com/storypixel' },
@@ -78,15 +51,12 @@ const About = () => {
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{
-                                    fontSize: '0.9rem',
-                                    borderBottom: '1px solid #444',
-                                    paddingBottom: '4px',
-                                    transition: 'border-color 0.3s ease',
-                                }}
-                                onMouseEnter={(e) => e.target.style.borderColor = '#fff'}
-                                onMouseLeave={(e) => e.target.style.borderColor = '#444'}
-                            >
+	                                style={{
+	                                    fontSize: '0.9rem',
+	                                    borderBottom: '1px solid #444',
+	                                    paddingBottom: '4px',
+	                                }}
+	                            >
                                 {project.name}
                             </a>
                         ))}
@@ -119,7 +89,7 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <div ref={glitchRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+	                    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
                         {/* Base photo */}
                         <img
                             src="/images/storypixel.jpeg"
