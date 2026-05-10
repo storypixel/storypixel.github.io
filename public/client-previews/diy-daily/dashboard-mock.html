@@ -461,6 +461,7 @@
       margin-left: var(--space-2);
       padding: 1px var(--space-2);
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .headline-actions {
@@ -479,6 +480,32 @@
       .headline-actions {
         opacity: 1;
         transform: translateX(0);
+      }
+    }
+
+    /* On phones the actions move BELOW the body instead of squishing the title. */
+    @media (max-width: 540px) {
+      .headline {
+        flex-wrap: wrap;
+      }
+
+      .headline-body {
+        flex: 1 1 calc(100% - 2rem);
+      }
+
+      .headline-actions {
+        flex: 1 1 100%;
+        gap: var(--space-2);
+        justify-content: flex-start;
+        margin-left: calc(1.5rem + var(--space-3));
+        margin-top: var(--space-2);
+        opacity: 1;
+        transform: none;
+      }
+
+      .headline-action {
+        flex: 1 1 0;
+        max-width: 8rem;
       }
     }
 
