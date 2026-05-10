@@ -127,7 +127,10 @@ const ChiaPromo = () => {
 
                 {/* Back */}
                 <div className="chia-back">
-                    <Link to="/"><ArrowLeft size={16} weight="bold" /> Back</Link>
+                    <Link to="/projects" className="chia-back-link">
+                        <ArrowLeft size={16} weight="bold" aria-hidden="true" />
+                        <span>Back to Projects</span>
+                    </Link>
                 </div>
             </motion.div>
 
@@ -268,10 +271,26 @@ const ChiaPromo = () => {
                 }
 
                 .chia-back {
-                    margin-left: var(--spacing-container, 2.5rem);
-                    margin-bottom: 4rem;
+                    margin: 0 var(--spacing-container, 2.5rem) 4rem;
                 }
-                .chia-back a { color: var(--text-secondary); font-size: 0.9rem; }
+                .chia-back-link {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.45rem;
+                    color: var(--text-secondary);
+                    font-size: 0.9rem;
+                    line-height: 1.2;
+                }
+                .chia-back-link svg {
+                    display: block;
+                    flex: 0 0 auto;
+                    width: 1rem;
+                    height: 1rem;
+                }
+                .chia-back-link span {
+                    display: block;
+                    padding-top: 0.02em;
+                }
 
                 @media (max-width: 900px) {
                     .chia-intro-grid { grid-template-columns: 1fr; }
