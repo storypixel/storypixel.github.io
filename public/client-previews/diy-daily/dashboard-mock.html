@@ -180,6 +180,20 @@
       padding: var(--space-8) var(--space-4) var(--space-12);
     }
 
+    @media (max-width: 540px) {
+      .page { padding: var(--space-5) var(--space-3) var(--space-8); }
+    }
+
+    @media (max-width: 540px) {
+      .topbar { padding: 0 var(--space-3); height: 52px; }
+      .topbar-meta { display: none; }
+      .email-section { padding: var(--space-5) var(--space-4); }
+      .email-masthead { padding: var(--space-5) var(--space-4); }
+      .email-footer { padding: var(--space-4); }
+      .q-update { padding: var(--space-4) var(--space-4); }
+      .email-title { font-size: var(--text-2xl); }
+    }
+
     .stage {
       display: flex;
       flex-direction: column;
@@ -281,8 +295,19 @@
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 700px) {
       .futures { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 380px) {
+      .futures { grid-template-columns: 1fr; }
+    }
+
+    .futures-attribution {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      font-style: italic;
+      margin-top: var(--space-3);
     }
 
     .futures-cell {
@@ -413,14 +438,48 @@
       font-size: var(--text-xs);
     }
 
+    .headline-source-link {
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      text-decoration: none;
+      transition: color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .headline-source-link:hover {
+      color: var(--diy-navy);
+      text-decoration: underline;
+    }
+
+    .headline-pin {
+      background: rgba(239, 172, 32, 0.18);
+      border-radius: var(--radius-sm);
+      color: var(--diy-navy);
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      margin-left: var(--space-2);
+      padding: 1px var(--space-2);
+      text-transform: uppercase;
+    }
+
     .headline-actions {
       display: flex;
+      flex-shrink: 0;
       gap: var(--space-1);
       opacity: 0;
       transform: translateX(4px);
       transition:
         opacity var(--motion-duration-normal) var(--motion-ease-standard),
         transform var(--motion-duration-normal) var(--motion-ease-standard);
+    }
+
+    /* Touch devices have no hover; show actions always at the cost of the reveal motion. */
+    @media (hover: none) {
+      .headline-actions {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .headline-action {
@@ -551,6 +610,52 @@
 
     .q-update-source:hover {
       color: var(--diy-navy);
+    }
+
+    .q-update-sources {
+      background: var(--diy-paper);
+      border-top: 1px dashed var(--diy-border);
+      color: var(--diy-muted);
+      font-size: var(--text-xs);
+      line-height: var(--leading-snug);
+      margin-top: var(--space-4);
+      padding: var(--space-3) 0 0;
+    }
+
+    .q-update-sources-label {
+      color: var(--diy-navy);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-caps);
+      margin-right: var(--space-2);
+      text-transform: uppercase;
+    }
+
+    .q-update-source-link {
+      color: var(--diy-muted);
+      text-decoration: none;
+      transition: color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+
+    .q-update-source-link:hover {
+      color: var(--diy-navy);
+      text-decoration: underline;
+    }
+
+    .q-update-source-divider {
+      color: var(--diy-border);
+      margin: 0 var(--space-2);
+    }
+
+    .q-update-voice-pill {
+      background: rgba(24, 43, 67, 0.06);
+      border-radius: var(--radius-sm);
+      color: var(--diy-navy);
+      display: inline-block;
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+      margin-left: var(--space-2);
+      padding: 2px var(--space-2);
     }
 
     /* ── Footer (read-only) ─────────────────────────────── */
@@ -844,17 +949,18 @@
               <div class="futures-bar"><div class="futures-bar-fill" data-direction="down" style="width: 10%"></div></div>
             </div>
           </div>
+          <p class="futures-attribution">Quotes via CNBC · bars scale to the largest absolute move in today's set</p>
         </section>
 
         <section class="email-section">
           <h2 class="email-section-heading">What happened</h2>
-          <p class="email-section-meta">5 ranked · hover a card to swap, edit, or remove</p>
+          <p class="email-section-meta">5 ranked · click source ↗ to read · gold tag = pinned by keyword / ticker</p>
           <ul class="headlines">
             <li class="headline">
               <span class="headline-rank">01</span>
               <div class="headline-body">
-                <span class="headline-title">Jobs Report, Chip-Stock Rally Power Stocks to New Records</span>
-                <span class="headline-source">WSJ Markets · 8:32 AM ET</span>
+                <span class="headline-title">Jobs Report, Chip-Stock Rally Power Stocks to New Records<span class="headline-pin">jobs report · pinned</span></span>
+                <span class="headline-source"><a class="headline-source-link" href="https://www.wsj.com/livecoverage/april-jobs-report-stock-market-05-08-2026" target="_blank" rel="noreferrer">WSJ Markets · 8:32 AM ET ↗</a></span>
               </div>
               <div class="headline-actions">
                 <button class="headline-action" type="button">⤺ Swap</button>
@@ -865,8 +971,8 @@
             <li class="headline">
               <span class="headline-rank">02</span>
               <div class="headline-body">
-                <span class="headline-title">Bank of America says stocks like Apple have plenty of upside following earnings</span>
-                <span class="headline-source">CNBC Markets · 7:14 AM ET</span>
+                <span class="headline-title">Bank of America says stocks like Apple have plenty of upside following earnings<span class="headline-pin">AAPL · pinned</span></span>
+                <span class="headline-source"><a class="headline-source-link" href="https://www.cnbc.com/" target="_blank" rel="noreferrer">CNBC Markets · 7:14 AM ET ↗</a></span>
               </div>
               <div class="headline-actions">
                 <button class="headline-action" type="button">⤺ Swap</button>
@@ -878,7 +984,7 @@
               <span class="headline-rank">03</span>
               <div class="headline-body">
                 <span class="headline-title">Investors are snapping up muni funds at fastest pace in 5 years</span>
-                <span class="headline-source">MarketWatch MarketPulse · 6:48 AM ET</span>
+                <span class="headline-source"><a class="headline-source-link" href="https://www.marketwatch.com/" target="_blank" rel="noreferrer">MarketWatch MarketPulse · 6:48 AM ET ↗</a></span>
               </div>
               <div class="headline-actions">
                 <button class="headline-action" type="button">⤺ Swap</button>
@@ -889,8 +995,8 @@
             <li class="headline">
               <span class="headline-rank">04</span>
               <div class="headline-body">
-                <span class="headline-title">Applied Materials among stocks reporting next week with earnings momentum</span>
-                <span class="headline-source">WSJ Markets · 6:32 AM ET</span>
+                <span class="headline-title">Applied Materials among stocks reporting next week with earnings momentum<span class="headline-pin">earnings · pinned</span></span>
+                <span class="headline-source"><a class="headline-source-link" href="https://www.wsj.com/" target="_blank" rel="noreferrer">WSJ Markets · 6:32 AM ET ↗</a></span>
               </div>
               <div class="headline-actions">
                 <button class="headline-action" type="button">⤺ Swap</button>
@@ -901,8 +1007,8 @@
             <li class="headline">
               <span class="headline-rank">05</span>
               <div class="headline-body">
-                <span class="headline-title">Jobless claims fall to lowest level since mid-May</span>
-                <span class="headline-source">CNBC Markets · 8:30 AM ET</span>
+                <span class="headline-title">Jobless claims fall to lowest level since mid-May<span class="headline-pin">jobless claims · pinned</span></span>
+                <span class="headline-source"><a class="headline-source-link" href="https://www.cnbc.com/" target="_blank" rel="noreferrer">CNBC Markets · 8:30 AM ET ↗</a></span>
               </div>
               <div class="headline-actions">
                 <button class="headline-action" type="button">⤺ Swap</button>
@@ -949,6 +1055,15 @@
               <span class="q-update-count-bar"><span class="q-update-count-fill" id="wordBar"></span></span>
             </span>
             <span class="q-update-source">↶ AI ghost · diff</span>
+          </div>
+          <div class="q-update-sources">
+            <span class="q-update-sources-label">Sourced from</span>
+            <a class="q-update-source-link" href="https://www.wsj.com/livecoverage/april-jobs-report-stock-market-05-08-2026" target="_blank" rel="noreferrer">WSJ jobs report ↗</a>
+            <span class="q-update-source-divider">·</span>
+            <a class="q-update-source-link" href="https://www.stephens.com/perspectives/april-employment-update-may-8-2026" target="_blank" rel="noreferrer">Stephens commentary ↗</a>
+            <span class="q-update-source-divider">·</span>
+            <a class="q-update-source-link" href="https://www.cnbc.com/" target="_blank" rel="noreferrer">CNBC jobless claims ↗</a>
+            <span class="q-update-voice-pill">3 voice samples · Sep 2025 · Oct 2025 · 2024-09-13</span>
           </div>
         </section>
 
