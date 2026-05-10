@@ -129,7 +129,7 @@ const PhenylPromo = () => {
                             border: '1px solid rgba(255,255,255,0.05)'
                         }}>
                         <img src={PHENYL_SCREENSHOTS[2]}
-                             alt="Phenyl on klerb.io"
+                             alt="Phenyl marketing site"
                              style={{ width: '100%', height: 'auto', display: 'block' }} />
                     </motion.div>
                 </section>

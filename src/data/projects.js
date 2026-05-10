@@ -161,7 +161,7 @@ export const projectDetails = {
         heroImages: [
             '/images/phenyl/phenyl-home.png',
             '/images/phenyl/phenyl-hero.png',
-            '/images/phenyl/phenyl-klerb.png',
+            '/images/phenyl/phenyl-marketing.webp',
         ],
         liveUrl: 'https://phenyl.klerb.io',
     },
