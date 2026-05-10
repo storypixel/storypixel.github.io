@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import { projects, projectDetails } from '../data/projects';
+import ProjectMedia from './ProjectMedia';
+import { getProjectMediaKey } from '../utils/projectMedia';
 import './Work.css';
 
 const MotionLink = motion.create(Link);
@@ -36,14 +38,14 @@ const ProjectsPage = () => {
                 </div>
 
                 <div className="project-images-grid">
-                    {images.map((img, imgIndex) => (
+                    {images.map((media, imgIndex) => (
                         <div
-                            key={img}
+                            key={getProjectMediaKey(media, imgIndex)}
                             className="project-image-wrapper"
                             style={{ backgroundColor: project.color }}
                         >
-                            <img
-                                src={img}
+                            <ProjectMedia
+                                media={media}
                                 alt={`${project.title} ${imgIndex + 1}`}
                                 className="project-image"
                             />

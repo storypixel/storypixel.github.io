@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import { projectDetails } from '../data/projects';
+import ProjectMedia from './ProjectMedia';
 
 const PHENYL_SCREENSHOTS = projectDetails.phenyl.heroImages.slice(0, 3);
 
@@ -66,7 +67,7 @@ const PhenylPromo = () => {
 
                         <motion.div variants={item} className="promo-hero-screenshot">
                             <div style={{ borderColor: 'rgba(245,232,216,0.1)' }}>
-                                <img src={PHENYL_SCREENSHOTS[1]} alt="Phenyl app interface" />
+                                <ProjectMedia media={PHENYL_SCREENSHOTS[1]} alt="Phenyl app interface" />
                             </div>
                         </motion.div>
                     </div>
@@ -128,9 +129,11 @@ const PhenylPromo = () => {
                             borderRadius: '12px', overflow: 'hidden',
                             border: '1px solid rgba(255,255,255,0.05)'
                         }}>
-                        <img src={PHENYL_SCREENSHOTS[2]}
-                             alt="Phenyl marketing site"
-                             style={{ width: '100%', height: 'auto', display: 'block' }} />
+                        <ProjectMedia
+                            media={PHENYL_SCREENSHOTS[2]}
+                            alt="Phenyl rose backdrop video"
+                            style={{ width: '100%', height: 'auto', display: 'block' }}
+                        />
                     </motion.div>
                 </section>
 

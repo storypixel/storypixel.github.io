@@ -161,7 +161,12 @@ export const projectDetails = {
         heroImages: [
             '/images/phenyl/phenyl-home.png',
             '/images/phenyl/phenyl-hero.png',
-            '/images/phenyl/phenyl-marketing.webp',
+            {
+                type: 'video',
+                src: '/images/phenyl/phenyl-rose-backdrop.mp4',
+                poster: '/images/phenyl/phenyl-rose-backdrop-poster.webp',
+                alt: 'Phenyl rose backdrop video',
+            },
         ],
         liveUrl: 'https://phenyl.klerb.io',
     },

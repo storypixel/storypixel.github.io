@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { projects, projectDetails } from '../data/projects';
+import ProjectMedia from './ProjectMedia';
+import { getProjectMediaKey } from '../utils/projectMedia';
 import './Work.css';
 
 const Work = () => {
@@ -26,14 +28,14 @@ const Work = () => {
                                 <span className="project-category">{project.category}</span>
                             </div>
                             <div className="project-images-grid">
-                                {(details?.heroImages || [project.image]).slice(0, 3).map((img, imgIndex) => (
+                                {(details?.heroImages || [project.image]).slice(0, 3).map((media, imgIndex) => (
                                     <div
-                                        key={imgIndex}
+                                        key={getProjectMediaKey(media, imgIndex)}
                                         className="project-image-wrapper"
                                         style={{ backgroundColor: project.color }}
                                     >
-                                        <img
-                                            src={img}
+                                        <ProjectMedia
+                                            media={media}
                                             alt={`${project.title} ${imgIndex + 1}`}
                                             className="project-image"
                                         />
