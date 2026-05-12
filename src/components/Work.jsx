@@ -28,7 +28,7 @@ const Work = () => {
                                 <span className="project-category">{project.category}</span>
                             </div>
                             <div className="project-images-grid">
-                                {(details?.heroImages || [project.image]).slice(0, 3).map((media, imgIndex) => (
+                                {(details?.cardMedia || details?.heroImages || [project.image]).slice(0, 3).map((media, imgIndex) => (
                                     <div
                                         key={getProjectMediaKey(media, imgIndex)}
                                         className="project-image-wrapper"

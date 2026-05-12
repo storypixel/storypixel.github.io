@@ -2,6 +2,15 @@
 
 export const projects = [
     {
+        id: 'klerb',
+        title: 'Klerb',
+        category: 'Community Platform',
+        size: 'full',
+        image: '/images/klerb/klerb-members-directory.png',
+        color: '#0a4d2e',
+        url: '/klerb',
+    },
+    {
         id: 'calcuweight',
         title: 'Calcuweight',
         category: 'iOS App / Watch App',
@@ -27,15 +36,6 @@ export const projects = [
         image: '/images/chia/chia-kitchen-dashboard.png',
         color: '#1a1a1a',
         url: '/chia',
-    },
-    {
-        id: 'klerb',
-        title: 'Klerb',
-        category: 'Community Platform',
-        size: 'full',
-        image: '/images/klerb/klerb-members-directory.png',
-        color: '#0a4d2e',
-        url: '/klerb',
     },
     {
         id: 'phenyl',
@@ -144,6 +144,12 @@ export const projectDetails = {
             '/images/klerb/klerb-members-directory.png',
             '/images/klerb/klerb-members-sidebar.png',
             '/images/klerb/klerb-members-roles.png',
+            '/images/klerb/klerb-map.png',
+        ],
+        cardMedia: [
+            { src: '/video/klerb-disco-hero.mp4', poster: '/video/klerb-disco-hero-poster.jpg', type: 'video', alt: 'Klerb disco hero' },
+            '/images/klerb/klerb-members-directory.png',
+            '/images/klerb/klerb-map.png',
         ],
         liveUrl: 'https://klerb.io',
     },

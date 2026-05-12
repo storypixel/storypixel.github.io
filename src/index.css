@@ -148,7 +148,7 @@ html.lenis {
 /* About section grid */
 .about-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 280px);
   gap: 4rem;
   align-items: center;
 }

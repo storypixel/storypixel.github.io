@@ -30,6 +30,18 @@ const Hero = () => {
 
     return (
         <section className="hero-section">
+            <video
+                className="hero-bg-video"
+                src="/images/phenyl/phenyl-rose-backdrop.mp4"
+                poster="/images/phenyl/phenyl-rose-backdrop-poster.webp"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+            />
+            <div className="hero-bg-overlay" aria-hidden="true" />
             <motion.div
                 className="hero-content"
                 variants={container}

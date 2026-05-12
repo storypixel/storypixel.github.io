@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import { projectDetails } from '../data/projects';
 
-const KLERB_SCREENSHOTS = projectDetails.klerb.heroImages.slice(0, 3);
+const KLERB_SCREENSHOTS = projectDetails.klerb.heroImages.slice(0, 4);
 const KLERB_SCREENSHOT_ALTS = [
     'Klerb members directory',
     'Klerb members page with sidebar',
     'Klerb member roles table',
+    'Klerb community map',
 ];
 
 const KlerbPromo = () => {
