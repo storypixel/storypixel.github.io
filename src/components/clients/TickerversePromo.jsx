@@ -81,14 +81,6 @@ const VIEWPOINTS = {
 
 const VIEWPOINT_SEQUENCE = ['rooftop', 'canyon', 'steeple', 'exchange', 'skyline'];
 
-const HOTSPOTS = [
-  { id: 'rooftop', label: 'Roof', position: [100, 71, -139], color: '#9ecfe4' },
-  { id: 'canyon', label: 'Street', position: [22, 12, -42], color: '#e3c777' },
-  { id: 'steeple', label: 'Steeple', position: [-90, 71, 0], color: '#efe0b7' },
-  { id: 'exchange', label: 'Exchange', position: [-128, 31, 8], color: '#d9b26c' },
-  { id: 'skyline', label: 'Skyline', position: [-8, 112, 42], color: '#a9d2d7' },
-];
-
 function vectorFromArray(value) {
   return new THREE.Vector3(value[0], value[1], value[2]);
 }
@@ -736,77 +728,6 @@ function Billboard3D({ onSelectView }) {
   );
 }
 
-function ViewMarker({ hotspot, isActive, onSelectView }) {
-  const group = useRef(null);
-  const ringMaterial = useMemo(
-    () => new THREE.MeshBasicMaterial({
-      color: hotspot.color,
-      transparent: true,
-      opacity: 0.42,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-    }),
-    [hotspot.color],
-  );
-  const discMaterial = useMemo(
-    () => new THREE.MeshBasicMaterial({
-      color: isActive ? '#f4e7bd' : hotspot.color,
-      transparent: true,
-      opacity: isActive ? 0.92 : 0.72,
-      depthWrite: false,
-    }),
-    [hotspot.color, isActive],
-  );
-  const { camera, gl } = useThree();
-
-  useFrame(({ clock }) => {
-    if (!group.current) return;
-    group.current.lookAt(camera.position);
-    const pulse = Math.sin(clock.elapsedTime * 2.4) * 0.08;
-    group.current.scale.setScalar((isActive ? 1.32 : 1) + pulse);
-  });
-
-  return (
-    <group
-      ref={group}
-      position={hotspot.position}
-      onClick={(event) => {
-        event.stopPropagation();
-        onSelectView(hotspot.id);
-      }}
-      onPointerOver={(event) => {
-        event.stopPropagation();
-        gl.domElement.style.cursor = 'pointer';
-      }}
-      onPointerOut={() => {
-        gl.domElement.style.cursor = '';
-      }}
-    >
-      <mesh material={ringMaterial}>
-        <ringGeometry args={[1.55, 1.88, 36]} />
-      </mesh>
-      <mesh material={discMaterial} position={[0, 0, 0.02]}>
-        <circleGeometry args={[0.64, 36]} />
-      </mesh>
-      <mesh position={[0, -1.4, -0.02]}>
-        <boxGeometry args={[0.12, 2.8, 0.12]} />
-        <meshBasicMaterial color="#241d1a" transparent opacity={0.62} depthWrite={false} />
-      </mesh>
-    </group>
-  );
-}
-
-function ViewMarkers({ activeView, onSelectView }) {
-  return HOTSPOTS.map((hotspot) => (
-    <ViewMarker
-      key={hotspot.id}
-      hotspot={hotspot}
-      isActive={hotspot.id === activeView}
-      onSelectView={onSelectView}
-    />
-  ));
-}
-
 function RooftopForeground() {
   return (
     <group position={[112, 58.8, -151]} rotation={[0, -0.8, 0]}>
@@ -856,7 +777,6 @@ function TickerverseScene({ activeView, onSelectView }) {
         <WallStreetBackdrop />
         {activeView === 'rooftop' && <RooftopForeground />}
         <Billboard3D onSelectView={onSelectView} />
-        <ViewMarkers activeView={activeView} onSelectView={onSelectView} />
       </Suspense>
     </Canvas>
   );
