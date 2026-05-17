@@ -18,7 +18,7 @@ const BUILDING_MATERIALS = new Set([
 const SURFACE_MATERIALS = {
   cobblestone_granite: { base: '#6f6b5f', accent: '#9a927b', kind: 'cobble' },
   sidewalk_bluestone: { base: '#8c9186', accent: '#b6b39c', kind: 'slab' },
-  dark_gothic: { base: '#403b35', accent: '#675f52', kind: 'stone' },
+  dark_gothic: { base: '#5c513f', accent: '#887757', kind: 'stone' },
 };
 
 const BUILDING_LOOKS = {
@@ -28,6 +28,10 @@ const BUILDING_LOOKS = {
   brick_red: { wall: '#80523c', trim: '#4d3123', glass: '#131312', cols: 5, rows: 7 },
   brick_warm: { wall: '#9a6b49', trim: '#5c3c2a', glass: '#141413', cols: 5, rows: 7 },
 };
+
+const TRINITY_OBJECT_PATTERN = /^Trinity_/;
+const TRINITY_TEXTURE_KEY = 'trinity_brownstone';
+const TRINITY_STONE_LOOK = { base: '#74664d', accent: '#b29a6c', kind: 'gothic' };
 
 const SIMPLE_SCENE_PROP_PATTERN =
   /^(car_|lamp_|smoke_|awning_|trolley_|flag_|grate_|manhole_|hydrant_|mailbox_|trash_|ped_walk_)/;
@@ -160,9 +164,9 @@ function makeSurfaceTexture({ base, accent, kind }) {
   }
 
   ctx.strokeStyle = accent;
-  ctx.globalAlpha = 0.18;
+  ctx.globalAlpha = kind === 'gothic' ? 0.24 : 0.18;
   ctx.lineWidth = kind === 'cobble' ? 1.6 : 1;
-  const step = kind === 'cobble' ? 34 : 76;
+  const step = kind === 'cobble' ? 34 : kind === 'gothic' ? 58 : 76;
 
   for (let x = 0; x <= 512; x += step) {
     ctx.beginPath();
@@ -176,6 +180,27 @@ function makeSurfaceTexture({ base, accent, kind }) {
     ctx.lineTo(512, y - Math.sin(y) * 4);
     ctx.stroke();
   }
+
+  if (kind === 'gothic') {
+    ctx.globalAlpha = 0.2;
+    ctx.lineWidth = 2;
+    for (let x = 34; x < 512; x += 74) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x + Math.sin(x) * 2, 512);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x + 9, 0);
+      ctx.lineTo(x + 7 + Math.cos(x) * 2, 512);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 0.11;
+    ctx.fillStyle = '#fff1bd';
+    for (let i = 0; i < 42; i += 1) {
+      ctx.fillRect(Math.random() * 512, Math.random() * 512, 2, 8 + Math.random() * 22);
+    }
+  }
+
   ctx.globalAlpha = 1;
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -408,13 +433,17 @@ function WallStreetBackdrop() {
     Object.entries(SURFACE_MATERIALS).forEach(([name, look]) => {
       textureBank[name] = makeSurfaceTexture(look);
     });
+    textureBank[TRINITY_TEXTURE_KEY] = makeSurfaceTexture(TRINITY_STONE_LOOK);
     Object.values(textureBank).forEach((texture) => {
       texture.anisotropy = gl.capabilities.getMaxAnisotropy?.() || 8;
     });
 
     const prepareMaterial = (material, object) => {
       const materialName = material.name || '';
-      const generatedTexture = textureBank[materialName]?.clone();
+      const isTrinity = TRINITY_OBJECT_PATTERN.test(object.name);
+      const generatedTexture = textureBank[
+        isTrinity && materialName === 'dark_gothic' ? TRINITY_TEXTURE_KEY : materialName
+      ]?.clone();
       const next = material.isMeshPhysicalMaterial
         ? new THREE.MeshStandardMaterial({
             name: material.name,
@@ -438,10 +467,14 @@ function WallStreetBackdrop() {
         const size = box.getSize(new THREE.Vector3());
         const faceWidth = Math.max(size.x, size.z);
         const isBuildingMaterial = BUILDING_MATERIALS.has(materialName);
-        const verticalRepeat = isBuildingMaterial
+        const verticalRepeat = isTrinity
+          ? Math.max(1, Math.round(size.y / 22))
+          : isBuildingMaterial
           ? Math.max(1, Math.round(size.y / 34))
           : Math.max(1, Math.round(size.y / 52));
-        const horizontalRepeat = isBuildingMaterial
+        const horizontalRepeat = isTrinity
+          ? Math.max(1, Math.round(faceWidth / 14))
+          : isBuildingMaterial
           ? Math.max(1, Math.round(faceWidth / 30))
           : materialName === 'cobblestone_granite'
             ? Math.max(2, Math.round(faceWidth / 30))
@@ -449,13 +482,21 @@ function WallStreetBackdrop() {
 
         generatedTexture.wrapS = THREE.RepeatWrapping;
         generatedTexture.wrapT = THREE.RepeatWrapping;
-        generatedTexture.repeat.set(horizontalRepeat, isBuildingMaterial ? verticalRepeat : horizontalRepeat);
+        generatedTexture.repeat.set(
+          horizontalRepeat,
+          isBuildingMaterial || isTrinity ? verticalRepeat : horizontalRepeat,
+        );
         generatedTexture.needsUpdate = true;
         next.map = generatedTexture;
         if (next.color) next.color.set(isBuildingMaterial ? '#f1ead6' : '#ffffff');
       }
 
-      if ('roughness' in next) next.roughness = Math.max(next.roughness ?? 0.8, 0.88);
+      if (isTrinity) {
+        if (next.color) next.color.set('#fff5d3');
+        if ('roughness' in next) next.roughness = 0.82;
+        if ('emissive' in next) next.emissive = new THREE.Color('#2a2116');
+        if ('emissiveIntensity' in next) next.emissiveIntensity = 0.1;
+      } else if ('roughness' in next) next.roughness = Math.max(next.roughness ?? 0.8, 0.88);
       if ('metalness' in next) next.metalness = Math.min(next.metalness ?? 0, 0.08);
       if ('envMapIntensity' in next) next.envMapIntensity = 0.04;
       if (next.color && !next.map) next.color.lerp(materialTint, 0.08);
@@ -697,11 +738,13 @@ function TickerverseScene({ activeView, onSelectView }) {
       <color attach="background" args={['#b9b18f']} />
       <fog attach="fog" args={['#b9b18f', 260, 1650]} />
       <CameraRig activeView={activeView} />
-      <ambientLight intensity={0.34} color="#d2c9aa" />
-      <hemisphereLight args={['#e0d4ac', '#302825', 1.08]} />
+      <ambientLight intensity={0.42} color="#d2c9aa" />
+      <hemisphereLight args={['#e0d4ac', '#4c3f32', 1.16]} />
       <directionalLight position={[30, 72, -18]} intensity={2.4} color="#ffe0ae" />
       <directionalLight position={[-36, 24, 28]} intensity={0.52} color="#8fc7df" />
+      <directionalLight position={[-156, 104, -132]} intensity={1.12} color="#f1d09a" />
       <pointLight position={[105, 68, -144]} intensity={18} distance={54} color="#f0d29a" />
+      <pointLight position={[-106, 44, -58]} intensity={64} distance={150} decay={1.55} color="#efc889" />
       <Suspense fallback={null}>
         <WallStreetBackdrop />
         {activeView === 'rooftop' && <RooftopForeground />}
