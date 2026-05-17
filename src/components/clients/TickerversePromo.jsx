@@ -32,6 +32,7 @@ const BUILDING_LOOKS = {
 const TRINITY_OBJECT_PATTERN = /^Trinity_/;
 const TRINITY_TEXTURE_KEY = 'trinity_brownstone';
 const TRINITY_STONE_LOOK = { base: '#74664d', accent: '#b29a6c', kind: 'gothic' };
+const GLASS_MATERIALS = new Set(['window_glass', 'storefront_glass', 'car_glass']);
 
 const SIMPLE_SCENE_PROP_PATTERN =
   /^(car_|lamp_|smoke_|awning_|trolley_|flag_|grate_|manhole_|hydrant_|mailbox_|trash_|ped_walk_)/;
@@ -41,9 +42,9 @@ const VIEWPOINTS = {
     id: 'rooftop',
     label: 'Roof',
     eyebrow: 'Welcome',
-    position: [130, 82, -170],
-    target: [-38, 62, -8],
-    fov: 44,
+    position: [106, 80.5, -164],
+    target: [-18, 132, -74],
+    fov: 50,
   },
   canyon: {
     id: 'canyon',
@@ -525,12 +526,27 @@ function WallStreetBackdrop() {
     Object.values(textureBank).forEach((texture) => {
       texture.anisotropy = gl.capabilities.getMaxAnisotropy?.() || 8;
     });
+    const hasAuthoredWindowGeometry = (() => {
+      let found = false;
+      clone.traverse((object) => {
+        if (found || !object.isMesh) return;
+        const materials = Array.isArray(object.material) ? object.material : [object.material];
+        found = materials.some((material) => (
+          GLASS_MATERIALS.has(material?.name || '') ||
+          /^Trinity_windows_/.test(object.name || '') ||
+          /^bf_.*_(win|storefront_glass)_/.test(object.name || '')
+        ));
+      });
+      return found;
+    })();
 
     const prepareMaterial = (material, object) => {
       const materialName = material.name || '';
       const isTrinity = TRINITY_OBJECT_PATTERN.test(object.name);
+      const isTrinityStone = isTrinity && ['dark_gothic', 'Trinity_stone'].includes(materialName);
+      const isGeneratedTrinityStone = isTrinity && materialName === 'dark_gothic';
       const generatedTexture = textureBank[
-        isTrinity && materialName === 'dark_gothic' ? TRINITY_TEXTURE_KEY : materialName
+        isGeneratedTrinityStone ? TRINITY_TEXTURE_KEY : materialName
       ]?.clone();
       const next = material.isMeshPhysicalMaterial
         ? new THREE.MeshStandardMaterial({
@@ -555,12 +571,12 @@ function WallStreetBackdrop() {
         const size = box.getSize(new THREE.Vector3());
         const faceWidth = Math.max(size.x, size.z);
         const isBuildingMaterial = BUILDING_MATERIALS.has(materialName);
-        const verticalRepeat = isTrinity
+        const verticalRepeat = isGeneratedTrinityStone
           ? Math.max(1, Math.round(size.y / 22))
           : isBuildingMaterial
           ? Math.max(1, Math.round(size.y / 34))
           : Math.max(1, Math.round(size.y / 52));
-        const horizontalRepeat = isTrinity
+        const horizontalRepeat = isGeneratedTrinityStone
           ? Math.max(1, Math.round(faceWidth / 14))
           : isBuildingMaterial
           ? Math.max(1, Math.round(faceWidth / 30))
@@ -572,21 +588,31 @@ function WallStreetBackdrop() {
         generatedTexture.wrapT = THREE.RepeatWrapping;
         generatedTexture.repeat.set(
           horizontalRepeat,
-          isBuildingMaterial || isTrinity ? verticalRepeat : horizontalRepeat,
+          isBuildingMaterial || isGeneratedTrinityStone ? verticalRepeat : horizontalRepeat,
         );
         generatedTexture.needsUpdate = true;
         next.map = generatedTexture;
         if (next.color) next.color.set(isBuildingMaterial ? '#f1ead6' : '#ffffff');
       }
 
-      if (isTrinity) {
+      if (GLASS_MATERIALS.has(materialName)) {
+        next.transparent = true;
+        next.opacity = material.opacity ?? 0.88;
+        if ('roughness' in next) next.roughness = 0.42;
+        if ('metalness' in next) next.metalness = 0;
+        if ('envMapIntensity' in next) next.envMapIntensity = 0.14;
+      } else if (isGeneratedTrinityStone) {
         if (next.color) next.color.set('#fff5d3');
         if ('roughness' in next) next.roughness = 0.82;
         if ('emissive' in next) next.emissive = new THREE.Color('#2a2116');
         if ('emissiveIntensity' in next) next.emissiveIntensity = 0.1;
+      } else if (isTrinityStone) {
+        if ('roughness' in next) next.roughness = 0.86;
+        if ('emissive' in next) next.emissive = new THREE.Color('#21180f');
+        if ('emissiveIntensity' in next) next.emissiveIntensity = 0.04;
       } else if ('roughness' in next) next.roughness = Math.max(next.roughness ?? 0.8, 0.88);
       if ('metalness' in next) next.metalness = Math.min(next.metalness ?? 0, 0.08);
-      if ('envMapIntensity' in next) next.envMapIntensity = 0.04;
+      if ('envMapIntensity' in next && !GLASS_MATERIALS.has(materialName)) next.envMapIntensity = 0.04;
       if (next.color && !next.map) next.color.lerp(materialTint, 0.08);
       next.needsUpdate = true;
       return next;
@@ -617,7 +643,7 @@ function WallStreetBackdrop() {
         object.material = prepareMaterial(object.material, object);
       }
 
-      if (buildingMaterialName) {
+      if (buildingMaterialName && !hasAuthoredWindowGeometry) {
         windowFacadeRequests.push({ object, lookName: buildingMaterialName });
       }
 
@@ -728,33 +754,6 @@ function Billboard3D({ onSelectView }) {
   );
 }
 
-function RooftopForeground() {
-  return (
-    <group position={[112, 58.8, -151]} rotation={[0, -0.8, 0]}>
-      <mesh receiveShadow>
-        <boxGeometry args={[52, 0.42, 25]} />
-        <meshStandardMaterial color="#5c5748" roughness={0.95} metalness={0.02} />
-      </mesh>
-      <mesh position={[0, 1.1, -11.2]} receiveShadow castShadow>
-        <boxGeometry args={[53.5, 2.2, 1.05]} />
-        <meshStandardMaterial color="#776e5b" roughness={0.9} metalness={0.02} />
-      </mesh>
-      <mesh position={[0, 2.38, -11.2]} receiveShadow castShadow>
-        <boxGeometry args={[54.2, 0.28, 1.32]} />
-        <meshStandardMaterial color="#a0ad9f" roughness={0.76} metalness={0.05} />
-      </mesh>
-      <mesh position={[-17, 0.72, 4.7]} receiveShadow castShadow>
-        <boxGeometry args={[5.4, 1.05, 4.2]} />
-        <meshStandardMaterial color="#4a443a" roughness={0.92} metalness={0.02} />
-      </mesh>
-      <mesh position={[18, 0.72, 2.4]} receiveShadow castShadow>
-        <boxGeometry args={[3.4, 1.05, 3.4]} />
-        <meshStandardMaterial color="#6a604d" roughness={0.9} metalness={0.02} />
-      </mesh>
-    </group>
-  );
-}
-
 function TickerverseScene({ activeView, onSelectView }) {
   return (
     <Canvas
@@ -775,7 +774,6 @@ function TickerverseScene({ activeView, onSelectView }) {
       <pointLight position={[-106, 44, -58]} intensity={64} distance={150} decay={1.55} color="#efc889" />
       <Suspense fallback={null}>
         <WallStreetBackdrop />
-        {activeView === 'rooftop' && <RooftopForeground />}
         <Billboard3D onSelectView={onSelectView} />
       </Suspense>
     </Canvas>
