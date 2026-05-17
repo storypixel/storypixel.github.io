@@ -210,7 +210,7 @@ function makeSurfaceTexture({ base, accent, kind }) {
   return texture;
 }
 
-function makeWindowTexture({ wall, trim, glass, cols, rows }) {
+function makeWallTexture({ wall, trim }) {
   const canvas = document.createElement('canvas');
   canvas.width = 768;
   canvas.height = 768;
@@ -233,57 +233,22 @@ function makeWindowTexture({ wall, trim, glass, cols, rows }) {
     ctx.stroke();
   }
 
-  const gutter = 24;
-  const cellW = (canvas.width - gutter * 2) / cols;
-  const cellH = (canvas.height - gutter * 2) / rows;
-
   ctx.fillStyle = trim;
-  ctx.fillRect(0, 0, canvas.width, 18);
-  ctx.fillRect(0, canvas.height - 22, canvas.width, 22);
-  ctx.fillStyle = 'rgba(255, 242, 196, 0.16)';
-  ctx.fillRect(0, 18, canvas.width, 3);
-  ctx.fillRect(0, canvas.height - 26, canvas.width, 3);
-
-  for (let col = 0; col <= cols; col += 1) {
-    const x = gutter + col * cellW;
+  for (let y = 0; y < canvas.height; y += 168) {
+    ctx.fillRect(0, y, canvas.width, 12);
+    ctx.fillStyle = 'rgba(255, 242, 196, 0.13)';
+    ctx.fillRect(0, y + 12, canvas.width, 2);
     ctx.fillStyle = trim;
-    ctx.fillRect(x - 3, 18, 6, canvas.height - 40);
-    ctx.fillStyle = 'rgba(255, 239, 190, 0.12)';
-    ctx.fillRect(x - 2, 18, 1, canvas.height - 40);
   }
+  ctx.fillStyle = 'rgba(255, 242, 196, 0.16)';
+  ctx.fillRect(0, 0, canvas.width, 3);
 
-  for (let row = 0; row < rows; row += 1) {
-    for (let col = 0; col < cols; col += 1) {
-      const bayX = gutter + col * cellW;
-      const bayY = gutter + row * cellH;
-      const lintelY = bayY + cellH * 0.18;
-      const sillY = bayY + cellH * 0.72;
-      const windowW = Math.max(22, cellW * 0.42);
-      const windowH = Math.max(28, cellH * 0.43);
-      const x = bayX + (cellW - windowW) / 2;
-      const y = lintelY + 5;
-      const lit = Math.random() < 0.025;
-
-      ctx.fillStyle = 'rgba(64, 49, 34, 0.16)';
-      ctx.fillRect(bayX + 8, bayY + 3, cellW - 16, 1);
-
-      ctx.fillStyle = trim;
-      ctx.fillRect(x - 7, y - 8, windowW + 14, 6);
-      ctx.fillRect(x - 5, y + windowH + 4, windowW + 10, 5);
-      ctx.fillRect(x - 5, y - 2, 4, windowH + 5);
-      ctx.fillRect(x + windowW + 1, y - 2, 4, windowH + 5);
-
-      ctx.fillStyle = lit ? '#d9b970' : glass;
-      ctx.fillRect(x, y, windowW, windowH);
-      ctx.fillStyle = 'rgba(255, 245, 205, 0.08)';
-      ctx.fillRect(x + 2, y + 2, windowW * 0.32, windowH - 4);
-      ctx.fillStyle = trim;
-      ctx.fillRect(x + windowW / 2 - 1, y + 2, 2, windowH - 4);
-      ctx.fillRect(x + 3, y + windowH * 0.52, windowW - 6, 2);
-
-      ctx.fillStyle = 'rgba(31, 24, 18, 0.28)';
-      ctx.fillRect(x - 6, sillY, windowW + 12, 3);
-    }
+  ctx.strokeStyle = 'rgba(40, 31, 22, 0.14)';
+  for (let x = 36; x < canvas.width; x += 88) {
+    ctx.beginPath();
+    ctx.moveTo(x + Math.sin(x) * 2, 0);
+    ctx.lineTo(x - Math.cos(x) * 2, canvas.height);
+    ctx.stroke();
   }
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -293,6 +258,133 @@ function makeWindowTexture({ wall, trim, glass, cols, rows }) {
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
   return texture;
+}
+
+function makeFacadeWindowTexture({ trim, glass }) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(43, 34, 25, 0.22)';
+  ctx.fillRect(32, 18, 192, 2);
+  ctx.fillRect(32, 228, 192, 3);
+
+  const x = 82;
+  const y = 62;
+  const windowW = 92;
+  const windowH = 112;
+
+  ctx.fillStyle = 'rgba(32, 25, 18, 0.2)';
+  ctx.fillRect(x - 16, y - 16, windowW + 32, windowH + 34);
+  ctx.fillStyle = trim;
+  ctx.fillRect(x - 10, y - 12, windowW + 20, 7);
+  ctx.fillRect(x - 8, y + windowH + 6, windowW + 16, 6);
+  ctx.fillRect(x - 7, y - 3, 5, windowH + 8);
+  ctx.fillRect(x + windowW + 2, y - 3, 5, windowH + 8);
+  ctx.fillStyle = 'rgba(255, 239, 190, 0.12)';
+  ctx.fillRect(x - 8, y - 10, windowW + 18, 2);
+
+  ctx.fillStyle = glass;
+  ctx.fillRect(x, y, windowW, windowH);
+  ctx.fillStyle = 'rgba(255, 245, 205, 0.08)';
+  ctx.fillRect(x + 3, y + 3, windowW * 0.3, windowH - 6);
+  ctx.fillStyle = trim;
+  ctx.fillRect(x + windowW / 2 - 1, y + 2, 2, windowH - 4);
+  ctx.fillRect(x + 4, y + windowH * 0.52, windowW - 8, 2);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  return texture;
+}
+
+function createWindowFacade({ name, texture, width, height, position, rotationY }) {
+  const facadeTexture = texture.clone();
+  facadeTexture.wrapS = THREE.RepeatWrapping;
+  facadeTexture.wrapT = THREE.RepeatWrapping;
+  facadeTexture.repeat.set(
+    Math.max(1, Math.round(width / 15)),
+    Math.max(1, Math.round(height / 18)),
+  );
+  facadeTexture.needsUpdate = true;
+
+  const material = new THREE.MeshBasicMaterial({
+    map: facadeTexture,
+    transparent: true,
+    alphaTest: 0.035,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+    toneMapped: false,
+  });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material);
+  mesh.name = name;
+  mesh.position.copy(position);
+  mesh.rotation.set(0, rotationY, 0);
+  mesh.renderOrder = 2;
+  return mesh;
+}
+
+function addBuildingWindowFacades(root, object, lookName, windowTexture) {
+  if (!windowTexture) return;
+
+  const box = new THREE.Box3().setFromObject(object);
+  const size = box.getSize(new THREE.Vector3());
+
+  if (size.y < 18 || Math.max(size.x, size.z) < 12) return;
+
+  const bottomInset = THREE.MathUtils.clamp(size.y * 0.08, 2.5, 7.5);
+  const topInset = THREE.MathUtils.clamp(size.y * 0.14, 4, 12);
+  const height = size.y - bottomInset - topInset;
+  if (height < 10) return;
+
+  const y = box.min.y + bottomInset + height / 2;
+  const offset = 0.08;
+  const faces = [
+    {
+      width: size.x,
+      position: new THREE.Vector3((box.min.x + box.max.x) / 2, y, box.max.z + offset),
+      rotationY: 0,
+      suffix: 'south',
+    },
+    {
+      width: size.x,
+      position: new THREE.Vector3((box.min.x + box.max.x) / 2, y, box.min.z - offset),
+      rotationY: Math.PI,
+      suffix: 'north',
+    },
+    {
+      width: size.z,
+      position: new THREE.Vector3(box.max.x + offset, y, (box.min.z + box.max.z) / 2),
+      rotationY: Math.PI / 2,
+      suffix: 'east',
+    },
+    {
+      width: size.z,
+      position: new THREE.Vector3(box.min.x - offset, y, (box.min.z + box.max.z) / 2),
+      rotationY: -Math.PI / 2,
+      suffix: 'west',
+    },
+  ];
+
+  faces.forEach((face) => {
+    const cornerInset = THREE.MathUtils.clamp(face.width * 0.08, 1.8, 5.8);
+    const width = face.width - cornerInset * 2;
+    if (width < 8) return;
+
+    root.add(createWindowFacade({
+      name: `${object.name || lookName}_window_facade_${face.suffix}`,
+      texture: windowTexture,
+      width,
+      height,
+      position: face.position,
+      rotationY: face.rotationY,
+    }));
+  });
 }
 
 function makeWelcomeTexture() {
@@ -424,11 +516,15 @@ function WallStreetBackdrop() {
     const clone = scene.clone(true);
     const nodesToRemove = [];
     const animatedWalkers = [];
+    const windowFacadeRequests = [];
     const materialTint = new THREE.Color('#c2b783');
     const textureBank = {};
+    const windowTextureBank = {};
+    clone.updateMatrixWorld(true);
 
     Object.entries(BUILDING_LOOKS).forEach(([name, look]) => {
-      textureBank[name] = makeWindowTexture(look);
+      textureBank[name] = makeWallTexture(look);
+      windowTextureBank[name] = makeFacadeWindowTexture(look);
     });
     Object.entries(SURFACE_MATERIALS).forEach(([name, look]) => {
       textureBank[name] = makeSurfaceTexture(look);
@@ -518,11 +614,19 @@ function WallStreetBackdrop() {
 
       object.castShadow = false;
       object.receiveShadow = true;
+      const materialNames = Array.isArray(object.material)
+        ? object.material.map((material) => material?.name || '')
+        : [object.material?.name || ''];
+      const buildingMaterialName = materialNames.find((name) => BUILDING_MATERIALS.has(name));
 
       if (Array.isArray(object.material)) {
         object.material = object.material.map((material) => prepareMaterial(material, object));
       } else if (object.material) {
         object.material = prepareMaterial(object.material, object);
+      }
+
+      if (buildingMaterialName) {
+        windowFacadeRequests.push({ object, lookName: buildingMaterialName });
       }
 
       if (object.name.startsWith('ped_walk_')) {
@@ -538,6 +642,9 @@ function WallStreetBackdrop() {
     });
 
     nodesToRemove.forEach((object) => object.parent?.remove(object));
+    windowFacadeRequests.forEach(({ object, lookName }) => {
+      addBuildingWindowFacades(clone, object, lookName, windowTextureBank[lookName]);
+    });
 
     return { model: clone, walkers: animatedWalkers };
   }, [gl, scene]);
