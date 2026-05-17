@@ -22,11 +22,11 @@ const SURFACE_MATERIALS = {
 };
 
 const BUILDING_LOOKS = {
-  limestone_fed: { wall: '#d8ceb6', frame: '#766844', cols: 6, rows: 6 },
-  limestone_nyse: { wall: '#cbbfa9', frame: '#746542', cols: 7, rows: 13 },
-  beige_stone: { wall: '#b9a880', frame: '#66573d', cols: 7, rows: 12 },
-  brick_red: { wall: '#80523c', frame: '#3d281d', cols: 6, rows: 10 },
-  brick_warm: { wall: '#9a6b49', frame: '#4c3021', cols: 7, rows: 11 },
+  limestone_fed: { wall: '#d8ceb6', trim: '#8b7a55', glass: '#171714', cols: 4, rows: 6 },
+  limestone_nyse: { wall: '#cbbfa9', trim: '#85724e', glass: '#151412', cols: 4, rows: 7 },
+  beige_stone: { wall: '#b9a880', trim: '#756545', glass: '#141512', cols: 4, rows: 7 },
+  brick_red: { wall: '#80523c', trim: '#4d3123', glass: '#131312', cols: 5, rows: 7 },
+  brick_warm: { wall: '#9a6b49', trim: '#5c3c2a', glass: '#141413', cols: 5, rows: 7 },
 };
 
 const SIMPLE_SCENE_PROP_PATTERN =
@@ -185,7 +185,7 @@ function makeSurfaceTexture({ base, accent, kind }) {
   return texture;
 }
 
-function makeWindowTexture({ wall, frame, cols, rows }) {
+function makeWindowTexture({ wall, trim, glass, cols, rows }) {
   const canvas = document.createElement('canvas');
   canvas.width = 768;
   canvas.height = 768;
@@ -193,31 +193,71 @@ function makeWindowTexture({ wall, frame, cols, rows }) {
   ctx.fillStyle = wall;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < 8500; i += 1) {
+  for (let i = 0; i < 9500; i += 1) {
     const shade = Math.random() > 0.5 ? 255 : 0;
-    ctx.fillStyle = `rgba(${shade}, ${shade}, ${shade}, ${Math.random() * 0.08})`;
+    ctx.fillStyle = `rgba(${shade}, ${shade}, ${shade}, ${Math.random() * 0.055})`;
     ctx.fillRect(Math.random() * 768, Math.random() * 768, 2, 2);
   }
 
-  const gap = 10;
-  const cellW = (768 - gap * (cols + 1)) / cols;
-  const cellH = (768 - gap * (rows + 1)) / rows;
+  ctx.strokeStyle = 'rgba(43, 34, 25, 0.18)';
+  ctx.lineWidth = 1;
+  for (let y = 22; y < canvas.height; y += 48) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y + Math.sin(y) * 2);
+    ctx.stroke();
+  }
 
-  for (let row = 1; row < rows - 1; row += 1) {
+  const gutter = 24;
+  const cellW = (canvas.width - gutter * 2) / cols;
+  const cellH = (canvas.height - gutter * 2) / rows;
+
+  ctx.fillStyle = trim;
+  ctx.fillRect(0, 0, canvas.width, 18);
+  ctx.fillRect(0, canvas.height - 22, canvas.width, 22);
+  ctx.fillStyle = 'rgba(255, 242, 196, 0.16)';
+  ctx.fillRect(0, 18, canvas.width, 3);
+  ctx.fillRect(0, canvas.height - 26, canvas.width, 3);
+
+  for (let col = 0; col <= cols; col += 1) {
+    const x = gutter + col * cellW;
+    ctx.fillStyle = trim;
+    ctx.fillRect(x - 3, 18, 6, canvas.height - 40);
+    ctx.fillStyle = 'rgba(255, 239, 190, 0.12)';
+    ctx.fillRect(x - 2, 18, 1, canvas.height - 40);
+  }
+
+  for (let row = 0; row < rows; row += 1) {
     for (let col = 0; col < cols; col += 1) {
-      const x = gap + col * (cellW + gap);
-      const y = gap + row * (cellH + gap);
-      const lit = Math.random() < 0.035;
+      const bayX = gutter + col * cellW;
+      const bayY = gutter + row * cellH;
+      const lintelY = bayY + cellH * 0.18;
+      const sillY = bayY + cellH * 0.72;
+      const windowW = Math.max(22, cellW * 0.42);
+      const windowH = Math.max(28, cellH * 0.43);
+      const x = bayX + (cellW - windowW) / 2;
+      const y = lintelY + 5;
+      const lit = Math.random() < 0.025;
 
-      ctx.fillStyle = frame;
-      ctx.fillRect(x, y, cellW, cellH);
-      ctx.fillStyle = lit ? '#e8c880' : '#11100e';
-      ctx.fillRect(x + 5, y + 5, cellW - 10, cellH - 10);
-      ctx.fillStyle = frame;
-      ctx.fillRect(x + cellW / 2 - 1, y + 5, 2, cellH - 10);
-      ctx.fillRect(x + 5, y + cellH / 2 - 1, cellW - 10, 2);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.38)';
-      ctx.fillRect(x - 1, y + cellH + 2, cellW + 2, 2);
+      ctx.fillStyle = 'rgba(64, 49, 34, 0.16)';
+      ctx.fillRect(bayX + 8, bayY + 3, cellW - 16, 1);
+
+      ctx.fillStyle = trim;
+      ctx.fillRect(x - 7, y - 8, windowW + 14, 6);
+      ctx.fillRect(x - 5, y + windowH + 4, windowW + 10, 5);
+      ctx.fillRect(x - 5, y - 2, 4, windowH + 5);
+      ctx.fillRect(x + windowW + 1, y - 2, 4, windowH + 5);
+
+      ctx.fillStyle = lit ? '#d9b970' : glass;
+      ctx.fillRect(x, y, windowW, windowH);
+      ctx.fillStyle = 'rgba(255, 245, 205, 0.08)';
+      ctx.fillRect(x + 2, y + 2, windowW * 0.32, windowH - 4);
+      ctx.fillStyle = trim;
+      ctx.fillRect(x + windowW / 2 - 1, y + 2, 2, windowH - 4);
+      ctx.fillRect(x + 3, y + windowH * 0.52, windowW - 6, 2);
+
+      ctx.fillStyle = 'rgba(31, 24, 18, 0.28)';
+      ctx.fillRect(x - 6, sillY, windowW + 12, 3);
     }
   }
 
@@ -225,6 +265,8 @@ function makeWindowTexture({ wall, frame, cols, rows }) {
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
   return texture;
 }
 
@@ -394,20 +436,23 @@ function WallStreetBackdrop() {
       if (generatedTexture) {
         const box = new THREE.Box3().setFromObject(object);
         const size = box.getSize(new THREE.Vector3());
-        const verticalRepeat = Math.max(1, Math.round(size.y / 52));
-        const horizontalRepeat = materialName === 'cobblestone_granite'
-          ? Math.max(2, Math.round(Math.max(size.x, size.z) / 30))
-          : 1;
+        const faceWidth = Math.max(size.x, size.z);
+        const isBuildingMaterial = BUILDING_MATERIALS.has(materialName);
+        const verticalRepeat = isBuildingMaterial
+          ? Math.max(1, Math.round(size.y / 34))
+          : Math.max(1, Math.round(size.y / 52));
+        const horizontalRepeat = isBuildingMaterial
+          ? Math.max(1, Math.round(faceWidth / 30))
+          : materialName === 'cobblestone_granite'
+            ? Math.max(2, Math.round(faceWidth / 30))
+            : 1;
 
         generatedTexture.wrapS = THREE.RepeatWrapping;
         generatedTexture.wrapT = THREE.RepeatWrapping;
-        generatedTexture.repeat.set(
-          BUILDING_MATERIALS.has(materialName) ? 1 : horizontalRepeat,
-          BUILDING_MATERIALS.has(materialName) ? verticalRepeat : horizontalRepeat,
-        );
+        generatedTexture.repeat.set(horizontalRepeat, isBuildingMaterial ? verticalRepeat : horizontalRepeat);
         generatedTexture.needsUpdate = true;
         next.map = generatedTexture;
-        if (next.color) next.color.set('#ffffff');
+        if (next.color) next.color.set(isBuildingMaterial ? '#f1ead6' : '#ffffff');
       }
 
       if ('roughness' in next) next.roughness = Math.max(next.roughness ?? 0.8, 0.88);
