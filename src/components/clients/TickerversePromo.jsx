@@ -45,9 +45,9 @@ const VIEWPOINTS = {
     id: 'canyon',
     label: 'Street',
     eyebrow: 'Trade floor',
-    position: [122, 72, -132],
-    target: [10, 46, -28],
-    fov: 52,
+    position: [92, 52, -106],
+    target: [-20, 28, -12],
+    fov: 56,
   },
   exchange: {
     id: 'exchange',
@@ -78,6 +78,60 @@ const HOTSPOTS = [
 
 function vectorFromArray(value) {
   return new THREE.Vector3(value[0], value[1], value[2]);
+}
+
+function easeTrackProgress(value) {
+  const t = THREE.MathUtils.clamp(value, 0, 1);
+  return t * t * t * (t * (t * 6 - 15) + 10);
+}
+
+function makeCameraRail({ fromPosition, toPosition, fromTarget, toTarget, fromFov, toFov }) {
+  const travel = fromPosition.distanceTo(toPosition);
+  const horizontal = toPosition.clone().sub(fromPosition);
+  horizontal.y = 0;
+
+  if (horizontal.lengthSq() < 0.001) {
+    horizontal.set(1, 0, 0);
+  }
+
+  horizontal.normalize();
+
+  const side = new THREE.Vector3(-horizontal.z, 0, horizontal.x);
+  const orbitDirection = toPosition.x >= fromPosition.x ? 1 : -1;
+  const lateralDrift = THREE.MathUtils.clamp(travel * 0.18, 10, 42) * orbitDirection;
+  const craneLift = THREE.MathUtils.clamp(travel * 0.16, 12, 38);
+  const forwardPush = THREE.MathUtils.clamp(travel * 0.1, 8, 26);
+
+  const positionCurve = new THREE.CubicBezierCurve3(
+    fromPosition.clone(),
+    fromPosition.clone()
+      .lerp(toPosition, 0.28)
+      .add(side.clone().multiplyScalar(lateralDrift))
+      .add(horizontal.clone().multiplyScalar(forwardPush))
+      .add(new THREE.Vector3(0, craneLift, 0)),
+    fromPosition.clone()
+      .lerp(toPosition, 0.74)
+      .add(side.clone().multiplyScalar(lateralDrift * 0.55))
+      .add(new THREE.Vector3(0, craneLift * 0.45, 0)),
+    toPosition.clone(),
+  );
+
+  const targetLift = THREE.MathUtils.clamp(travel * 0.045, 3, 13);
+  const targetCurve = new THREE.CubicBezierCurve3(
+    fromTarget.clone(),
+    fromTarget.clone().lerp(toTarget, 0.34).add(new THREE.Vector3(0, targetLift, 0)),
+    fromTarget.clone().lerp(toTarget, 0.7).add(new THREE.Vector3(0, targetLift * 0.4, 0)),
+    toTarget.clone(),
+  );
+
+  return {
+    elapsed: 0,
+    duration: THREE.MathUtils.clamp(1.8 + travel / 115, 2.35, 4.9),
+    fromFov,
+    toFov,
+    positionCurve,
+    targetCurve,
+  };
 }
 
 function makeSurfaceTexture({ base, accent, kind }) {
@@ -229,25 +283,56 @@ function CameraRig({ activeView }) {
   const { camera } = useThree();
   const lookAt = useRef(vectorFromArray(VIEWPOINTS.rooftop.target));
   const mounted = useRef(false);
+  const transition = useRef(null);
   const view = VIEWPOINTS[activeView] || VIEWPOINTS.rooftop;
-  const goalPosition = useMemo(() => vectorFromArray(view.position), [view]);
-  const goalTarget = useMemo(() => vectorFromArray(view.target), [view]);
 
   useEffect(() => {
+    const goalPosition = vectorFromArray(view.position);
+    const goalTarget = vectorFromArray(view.target);
+
     if (mounted.current) return;
+
     camera.position.copy(goalPosition);
     lookAt.current.copy(goalTarget);
     camera.fov = view.fov;
     camera.lookAt(lookAt.current);
     camera.updateProjectionMatrix();
     mounted.current = true;
-  }, [camera, goalPosition, goalTarget, view.fov]);
+  }, [camera, view]);
+
+  useEffect(() => {
+    if (!mounted.current) return;
+
+    const goalPosition = vectorFromArray(view.position);
+    const goalTarget = vectorFromArray(view.target);
+
+    transition.current = makeCameraRail({
+      fromPosition: camera.position.clone(),
+      toPosition: goalPosition,
+      fromTarget: lookAt.current.clone(),
+      toTarget: goalTarget,
+      fromFov: camera.fov,
+      toFov: view.fov,
+    });
+  }, [activeView, camera, view]);
 
   useFrame((_, delta) => {
-    const ease = 1 - Math.exp(-delta * 1.65);
-    camera.position.lerp(goalPosition, ease);
-    lookAt.current.lerp(goalTarget, ease);
-    camera.fov = THREE.MathUtils.lerp(camera.fov, view.fov, ease * 0.85);
+    if (transition.current) {
+      const rail = transition.current;
+      rail.elapsed += delta;
+
+      const rawProgress = Math.min(rail.elapsed / rail.duration, 1);
+      const easedProgress = easeTrackProgress(rawProgress);
+
+      camera.position.copy(rail.positionCurve.getPoint(easedProgress));
+      lookAt.current.copy(rail.targetCurve.getPoint(easedProgress));
+      camera.fov = THREE.MathUtils.lerp(rail.fromFov, rail.toFov, easedProgress);
+
+      if (rawProgress >= 1) {
+        transition.current = null;
+      }
+    }
+
     camera.lookAt(lookAt.current);
     camera.updateProjectionMatrix();
   });
