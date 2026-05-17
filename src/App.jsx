@@ -26,6 +26,7 @@ const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
 const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
 const DIYDailyExamples = lazy(() => import('./components/clients/DIYDailyExamples'));
 const DIYDailyExample = lazy(() => import('./components/clients/DIYDailyExample'));
+const TickerversePromo = lazy(() => import('./components/clients/TickerversePromo'));
 
 function HomePage() {
     return (
@@ -72,6 +73,7 @@ function App() {
                                 <DIYDailyExample />
                             </PasswordGate>
                         } />
+                        <Route path="/tickerverse" element={<TickerversePromo />} />
                         <Route path="/cookies" element={<CookiePage />} />
                         <Route path="/chia/kitchen-sink" element={<ChiaKitchenSink />} />
                         <Route path="/experiments/*" element={<Navigate to="/projects" replace />} />
