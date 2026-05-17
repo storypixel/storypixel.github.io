@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { exampleHtmlPath, findExample } from './diyDailyData';
+import { writeClipboard, triggerDownload, buildZipBlob, masterUrlFor } from './exportUtils';
 
 // Detail route: keep the clean URL (`/clients/diy-daily/<id>`) while showing
 // the raw email — no React shell, no toolbar, no iframe. After the in-place
@@ -52,7 +53,7 @@ export default function DIYDailyExample() {
 function injectExportPill({ exampleId, html, sourceUrl }) {
   if (document.getElementById('diy-export-root')) return;
 
-  const masterUrl = `${window.location.origin}${sourceUrl.split('?')[0]}`;
+  const masterUrl = masterUrlFor(sourceUrl);
 
   const style = document.createElement('style');
   style.id = 'diy-export-style';
@@ -270,10 +271,7 @@ function injectExportPill({ exampleId, html, sourceUrl }) {
         flashToast('HTML copied');
       } else if (action === 'download-zip') {
         flashToast('Building zip…');
-        const { default: JSZip } = await import('jszip');
-        const zip = new JSZip();
-        zip.file('index.html', html);
-        const blob = await zip.generateAsync({ type: 'blob' });
+        const blob = await buildZipBlob(html);
         triggerDownload(blob, `diy-daily-${exampleId}.zip`);
         flashToast('Zip downloaded');
       }
@@ -283,32 +281,6 @@ function injectExportPill({ exampleId, html, sourceUrl }) {
       console.warn('Export action failed', err);
     }
   });
-}
-
-async function writeClipboard(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  document.execCommand('copy');
-  document.body.removeChild(ta);
-}
-
-function triggerDownload(blob, filename) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
