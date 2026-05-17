@@ -49,6 +49,14 @@ const VIEWPOINTS = {
     target: [-20, 28, -12],
     fov: 56,
   },
+  steeple: {
+    id: 'steeple',
+    label: 'Steeple',
+    eyebrow: 'Church street',
+    position: [-95, 8, -172],
+    target: [-90, 68, 0],
+    fov: 52,
+  },
   exchange: {
     id: 'exchange',
     label: 'Exchange',
@@ -67,11 +75,12 @@ const VIEWPOINTS = {
   },
 };
 
-const VIEWPOINT_SEQUENCE = ['rooftop', 'canyon', 'exchange', 'skyline'];
+const VIEWPOINT_SEQUENCE = ['rooftop', 'canyon', 'steeple', 'exchange', 'skyline'];
 
 const HOTSPOTS = [
   { id: 'rooftop', label: 'Roof', position: [100, 71, -139], color: '#9ecfe4' },
   { id: 'canyon', label: 'Street', position: [22, 12, -42], color: '#e3c777' },
+  { id: 'steeple', label: 'Steeple', position: [-90, 71, 0], color: '#efe0b7' },
   { id: 'exchange', label: 'Exchange', position: [-128, 31, 8], color: '#d9b26c' },
   { id: 'skyline', label: 'Skyline', position: [-8, 112, 42], color: '#a9d2d7' },
 ];
@@ -650,7 +659,7 @@ function TickerverseScene({ activeView, onSelectView }) {
       <pointLight position={[105, 68, -144]} intensity={18} distance={54} color="#f0d29a" />
       <Suspense fallback={null}>
         <WallStreetBackdrop />
-        <RooftopForeground />
+        {activeView === 'rooftop' && <RooftopForeground />}
         <Billboard3D onSelectView={onSelectView} />
         <ViewMarkers activeView={activeView} onSelectView={onSelectView} />
       </Suspense>

@@ -58,7 +58,7 @@
   z-index: 3;
   display: grid;
   gap: 0.7rem;
-  width: min(26rem, calc(100vw - 2rem));
+  width: min(31rem, calc(100vw - 2rem));
   pointer-events: none;
 }
 
@@ -86,7 +86,7 @@
 
 .tv-nav-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.45rem;
   pointer-events: auto;
 }
