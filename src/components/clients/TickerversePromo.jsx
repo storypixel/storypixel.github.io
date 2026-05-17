@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useMemo, useRef } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -31,6 +31,54 @@ const BUILDING_LOOKS = {
 
 const SIMPLE_SCENE_PROP_PATTERN =
   /^(car_|lamp_|smoke_|awning_|trolley_|flag_|grate_|manhole_|hydrant_|mailbox_|trash_|ped_walk_)/;
+
+const VIEWPOINTS = {
+  rooftop: {
+    id: 'rooftop',
+    label: 'Roof',
+    eyebrow: 'Welcome',
+    position: [130, 82, -170],
+    target: [-38, 62, -8],
+    fov: 44,
+  },
+  canyon: {
+    id: 'canyon',
+    label: 'Street',
+    eyebrow: 'Trade floor',
+    position: [122, 72, -132],
+    target: [10, 46, -28],
+    fov: 52,
+  },
+  exchange: {
+    id: 'exchange',
+    label: 'Exchange',
+    eyebrow: 'Market hub',
+    position: [12, 82, -118],
+    target: [-96, 48, -18],
+    fov: 47,
+  },
+  skyline: {
+    id: 'skyline',
+    label: 'Skyline',
+    eyebrow: 'Outlook',
+    position: [36, 142, -246],
+    target: [-30, 58, 4],
+    fov: 38,
+  },
+};
+
+const VIEWPOINT_SEQUENCE = ['rooftop', 'canyon', 'exchange', 'skyline'];
+
+const HOTSPOTS = [
+  { id: 'rooftop', label: 'Roof', position: [100, 71, -139], color: '#9ecfe4' },
+  { id: 'canyon', label: 'Street', position: [22, 12, -42], color: '#e3c777' },
+  { id: 'exchange', label: 'Exchange', position: [-128, 31, 8], color: '#d9b26c' },
+  { id: 'skyline', label: 'Skyline', position: [-8, 112, 42], color: '#a9d2d7' },
+];
+
+function vectorFromArray(value) {
+  return new THREE.Vector3(value[0], value[1], value[2]);
+}
 
 function makeSurfaceTexture({ base, accent, kind }) {
   const canvas = document.createElement('canvas');
@@ -177,16 +225,32 @@ function makeMessageTexture() {
   return texture;
 }
 
-function CameraRig() {
+function CameraRig({ activeView }) {
   const { camera } = useThree();
-  const base = useRef(new THREE.Vector3(130, 82, -170));
-  const target = useRef(new THREE.Vector3(-38, 62, -8));
+  const lookAt = useRef(vectorFromArray(VIEWPOINTS.rooftop.target));
+  const mounted = useRef(false);
+  const view = VIEWPOINTS[activeView] || VIEWPOINTS.rooftop;
+  const goalPosition = useMemo(() => vectorFromArray(view.position), [view]);
+  const goalTarget = useMemo(() => vectorFromArray(view.target), [view]);
 
   useEffect(() => {
-    camera.position.copy(base.current);
-    camera.lookAt(target.current);
+    if (mounted.current) return;
+    camera.position.copy(goalPosition);
+    lookAt.current.copy(goalTarget);
+    camera.fov = view.fov;
+    camera.lookAt(lookAt.current);
     camera.updateProjectionMatrix();
-  }, [camera]);
+    mounted.current = true;
+  }, [camera, goalPosition, goalTarget, view.fov]);
+
+  useFrame((_, delta) => {
+    const ease = 1 - Math.exp(-delta * 1.65);
+    camera.position.lerp(goalPosition, ease);
+    lookAt.current.lerp(goalTarget, ease);
+    camera.fov = THREE.MathUtils.lerp(camera.fov, view.fov, ease * 0.85);
+    camera.lookAt(lookAt.current);
+    camera.updateProjectionMatrix();
+  });
 
   return null;
 }
@@ -318,7 +382,7 @@ function WallStreetBackdrop() {
   return <primitive object={model} />;
 }
 
-function Billboard3D() {
+function Billboard3D({ onSelectView }) {
   const photoTexture = useTexture(MAN_PHOTO_URL);
   const welcomeTexture = useMemo(() => makeWelcomeTexture(), []);
   const messageTexture = useMemo(() => makeMessageTexture(), []);
@@ -330,7 +394,15 @@ function Billboard3D() {
   }, [photoTexture]);
 
   return (
-    <group position={[103.5, 66.2, -144]} rotation={[0, 2.36, -0.015]} scale={0.72}>
+    <group
+      position={[103.5, 66.2, -144]}
+      rotation={[0, 2.36, -0.015]}
+      scale={0.72}
+      onClick={(event) => {
+        event.stopPropagation();
+        onSelectView('rooftop');
+      }}
+    >
       <mesh castShadow receiveShadow>
         <boxGeometry args={[15.8, 4.15, 0.36]} />
         <meshStandardMaterial color="#302622" roughness={0.92} metalness={0.02} />
@@ -377,6 +449,77 @@ function Billboard3D() {
   );
 }
 
+function ViewMarker({ hotspot, isActive, onSelectView }) {
+  const group = useRef(null);
+  const ringMaterial = useMemo(
+    () => new THREE.MeshBasicMaterial({
+      color: hotspot.color,
+      transparent: true,
+      opacity: 0.42,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    }),
+    [hotspot.color],
+  );
+  const discMaterial = useMemo(
+    () => new THREE.MeshBasicMaterial({
+      color: isActive ? '#f4e7bd' : hotspot.color,
+      transparent: true,
+      opacity: isActive ? 0.92 : 0.72,
+      depthWrite: false,
+    }),
+    [hotspot.color, isActive],
+  );
+  const { camera, gl } = useThree();
+
+  useFrame(({ clock }) => {
+    if (!group.current) return;
+    group.current.lookAt(camera.position);
+    const pulse = Math.sin(clock.elapsedTime * 2.4) * 0.08;
+    group.current.scale.setScalar((isActive ? 1.32 : 1) + pulse);
+  });
+
+  return (
+    <group
+      ref={group}
+      position={hotspot.position}
+      onClick={(event) => {
+        event.stopPropagation();
+        onSelectView(hotspot.id);
+      }}
+      onPointerOver={(event) => {
+        event.stopPropagation();
+        gl.domElement.style.cursor = 'pointer';
+      }}
+      onPointerOut={() => {
+        gl.domElement.style.cursor = '';
+      }}
+    >
+      <mesh material={ringMaterial}>
+        <ringGeometry args={[1.55, 1.88, 36]} />
+      </mesh>
+      <mesh material={discMaterial} position={[0, 0, 0.02]}>
+        <circleGeometry args={[0.64, 36]} />
+      </mesh>
+      <mesh position={[0, -1.4, -0.02]}>
+        <boxGeometry args={[0.12, 2.8, 0.12]} />
+        <meshBasicMaterial color="#241d1a" transparent opacity={0.62} depthWrite={false} />
+      </mesh>
+    </group>
+  );
+}
+
+function ViewMarkers({ activeView, onSelectView }) {
+  return HOTSPOTS.map((hotspot) => (
+    <ViewMarker
+      key={hotspot.id}
+      hotspot={hotspot}
+      isActive={hotspot.id === activeView}
+      onSelectView={onSelectView}
+    />
+  ));
+}
+
 function RooftopForeground() {
   return (
     <group position={[112, 58.8, -151]} rotation={[0, -0.8, 0]}>
@@ -404,7 +547,7 @@ function RooftopForeground() {
   );
 }
 
-function TickerverseScene() {
+function TickerverseScene({ activeView, onSelectView }) {
   return (
     <Canvas
       camera={{ position: [130, 82, -170], fov: 44, near: 0.1, far: 2200 }}
@@ -414,7 +557,7 @@ function TickerverseScene() {
     >
       <color attach="background" args={['#b9b18f']} />
       <fog attach="fog" args={['#b9b18f', 260, 1650]} />
-      <CameraRig />
+      <CameraRig activeView={activeView} />
       <ambientLight intensity={0.34} color="#d2c9aa" />
       <hemisphereLight args={['#e0d4ac', '#302825', 1.08]} />
       <directionalLight position={[30, 72, -18]} intensity={2.4} color="#ffe0ae" />
@@ -423,7 +566,8 @@ function TickerverseScene() {
       <Suspense fallback={null}>
         <WallStreetBackdrop />
         <RooftopForeground />
-        <Billboard3D />
+        <Billboard3D onSelectView={onSelectView} />
+        <ViewMarkers activeView={activeView} onSelectView={onSelectView} />
       </Suspense>
     </Canvas>
   );
@@ -433,6 +577,9 @@ useGLTF.preload(WALL_STREET_SCENE_URL);
 useTexture.preload(MAN_PHOTO_URL);
 
 export default function TickerversePromo() {
+  const [activeView, setActiveView] = useState('rooftop');
+  const currentView = VIEWPOINTS[activeView] || VIEWPOINTS.rooftop;
+
   useEffect(() => {
     const prev = document.title;
     document.title = 'Tickerverse';
@@ -443,11 +590,33 @@ export default function TickerversePromo() {
 
   return (
     <main className="tv-root" aria-label="Tickerverse">
-      <div className="tv-skyline" aria-hidden="true">
-        <TickerverseScene />
+      <div className="tv-skyline">
+        <TickerverseScene activeView={activeView} onSelectView={setActiveView} />
       </div>
       <div className="tv-atmosphere" aria-hidden="true" />
       <div className="tv-grain" aria-hidden="true" />
+      <nav className="tv-nav" aria-label="Tickerverse sections">
+        <div className="tv-nav-status" aria-live="polite">
+          <span>{currentView.eyebrow}</span>
+          <strong>{currentView.label}</strong>
+        </div>
+        <div className="tv-nav-list">
+          {VIEWPOINT_SEQUENCE.map((viewId) => {
+            const view = VIEWPOINTS[viewId];
+            return (
+              <button
+                className={`tv-section-button${viewId === activeView ? ' is-active' : ''}`}
+                key={view.id}
+                type="button"
+                aria-pressed={viewId === activeView}
+                onClick={() => setActiveView(viewId)}
+              >
+                <span>{view.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
       <p className="tv-visually-hidden">
         Tickerverse is a destination for both passive and active traders to hone their skills.
       </p>
