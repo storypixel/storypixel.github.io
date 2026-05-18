@@ -82,8 +82,32 @@ const VIEWPOINTS = {
 
 const VIEWPOINT_SEQUENCE = ['rooftop', 'canyon', 'steeple', 'exchange', 'skyline'];
 
+const AUTHORED_VIEW_NAMES = {
+  rooftop: 'Rooftop_Lookup',
+  canyon: 'Street_Canyon',
+  steeple: 'Steeple_View',
+  exchange: 'Exchange_View',
+  skyline: 'Skyline_View',
+};
+
+const AUTHORED_PATH_SEGMENTS = [
+  { from: 'rooftop', to: 'canyon', name: 'Rooftop_to_Canyon' },
+  { from: 'canyon', to: 'steeple', name: 'Canyon_to_Steeple' },
+  { from: 'steeple', to: 'exchange', name: 'Steeple_to_Exchange' },
+  { from: 'exchange', to: 'skyline', name: 'Exchange_to_Skyline' },
+];
+
 function vectorFromArray(value) {
   return new THREE.Vector3(value[0], value[1], value[2]);
+}
+
+function seededUnitValue(seed) {
+  let hash = 2166136261;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash ^= seed.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0) / 4294967295;
 }
 
 function easeTrackProgress(value) {
@@ -91,48 +115,169 @@ function easeTrackProgress(value) {
   return t * t * t * (t * (t * 6 - 15) + 10);
 }
 
-function makeCameraRail({ fromPosition, toPosition, fromTarget, toTarget, fromFov, toFov }) {
-  const travel = fromPosition.distanceTo(toPosition);
-  const horizontal = toPosition.clone().sub(fromPosition);
-  horizontal.y = 0;
+function getObjectWorldPosition(object) {
+  const position = new THREE.Vector3();
+  object.getWorldPosition(position);
+  return position;
+}
 
-  if (horizontal.lengthSq() < 0.001) {
-    horizontal.set(1, 0, 0);
+function vectorFromUserData(value) {
+  if (!Array.isArray(value) || value.length < 3) return null;
+  const vector = value.map(Number);
+  if (vector.some((component) => !Number.isFinite(component))) return null;
+  return new THREE.Vector3(vector[0], vector[1], vector[2]);
+}
+
+function extractAuthoredCameraData(scene) {
+  scene.updateMatrixWorld(true);
+
+  const viewpoints = {};
+  const pathSegments = {};
+
+  VIEWPOINT_SEQUENCE.forEach((viewId) => {
+    const fallback = VIEWPOINTS[viewId];
+    const authoredName = AUTHORED_VIEW_NAMES[viewId];
+    const cameraEmpty = scene.getObjectByName(`Camera_${authoredName}`);
+    const targetEmpty = scene.getObjectByName(`Target_${authoredName}`);
+    const userDataTarget = vectorFromUserData(cameraEmpty?.userData?.threejs_target);
+    const userDataFov = Number(cameraEmpty?.userData?.fov);
+
+    viewpoints[viewId] = {
+      ...fallback,
+      position: cameraEmpty ? getObjectWorldPosition(cameraEmpty) : vectorFromArray(fallback.position),
+      target: targetEmpty
+        ? getObjectWorldPosition(targetEmpty)
+        : userDataTarget || vectorFromArray(fallback.target),
+      fov: Number.isFinite(userDataFov) ? userDataFov : fallback.fov,
+      isAuthored: Boolean(cameraEmpty),
+    };
+  });
+
+  AUTHORED_PATH_SEGMENTS.forEach(({ from, to, name }) => {
+    const waypoints = [];
+    for (let index = 0; ; index += 1) {
+      const waypoint = scene.getObjectByName(`Wp_${name}_${index}`);
+      if (!waypoint) break;
+      waypoints.push(getObjectWorldPosition(waypoint));
+    }
+    if (waypoints.length > 0) {
+      pathSegments[`${from}:${to}`] = waypoints;
+    }
+  });
+
+  return { viewpoints, pathSegments };
+}
+
+function getPathSegment(pathSegments, fromId, toId) {
+  const forward = pathSegments[`${fromId}:${toId}`];
+  if (forward) return forward.map((point) => point.clone());
+
+  const reverse = pathSegments[`${toId}:${fromId}`];
+  if (reverse) return [...reverse].reverse().map((point) => point.clone());
+
+  return [];
+}
+
+function makeRouteWaypoints({ fromId, toId, authoredData }) {
+  const fromIndex = VIEWPOINT_SEQUENCE.indexOf(fromId);
+  const toIndex = VIEWPOINT_SEQUENCE.indexOf(toId);
+
+  if (fromIndex === -1 || toIndex === -1 || fromIndex === toIndex) {
+    return { positionWaypoints: [], targetWaypoints: [] };
   }
 
-  horizontal.normalize();
+  const direction = Math.sign(toIndex - fromIndex);
+  const positionWaypoints = [];
+  const targetWaypoints = [];
 
-  const side = new THREE.Vector3(-horizontal.z, 0, horizontal.x);
-  const orbitDirection = toPosition.x >= fromPosition.x ? 1 : -1;
-  const lateralDrift = THREE.MathUtils.clamp(travel * 0.18, 10, 42) * orbitDirection;
-  const craneLift = THREE.MathUtils.clamp(travel * 0.16, 12, 38);
-  const forwardPush = THREE.MathUtils.clamp(travel * 0.1, 8, 26);
+  for (let index = fromIndex; index !== toIndex; index += direction) {
+    const stepFrom = VIEWPOINT_SEQUENCE[index];
+    const stepTo = VIEWPOINT_SEQUENCE[index + direction];
 
-  const positionCurve = new THREE.CubicBezierCurve3(
+    positionWaypoints.push(...getPathSegment(authoredData.pathSegments, stepFrom, stepTo));
+
+    if (index + direction !== toIndex) {
+      const waypointView = authoredData.viewpoints[stepTo];
+      positionWaypoints.push(waypointView.position.clone());
+      targetWaypoints.push(waypointView.target.clone());
+    }
+  }
+
+  return { positionWaypoints, targetWaypoints };
+}
+
+function makeCameraRail({
+  fromPosition,
+  toPosition,
+  fromTarget,
+  toTarget,
+  fromFov,
+  toFov,
+  positionWaypoints = [],
+  targetWaypoints = [],
+}) {
+  const travel = fromPosition.distanceTo(toPosition);
+  const authoredPositionPoints = [
     fromPosition.clone(),
-    fromPosition.clone()
-      .lerp(toPosition, 0.28)
-      .add(side.clone().multiplyScalar(lateralDrift))
-      .add(horizontal.clone().multiplyScalar(forwardPush))
-      .add(new THREE.Vector3(0, craneLift, 0)),
-    fromPosition.clone()
-      .lerp(toPosition, 0.74)
-      .add(side.clone().multiplyScalar(lateralDrift * 0.55))
-      .add(new THREE.Vector3(0, craneLift * 0.45, 0)),
+    ...positionWaypoints.map((point) => point.clone()),
     toPosition.clone(),
-  );
-
-  const targetLift = THREE.MathUtils.clamp(travel * 0.045, 3, 13);
-  const targetCurve = new THREE.CubicBezierCurve3(
+  ];
+  const authoredTargetPoints = [
     fromTarget.clone(),
-    fromTarget.clone().lerp(toTarget, 0.34).add(new THREE.Vector3(0, targetLift, 0)),
-    fromTarget.clone().lerp(toTarget, 0.7).add(new THREE.Vector3(0, targetLift * 0.4, 0)),
+    ...targetWaypoints.map((point) => point.clone()),
     toTarget.clone(),
-  );
+  ];
+  let positionCurve;
+  let targetCurve;
+
+  if (authoredPositionPoints.length > 2) {
+    positionCurve = new THREE.CatmullRomCurve3(authoredPositionPoints, false, 'centripetal', 0.35);
+  } else {
+    const horizontal = toPosition.clone().sub(fromPosition);
+    horizontal.y = 0;
+
+    if (horizontal.lengthSq() < 0.001) {
+      horizontal.set(1, 0, 0);
+    }
+
+    horizontal.normalize();
+
+    const side = new THREE.Vector3(-horizontal.z, 0, horizontal.x);
+    const orbitDirection = toPosition.x >= fromPosition.x ? 1 : -1;
+    const lateralDrift = THREE.MathUtils.clamp(travel * 0.18, 10, 42) * orbitDirection;
+    const craneLift = THREE.MathUtils.clamp(travel * 0.16, 12, 38);
+    const forwardPush = THREE.MathUtils.clamp(travel * 0.1, 8, 26);
+
+    positionCurve = new THREE.CubicBezierCurve3(
+      fromPosition.clone(),
+      fromPosition.clone()
+        .lerp(toPosition, 0.28)
+        .add(side.clone().multiplyScalar(lateralDrift))
+        .add(horizontal.clone().multiplyScalar(forwardPush))
+        .add(new THREE.Vector3(0, craneLift, 0)),
+      fromPosition.clone()
+        .lerp(toPosition, 0.74)
+        .add(side.clone().multiplyScalar(lateralDrift * 0.55))
+        .add(new THREE.Vector3(0, craneLift * 0.45, 0)),
+      toPosition.clone(),
+    );
+  }
+
+  if (authoredTargetPoints.length > 2) {
+    targetCurve = new THREE.CatmullRomCurve3(authoredTargetPoints, false, 'centripetal', 0.35);
+  } else {
+    const targetLift = THREE.MathUtils.clamp(travel * 0.045, 3, 13);
+    targetCurve = new THREE.CubicBezierCurve3(
+      fromTarget.clone(),
+      fromTarget.clone().lerp(toTarget, 0.34).add(new THREE.Vector3(0, targetLift, 0)),
+      fromTarget.clone().lerp(toTarget, 0.7).add(new THREE.Vector3(0, targetLift * 0.4, 0)),
+      toTarget.clone(),
+    );
+  }
 
   return {
     elapsed: 0,
-    duration: THREE.MathUtils.clamp(1.8 + travel / 115, 2.35, 4.9),
+    duration: THREE.MathUtils.clamp(1.8 + positionCurve.getLength() / 115, 2.35, 8.5),
     fromFov,
     toFov,
     positionCurve,
@@ -441,31 +586,45 @@ function makeMessageTexture() {
 }
 
 function CameraRig({ activeView }) {
+  const { scene } = useGLTF(WALL_STREET_SCENE_URL);
   const { camera } = useThree();
-  const lookAt = useRef(vectorFromArray(VIEWPOINTS.rooftop.target));
+  const authoredData = useMemo(() => extractAuthoredCameraData(scene), [scene]);
+  const initialView = authoredData.viewpoints.rooftop || VIEWPOINTS.rooftop;
+  const lookAt = useRef(initialView.target.clone());
   const mounted = useRef(false);
   const transition = useRef(null);
-  const view = VIEWPOINTS[activeView] || VIEWPOINTS.rooftop;
+  const currentViewId = useRef(activeView);
+  const view = authoredData.viewpoints[activeView] || authoredData.viewpoints.rooftop;
 
   useEffect(() => {
-    const goalPosition = vectorFromArray(view.position);
-    const goalTarget = vectorFromArray(view.target);
+    const goalPosition = view.position.clone();
+    const goalTarget = view.target.clone();
 
     if (mounted.current) return;
 
     camera.position.copy(goalPosition);
     lookAt.current.copy(goalTarget);
+    // R3F exposes the live Three.js camera; assigning FOV is the intended imperative API.
+    // eslint-disable-next-line react-hooks/immutability
     camera.fov = view.fov;
     camera.lookAt(lookAt.current);
     camera.updateProjectionMatrix();
     mounted.current = true;
-  }, [camera, view]);
+    currentViewId.current = activeView;
+  }, [activeView, camera, view]);
 
   useEffect(() => {
     if (!mounted.current) return;
+    if (currentViewId.current === activeView && !transition.current) return;
 
-    const goalPosition = vectorFromArray(view.position);
-    const goalTarget = vectorFromArray(view.target);
+    const fromId = currentViewId.current;
+    const goalPosition = view.position.clone();
+    const goalTarget = view.target.clone();
+    const { positionWaypoints, targetWaypoints } = makeRouteWaypoints({
+      fromId,
+      toId: activeView,
+      authoredData,
+    });
 
     transition.current = makeCameraRail({
       fromPosition: camera.position.clone(),
@@ -474,8 +633,11 @@ function CameraRig({ activeView }) {
       toTarget: goalTarget,
       fromFov: camera.fov,
       toFov: view.fov,
+      positionWaypoints,
+      targetWaypoints,
     });
-  }, [activeView, camera, view]);
+    currentViewId.current = activeView;
+  }, [activeView, authoredData, camera, view]);
 
   useFrame((_, delta) => {
     if (transition.current) {
@@ -487,6 +649,8 @@ function CameraRig({ activeView }) {
 
       camera.position.copy(rail.positionCurve.getPoint(easedProgress));
       lookAt.current.copy(rail.targetCurve.getPoint(easedProgress));
+      // R3F exposes the live Three.js camera; assigning FOV is the intended imperative API.
+      // eslint-disable-next-line react-hooks/immutability
       camera.fov = THREE.MathUtils.lerp(rail.fromFov, rail.toFov, easedProgress);
 
       if (rawProgress >= 1) {
@@ -648,12 +812,15 @@ function WallStreetBackdrop() {
       }
 
       if (object.name.startsWith('ped_walk_')) {
+        const speedSeed = seededUnitValue(`${object.name}:speed`);
+        const directionSeed = seededUnitValue(`${object.name}:direction`);
+        const phaseSeed = seededUnitValue(`${object.name}:phase`);
         animatedWalkers.push({
           mesh: object,
           axis: object.name.includes('ped_walk_EW_') ? 'x' : 'z',
-          speed: 1 + Math.random() * 0.55,
-          direction: Math.random() < 0.5 ? -1 : 1,
-          phase: Math.random() * Math.PI * 2,
+          speed: 1 + speedSeed * 0.55,
+          direction: directionSeed < 0.5 ? -1 : 1,
+          phase: phaseSeed * Math.PI * 2,
           originY: object.position.y,
         });
       }
@@ -689,14 +856,15 @@ function WallStreetBackdrop() {
 
 function Billboard3D({ onSelectView }) {
   const photoTexture = useTexture(MAN_PHOTO_URL);
+  const preparedPhotoTexture = useMemo(() => {
+    const texture = photoTexture.clone();
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 8;
+    texture.needsUpdate = true;
+    return texture;
+  }, [photoTexture]);
   const welcomeTexture = useMemo(() => makeWelcomeTexture(), []);
   const messageTexture = useMemo(() => makeMessageTexture(), []);
-
-  useEffect(() => {
-    photoTexture.colorSpace = THREE.SRGBColorSpace;
-    photoTexture.anisotropy = 8;
-    photoTexture.needsUpdate = true;
-  }, [photoTexture]);
 
   return (
     <group
@@ -725,7 +893,7 @@ function Billboard3D({ onSelectView }) {
         </mesh>
         <mesh position={[0, 0, 0.15]}>
           <planeGeometry args={[3.08, 2.82]} />
-          <meshBasicMaterial map={photoTexture} toneMapped={false} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={preparedPhotoTexture} toneMapped={false} side={THREE.DoubleSide} />
         </mesh>
       </group>
 
@@ -764,7 +932,6 @@ function TickerverseScene({ activeView, onSelectView }) {
     >
       <color attach="background" args={['#b9b18f']} />
       <fog attach="fog" args={['#b9b18f', 260, 1650]} />
-      <CameraRig activeView={activeView} />
       <ambientLight intensity={0.42} color="#d2c9aa" />
       <hemisphereLight args={['#e0d4ac', '#4c3f32', 1.16]} />
       <directionalLight position={[30, 72, -18]} intensity={2.4} color="#ffe0ae" />
@@ -773,6 +940,7 @@ function TickerverseScene({ activeView, onSelectView }) {
       <pointLight position={[105, 68, -144]} intensity={18} distance={54} color="#f0d29a" />
       <pointLight position={[-106, 44, -58]} intensity={64} distance={150} decay={1.55} color="#efc889" />
       <Suspense fallback={null}>
+        <CameraRig activeView={activeView} />
         <WallStreetBackdrop />
         <Billboard3D onSelectView={onSelectView} />
       </Suspense>
