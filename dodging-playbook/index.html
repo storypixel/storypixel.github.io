@@ -19,41 +19,46 @@
   }
   .wrap{max-width:680px; margin:0 auto; padding:22px 18px 64px}
 
-  header.top{padding:6px 0 14px; border-bottom:1px solid var(--line); margin-bottom:18px}
+  header.top{padding:6px 0 14px; border-bottom:1px solid var(--line); margin-bottom:16px}
   header.top h1{font-size:1.5rem; line-height:1.25; margin:0 0 4px; letter-spacing:-.01em}
   header.top p{margin:0; color:var(--muted); font-size:.95rem}
 
-  /* quick-jump table of contents */
-  nav.toc{
-    background:var(--accent-soft); border:1px solid #dce8ff; border-radius:var(--radius);
-    padding:12px 14px; margin:0 0 26px;
+  /* collapsible glossary menu */
+  details.toc{border:1px solid var(--line); border-radius:var(--radius); margin:0 0 26px; overflow:hidden}
+  details.toc > summary{
+    list-style:none; cursor:pointer; padding:12px 14px; font-weight:600; font-size:.95rem;
+    display:flex; align-items:center; gap:8px; user-select:none;
   }
-  nav.toc b{display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:8px}
-  nav.toc ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:7px}
-  nav.toc a{
+  details.toc > summary::-webkit-details-marker{display:none}
+  details.toc > summary .chev{margin-left:auto; color:var(--muted); transition:transform .15s ease}
+  details.toc[open] > summary .chev{transform:rotate(180deg)}
+  details.toc > summary .lbl{color:var(--accent)}
+  .toc-body{padding:0 14px 14px}
+  .toc-body ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:7px}
+  .toc-body a{
     display:inline-block; text-decoration:none; color:var(--ink); background:#fff;
     border:1px solid #d4e2ff; border-radius:999px; padding:6px 11px; font-size:.86rem; line-height:1.2;
   }
-  nav.toc a:active{background:var(--accent); color:#fff}
+  .toc-body a:active{background:var(--accent); color:#fff}
 
   section{margin:0 0 30px; scroll-margin-top:14px}
-  h2{
-    font-size:1.18rem; margin:0 0 12px; padding-top:18px; border-top:2px solid var(--ink);
-    letter-spacing:-.01em;
+  .h2row{display:flex; align-items:center; gap:8px; padding-top:18px; border-top:2px solid var(--ink); margin:0 0 12px}
+  section:first-of-type .h2row{border-top:none; padding-top:0}
+  h2{font-size:1.18rem; margin:0; letter-spacing:-.01em}
+  button.copylink{
+    border:1px solid var(--line); background:#fff; color:var(--muted); border-radius:7px;
+    font:inherit; font-size:.72rem; padding:3px 8px; cursor:pointer; line-height:1.4; white-space:nowrap;
   }
-  section:first-of-type h2{border-top:none; padding-top:0}
+  button.copylink:active{background:var(--accent-soft); color:var(--accent); border-color:#cfe0ff}
+  button.copylink.copied{background:#e8f7ec; color:#1a7f37; border-color:#bfe6cb}
 
   p{margin:0 0 12px}
   ul.calls{list-style:none; margin:0; padding:0}
-  ul.calls > li{
-    margin:0 0 12px; padding:11px 13px; border:1px solid var(--line); border-radius:var(--radius);
-    background:#fcfcfd;
-  }
+  ul.calls > li{margin:0 0 12px; padding:11px 13px; border:1px solid var(--line); border-radius:var(--radius); background:#fcfcfd}
   ul.calls > li:last-child{margin-bottom:0}
   .term{font-weight:700}
   .accent{color:var(--accent); font-weight:700}
   .note{color:var(--muted); font-size:.92rem}
-
   ul.plain{margin:0 0 12px; padding-left:20px}
   ul.plain li{margin:0 0 8px}
 
@@ -74,22 +79,24 @@
     <p>Team playbook &middot; quick reference</p>
   </header>
 
-  <nav class="toc" aria-label="Jump to section">
-    <b>Quick jump</b>
-    <ul>
-      <li><a href="#general">General</a></li>
-      <li><a href="#three">3-ball O</a></li>
-      <li><a href="#four">4-ball O</a></li>
-      <li><a href="#five">5–6 ball</a></li>
-      <li><a href="#def">2–3 ball D</a></li>
-      <li><a href="#one">1-ball D</a></li>
-      <li><a href="#misc">Misc</a></li>
-      <li><a href="#rules">Rules</a></li>
-    </ul>
-  </nav>
+  <details class="toc">
+    <summary><span class="lbl">Glossary</span> &middot; jump to a section <span class="chev">&#9662;</span></summary>
+    <div class="toc-body">
+      <ul>
+        <li><a href="#general">General</a></li>
+        <li><a href="#three">3-ball O</a></li>
+        <li><a href="#four">4-ball O</a></li>
+        <li><a href="#five">5–6 ball</a></li>
+        <li><a href="#def">2–3 ball D</a></li>
+        <li><a href="#one">1-ball D</a></li>
+        <li><a href="#misc">Misc</a></li>
+        <li><a href="#rules">Rules</a></li>
+      </ul>
+    </div>
+  </details>
 
   <section id="general">
-    <h2>General info</h2>
+    <div class="h2row"><h2>General info</h2><button class="copylink" data-anchor="general">Copy link</button></div>
     <ul class="plain">
       <li>Play calls name targets by number: the person on the <b>far left is 1</b>, next is 2, and so on.</li>
       <li>On nearly every call, players who aren't throwing should be <b>pump faking</b>.</li>
@@ -99,7 +106,7 @@
   </section>
 
   <section id="three">
-    <h2>3-ball offensive calls</h2>
+    <div class="h2row"><h2>3-ball offensive calls</h2><button class="copylink" data-anchor="three">Copy link</button></div>
     <ul class="calls">
       <li><span class="term">Huddle</span> — Meet in the middle at the back line and decide which of the three ball-holders throws. <span class="note">(Usually Josh and Daniel play-call when they're on the court.)</span></li>
       <li>If a corner throws, the middle player shifts slightly toward that side and back to <b>protect the corner</b> as they backpedal. Don't pass the corner the balls until they're at/near the back line, and wait until the other team isn't in an active/ready position. The ball-holder stays active like a corner would.</li>
@@ -109,7 +116,7 @@
   </section>
 
   <section id="four">
-    <h2>4-ball offensive throws</h2>
+    <div class="h2row"><h2>4-ball offensive throws</h2><button class="copylink" data-anchor="four">Copy link</button></div>
     <p class="note">Options to call during the huddle:</p>
     <ul class="calls">
       <li><span class="term">Single-ball throw</span> — Huddle, designate one thrower. Try to keep 3 balls for defense (not a hard rule if you see a good opening). Call it to <b>burn clock</b> or when we're down players.</li>
@@ -119,14 +126,14 @@
   </section>
 
   <section id="five">
-    <h2>5 or 6 ball calls</h2>
+    <div class="h2row"><h2>5 or 6 ball calls</h2><button class="copylink" data-anchor="five">Copy link</button></div>
     <ul class="calls">
       <li>Same calls as 4-ball if we have <b>4+ players</b>: huddle and discuss the target. Here we can put <b>3 throwers on a single target</b>.</li>
     </ul>
   </section>
 
   <section id="def">
-    <h2>2–3 ball defensive calls</h2>
+    <div class="h2row"><h2>2–3 ball defensive calls</h2><button class="copylink" data-anchor="def">Copy link</button></div>
     <ul class="calls">
       <li>Each corner should have a ball if feasible.</li>
       <li><span class="accent">Red light</span> — Do not throw. Hold the ball but actively push the other team back and keep them off balance with pump fakes.</li>
@@ -138,14 +145,14 @@
   </section>
 
   <section id="one">
-    <h2>1-ball defensive call</h2>
+    <div class="h2row"><h2>1-ball defensive call</h2><button class="copylink" data-anchor="one">Copy link</button></div>
     <ul class="calls">
       <li><span class="term">Middle</span> — Pass to the middle player; they take an offensive position to <b>bait throws</b> so we regain ball control. Optional, for confident blockers or if you're feeling spicy. Can also go to a corner to take an offensive pump-fake position.</li>
     </ul>
   </section>
 
   <section id="misc">
-    <h2>Miscellaneous calls</h2>
+    <div class="h2row"><h2>Miscellaneous calls</h2><button class="copylink" data-anchor="misc">Copy link</button></div>
     <ul class="calls">
       <li><span class="term">Speed ball</span> — Throw quickly, don't sweat ball control. Good late in games when we're down, or just for fun.</li>
       <li><span class="term">Have fun</span> — Do whatever the f*** you want, just try not to give up all the balls.</li>
@@ -154,7 +161,7 @@
   </section>
 
   <section id="rules">
-    <h2>Rule sets — TPSL adjustments</h2>
+    <div class="h2row"><h2>Rule sets — TPSL adjustments</h2><button class="copylink" data-anchor="rules">Copy link</button></div>
     <ul class="plain">
       <li>Not 3-minute games rolling into no-block. Instead: a <b>22-minute game</b> of regular play, then <b>3 minutes of no blocking</b>.</li>
       <li>About <b>10 players</b> on the court.</li>
@@ -167,5 +174,20 @@
   </footer>
 
 </div>
+<script>
+  document.querySelectorAll('button.copylink').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var url = location.origin + location.pathname + '#' + btn.dataset.anchor;
+      var done = function(){
+        var old = btn.textContent;
+        btn.textContent = 'Copied'; btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = old; btn.classList.remove('copied'); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(done, function(){ prompt('Copy this link:', url); });
+      } else { prompt('Copy this link:', url); }
+    });
+  });
+</script>
 </body>
 </html>
