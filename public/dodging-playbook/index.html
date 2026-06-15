@@ -4,188 +4,148 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Dodging All Night, All Summer — Playbook</title>
+<title>Dodging All Night, All Summer Playbook</title>
 <style>
-  :root{
-    --ink:#16181d; --muted:#5b626e; --line:#e6e8ec; --bg:#ffffff;
-    --accent:#1f6feb; --accent-soft:#eef4ff; --radius:10px;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:680px; margin:0 auto; padding:22px 18px 64px}
-
-  header.top{padding:6px 0 14px; border-bottom:1px solid var(--line); margin-bottom:16px}
-  header.top h1{font-size:1.5rem; line-height:1.25; margin:0 0 4px; letter-spacing:-.01em}
-  header.top p{margin:0; color:var(--muted); font-size:.95rem}
-
-  /* collapsible glossary menu */
-  details.toc{border:1px solid var(--line); border-radius:var(--radius); margin:0 0 26px; overflow:hidden}
-  details.toc > summary{
-    list-style:none; cursor:pointer; padding:12px 14px; font-weight:600; font-size:.95rem;
-    display:flex; align-items:center; gap:8px; user-select:none;
-  }
-  details.toc > summary::-webkit-details-marker{display:none}
-  details.toc > summary .chev{margin-left:auto; color:var(--muted); transition:transform .15s ease}
-  details.toc[open] > summary .chev{transform:rotate(180deg)}
-  details.toc > summary .lbl{color:var(--accent)}
+  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:10px}
+  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:22px 18px 64px}
+  header.top{padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  header.top h1{font-size:1.5rem;line-height:1.25;margin:0 0 4px;letter-spacing:-.01em}
+  header.top p{margin:0;color:var(--muted);font-size:.95rem}
+  details.toc{border:1px solid var(--line);border-radius:var(--radius);margin:0 0 26px;overflow:hidden}
+  details.toc>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:8px;user-select:none}
+  details.toc>summary::-webkit-details-marker{display:none}
+  details.toc>summary .chev{margin-left:auto;color:var(--muted);transition:transform .15s ease}
+  details.toc[open]>summary .chev{transform:rotate(180deg)}
+  details.toc>summary .lbl{color:var(--accent)}
   .toc-body{padding:0 14px 14px}
-  .toc-body ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:7px}
-  .toc-body a{
-    display:inline-block; text-decoration:none; color:var(--ink); background:#fff;
-    border:1px solid #d4e2ff; border-radius:999px; padding:6px 11px; font-size:.86rem; line-height:1.2;
-  }
-  .toc-body a:active{background:var(--accent); color:#fff}
-
-  section{margin:0 0 30px; scroll-margin-top:14px}
-  .h2row{display:flex; align-items:center; gap:8px; padding-top:18px; border-top:2px solid var(--ink); margin:0 0 12px}
-  section:first-of-type .h2row{border-top:none; padding-top:0}
-  h2{font-size:1.18rem; margin:0; letter-spacing:-.01em}
-  button.copylink{
-    border:1px solid var(--line); background:#fff; color:var(--muted); border-radius:7px;
-    font:inherit; font-size:.72rem; padding:3px 8px; cursor:pointer; line-height:1.4; white-space:nowrap;
-  }
-  button.copylink:active{background:var(--accent-soft); color:var(--accent); border-color:#cfe0ff}
-  button.copylink.copied{background:#e8f7ec; color:#1a7f37; border-color:#bfe6cb}
-
-  p{margin:0 0 12px}
-  ul.calls{list-style:none; margin:0; padding:0}
-  ul.calls > li{margin:0 0 12px; padding:11px 13px; border:1px solid var(--line); border-radius:var(--radius); background:#fcfcfd}
-  ul.calls > li:last-child{margin-bottom:0}
+  .toc-body ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+  .toc-body a{display:inline-block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid #d4e2ff;border-radius:999px;padding:6px 11px;font-size:.86rem;line-height:1.2}
+  .toc-body a:active{background:var(--accent);color:#fff}
+  section{margin:0 0 30px;scroll-margin-top:14px}
+  .h2row{display:flex;align-items:center;gap:8px;padding-top:18px;border-top:2px solid var(--ink);margin:0 0 12px}
+  section:first-of-type .h2row{border-top:none;padding-top:0}
+  h2{font-size:1.18rem;margin:0;letter-spacing:-.01em}
+  button.copylink{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:7px;font:inherit;font-size:.72rem;padding:3px 8px;cursor:pointer;line-height:1.4;white-space:nowrap}
+  button.copylink:active{background:var(--accent-soft);color:var(--accent);border-color:#cfe0ff}
+  button.copylink.copied{background:#e8f7ec;color:#1a7f37;border-color:#bfe6cb}
+  ul.calls{list-style:none;margin:0;padding:0}
+  ul.calls>li{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius);background:#fcfcfd}
+  ul.calls>li:last-child{margin-bottom:0}
   .term{font-weight:700}
-  .accent{color:var(--accent); font-weight:700}
-  .note{color:var(--muted); font-size:.92rem}
-  ul.plain{margin:0 0 12px; padding-left:20px}
-  ul.plain li{margin:0 0 8px}
-
-  footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem}
-
-  @media (min-width:760px){
-    body{font-size:18px}
-    .wrap{padding:40px 24px 80px}
-    header.top h1{font-size:1.85rem}
-  }
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  @media(min-width:760px){body{font-size:18px}.wrap{padding:40px 24px 80px}header.top h1{font-size:1.85rem}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header class="top">
     <h1>Dodging All Night, All Summer</h1>
-    <p>Team playbook &middot; quick reference</p>
+    <p>Team playbook &middot; quick reference &middot; auto-synced from the doc</p>
   </header>
-
   <details class="toc">
     <summary><span class="lbl">Glossary</span> &middot; jump to a section <span class="chev">&#9662;</span></summary>
     <div class="toc-body">
       <ul>
-        <li><a href="#general">General</a></li>
-        <li><a href="#three">3-ball O</a></li>
-        <li><a href="#four">4-ball O</a></li>
-        <li><a href="#five">5–6 ball</a></li>
-        <li><a href="#def">2–3 ball D</a></li>
-        <li><a href="#one">1-ball D</a></li>
-        <li><a href="#misc">Misc</a></li>
-        <li><a href="#rules">Rules</a></li>
+        <li><a href="#general-info">General Info</a></li>
+        <li><a href="#3-ball-offensive-plays-calls">3 Ball Offensive Plays Calls</a></li>
+        <li><a href="#4-ball-offensive-throws">4 Ball Offensive Throws:</a></li>
+        <li><a href="#5-or-6-ball-calls">5 or 6 Ball Calls</a></li>
+        <li><a href="#2-or-3-ball-defensive-calls">2 or 3 Ball Defensive Calls</a></li>
+        <li><a href="#1-ball-defensive-call">1 Ball Defensive Call</a></li>
+        <li><a href="#miscellaneous-calls">Miscellaneous Calls</a></li>
+        <li><a href="#rule-sets">Rule Sets:</a></li>
       </ul>
     </div>
   </details>
 
-  <section id="general">
-    <div class="h2row"><h2>General info</h2><button class="copylink" data-anchor="general">Copy link</button></div>
-    <ul class="plain">
-      <li>Play calls name targets by number: the person on the <b>far left is 1</b>, next is 2, and so on.</li>
-      <li>On nearly every call, players who aren't throwing should be <b>pump faking</b>.</li>
-      <li><b>Corners</b> are the players on the far-left and far-right of the court.</li>
-      <li>Listen for <b>"ball left"</b> / <b>"ball right"</b> — send a ball to that corner.</li>
-    </ul>
-  </section>
-
-  <section id="three">
-    <div class="h2row"><h2>3-ball offensive calls</h2><button class="copylink" data-anchor="three">Copy link</button></div>
+  <section id="general-info">
+    <div class="h2row"><h2>General Info</h2><button class="copylink" data-anchor="general-info">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Huddle</span> — Meet in the middle at the back line and decide which of the three ball-holders throws. <span class="note">(Usually Josh and Daniel play-call when they're on the court.)</span></li>
-      <li>If a corner throws, the middle player shifts slightly toward that side and back to <b>protect the corner</b> as they backpedal. Don't pass the corner the balls until they're at/near the back line, and wait until the other team isn't in an active/ready position. The ball-holder stays active like a corner would.</li>
-      <li>Almost always keep <b>two balls</b>.</li>
-      <li>Non-throwing players keep <b>pump faking</b>.</li>
+      <li>For play calls we will call out targets based on a number. The person on the left side is 1, next to them is 2 and so on.</li>
+      <li>During nearly all calls players who are not throwing should be pump faking.</li>
+      <li>Corners are the players on the left and right most side of the court.</li>
+      <li>Listen for people saying ball left or ball right and send a ball to the corresponding corner.</li>
     </ul>
   </section>
 
-  <section id="four">
-    <div class="h2row"><h2>4-ball offensive throws</h2><button class="copylink" data-anchor="four">Copy link</button></div>
-    <p class="note">Options to call during the huddle:</p>
+  <section id="3-ball-offensive-plays-calls">
+    <div class="h2row"><h2>3 Ball Offensive Plays Calls</h2><button class="copylink" data-anchor="3-ball-offensive-plays-calls">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Single-ball throw</span> — Huddle, designate one thrower. Try to keep 3 balls for defense (not a hard rule if you see a good opening). Call it to <b>burn clock</b> or when we're down players.</li>
-      <li><span class="term">Kill left / right</span> — The two players on that side throw at the <b>same target</b>. "Kill left on 3" = the left two ball-holders aim at the 3rd player from the left on the other team.</li>
-      <li><span class="term">Insides</span> — The two middle players pick a target. "Insides on 5" = the middle two aim at the 5th player from the left.</li>
+      <li><span class="term">Huddle</span> &mdash; Meet in the middle of the court at the back line and decide which of the three players with balls should throw. (Typically Josh and Daniel will be playcalling if we are on the court).</li>
+      <li>If a corner throws a ball, the player in the middle should shift slightly towards that side and backwards to protect the corner as they backpedal. As a general rule, you should not pass the corner the balls until they are at or near the back line. Wait until the other team is not in an active/ready position to pass the ball. The player holding the ball should remain active as a corner would.</li>
+      <li>Almost always should maintain two balls.</li>
+      <li>Non-throwing players should be pump faking.</li>
     </ul>
   </section>
 
-  <section id="five">
-    <div class="h2row"><h2>5 or 6 ball calls</h2><button class="copylink" data-anchor="five">Copy link</button></div>
+  <section id="4-ball-offensive-throws">
+    <div class="h2row"><h2>4 Ball Offensive Throws:</h2><button class="copylink" data-anchor="4-ball-offensive-throws">Copy link</button></div>
     <ul class="calls">
-      <li>Same calls as 4-ball if we have <b>4+ players</b>: huddle and discuss the target. Here we can put <b>3 throwers on a single target</b>.</li>
+      <li><span class="term">Huddle</span> &mdash; (the following are options to be called during the huddle)</li>
+      <li><span class="term">Single ball throws</span> &mdash; we huddle in the middle and designate one player to throw a single ball. We should always try to maintain 3 balls for defense but this is not a hard and fast rule if you see a good opportunity.</li>
+      <li>This should be called when we are trying to burn time on the clock or are down players</li>
+      <li><span class="term">Kill left/right</span> &mdash; The two people on the left or right throw balls are the same target. This will sound like kill left on 3 which means the left two players holding balls on our side will aim at the third player from the left on the opposing team.</li>
+      <li><span class="term">Insides</span> &mdash; The two players in the middle will pick a target. This will sound like insides on 5 which means the middle two players holding balls will aim at the 5th person from the left on the opposing team.</li>
     </ul>
   </section>
 
-  <section id="def">
-    <div class="h2row"><h2>2–3 ball defensive calls</h2><button class="copylink" data-anchor="def">Copy link</button></div>
+  <section id="5-or-6-ball-calls">
+    <div class="h2row"><h2>5 or 6 Ball Calls</h2><button class="copylink" data-anchor="5-or-6-ball-calls">Copy link</button></div>
     <ul class="calls">
-      <li>Each corner should have a ball if feasible.</li>
-      <li><span class="accent">Red light</span> — Do not throw. Hold the ball but actively push the other team back and keep them off balance with pump fakes.</li>
-      <li><span class="accent">Green light</span> — The designated corner may counter the other team's attack (doesn't have to throw without a good opening). <b>Only one corner has green light at a time.</b></li>
-      <li><span class="term">Home</span> <span class="note">(usually a 3-ball call)</span> — The ball-holder opposite the opposing thrower throws at them from the back line, or near where they were standing when the other player released.</li>
-      <li><span class="term">Away</span> — All ball-holders rush the center line; the one opposite the thrower throws at them from at/near the center line.</li>
-      <li><span class="term">Crash</span> <span class="note">(2-ball call)</span> — If we're up players and they have only 1–2 left: after they throw, the two corners holding balls both rush and attack. If more than one is left, target the player who just threw.</li>
+      <li>Same calls as 4 balls if we have 4 or more players. Aka huddle and discuss target. We can designate 3 throwers on a single target in this situation.</li>
     </ul>
   </section>
 
-  <section id="one">
-    <div class="h2row"><h2>1-ball defensive call</h2><button class="copylink" data-anchor="one">Copy link</button></div>
+  <section id="2-or-3-ball-defensive-calls">
+    <div class="h2row"><h2>2 or 3 Ball Defensive Calls</h2><button class="copylink" data-anchor="2-or-3-ball-defensive-calls">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Middle</span> — Pass to the middle player; they take an offensive position to <b>bait throws</b> so we regain ball control. Optional, for confident blockers or if you're feeling spicy. Can also go to a corner to take an offensive pump-fake position.</li>
+      <li>Each corner should have a ball in their possession if feasible.</li>
+      <li><span class="term">Red light</span> &mdash; do not throw. hold ball but actively work to push the other team back and keep them off balance with pump fakes.</li>
+      <li><span class="term">Green light</span> &mdash; The corner designated as having green light has the opportunity to counter the opposing team’s attack. They do not have to throw if there is not a good opportunity.</li>
+      <li>Only one corner should have green light at a time</li>
+      <li>Home/Away (typically only 3 ball call):</li>
+      <li><span class="term">Home</span> &mdash; The player holding a ball opposite the opposing player who just threw should throw at them from the backline or near where they were standing when the other player released.</li>
+      <li><span class="term">Away</span> &mdash; All players holding balls should rush the center line. The player holding a ball opposite the opposing player who just threw should throw at them from at or near the center line.</li>
+      <li><span class="term">Crash (2 ball call)</span> &mdash; If we are up players and the other team only has 1 or 2 remaining. After the opposing team throws the two corners holding the balls rush and both attack. If there is more than one player they should target the player who just threw.</li>
     </ul>
   </section>
 
-  <section id="misc">
-    <div class="h2row"><h2>Miscellaneous calls</h2><button class="copylink" data-anchor="misc">Copy link</button></div>
+  <section id="1-ball-defensive-call">
+    <div class="h2row"><h2>1 Ball Defensive Call</h2><button class="copylink" data-anchor="1-ball-defensive-call">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Speed ball</span> — Throw quickly, don't sweat ball control. Good late in games when we're down, or just for fun.</li>
-      <li><span class="term">Have fun</span> — Do whatever the f*** you want, just try not to give up all the balls.</li>
-      <li><span class="term">Pitch back</span> — On the opening rush, a rusher quickly tosses a ball back to a designated player who can target anyone. <b>Double pitch back</b> = toss both balls to two players; one of them releases.</li>
+      <li><span class="term">Middle</span> &mdash; Pass the ball to the player in the middle. They should take an offensive position and try to bait the other team to throw balls at them so we can regain ball control. This is not a required play, just an option for those who are very confident in their blocking ability or just feeling spicy. The ball can also be sent to a corner and they will take an offensive position to pump fake.</li>
     </ul>
   </section>
 
-  <section id="rules">
-    <div class="h2row"><h2>Rule sets — TPSL adjustments</h2><button class="copylink" data-anchor="rules">Copy link</button></div>
-    <ul class="plain">
-      <li>Not 3-minute games rolling into no-block. Instead: a <b>22-minute game</b> of regular play, then <b>3 minutes of no blocking</b>.</li>
-      <li>About <b>10 players</b> on the court.</li>
-      <li>We can shag, but <b>only out the back line with a hand raised</b>.</li>
+  <section id="miscellaneous-calls">
+    <div class="h2row"><h2>Miscellaneous Calls</h2><button class="copylink" data-anchor="miscellaneous-calls">Copy link</button></div>
+    <ul class="calls">
+      <li><span class="term">Speed ball</span> &mdash; throw quickly and don’t worry too much about ball control. This can be done near the end of games where we are down or just for fun.</li>
+      <li><span class="term">Have fun</span> &mdash; do whatever the fuck you want just try not to give up all the balls pls</li>
+      <li><span class="term">Pitch back</span> &mdash; On the opening rush one of the rushers will quickly toss a ball back to a designated player and they have option to target any player they want on the opposing team. This can also be done as a double pitch back where one of the rushers tosses both balls to two designated players and one of those two will release.</li>
     </ul>
   </section>
 
-  <footer>
-    Dodging All Night, All Summer &middot; internal team reference
-  </footer>
+  <section id="rule-sets">
+    <div class="h2row"><h2>Rule Sets:</h2><button class="copylink" data-anchor="rule-sets">Copy link</button></div>
+    <ul class="calls">
+      <li>TPSL adjustments to main rules:</li>
+      <li>Games are not 3 minutes long then roll into no block, instead there will be a 22 minute game of regular play followed by 3 minutes of no blocking.</li>
+      <li>There will be 10-ish players on the court</li>
+      <li>We can shag but only out the backline with a hand raised.</li>
+    </ul>
+  </section>
 
+  <footer>Dodging All Night, All Summer &middot; internal team reference</footer>
 </div>
 <script>
   document.querySelectorAll('button.copylink').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var url = location.origin + location.pathname + '#' + btn.dataset.anchor;
-      var done = function(){
-        var old = btn.textContent;
-        btn.textContent = 'Copied'; btn.classList.add('copied');
-        setTimeout(function(){ btn.textContent = old; btn.classList.remove('copied'); }, 1400);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(url).then(done, function(){ prompt('Copy this link:', url); });
-      } else { prompt('Copy this link:', url); }
+    btn.addEventListener('click',function(){
+      var url=location.origin+location.pathname+'#'+btn.dataset.anchor;
+      var done=function(){var o=btn.textContent;btn.textContent='Copied';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied')},1400)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){prompt('Copy this link:',url)})}else{prompt('Copy this link:',url)}
     });
   });
 </script>
