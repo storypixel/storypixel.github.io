@@ -6,7 +6,7 @@
   "homepage": "https://iamnotsam.com",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "git submodule update --init --recursive && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "tickerverse:blender": "blender --background --python scripts/blender/tickerverse_scene.py -- --input-district public/models/tickerverse/period-financial-district.glb --man-image public/images/tickerverse/tickerville-man-photo.png --blend public/models/tickerverse/tickerverse-scene.blend --glb public/models/tickerverse/tickerverse-scene.glb",
