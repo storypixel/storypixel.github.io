@@ -37,24 +37,24 @@
         us: row(10, US_BACK),
         them: row(10, THEM_BACK),
         balls: [
-          // our balls — right of center
-          { id: "uR1", x: 58, y: 50, side: "us" },
-          { id: "uR2", x: 68, y: 50, side: "us" },
-          { id: "uR3", x: 78, y: 50, side: "us" },
-          // their balls — left of center
-          { id: "tL1", x: 22, y: 50, side: "them" },
-          { id: "tL2", x: 32, y: 50, side: "them" },
-          { id: "tL3", x: 42, y: 50, side: "them" },
+          // our balls — out toward the right sideline
+          { id: "uR1", x: 80, y: 50, side: "us" },
+          { id: "uR2", x: 88, y: 50, side: "us" },
+          { id: "uR3", x: 96, y: 50, side: "us" },
+          // their balls — out toward the left sideline
+          { id: "tL1", x: 4, y: 50, side: "them" },
+          { id: "tL2", x: 12, y: 50, side: "them" },
+          { id: "tL3", x: 20, y: 50, side: "them" },
         ],
       },
       steps: [
         {
           label: "Rush — the two on the right grab our three (2 + 1)", dur: 1.3,
           moves: [
-            { team: "us", n: 10, to: [73, 54] },
-            { team: "us", n: 9, to: [58, 54] },
-            { team: "them", n: 1, to: [27, 46] },
-            { team: "them", n: 2, to: [42, 46] },
+            { team: "us", n: 10, to: [92, 54] },
+            { team: "us", n: 9, to: [80, 54] },
+            { team: "them", n: 1, to: [8, 46] },
+            { team: "them", n: 2, to: [20, 46] },
           ],
           grabs: [
             { team: "us", n: 10, balls: ["uR2", "uR3"] },
