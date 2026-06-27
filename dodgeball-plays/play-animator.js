@@ -46,12 +46,13 @@
 .dbp__call{color:#7aa2ff;font-size:.85rem}
 .dbp__desc{padding:0 13px 9px;color:#aab2c0;font-size:.85rem}
 .dbp__stage{display:block;width:100%;height:auto;background:${COL.court};touch-action:none}
-.dbp__ctrls{display:flex;align-items:center;gap:10px;padding:9px 13px 11px}
+.dbp__stepline{padding:9px 13px 0;font-size:.8rem;color:#aab2c0;min-height:1.2em}
+.dbp__ctrls{display:flex;align-items:center;gap:10px;padding:7px 13px 11px}
 .dbp__btn{appearance:none;border:1px solid #2a2f3a;background:#171b22;color:#e6e8ec;border-radius:8px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;flex:none}
 .dbp__btn:hover{background:#1f242d}
 .dbp__btn svg{width:15px;height:15px;fill:currentColor}
 .dbp__scrub{flex:1;accent-color:${COL.us};cursor:pointer;height:4px}
-.dbp__step{font-size:.78rem;color:#aab2c0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none;max-width:42%}
+.dbp__step{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .dbp__loopwrap{display:flex;align-items:center;gap:4px;font-size:.72rem;color:#7d8593;cursor:pointer;user-select:none;flex:none}
 @media(prefers-color-scheme:light){
 .dbp{background:#fff;color:#16181d;border-color:#e6e8ec}
@@ -212,18 +213,22 @@
     stage.appendChild(layer);
 
     // controls
+    const stepLine = document.createElement("div");
+    stepLine.className = "dbp__stepline";
+    stepLine.innerHTML = '<span class="dbp__step"></span>';
+    root.appendChild(stepLine);
+
     const ctrls = document.createElement("div");
     ctrls.className = "dbp__ctrls";
     ctrls.innerHTML =
       '<button class="dbp__btn dbp__play" aria-label="Play"></button>' +
       '<input class="dbp__scrub" type="range" min="0" max="1000" value="0" aria-label="Scrub play">' +
-      '<span class="dbp__step"></span>' +
       '<label class="dbp__loopwrap"><input type="checkbox" class="dbp__loop">loop</label>';
     root.appendChild(ctrls);
 
     const playBtn = ctrls.querySelector(".dbp__play");
     const scrub = ctrls.querySelector(".dbp__scrub");
-    const stepEl = ctrls.querySelector(".dbp__step");
+    const stepEl = stepLine.querySelector(".dbp__step");
     const loopEl = ctrls.querySelector(".dbp__loop");
     loopEl.checked = !!opts.loop;
 
