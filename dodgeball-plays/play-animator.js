@@ -83,7 +83,8 @@
       (list || []).forEach((a) =>
         actors.set(keyOf(team, a.n), {
           team, n: a.n, x: a.x, y: a.y,
-          ball: !!a.ball, out: false, fake: false,
+          balls: a.balls != null ? a.balls : (a.ball ? 1 : 0),
+          out: false, fake: false,
         })
       );
     seed("us", play.setup.us);
@@ -92,9 +93,16 @@
     // boundary snapshots: states[i] = positions/flags entering step i
     const snapshot = () => {
       const m = {};
-      actors.forEach((v, k) => (m[k] = { x: v.x, y: v.y, ball: v.ball, out: v.out, fake: v.fake }));
+      actors.forEach((v, k) => (m[k] = { x: v.x, y: v.y, balls: v.balls, out: v.out, fake: v.fake }));
       return m;
     };
+
+    // loose balls sitting on the court (e.g. on the center line at the rush)
+    const freeBalls = (play.setup.balls || []).map((b) => ({
+      id: b.id, x: b.x, y: b.y, side: b.side || null, gone: Infinity,
+    }));
+    const freeById = {};
+    freeBalls.forEach((b) => (freeById[b.id] = b));
 
     const steps = play.steps || [];
     const totalDur = steps.reduce((s, st) => s + (st.dur || 1), 0) || 1;
@@ -116,7 +124,14 @@
         const a = actors.get(keyOf(mv.team, mv.n));
         if (a && mv.to) { a.x = mv.to[0]; a.y = mv.to[1]; }
       });
-      // throws fire across the step; thrower drops ball, target goes out at end
+      // grabs: a rusher collects one or more loose balls from the floor
+      (st.grabs || []).forEach((gr) => {
+        const a = actors.get(keyOf(gr.team, gr.n));
+        const ids = gr.balls || (gr.ball != null ? [gr.ball] : []);
+        ids.forEach((id) => { if (freeById[id]) freeById[id].gone = t0 + dur; });
+        if (a) a.balls += ids.length;
+      });
+      // throws fire across the step; thrower drops a ball, target goes out at end
       (st.throws || []).forEach((th) => {
         throws.push({
           from: keyOf(th.from.team, th.from.n),
@@ -125,7 +140,7 @@
           curve: th.curve == null ? -22 : th.curve,
         });
         const fa = actors.get(keyOf(th.from.team, th.from.n));
-        if (fa) fa.ball = false;
+        if (fa) fa.balls = Math.max(0, fa.balls - 1);
         const ta = actors.get(keyOf(th.to.team, th.to.n));
         if (ta) ta.out = true;
       });
@@ -138,9 +153,9 @@
           curve: ps.curve == null ? -14 : ps.curve,
         });
         const fa = actors.get(keyOf(ps.from.team, ps.from.n));
-        if (fa) fa.ball = false;
+        if (fa) fa.balls = Math.max(0, fa.balls - 1);
         const ta = actors.get(keyOf(ps.to.team, ps.to.n));
-        if (ta) ta.ball = true;
+        if (ta) ta.balls += 1;
       });
       // clear momentary fakes after recording the boundary
       states.push(snapshot());
@@ -148,7 +163,7 @@
       t0 += dur;
     });
 
-    return { keys: [...actors.keys()], states, throws, labels, totalDur };
+    return { keys: [...actors.keys()], states, throws, labels, totalDur, freeBalls };
   }
 
   // interpolate an actor's pos/flags at absolute time t
@@ -165,8 +180,8 @@
     return {
       x: lerp(a.x, b.x, e),
       y: lerp(a.y, b.y, e),
-      // ball/out flip at the boundary they were set (end of step)
-      ball: e >= 0.999 ? b.ball : a.ball,
+      // ball count / out flip at the boundary they were set (end of step)
+      balls: e >= 0.999 ? b.balls : a.balls,
       out: t >= seg.t1 - 1e-6 ? b.out : a.out,
       fake: a.fake,
       team: key.split("-")[0],
@@ -243,6 +258,12 @@
       // clear dynamic layer
       while (layer.firstChild) layer.removeChild(layer.firstChild);
 
+      // loose balls on the floor (drawn under the players)
+      c.freeBalls.forEach((b) => {
+        if (t >= b.gone) return;
+        layer.appendChild(svg("circle", { cx: px(b.x), cy: py(b.y), r: 10, fill: COL.ball, stroke: "#7a5c00", "stroke-width": 1.5 }));
+      });
+
       // active throws as travelling balls
       c.throws.forEach((th) => {
         if (t < th.t0 || t > th.t1) return;
@@ -273,10 +294,14 @@
           g.appendChild(svg("line", { x1: X - 13, y1: Y - 13, x2: X + 13, y2: Y + 13, stroke: "#cdd2db", "stroke-width": 3 }));
           g.appendChild(svg("line", { x1: X + 13, y1: Y - 13, x2: X - 13, y2: Y + 13, stroke: "#cdd2db", "stroke-width": 3 }));
         }
-        // held ball — hidden while this actor's ball is mid-flight
-        const releasing = c.throws.some((th) => th.from === key && t >= th.t0 && t < th.t1);
-        if (a.ball && !a.out && !releasing) {
-          g.appendChild(svg("circle", { cx: X + 22, cy: Y - 16, r: 9, fill: COL.ball, stroke: "#7a5c00", "stroke-width": 1.5 }));
+        // held balls — one dot per ball; a ball mid-flight is already off the hand
+        const inFlight = c.throws.filter((th) => th.from === key && t >= th.t0 && t < th.t1).length;
+        const held = Math.max(0, a.balls - inFlight);
+        if (!a.out && held > 0) {
+          const slots = [[22, -16], [22, 6]];
+          for (let h = 0; h < Math.min(held, slots.length); h++) {
+            g.appendChild(svg("circle", { cx: X + slots[h][0], cy: Y + slots[h][1], r: 9, fill: COL.ball, stroke: "#7a5c00", "stroke-width": 1.5 }));
+          }
         }
         layer.appendChild(g);
       });

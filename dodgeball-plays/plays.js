@@ -5,11 +5,14 @@
  * Orientation: chess-diagram style. THEM on top, US on the bottom, center line
  * across the middle. x = 0..100 left→right, y = 0 (their back line) .. 50
  * (center) .. 100 (our back line). Players numbered 1 = far left.
+ *
+ * Full teams are 10 a side. On our side the right-hand balls are OURS; the
+ * left-hand balls are THEIRS.
  */
 (function (global) {
   "use strict";
 
-  // even spread of n players across the court width (margins ~12)
+  // even spread of n players across the court width (margins ~14)
   const row = (n, y, balls) => {
     const out = [];
     const L = 14, R = 86;
@@ -20,31 +23,54 @@
     return out;
   };
 
-  const US_BACK = 88, THEM_BACK = 12, CENTER_US = 54;
+  const US_BACK = 90, THEM_BACK = 10;
 
   const PLAYS = {
-    // ── Opening ──────────────────────────────────────────────────────────
+    // ── Opening rush / pitch back ────────────────────────────────────────
     "pitch-back": {
       id: "pitch-back",
       name: "Pitch Back",
       badge: "opening rush",
       call: '"Pitch back"',
-      desc: "On the opening rush a rusher quickly tosses a ball back to a designated player, who then has a free look at any target on the other team. (Double pitch-back tosses both balls to two designated throwers.)",
+      desc: "Six balls sit on the center line — the right three are OURS, the left three are THEIRS. The two right-side players rush and grab our three (one grabs two, one grabs one). On the pitch back, a rusher tosses a ball straight back to an attacker, who gets a free look at any target.",
       setup: {
-        us: row(5, US_BACK, [3]),
-        them: row(5, THEM_BACK),
+        us: row(10, US_BACK),
+        them: row(10, THEM_BACK),
+        balls: [
+          // our balls — right of center
+          { id: "uR1", x: 58, y: 50, side: "us" },
+          { id: "uR2", x: 68, y: 50, side: "us" },
+          { id: "uR3", x: 78, y: 50, side: "us" },
+          // their balls — left of center
+          { id: "tL1", x: 22, y: 50, side: "them" },
+          { id: "tL2", x: 32, y: 50, side: "them" },
+          { id: "tL3", x: 42, y: 50, side: "them" },
+        ],
       },
       steps: [
-        { label: "Rush the center balls", dur: 1.2,
+        {
+          label: "Rush — right two grab our three (2 + 1)", dur: 1.3,
           moves: [
-            { team: "us", n: 2, to: [32, CENTER_US] },
-            { team: "us", n: 3, to: [50, CENTER_US] },
-            { team: "us", n: 4, to: [68, CENTER_US] },
-          ] },
-        { label: "Pitch back to 5", dur: 0.8,
-          passes: [{ from: { team: "us", n: 3 }, to: { team: "us", n: 5 } }] },
-        { label: "Free look — strike", dur: 1.0,
-          throws: [{ from: { team: "us", n: 5 }, to: { team: "them", n: 2 } }] },
+            { team: "us", n: 9, to: [72, 54] },
+            { team: "us", n: 8, to: [58, 54] },
+            { team: "them", n: 3, to: [37, 46] },
+            { team: "them", n: 2, to: [22, 46] },
+          ],
+          grabs: [
+            { team: "us", n: 9, balls: ["uR2", "uR3"] },
+            { team: "us", n: 8, balls: ["uR1"] },
+            { team: "them", n: 3, balls: ["tL2", "tL3"] },
+            { team: "them", n: 2, balls: ["tL1"] },
+          ],
+        },
+        {
+          label: "Pitch back to the attacker", dur: 0.8,
+          passes: [{ from: { team: "us", n: 9 }, to: { team: "us", n: 5 } }],
+        },
+        {
+          label: "Free look — strike", dur: 1.0,
+          throws: [{ from: { team: "us", n: 5 }, to: { team: "them", n: 6 } }],
+        },
       ],
     },
 
@@ -56,11 +82,11 @@
       call: '"Kill left on 3"',
       desc: "The two left-side throwers commit to the same target — the 3rd player from the left on the other team. Non-throwers pump-fake to freeze the rest.",
       setup: {
-        us: row(5, US_BACK, [1, 2]),
-        them: row(5, THEM_BACK),
+        us: row(10, US_BACK, [1, 2]),
+        them: row(10, THEM_BACK),
       },
       steps: [
-        { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 3 }, { team: "us", n: 4 }, { team: "us", n: 5 }] },
+        { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 5 }, { team: "us", n: 6 }, { team: "us", n: 7 }] },
         { label: "Kill left on 3", dur: 1.1,
           throws: [
             { from: { team: "us", n: 1 }, to: { team: "them", n: 3 }, curve: -26 },
@@ -76,15 +102,15 @@
       call: '"Insides on 5"',
       desc: "The two middle players pick one target — here the 5th from the left. Hits from the center are hard to read until the ball is already gone.",
       setup: {
-        us: row(6, US_BACK, [3, 4]),
-        them: row(6, THEM_BACK),
+        us: row(10, US_BACK, [5, 6]),
+        them: row(10, THEM_BACK),
       },
       steps: [
-        { label: "Set — corners fake", dur: 0.8, fakes: [{ team: "us", n: 1 }, { team: "us", n: 6 }] },
+        { label: "Set — corners fake", dur: 0.8, fakes: [{ team: "us", n: 1 }, { team: "us", n: 10 }] },
         { label: "Insides on 5", dur: 1.1,
           throws: [
-            { from: { team: "us", n: 3 }, to: { team: "them", n: 5 }, curve: -22 },
-            { from: { team: "us", n: 4 }, to: { team: "them", n: 5 }, curve: -14 },
+            { from: { team: "us", n: 5 }, to: { team: "them", n: 5 }, curve: -22 },
+            { from: { team: "us", n: 6 }, to: { team: "them", n: 5 }, curve: -14 },
           ] },
       ],
     },
@@ -95,7 +121,7 @@
       name: "Double-Team on 4",
       badge: "from Daniel's diagram",
       call: "two corners → 4",
-      desc: "Straight from the whiteboard: both corner throwers commit to the same interior target (the 4th player) from opposite angles, so there's no single block that covers both balls.",
+      desc: "Straight from the whiteboard (a mid-game snapshot with players already out): both corner throwers commit to the same interior target — the 4th player — from opposite angles, so there's no single block that covers both balls.",
       setup: {
         us: row(4, US_BACK, [1, 2, 3, 4]),
         them: row(6, THEM_BACK),
@@ -118,18 +144,18 @@
       call: '"Away"',
       desc: "Triggered when they throw: all ball-holders rush the center line, and the player opposite the thrower counters from at or near the line while they're still recovering.",
       setup: {
-        us: row(5, US_BACK, [1, 3, 5]),
-        them: row(5, THEM_BACK),
+        us: row(10, US_BACK, [3, 6, 9]),
+        them: row(10, THEM_BACK),
       },
       steps: [
         { label: "They throw — rush the line", dur: 1.0,
           moves: [
-            { team: "us", n: 1, to: [14, CENTER_US] },
-            { team: "us", n: 3, to: [50, CENTER_US] },
-            { team: "us", n: 5, to: [86, CENTER_US] },
+            { team: "us", n: 3, to: [30, 54] },
+            { team: "us", n: 6, to: [54, 54] },
+            { team: "us", n: 9, to: [78, 54] },
           ] },
         { label: "Counter the thrower", dur: 1.0,
-          throws: [{ from: { team: "us", n: 3 }, to: { team: "them", n: 3 }, curve: -16 }] },
+          throws: [{ from: { team: "us", n: 6 }, to: { team: "them", n: 6 }, curve: -16 }] },
       ],
     },
 
@@ -140,19 +166,19 @@
       call: '"Crash"',
       desc: "Up players with the other team down to one or two: after they throw, both corners rush and gang up on whoever just threw.",
       setup: {
-        us: row(5, US_BACK, [1, 5]),
-        them: [{ n: 1, x: 40, y: THEM_BACK }, { n: 2, x: 60, y: THEM_BACK }],
+        us: row(10, US_BACK, [1, 10]),
+        them: [{ n: 1, x: 50, y: THEM_BACK }],
       },
       steps: [
         { label: "They throw — corners crash", dur: 1.1,
           moves: [
-            { team: "us", n: 1, to: [34, CENTER_US] },
-            { team: "us", n: 5, to: [66, CENTER_US] },
+            { team: "us", n: 1, to: [40, 54] },
+            { team: "us", n: 10, to: [60, 54] },
           ] },
         { label: "Both attack the thrower", dur: 1.0,
           throws: [
             { from: { team: "us", n: 1 }, to: { team: "them", n: 1 }, curve: -22 },
-            { from: { team: "us", n: 5 }, to: { team: "them", n: 1 }, curve: -14 },
+            { from: { team: "us", n: 10 }, to: { team: "them", n: 1 }, curve: -14 },
           ] },
       ],
     },
