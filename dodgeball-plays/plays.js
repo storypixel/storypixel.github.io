@@ -32,7 +32,7 @@
       name: "Pitch Back",
       badge: "opening rush",
       call: '"Pitch back"',
-      desc: "Six balls sit on the center line — the right three are OURS, the left three are THEIRS. The two right-side players rush and grab our three (one grabs two, one grabs one). On the pitch back, a rusher tosses a ball straight back to an attacker, who gets a free look at any target.",
+      desc: "Six balls sit on the center line — the right three are OURS, the left three are THEIRS. The two right-side players rush and grab our three (one grabs two, one grabs one). On the pitch back, a rusher tosses a ball straight back to an attacker, who steps up to mid-court and takes a free look — usually at one of the two opponents still backpedaling from their own rush.",
       setup: {
         us: row(10, US_BACK),
         them: row(10, THEM_BACK),
@@ -64,12 +64,21 @@
           ],
         },
         {
-          label: "Pitch back to the attacker", dur: 0.8,
-          passes: [{ from: { team: "us", n: 10 }, to: { team: "us", n: 5 } }],
+          label: "Pitch back — attacker steps up", dur: 0.9,
+          passes: [{ from: { team: "us", n: 10 }, to: { team: "us", n: 6 } }],
+          moves: [
+            { team: "us", n: 6, to: [54, 68] },     // attacker comes up about halfway
+            { team: "them", n: 1, to: [10, 30] },   // their rushers backpedal
+            { team: "them", n: 2, to: [22, 30] },
+          ],
         },
         {
-          label: "Free look — strike", dur: 1.0,
-          throws: [{ from: { team: "us", n: 5 }, to: { team: "them", n: 6 } }],
+          label: "Free look — hit a regressing rusher", dur: 1.0,
+          moves: [
+            { team: "them", n: 1, to: [12, 20] },
+            { team: "them", n: 2, to: [24, 20] },
+          ],
+          throws: [{ from: { team: "us", n: 6 }, to: { team: "them", n: 2 }, curve: -20 }],
         },
       ],
     },
