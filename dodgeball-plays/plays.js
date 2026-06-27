@@ -49,23 +49,23 @@
       },
       steps: [
         {
-          label: "Rush — right two grab our three (2 + 1)", dur: 1.3,
+          label: "Rush — the two on the right grab our three (2 + 1)", dur: 1.3,
           moves: [
-            { team: "us", n: 9, to: [72, 54] },
-            { team: "us", n: 8, to: [58, 54] },
-            { team: "them", n: 3, to: [37, 46] },
-            { team: "them", n: 2, to: [22, 46] },
+            { team: "us", n: 10, to: [73, 54] },
+            { team: "us", n: 9, to: [58, 54] },
+            { team: "them", n: 1, to: [27, 46] },
+            { team: "them", n: 2, to: [42, 46] },
           ],
           grabs: [
-            { team: "us", n: 9, balls: ["uR2", "uR3"] },
-            { team: "us", n: 8, balls: ["uR1"] },
-            { team: "them", n: 3, balls: ["tL2", "tL3"] },
-            { team: "them", n: 2, balls: ["tL1"] },
+            { team: "us", n: 10, balls: ["uR2", "uR3"] },
+            { team: "us", n: 9, balls: ["uR1"] },
+            { team: "them", n: 1, balls: ["tL1", "tL2"] },
+            { team: "them", n: 2, balls: ["tL3"] },
           ],
         },
         {
           label: "Pitch back to the attacker", dur: 0.8,
-          passes: [{ from: { team: "us", n: 9 }, to: { team: "us", n: 5 } }],
+          passes: [{ from: { team: "us", n: 10 }, to: { team: "us", n: 5 } }],
         },
         {
           label: "Free look — strike", dur: 1.0,
