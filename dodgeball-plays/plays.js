@@ -91,8 +91,8 @@
       call: '"Kill left on 3"',
       desc: "The two left-side throwers commit to the same target — the 3rd player from the left on the other team. Non-throwers pump-fake to freeze the rest.",
       setup: {
-        us: row(10, US_BACK, [1, 2]),
-        them: row(10, THEM_BACK),
+        us: row(10, US_BACK, [1, 2, 9, 10]),   // 4 balls — left two throw, right two hold
+        them: row(10, THEM_BACK, [4, 7]),      // they hold the other 2
       },
       steps: [
         { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 5 }, { team: "us", n: 6 }, { team: "us", n: 7 }] },
@@ -111,8 +111,8 @@
       call: '"Insides on 5"',
       desc: "The two middle players pick one target — here the 5th from the left. Hits from the center are hard to read until the ball is already gone.",
       setup: {
-        us: row(10, US_BACK, [5, 6]),
-        them: row(10, THEM_BACK),
+        us: row(10, US_BACK, [1, 5, 6, 10]),   // 4 balls — middle two throw, corners hold
+        them: row(10, THEM_BACK, [3, 8]),      // they hold the other 2
       },
       steps: [
         { label: "Set — corners fake", dur: 0.8, fakes: [{ team: "us", n: 1 }, { team: "us", n: 10 }] },
@@ -132,8 +132,8 @@
       call: "two corners → 4",
       desc: "Straight from the whiteboard: both corner throwers commit to the same interior target — the 4th player — from opposite angles, so there's no single block that covers both balls.",
       setup: {
-        us: row(10, US_BACK, [1, 10]),
-        them: row(10, THEM_BACK),
+        us: row(10, US_BACK, [1, 5, 6, 10]),   // 4 balls — corners throw, middle two hold
+        them: row(10, THEM_BACK, [2, 9]),      // they hold the other 2
       },
       steps: [
         { label: "Set — insides fake", dur: 0.8, fakes: [{ team: "us", n: 5 }, { team: "us", n: 6 }] },
@@ -153,8 +153,8 @@
       call: '"Away"',
       desc: "Triggered when they throw: all ball-holders rush the center line, and the player opposite the thrower counters from at or near the line while they're still recovering.",
       setup: {
-        us: row(10, US_BACK, [3, 6, 9]),
-        them: row(10, THEM_BACK),
+        us: row(10, US_BACK, [3, 6, 9]),       // 3 balls (defense)
+        them: row(10, THEM_BACK, [2, 7, 9]),   // they hold the other 3
       },
       steps: [
         { label: "They throw — rush the line", dur: 1.0,
@@ -175,8 +175,8 @@
       call: '"Crash"',
       desc: "After they throw, both corners rush the line and gang up on whoever just threw — the counter you call when you're up players.",
       setup: {
-        us: row(10, US_BACK, [1, 10]),
-        them: row(10, THEM_BACK),
+        us: row(10, US_BACK, [1, 10]),             // 2 balls (corners)
+        them: row(10, THEM_BACK, [2, 4, 7, 9]),    // they hold the other 4
       },
       steps: [
         { label: "They throw — corners crash", dur: 1.1,
