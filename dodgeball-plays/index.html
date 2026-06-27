@@ -6,24 +6,18 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Dodgeball Play Animator</title>
 <style>
-  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:12px}
-  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff}
+  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:920px;margin:0 auto;padding:22px 18px 64px}
-  header.top{padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .wrap{max-width:600px;margin:0 auto;padding:22px 18px 40vh}
+  header.top{padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:8px}
   header.top h1{font-size:1.5rem;line-height:1.25;margin:0 0 4px;letter-spacing:-.01em}
   header.top p{margin:0;color:var(--muted);font-size:.95rem}
   header.top a{color:var(--accent);text-decoration:none}
-  .layout{display:grid;grid-template-columns:220px 1fr;gap:22px}
-  nav.plays{font-size:.92rem}
-  nav.plays h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 7px}
-  nav.plays h3:first-child{margin-top:0}
-  nav.plays button{display:block;width:100%;text-align:left;border:1px solid transparent;background:none;color:var(--ink);font:inherit;padding:7px 10px;border-radius:8px;cursor:pointer}
-  nav.plays button:hover{background:var(--accent-soft)}
-  nav.plays button[aria-current="true"]{background:var(--accent);color:#fff}
-  #stage{min-width:0}
-  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
-  @media(max-width:720px){.layout{grid-template-columns:1fr}nav.plays{display:flex;flex-wrap:wrap;gap:6px}nav.plays h3{width:100%}nav.plays button{width:auto}}
+  h2.group{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:34px 2px 0}
+  .play{margin:16px 0 34px}
+  footer{margin-top:10px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  @media(min-width:760px){header.top h1{font-size:1.85rem}}
   @media(prefers-color-scheme:dark){
     :root{--ink:#e6e8ec;--muted:#aab2c0;--line:#2a2f3a;--bg:#0b0d11;--accent:#7aa2ff;--accent-soft:#171b22}
   }
@@ -33,13 +27,10 @@
 <div class="wrap">
   <header class="top">
     <h1>Dodgeball Play Animator</h1>
-    <p>Overhead, chess-diagram view of the team calls &middot; from the <a href="/dodging-playbook">playbook</a></p>
+    <p>Scroll through the team calls &mdash; each one plays as it comes into view. From the <a href="/dodging-playbook">playbook</a>.</p>
   </header>
 
-  <div class="layout">
-    <nav class="plays" id="nav" aria-label="Plays"></nav>
-    <div id="stage"></div>
-  </div>
+  <main id="doc"></main>
 
   <footer>Plays mirror <a href="/dodging-playbook">Dodging All Night, All Summer</a>. Edit <code>plays.js</code> to add more.</footer>
 </div>
@@ -48,32 +39,47 @@
 <script src="plays.js"></script>
 <script>
   (function(){
-    var nav = document.getElementById('nav');
-    var stage = document.getElementById('stage');
+    var doc = document.getElementById('doc');
     var groups = window.DB_PLAY_GROUPS || [];
     var plays = window.DB_PLAYS || {};
-    var current = null, buttons = {};
+    var items = [];   // { el, ctrl }
 
-    function select(id){
-      if(current === id) return;
-      current = id;
-      Object.keys(buttons).forEach(function(k){ buttons[k].setAttribute('aria-current', k===id ? 'true':'false'); });
-      stage.innerHTML = '';
-      DodgeballPlay.mount(stage, plays[id], { autoplay:true, loop:true });
-    }
-
+    // Lay every play out in document order, each mounted paused.
     groups.forEach(function(g){
-      var h = document.createElement('h3'); h.textContent = g.title; nav.appendChild(h);
+      var h = document.createElement('h2'); h.className = 'group'; h.textContent = g.title;
+      doc.appendChild(h);
       g.ids.forEach(function(id){
         var p = plays[id]; if(!p) return;
-        var b = document.createElement('button'); b.textContent = p.name;
-        b.addEventListener('click', function(){ select(id); });
-        buttons[id] = b; nav.appendChild(b);
+        var slot = document.createElement('div'); slot.className = 'play';
+        doc.appendChild(slot);
+        var ctrl = DodgeballPlay.mount(slot, p, { autoplay:false, loop:true });
+        items.push({ el: ctrl.el, ctrl: ctrl });
       });
     });
 
-    var first = (groups[0]||{}).ids && groups[0].ids[0];
-    if(first) select(first);
+    // Only one plays at a time: the most-visible inset auto-plays, the rest pause.
+    // Manual play/pause still works — if you pause the active one it stays paused
+    // until a different play scrolls into view.
+    var active = null;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var it = items.find(function(i){ return i.el === e.target; });
+        if(it) it.ratio = e.isIntersecting ? e.intersectionRatio : 0;
+      });
+      var best = null;
+      items.forEach(function(i){ if((i.ratio||0) > 0 && (!best || i.ratio > best.ratio)) best = i; });
+      if(best && best !== active){
+        if(active) active.ctrl.pause();
+        active = best;
+        active.ctrl.seek(0);
+        active.ctrl.play();
+      } else if(!best && active){
+        active.ctrl.pause();
+        active = null;
+      }
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+    items.forEach(function(i){ io.observe(i.el); });
   })();
 </script>
 </body>
