@@ -35,8 +35,8 @@
   ul.calls>li:last-child{margin-bottom:0}
   .term{font-weight:700}
   header.top p a{color:var(--accent);text-decoration:none;font-weight:600}
-  .watch{font-size:.82rem;color:var(--accent);text-decoration:none;white-space:nowrap}
-  .watch:hover{text-decoration:underline}
+  .db-inline{margin:12px 0 2px}
+  .db-inline .dbp{max-width:100%}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
   @media(min-width:760px){body{font-size:18px}.wrap{padding:40px 24px 80px}header.top h1{font-size:1.85rem}}
 </style>
@@ -73,23 +73,25 @@
     <ul class="calls">
       <li>3 balls we will meet in the middle and designate 1 or 2 throwers on a specific target</li>
       <li>4 balls we will call insides or outsides on a number</li>
-      <li><span class="term">insides</span> &mdash; two middle players <a class="watch" href="/dodgeball-play-notation/?play=insides&amp;autoplay=1">watch &rarr;</a></li>
-      <li><span class="term">outsides</span> &mdash; both corners <a class="watch" href="/dodgeball-play-notation/?play=outsides&amp;autoplay=1">watch &rarr;</a></li>
+      <li><span class="term">insides</span> &mdash; two middle players<div class="db-inline" data-play="insides"></div></li>
+      <li><span class="term">outsides</span> &mdash; both corners<div class="db-inline" data-play="outsides"></div></li>
     </ul>
   </section>
 
   <section id="defensive-calls">
     <div class="h2row"><h2>Defensive calls</h2><button class="copylink" data-anchor="defensive-calls">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Home</span> &mdash; designated player will throw from their current position at the player of their choosing. This would be a precounter meaning that you release the ball before or as the other team throws. <a class="watch" href="/dodgeball-play-notation/?play=home&amp;autoplay=1">watch &rarr;</a></li>
-      <li><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw). <a class="watch" href="/dodgeball-play-notation/?play=away&amp;autoplay=1">watch &rarr;</a></li>
-      <li><span class="term">Mirror</span> &mdash; the player opposite of the opposing team member who threw has the green light to throw <a class="watch" href="/dodgeball-play-notation/?play=mirror&amp;autoplay=1">watch &rarr;</a></li>
-      <li><span class="term">Middle</span> &mdash; If we are left with only one ball it will go to a player in the middle and their job is to bait balls by taking an offensive position. they should almost never throw that last ball. <a class="watch" href="/dodgeball-play-notation/?play=middle&amp;autoplay=1">watch &rarr;</a></li>
+      <li><span class="term">Home</span> &mdash; designated player will throw from their current position at the player of their choosing. This would be a precounter meaning that you release the ball before or as the other team throws.<div class="db-inline" data-play="home"></div></li>
+      <li><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw).<div class="db-inline" data-play="away"></div></li>
+      <li><span class="term">Mirror</span> &mdash; the player opposite of the opposing team member who threw has the green light to throw<div class="db-inline" data-play="mirror"></div></li>
+      <li><span class="term">Middle</span> &mdash; If we are left with only one ball it will go to a player in the middle and their job is to bait balls by taking an offensive position. they should almost never throw that last ball.<div class="db-inline" data-play="middle"></div></li>
     </ul>
   </section>
 
   <footer>Dodging All Night, All Summer &middot; internal team reference</footer>
 </div>
+<script src="/dodgeball-play-notation/vendor/play-animator.js"></script>
+<script src="/dodgeball-play-notation/vendor/dbn.js"></script>
 <script>
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -98,6 +100,19 @@
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){prompt('Copy this link:',url)})}else{prompt('Copy this link:',url)}
     });
   });
+  // Inline play animations — uses the SAME engine + .dbn files as the editor
+  // (loaded from /dodgeball-play-notation/), so there is one source of truth.
+  (function(){
+    var BASE='/dodgeball-play-notation/';
+    document.querySelectorAll('.db-inline[data-play]').forEach(function(el){
+      var id=el.getAttribute('data-play');
+      fetch(BASE+'examples/'+id+'.dbn').then(function(r){return r.text();}).then(function(t){
+        var play=(window.DBN&&window.DBN.parse)?window.DBN.parse(t):null;
+        if(play&&window.DodgeballPlay){ window.DodgeballPlay.mount(el, play, {loop:true}); }
+        else { el.remove(); }
+      }).catch(function(){ el.remove(); });
+    });
+  })();
 </script>
 </body>
 </html>
