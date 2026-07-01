@@ -90,8 +90,9 @@
 
   <footer>Dodging All Night, All Summer &middot; internal team reference</footer>
 </div>
-<script src="/dodgeball-play-notation/vendor/play-animator.js"></script>
-<script src="/dodgeball-play-notation/vendor/dbn.js"></script>
+<script>window.DBV="09567c1e40";</script>
+<script src="/dodgeball-play-notation/vendor/play-animator.js?v=09567c1e40"></script>
+<script src="/dodgeball-play-notation/vendor/dbn.js?v=09567c1e40"></script>
 <script>
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -104,9 +105,10 @@
   // (loaded from /dodgeball-play-notation/), so there is one source of truth.
   (function(){
     var BASE='/dodgeball-play-notation/';
+    var V=window.DBV?('?v='+window.DBV):'';
     document.querySelectorAll('.db-inline[data-play]').forEach(function(el){
       var id=el.getAttribute('data-play');
-      fetch(BASE+'examples/'+id+'.dbn').then(function(r){return r.text();}).then(function(t){
+      fetch(BASE+'examples/'+id+'.dbn'+V).then(function(r){return r.text();}).then(function(t){
         var play=(window.DBN&&window.DBN.parse)?window.DBN.parse(t):null;
         if(play&&window.DodgeballPlay){ window.DodgeballPlay.mount(el, play, {loop:true}); }
         else { el.remove(); }
