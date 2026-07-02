@@ -37,8 +37,14 @@
   header.top p a{color:var(--accent);text-decoration:none;font-weight:600}
   .db-inline{margin:12px 0 2px}
   .db-inline .dbp{max-width:100%}
+  details.docfig{margin:10px 0 2px}
+  li.figure details.docfig{margin:0}
+  details.docfig>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+    color:var(--accent);font-size:.9rem;font-weight:600;padding:6px 11px;border:1px solid #cfe0ff;border-radius:999px;background:var(--accent-soft);user-select:none}
+  details.docfig>summary::-webkit-details-marker{display:none}
+  details.docfig>summary::before{content:"B8";font-size:.85em;transition:transform .15s ease}
+  details.docfig[open]>summary::before{transform:rotate(90deg)}
   img.docimg{display:block;max-width:100%;height:auto;border-radius:8px;margin:10px 0 2px}
-  li.figure img.docimg{margin:0}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
   @media(min-width:760px){body{font-size:18px}.wrap{padding:40px 24px 80px}header.top h1{font-size:1.85rem}}
 </style>
@@ -90,9 +96,9 @@
       <li>3 balls we will meet in the middle and designate 1 or 2 throwers on a specific target</li>
       <li>4 balls we will call insides or outsides on a number</li>
       <li><span class="term">insides</span> &mdash; two middle players<div class="db-inline" data-play="insides"></div></li>
-      <li class="figure"><img class="docimg" src="img/kix-cv2lqngbum5.gif" alt="" width="624" height="288" loading="lazy" decoding="async"></li>
+      <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-cv2lqngbum5.gif" alt="" width="624" height="288" decoding="async"></details></li>
       <li><span class="term">outsides</span> &mdash; both corners<div class="db-inline" data-play="outsides"></div></li>
-      <li class="figure"><img class="docimg" src="img/kix-9wipm9mku7ri.png" alt="" width="624" height="301" loading="lazy" decoding="async"></li>
+      <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-9wipm9mku7ri.png" alt="" width="624" height="301" decoding="async"></details></li>
       <li><span class="term">Kill left/Kill right</span> &mdash; The two players on the left or right holding balls will throw at a specified target.</li>
     </ul>
   </section>
@@ -101,10 +107,10 @@
     <div class="h2row"><h2>Defensive calls</h2><button class="copylink" data-anchor="defensive-calls">Copy link</button></div>
     <ul class="calls">
       <li><span class="term">Home</span> &mdash; designated player will throw from their current position at the player of their choosing. This would be a precounter meaning that you release the ball before or as the other team throws.<div class="db-inline" data-play="home"></div></li>
-      <li class="figure"><img class="docimg" src="img/kix-3ftligrtyb2x.gif" alt="" width="526" height="296" loading="lazy" decoding="async"></li>
-      <li><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw).<div class="db-inline" data-play="away"></div><img class="docimg" src="img/kix-39so6cxbae7a.gif" alt="" width="530" height="300" loading="lazy" decoding="async"></li>
+      <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-3ftligrtyb2x.gif" alt="" width="526" height="296" decoding="async"></details></li>
+      <li><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw).<div class="db-inline" data-play="away"></div><details class="docfig"><summary>Show diagram &mdash; Away</summary><img class="docimg" data-src="img/kix-39so6cxbae7a.gif" alt="" width="530" height="300" decoding="async"></details></li>
       <li><span class="term">Mirror</span> &mdash; the player opposite of the opposing team member who threw has the green light to throw (almost always at the opposing player who just released the ball)<div class="db-inline" data-play="mirror"></div></li>
-      <li class="figure"><img class="docimg" src="img/kix-gn4hydxanbik.gif" alt="" width="624" height="350" loading="lazy" decoding="async"></li>
+      <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-gn4hydxanbik.gif" alt="" width="624" height="350" decoding="async"></details></li>
       <li><span class="term">Middle</span> &mdash; If we are left with only one ball it will go to a player in the middle and their job is to bait balls by taking an offensive position. They should almost never throw that last ball.<div class="db-inline" data-play="middle"></div></li>
     </ul>
   </section>
@@ -134,6 +140,17 @@
         if(play&&window.DodgeballPlay){ window.DodgeballPlay.mount(el, play, {loop:true}); }
         else { el.remove(); }
       }).catch(function(){ el.remove(); });
+    });
+  })();
+  // Doc images are collapsed behind <details> toggles and load ZERO bytes until
+  // opened: promote data-src -> src on first expand (then it stays loaded).
+  (function(){
+    document.querySelectorAll('details.docfig').forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if(!d.open) return;
+        var img=d.querySelector('img.docimg[data-src]');
+        if(img){ img.src=img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+      });
     });
   })();
 </script>
