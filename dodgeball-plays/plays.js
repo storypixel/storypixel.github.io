@@ -87,19 +87,39 @@
     "kill-left": {
       id: "kill-left",
       name: "Kill Left",
-      badge: "4-ball offense",
+      badge: "left kill",
       call: '"Kill left on 3"',
-      desc: "The two left-side throwers commit to the same target — the 3rd player from the left on the other team. Non-throwers pump-fake to freeze the rest.",
+      desc: "The two left-side ball-holders both throw at one specified target. Here players 4 and 5 — the two leftmost holding balls, not necessarily the far-left players — fire at the same opponent while everyone else pump-fakes to freeze the defense.",
       setup: {
-        us: row(10, US_BACK, [1, 2, 9, 10]),   // 4 balls — left two throw, right two hold
-        them: row(10, THEM_BACK, [4, 7]),      // they hold the other 2
+        us: row(10, US_BACK, [4, 5, 6, 7]),   // 4 have balls; the two LEFT ball-holders throw
+        them: row(10, THEM_BACK, [3, 8]),
       },
       steps: [
-        { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 5 }, { team: "us", n: 6 }, { team: "us", n: 7 }] },
+        { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 6 }, { team: "us", n: 7 }] },
         { label: "Kill left on 3", dur: 1.1,
           throws: [
-            { from: { team: "us", n: 1 }, to: { team: "them", n: 3 }, curve: -26 },
-            { from: { team: "us", n: 2 }, to: { team: "them", n: 3 }, curve: -18 },
+            { from: { team: "us", n: 4 }, to: { team: "them", n: 2 }, curve: -16 },
+            { from: { team: "us", n: 5 }, to: { team: "them", n: 2 }, curve: -22 },
+          ] },
+      ],
+    },
+
+    "kill-right": {
+      id: "kill-right",
+      name: "Kill Right",
+      badge: "right kill",
+      call: '"Kill right on 3"',
+      desc: "The mirror of Kill Left: the two right-side ball-holders both throw at one specified target. Here players 6 and 7 — the two rightmost holding balls, not necessarily the far-right players — fire at the same opponent while everyone else pump-fakes.",
+      setup: {
+        us: row(10, US_BACK, [4, 5, 6, 7]),   // 4 have balls; the two RIGHT ball-holders throw
+        them: row(10, THEM_BACK, [3, 8]),
+      },
+      steps: [
+        { label: "Set — fakes", dur: 0.8, fakes: [{ team: "us", n: 4 }, { team: "us", n: 5 }] },
+        { label: "Kill right on 3", dur: 1.1,
+          throws: [
+            { from: { team: "us", n: 7 }, to: { team: "them", n: 9 }, curve: 16 },
+            { from: { team: "us", n: 6 }, to: { team: "them", n: 9 }, curve: 22 },
           ] },
       ],
     },
@@ -196,7 +216,7 @@
   // ordered groups for the standalone gallery
   const GROUPS = [
     { title: "Opening", ids: ["pitch-back"] },
-    { title: "Offense", ids: ["kill-left", "insides", "double-team-4"] },
+    { title: "Offense", ids: ["kill-left", "kill-right", "insides", "double-team-4"] },
     { title: "Defense & counters", ids: ["away", "crash"] },
   ];
 
