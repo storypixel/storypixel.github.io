@@ -6,24 +6,41 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Dodging All Night, All Summer Playbook - Week 1</title>
 <style>
-  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:10px}
+  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:10px;--sbw:246px}
   *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:680px;margin:0 auto;padding:22px 18px 64px}
+
+  /* ---- glossary sidebar ---- */
+  .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sbw);overflow-y:auto;
+    background:#fbfcfe;border-right:1px solid var(--line);padding:20px 14px 40px;z-index:40}
+  .sidebar .brand{font-weight:700;font-size:.98rem;letter-spacing:-.01em;margin:0 4px 2px}
+  .sidebar .brand small{display:block;color:var(--muted);font-weight:500;font-size:.76rem;margin-top:2px}
+  .sidebar h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:20px 4px 6px}
+  .sidebar nav a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);
+    padding:6px 9px;border-radius:8px;font-size:.9rem;line-height:1.25}
+  .sidebar nav a:hover{background:var(--accent-soft)}
+  .sidebar nav a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+  .sidebar nav a.play::before{content:"";width:7px;height:7px;border-radius:50%;background:#c7d2e0;flex:0 0 7px}
+  .sidebar nav a.play.off::before{background:#1f9d55}
+  .sidebar nav a.play.def::before{background:#e0603a}
+  .sidebar nav a.sec{color:var(--muted);font-size:.86rem;padding:5px 9px}
+
+  /* ---- mobile top bar + hamburger ---- */
+  .topbar{display:none;position:sticky;top:0;z-index:20;align-items:center;gap:12px;
+    padding:10px 14px;background:rgba(255,255,255,.92);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+  .hamburger{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;
+    width:40px;height:38px;padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}
+  .hamburger span{display:block;height:2px;background:var(--ink);border-radius:2px}
+  .topbar .tt{font-weight:600;font-size:.95rem}
+  .backdrop{position:fixed;inset:0;background:rgba(15,20,30,.36);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:35}
+
+  /* ---- main content ---- */
+  .wrap{max-width:680px;margin-left:var(--sbw);padding:26px 26px 72px}
   header.top{padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
   header.top h1{font-size:1.5rem;line-height:1.25;margin:0 0 4px;letter-spacing:-.01em}
   header.top p{margin:0;color:var(--muted);font-size:.95rem}
-  details.toc{border:1px solid var(--line);border-radius:var(--radius);margin:0 0 26px;overflow:hidden}
-  details.toc>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:8px;user-select:none}
-  details.toc>summary::-webkit-details-marker{display:none}
-  details.toc>summary .chev{margin-left:auto;color:var(--muted);transition:transform .15s ease}
-  details.toc[open]>summary .chev{transform:rotate(180deg)}
-  details.toc>summary .lbl{color:var(--accent)}
-  .toc-body{padding:0 14px 14px}
-  .toc-body ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
-  .toc-body a{display:inline-block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid #d4e2ff;border-radius:999px;padding:6px 11px;font-size:.86rem;line-height:1.2}
-  .toc-body a:active{background:var(--accent);color:#fff}
-  section{margin:0 0 30px;scroll-margin-top:14px}
+  header.top p a{color:var(--accent);text-decoration:none;font-weight:600}
+  section{margin:0 0 30px;scroll-margin-top:64px}
   .h2row{display:flex;align-items:center;gap:8px;padding-top:18px;border-top:2px solid var(--ink);margin:0 0 12px}
   section:first-of-type .h2row{border-top:none;padding-top:0}
   h2{font-size:1.18rem;margin:0;letter-spacing:-.01em}
@@ -31,11 +48,15 @@
   button.copylink:active{background:var(--accent-soft);color:var(--accent);border-color:#cfe0ff}
   button.copylink.copied{background:#e8f7ec;color:#1a7f37;border-color:#bfe6cb}
   ul.calls{list-style:none;margin:0;padding:0}
-  ul.calls>li{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius);background:#fcfcfd}
+  ul.calls>li{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius);background:#fcfcfd;scroll-margin-top:64px}
   ul.calls>li:last-child{margin-bottom:0}
+  ul.calls>li.has-play{border-color:#dbe6f7}
+  ul.calls>li:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
   .term{font-weight:700}
-  header.top p a{color:var(--accent);text-decoration:none;font-weight:600}
+  .db-insets{display:grid;gap:14px;margin:12px 0 2px}
+  @media(min-width:560px){.db-insets{grid-template-columns:1fr 1fr}}
   .db-inline{margin:12px 0 2px}
+  .db-insets .db-inline{margin:0}
   .db-inline .dbp{max-width:100%}
   details.docfig{margin:10px 0 2px}
   li.figure details.docfig{margin:0}
@@ -46,26 +67,50 @@
   details.docfig[open]>summary::before{transform:rotate(90deg)}
   img.docimg{display:block;max-width:100%;height:auto;border-radius:8px;margin:10px 0 2px}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
-  @media(min-width:760px){body{font-size:18px}.wrap{padding:40px 24px 80px}header.top h1{font-size:1.85rem}}
+
+  /* ---- mobile: sidebar becomes an off-canvas drawer behind a hamburger ---- */
+  @media(max-width:899px){
+    .topbar{display:flex}
+    .wrap{margin-left:0;padding:20px 18px 64px}
+    .sidebar{transform:translateX(-100%);transition:transform .22s ease;box-shadow:0 0 40px rgba(20,30,50,.14);width:min(82vw,320px)}
+    body.nav-open .sidebar{transform:none}
+    body.nav-open .backdrop{opacity:1;pointer-events:auto}
+    body.nav-open{overflow:hidden}
+  }
+  @media(min-width:900px){body{font-size:18px}header.top h1{font-size:1.85rem}}
 </style>
 </head>
 <body>
+<div class="topbar">
+  <button class="hamburger" aria-label="Open play glossary" aria-controls="glossary" aria-expanded="false"><span></span><span></span><span></span></button>
+  <span class="tt">Dodging All Night, All Summer - Week 1</span>
+</div>
+<div class="backdrop"></div>
+<aside class="sidebar" id="glossary">
+  <div class="brand">Dodging All Night, All Summer - Week 1<small>play glossary</small></div>
+    <h3>Plays</h3>
+    <nav>
+      <a class="play off" href="#call-insides">insides</a>
+      <a class="play off" href="#call-outsides">outsides</a>
+      <a class="play off" href="#call-kill-left-kill-right">Kill left/Kill right</a>
+      <a class="play def" href="#call-home">Home</a>
+      <a class="play def" href="#call-away">Away</a>
+      <a class="play def" href="#call-mirror">Mirror</a>
+      <a class="play def" href="#call-middle">Middle</a>
+    </nav>
+    <h3>Sections</h3>
+    <nav>
+      <a class="sec" href="#general-info">General Info</a>
+      <a class="sec" href="#play-calling">Play Calling</a>
+      <a class="sec" href="#offensive-calls">Offensive Calls</a>
+      <a class="sec" href="#defensive-calls">Defensive calls</a>
+    </nav>
+</aside>
 <div class="wrap">
   <header class="top">
     <h1>Dodging All Night, All Summer - Week 1</h1>
     <p>Team playbook &middot; quick reference &middot; <a href="/dodgeball-play-notation/">watch the plays animate &rarr;</a></p>
   </header>
-  <details class="toc">
-    <summary><span class="lbl">Glossary</span> &middot; jump to a section <span class="chev">&#9662;</span></summary>
-    <div class="toc-body">
-      <ul>
-        <li><a href="#general-info">General Info</a></li>
-        <li><a href="#play-calling">Play Calling</a></li>
-        <li><a href="#offensive-calls">Offensive Calls</a></li>
-        <li><a href="#defensive-calls">Defensive calls</a></li>
-      </ul>
-    </div>
-  </details>
 
   <section id="general-info">
     <div class="h2row"><h2>General Info</h2><button class="copylink" data-anchor="general-info">Copy link</button></div>
@@ -83,7 +128,7 @@
     <ul class="calls">
       <li>For play calls we will call out targets based on a number. The person on the left side is 1, next to them is 2 and so on.</li>
       <li>Play calls will go -&gt; Person/people who are throwing (see plays below) -&gt; target (number system) described above -&gt; number of pump fakes</li>
-      <li><span class="term">I.E.</span> &mdash; Outsides on 2, one pump fake</li>
+      <li id="call-i-e" class="call"><span class="term">I.E.</span> &mdash; Outsides on 2, one pump fake</li>
       <li>We should not be calling more than 2 pump fakes</li>
       <li>Daniel and Josh will typically make play calls but the middle player should make calls and count if we are out. (listen for Daniel shouting play calls from the side lol)</li>
       <li>Pass the play calls down to the corners if we don’t have time to huddle</li>
@@ -95,31 +140,31 @@
     <ul class="calls">
       <li>3 balls we will meet in the middle and designate 1 or 2 throwers on a specific target</li>
       <li>4 balls we will call insides or outsides on a number</li>
-      <li><span class="term">insides</span> &mdash; two middle players<div class="db-inline" data-play="insides"></div></li>
+      <li id="call-insides" class="call has-play"><span class="term">insides</span> &mdash; two middle players<div class="db-inline" data-play="insides"></div></li>
       <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-cv2lqngbum5.gif" alt="" width="624" height="288" decoding="async"></details></li>
-      <li><span class="term">outsides</span> &mdash; both corners<div class="db-inline" data-play="outsides"></div></li>
+      <li id="call-outsides" class="call has-play"><span class="term">outsides</span> &mdash; both corners<div class="db-inline" data-play="outsides"></div></li>
       <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-9wipm9mku7ri.png" alt="" width="624" height="301" decoding="async"></details></li>
-      <li><span class="term">Kill left/Kill right</span> &mdash; The two players on the left or right holding balls will throw at a specified target.</li>
+      <li id="call-kill-left-kill-right" class="call has-play"><span class="term">Kill left/Kill right</span> &mdash; The two players on the left or right holding balls will throw at a specified target.<div class="db-insets"><div class="db-inline" data-play="kill-left"></div><div class="db-inline" data-play="kill-right"></div></div></li>
     </ul>
   </section>
 
   <section id="defensive-calls">
     <div class="h2row"><h2>Defensive calls</h2><button class="copylink" data-anchor="defensive-calls">Copy link</button></div>
     <ul class="calls">
-      <li><span class="term">Home</span> &mdash; designated player will throw from their current position at the player of their choosing. This would be a precounter meaning that you release the ball before or as the other team throws.<div class="db-inline" data-play="home"></div></li>
+      <li id="call-home" class="call has-play"><span class="term">Home</span> &mdash; designated player will throw from their current position at the player of their choosing. This would be a precounter meaning that you release the ball before or as the other team throws.<div class="db-inline" data-play="home"></div></li>
       <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-3ftligrtyb2x.gif" alt="" width="526" height="296" decoding="async"></details></li>
-      <li><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw).<div class="db-inline" data-play="away"></div><details class="docfig"><summary>Show diagram &mdash; Away</summary><img class="docimg" data-src="img/kix-39so6cxbae7a.gif" alt="" width="530" height="300" decoding="async"></details></li>
-      <li><span class="term">Mirror</span> &mdash; the player opposite of the opposing team member who threw has the green light to throw (almost always at the opposing player who just released the ball)<div class="db-inline" data-play="mirror"></div></li>
+      <li id="call-away" class="call has-play"><span class="term">Away</span> &mdash; all ball holders will charge the center line and the designated player will throw at a target of their choosing (typically this should be the player who just threw).<div class="db-inline" data-play="away"></div><details class="docfig"><summary>Show diagram &mdash; Away</summary><img class="docimg" data-src="img/kix-39so6cxbae7a.gif" alt="" width="530" height="300" decoding="async"></details></li>
+      <li id="call-mirror" class="call has-play"><span class="term">Mirror</span> &mdash; the player opposite of the opposing team member who threw has the green light to throw (almost always at the opposing player who just released the ball)<div class="db-inline" data-play="mirror"></div></li>
       <li class="figure"><details class="docfig"><summary>Show diagram</summary><img class="docimg" data-src="img/kix-gn4hydxanbik.gif" alt="" width="624" height="350" decoding="async"></details></li>
-      <li><span class="term">Middle</span> &mdash; If we are left with only one ball it will go to a player in the middle and their job is to bait balls by taking an offensive position. They should almost never throw that last ball.<div class="db-inline" data-play="middle"></div></li>
+      <li id="call-middle" class="call has-play"><span class="term">Middle</span> &mdash; If we are left with only one ball it will go to a player in the middle and their job is to bait balls by taking an offensive position. They should almost never throw that last ball.<div class="db-inline" data-play="middle"></div></li>
     </ul>
   </section>
 
   <footer>Dodging All Night, All Summer &middot; internal team reference</footer>
 </div>
-<script>window.DBV="1462658e01";</script>
-<script src="/dodgeball-play-notation/vendor/play-animator.js?v=1462658e01"></script>
-<script src="/dodgeball-play-notation/vendor/dbn.js?v=1462658e01"></script>
+<script>window.DBV="d467bd1714";</script>
+<script src="/dodgeball-play-notation/vendor/play-animator.js?v=d467bd1714"></script>
+<script src="/dodgeball-play-notation/vendor/dbn.js?v=d467bd1714"></script>
 <script>
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -152,6 +197,35 @@
         if(img){ img.src=img.getAttribute('data-src'); img.removeAttribute('data-src'); }
       });
     });
+  })();
+  // Glossary drawer: hamburger toggles it on mobile; any nav link or the
+  // backdrop closes it. Escape closes too.
+  (function(){
+    var body=document.body, btn=document.querySelector('.hamburger'), bd=document.querySelector('.backdrop');
+    function open(){ body.classList.add('nav-open'); btn&&btn.setAttribute('aria-expanded','true'); }
+    function close(){ body.classList.remove('nav-open'); btn&&btn.setAttribute('aria-expanded','false'); }
+    btn&&btn.addEventListener('click', function(){ body.classList.contains('nav-open')?close():open(); });
+    bd&&bd.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    document.querySelectorAll('.sidebar nav a').forEach(function(a){ a.addEventListener('click', close); });
+  })();
+  // Scroll-spy: highlight the glossary entry for whatever call/section is on
+  // screen, so the sidebar tracks where you are.
+  (function(){
+    var links={}, targets=[];
+    document.querySelectorAll('.sidebar nav a[href^="#"]').forEach(function(a){
+      var id=a.getAttribute('href').slice(1), el=document.getElementById(id);
+      if(el){ links[id]=a; targets.push(el); }
+    });
+    if(!('IntersectionObserver' in window) || !targets.length) return;
+    var visible={};
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ visible[en.target.id]=en.isIntersecting; });
+      var cur=null;
+      for(var i=0;i<targets.length;i++){ if(visible[targets[i].id]){ cur=targets[i].id; break; } }
+      Object.keys(links).forEach(function(id){ links[id].classList.toggle('active', id===cur); });
+    }, {rootMargin:'-64px 0px -55% 0px'});
+    targets.forEach(function(t){ io.observe(t); });
   })();
 </script>
 </body>
