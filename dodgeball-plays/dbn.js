@@ -1,12 +1,41 @@
 /* DBN - Dodgeball Notation parser + auto-mount.
  *
  * Produces the same plain play objects consumed by play-animator.js.
+ *
+ * v0.2 — write plays like chess, not like JSON:
+ *   - the default setup is implied (both teams on their back lines in lanes);
+ *     a play states only the diff: [Balls "U:45 T:2468"], [Setup "rush"]
+ *   - destinations are lane-relative: named depths (line/mid/deep/back) or a
+ *     bare y-number keep the player in their own lane; (x,y) stays as the
+ *     fine-control escape, file+rank squares still parse (legacy)
+ *   - group actions: T2468-line fans one action across players 2,4,6,8
+ *   - grab counts: U8*2 takes the two nearest loose balls
+ *   - curves are the engine's job: simultaneous throws at one target auto-fan,
+ *     dodged throws auto-bow; ~deg remains as a manual override
+ * All v0.1 forms (explicit DBF, raw coords, per-player tokens) still parse.
  */
 (function (global) {
   "use strict";
 
   const FILES = "abcdefghij";
   const TEAM = { U: "us", T: "them" };
+
+  // ── v0.2 court vocabulary ──
+  // Lanes: player n's home column. Margin 8, even spread — for 8-a-side this
+  // is x = 8,20,32,…,92 (the spacing every hand-authored play already used).
+  function laneX(n, N) {
+    return N > 1 ? 8 + (n - 1) * (84 / (N - 1)) : 50;
+  }
+  // Named depths, symmetric about the center line, from each team's own view:
+  // back = own back line, deep = fallen back, mid = throwing range, line = at
+  // the center line.
+  const DEPTH = { back: 40, deep: 25, mid: 15, line: 5 }; // distance from center
+  function depthY(team, name) {
+    const d = DEPTH[name];
+    return team === "us" ? 50 + d : 50 - d;
+  }
+  const AUTO_FAN = 24;    // degrees between simultaneous throws at one target
+  const AUTO_DODGE = 14;  // bow on a dodged throw so the miss reads
 
   // The grid is PARAMETRIC to team size: N columns where N = players per side
   // (default 8). Files a..(a+N-1) divide the 0..100 width evenly, so a file's
@@ -53,11 +82,61 @@
 
   function readDbf(text) {
     const m = /^\s*DBF\s+"((?:\\.|[^"\\])*)"/.exec(text);
-    if (!m) fail('missing DBF "..." setup line');
+    if (!m) return { dbf: null, rest: text }; // v0.2: setup may be implied
     return {
       dbf: unescapeString(m[1]),
       rest: text.slice(m[0].length),
     };
+  }
+
+  // ── v0.2 implied setup: back lines + lanes; [Balls]/[Setup] are the diff ──
+  function parseBallsTag(raw) {
+    // "U:45 T:2468" or "U:4,5,10 T:2" — digits per team, commas for 10+
+    const flags = { us: {}, them: {} };
+    const re = /([UT])\s*:\s*([\d,\s]+)/gi;
+    let m;
+    while ((m = re.exec(raw))) {
+      const team = TEAM[m[1].toUpperCase()];
+      const body = m[2].trim();
+      const nums = body.indexOf(",") >= 0
+        ? body.split(",").map(function (s) { return parseInt(s.trim(), 10); })
+        : body.replace(/\s+/g, "").split("").map(function (d) { return parseInt(d, 10); });
+      nums.forEach(function (n) {
+        if (!Number.isFinite(n) || n < 1) fail("bad [Balls] entry: " + raw);
+        flags[team][n] = true;
+      });
+    }
+    return flags;
+  }
+
+  function impliedSetup(tags) {
+    const N = parseInt(tags.players, 10) || 8;
+    GRID_N = N;
+    const flags = tags.balls ? parseBallsTag(tags.balls) : { us: {}, them: {} };
+    function side(team, y) {
+      const out = [];
+      for (let n = 1; n <= N; n++) {
+        out.push({ n: n, x: laneX(n, N), y: y, ball: !!flags[team][n] });
+      }
+      return out;
+    }
+    const setup = { us: side("us", 90), them: side("them", 10), balls: [] };
+    const mode = (tags.setup || "").toLowerCase();
+    if (mode === "rush") {
+      // TPSL opening: nobody holds; three of our balls on the line right, three
+      // of theirs on the line left.
+      setup.us.forEach(function (p) { p.ball = false; });
+      setup.them.forEach(function (p) { p.ball = false; });
+      const makeId = ballIdFactory();
+      [[80, "bU"], [88, "bU"], [96, "bU"], [4, "bT"], [12, "bT"], [20, "bT"]].forEach(function (e) {
+        const ball = { id: makeId(e[1], [e[0], 50]), x: e[0], y: 50 };
+        ball.side = sideForBallTag(e[1]);
+        setup.balls.push(ball);
+      });
+    } else if (mode && mode !== "default") {
+      fail('unknown [Setup "' + tags.setup + '"] (know: rush)');
+    }
+    return setup;
   }
 
   function splitList(text, sep) {
@@ -113,6 +192,42 @@
       raw: m[1] + m[2],
       rest: text.slice(m[0].length),
     };
+  }
+
+  // v0.2 group tokens: T2468? fans across players 2,4,6,8. A number that names
+  // a real roster player (T10) is always that single player; only an unknown
+  // multi-digit run whose every digit is on the roster expands to a group.
+  function parseActorSet(text, roster) {
+    const m = /^([UT])(\d+)/.exec(text);
+    if (!m) fail("bad player action: " + text);
+    const team = TEAM[m[1]];
+    const numStr = m[2];
+    const whole = parseInt(numStr, 10);
+    const known = roster ? roster[team] : null;
+    let players;
+    if (!known || known[whole] || numStr.length === 1) {
+      players = [{ team: team, n: whole }];
+    } else {
+      players = numStr.split("").map(function (d) {
+        const n = parseInt(d, 10);
+        if (!n || !known[n]) fail("unknown player " + m[1] + numStr + " (no " + m[1] + whole + ", and " + m[1] + d + " is not on the roster)");
+        return { team: team, n: n };
+      });
+    }
+    return { players: players, raw: m[1] + numStr, rest: text.slice(m[0].length) };
+  }
+
+  // v0.2 destinations: named depth | bare y-number (both lane-relative) |
+  // (x,y) | file+rank (legacy)
+  function parseDest(s, player, ctx) {
+    s = String(s || "").trim();
+    if (DEPTH.hasOwnProperty(s)) {
+      return [ctx.lane[keyOf(player)], depthY(player.team, s)];
+    }
+    if (/^-?\d+(?:\.\d+)?$/.test(s)) {
+      return [ctx.lane[keyOf(player)], parseNum(s, "depth")];
+    }
+    return parseSquare(s);
   }
 
   function parsePlayerFull(text) {
@@ -233,15 +348,21 @@
 
   function runtimeFor(setup) {
     const pos = {};
+    const lane = {};
+    const roster = { us: {}, them: {} };
     function seed(team, players) {
       (players || []).forEach(function (p) {
         pos[team + "-" + p.n] = [p.x, p.y];
+        lane[team + "-" + p.n] = p.x; // home column — lane-relative moves keep it
+        roster[team][p.n] = true;
       });
     }
     seed("us", setup.us);
     seed("them", setup.them);
     return {
       pos: pos,
+      lane: lane,
+      roster: roster,
       balls: (setup.balls || []).map(function (b, i) {
         return {
           id: b.id,
@@ -395,36 +516,53 @@
         continue;
       }
 
-      const parsed = parsePlayerPrefix(tok);
-      const player = parsed.player;
-      const playerKey = keyOf(player);
+      const parsed = parseActorSet(tok, ctx.roster);
+      const actors = parsed.players;
+      const group = actors.length > 1;
       const op = parsed.rest;
       if (!op) fail("missing action for " + parsed.raw);
 
       if (op[0] === "-") {
         let square = op.slice(1);
-        let grab = false;
-        if (square.endsWith("*")) {
-          grab = true;
-          square = square.slice(0, -1);
+        // run + grab: trailing * with an optional count (U8-line*2)
+        let grabCount = 0;
+        const gm = /\*(\d*)$/.exec(square);
+        if (gm) {
+          grabCount = gm[1] ? parseInt(gm[1], 10) : 1;
+          square = square.slice(0, gm.index);
         }
-        const pos = parseSquare(square);
-        acc.moves.push({ team: player.team, n: player.n, to: pos });
-        beatPos[playerKey] = pos.slice();
-        if (grab) addGrab(acc, player, takeNearestBall(ctx, pos));
+        if (group && /^\(/.test(square.trim())) fail("a group can't share one fixed point — use a lane depth: " + tok);
+        actors.forEach(function (player) {
+          const pos = parseDest(square, player, ctx);
+          acc.moves.push({ team: player.team, n: player.n, to: pos });
+          beatPos[keyOf(player)] = pos.slice();
+          for (let g = 0; g < grabCount; g++) addGrab(acc, player, takeNearestBall(ctx, pos));
+        });
       } else if (op[0] === "*") {
         const refText = op.slice(1).trim();
-        const pos = beatPos[playerKey] || ctx.pos[playerKey];
-        if (!refText) {
-          addGrab(acc, player, takeNearestBall(ctx, pos));
+        if (/^\d+$/.test(refText)) {
+          // grab count: U8*2 takes the two nearest loose balls
+          actors.forEach(function (player) {
+            const pos = beatPos[keyOf(player)] || ctx.pos[keyOf(player)];
+            for (let g = 0; g < parseInt(refText, 10); g++) addGrab(acc, player, takeNearestBall(ctx, pos));
+          });
+        } else if (!refText) {
+          actors.forEach(function (player) {
+            const pos = beatPos[keyOf(player)] || ctx.pos[keyOf(player)];
+            addGrab(acc, player, takeNearestBall(ctx, pos));
+          });
         } else {
+          if (group) fail("a group can't grab one specific ball: " + tok);
           const ref = parseBallRef(refText, tokens[i + 1]);
           i += ref.consumed;
-          addGrab(acc, player, takeSpecificBall(ctx, ref));
+          addGrab(acc, actors[0], takeSpecificBall(ctx, ref));
         }
       } else if (op[0] === ">") {
-        acc.passes.push({ from: player, to: parsePlayerFull(op.slice(1)) });
+        if (group) fail("one passer per token: " + tok);
+        acc.passes.push({ from: actors[0], to: parsePlayerFull(op.slice(1)) });
       } else if (op[0] === "@") {
+        if (group) fail("one thrower per token: " + tok);
+        const player = actors[0];
         const th = parseThrowSuffix(op.slice(1), tok);
         const out = { from: player, to: th.target };
         if (th.curve !== null) out.curve = th.curve;
@@ -438,20 +576,47 @@
         } else if (th.outcome === "#") {
           addSimple(acc, "blocks", th.target);
         }
-      } else if (op === "?") {
-        addSimple(acc, "fakes", player);
+      } else if (op[0] === "?") {
+        // pump-fake, with an optional rep count: U3?2 = fake twice (part of the
+        // call, e.g. "kill left 2, 2" = target 2, two pump-fakes).
+        var fm = /^\?(\d*)$/.exec(op);
+        if (!fm) fail("bad fake token: " + tok);
+        var reps = fm[1] ? parseInt(fm[1], 10) : 1;
+        actors.forEach(function (player) {
+          acc.fakes.push({ team: player.team, n: player.n, reps: reps });
+        });
       } else if (op === "#") {
-        addSimple(acc, "blocks", player);
+        actors.forEach(function (player) { addSimple(acc, "blocks", player); });
       } else if (op === "^") {
-        addSimple(acc, "catches", player);
+        actors.forEach(function (player) { addSimple(acc, "catches", player); });
       } else if (op === "%") {
-        addSimple(acc, "dodges", player);
+        actors.forEach(function (player) { addSimple(acc, "dodges", player); });
       } else if (op === "X" || op === "x") {
-        addSimple(acc, "outs", player);
+        actors.forEach(function (player) { addSimple(acc, "outs", player); });
       } else {
         fail("unknown action: " + tok);
       }
     }
+
+    // ── auto-curves: aesthetics belong to the engine, not the author ──
+    // simultaneous throws at one target fan apart; a dodged throw bows so the
+    // miss reads. Any explicit ~deg wins.
+    const byTarget = {};
+    acc.throws.forEach(function (th) {
+      const k = th.to.team + "-" + th.to.n;
+      (byTarget[k] = byTarget[k] || []).push(th);
+    });
+    Object.keys(byTarget).forEach(function (k) {
+      const list = byTarget[k].filter(function (th) { return th.curve == null; });
+      if (byTarget[k].length > 1) {
+        list.forEach(function (th, idx) {
+          th.curve = Math.round((idx - (list.length - 1) / 2) * AUTO_FAN);
+        });
+      } else if (list.length === 1 && list[0].outcome === "dodged") {
+        list[0].curve = AUTO_DODGE;
+      }
+    });
+    acc.throws.forEach(function (th) { if (th.curve === 0) delete th.curve; });
 
     Object.keys(beatPos).forEach(function (k) { ctx.pos[k] = beatPos[k]; });
 
@@ -474,15 +639,30 @@
     if (typeof text !== "string") fail("input must be a string");
     const tagRead = readTags(text.replace(/\r\n?/g, "\n"));
     const dbfRead = readDbf(tagRead.rest);
-    const setup = parseDbf(dbfRead.dbf);
     const tags = tagRead.tags;
+    let setup;
+    if (dbfRead.dbf != null) {
+      setup = parseDbf(dbfRead.dbf);
+      // [Balls] over an explicit DBF is authoritative for who starts loaded
+      if (tags.balls) {
+        const flags = parseBallsTag(tags.balls);
+        setup.us.forEach(function (p) { p.ball = !!flags.us[p.n]; });
+        setup.them.forEach(function (p) { p.ball = !!flags.them[p.n]; });
+      }
+    } else {
+      setup = impliedSetup(tags);
+    }
     const name = tags.play || tags.name || tags.id || "Untitled Play";
     const play = {
       id: tags.id || slugify(name),
       name: name,
     };
     if (tags.badge != null) play.badge = tags.badge;
-    if (tags.call != null) play.call = tags.call;
+    if (tags.call != null) {
+      // a call is something you shout — the quotes are presentation, so the
+      // author shouldn't have to escape them: [Call "Home"] renders "Home"
+      play.call = /^["“]/.test(tags.call) ? tags.call : '"' + tags.call + '"';
+    }
     if (tags.desc != null) play.desc = tags.desc;
     if (tags.description != null && play.desc == null) play.desc = tags.description;
     play.setup = setup;

@@ -32,54 +32,61 @@
 
   <main id="doc"></main>
 
-  <footer>Plays mirror <a href="/dodging-playbook">Dodging All Night, All Summer</a>. Edit <code>plays.js</code> to add more.</footer>
+  <footer>Plays are the SAME canonical DBN files rendered in the <a href="/dodging-playbook">playbook</a> &mdash; one source of truth. Edit a play in <code>dodgeball-play-notation/examples/*.dbn</code>.</footer>
 </div>
 
 <script src="play-animator.js"></script>
-<script src="plays.js"></script>
+<script src="dbn.js"></script>
 <script>
+  // Render the SAME .dbn plays the playbook uses (one canonical source), grouped
+  // like the playbook's Offensive / Defensive calls. The .dbn files live in the
+  // dodgeball-play-notation repo, served alongside this page under the same host.
   (function(){
+    var BASE = '/dodgeball-play-notation/examples/';
+    var GROUPS = [
+      { title: 'Offensive calls', ids: ['pitch-back','three-ball','insides','outsides','kill-left','kill-right'] },
+      { title: 'Defensive calls', ids: ['home','away','mirror','middle'] }
+    ];
     var doc = document.getElementById('doc');
-    var groups = window.DB_PLAY_GROUPS || [];
-    var plays = window.DB_PLAYS || {};
-    var items = [];   // { el, ctrl }
+    var items = [];
 
-    // Lay every play out in document order, each mounted paused.
-    groups.forEach(function(g){
+    var chain = Promise.resolve();
+    GROUPS.forEach(function(g){
       var h = document.createElement('h2'); h.className = 'group'; h.textContent = g.title;
       doc.appendChild(h);
       g.ids.forEach(function(id){
-        var p = plays[id]; if(!p) return;
         var slot = document.createElement('div'); slot.className = 'play';
         doc.appendChild(slot);
-        var ctrl = DodgeballPlay.mount(slot, p, { autoplay:false, loop:true });
-        items.push({ el: ctrl.el, ctrl: ctrl });
+        chain = chain.then(function(){
+          return fetch(BASE + id + '.dbn').then(function(r){ return r.ok ? r.text() : null; }).then(function(t){
+            if(!t) { slot.remove(); return; }
+            var play = (window.DBN && window.DBN.parse) ? window.DBN.parse(t) : null;
+            if(play && window.DodgeballPlay){
+              var ctrl = DodgeballPlay.mount(slot, play, { autoplay:false, loop:true });
+              items.push({ el: ctrl.el, ctrl: ctrl, ratio: 0 });
+            } else { slot.remove(); }
+          }).catch(function(){ slot.remove(); });
+        });
       });
     });
 
-    // Only one plays at a time: the most-visible inset auto-plays, the rest pause.
-    // Manual play/pause still works — if you pause the active one it stays paused
-    // until a different play scrolls into view.
-    var active = null;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        var it = items.find(function(i){ return i.el === e.target; });
-        if(it) it.ratio = e.isIntersecting ? e.intersectionRatio : 0;
-      });
-      var best = null;
-      items.forEach(function(i){ if((i.ratio||0) > 0 && (!best || i.ratio > best.ratio)) best = i; });
-      if(best && best !== active){
-        if(active) active.ctrl.pause();
-        active = best;
-        active.ctrl.seek(0);
-        active.ctrl.play();
-      } else if(!best && active){
-        active.ctrl.pause();
-        active = null;
-      }
-    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
-
-    items.forEach(function(i){ io.observe(i.el); });
+    chain.then(function(){
+      // Only one plays at a time: the most-visible inset auto-plays, the rest pause.
+      var active = null;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var it = items.find(function(i){ return i.el === e.target; });
+          if(it) it.ratio = e.isIntersecting ? e.intersectionRatio : 0;
+        });
+        var best = null;
+        items.forEach(function(i){ if((i.ratio||0) > 0 && (!best || i.ratio > best.ratio)) best = i; });
+        if(best && best !== active){
+          if(active) active.ctrl.pause();
+          active = best; active.ctrl.seek(0); active.ctrl.play();
+        } else if(!best && active){ active.ctrl.pause(); active = null; }
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      items.forEach(function(i){ io.observe(i.el); });
+    });
   })();
 </script>
 </body>

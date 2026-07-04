@@ -42,3 +42,47 @@ try {
   console.error(err && err.stack ? err.stack : err);
   process.exitCode = 1;
 }
+
+// ── v0.2: implied setup, [Balls], groups, named depths, auto-curves ──
+try {
+  const play = JSON.parse(JSON.stringify(context.DBN.parse(`
+[Play "Home"]
+[Call "Home"]
+[Balls "U:45 T:2468"]
+1. {They bring it up} :1  T2468-line T4?
+2. {Pre-counter} :1  T4@U5% U5@T4!
+`)));
+  assert.strictEqual(play.id, "home", "id slugifies from [Play]");
+  assert.strictEqual(play.call, '"Home"', "call auto-quotes");
+  assert.strictEqual(play.setup.us.length, 8, "implied 8-a-side");
+  assert.deepStrictEqual(
+    play.setup.them.filter((p) => p.ball).map((p) => p.n), [2, 4, 6, 8], "[Balls] flags THEM");
+  assert.deepStrictEqual(
+    play.steps[0].moves.map((m) => [m.n, m.to[0], m.to[1]]),
+    [[2, 20, 45], [4, 44, 45], [6, 68, 45], [8, 92, 45]],
+    "group fans to lanes at line depth");
+  assert.strictEqual(play.steps[1].throws[0].curve, 14, "dodged throw auto-bows");
+  assert.strictEqual(play.steps[1].throws[1].curve, undefined, "single hit stays straight");
+  const rush = JSON.parse(JSON.stringify(context.DBN.parse(`
+[Play "Rush Demo"]
+[Setup "rush"]
+1. {Rush} :1.3  U78-line U8*2 U7* T12-line T1*2 T2*
+`)));
+  assert.strictEqual(rush.setup.balls.length, 6, "rush seeds 6 line balls");
+  assert.deepStrictEqual(
+    rush.steps[0].grabs.map((g) => [g.n, g.balls.length]),
+    [[8, 2], [7, 1], [1, 2], [2, 1]],
+    "grab counts distribute 2+1");
+  const fan = JSON.parse(JSON.stringify(context.DBN.parse(`
+[Play "Fan"]
+[Balls "U:45"]
+1. {Fire} U4@T5! U5@T5!
+`)));
+  assert.deepStrictEqual(
+    fan.steps[0].throws.map((t) => t.curve), [-12, 12], "simultaneous throws fan");
+  console.log("PASS dbn v0.2 (implied setup, groups, depths, auto-curves)");
+} catch (err) {
+  console.error("FAIL dbn v0.2");
+  console.error(err && err.stack ? err.stack : err);
+  process.exitCode = 1;
+}
