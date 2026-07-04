@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Example Playbook</title>
+<style>
+  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:12px}
+  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px;margin:0 auto;padding:26px 18px 64px}
+  header.top{padding:6px 0 16px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  header.top h1{font-size:1.6rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+  header.top p{margin:0;color:var(--muted);font-size:.95rem}
+  header.top a{color:var(--accent);text-decoration:none;font-weight:600}
+  .card{border:1px solid var(--line);border-radius:var(--radius);background:#fcfcfd;padding:14px 14px 16px;margin:0 0 16px}
+  .card .dbp{max-width:100%}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  footer a{color:var(--accent);text-decoration:none}
+  @media(min-width:760px){header.top h1{font-size:1.95rem}}
+  @media(prefers-color-scheme:dark){:root{--ink:#e6e8ec;--muted:#aab2c0;--line:#2a2f3a;--bg:#0b0d11;--accent:#7aa2ff;--accent-soft:#171b22}.card{background:#12151b}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Example Playbook</h1>
+    <p>A tiny sample playbook &mdash; just a few plays, each animated. This isn't a team's real playbook; it's a demo of the format. Test yourself on the <a href="/certification/">Playbook Certification &rarr;</a></p>
+  </header>
+  <main id="doc"></main>
+  <footer>Built on <a href="/dodgeball-play-notation/">DBN</a> &mdash; same engine and plays as the <a href="/dodging-playbook">team playbook</a>.</footer>
+</div>
+<script src="/dodgeball-play-notation/vendor/play-animator.js"></script>
+<script src="/dodgeball-play-notation/vendor/dbn.js"></script>
+<script>
+  (function(){
+    // a small, varied sample: one opener, one 4-ball, one kill, one defense
+    var SAMPLE = ['pitch-back','insides','kill-right','away'];
+    var doc = document.getElementById('doc');
+    var chain = Promise.resolve();
+    SAMPLE.forEach(function(id){
+      var slot = document.createElement('div'); slot.className = 'card';
+      doc.appendChild(slot);
+      chain = chain.then(function(){
+        return fetch('/dodgeball-play-notation/examples/' + id + '.dbn').then(function(r){ return r.ok ? r.text() : null; }).then(function(t){
+          if(!t){ slot.remove(); return; }
+          var play = (window.DBN && window.DBN.parse) ? window.DBN.parse(t) : null;
+          if(play && window.DodgeballPlay){ DodgeballPlay.mount(slot, play, { autoplay:false, loop:true }); }
+          else { slot.remove(); }
+        }).catch(function(){ slot.remove(); });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
