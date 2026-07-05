@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -63,12 +64,24 @@ const Footer = () => {
                     }}>
                         Sam Wilson / Storypixel
                     </span>
-                    <span style={{
-                        fontSize: '0.9rem',
-                        color: 'var(--text-secondary)',
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '1.5rem',
                     }}>
-                        Austin, TX
-                    </span>
+                        <Link to="/privacy" style={{
+                            fontSize: '0.9rem',
+                            color: 'var(--text-secondary)',
+                        }}>
+                            Privacy
+                        </Link>
+                        <span style={{
+                            fontSize: '0.9rem',
+                            color: 'var(--text-secondary)',
+                        }}>
+                            Austin, TX
+                        </span>
+                    </div>
                 </motion.div>
             </motion.div>
         </footer>

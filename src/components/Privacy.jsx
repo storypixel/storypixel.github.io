@@ -38,7 +38,7 @@ const Privacy = () => {
                     marginBottom: '3rem',
                     lineHeight: 1.1
                 }}>
-                    Privacy Policy
+                    Privacy
                 </h1>
 
                 <div style={{
@@ -47,53 +47,16 @@ const Privacy = () => {
                     color: 'var(--text-secondary)',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '2rem'
+                    gap: '1.5rem'
                 }}>
                     <p>
-                        <strong>Last updated: December 26, 2024</strong>
-                    </p>
-                    <p>
-                        Calcuweight is a barbell plate calculator app developed by Storypixel.
-                    </p>
-
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Data Stored Locally</h2>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <li><strong>Personal Records (PRs):</strong> Stored locally on your device.</li>
-                        <li><strong>Preferences:</strong> Settings stored locally.</li>
-                        <li><strong>No Account Required:</strong> Works entirely offline.</li>
-                    </ul>
-
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Camera Feature</h2>
-                    <p>
-                        Photos are sent to Google Gemini API for text recognition to extract workout information. Photos are:
-                    </p>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <li><strong>Not stored</strong> on any server</li>
-                        <li><strong>Not linked</strong> to your identity (no user accounts exist)</li>
-                        <li><strong>Not used for tracking</strong> or advertising purposes</li>
-                    </ul>
-
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Voice Input Feature</h2>
-                    <p>
-                        Audio is processed on-device using Apple's Speech Recognition. Transcribed text is interpreted locally.
+                        This site does not collect personal data. No accounts, no cookies
+                        beyond what the hosting provider requires, no analytics that
+                        identify individual users.
                     </p>
 
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>What We Don't Collect</h2>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <li>No personal information</li>
-                        <li>No analytics or tracking</li>
-                        <li>No advertising</li>
-                        <li>No location data</li>
-                    </ul>
-
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Data Deletion</h2>
                     <p>
-                        Deleting the app removes all data.
-                    </p>
-
-                    <h2 style={{ fontSize: '1.5rem', color: '#fff', marginTop: '1rem' }}>Contact</h2>
-                    <p>
-                        Questions? Email <a href="mailto:privacy@storypixel.io" style={{ color: '#fff', textDecoration: 'underline' }}>privacy@storypixel.io</a>
+                        Questions? <a href="mailto:storypixel@gmail.com" style={{ color: '#fff', textDecoration: 'underline' }}>storypixel@gmail.com</a>
                     </p>
                 </div>
             </motion.div>
