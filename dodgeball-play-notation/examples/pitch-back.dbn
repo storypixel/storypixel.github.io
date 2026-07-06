@@ -1,0 +1,9 @@
+[Play "Pitch Back"]
+[Badge "opening rush"]
+[Call "Pitch back"]
+[Desc "Opening rush. The two right players grab our three center-line balls (one grabs two, one grabs one), then pitch one back to an attacker who steps up to mid-court and picks off a backpedaling rusher."]
+[Setup "rush"]
+
+1. {Rush — the two on the right grab our three (2 + 1)} :1.3  U78-line U8*2 U7* T12-line T1*2 T2*
+2. {Pitch back — attacker steps up} :0.9  U8>U5 U5-68 T12-deep
+3. {Free look — hit a regressing rusher} :1  U5@T2! T12-back

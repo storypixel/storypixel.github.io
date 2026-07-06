@@ -1,0 +1,9 @@
+[Play "Mirror"]
+[Badge "3-ball defense"]
+[Call "Mirror"]
+[Desc "We're holding three balls on defense. They set at the line to throw; the defender directly opposite the thrower has the green light. Our ball-holders step up to the line as the opposite defender fires straight back."]
+[Balls "U:456 T:2468"]
+
+1. {They set at the line} :1  T2468-line T4?
+2. {They throw} :0.9  T4@U4%
+3. {Mirror — our line steps up, opposite defender throws back} :1  U456-line U4@T4!

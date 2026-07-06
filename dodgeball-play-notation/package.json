@@ -1,0 +1,27 @@
+{
+  "name": "dodgeball-play-notation",
+  "version": "0.2.0",
+  "description": "Standalone editor for DBN (Dodgeball Notation): write a play as text, watch it animate. Deep-linkable and agent-drivable. Wraps the canonical dodgeball-play-animator parser/engine.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "src/dbn-headless.js",
+  "scripts": {
+    "test": "node tests/parse.test.js",
+    "serve": "python3 -m http.server 8770"
+  },
+  "files": [
+    "src/",
+    "vendor/",
+    "examples/",
+    "index.html",
+    "NOTATION.md",
+    "GLOSSARY.md",
+    "DRIVING.md"
+  ],
+  "keywords": ["dodgeball", "notation", "dbn", "dsl", "playbook", "animation", "agent-drivable"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storypixel/dodgeball-play-notation.git"
+  },
+  "homepage": "https://storypixel.github.io/dodgeball-play-notation/"
+}

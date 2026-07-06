@@ -1,0 +1,8 @@
+[Play "Middle"]
+[Badge "1-ball defense"]
+[Call "Middle"]
+[Desc "Down to one ball: it goes to a player in the middle, who takes an offensive position to bait throws and win the ball back. They almost never throw that last ball."]
+[Balls "U:1 T:23678"]
+
+1. {They bring it up; we pass to the middle} :1  U1>U4 U4-mid T23678-line
+2. {Bait — they bite, he dodges} :1.1  T6@U4%

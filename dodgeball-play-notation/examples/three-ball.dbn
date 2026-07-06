@@ -1,0 +1,10 @@
+[Id "three-ball"]
+[Play "3 Balls"]
+[Badge "3-ball offense"]
+[Call "meet in the middle"]
+[Desc "With three balls we meet in the middle and step up to the line, then designate one or two throwers on a specific target. The odd man out pump-fakes."]
+[Balls "U:456 T:258"]
+
+1. {Step 1 — meet in the middle, step to the line} :0.9  U4-(48,55) U5-(56,55) U6-(64,55)
+2. {Step 2 — the odd man pump-fakes} :1.1  U6?
+3. {Step 3 — two throwers on 4} :1.0  U4@T4! U5@T4!
