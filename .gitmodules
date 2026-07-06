@@ -1,3 +1,6 @@
 [submodule "public/dodgeball-plays"]
 	path = public/dodgeball-plays
 	url = https://github.com/storypixel/dodgeball-play-animator
+[submodule "public/dodgeball-play-notation"]
+	path = public/dodgeball-play-notation
+	url = https://github.com/storypixel/dodgeball-play-notation.git
