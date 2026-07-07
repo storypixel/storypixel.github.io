@@ -58,6 +58,19 @@
   footer a{color:var(--accent);text-decoration:none}
   @media(prefers-color-scheme:dark){:root{--ink:#e6e8ec;--muted:#aab2c0;--line:#2a2f3a;--bg:#0b0d11;--accent:#7aa2ff;--accent-soft:#171b22}
     .quiz-stage{background:#12151b}.cert{background:linear-gradient(180deg,#1c1808,#141206);color:#f0e6c8}.cert.distinction{background:radial-gradient(120% 80% at 50% 0,#2a2008,#1a1305)}.cert h2,.cert .who{color:#f0e6c8}.fail{background:#12151b}}
+  /* mobile: drop the top paraphrasing + tighten chrome so the quiz fits one screen */
+  @media(max-width:560px){
+    .wrap{padding:14px 15px 36px}
+    h1{font-size:1.35rem;margin:0 0 12px}
+    .sub{display:none}
+    .quiz-stage{margin:0 0 6px;padding:6px}
+    .quiz-stage .dbp__stage{height:175px;width:100%}
+    .prompt{margin:10px 0 8px;font-size:1rem}
+    .choices{gap:8px}
+    .btn{padding:12px 14px}
+    .fb{margin:10px 0 0;min-height:20px}
+    .row{margin-top:12px}
+  }
 </style>
 </head>
 <body>
