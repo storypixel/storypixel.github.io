@@ -1,3 +1,11 @@
+/* ============================================================================
+ * VENDORED from storypixel/dodgeball-play-animator (dbn.js).
+ * CANONICAL SOURCE — DO NOT EDIT HERE.
+ * The DBN spec/parser and the render engine evolve in the animator repo first;
+ * re-vendor this file after upstream changes. Editing it here forks the
+ * notation, which is exactly what this project must not do.
+ * Upstream: https://github.com/storypixel/dodgeball-play-animator
+ * ========================================================================== */
 /* DBN - Dodgeball Notation parser + auto-mount.
  *
  * Produces the same plain play objects consumed by play-animator.js.

@@ -1,3 +1,11 @@
+/* ============================================================================
+ * VENDORED from storypixel/dodgeball-play-animator (play-animator.js).
+ * CANONICAL SOURCE — DO NOT EDIT HERE.
+ * The DBN spec/parser and the render engine evolve in the animator repo first;
+ * re-vendor this file after upstream changes. Editing it here forks the
+ * notation, which is exactly what this project must not do.
+ * Upstream: https://github.com/storypixel/dodgeball-play-animator
+ * ========================================================================== */
 /* Dodgeball Play Animator — self-contained, no dependencies.
  *
  * One engine, mounted as many times as you like. Each mount renders an
@@ -122,12 +130,16 @@
 
     steps.forEach((st) => {
       const dur = st.dur || 1;
-      labels.push({ t0, t1: t0 + dur, text: st.label || "" });
-      // fakes are momentary flags for the duration of the step; the value is
-      // the pump-fake rep count (bare `?` = 1) so the renderer pulses N times.
+      const lbl = { t0, t1: t0 + dur, text: st.label || "", fakes: [], maxReps: 0 };
+      labels.push(lbl);
+      // pump-fakes are recorded on this beat's label (which actor, how many reps)
+      // so playback can DWELL on this beat and visibly cock the ball N times.
       (st.fakes || []).forEach((f) => {
         const a = actors.get(keyOf(f.team, f.n));
-        if (a) a.fake = f.reps || 1;
+        const reps = f.reps || 1;
+        if (a) a.fake = reps;
+        lbl.fakes.push({ key: keyOf(f.team, f.n), reps: reps });
+        if (reps > lbl.maxReps) lbl.maxReps = reps;
       });
       // moves resolve by the END of the step
       (st.moves || []).forEach((mv) => {
@@ -307,8 +319,9 @@
     const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
     const ICON_REPLAY = '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
 
-    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null;
+    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false, fakeDwell = null;
     const DWELL_MS = 750; // hold this long at each beat node during playback
+    const PUMP_MS = 430;  // one pump-fake cock; a fake beat dwells long enough to show every rep
     const SPEED = (opts.speed || 2) * 1.0; // play-units per second; default 2x for realistic pace. Pass speed:1 for the old pace.
 
     function render() {
@@ -373,27 +386,31 @@
         const inFlight = c.throws.filter((th) => { const fl = Math.min(0.7, th.t1 - th.t0); return th.from === key && t >= th.t1 - fl && t < th.t1; }).length;
         const held = Math.max(0, a.balls - inFlight);
         if (!a.out && held > 0) {
-          // a pump-fake COCKS the ball toward the target N times (the player
-          // stands still). `a.fake` is the rep count; each pump is a wind-up
-          // and thrust toward the far line, spaced evenly across the beat.
-          let fx = 0, fy = 0;
-          if (a.fake && playing) {
-            const reps = a.fake;
-            const pump = Math.sin(a.fakePhase * reps * Math.PI); // reps humps: 0→1→0 each pump
-            const toward = a.team === "us" ? -1 : 1;             // us shoot up-court, them down
-            fy = toward * Math.abs(pump) * 13;                   // thrust toward the far line
-            fx = pump * 3;                                        // slight cock to the side
+          // a pump-fake COCKS the ball toward the far line N times (the player
+          // stays put). Animated during the extended dwell on the fake beat
+          // (fakeDwell) so it reads as a clear cock-cock, not a mid-tween blur.
+          let fy = 0, lean = 0;
+          if (fakeDwell && fakeDwell.actors.has(key)) {
+            const reps = fakeDwell.reps;
+            const u = Math.min(1, (fakeDwell.elapsed || 0) / (reps * PUMP_MS)); // 0→1 over all pumps
+            const pump = Math.abs(Math.sin(u * reps * Math.PI));                 // N forward thrusts
+            const toward = a.team === "us" ? -1 : 1;                             // us cock up-court, them down
+            fy = toward * pump * 30;                                             // big thrust toward the far line
+            lean = toward * pump * 7;                                            // body cocks with it
           }
+          if (lean) g.setAttribute("transform", "translate(0," + lean.toFixed(2) + ")");
           const slots = [[22, -16], [22, 6]];
           for (let h = 0; h < Math.min(held, slots.length); h++) {
-            g.appendChild(svg("circle", { cx: X + slots[h][0] + fx, cy: Y + slots[h][1] + fy, r: 9, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
+            g.appendChild(svg("circle", { cx: X + slots[h][0], cy: Y + slots[h][1] + fy, r: 9, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
           }
         }
         layer.appendChild(g);
       });
 
       // step label + current-beat dot
-      let cur = c.labels.findIndex((l) => t < l.t1);
+      // while pumping, keep the label on the pump-fake beat (the dwell sits on the
+      // boundary, which would otherwise read as the next/throw beat).
+      let cur = fakeDwell ? fakeDwell.stepIdx : c.labels.findIndex((l) => t < l.t1);
       if (cur < 0) cur = c.labels.length - 1;
       stepEl.textContent = c.labels[cur]
         ? (cur + 1) + "/" + c.labels.length + (c.labels[cur].text ? " · " + c.labels[cur].text : "")
@@ -409,10 +426,15 @@
     function frame(ts) {
       if (!playing) return;
       if (!lastTs) lastTs = ts;
-      // hold at a beat node (the animation pauses briefly at each stopping point)
+      // hold at a beat node (the animation pauses briefly at each stopping point).
+      // On a pump-fake beat, the hold is extended and the held ball is animated
+      // cocking toward the far line — so the fake is actually visible.
       if (dwellUntil) {
-        if (ts < dwellUntil) { lastTs = ts; raf = requestAnimationFrame(frame); return; }
-        dwellUntil = 0; lastTs = ts;
+        if (ts < dwellUntil) {
+          if (fakeDwell) { fakeDwell.elapsed = ts - fakeDwell.start; render(); }
+          lastTs = ts; raf = requestAnimationFrame(frame); return;
+        }
+        dwellUntil = 0; fakeDwell = null; lastTs = ts;
       }
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
@@ -423,10 +445,25 @@
       }
       // playing through: snap to each beat node, dwell, then continue
       const node = bounds.find((b) => b > t + 1e-6 && b <= nt + 1e-6 && b < c.totalDur - 1e-6);
-      if (node != null) { nt = node; dwellUntil = ts + DWELL_MS; }
+      if (node != null) {
+        nt = node;
+        // if this beat ends on a pump-fake, dwell long enough to show every pump
+        const fi = c.labels.findIndex((l) => Math.abs(l.t1 - node) < 1e-6 && l.fakes && l.fakes.length);
+        if (fi >= 0) {
+          const fl = c.labels[fi];
+          fakeDwell = { start: ts, elapsed: 0, reps: fl.maxReps, actors: new Set(fl.fakes.map((f) => f.key)), stepIdx: fi };
+          dwellUntil = ts + fl.maxReps * PUMP_MS + 320;
+        } else {
+          dwellUntil = ts + DWELL_MS;
+        }
+      }
       t = nt;
-      // it is a slideshow, not a video: it stops at the end, it does not loop
-      if (t >= c.totalDur) { t = c.totalDur; render(); pause(); updateBtn(); return; }
+      // slideshow default: stop at the end. loop() mode (used by the quiz) runs
+      // through continuously, dwelling at the end, then restarts from the top.
+      if (t >= c.totalDur) {
+        if (loopMode) { t = c.totalDur; render(); dwellUntil = ts + DWELL_MS * 1.5; t = 0; lastTs = ts; raf = requestAnimationFrame(frame); return; }
+        t = c.totalDur; render(); pause(); updateBtn(); return;
+      }
       render();
       raf = requestAnimationFrame(frame);
     }
@@ -438,7 +475,11 @@
     function play_() {
       playing = true; lastTs = 0; dwellUntil = 0; updateBtn(); raf = requestAnimationFrame(frame);
     }
-    function pause() { playing = false; cancelAnimationFrame(raf); updateBtn(); }
+    function pause() { playing = false; loopMode = false; fakeDwell = null; cancelAnimationFrame(raf); updateBtn(); }
+
+    // play through ALL beats continuously and loop from the top — for the quiz,
+    // where you study a play on repeat. pause()/any other control cancels it.
+    function loop() { stopAt = null; loopMode = true; setT(0); play_(); }
 
     // play the current beat's motion and STOP at the next node. A play is a
     // slideshow: each press advances one beat and stops; it does not run through.
@@ -522,7 +563,7 @@
       if (root.parentNode) root.parentNode.removeChild(root);
     }
 
-    return { play: playAll, pause, seek: setT, next: nextBeat, prev: prevBeat, replay, destroy, el: root };
+    return { play: playAll, pause, seek: setT, next: nextBeat, prev: prevBeat, replay, loop, destroy, el: root };
   }
 
   function autoInit() {
