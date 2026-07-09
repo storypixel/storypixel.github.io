@@ -618,6 +618,187 @@
       }
     ]
   },
+  "insides-3": {
+    "id": "insides-3",
+    "name": "Insides — 3 balls",
+    "badge": "3-ball offense",
+    "call": "\"Insides on 5\"",
+    "desc": "The three-ball version of Insides: the two middle players still throw at the same number — here the 5th from the left — while the lone corner holder pump-fakes to pull the block.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 90,
+          "ball": false
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 10,
+          "ball": true
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Step 1 — ball-holders step up to the line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              8,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              44,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56,
+              55
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 2 — the corner pump-fakes to pull the block",
+        "dur": 1.1,
+        "fakes": [
+          {
+            "team": "us",
+            "n": 1,
+            "reps": 1
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — insides on 5: the two middles release",
+        "dur": 1,
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 4
+            },
+            "to": {
+              "team": "them",
+              "n": 5
+            },
+            "curve": -12
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 5
+            },
+            "to": {
+              "team": "them",
+              "n": 5
+            },
+            "curve": 12
+          }
+        ]
+      }
+    ]
+  },
   "kill-left": {
     "id": "kill-left",
     "name": "Kill Left",
@@ -822,6 +1003,197 @@
       }
     ]
   },
+  "kill-left-3": {
+    "id": "kill-left-3",
+    "name": "Kill Left — 3 balls",
+    "badge": "left kill",
+    "call": "\"Kill left 2, 2\"",
+    "desc": "Kill Left with three balls: same call — the whole line pump-fakes in unison, then the two leftmost holders fire at their 2 on the count.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 90,
+          "ball": false
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 10,
+          "ball": true
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Step 1 — ball-holders step up to the line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 3,
+            "to": [
+              32,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              44,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56,
+              55
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "dur": 1.2,
+        "fakes": [
+          {
+            "team": "us",
+            "n": 3,
+            "reps": 2
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "reps": 2
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "reps": 2
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — kill left on 2: the two left holders release",
+        "dur": 1,
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 3
+            },
+            "to": {
+              "team": "them",
+              "n": 2
+            },
+            "curve": -12
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 4
+            },
+            "to": {
+              "team": "them",
+              "n": 2
+            },
+            "curve": 12
+          }
+        ]
+      }
+    ]
+  },
   "kill-right": {
     "id": "kill-right",
     "name": "Kill Right",
@@ -979,6 +1351,197 @@
             "n": 3,
             "reps": 2
           },
+          {
+            "team": "us",
+            "n": 4,
+            "reps": 2
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "reps": 2
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "reps": 2
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — kill right on 7: the two right holders release",
+        "dur": 1,
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 5
+            },
+            "to": {
+              "team": "them",
+              "n": 7
+            },
+            "curve": -12
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 6
+            },
+            "to": {
+              "team": "them",
+              "n": 7
+            },
+            "curve": 12
+          }
+        ]
+      }
+    ]
+  },
+  "kill-right-3": {
+    "id": "kill-right-3",
+    "name": "Kill Right — 3 balls",
+    "badge": "right kill",
+    "call": "\"Kill right 7, 2\"",
+    "desc": "Kill Right with three balls: same call — the whole line pump-fakes in unison, then the two rightmost holders fire at their 7 on the count.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 90,
+          "ball": false
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 10,
+          "ball": false
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Step 1 — ball-holders step up to the line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              44,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              68,
+              55
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "dur": 1.2,
+        "fakes": [
           {
             "team": "us",
             "n": 4,
@@ -1603,6 +2166,187 @@
           {
             "team": "us",
             "n": 5,
+            "reps": 1
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — outsides on 4: the two corners release",
+        "dur": 1,
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 1
+            },
+            "to": {
+              "team": "them",
+              "n": 4
+            },
+            "curve": -12
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 8
+            },
+            "to": {
+              "team": "them",
+              "n": 4
+            },
+            "curve": 12
+          }
+        ]
+      }
+    ]
+  },
+  "outsides-3": {
+    "id": "outsides-3",
+    "name": "Outsides — 3 balls",
+    "badge": "3-ball offense",
+    "call": "\"Outsides on 4\"",
+    "desc": "The three-ball version of Outsides: both corners still throw at the same number from opposite angles, so no single block covers both balls, while the lone middle holder pump-fakes to pull the block.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 90,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 90,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 90,
+          "ball": true
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 8,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 20,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 32,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 44,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 68,
+          "y": 10,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 80,
+          "y": 10,
+          "ball": true
+        },
+        {
+          "n": 8,
+          "x": 92,
+          "y": 10,
+          "ball": true
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Step 1 — ball-holders step up to the line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              8,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              44,
+              55
+            ]
+          },
+          {
+            "team": "us",
+            "n": 8,
+            "to": [
+              92,
+              55
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 2 — the middle pump-fakes to pull the block",
+        "dur": 1.1,
+        "fakes": [
+          {
+            "team": "us",
+            "n": 4,
             "reps": 1
           }
         ]

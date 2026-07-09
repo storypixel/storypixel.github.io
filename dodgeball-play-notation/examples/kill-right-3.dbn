@@ -1,0 +1,10 @@
+[Id "kill-right-3"]
+[Play "Kill Right — 3 balls"]
+[Badge "right kill"]
+[Call "Kill right 7, 2"]
+[Desc "Kill Right with three balls: same call — the whole line pump-fakes in unison, then the two rightmost holders fire at their 7 on the count."]
+[Balls "U:456 T:126"]
+
+1. {Step 1 — ball-holders step up to the line} :0.9  U456-line
+2. {Step 2 — two pump-fakes in unison (freeze the defense)} :1.2  U456?2
+3. {Step 3 — kill right on 7: the two right holders release} :1.0  U5@T7! U6@T7!

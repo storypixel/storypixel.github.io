@@ -1,0 +1,10 @@
+[Id "insides-3"]
+[Play "Insides — 3 balls"]
+[Badge "3-ball offense"]
+[Call "Insides on 5"]
+[Desc "The three-ball version of Insides: the two middle players still throw at the same number — here the 5th from the left — while the lone corner holder pump-fakes to pull the block."]
+[Balls "U:145 T:378"]
+
+1. {Step 1 — ball-holders step up to the line} :0.9  U145-line
+2. {Step 2 — the corner pump-fakes to pull the block} :1.1  U1?
+3. {Step 3 — insides on 5: the two middles release} :1.0  U4@T5! U5@T5!
