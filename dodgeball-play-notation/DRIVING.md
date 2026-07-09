@@ -5,6 +5,10 @@ paths, fastest first. Everything below is copy-paste.
 
 > Live URL: `https://iamnotsam.com/dodgeball-play-notation/`
 
+> **No browser needed?** Use the `dbn` CLI instead — `dbn show <play>` renders a
+> play as a text court, `dbn validate` / `dbn describe` / `dbn new` cover authoring.
+> See the README's *Agent-drivable* section. This page is for the browser/visual path.
+
 ---
 
 ## 30-second version — load the same play two ways

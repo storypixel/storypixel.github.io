@@ -33,15 +33,34 @@ editor** on top of canonical DBN — it does not define the notation.
 
 ## Agent-drivable (the point)
 
-An agent can run this editor headlessly, three ways:
+A play is just text, so an agent can author and verify one end-to-end.
 
-1. **Deep link** — open the editor with the play in the URL, it renders on load:
-   `…/?dbn=<url-encoded-DBN>` or `…/?play=kill-left` (plus `?autoplay=1`).
+### The `dbn` CLI — fastest path, no browser
+
+```bash
+npm link            # or:  npx dbn <cmd>   ·   or:  node bin/dbn.js <cmd>
+
+dbn examples                      # list the bundled plays
+dbn show kill-left                # render each beat as a TEXT court (see it, no DOM)
+dbn describe away                 # beat-by-beat play summary in plain words
+dbn new "Corner Trap" > ct.dbn    # scaffold a valid play (grammar cheatsheet → stderr)
+dbn validate ct.dbn               # parse + report OK/errors (exit 1 on error)
+dbn link ct.dbn --autoplay        # live preview URL
+cat ct.dbn | dbn show -           # everything reads a file, a bundled name, or stdin
+```
+
+The agent authoring loop is: **`new` → edit → `validate` → `show`/`describe` → `link`.**
+`dbn show` prints a text court (THEM top, US bottom, `o`=ball, `x`=out) plus an action
+line per beat — the same truth the animation renders, so an agent can confirm a play
+is right without ever opening a browser.
+
+### In a browser (for the visual)
+
+1. **Deep link** — `…/?dbn=<url-encoded-DBN>` or `…/?play=kill-left` (plus `?autoplay=1`). Get one with `dbn link`.
 2. **Window API** — `window.DBNEditor.{load, render, exportSVG, exportJSON, getErrors, getPlay, getText, isReady}`, callable via `evaluate_script`.
-3. **Pure-Node headless** — no DOM at all: `require("./src/dbn-headless.js")` →
-   `parse(text)`, `toJSON(text)`, `toSetupSVG(text)` for CI / agents.
+3. **Pure-Node headless** — `require("./src/dbn-headless.js")` → `parse(text)`, `toJSON(text)`, `toSetupSVG(text)`.
 
-See **[DRIVING.md](DRIVING.md)** for copy-paste examples (30 seconds to drive it).
+See **[DRIVING.md](DRIVING.md)** for copy-paste browser examples.
 
 Every control also carries a stable `data-testid` + ARIA label for browser
 automation: `dbn-input`, `render-button`, `example-select`, `speed-select`,

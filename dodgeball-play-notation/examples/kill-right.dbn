@@ -2,7 +2,7 @@
 [Badge "right kill"]
 [Call "Kill right 7, 2"]
 [Desc "The mirror of Kill Left: the two right-side ball-holders throw at one specified target after the whole line pump-fakes in unison. Called as \"kill right <target>, <pump-fakes>\" — here the two rightmost holders fire at their 7 on the count after two pump-fakes."]
-[Balls "U:3456"]
+[Balls "U:3456 T:26"]
 
 1. {Step 1 — ball-holders step up to the line} :0.9  U3456-line
 2. {Step 2 — two pump-fakes in unison (freeze the defense)} :1.2  U3456?2

@@ -2,7 +2,7 @@
 [Badge "3-ball defense"]
 [Call "Home"]
 [Desc "We're holding three balls on defense. They bring their balls up to the line to attack; the designated defender reads the throw and pre-counters — releasing first, from their own position, to hit the thrower before their ball lands."]
-[Balls "U:456 T:2468"]
+[Balls "U:456 T:246"]
 
-1. {They bring it up to the line} :1  T2468-line T4?
+1. {They bring it up to the line} :1  T246-line T4?
 2. {Home — pre-counter beats their throw} :1  T4@U5% U5@T4!

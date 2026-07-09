@@ -2,8 +2,8 @@
 [Badge "3-ball defense"]
 [Call "Away"]
 [Desc "We're holding three balls on defense. They attack the line first; when they throw we rush — as they retreat off the line, our three ball-holders surge forward and counter the thrower on the run."]
-[Balls "U:456 T:2468"]
+[Balls "U:456 T:246"]
 
-1. {They bring it up to the line} :1  T2468-line T4?
+1. {They bring it up to the line} :1  T246-line T4?
 2. {They throw} :0.9  T4@U2%
-3. {We rush as they retreat — and counter} :1.2  U456-line T2468-deep U5@T4!
+3. {We rush as they retreat — and counter} :1.2  U456-line T246-deep U5@T4!

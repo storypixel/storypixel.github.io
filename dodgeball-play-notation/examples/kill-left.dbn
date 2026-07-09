@@ -2,7 +2,7 @@
 [Badge "left kill"]
 [Call "Kill left 2, 2"]
 [Desc "The two left-side ball-holders throw at one specified target after the whole line pump-fakes in unison. Called as \"kill left <target>, <pump-fakes>\" — here the two leftmost holders fire at their 2 on the count after two pump-fakes."]
-[Balls "U:3456"]
+[Balls "U:3456 T:37"]
 
 1. {Step 1 — ball-holders step up to the line} :0.9  U3456-line
 2. {Step 2 — two pump-fakes in unison (freeze the defense)} :1.2  U3456?2
