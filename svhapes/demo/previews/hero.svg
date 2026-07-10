@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Svhapes hero preview</title>
+  <desc id="desc">Editorial Svhapes title beside three colorful organic forms.</desc>
+  <rect width="1200" height="800" fill="#f2f0e7"/>
+  <path d="M0 80H1200M0 720H1200" stroke="#191a16" stroke-opacity=".14"/>
+  <text x="72" y="130" fill="#191a16" font-family="Georgia,serif" font-size="34" font-weight="700">Svhapes</text>
+  <text x="72" y="330" fill="#191a16" font-family="Georgia,serif" font-size="96">Better edges.</text>
+  <text x="72" y="425" fill="#191a16" font-family="Georgia,serif" font-size="96">Zero tracing.</text>
+  <text x="78" y="485" fill="#5d5e55" font-family="Arial,sans-serif" font-size="24">Smooth, copyable CSS shapes for people and agents.</text>
+  <path d="M775 156C825 114 889 155 922 121C958 85 1024 113 1030 164C1036 215 1106 220 1112 272C1118 322 1064 349 1020 335C976 321 952 376 900 358C848 340 836 290 793 270C750 250 732 193 775 156Z" fill="#ff745f"/>
+  <path d="M653 428C668 370 730 372 766 340C804 306 856 344 900 329C948 313 991 350 1003 397C1015 444 1066 471 1041 520C1014 572 957 561 915 578C871 596 841 550 797 560C746 572 692 551 680 505C671 472 643 466 653 428Z" fill="#5872ff"/>
+  <path d="M760 268C803 245 846 276 884 258C925 239 963 270 1004 258C1048 245 1098 271 1090 318C1082 364 1104 404 1091 447C1079 488 1099 535 1060 559C1020 583 984 555 947 570C907 586 878 554 840 569C801 585 757 560 760 515C764 470 739 435 758 395C774 360 726 286 760 268Z" fill="#d7fb54"/>
+  <text x="815" y="396" fill="#191a16" font-family="monospace" font-size="18">shape()</text>
+  <text x="815" y="442" fill="#191a16" font-family="Georgia,serif" font-size="42">without the</text>
+  <text x="815" y="486" fill="#191a16" font-family="Georgia,serif" font-size="42">shape anxiety</text>
+</svg>

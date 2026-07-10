@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Svhapes catalog preview</title>
+  <desc id="desc">A searchable catalog showing three distinct copyable CSS shapes.</desc>
+  <rect width="1200" height="800" fill="#f2f0e7"/>
+  <text x="60" y="100" fill="#191a16" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4">THE SHELF</text>
+  <text x="60" y="180" fill="#191a16" font-family="Georgia,serif" font-size="72">Pick a silhouette.</text>
+  <rect x="60" y="220" width="1080" height="58" rx="29" fill="none" stroke="#191a16" stroke-opacity=".25"/>
+  <text x="92" y="257" fill="#5d5e55" font-family="Arial,sans-serif" font-size="20">Search by name, use, or mood</text>
+  <g transform="translate(60 330)">
+    <rect width="330" height="390" rx="24" fill="#fffaf0" stroke="#191a16" stroke-opacity=".15"/>
+    <path d="M57 50C87 29 116 52 139 37C166 19 186 49 215 38C246 26 281 45 274 78C268 112 287 139 274 170C260 203 281 237 251 257C219 278 194 255 166 267C135 280 116 254 86 266C55 279 31 254 39 222C47 191 29 166 41 137C54 108 26 72 57 50Z" fill="#d7fb54"/>
+    <text x="28" y="318" fill="#191a16" font-family="Georgia,serif" font-size="34">Cloud Frame</text>
+    <text x="28" y="352" fill="#5d5e55" font-family="monospace" font-size="15">cloud-frame</text>
+  </g>
+  <g transform="translate(435 330)">
+    <rect width="330" height="390" rx="24" fill="#fffaf0" stroke="#191a16" stroke-opacity=".15"/>
+    <path d="M165 36C189 66 212 42 225 78C238 115 270 92 271 132C273 171 300 172 271 202C242 232 267 250 225 258C186 266 197 295 165 271C133 247 119 282 103 246C87 210 51 231 61 190C70 151 37 144 71 119C104 95 78 68 119 70C158 72 142 8 165 36Z" fill="#ff745f"/>
+    <text x="28" y="318" fill="#191a16" font-family="Georgia,serif" font-size="34">Coral Bloom</text>
+    <text x="28" y="352" fill="#5d5e55" font-family="monospace" font-size="15">coral-bloom</text>
+  </g>
+  <g transform="translate(810 330)">
+    <rect width="330" height="390" rx="24" fill="#fffaf0" stroke="#191a16" stroke-opacity=".15"/>
+    <path d="M42 48C70 38 93 57 117 45C143 32 164 56 191 44C219 31 244 55 276 48C295 91 278 119 291 150C305 184 280 210 291 244C278 272 250 264 225 276C198 289 177 265 150 278C123 291 100 266 72 277C39 267 47 234 36 210C25 184 48 161 36 134C24 107 48 80 42 48Z" fill="#5872ff"/>
+    <text x="28" y="318" fill="#191a16" font-family="Georgia,serif" font-size="34">Golden Tide</text>
+    <text x="28" y="352" fill="#5d5e55" font-family="monospace" font-size="15">golden-tide</text>
+  </g>
+</svg>

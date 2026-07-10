@@ -1,0 +1,4073 @@
+{
+  "$schema": "../schema/svhape.schema.json",
+  "schemaVersion": "0.1.0",
+  "packageVersion": "0.1.0",
+  "generatorVersion": "0.1.0",
+  "shapeCount": 18,
+  "shapes": [
+    {
+      "id": "cloud-frame",
+      "name": "Cloud Frame",
+      "family": "blob",
+      "description": "Generous rounded billows around a content-safe center.",
+      "className": "svhape--cloud-frame",
+      "tags": [
+        "capacity:standard",
+        "cloud",
+        "container",
+        "family:blob",
+        "playful",
+        "soft",
+        "use:callout",
+        "use:card",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "celebrations",
+        "friendly CTAs",
+        "kids content"
+      ],
+      "selection": {
+        "uses": [
+          "callout",
+          "card",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "standard",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 38,
+        "anchors": [
+          [
+            6.4,
+            6.4
+          ],
+          [
+            14.327,
+            3.6
+          ],
+          [
+            23.84,
+            9.2
+          ],
+          [
+            31.767,
+            4.3
+          ],
+          [
+            41.28,
+            8.5
+          ],
+          [
+            49.207,
+            3.6
+          ],
+          [
+            58.72,
+            9.2
+          ],
+          [
+            66.647,
+            4.3
+          ],
+          [
+            76.16,
+            8.5
+          ],
+          [
+            84.087,
+            3.6
+          ],
+          [
+            93.6,
+            6.4
+          ],
+          [
+            96.15,
+            16.309
+          ],
+          [
+            91.05,
+            28.2
+          ],
+          [
+            95.512,
+            38.109
+          ],
+          [
+            91.688,
+            50
+          ],
+          [
+            96.15,
+            59.909
+          ],
+          [
+            91.05,
+            71.8
+          ],
+          [
+            95.512,
+            81.709
+          ],
+          [
+            93.6,
+            93.6
+          ],
+          [
+            86.994,
+            95.775
+          ],
+          [
+            79.067,
+            91.425
+          ],
+          [
+            72.461,
+            96.5
+          ],
+          [
+            64.533,
+            90.7
+          ],
+          [
+            57.927,
+            95.775
+          ],
+          [
+            50,
+            91.425
+          ],
+          [
+            43.394,
+            96.5
+          ],
+          [
+            35.467,
+            90.7
+          ],
+          [
+            28.861,
+            95.775
+          ],
+          [
+            20.933,
+            91.425
+          ],
+          [
+            14.327,
+            96.5
+          ],
+          [
+            6.4,
+            93.6
+          ],
+          [
+            3.95,
+            83.691
+          ],
+          [
+            8.85,
+            71.8
+          ],
+          [
+            4.563,
+            61.891
+          ],
+          [
+            8.238,
+            50
+          ],
+          [
+            3.95,
+            40.091
+          ],
+          [
+            8.85,
+            28.2
+          ],
+          [
+            4.563,
+            18.291
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 6.4% 6.4%, curve to 14.327% 3.6% with 8.027% 3.952% / 11.42% 3.133%, curve to 23.84% 9.2% with 17.234% 4.067% / 20.933% 9.083%, curve to 31.767% 4.3% with 26.747% 9.317% / 28.86% 4.417%, curve to 41.28% 8.5% with 34.674% 4.183% / 38.373% 8.617%, curve to 49.207% 3.6% with 44.187% 8.383% / 46.3% 3.483%, curve to 58.72% 9.2% with 52.114% 3.717% / 55.813% 9.083%, curve to 66.647% 4.3% with 61.627% 9.317% / 63.74% 4.417%, curve to 76.16% 8.5% with 69.554% 4.183% / 73.253% 8.617%, curve to 84.087% 3.6% with 79.067% 8.383% / 81.18% 3.95%, curve to 93.6% 6.4% with 86.994% 3.25% / 91.589% 4.282%, curve to 96.15% 16.309% with 95.611% 8.518% / 96.575% 12.676%, curve to 91.05% 28.2% with 95.725% 19.942% / 91.156% 24.567%, curve to 95.512% 38.109% with 90.944% 31.833% / 95.406% 34.476%, curve to 91.688% 50% with 95.618% 41.742% / 91.582% 46.367%, curve to 96.15% 59.909% with 91.794% 53.633% / 96.256% 56.276%, curve to 91.05% 71.8% with 96.044% 63.542% / 91.156% 68.167%, curve to 95.512% 81.709% with 90.944% 75.433% / 95.087% 78.076%, curve to 93.6% 93.6% with 95.937% 85.342% / 95.02% 91.256%, curve to 86.994% 95.775% with 92.18% 95.944% / 89.416% 96.138%, curve to 79.067% 91.425% with 84.572% 95.413% / 81.489% 91.304%, curve to 72.461% 96.5% with 76.645% 91.546% / 74.883% 96.621%, curve to 64.533% 90.7% with 70.039% 96.379% / 66.955% 90.821%, curve to 57.927% 95.775% with 62.111% 90.579% / 60.349% 95.654%, curve to 50% 91.425% with 55.505% 95.896% / 52.422% 91.304%, curve to 43.394% 96.5% with 47.578% 91.546% / 45.816% 96.621%, curve to 35.467% 90.7% with 40.972% 96.379% / 37.889% 90.821%, curve to 28.861% 95.775% with 33.045% 90.579% / 31.283% 95.654%, curve to 20.933% 91.425% with 26.439% 95.896% / 23.355% 91.304%, curve to 14.327% 96.5% with 18.511% 91.546% / 16.749% 96.138%, curve to 6.4% 93.6% with 11.905% 96.863% / 8.13% 95.735%, curve to 3.95% 83.691% with 4.671% 91.465% / 3.542% 87.324%, curve to 8.85% 71.8% with 4.358% 80.058% / 8.748% 75.433%, curve to 4.563% 61.891% with 8.952% 68.167% / 4.665% 65.524%, curve to 8.238% 50% with 4.461% 58.258% / 8.34% 53.633%, curve to 3.95% 40.091% with 8.136% 46.367% / 3.848% 43.724%, curve to 8.85% 28.2% with 4.052% 36.458% / 8.748% 31.833%, curve to 4.563% 18.291% with 8.952% 24.567% / 4.971% 21.924%, curve to 6.4% 6.4% with 4.155% 14.658% / 4.773% 8.849%, close)",
+        "sourceDigest": "sha256-e1fdd56a986533e9c69270b43d6229a6c0da2d7d368b3f4e3b2c256da85799d1"
+      },
+      "fallback": {
+        "borderRadius": "40px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--cloud-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--cloud-frame",
+        "standaloneCss": ".svhape--cloud-frame {\n  border-radius: 40px;\n  overflow: hidden;\n}\n\n.svhape--cloud-frame.svhape--padded {\n  padding: 12%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--cloud-frame {\n    border-radius: 0;\n    clip-path: shape(from 6.4% 6.4%, curve to 14.327% 3.6% with 8.027% 3.952% / 11.42% 3.133%, curve to 23.84% 9.2% with 17.234% 4.067% / 20.933% 9.083%, curve to 31.767% 4.3% with 26.747% 9.317% / 28.86% 4.417%, curve to 41.28% 8.5% with 34.674% 4.183% / 38.373% 8.617%, curve to 49.207% 3.6% with 44.187% 8.383% / 46.3% 3.483%, curve to 58.72% 9.2% with 52.114% 3.717% / 55.813% 9.083%, curve to 66.647% 4.3% with 61.627% 9.317% / 63.74% 4.417%, curve to 76.16% 8.5% with 69.554% 4.183% / 73.253% 8.617%, curve to 84.087% 3.6% with 79.067% 8.383% / 81.18% 3.95%, curve to 93.6% 6.4% with 86.994% 3.25% / 91.589% 4.282%, curve to 96.15% 16.309% with 95.611% 8.518% / 96.575% 12.676%, curve to 91.05% 28.2% with 95.725% 19.942% / 91.156% 24.567%, curve to 95.512% 38.109% with 90.944% 31.833% / 95.406% 34.476%, curve to 91.688% 50% with 95.618% 41.742% / 91.582% 46.367%, curve to 96.15% 59.909% with 91.794% 53.633% / 96.256% 56.276%, curve to 91.05% 71.8% with 96.044% 63.542% / 91.156% 68.167%, curve to 95.512% 81.709% with 90.944% 75.433% / 95.087% 78.076%, curve to 93.6% 93.6% with 95.937% 85.342% / 95.02% 91.256%, curve to 86.994% 95.775% with 92.18% 95.944% / 89.416% 96.138%, curve to 79.067% 91.425% with 84.572% 95.413% / 81.489% 91.304%, curve to 72.461% 96.5% with 76.645% 91.546% / 74.883% 96.621%, curve to 64.533% 90.7% with 70.039% 96.379% / 66.955% 90.821%, curve to 57.927% 95.775% with 62.111% 90.579% / 60.349% 95.654%, curve to 50% 91.425% with 55.505% 95.896% / 52.422% 91.304%, curve to 43.394% 96.5% with 47.578% 91.546% / 45.816% 96.621%, curve to 35.467% 90.7% with 40.972% 96.379% / 37.889% 90.821%, curve to 28.861% 95.775% with 33.045% 90.579% / 31.283% 95.654%, curve to 20.933% 91.425% with 26.439% 95.896% / 23.355% 91.304%, curve to 14.327% 96.5% with 18.511% 91.546% / 16.749% 96.138%, curve to 6.4% 93.6% with 11.905% 96.863% / 8.13% 95.735%, curve to 3.95% 83.691% with 4.671% 91.465% / 3.542% 87.324%, curve to 8.85% 71.8% with 4.358% 80.058% / 8.748% 75.433%, curve to 4.563% 61.891% with 8.952% 68.167% / 4.665% 65.524%, curve to 8.238% 50% with 4.461% 58.258% / 8.34% 53.633%, curve to 3.95% 40.091% with 8.136% 46.367% / 3.848% 43.724%, curve to 8.85% 28.2% with 4.052% 36.458% / 8.748% 31.833%, curve to 4.563% 18.291% with 8.952% 24.567% / 4.971% 21.924%, curve to 6.4% 6.4% with 4.155% 14.658% / 4.773% 8.849%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "cloud-frame",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--cloud-frame"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--cloud-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "callout",
+            "card",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "standard",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 12,
+            "right": 12,
+            "bottom": 12,
+            "left": 12
+          }
+        },
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Cloud Frame\" (ID: cloud-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--cloud-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "coral-bloom",
+      "name": "Coral Bloom",
+      "family": "emblem",
+      "description": "An eight-lobed display shape with alternating primary and secondary petals.",
+      "className": "svhape--coral-bloom",
+      "tags": [
+        "badge",
+        "bold",
+        "capacity:decorative",
+        "family:emblem",
+        "flower",
+        "radial",
+        "use:badge",
+        "use:illustration",
+        "use:sticker"
+      ],
+      "recommendedFor": [
+        "campaign marks",
+        "illustrations",
+        "stickers"
+      ],
+      "selection": {
+        "uses": [
+          "badge",
+          "illustration",
+          "sticker"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "decorative",
+        "symmetry": "radial",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 16,
+        "anchors": [
+          [
+            52.684,
+            5.621
+          ],
+          [
+            64.683,
+            19.845
+          ],
+          [
+            81.726,
+            21.893
+          ],
+          [
+            83.667,
+            38.382
+          ],
+          [
+            94.379,
+            52.684
+          ],
+          [
+            80.155,
+            64.683
+          ],
+          [
+            78.107,
+            81.726
+          ],
+          [
+            61.618,
+            83.667
+          ],
+          [
+            47.316,
+            94.379
+          ],
+          [
+            35.317,
+            80.155
+          ],
+          [
+            18.274,
+            78.107
+          ],
+          [
+            16.333,
+            61.618
+          ],
+          [
+            5.621,
+            47.316
+          ],
+          [
+            19.845,
+            35.317
+          ],
+          [
+            21.893,
+            18.274
+          ],
+          [
+            38.382,
+            16.333
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 52.684% 5.621%, curve to 64.683% 19.845% with 57.067% 6.206% / 59.843% 17.133%, curve to 81.726% 21.893% with 69.523% 22.557% / 78.562% 18.804%, curve to 83.667% 38.382% with 84.89% 24.983% / 81.558% 33.25%, curve to 94.379% 52.684% with 85.776% 43.514% / 94.964% 48.301%, curve to 80.155% 64.683% with 93.794% 57.067% / 82.867% 59.843%, curve to 78.107% 81.726% with 77.443% 69.523% / 81.197% 78.562%, curve to 61.618% 83.667% with 75.018% 84.89% / 66.75% 81.558%, curve to 47.316% 94.379% with 56.486% 85.776% / 51.7% 94.964%, curve to 35.317% 80.155% with 42.933% 93.794% / 40.157% 82.867%, curve to 18.274% 78.107% with 30.477% 77.443% / 21.438% 81.197%, curve to 16.333% 61.618% with 15.11% 75.018% / 18.442% 66.75%, curve to 5.621% 47.316% with 14.224% 56.486% / 5.036% 51.7%, curve to 19.845% 35.317% with 6.206% 42.933% / 17.133% 40.157%, curve to 21.893% 18.274% with 22.557% 30.477% / 18.804% 21.438%, curve to 38.382% 16.333% with 24.983% 15.11% / 33.25% 18.442%, curve to 52.684% 5.621% with 43.514% 14.224% / 48.301% 5.036%, close)",
+        "sourceDigest": "sha256-b80eeb6ef210306163fb713292be5d0a8eac091a3ca2797d3f6a63bff0f3f01f"
+      },
+      "fallback": {
+        "borderRadius": "45%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--coral-bloom svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--coral-bloom",
+        "standaloneCss": ".svhape--coral-bloom {\n  border-radius: 45%;\n  overflow: hidden;\n}\n\n.svhape--coral-bloom.svhape--padded {\n  padding: 22%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--coral-bloom {\n    border-radius: 0;\n    clip-path: shape(from 52.684% 5.621%, curve to 64.683% 19.845% with 57.067% 6.206% / 59.843% 17.133%, curve to 81.726% 21.893% with 69.523% 22.557% / 78.562% 18.804%, curve to 83.667% 38.382% with 84.89% 24.983% / 81.558% 33.25%, curve to 94.379% 52.684% with 85.776% 43.514% / 94.964% 48.301%, curve to 80.155% 64.683% with 93.794% 57.067% / 82.867% 59.843%, curve to 78.107% 81.726% with 77.443% 69.523% / 81.197% 78.562%, curve to 61.618% 83.667% with 75.018% 84.89% / 66.75% 81.558%, curve to 47.316% 94.379% with 56.486% 85.776% / 51.7% 94.964%, curve to 35.317% 80.155% with 42.933% 93.794% / 40.157% 82.867%, curve to 18.274% 78.107% with 30.477% 77.443% / 21.438% 81.197%, curve to 16.333% 61.618% with 15.11% 75.018% / 18.442% 66.75%, curve to 5.621% 47.316% with 14.224% 56.486% / 5.036% 51.7%, curve to 19.845% 35.317% with 6.206% 42.933% / 17.133% 40.157%, curve to 21.893% 18.274% with 22.557% 30.477% / 18.804% 21.438%, curve to 38.382% 16.333% with 24.983% 15.11% / 33.25% 18.442%, curve to 52.684% 5.621% with 43.514% 14.224% / 48.301% 5.036%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "coral-bloom",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--coral-bloom"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--coral-bloom svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "badge",
+            "illustration",
+            "sticker"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "decorative",
+          "symmetry": "radial",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 22,
+            "right": 22,
+            "bottom": 22,
+            "left": 22
+          }
+        },
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Coral Bloom\" (ID: coral-bloom). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--coral-bloom\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "deckle",
+      "name": "Deckle",
+      "family": "scalloped",
+      "description": "Many restrained irregularities suggest a torn handmade paper edge.",
+      "className": "svhape--deckle",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "editorial",
+        "family:scalloped",
+        "fine",
+        "paper",
+        "use:card",
+        "use:note",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "archive cards",
+        "captions",
+        "print-inspired layouts"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "note",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 54,
+        "anchors": [
+          [
+            4,
+            4
+          ],
+          [
+            10.024,
+            3.05
+          ],
+          [
+            15.5,
+            4.95
+          ],
+          [
+            21.524,
+            3.478
+          ],
+          [
+            27,
+            4.523
+          ],
+          [
+            33.024,
+            3.05
+          ],
+          [
+            38.5,
+            4.95
+          ],
+          [
+            44.524,
+            3.478
+          ],
+          [
+            50,
+            4.523
+          ],
+          [
+            56.024,
+            3.05
+          ],
+          [
+            61.5,
+            4.95
+          ],
+          [
+            67.524,
+            3.478
+          ],
+          [
+            73,
+            4.523
+          ],
+          [
+            79.024,
+            3.05
+          ],
+          [
+            84.5,
+            4.95
+          ],
+          [
+            90.524,
+            3.478
+          ],
+          [
+            96,
+            4
+          ],
+          [
+            96.44,
+            11.302
+          ],
+          [
+            95.56,
+            19.333
+          ],
+          [
+            96.8,
+            26.635
+          ],
+          [
+            95.2,
+            34.667
+          ],
+          [
+            96.44,
+            41.968
+          ],
+          [
+            95.56,
+            50
+          ],
+          [
+            96.8,
+            57.302
+          ],
+          [
+            95.2,
+            65.333
+          ],
+          [
+            96.44,
+            72.635
+          ],
+          [
+            95.56,
+            80.667
+          ],
+          [
+            96.8,
+            87.968
+          ],
+          [
+            96,
+            96
+          ],
+          [
+            89.116,
+            97
+          ],
+          [
+            82.857,
+            95
+          ],
+          [
+            75.973,
+            96.55
+          ],
+          [
+            69.714,
+            95.45
+          ],
+          [
+            62.83,
+            97
+          ],
+          [
+            56.571,
+            95
+          ],
+          [
+            49.687,
+            96.55
+          ],
+          [
+            43.429,
+            95.45
+          ],
+          [
+            36.544,
+            97
+          ],
+          [
+            30.286,
+            95
+          ],
+          [
+            23.401,
+            96.55
+          ],
+          [
+            17.143,
+            95.45
+          ],
+          [
+            10.259,
+            97
+          ],
+          [
+            4,
+            96
+          ],
+          [
+            3.18,
+            88.698
+          ],
+          [
+            4.451,
+            80.667
+          ],
+          [
+            3.549,
+            73.365
+          ],
+          [
+            4.82,
+            65.333
+          ],
+          [
+            3.18,
+            58.032
+          ],
+          [
+            4.451,
+            50
+          ],
+          [
+            3.549,
+            42.698
+          ],
+          [
+            4.82,
+            34.667
+          ],
+          [
+            3.18,
+            27.365
+          ],
+          [
+            4.451,
+            19.333
+          ],
+          [
+            3.549,
+            12.032
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4% 4%, curve to 10.024% 3.05% with 5.079% 2.503% / 8.107% 2.892%, curve to 15.5% 4.95% with 11.941% 3.208% / 13.583% 4.879%, curve to 21.524% 3.478% with 17.417% 5.021% / 19.607% 3.549%, curve to 27% 4.523% with 23.441% 3.407% / 25.083% 4.594%, curve to 33.024% 3.05% with 28.917% 4.452% / 31.107% 2.979%, curve to 38.5% 4.95% with 34.941% 3.121% / 36.583% 4.879%, curve to 44.524% 3.478% with 40.417% 5.021% / 42.607% 3.549%, curve to 50% 4.523% with 46.441% 3.407% / 48.083% 4.594%, curve to 56.024% 3.05% with 51.917% 4.452% / 54.107% 2.979%, curve to 61.5% 4.95% with 57.941% 3.121% / 59.583% 4.879%, curve to 67.524% 3.478% with 63.417% 5.021% / 65.607% 3.549%, curve to 73% 4.523% with 69.441% 3.407% / 71.083% 4.594%, curve to 79.024% 3.05% with 74.917% 4.452% / 77.107% 2.979%, curve to 84.5% 4.95% with 80.941% 3.121% / 82.583% 4.879%, curve to 90.524% 3.478% with 86.417% 5.021% / 88.607% 3.636%, curve to 96% 4% with 92.441% 3.32% / 95.014% 2.696%, curve to 96.44% 11.302% with 96.986% 5.304% / 96.513% 8.747%, curve to 95.56% 19.333% with 96.367% 13.857% / 95.5% 16.777%, curve to 96.8% 26.635% with 95.62% 21.889% / 96.86% 24.079%, curve to 95.2% 34.667% with 96.74% 29.191% / 95.26% 32.112%, curve to 96.44% 41.968% with 95.14% 37.223% / 96.38% 39.413%, curve to 95.56% 50% with 96.5% 44.524% / 95.5% 47.444%, curve to 96.8% 57.302% with 95.62% 52.556% / 96.86% 54.747%, curve to 95.2% 65.333% with 96.74% 59.858% / 95.26% 62.777%, curve to 96.44% 72.635% with 95.14% 67.889% / 96.38% 70.079%, curve to 95.56% 80.667% with 96.5% 75.191% / 95.5% 78.112%, curve to 96.8% 87.968% with 95.62% 83.223% / 96.727% 85.413%, curve to 96% 96% with 96.873% 90.524% / 97.281% 94.495%, curve to 89.116% 97% with 94.719% 97.505% / 91.307% 97.167%, curve to 82.857% 95% with 86.926% 96.833% / 85.048% 95.075%, curve to 75.973% 96.55% with 80.667% 94.925% / 78.164% 96.475%, curve to 69.714% 95.45% with 73.783% 96.625% / 71.905% 95.375%, curve to 62.83% 97% with 67.524% 95.525% / 65.021% 97.075%, curve to 56.571% 95% with 60.64% 96.925% / 58.762% 95.075%, curve to 49.687% 96.55% with 54.381% 94.925% / 51.877% 96.475%, curve to 43.429% 95.45% with 47.497% 96.625% / 45.62% 95.375%, curve to 36.544% 97% with 41.239% 95.525% / 38.735% 97.075%, curve to 30.286% 95% with 34.354% 96.925% / 32.477% 95.075%, curve to 23.401% 96.55% with 28.096% 94.925% / 25.592% 96.475%, curve to 17.143% 95.45% with 21.211% 96.625% / 19.333% 95.375%, curve to 10.259% 97% with 14.953% 95.525% / 12.45% 96.908%, curve to 4% 96% with 8.069% 97.092% / 5.18% 97.384%, curve to 3.18% 88.698% with 2.82% 94.616% / 3.105% 91.253%, curve to 4.451% 80.667% with 3.255% 86.143% / 4.39% 83.223%, curve to 3.549% 73.365% with 4.512% 78.112% / 3.488% 75.921%, curve to 4.82% 65.333% with 3.611% 70.809% / 4.882% 67.889%, curve to 3.18% 58.032% with 4.759% 62.777% / 3.242% 60.588%, curve to 4.451% 50% with 3.119% 55.476% / 4.39% 52.556%, curve to 3.549% 42.698% with 4.512% 47.444% / 3.488% 45.254%, curve to 4.82% 34.667% with 3.611% 40.143% / 4.882% 37.223%, curve to 3.18% 27.365% with 4.759% 32.112% / 3.242% 29.921%, curve to 4.451% 19.333% with 3.119% 24.809% / 4.39% 21.888%, curve to 3.549% 12.032% with 4.512% 16.778% / 3.624% 14.587%, curve to 4% 4% with 3.474% 9.477% / 2.921% 5.497%, close)",
+        "sourceDigest": "sha256-2392354141dd95a420224caae2fcd01e047683ded007af7152fab225472fb7d4"
+      },
+      "fallback": {
+        "borderRadius": "12px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--deckle svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--deckle",
+        "standaloneCss": ".svhape--deckle {\n  border-radius: 12px;\n  overflow: hidden;\n}\n\n.svhape--deckle.svhape--padded {\n  padding: 8%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--deckle {\n    border-radius: 0;\n    clip-path: shape(from 4% 4%, curve to 10.024% 3.05% with 5.079% 2.503% / 8.107% 2.892%, curve to 15.5% 4.95% with 11.941% 3.208% / 13.583% 4.879%, curve to 21.524% 3.478% with 17.417% 5.021% / 19.607% 3.549%, curve to 27% 4.523% with 23.441% 3.407% / 25.083% 4.594%, curve to 33.024% 3.05% with 28.917% 4.452% / 31.107% 2.979%, curve to 38.5% 4.95% with 34.941% 3.121% / 36.583% 4.879%, curve to 44.524% 3.478% with 40.417% 5.021% / 42.607% 3.549%, curve to 50% 4.523% with 46.441% 3.407% / 48.083% 4.594%, curve to 56.024% 3.05% with 51.917% 4.452% / 54.107% 2.979%, curve to 61.5% 4.95% with 57.941% 3.121% / 59.583% 4.879%, curve to 67.524% 3.478% with 63.417% 5.021% / 65.607% 3.549%, curve to 73% 4.523% with 69.441% 3.407% / 71.083% 4.594%, curve to 79.024% 3.05% with 74.917% 4.452% / 77.107% 2.979%, curve to 84.5% 4.95% with 80.941% 3.121% / 82.583% 4.879%, curve to 90.524% 3.478% with 86.417% 5.021% / 88.607% 3.636%, curve to 96% 4% with 92.441% 3.32% / 95.014% 2.696%, curve to 96.44% 11.302% with 96.986% 5.304% / 96.513% 8.747%, curve to 95.56% 19.333% with 96.367% 13.857% / 95.5% 16.777%, curve to 96.8% 26.635% with 95.62% 21.889% / 96.86% 24.079%, curve to 95.2% 34.667% with 96.74% 29.191% / 95.26% 32.112%, curve to 96.44% 41.968% with 95.14% 37.223% / 96.38% 39.413%, curve to 95.56% 50% with 96.5% 44.524% / 95.5% 47.444%, curve to 96.8% 57.302% with 95.62% 52.556% / 96.86% 54.747%, curve to 95.2% 65.333% with 96.74% 59.858% / 95.26% 62.777%, curve to 96.44% 72.635% with 95.14% 67.889% / 96.38% 70.079%, curve to 95.56% 80.667% with 96.5% 75.191% / 95.5% 78.112%, curve to 96.8% 87.968% with 95.62% 83.223% / 96.727% 85.413%, curve to 96% 96% with 96.873% 90.524% / 97.281% 94.495%, curve to 89.116% 97% with 94.719% 97.505% / 91.307% 97.167%, curve to 82.857% 95% with 86.926% 96.833% / 85.048% 95.075%, curve to 75.973% 96.55% with 80.667% 94.925% / 78.164% 96.475%, curve to 69.714% 95.45% with 73.783% 96.625% / 71.905% 95.375%, curve to 62.83% 97% with 67.524% 95.525% / 65.021% 97.075%, curve to 56.571% 95% with 60.64% 96.925% / 58.762% 95.075%, curve to 49.687% 96.55% with 54.381% 94.925% / 51.877% 96.475%, curve to 43.429% 95.45% with 47.497% 96.625% / 45.62% 95.375%, curve to 36.544% 97% with 41.239% 95.525% / 38.735% 97.075%, curve to 30.286% 95% with 34.354% 96.925% / 32.477% 95.075%, curve to 23.401% 96.55% with 28.096% 94.925% / 25.592% 96.475%, curve to 17.143% 95.45% with 21.211% 96.625% / 19.333% 95.375%, curve to 10.259% 97% with 14.953% 95.525% / 12.45% 96.908%, curve to 4% 96% with 8.069% 97.092% / 5.18% 97.384%, curve to 3.18% 88.698% with 2.82% 94.616% / 3.105% 91.253%, curve to 4.451% 80.667% with 3.255% 86.143% / 4.39% 83.223%, curve to 3.549% 73.365% with 4.512% 78.112% / 3.488% 75.921%, curve to 4.82% 65.333% with 3.611% 70.809% / 4.882% 67.889%, curve to 3.18% 58.032% with 4.759% 62.777% / 3.242% 60.588%, curve to 4.451% 50% with 3.119% 55.476% / 4.39% 52.556%, curve to 3.549% 42.698% with 4.512% 47.444% / 3.488% 45.254%, curve to 4.82% 34.667% with 3.611% 40.143% / 4.882% 37.223%, curve to 3.18% 27.365% with 4.759% 32.112% / 3.242% 29.921%, curve to 4.451% 19.333% with 3.119% 24.809% / 4.39% 21.888%, curve to 3.549% 12.032% with 4.512% 16.778% / 3.624% 14.587%, curve to 4% 4% with 3.474% 9.477% / 2.921% 5.497%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "deckle",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--deckle"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--deckle svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "note",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8
+          }
+        },
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Deckle\" (ID: deckle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--deckle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "golden-tide",
+      "name": "Golden Tide",
+      "family": "frame",
+      "description": "Balanced asymmetry with Fibonacci-adjacent edge rhythms and golden-ratio spacing.",
+      "className": "svhape--golden-tide",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "editorial",
+        "family:frame",
+        "golden-ratio",
+        "organic",
+        "use:callout",
+        "use:card",
+        "use:hero",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "empty states",
+        "feature callouts",
+        "hero panels"
+      ],
+      "selection": {
+        "uses": [
+          "callout",
+          "card",
+          "hero",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1.15,
+          "preferred": 1.5,
+          "max": 2
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 34,
+        "anchors": [
+          [
+            3.6,
+            5
+          ],
+          [
+            12.5,
+            2.9
+          ],
+          [
+            26.9,
+            7.1
+          ],
+          [
+            35.8,
+            3.702
+          ],
+          [
+            50.2,
+            6.298
+          ],
+          [
+            59.1,
+            2.9
+          ],
+          [
+            73.5,
+            7.1
+          ],
+          [
+            82.4,
+            3.702
+          ],
+          [
+            96.8,
+            5
+          ],
+          [
+            98.25,
+            18.983
+          ],
+          [
+            95.35,
+            27.625
+          ],
+          [
+            97.696,
+            41.608
+          ],
+          [
+            95.904,
+            50.25
+          ],
+          [
+            98.25,
+            64.233
+          ],
+          [
+            95.35,
+            72.875
+          ],
+          [
+            97.696,
+            86.858
+          ],
+          [
+            96.8,
+            95.5
+          ],
+          [
+            90.867,
+            96.736
+          ],
+          [
+            81.267,
+            94.264
+          ],
+          [
+            75.333,
+            97.5
+          ],
+          [
+            65.733,
+            93.5
+          ],
+          [
+            59.8,
+            96.736
+          ],
+          [
+            50.2,
+            94.264
+          ],
+          [
+            44.267,
+            97.5
+          ],
+          [
+            34.667,
+            93.5
+          ],
+          [
+            28.733,
+            96.736
+          ],
+          [
+            19.133,
+            94.264
+          ],
+          [
+            13.2,
+            97.5
+          ],
+          [
+            3.6,
+            95.5
+          ],
+          [
+            2.05,
+            76.856
+          ],
+          [
+            4.558,
+            65.333
+          ],
+          [
+            2.642,
+            46.689
+          ],
+          [
+            5.15,
+            35.167
+          ],
+          [
+            2.05,
+            16.523
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 3.6% 5%, curve to 12.5% 2.9% with 5.342% 2.73% / 8.617% 2.55%, curve to 26.9% 7.1% with 16.383% 3.25% / 23.017% 6.966%, curve to 35.8% 3.702% with 30.783% 7.234% / 31.917% 3.836%, curve to 50.2% 6.298% with 39.683% 3.568% / 46.317% 6.432%, curve to 59.1% 2.9% with 54.083% 6.164% / 55.217% 2.766%, curve to 73.5% 7.1% with 62.983% 3.034% / 69.617% 6.966%, curve to 82.4% 3.702% with 77.383% 7.234% / 78.517% 4.052%, curve to 96.8% 5% with 86.283% 3.352% / 94.158% 2.453%, curve to 98.25% 18.983% with 99.442% 7.547% / 98.492% 15.212%, curve to 95.35% 27.625% with 98.008% 22.754% / 95.442% 23.854%, curve to 97.696% 41.608% with 95.258% 31.396% / 97.604% 37.837%, curve to 95.904% 50.25% with 97.788% 45.379% / 95.812% 46.479%, curve to 98.25% 64.233% with 95.996% 54.021% / 98.342% 60.462%, curve to 95.35% 72.875% with 98.158% 68.004% / 95.442% 69.104%, curve to 97.696% 86.858% with 95.258% 76.646% / 97.454% 83.087%, curve to 96.8% 95.5% with 97.938% 90.629% / 97.938% 93.854%, curve to 90.867% 96.736% with 95.662% 97.146% / 93.456% 96.942%, curve to 81.267% 94.264% with 88.278% 96.53% / 83.856% 94.137%, curve to 75.333% 97.5% with 78.678% 94.391% / 77.922% 97.627%, curve to 65.733% 93.5% with 72.744% 97.373% / 68.322% 93.627%, curve to 59.8% 96.736% with 63.144% 93.373% / 62.389% 96.609%, curve to 50.2% 94.264% with 57.211% 96.863% / 52.789% 94.137%, curve to 44.267% 97.5% with 47.611% 94.391% / 46.856% 97.627%, curve to 34.667% 93.5% with 41.678% 97.373% / 37.256% 93.627%, curve to 28.733% 96.736% with 32.078% 93.373% / 31.322% 96.609%, curve to 19.133% 94.264% with 26.144% 96.863% / 21.722% 94.137%, curve to 13.2% 97.5% with 16.544% 94.391% / 15.789% 97.294%, curve to 3.6% 95.5% with 10.611% 97.706% / 5.458% 98.941%, curve to 2.05% 76.856% with 1.742% 92.059% / 1.89% 81.884%, curve to 4.558% 65.333% with 2.21% 71.828% / 4.459% 70.361%, curve to 2.642% 46.689% with 4.657% 60.305% / 2.543% 51.717%, curve to 5.15% 35.167% with 2.741% 41.661% / 5.249% 40.195%, curve to 2.05% 16.523% with 5.051% 30.139% / 2.308% 21.551%, curve to 3.6% 5% with 1.792% 11.495% / 1.858% 7.271%, close)",
+        "sourceDigest": "sha256-73d286429b55202e3708c9ee350e94e9e3bcfbc3f41e125f0048eb4b0ef07518"
+      },
+      "fallback": {
+        "borderRadius": "24px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--golden-tide svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--golden-tide",
+        "standaloneCss": ".svhape--golden-tide {\n  border-radius: 24px;\n  overflow: hidden;\n}\n\n.svhape--golden-tide.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--golden-tide {\n    border-radius: 0;\n    clip-path: shape(from 3.6% 5%, curve to 12.5% 2.9% with 5.342% 2.73% / 8.617% 2.55%, curve to 26.9% 7.1% with 16.383% 3.25% / 23.017% 6.966%, curve to 35.8% 3.702% with 30.783% 7.234% / 31.917% 3.836%, curve to 50.2% 6.298% with 39.683% 3.568% / 46.317% 6.432%, curve to 59.1% 2.9% with 54.083% 6.164% / 55.217% 2.766%, curve to 73.5% 7.1% with 62.983% 3.034% / 69.617% 6.966%, curve to 82.4% 3.702% with 77.383% 7.234% / 78.517% 4.052%, curve to 96.8% 5% with 86.283% 3.352% / 94.158% 2.453%, curve to 98.25% 18.983% with 99.442% 7.547% / 98.492% 15.212%, curve to 95.35% 27.625% with 98.008% 22.754% / 95.442% 23.854%, curve to 97.696% 41.608% with 95.258% 31.396% / 97.604% 37.837%, curve to 95.904% 50.25% with 97.788% 45.379% / 95.812% 46.479%, curve to 98.25% 64.233% with 95.996% 54.021% / 98.342% 60.462%, curve to 95.35% 72.875% with 98.158% 68.004% / 95.442% 69.104%, curve to 97.696% 86.858% with 95.258% 76.646% / 97.454% 83.087%, curve to 96.8% 95.5% with 97.938% 90.629% / 97.938% 93.854%, curve to 90.867% 96.736% with 95.662% 97.146% / 93.456% 96.942%, curve to 81.267% 94.264% with 88.278% 96.53% / 83.856% 94.137%, curve to 75.333% 97.5% with 78.678% 94.391% / 77.922% 97.627%, curve to 65.733% 93.5% with 72.744% 97.373% / 68.322% 93.627%, curve to 59.8% 96.736% with 63.144% 93.373% / 62.389% 96.609%, curve to 50.2% 94.264% with 57.211% 96.863% / 52.789% 94.137%, curve to 44.267% 97.5% with 47.611% 94.391% / 46.856% 97.627%, curve to 34.667% 93.5% with 41.678% 97.373% / 37.256% 93.627%, curve to 28.733% 96.736% with 32.078% 93.373% / 31.322% 96.609%, curve to 19.133% 94.264% with 26.144% 96.863% / 21.722% 94.137%, curve to 13.2% 97.5% with 16.544% 94.391% / 15.789% 97.294%, curve to 3.6% 95.5% with 10.611% 97.706% / 5.458% 98.941%, curve to 2.05% 76.856% with 1.742% 92.059% / 1.89% 81.884%, curve to 4.558% 65.333% with 2.21% 71.828% / 4.459% 70.361%, curve to 2.642% 46.689% with 4.657% 60.305% / 2.543% 51.717%, curve to 5.15% 35.167% with 2.741% 41.661% / 5.249% 40.195%, curve to 2.05% 16.523% with 5.051% 30.139% / 2.308% 21.551%, curve to 3.6% 5% with 1.792% 11.495% / 1.858% 7.271%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "golden-tide",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--golden-tide"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--golden-tide svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "callout",
+            "hero",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1.15,
+            "preferred": 1.5,
+            "max": 2
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Golden Tide\" (ID: golden-tide). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--golden-tide\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.15 and 2; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "halo-five",
+      "name": "Halo Five",
+      "family": "blob",
+      "description": "Five slow lobes create a friendly mark that remains visually centered.",
+      "className": "svhape--halo-five",
+      "tags": [
+        "badge",
+        "blob",
+        "capacity:sparse",
+        "family:blob",
+        "minimal",
+        "radial",
+        "use:badge",
+        "use:callout",
+        "use:icon"
+      ],
+      "recommendedFor": [
+        "compact calls to action",
+        "icons",
+        "numbers"
+      ],
+      "selection": {
+        "uses": [
+          "badge",
+          "callout",
+          "icon"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "sparse",
+        "symmetry": "radial",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 10,
+        "anchors": [
+          [
+            53.22,
+            7.026
+          ],
+          [
+            72.57,
+            23.373
+          ],
+          [
+            90.514,
+            40.113
+          ],
+          [
+            83.586,
+            63.765
+          ],
+          [
+            72.654,
+            86.66
+          ],
+          [
+            47.392,
+            84.807
+          ],
+          [
+            23.035,
+            81.812
+          ],
+          [
+            14.738,
+            58.605
+          ],
+          [
+            10.124,
+            33.657
+          ],
+          [
+            31.651,
+            20.307
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 53.22% 7.026%, curve to 72.57% 23.373% with 60.04% 7.537% / 66.354% 17.859%, curve to 90.514% 40.113% with 78.786% 28.888% / 88.678% 33.381%, curve to 83.586% 63.765% with 92.35% 46.845% / 86.563% 56.007%, curve to 72.654% 86.66% with 80.609% 71.523% / 78.686% 83.153%, curve to 47.392% 84.807% with 66.622% 90.167% / 55.662% 85.615%, curve to 23.035% 81.812% with 39.122% 83.999% / 28.477% 86.179%, curve to 14.738% 58.605% with 17.593% 77.445% / 16.89% 66.631%, curve to 10.124% 33.657% with 12.586% 50.579% / 7.305% 40.04%, curve to 31.651% 20.307% with 12.943% 27.274% / 24.468% 24.746%, curve to 53.22% 7.026% with 38.834% 15.869% / 46.4% 6.515%, close)",
+        "sourceDigest": "sha256-18253add6040a94082fadd55f4297eb0706e2aea8855c8fb1c98a71ac7c7a568"
+      },
+      "fallback": {
+        "borderRadius": "46%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--halo-five svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--halo-five",
+        "standaloneCss": ".svhape--halo-five {\n  border-radius: 46%;\n  overflow: hidden;\n}\n\n.svhape--halo-five.svhape--padded {\n  padding: 22%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--halo-five {\n    border-radius: 0;\n    clip-path: shape(from 53.22% 7.026%, curve to 72.57% 23.373% with 60.04% 7.537% / 66.354% 17.859%, curve to 90.514% 40.113% with 78.786% 28.888% / 88.678% 33.381%, curve to 83.586% 63.765% with 92.35% 46.845% / 86.563% 56.007%, curve to 72.654% 86.66% with 80.609% 71.523% / 78.686% 83.153%, curve to 47.392% 84.807% with 66.622% 90.167% / 55.662% 85.615%, curve to 23.035% 81.812% with 39.122% 83.999% / 28.477% 86.179%, curve to 14.738% 58.605% with 17.593% 77.445% / 16.89% 66.631%, curve to 10.124% 33.657% with 12.586% 50.579% / 7.305% 40.04%, curve to 31.651% 20.307% with 12.943% 27.274% / 24.468% 24.746%, curve to 53.22% 7.026% with 38.834% 15.869% / 46.4% 6.515%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "halo-five",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--halo-five"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--halo-five svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "badge",
+            "callout",
+            "icon"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "sparse",
+          "symmetry": "radial",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 22,
+            "right": 22,
+            "bottom": 22,
+            "left": 22
+          }
+        },
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Halo Five\" (ID: halo-five). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--halo-five\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "ink-drop",
+      "name": "Ink Drop",
+      "family": "blob",
+      "description": "A slightly off-center darkroom blob with restrained surface movement.",
+      "className": "svhape--ink-drop",
+      "tags": [
+        "asymmetric",
+        "blob",
+        "capacity:decorative",
+        "family:blob",
+        "media",
+        "radial",
+        "use:avatar",
+        "use:decoration",
+        "use:media"
+      ],
+      "recommendedFor": [
+        "ambient decoration",
+        "photography",
+        "portraits"
+      ],
+      "selection": {
+        "uses": [
+          "avatar",
+          "decoration",
+          "media"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "decorative",
+        "symmetry": "approximate",
+        "balance": "bottom-heavy",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 20,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 18,
+        "anchors": [
+          [
+            47.244,
+            11.792
+          ],
+          [
+            60.062,
+            19.789
+          ],
+          [
+            74.601,
+            21.18
+          ],
+          [
+            81.225,
+            32.66
+          ],
+          [
+            91.598,
+            42.636
+          ],
+          [
+            85.072,
+            55.385
+          ],
+          [
+            86.076,
+            68.513
+          ],
+          [
+            74.664,
+            76.377
+          ],
+          [
+            65.55,
+            87.303
+          ],
+          [
+            50.466,
+            83.733
+          ],
+          [
+            36.275,
+            86.902
+          ],
+          [
+            25.688,
+            78.154
+          ],
+          [
+            12.15,
+            71.972
+          ],
+          [
+            13.437,
+            57.983
+          ],
+          [
+            7.505,
+            45.956
+          ],
+          [
+            15.239,
+            35.053
+          ],
+          [
+            19.652,
+            21.98
+          ],
+          [
+            35.183,
+            20.692
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 47.244% 11.792%, curve to 60.062% 19.789% with 51.391% 11.642% / 55.503% 18.224%, curve to 74.601% 21.18% with 64.622% 21.354% / 71.074% 19.035%, curve to 81.225% 32.66% with 78.128% 23.325% / 78.392% 29.084%, curve to 91.598% 42.636% with 84.058% 36.236% / 90.957% 38.849%, curve to 85.072% 55.385% with 92.239% 46.424% / 85.992% 51.072%, curve to 86.076% 68.513% with 84.152% 59.698% / 87.811% 65.014%, curve to 74.664% 76.377% with 84.341% 72.012% / 78.085% 73.245%, curve to 65.55% 87.303% with 71.243% 79.509% / 69.583% 86.077%, curve to 50.466% 83.733% with 61.517% 88.529% / 55.345% 83.8%, curve to 36.275% 86.902% with 45.587% 83.666% / 40.405% 87.832%, curve to 25.688% 78.154% with 32.145% 85.972% / 29.709% 80.642%, curve to 12.15% 71.972% with 21.667% 75.666% / 14.192% 75.334%, curve to 13.437% 57.983% with 10.108% 68.61% / 14.211% 62.319%, curve to 7.505% 45.956% with 12.663% 53.647% / 7.205% 49.778%, curve to 15.239% 35.053% with 7.805% 42.134% / 13.215% 39.049%, curve to 19.652% 21.98% with 17.264% 31.057% / 16.328% 24.374%, curve to 35.183% 20.692% with 22.976% 19.587% / 30.584% 22.39%, curve to 47.244% 11.792% with 39.782% 18.994% / 43.098% 11.942%, close)",
+        "sourceDigest": "sha256-d125d3eeb39ec13645691ea6aa180d8afdd2768afdb7c8f645821d625988fef3"
+      },
+      "fallback": {
+        "borderRadius": "48%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--ink-drop svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--ink-drop",
+        "standaloneCss": ".svhape--ink-drop {\n  border-radius: 48%;\n  overflow: hidden;\n}\n\n.svhape--ink-drop.svhape--padded {\n  padding: 20%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--ink-drop {\n    border-radius: 0;\n    clip-path: shape(from 47.244% 11.792%, curve to 60.062% 19.789% with 51.391% 11.642% / 55.503% 18.224%, curve to 74.601% 21.18% with 64.622% 21.354% / 71.074% 19.035%, curve to 81.225% 32.66% with 78.128% 23.325% / 78.392% 29.084%, curve to 91.598% 42.636% with 84.058% 36.236% / 90.957% 38.849%, curve to 85.072% 55.385% with 92.239% 46.424% / 85.992% 51.072%, curve to 86.076% 68.513% with 84.152% 59.698% / 87.811% 65.014%, curve to 74.664% 76.377% with 84.341% 72.012% / 78.085% 73.245%, curve to 65.55% 87.303% with 71.243% 79.509% / 69.583% 86.077%, curve to 50.466% 83.733% with 61.517% 88.529% / 55.345% 83.8%, curve to 36.275% 86.902% with 45.587% 83.666% / 40.405% 87.832%, curve to 25.688% 78.154% with 32.145% 85.972% / 29.709% 80.642%, curve to 12.15% 71.972% with 21.667% 75.666% / 14.192% 75.334%, curve to 13.437% 57.983% with 10.108% 68.61% / 14.211% 62.319%, curve to 7.505% 45.956% with 12.663% 53.647% / 7.205% 49.778%, curve to 15.239% 35.053% with 7.805% 42.134% / 13.215% 39.049%, curve to 19.652% 21.98% with 17.264% 31.057% / 16.328% 24.374%, curve to 35.183% 20.692% with 22.976% 19.587% / 30.584% 22.39%, curve to 47.244% 11.792% with 39.782% 18.994% / 43.098% 11.942%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "ink-drop",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--ink-drop"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--ink-drop svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "avatar",
+            "decoration",
+            "media"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "decorative",
+          "symmetry": "approximate",
+          "balance": "bottom-heavy",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 20,
+            "right": 20,
+            "bottom": 20,
+            "left": 20
+          }
+        },
+        "safeInset": {
+          "top": 20,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Ink Drop\" (ID: ink-drop). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--ink-drop\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "linen",
+      "name": "Linen",
+      "family": "frame",
+      "description": "Fine texture around a nearly rectangular silhouette.",
+      "className": "svhape--linen",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "content-safe",
+        "family:frame",
+        "subtle",
+        "texture",
+        "use:card",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "dense content",
+        "documentation",
+        "settings"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 7,
+          "right": 7,
+          "bottom": 7,
+          "left": 7
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 28,
+        "anchors": [
+          [
+            3.8,
+            3.8
+          ],
+          [
+            14.067,
+            2.95
+          ],
+          [
+            26.9,
+            4.65
+          ],
+          [
+            37.167,
+            3.205
+          ],
+          [
+            50,
+            4.395
+          ],
+          [
+            60.267,
+            2.95
+          ],
+          [
+            73.1,
+            4.65
+          ],
+          [
+            83.367,
+            3.205
+          ],
+          [
+            96.2,
+            3.8
+          ],
+          [
+            96.9,
+            17.489
+          ],
+          [
+            95.5,
+            34.6
+          ],
+          [
+            96.69,
+            48.289
+          ],
+          [
+            95.71,
+            65.4
+          ],
+          [
+            96.9,
+            79.089
+          ],
+          [
+            96.2,
+            96.2
+          ],
+          [
+            85.933,
+            97.15
+          ],
+          [
+            73.1,
+            95.25
+          ],
+          [
+            62.833,
+            96.865
+          ],
+          [
+            50,
+            95.535
+          ],
+          [
+            39.733,
+            97.15
+          ],
+          [
+            26.9,
+            95.25
+          ],
+          [
+            16.633,
+            96.865
+          ],
+          [
+            3.8,
+            96.2
+          ],
+          [
+            3.08,
+            79.089
+          ],
+          [
+            4.52,
+            65.4
+          ],
+          [
+            3.296,
+            48.289
+          ],
+          [
+            4.304,
+            34.6
+          ],
+          [
+            3.08,
+            17.489
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 3.8% 3.8%, curve to 14.067% 2.95% with 5.631% 1.377% / 10.217% 2.808%, curve to 26.9% 4.65% with 17.917% 3.092% / 23.05% 4.608%, curve to 37.167% 3.205% with 30.75% 4.693% / 33.317% 3.248%, curve to 50% 4.395% with 41.017% 3.163% / 46.15% 4.438%, curve to 60.267% 2.95% with 53.85% 4.352% / 56.417% 2.908%, curve to 73.1% 4.65% with 64.117% 2.993% / 69.25% 4.608%, curve to 83.367% 3.205% with 76.95% 4.693% / 79.517% 3.347%, curve to 96.2% 3.8% with 87.217% 3.063% / 93.945% 1.419%, curve to 96.9% 17.489% with 98.456% 6.181% / 97.017% 12.356%, curve to 95.5% 34.6% with 96.783% 22.622% / 95.535% 29.467%, curve to 96.69% 48.289% with 95.465% 39.733% / 96.655% 43.156%, curve to 95.71% 65.4% with 96.725% 53.422% / 95.675% 60.267%, curve to 96.9% 79.089% with 95.745% 70.533% / 96.818% 73.956%, curve to 96.2% 96.2% with 96.982% 84.222% / 98.028% 93.19%, curve to 85.933% 97.15% with 94.372% 99.21% / 89.783% 97.308%, curve to 73.1% 95.25% with 82.083% 96.992% / 76.95% 95.298%, curve to 62.833% 96.865% with 69.25% 95.203% / 66.683% 96.818%, curve to 50% 95.535% with 58.983% 96.913% / 53.85% 95.488%, curve to 39.733% 97.15% with 46.15% 95.583% / 43.583% 97.198%, curve to 26.9% 95.25% with 35.883% 97.103% / 30.75% 95.298%, curve to 16.633% 96.865% with 23.05% 95.203% / 20.483% 96.707%, curve to 3.8% 96.2% with 12.783% 97.023% / 6.059% 99.163%, curve to 3.08% 79.089% with 1.541% 93.237% / 2.96% 84.222%, curve to 4.52% 65.4% with 3.2% 73.956% / 4.484% 70.533%, curve to 3.296% 48.289% with 4.556% 60.267% / 3.332% 53.422%, curve to 4.304% 34.6% with 3.26% 43.156% / 4.34% 39.733%, curve to 3.08% 17.489% with 4.268% 29.467% / 3.164% 22.622%, curve to 3.8% 3.8% with 2.996% 12.356% / 1.969% 6.223%, close)",
+        "sourceDigest": "sha256-439894e6be9e65cd6d337b6520d93fb8cb68587536a9e911a56426e6bc11b986"
+      },
+      "fallback": {
+        "borderRadius": "14px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--linen svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--linen",
+        "standaloneCss": ".svhape--linen {\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.svhape--linen.svhape--padded {\n  padding: 7%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--linen {\n    border-radius: 0;\n    clip-path: shape(from 3.8% 3.8%, curve to 14.067% 2.95% with 5.631% 1.377% / 10.217% 2.808%, curve to 26.9% 4.65% with 17.917% 3.092% / 23.05% 4.608%, curve to 37.167% 3.205% with 30.75% 4.693% / 33.317% 3.248%, curve to 50% 4.395% with 41.017% 3.163% / 46.15% 4.438%, curve to 60.267% 2.95% with 53.85% 4.352% / 56.417% 2.908%, curve to 73.1% 4.65% with 64.117% 2.993% / 69.25% 4.608%, curve to 83.367% 3.205% with 76.95% 4.693% / 79.517% 3.347%, curve to 96.2% 3.8% with 87.217% 3.063% / 93.945% 1.419%, curve to 96.9% 17.489% with 98.456% 6.181% / 97.017% 12.356%, curve to 95.5% 34.6% with 96.783% 22.622% / 95.535% 29.467%, curve to 96.69% 48.289% with 95.465% 39.733% / 96.655% 43.156%, curve to 95.71% 65.4% with 96.725% 53.422% / 95.675% 60.267%, curve to 96.9% 79.089% with 95.745% 70.533% / 96.818% 73.956%, curve to 96.2% 96.2% with 96.982% 84.222% / 98.028% 93.19%, curve to 85.933% 97.15% with 94.372% 99.21% / 89.783% 97.308%, curve to 73.1% 95.25% with 82.083% 96.992% / 76.95% 95.298%, curve to 62.833% 96.865% with 69.25% 95.203% / 66.683% 96.818%, curve to 50% 95.535% with 58.983% 96.913% / 53.85% 95.488%, curve to 39.733% 97.15% with 46.15% 95.583% / 43.583% 97.198%, curve to 26.9% 95.25% with 35.883% 97.103% / 30.75% 95.298%, curve to 16.633% 96.865% with 23.05% 95.203% / 20.483% 96.707%, curve to 3.8% 96.2% with 12.783% 97.023% / 6.059% 99.163%, curve to 3.08% 79.089% with 1.541% 93.237% / 2.96% 84.222%, curve to 4.52% 65.4% with 3.2% 73.956% / 4.484% 70.533%, curve to 3.296% 48.289% with 4.556% 60.267% / 3.332% 53.422%, curve to 4.304% 34.6% with 3.26% 43.156% / 4.34% 39.733%, curve to 3.08% 17.489% with 4.268% 29.467% / 3.164% 22.622%, curve to 3.8% 3.8% with 2.996% 12.356% / 1.969% 6.223%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "linen",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--linen"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--linen svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 7,
+            "right": 7,
+            "bottom": 7,
+            "left": 7
+          }
+        },
+        "safeInset": {
+          "top": 7,
+          "right": 7,
+          "bottom": 7,
+          "left": 7
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Linen\" (ID: linen). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--linen\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 7% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "longwave",
+      "name": "Longwave",
+      "family": "frame",
+      "description": "Few broad movements create a relaxed silhouette at large sizes.",
+      "className": "svhape--longwave",
+      "tags": [
+        "broad",
+        "capacity:standard",
+        "container",
+        "family:frame",
+        "hero",
+        "minimal",
+        "use:hero",
+        "use:media"
+      ],
+      "recommendedFor": [
+        "full-width promos",
+        "hero sections",
+        "large media"
+      ],
+      "selection": {
+        "uses": [
+          "hero",
+          "media"
+        ],
+        "aspect": {
+          "min": 1.5,
+          "preferred": 2,
+          "max": 3
+        },
+        "contentCapacity": "standard",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 20,
+        "anchors": [
+          [
+            5.6,
+            6.3
+          ],
+          [
+            22.521,
+            3.2
+          ],
+          [
+            49.9,
+            9.4
+          ],
+          [
+            66.821,
+            4.192
+          ],
+          [
+            94.2,
+            6.3
+          ],
+          [
+            96.7,
+            17.466
+          ],
+          [
+            91.7,
+            35.533
+          ],
+          [
+            95.9,
+            46.699
+          ],
+          [
+            92.5,
+            64.767
+          ],
+          [
+            96.7,
+            75.933
+          ],
+          [
+            94.2,
+            94
+          ],
+          [
+            75.947,
+            96.8
+          ],
+          [
+            64.667,
+            91.2
+          ],
+          [
+            46.414,
+            95.904
+          ],
+          [
+            35.133,
+            92.096
+          ],
+          [
+            16.881,
+            96.8
+          ],
+          [
+            5.6,
+            94
+          ],
+          [
+            2.95,
+            77.251
+          ],
+          [
+            8.25,
+            50.15
+          ],
+          [
+            3.798,
+            33.401
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 5.6% 6.3%, curve to 22.521% 3.2% with 8.721% 1.267% / 15.138% 2.683%, curve to 49.9% 9.4% with 29.904% 3.717% / 42.517% 9.235%, curve to 66.821% 4.192% with 57.283% 9.565% / 59.438% 4.709%, curve to 94.2% 6.3% with 74.204% 3.675% / 89.22% 4.088%, curve to 96.7% 17.466% with 99.18% 8.512% / 97.117% 12.594%, curve to 91.7% 35.533% with 96.283% 22.338% / 91.833% 30.661%, curve to 95.9% 46.699% with 91.567% 40.405% / 95.767% 41.827%, curve to 92.5% 64.767% with 96.033% 51.571% / 92.367% 59.895%, curve to 96.7% 75.933% with 92.633% 69.639% / 96.417% 71.061%, curve to 94.2% 94% with 96.983% 80.805% / 97.659% 90.522%, curve to 75.947% 96.8% with 90.741% 97.478% / 80.869% 97.267%, curve to 64.667% 91.2% with 71.025% 96.333% / 69.589% 91.349%, curve to 46.414% 95.904% with 59.745% 91.051% / 51.336% 95.755%, curve to 35.133% 92.096% with 41.492% 96.053% / 40.055% 91.947%, curve to 16.881% 96.8% with 30.211% 92.245% / 21.803% 96.483%, curve to 5.6% 94% with 11.959% 97.117% / 7.922% 97.258%, curve to 2.95% 77.251% with 3.278% 90.742% / 2.508% 84.559%, curve to 8.25% 50.15% with 3.392% 69.943% / 8.109% 57.458%, curve to 3.798% 33.401% with 8.391% 42.842% / 4.24% 40.709%, curve to 5.6% 6.3% with 3.356% 26.093% / 2.48% 11.334%, close)",
+        "sourceDigest": "sha256-ec1b44ac9ba2599121d5dd49e24a230be27837bde7091f3b833d6e987c936c04"
+      },
+      "fallback": {
+        "borderRadius": "36px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--longwave svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--longwave",
+        "standaloneCss": ".svhape--longwave {\n  border-radius: 36px;\n  overflow: hidden;\n}\n\n.svhape--longwave.svhape--padded {\n  padding: 12%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--longwave {\n    border-radius: 0;\n    clip-path: shape(from 5.6% 6.3%, curve to 22.521% 3.2% with 8.721% 1.267% / 15.138% 2.683%, curve to 49.9% 9.4% with 29.904% 3.717% / 42.517% 9.235%, curve to 66.821% 4.192% with 57.283% 9.565% / 59.438% 4.709%, curve to 94.2% 6.3% with 74.204% 3.675% / 89.22% 4.088%, curve to 96.7% 17.466% with 99.18% 8.512% / 97.117% 12.594%, curve to 91.7% 35.533% with 96.283% 22.338% / 91.833% 30.661%, curve to 95.9% 46.699% with 91.567% 40.405% / 95.767% 41.827%, curve to 92.5% 64.767% with 96.033% 51.571% / 92.367% 59.895%, curve to 96.7% 75.933% with 92.633% 69.639% / 96.417% 71.061%, curve to 94.2% 94% with 96.983% 80.805% / 97.659% 90.522%, curve to 75.947% 96.8% with 90.741% 97.478% / 80.869% 97.267%, curve to 64.667% 91.2% with 71.025% 96.333% / 69.589% 91.349%, curve to 46.414% 95.904% with 59.745% 91.051% / 51.336% 95.755%, curve to 35.133% 92.096% with 41.492% 96.053% / 40.055% 91.947%, curve to 16.881% 96.8% with 30.211% 92.245% / 21.803% 96.483%, curve to 5.6% 94% with 11.959% 97.117% / 7.922% 97.258%, curve to 2.95% 77.251% with 3.278% 90.742% / 2.508% 84.559%, curve to 8.25% 50.15% with 3.392% 69.943% / 8.109% 57.458%, curve to 3.798% 33.401% with 8.391% 42.842% / 4.24% 40.709%, curve to 5.6% 6.3% with 3.356% 26.093% / 2.48% 11.334%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "longwave",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--longwave"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--longwave svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "hero",
+            "media"
+          ],
+          "aspect": {
+            "min": 1.5,
+            "preferred": 2,
+            "max": 3
+          },
+          "contentCapacity": "standard",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 12,
+            "right": 12,
+            "bottom": 12,
+            "left": 12
+          }
+        },
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Longwave\" (ID: longwave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--longwave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.5 and 3; 2 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "meadow-frame",
+      "name": "Meadow Frame",
+      "family": "frame",
+      "description": "A breezy perimeter with a more active right edge and gentle floor.",
+      "className": "svhape--meadow-frame",
+      "tags": [
+        "asymmetric",
+        "capacity:dense",
+        "container",
+        "family:frame",
+        "friendly",
+        "natural",
+        "use:card",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "community cards",
+        "friendly notices",
+        "onboarding"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 30,
+        "anchors": [
+          [
+            4.2,
+            4.8
+          ],
+          [
+            22.28,
+            3.3
+          ],
+          [
+            34.333,
+            6.3
+          ],
+          [
+            52.413,
+            3.9
+          ],
+          [
+            64.467,
+            5.7
+          ],
+          [
+            82.547,
+            3.3
+          ],
+          [
+            94.6,
+            4.8
+          ],
+          [
+            96.6,
+            15.648
+          ],
+          [
+            92.6,
+            22.88
+          ],
+          [
+            95.8,
+            33.728
+          ],
+          [
+            93.4,
+            40.96
+          ],
+          [
+            96.6,
+            51.808
+          ],
+          [
+            92.6,
+            59.04
+          ],
+          [
+            95.8,
+            69.888
+          ],
+          [
+            93.4,
+            77.12
+          ],
+          [
+            96.6,
+            87.968
+          ],
+          [
+            94.6,
+            95.2
+          ],
+          [
+            85.56,
+            96.6
+          ],
+          [
+            72,
+            93.8
+          ],
+          [
+            62.96,
+            96.04
+          ],
+          [
+            49.4,
+            94.36
+          ],
+          [
+            40.36,
+            96.6
+          ],
+          [
+            26.8,
+            93.8
+          ],
+          [
+            17.76,
+            96.04
+          ],
+          [
+            4.2,
+            95.2
+          ],
+          [
+            3.05,
+            83.147
+          ],
+          [
+            5.35,
+            65.067
+          ],
+          [
+            3.51,
+            53.013
+          ],
+          [
+            4.89,
+            34.933
+          ],
+          [
+            3.05,
+            22.88
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4.2% 4.8%, curve to 22.28% 3.3% with 7.405% 1.537% / 17.258% 3.05%, curve to 34.333% 6.3% with 27.302% 3.55% / 29.311% 6.2%, curve to 52.413% 3.9% with 39.355% 6.4% / 47.391% 4%, curve to 64.467% 5.7% with 57.435% 3.8% / 59.445% 5.8%, curve to 82.547% 3.3% with 69.489% 5.6% / 77.525% 3.45%, curve to 94.6% 4.8% with 87.569% 3.15% / 92.258% 2.742%, curve to 96.6% 15.648% with 96.942% 6.858% / 96.933% 12.635%, curve to 92.6% 22.88% with 96.267% 18.661% / 92.733% 19.867%, curve to 95.8% 33.728% with 92.467% 25.893% / 95.667% 30.715%, curve to 93.4% 40.96% with 95.933% 36.741% / 93.267% 37.947%, curve to 96.6% 51.808% with 93.533% 43.973% / 96.733% 48.795%, curve to 92.6% 59.04% with 96.467% 54.821% / 92.733% 56.027%, curve to 95.8% 69.888% with 92.467% 62.053% / 95.667% 66.875%, curve to 93.4% 77.12% with 95.933% 72.901% / 93.267% 74.107%, curve to 96.6% 87.968% with 93.533% 80.133% / 96.4% 84.955%, curve to 94.6% 95.2% with 96.8% 90.981% / 96.44% 93.761%, curve to 85.56% 96.6% with 92.76% 96.639% / 89.327% 96.833%, curve to 72% 93.8% with 81.793% 96.367% / 75.767% 93.893%, curve to 62.96% 96.04% with 68.233% 93.707% / 66.727% 95.947%, curve to 49.4% 94.36% with 59.193% 96.133% / 53.167% 94.267%, curve to 40.36% 96.6% with 45.633% 94.453% / 44.127% 96.693%, curve to 26.8% 93.8% with 36.593% 96.507% / 30.567% 93.893%, curve to 17.76% 96.04% with 23.033% 93.707% / 21.527% 95.807%, curve to 4.2% 95.2% with 13.993% 96.273% / 6.652% 97.349%, curve to 3.05% 83.147% with 1.748% 93.051% / 2.858% 88.169%, curve to 5.35% 65.067% with 3.242% 78.125% / 5.273% 70.089%, curve to 3.51% 53.013% with 5.427% 60.045% / 3.587% 58.035%, curve to 4.89% 34.933% with 3.433% 47.991% / 4.967% 39.955%, curve to 3.05% 22.88% with 4.813% 29.911% / 3.165% 27.902%, curve to 4.2% 4.8% with 2.935% 17.858% / 0.995% 8.063%, close)",
+        "sourceDigest": "sha256-0059d0c0cb579fadf4e1dd12cfdcdfaa23895e5e6786c83029e13c8a3436a998"
+      },
+      "fallback": {
+        "borderRadius": "24px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--meadow-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--meadow-frame",
+        "standaloneCss": ".svhape--meadow-frame {\n  border-radius: 24px;\n  overflow: hidden;\n}\n\n.svhape--meadow-frame.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--meadow-frame {\n    border-radius: 0;\n    clip-path: shape(from 4.2% 4.8%, curve to 22.28% 3.3% with 7.405% 1.537% / 17.258% 3.05%, curve to 34.333% 6.3% with 27.302% 3.55% / 29.311% 6.2%, curve to 52.413% 3.9% with 39.355% 6.4% / 47.391% 4%, curve to 64.467% 5.7% with 57.435% 3.8% / 59.445% 5.8%, curve to 82.547% 3.3% with 69.489% 5.6% / 77.525% 3.45%, curve to 94.6% 4.8% with 87.569% 3.15% / 92.258% 2.742%, curve to 96.6% 15.648% with 96.942% 6.858% / 96.933% 12.635%, curve to 92.6% 22.88% with 96.267% 18.661% / 92.733% 19.867%, curve to 95.8% 33.728% with 92.467% 25.893% / 95.667% 30.715%, curve to 93.4% 40.96% with 95.933% 36.741% / 93.267% 37.947%, curve to 96.6% 51.808% with 93.533% 43.973% / 96.733% 48.795%, curve to 92.6% 59.04% with 96.467% 54.821% / 92.733% 56.027%, curve to 95.8% 69.888% with 92.467% 62.053% / 95.667% 66.875%, curve to 93.4% 77.12% with 95.933% 72.901% / 93.267% 74.107%, curve to 96.6% 87.968% with 93.533% 80.133% / 96.4% 84.955%, curve to 94.6% 95.2% with 96.8% 90.981% / 96.44% 93.761%, curve to 85.56% 96.6% with 92.76% 96.639% / 89.327% 96.833%, curve to 72% 93.8% with 81.793% 96.367% / 75.767% 93.893%, curve to 62.96% 96.04% with 68.233% 93.707% / 66.727% 95.947%, curve to 49.4% 94.36% with 59.193% 96.133% / 53.167% 94.267%, curve to 40.36% 96.6% with 45.633% 94.453% / 44.127% 96.693%, curve to 26.8% 93.8% with 36.593% 96.507% / 30.567% 93.893%, curve to 17.76% 96.04% with 23.033% 93.707% / 21.527% 95.807%, curve to 4.2% 95.2% with 13.993% 96.273% / 6.652% 97.349%, curve to 3.05% 83.147% with 1.748% 93.051% / 2.858% 88.169%, curve to 5.35% 65.067% with 3.242% 78.125% / 5.273% 70.089%, curve to 3.51% 53.013% with 5.427% 60.045% / 3.587% 58.035%, curve to 4.89% 34.933% with 3.433% 47.991% / 4.967% 39.955%, curve to 3.05% 22.88% with 4.813% 29.911% / 3.165% 27.902%, curve to 4.2% 4.8% with 2.935% 17.858% / 0.995% 8.063%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "meadow-frame",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--meadow-frame"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--meadow-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Meadow Frame\" (ID: meadow-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--meadow-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "north-wind",
+      "name": "North Wind",
+      "family": "asymmetric",
+      "description": "A livelier top edge settles into quieter sides and a grounded base.",
+      "className": "svhape--north-wind",
+      "tags": [
+        "asymmetric",
+        "capacity:dense",
+        "container",
+        "directional",
+        "family:asymmetric",
+        "hero",
+        "use:hero",
+        "use:media",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "launch panels",
+        "mastheads",
+        "section intros"
+      ],
+      "selection": {
+        "uses": [
+          "hero",
+          "media",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "top-heavy",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 30,
+        "anchors": [
+          [
+            4.5,
+            5.6
+          ],
+          [
+            15.307,
+            3
+          ],
+          [
+            22.76,
+            8.2
+          ],
+          [
+            33.567,
+            3.988
+          ],
+          [
+            41.02,
+            7.212
+          ],
+          [
+            51.827,
+            3
+          ],
+          [
+            59.28,
+            8.2
+          ],
+          [
+            70.087,
+            3.988
+          ],
+          [
+            77.54,
+            7.212
+          ],
+          [
+            88.347,
+            3
+          ],
+          [
+            95.8,
+            5.6
+          ],
+          [
+            96.9,
+            17.845
+          ],
+          [
+            94.7,
+            35.6
+          ],
+          [
+            96.482,
+            47.845
+          ],
+          [
+            95.118,
+            65.6
+          ],
+          [
+            96.9,
+            77.845
+          ],
+          [
+            95.8,
+            95.6
+          ],
+          [
+            86.484,
+            96.95
+          ],
+          [
+            72.975,
+            94.25
+          ],
+          [
+            63.659,
+            96.437
+          ],
+          [
+            50.15,
+            94.763
+          ],
+          [
+            40.834,
+            96.95
+          ],
+          [
+            27.325,
+            94.25
+          ],
+          [
+            18.009,
+            96.437
+          ],
+          [
+            4.5,
+            95.6
+          ],
+          [
+            3.45,
+            83.355
+          ],
+          [
+            5.55,
+            65.6
+          ],
+          [
+            3.849,
+            53.355
+          ],
+          [
+            5.151,
+            35.6
+          ],
+          [
+            3.45,
+            23.355
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4.5% 5.6%, curve to 15.307% 3% with 6.476% 2.207% / 12.264% 2.567%, curve to 22.76% 8.2% with 18.35% 3.433% / 19.717% 8.035%, curve to 33.567% 3.988% with 25.803% 8.365% / 30.524% 4.153%, curve to 41.02% 7.212% with 36.61% 3.823% / 37.977% 7.377%, curve to 51.827% 3% with 44.063% 7.047% / 48.784% 2.835%, curve to 59.28% 8.2% with 54.87% 3.165% / 56.237% 8.035%, curve to 70.087% 3.988% with 62.323% 8.365% / 67.044% 4.153%, curve to 77.54% 7.212% with 73.13% 3.823% / 74.497% 7.377%, curve to 88.347% 3% with 80.583% 7.047% / 85.304% 3.269%, curve to 95.8% 5.6% with 91.39% 2.731% / 94.375% 3.126%, curve to 96.9% 17.845% with 97.226% 8.074% / 97.083% 12.845%, curve to 94.7% 35.6% with 96.717% 22.845% / 94.77% 30.6%, curve to 96.482% 47.845% with 94.63% 40.6% / 96.412% 42.845%, curve to 95.118% 65.6% with 96.552% 52.845% / 95.048% 60.6%, curve to 96.9% 77.845% with 95.188% 70.6% / 96.786% 72.845%, curve to 95.8% 95.6% with 97.014% 82.845% / 97.536% 92.416%, curve to 86.484% 96.95% with 94.064% 98.784% / 90.288% 97.175%, curve to 72.975% 94.25% with 82.68% 96.725% / 76.779% 94.336%, curve to 63.659% 96.437% with 69.171% 94.165% / 67.463% 96.352%, curve to 50.15% 94.763% with 59.855% 96.523% / 53.954% 94.678%, curve to 40.834% 96.95% with 46.346% 94.849% / 44.638% 97.036%, curve to 27.325% 94.25% with 37.03% 96.865% / 31.129% 94.336%, curve to 18.009% 96.437% with 23.521% 94.165% / 21.813% 96.212%, curve to 4.5% 95.6% with 14.205% 96.662% / 6.927% 97.78%, curve to 3.45% 83.355% with 2.074% 93.42% / 3.275% 88.355%, curve to 5.55% 65.6% with 3.625% 78.355% / 5.483% 70.6%, curve to 3.849% 53.355% with 5.617% 60.6% / 3.916% 58.355%, curve to 5.151% 35.6% with 3.783% 48.355% / 5.217% 40.6%, curve to 3.45% 23.355% with 5.085% 30.6% / 3.559% 28.355%, curve to 4.5% 5.6% with 3.342% 18.355% / 2.524% 8.993%, close)",
+        "sourceDigest": "sha256-138932ed2c285ec2bfb521af4c81c2afd9c00701236e15d364a4ec10a21a7386"
+      },
+      "fallback": {
+        "borderRadius": "28px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--north-wind svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--north-wind",
+        "standaloneCss": ".svhape--north-wind {\n  border-radius: 28px;\n  overflow: hidden;\n}\n\n.svhape--north-wind.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--north-wind {\n    border-radius: 0;\n    clip-path: shape(from 4.5% 5.6%, curve to 15.307% 3% with 6.476% 2.207% / 12.264% 2.567%, curve to 22.76% 8.2% with 18.35% 3.433% / 19.717% 8.035%, curve to 33.567% 3.988% with 25.803% 8.365% / 30.524% 4.153%, curve to 41.02% 7.212% with 36.61% 3.823% / 37.977% 7.377%, curve to 51.827% 3% with 44.063% 7.047% / 48.784% 2.835%, curve to 59.28% 8.2% with 54.87% 3.165% / 56.237% 8.035%, curve to 70.087% 3.988% with 62.323% 8.365% / 67.044% 4.153%, curve to 77.54% 7.212% with 73.13% 3.823% / 74.497% 7.377%, curve to 88.347% 3% with 80.583% 7.047% / 85.304% 3.269%, curve to 95.8% 5.6% with 91.39% 2.731% / 94.375% 3.126%, curve to 96.9% 17.845% with 97.226% 8.074% / 97.083% 12.845%, curve to 94.7% 35.6% with 96.717% 22.845% / 94.77% 30.6%, curve to 96.482% 47.845% with 94.63% 40.6% / 96.412% 42.845%, curve to 95.118% 65.6% with 96.552% 52.845% / 95.048% 60.6%, curve to 96.9% 77.845% with 95.188% 70.6% / 96.786% 72.845%, curve to 95.8% 95.6% with 97.014% 82.845% / 97.536% 92.416%, curve to 86.484% 96.95% with 94.064% 98.784% / 90.288% 97.175%, curve to 72.975% 94.25% with 82.68% 96.725% / 76.779% 94.336%, curve to 63.659% 96.437% with 69.171% 94.165% / 67.463% 96.352%, curve to 50.15% 94.763% with 59.855% 96.523% / 53.954% 94.678%, curve to 40.834% 96.95% with 46.346% 94.849% / 44.638% 97.036%, curve to 27.325% 94.25% with 37.03% 96.865% / 31.129% 94.336%, curve to 18.009% 96.437% with 23.521% 94.165% / 21.813% 96.212%, curve to 4.5% 95.6% with 14.205% 96.662% / 6.927% 97.78%, curve to 3.45% 83.355% with 2.074% 93.42% / 3.275% 88.355%, curve to 5.55% 65.6% with 3.625% 78.355% / 5.483% 70.6%, curve to 3.849% 53.355% with 5.617% 60.6% / 3.916% 58.355%, curve to 5.151% 35.6% with 3.783% 48.355% / 5.217% 40.6%, curve to 3.45% 23.355% with 5.085% 30.6% / 3.559% 28.355%, curve to 4.5% 5.6% with 3.342% 18.355% / 2.524% 8.993%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "north-wind",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--north-wind"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--north-wind svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "hero",
+            "media",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "top-heavy",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"North Wind\" (ID: north-wind). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--north-wind\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "paper-drift",
+      "name": "Paper Drift",
+      "family": "frame",
+      "description": "Uneven deckled motion with enough restraint for long-form content.",
+      "className": "svhape--paper-drift",
+      "tags": [
+        "asymmetric",
+        "capacity:dense",
+        "container",
+        "editorial",
+        "family:frame",
+        "paper",
+        "use:card",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "essays",
+        "notes",
+        "testimonials"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 9,
+          "right": 9,
+          "bottom": 9,
+          "left": 9
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 36,
+        "anchors": [
+          [
+            4.1,
+            4.7
+          ],
+          [
+            15.435,
+            3.25
+          ],
+          [
+            22.44,
+            6.15
+          ],
+          [
+            33.775,
+            3.874
+          ],
+          [
+            40.78,
+            5.527
+          ],
+          [
+            52.115,
+            3.25
+          ],
+          [
+            59.12,
+            6.15
+          ],
+          [
+            70.455,
+            3.874
+          ],
+          [
+            77.46,
+            5.527
+          ],
+          [
+            88.795,
+            3.25
+          ],
+          [
+            95.8,
+            4.7
+          ],
+          [
+            96.456,
+            13.371
+          ],
+          [
+            95.145,
+            27.4
+          ],
+          [
+            96.95,
+            36.071
+          ],
+          [
+            94.65,
+            50.1
+          ],
+          [
+            96.456,
+            58.771
+          ],
+          [
+            95.145,
+            72.8
+          ],
+          [
+            96.95,
+            81.471
+          ],
+          [
+            95.8,
+            95.5
+          ],
+          [
+            84.465,
+            97.1
+          ],
+          [
+            77.46,
+            93.9
+          ],
+          [
+            66.125,
+            96.412
+          ],
+          [
+            59.12,
+            94.588
+          ],
+          [
+            47.785,
+            97.1
+          ],
+          [
+            40.78,
+            93.9
+          ],
+          [
+            29.445,
+            96.412
+          ],
+          [
+            22.44,
+            94.588
+          ],
+          [
+            11.105,
+            97.1
+          ],
+          [
+            4.1,
+            95.5
+          ],
+          [
+            2.85,
+            86.829
+          ],
+          [
+            5.35,
+            72.8
+          ],
+          [
+            3.388,
+            64.129
+          ],
+          [
+            4.813,
+            50.1
+          ],
+          [
+            2.85,
+            41.429
+          ],
+          [
+            5.35,
+            27.4
+          ],
+          [
+            3.388,
+            18.729
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4.1% 4.7%, curve to 15.435% 3.25% with 6.108% 2.12% / 12.378% 3.008%, curve to 22.44% 6.15% with 18.492% 3.492% / 19.383% 6.046%, curve to 33.775% 3.874% with 25.497% 6.254% / 30.718% 3.978%, curve to 40.78% 5.527% with 36.832% 3.77% / 37.723% 5.631%, curve to 52.115% 3.25% with 43.837% 5.423% / 49.058% 3.146%, curve to 59.12% 6.15% with 55.172% 3.354% / 56.063% 6.046%, curve to 70.455% 3.874% with 62.177% 6.254% / 67.398% 3.978%, curve to 77.46% 5.527% with 73.512% 3.77% / 74.403% 5.631%, curve to 88.795% 3.25% with 80.517% 5.423% / 85.738% 3.388%, curve to 95.8% 4.7% with 91.852% 3.112% / 94.523% 3.013%, curve to 96.456% 13.371% with 97.077% 6.387% / 96.565% 9.588%, curve to 95.145% 27.4% with 96.347% 17.154% / 95.063% 23.617%, curve to 96.95% 36.071% with 95.227% 31.183% / 97.033% 32.288%, curve to 94.65% 50.1% with 96.868% 39.854% / 94.732% 46.317%, curve to 96.456% 58.771% with 94.568% 53.883% / 96.374% 54.988%, curve to 95.145% 72.8% with 96.539% 62.554% / 95.063% 69.017%, curve to 96.95% 81.471% with 95.227% 76.583% / 96.841% 77.688%, curve to 95.8% 95.5% with 97.059% 85.254% / 97.881% 92.895%, curve to 84.465% 97.1% with 93.719% 98.105% / 87.522% 97.367%, curve to 77.46% 93.9% with 81.408% 96.833% / 80.517% 94.015%, curve to 66.125% 96.412% with 74.403% 93.785% / 69.182% 96.297%, curve to 59.12% 94.588% with 63.068% 96.527% / 62.177% 94.473%, curve to 47.785% 97.1% with 56.063% 94.703% / 50.842% 97.215%, curve to 40.78% 93.9% with 44.728% 96.985% / 43.837% 94.015%, curve to 29.445% 96.412% with 37.723% 93.785% / 32.502% 96.297%, curve to 22.44% 94.588% with 26.388% 96.527% / 25.497% 94.473%, curve to 11.105% 97.1% with 19.383% 94.703% / 14.162% 96.948%, curve to 4.1% 95.5% with 8.048% 97.252% / 5.476% 97.212%, curve to 2.85% 86.829% with 2.724% 93.788% / 2.642% 90.612%, curve to 5.35% 72.8% with 3.058% 83.046% / 5.26% 76.583%, curve to 3.388% 64.129% with 5.44% 69.017% / 3.478% 67.912%, curve to 4.813% 50.1% with 3.298% 60.346% / 4.903% 53.883%, curve to 2.85% 41.429% with 4.723% 46.317% / 2.761% 45.212%, curve to 5.35% 27.4% with 2.94% 37.646% / 5.26% 31.183%, curve to 3.388% 18.729% with 5.44% 23.617% / 3.596% 22.512%, curve to 4.1% 4.7% with 3.18% 14.946% / 2.092% 7.28%, close)",
+        "sourceDigest": "sha256-a6487c13476c8215ef7786adf7d7050833d5f81f27dc928f64c9a8e57e9a6b74"
+      },
+      "fallback": {
+        "borderRadius": "18px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--paper-drift svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--paper-drift",
+        "standaloneCss": ".svhape--paper-drift {\n  border-radius: 18px;\n  overflow: hidden;\n}\n\n.svhape--paper-drift.svhape--padded {\n  padding: 9%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--paper-drift {\n    border-radius: 0;\n    clip-path: shape(from 4.1% 4.7%, curve to 15.435% 3.25% with 6.108% 2.12% / 12.378% 3.008%, curve to 22.44% 6.15% with 18.492% 3.492% / 19.383% 6.046%, curve to 33.775% 3.874% with 25.497% 6.254% / 30.718% 3.978%, curve to 40.78% 5.527% with 36.832% 3.77% / 37.723% 5.631%, curve to 52.115% 3.25% with 43.837% 5.423% / 49.058% 3.146%, curve to 59.12% 6.15% with 55.172% 3.354% / 56.063% 6.046%, curve to 70.455% 3.874% with 62.177% 6.254% / 67.398% 3.978%, curve to 77.46% 5.527% with 73.512% 3.77% / 74.403% 5.631%, curve to 88.795% 3.25% with 80.517% 5.423% / 85.738% 3.388%, curve to 95.8% 4.7% with 91.852% 3.112% / 94.523% 3.013%, curve to 96.456% 13.371% with 97.077% 6.387% / 96.565% 9.588%, curve to 95.145% 27.4% with 96.347% 17.154% / 95.063% 23.617%, curve to 96.95% 36.071% with 95.227% 31.183% / 97.033% 32.288%, curve to 94.65% 50.1% with 96.868% 39.854% / 94.732% 46.317%, curve to 96.456% 58.771% with 94.568% 53.883% / 96.374% 54.988%, curve to 95.145% 72.8% with 96.539% 62.554% / 95.063% 69.017%, curve to 96.95% 81.471% with 95.227% 76.583% / 96.841% 77.688%, curve to 95.8% 95.5% with 97.059% 85.254% / 97.881% 92.895%, curve to 84.465% 97.1% with 93.719% 98.105% / 87.522% 97.367%, curve to 77.46% 93.9% with 81.408% 96.833% / 80.517% 94.015%, curve to 66.125% 96.412% with 74.403% 93.785% / 69.182% 96.297%, curve to 59.12% 94.588% with 63.068% 96.527% / 62.177% 94.473%, curve to 47.785% 97.1% with 56.063% 94.703% / 50.842% 97.215%, curve to 40.78% 93.9% with 44.728% 96.985% / 43.837% 94.015%, curve to 29.445% 96.412% with 37.723% 93.785% / 32.502% 96.297%, curve to 22.44% 94.588% with 26.388% 96.527% / 25.497% 94.473%, curve to 11.105% 97.1% with 19.383% 94.703% / 14.162% 96.948%, curve to 4.1% 95.5% with 8.048% 97.252% / 5.476% 97.212%, curve to 2.85% 86.829% with 2.724% 93.788% / 2.642% 90.612%, curve to 5.35% 72.8% with 3.058% 83.046% / 5.26% 76.583%, curve to 3.388% 64.129% with 5.44% 69.017% / 3.478% 67.912%, curve to 4.813% 50.1% with 3.298% 60.346% / 4.903% 53.883%, curve to 2.85% 41.429% with 4.723% 46.317% / 2.761% 45.212%, curve to 5.35% 27.4% with 2.94% 37.646% / 5.26% 31.183%, curve to 3.388% 18.729% with 5.44% 23.617% / 3.596% 22.512%, curve to 4.1% 4.7% with 3.18% 14.946% / 2.092% 7.28%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "paper-drift",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--paper-drift"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--paper-drift svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 9,
+            "right": 9,
+            "bottom": 9,
+            "left": 9
+          }
+        },
+        "safeInset": {
+          "top": 9,
+          "right": 9,
+          "bottom": 9,
+          "left": 9
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Paper Drift\" (ID: paper-drift). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--paper-drift\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 9% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "petal-seal",
+      "name": "Petal Seal",
+      "family": "emblem",
+      "description": "Six broad petals form a soft emblem with a generous center.",
+      "className": "svhape--petal-seal",
+      "tags": [
+        "badge",
+        "capacity:sparse",
+        "family:emblem",
+        "flower",
+        "radial",
+        "soft",
+        "use:avatar",
+        "use:badge",
+        "use:seal"
+      ],
+      "recommendedFor": [
+        "avatars",
+        "certification marks",
+        "testimonials"
+      ],
+      "selection": {
+        "uses": [
+          "avatar",
+          "badge",
+          "seal"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "sparse",
+        "symmetry": "radial",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 23,
+          "right": 23,
+          "bottom": 23,
+          "left": 23
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 12,
+        "anchors": [
+          [
+            50,
+            5.93
+          ],
+          [
+            66.965,
+            20.616
+          ],
+          [
+            86.936,
+            28.675
+          ],
+          [
+            85.35,
+            50
+          ],
+          [
+            88.166,
+            72.035
+          ],
+          [
+            66.965,
+            79.384
+          ],
+          [
+            50,
+            92.65
+          ],
+          [
+            32.325,
+            80.614
+          ],
+          [
+            11.834,
+            72.035
+          ],
+          [
+            16.07,
+            50
+          ],
+          [
+            13.064,
+            28.675
+          ],
+          [
+            32.325,
+            19.386
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 50% 5.93%, curve to 66.965% 20.616% with 55.773% 6.135% / 60.809% 16.825%, curve to 86.936% 28.675% with 73.121% 24.407% / 83.872% 23.778%, curve to 85.35% 50% with 90% 33.572% / 85.145% 42.773%, curve to 88.166% 72.035% with 85.555% 57.227% / 91.23% 67.138%, curve to 66.965% 79.384% with 85.102% 76.932% / 73.326% 75.948%, curve to 50% 92.65% with 60.604% 82.82% / 55.773% 92.445%, curve to 32.325% 80.614% with 44.227% 92.855% / 38.686% 84.05%, curve to 11.834% 72.035% with 25.964% 77.178% / 14.543% 77.137%, curve to 16.07% 50% with 9.125% 66.933% / 15.865% 57.227%, curve to 13.064% 28.675% with 16.275% 42.773% / 10.355% 33.777%, curve to 32.325% 19.386% with 15.773% 23.573% / 26.169% 23.177%, curve to 50% 5.93% with 38.481% 15.595% / 44.227% 5.725%, close)",
+        "sourceDigest": "sha256-5d9d075112f42001ec7bc54b264f5592d0b75940b5e277dd483234a4a431bee4"
+      },
+      "fallback": {
+        "borderRadius": "45%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--petal-seal svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--petal-seal",
+        "standaloneCss": ".svhape--petal-seal {\n  border-radius: 45%;\n  overflow: hidden;\n}\n\n.svhape--petal-seal.svhape--padded {\n  padding: 23%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--petal-seal {\n    border-radius: 0;\n    clip-path: shape(from 50% 5.93%, curve to 66.965% 20.616% with 55.773% 6.135% / 60.809% 16.825%, curve to 86.936% 28.675% with 73.121% 24.407% / 83.872% 23.778%, curve to 85.35% 50% with 90% 33.572% / 85.145% 42.773%, curve to 88.166% 72.035% with 85.555% 57.227% / 91.23% 67.138%, curve to 66.965% 79.384% with 85.102% 76.932% / 73.326% 75.948%, curve to 50% 92.65% with 60.604% 82.82% / 55.773% 92.445%, curve to 32.325% 80.614% with 44.227% 92.855% / 38.686% 84.05%, curve to 11.834% 72.035% with 25.964% 77.178% / 14.543% 77.137%, curve to 16.07% 50% with 9.125% 66.933% / 15.865% 57.227%, curve to 13.064% 28.675% with 16.275% 42.773% / 10.355% 33.777%, curve to 32.325% 19.386% with 15.773% 23.573% / 26.169% 23.177%, curve to 50% 5.93% with 38.481% 15.595% / 44.227% 5.725%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "petal-seal",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--petal-seal"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--petal-seal svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "avatar",
+            "badge",
+            "seal"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "sparse",
+          "symmetry": "radial",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 23,
+            "right": 23,
+            "bottom": 23,
+            "left": 23
+          }
+        },
+        "safeInset": {
+          "top": 23,
+          "right": 23,
+          "bottom": 23,
+          "left": 23
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Petal Seal\" (ID: petal-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--petal-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 23% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "quiet-coast",
+      "name": "Quiet Coast",
+      "family": "frame",
+      "description": "A low-amplitude shoreline for calm cards that still need a handmade edge.",
+      "className": "svhape--quiet-coast",
+      "tags": [
+        "calm",
+        "capacity:dense",
+        "container",
+        "content-safe",
+        "family:frame",
+        "subtle",
+        "use:card",
+        "use:form",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "article cards",
+        "forms",
+        "quotes"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "form",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 26,
+        "anchors": [
+          [
+            4.5,
+            4.5
+          ],
+          [
+            17.688,
+            3.4
+          ],
+          [
+            34.833,
+            5.6
+          ],
+          [
+            48.022,
+            3.708
+          ],
+          [
+            65.167,
+            5.292
+          ],
+          [
+            78.355,
+            3.4
+          ],
+          [
+            95.5,
+            4.5
+          ],
+          [
+            96.35,
+            17.688
+          ],
+          [
+            94.65,
+            34.833
+          ],
+          [
+            96.112,
+            48.022
+          ],
+          [
+            94.888,
+            65.167
+          ],
+          [
+            96.35,
+            78.355
+          ],
+          [
+            95.5,
+            95.5
+          ],
+          [
+            82.641,
+            96.8
+          ],
+          [
+            72.75,
+            94.2
+          ],
+          [
+            59.891,
+            96.436
+          ],
+          [
+            50,
+            94.564
+          ],
+          [
+            37.141,
+            96.8
+          ],
+          [
+            27.25,
+            94.2
+          ],
+          [
+            14.391,
+            96.436
+          ],
+          [
+            4.5,
+            95.5
+          ],
+          [
+            3.6,
+            82.312
+          ],
+          [
+            5.4,
+            65.167
+          ],
+          [
+            3.852,
+            51.978
+          ],
+          [
+            5.148,
+            34.833
+          ],
+          [
+            3.6,
+            21.645
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4.5% 4.5%, curve to 17.688% 3.4% with 6.848% 1.459% / 12.633% 3.217%, curve to 34.833% 5.6% with 22.743% 3.583% / 29.777% 5.549%, curve to 48.022% 3.708% with 39.889% 5.651% / 42.966% 3.759%, curve to 65.167% 5.292% with 53.078% 3.657% / 60.112% 5.343%, curve to 78.355% 3.4% with 70.223% 5.241% / 73.3% 3.532%, curve to 95.5% 4.5% with 83.411% 3.268% / 92.501% 2.119%, curve to 96.35% 17.688% with 98.499% 6.881% / 96.492% 12.633%, curve to 94.65% 34.833% with 96.208% 22.743% / 94.69% 29.777%, curve to 96.112% 48.022% with 94.61% 39.889% / 96.072% 42.966%, curve to 94.888% 65.167% with 96.152% 53.078% / 94.848% 60.112%, curve to 96.35% 78.355% with 94.928% 70.223% / 96.248% 73.3%, curve to 95.5% 95.5% with 96.452% 83.411% / 97.785% 92.426%, curve to 82.641% 96.8% with 93.215% 98.574% / 86.433% 97.017%, curve to 72.75% 94.2% with 78.849% 96.583% / 76.542% 94.261%, curve to 59.891% 96.436% with 68.958% 94.139% / 63.683% 96.375%, curve to 50% 94.564% with 56.099% 96.497% / 53.792% 94.503%, curve to 37.141% 96.8% with 46.208% 94.625% / 40.933% 96.861%, curve to 27.25% 94.2% with 33.349% 96.739% / 31.042% 94.261%, curve to 14.391% 96.436% with 23.458% 94.139% / 18.183% 96.219%, curve to 4.5% 95.5% with 10.599% 96.653% / 6.299% 97.854%, curve to 3.6% 82.312% with 2.702% 93.146% / 3.45% 87.367%, curve to 5.4% 65.167% with 3.75% 77.257% / 5.358% 70.223%, curve to 3.852% 51.978% with 5.442% 60.111% / 3.894% 57.034%, curve to 5.148% 34.833% with 3.81% 46.922% / 5.19% 39.889%, curve to 3.6% 21.645% with 5.106% 29.777% / 3.708% 26.7%, curve to 4.5% 4.5% with 3.492% 16.59% / 2.152% 7.541%, close)",
+        "sourceDigest": "sha256-9b44a093a6ab199c1016bfdf62c51c51762432bf75afb79c2c27a1a67fd482fa"
+      },
+      "fallback": {
+        "borderRadius": "20px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--quiet-coast svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--quiet-coast",
+        "standaloneCss": ".svhape--quiet-coast {\n  border-radius: 20px;\n  overflow: hidden;\n}\n\n.svhape--quiet-coast.svhape--padded {\n  padding: 8%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--quiet-coast {\n    border-radius: 0;\n    clip-path: shape(from 4.5% 4.5%, curve to 17.688% 3.4% with 6.848% 1.459% / 12.633% 3.217%, curve to 34.833% 5.6% with 22.743% 3.583% / 29.777% 5.549%, curve to 48.022% 3.708% with 39.889% 5.651% / 42.966% 3.759%, curve to 65.167% 5.292% with 53.078% 3.657% / 60.112% 5.343%, curve to 78.355% 3.4% with 70.223% 5.241% / 73.3% 3.532%, curve to 95.5% 4.5% with 83.411% 3.268% / 92.501% 2.119%, curve to 96.35% 17.688% with 98.499% 6.881% / 96.492% 12.633%, curve to 94.65% 34.833% with 96.208% 22.743% / 94.69% 29.777%, curve to 96.112% 48.022% with 94.61% 39.889% / 96.072% 42.966%, curve to 94.888% 65.167% with 96.152% 53.078% / 94.848% 60.112%, curve to 96.35% 78.355% with 94.928% 70.223% / 96.248% 73.3%, curve to 95.5% 95.5% with 96.452% 83.411% / 97.785% 92.426%, curve to 82.641% 96.8% with 93.215% 98.574% / 86.433% 97.017%, curve to 72.75% 94.2% with 78.849% 96.583% / 76.542% 94.261%, curve to 59.891% 96.436% with 68.958% 94.139% / 63.683% 96.375%, curve to 50% 94.564% with 56.099% 96.497% / 53.792% 94.503%, curve to 37.141% 96.8% with 46.208% 94.625% / 40.933% 96.861%, curve to 27.25% 94.2% with 33.349% 96.739% / 31.042% 94.261%, curve to 14.391% 96.436% with 23.458% 94.139% / 18.183% 96.219%, curve to 4.5% 95.5% with 10.599% 96.653% / 6.299% 97.854%, curve to 3.6% 82.312% with 2.702% 93.146% / 3.45% 87.367%, curve to 5.4% 65.167% with 3.75% 77.257% / 5.358% 70.223%, curve to 3.852% 51.978% with 5.442% 60.111% / 3.894% 57.034%, curve to 5.148% 34.833% with 3.81% 46.922% / 5.19% 39.889%, curve to 3.6% 21.645% with 5.106% 29.777% / 3.708% 26.7%, curve to 4.5% 4.5% with 3.492% 16.59% / 2.152% 7.541%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "quiet-coast",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--quiet-coast"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--quiet-coast svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "form",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8
+          }
+        },
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Quiet Coast\" (ID: quiet-coast). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--quiet-coast\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "river-pebble",
+      "name": "River Pebble",
+      "family": "blob",
+      "description": "An easy oval with small irregularities and no obvious repeated lobe.",
+      "className": "svhape--river-pebble",
+      "tags": [
+        "badge",
+        "capacity:sparse",
+        "family:blob",
+        "media",
+        "pebble",
+        "radial",
+        "use:badge",
+        "use:media"
+      ],
+      "recommendedFor": [
+        "logos",
+        "portraits",
+        "short quotes"
+      ],
+      "selection": {
+        "uses": [
+          "badge",
+          "media"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "sparse",
+        "symmetry": "approximate",
+        "balance": "centered",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 20,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 14,
+        "anchors": [
+          [
+            54.821,
+            12.601
+          ],
+          [
+            70.093,
+            22.542
+          ],
+          [
+            86.166,
+            30.488
+          ],
+          [
+            88.958,
+            46.165
+          ],
+          [
+            91.639,
+            62.334
+          ],
+          [
+            76.887,
+            72.833
+          ],
+          [
+            64.236,
+            84.441
+          ],
+          [
+            45.711,
+            83.277
+          ],
+          [
+            26.648,
+            81.91
+          ],
+          [
+            17.941,
+            67.296
+          ],
+          [
+            7.498,
+            54.184
+          ],
+          [
+            12.951,
+            39.026
+          ],
+          [
+            18.753,
+            23.465
+          ],
+          [
+            37.381,
+            19.47
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 54.821% 12.601%, curve to 70.093% 22.542% with 60.273% 13.113% / 64.869% 19.561%, curve to 86.166% 30.488% with 75.317% 25.523% / 83.022% 26.551%, curve to 88.958% 46.165% with 89.31% 34.425% / 88.046% 40.857%, curve to 91.639% 62.334% with 89.87% 51.473% / 93.651% 57.889%, curve to 76.887% 72.833% with 89.627% 66.779% / 81.454% 69.149%, curve to 64.236% 84.441% with 72.32% 76.518% / 69.432% 82.7%, curve to 45.711% 83.277% with 59.04% 86.182% / 51.976% 83.699%, curve to 26.648% 81.91% with 39.446% 82.855% / 31.276% 84.574%, curve to 17.941% 67.296% with 22.02% 79.247% / 21.133% 71.917%, curve to 7.498% 54.184% with 14.749% 62.675% / 8.33% 58.896%, curve to 12.951% 39.026% with 6.666% 49.472% / 11.075% 44.146%, curve to 18.753% 23.465% with 14.827% 33.906% / 14.681% 26.724%, curve to 37.381% 19.47% with 22.825% 20.206% / 31.37% 21.281%, curve to 54.821% 12.601% with 43.392% 17.659% / 49.369% 12.089%, close)",
+        "sourceDigest": "sha256-67e906be4c7a0dfc9725c6cf42c888fb0639314b060338e9c471ce0f20016881"
+      },
+      "fallback": {
+        "borderRadius": "50%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--river-pebble svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--river-pebble",
+        "standaloneCss": ".svhape--river-pebble {\n  border-radius: 50%;\n  overflow: hidden;\n}\n\n.svhape--river-pebble.svhape--padded {\n  padding: 20%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--river-pebble {\n    border-radius: 0;\n    clip-path: shape(from 54.821% 12.601%, curve to 70.093% 22.542% with 60.273% 13.113% / 64.869% 19.561%, curve to 86.166% 30.488% with 75.317% 25.523% / 83.022% 26.551%, curve to 88.958% 46.165% with 89.31% 34.425% / 88.046% 40.857%, curve to 91.639% 62.334% with 89.87% 51.473% / 93.651% 57.889%, curve to 76.887% 72.833% with 89.627% 66.779% / 81.454% 69.149%, curve to 64.236% 84.441% with 72.32% 76.518% / 69.432% 82.7%, curve to 45.711% 83.277% with 59.04% 86.182% / 51.976% 83.699%, curve to 26.648% 81.91% with 39.446% 82.855% / 31.276% 84.574%, curve to 17.941% 67.296% with 22.02% 79.247% / 21.133% 71.917%, curve to 7.498% 54.184% with 14.749% 62.675% / 8.33% 58.896%, curve to 12.951% 39.026% with 6.666% 49.472% / 11.075% 44.146%, curve to 18.753% 23.465% with 14.827% 33.906% / 14.681% 26.724%, curve to 37.381% 19.47% with 22.825% 20.206% / 31.37% 21.281%, curve to 54.821% 12.601% with 43.392% 17.659% / 49.369% 12.089%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "river-pebble",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--river-pebble"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--river-pebble svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "badge",
+            "media"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "sparse",
+          "symmetry": "approximate",
+          "balance": "centered",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 20,
+            "right": 20,
+            "bottom": 20,
+            "left": 20
+          }
+        },
+        "safeInset": {
+          "top": 20,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"River Pebble\" (ID: river-pebble). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--river-pebble\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "riverbank",
+      "name": "Riverbank",
+      "family": "asymmetric",
+      "description": "Vertical motion leads this broad, readable frame with an off-center current.",
+      "className": "svhape--riverbank",
+      "tags": [
+        "asymmetric",
+        "capacity:dense",
+        "container",
+        "family:asymmetric",
+        "flowing",
+        "sidebar",
+        "use:card",
+        "use:panel",
+        "use:sidebar"
+      ],
+      "recommendedFor": [
+        "navigation cards",
+        "profiles",
+        "side panels"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "panel",
+          "sidebar"
+        ],
+        "aspect": {
+          "min": 0.75,
+          "preferred": 1.15,
+          "max": 1.75
+        },
+        "contentCapacity": "dense",
+        "symmetry": "none",
+        "balance": "right-heavy",
+        "edgeActivity": "moderate",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 32,
+        "anchors": [
+          [
+            5,
+            4.6
+          ],
+          [
+            16.434,
+            3.4
+          ],
+          [
+            34.933,
+            5.8
+          ],
+          [
+            46.367,
+            3.832
+          ],
+          [
+            64.867,
+            5.368
+          ],
+          [
+            76.3,
+            3.4
+          ],
+          [
+            94.8,
+            4.6
+          ],
+          [
+            96.95,
+            18.598
+          ],
+          [
+            92.65,
+            27.25
+          ],
+          [
+            96.176,
+            41.248
+          ],
+          [
+            93.424,
+            49.9
+          ],
+          [
+            96.95,
+            63.898
+          ],
+          [
+            92.65,
+            72.55
+          ],
+          [
+            96.176,
+            86.548
+          ],
+          [
+            94.8,
+            95.2
+          ],
+          [
+            83.7,
+            96.65
+          ],
+          [
+            76.84,
+            93.75
+          ],
+          [
+            65.74,
+            96.128
+          ],
+          [
+            58.88,
+            94.272
+          ],
+          [
+            47.78,
+            96.65
+          ],
+          [
+            40.92,
+            93.75
+          ],
+          [
+            29.82,
+            96.128
+          ],
+          [
+            22.96,
+            94.272
+          ],
+          [
+            11.86,
+            96.65
+          ],
+          [
+            5,
+            95.2
+          ],
+          [
+            3.784,
+            86.548
+          ],
+          [
+            6.216,
+            72.55
+          ],
+          [
+            3.1,
+            63.898
+          ],
+          [
+            6.9,
+            49.9
+          ],
+          [
+            3.784,
+            41.248
+          ],
+          [
+            6.216,
+            27.25
+          ],
+          [
+            3.1,
+            18.598
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 5% 4.6%, curve to 16.434% 3.4% with 7.222% 2.067% / 11.445% 3.2%, curve to 34.933% 5.8% with 21.423% 3.6% / 29.944% 5.728%, curve to 46.367% 3.832% with 39.922% 5.872% / 41.378% 3.904%, curve to 64.867% 5.368% with 51.356% 3.76% / 59.878% 5.44%, curve to 76.3% 3.4% with 69.856% 5.296% / 71.311% 3.528%, curve to 94.8% 4.6% with 81.289% 3.272% / 91.358% 2.067%, curve to 96.95% 18.598% with 98.242% 7.133% / 97.308% 14.823%, curve to 92.65% 27.25% with 96.592% 22.373% / 92.779% 23.475%, curve to 96.176% 41.248% with 92.521% 31.025% / 96.047% 37.473%, curve to 93.424% 49.9% with 96.305% 45.023% / 93.295% 46.125%, curve to 96.95% 63.898% with 93.553% 53.675% / 97.079% 60.123%, curve to 92.65% 72.55% with 96.821% 67.673% / 92.779% 68.775%, curve to 96.176% 86.548% with 92.521% 76.325% / 95.818% 82.773%, curve to 94.8% 95.2% with 96.534% 90.323% / 96.879% 93.516%, curve to 83.7% 96.65% with 92.721% 96.884% / 86.693% 96.892%, curve to 76.84% 93.75% with 80.707% 96.408% / 79.833% 93.837%, curve to 65.74% 96.128% with 73.847% 93.663% / 68.733% 96.041%, curve to 58.88% 94.272% with 62.747% 96.215% / 61.873% 94.185%, curve to 47.78% 96.65% with 55.887% 94.359% / 50.773% 96.737%, curve to 40.92% 93.75% with 44.787% 96.563% / 43.913% 93.837%, curve to 29.82% 96.128% with 37.927% 93.663% / 32.813% 96.041%, curve to 22.96% 94.272% with 26.827% 96.215% / 25.953% 94.185%, curve to 11.86% 96.65% with 19.967% 94.359% / 14.853% 96.495%, curve to 5% 95.2% with 8.867% 96.805% / 6.346% 96.884%, curve to 3.784% 86.548% with 3.654% 93.516% / 3.581% 90.323%, curve to 6.216% 72.55% with 3.987% 82.773% / 6.33% 76.325%, curve to 3.1% 63.898% with 6.102% 68.775% / 2.986% 67.673%, curve to 6.9% 49.9% with 3.214% 60.123% / 6.786% 53.675%, curve to 3.784% 41.248% with 7.014% 46.125% / 3.898% 45.023%, curve to 6.216% 27.25% with 3.67% 37.473% / 6.33% 31.025%, curve to 3.1% 18.598% with 6.102% 23.475% / 3.303% 22.373%, curve to 5% 4.6% with 2.897% 14.823% / 2.778% 7.133%, close)",
+        "sourceDigest": "sha256-c83fe330a27f6a2348f89d170e51f457db6c7e63a6c1680f058910147c1d35c7"
+      },
+      "fallback": {
+        "borderRadius": "26px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--riverbank svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--riverbank",
+        "standaloneCss": ".svhape--riverbank {\n  border-radius: 26px;\n  overflow: hidden;\n}\n\n.svhape--riverbank.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--riverbank {\n    border-radius: 0;\n    clip-path: shape(from 5% 4.6%, curve to 16.434% 3.4% with 7.222% 2.067% / 11.445% 3.2%, curve to 34.933% 5.8% with 21.423% 3.6% / 29.944% 5.728%, curve to 46.367% 3.832% with 39.922% 5.872% / 41.378% 3.904%, curve to 64.867% 5.368% with 51.356% 3.76% / 59.878% 5.44%, curve to 76.3% 3.4% with 69.856% 5.296% / 71.311% 3.528%, curve to 94.8% 4.6% with 81.289% 3.272% / 91.358% 2.067%, curve to 96.95% 18.598% with 98.242% 7.133% / 97.308% 14.823%, curve to 92.65% 27.25% with 96.592% 22.373% / 92.779% 23.475%, curve to 96.176% 41.248% with 92.521% 31.025% / 96.047% 37.473%, curve to 93.424% 49.9% with 96.305% 45.023% / 93.295% 46.125%, curve to 96.95% 63.898% with 93.553% 53.675% / 97.079% 60.123%, curve to 92.65% 72.55% with 96.821% 67.673% / 92.779% 68.775%, curve to 96.176% 86.548% with 92.521% 76.325% / 95.818% 82.773%, curve to 94.8% 95.2% with 96.534% 90.323% / 96.879% 93.516%, curve to 83.7% 96.65% with 92.721% 96.884% / 86.693% 96.892%, curve to 76.84% 93.75% with 80.707% 96.408% / 79.833% 93.837%, curve to 65.74% 96.128% with 73.847% 93.663% / 68.733% 96.041%, curve to 58.88% 94.272% with 62.747% 96.215% / 61.873% 94.185%, curve to 47.78% 96.65% with 55.887% 94.359% / 50.773% 96.737%, curve to 40.92% 93.75% with 44.787% 96.563% / 43.913% 93.837%, curve to 29.82% 96.128% with 37.927% 93.663% / 32.813% 96.041%, curve to 22.96% 94.272% with 26.827% 96.215% / 25.953% 94.185%, curve to 11.86% 96.65% with 19.967% 94.359% / 14.853% 96.495%, curve to 5% 95.2% with 8.867% 96.805% / 6.346% 96.884%, curve to 3.784% 86.548% with 3.654% 93.516% / 3.581% 90.323%, curve to 6.216% 72.55% with 3.987% 82.773% / 6.33% 76.325%, curve to 3.1% 63.898% with 6.102% 68.775% / 2.986% 67.673%, curve to 6.9% 49.9% with 3.214% 60.123% / 6.786% 53.675%, curve to 3.784% 41.248% with 7.014% 46.125% / 3.898% 45.023%, curve to 6.216% 27.25% with 3.67% 37.473% / 6.33% 31.025%, curve to 3.1% 18.598% with 6.102% 23.475% / 3.303% 22.373%, curve to 5% 4.6% with 2.897% 14.823% / 2.778% 7.133%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "riverbank",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--riverbank"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--riverbank svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "panel",
+            "sidebar"
+          ],
+          "aspect": {
+            "min": 0.75,
+            "preferred": 1.15,
+            "max": 1.75
+          },
+          "contentCapacity": "dense",
+          "symmetry": "none",
+          "balance": "right-heavy",
+          "edgeActivity": "moderate",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Riverbank\" (ID: riverbank). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--riverbank\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.75 and 1.75; 1.15 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "soft-stamp",
+      "name": "Soft Stamp",
+      "family": "scalloped",
+      "description": "Small regular scallops with softened joins instead of sharp perforations.",
+      "className": "svhape--soft-stamp",
+      "tags": [
+        "capacity:standard",
+        "container",
+        "family:scalloped",
+        "label",
+        "regular",
+        "scalloped",
+        "use:callout",
+        "use:coupon",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "announcements",
+        "coupons",
+        "price cards"
+      ],
+      "selection": {
+        "uses": [
+          "callout",
+          "coupon",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "standard",
+        "symmetry": "bilateral",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 48,
+        "anchors": [
+          [
+            4.3,
+            4.3
+          ],
+          [
+            10.829,
+            3.2
+          ],
+          [
+            17.357,
+            5.4
+          ],
+          [
+            23.886,
+            3.2
+          ],
+          [
+            30.414,
+            5.4
+          ],
+          [
+            36.943,
+            3.2
+          ],
+          [
+            43.471,
+            5.4
+          ],
+          [
+            50,
+            3.2
+          ],
+          [
+            56.529,
+            5.4
+          ],
+          [
+            63.057,
+            3.2
+          ],
+          [
+            69.586,
+            5.4
+          ],
+          [
+            76.114,
+            3.2
+          ],
+          [
+            82.643,
+            5.4
+          ],
+          [
+            89.171,
+            3.2
+          ],
+          [
+            95.7,
+            4.3
+          ],
+          [
+            96.8,
+            13.44
+          ],
+          [
+            94.6,
+            22.58
+          ],
+          [
+            96.8,
+            31.72
+          ],
+          [
+            94.6,
+            40.86
+          ],
+          [
+            96.8,
+            50
+          ],
+          [
+            94.6,
+            59.14
+          ],
+          [
+            96.8,
+            68.28
+          ],
+          [
+            94.6,
+            77.42
+          ],
+          [
+            96.8,
+            86.56
+          ],
+          [
+            95.7,
+            95.7
+          ],
+          [
+            89.171,
+            96.8
+          ],
+          [
+            82.643,
+            94.6
+          ],
+          [
+            76.114,
+            96.8
+          ],
+          [
+            69.586,
+            94.6
+          ],
+          [
+            63.057,
+            96.8
+          ],
+          [
+            56.529,
+            94.6
+          ],
+          [
+            50,
+            96.8
+          ],
+          [
+            43.471,
+            94.6
+          ],
+          [
+            36.943,
+            96.8
+          ],
+          [
+            30.414,
+            94.6
+          ],
+          [
+            23.886,
+            96.8
+          ],
+          [
+            17.357,
+            94.6
+          ],
+          [
+            10.829,
+            96.8
+          ],
+          [
+            4.3,
+            95.7
+          ],
+          [
+            3.2,
+            86.56
+          ],
+          [
+            5.4,
+            77.42
+          ],
+          [
+            3.2,
+            68.28
+          ],
+          [
+            5.4,
+            59.14
+          ],
+          [
+            3.2,
+            50
+          ],
+          [
+            5.4,
+            40.86
+          ],
+          [
+            3.2,
+            31.72
+          ],
+          [
+            5.4,
+            22.58
+          ],
+          [
+            3.2,
+            13.44
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4.3% 4.3%, curve to 10.829% 3.2% with 5.572% 2.593% / 8.653% 3.017%, curve to 17.357% 5.4% with 13.005% 3.383% / 15.181% 5.4%, curve to 23.886% 3.2% with 19.533% 5.4% / 21.71% 3.2%, curve to 30.414% 5.4% with 26.062% 3.2% / 28.238% 5.4%, curve to 36.943% 3.2% with 32.59% 5.4% / 34.767% 3.2%, curve to 43.471% 5.4% with 39.119% 3.2% / 41.295% 5.4%, curve to 50% 3.2% with 45.647% 5.4% / 47.824% 3.2%, curve to 56.529% 5.4% with 52.176% 3.2% / 54.353% 5.4%, curve to 63.057% 3.2% with 58.705% 5.4% / 60.881% 3.2%, curve to 69.586% 5.4% with 65.233% 3.2% / 67.41% 5.4%, curve to 76.114% 3.2% with 71.762% 5.4% / 73.938% 3.2%, curve to 82.643% 5.4% with 78.29% 3.2% / 80.467% 5.4%, curve to 89.171% 3.2% with 84.819% 5.4% / 86.995% 3.383%, curve to 95.7% 4.3% with 91.347% 3.017% / 94.429% 2.593%, curve to 96.8% 13.44% with 96.972% 6.007% / 96.983% 10.393%, curve to 94.6% 22.58% with 96.617% 16.487% / 94.6% 19.533%, curve to 96.8% 31.72% with 94.6% 25.627% / 96.8% 28.673%, curve to 94.6% 40.86% with 96.8% 34.767% / 94.6% 37.813%, curve to 96.8% 50% with 94.6% 43.907% / 96.8% 46.953%, curve to 94.6% 59.14% with 96.8% 53.047% / 94.6% 56.093%, curve to 96.8% 68.28% with 94.6% 62.187% / 96.8% 65.233%, curve to 94.6% 77.42% with 96.8% 71.327% / 94.6% 74.373%, curve to 96.8% 86.56% with 94.6% 80.467% / 96.617% 83.513%, curve to 95.7% 95.7% with 96.983% 89.607% / 96.972% 93.993%, curve to 89.171% 96.8% with 94.429% 97.407% / 91.347% 96.983%, curve to 82.643% 94.6% with 86.995% 96.617% / 84.819% 94.6%, curve to 76.114% 96.8% with 80.467% 94.6% / 78.29% 96.8%, curve to 69.586% 94.6% with 73.938% 96.8% / 71.762% 94.6%, curve to 63.057% 96.8% with 67.41% 94.6% / 65.233% 96.8%, curve to 56.529% 94.6% with 60.881% 96.8% / 58.705% 94.6%, curve to 50% 96.8% with 54.353% 94.6% / 52.176% 96.8%, curve to 43.471% 94.6% with 47.824% 96.8% / 45.647% 94.6%, curve to 36.943% 96.8% with 41.295% 94.6% / 39.119% 96.8%, curve to 30.414% 94.6% with 34.767% 96.8% / 32.59% 94.6%, curve to 23.886% 96.8% with 28.238% 94.6% / 26.062% 96.8%, curve to 17.357% 94.6% with 21.71% 96.8% / 19.533% 94.6%, curve to 10.829% 96.8% with 15.181% 94.6% / 13.005% 96.617%, curve to 4.3% 95.7% with 8.653% 96.983% / 5.572% 97.407%, curve to 3.2% 86.56% with 3.029% 93.993% / 3.017% 89.607%, curve to 5.4% 77.42% with 3.383% 83.513% / 5.4% 80.467%, curve to 3.2% 68.28% with 5.4% 74.373% / 3.2% 71.327%, curve to 5.4% 59.14% with 3.2% 65.233% / 5.4% 62.187%, curve to 3.2% 50% with 5.4% 56.093% / 3.2% 53.047%, curve to 5.4% 40.86% with 3.2% 46.953% / 5.4% 43.907%, curve to 3.2% 31.72% with 5.4% 37.813% / 3.2% 34.767%, curve to 5.4% 22.58% with 3.2% 28.673% / 5.4% 25.627%, curve to 3.2% 13.44% with 5.4% 19.533% / 3.383% 16.487%, curve to 4.3% 4.3% with 3.017% 10.393% / 3.029% 6.007%, close)",
+        "sourceDigest": "sha256-f3603a08344b9b8cbe3c760b89f7ff14f75aa2a57db9d7f1d39e6b3ee3dba9ed"
+      },
+      "fallback": {
+        "borderRadius": "16px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--soft-stamp svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--soft-stamp",
+        "standaloneCss": ".svhape--soft-stamp {\n  border-radius: 16px;\n  overflow: hidden;\n}\n\n.svhape--soft-stamp.svhape--padded {\n  padding: 8%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--soft-stamp {\n    border-radius: 0;\n    clip-path: shape(from 4.3% 4.3%, curve to 10.829% 3.2% with 5.572% 2.593% / 8.653% 3.017%, curve to 17.357% 5.4% with 13.005% 3.383% / 15.181% 5.4%, curve to 23.886% 3.2% with 19.533% 5.4% / 21.71% 3.2%, curve to 30.414% 5.4% with 26.062% 3.2% / 28.238% 5.4%, curve to 36.943% 3.2% with 32.59% 5.4% / 34.767% 3.2%, curve to 43.471% 5.4% with 39.119% 3.2% / 41.295% 5.4%, curve to 50% 3.2% with 45.647% 5.4% / 47.824% 3.2%, curve to 56.529% 5.4% with 52.176% 3.2% / 54.353% 5.4%, curve to 63.057% 3.2% with 58.705% 5.4% / 60.881% 3.2%, curve to 69.586% 5.4% with 65.233% 3.2% / 67.41% 5.4%, curve to 76.114% 3.2% with 71.762% 5.4% / 73.938% 3.2%, curve to 82.643% 5.4% with 78.29% 3.2% / 80.467% 5.4%, curve to 89.171% 3.2% with 84.819% 5.4% / 86.995% 3.383%, curve to 95.7% 4.3% with 91.347% 3.017% / 94.429% 2.593%, curve to 96.8% 13.44% with 96.972% 6.007% / 96.983% 10.393%, curve to 94.6% 22.58% with 96.617% 16.487% / 94.6% 19.533%, curve to 96.8% 31.72% with 94.6% 25.627% / 96.8% 28.673%, curve to 94.6% 40.86% with 96.8% 34.767% / 94.6% 37.813%, curve to 96.8% 50% with 94.6% 43.907% / 96.8% 46.953%, curve to 94.6% 59.14% with 96.8% 53.047% / 94.6% 56.093%, curve to 96.8% 68.28% with 94.6% 62.187% / 96.8% 65.233%, curve to 94.6% 77.42% with 96.8% 71.327% / 94.6% 74.373%, curve to 96.8% 86.56% with 94.6% 80.467% / 96.617% 83.513%, curve to 95.7% 95.7% with 96.983% 89.607% / 96.972% 93.993%, curve to 89.171% 96.8% with 94.429% 97.407% / 91.347% 96.983%, curve to 82.643% 94.6% with 86.995% 96.617% / 84.819% 94.6%, curve to 76.114% 96.8% with 80.467% 94.6% / 78.29% 96.8%, curve to 69.586% 94.6% with 73.938% 96.8% / 71.762% 94.6%, curve to 63.057% 96.8% with 67.41% 94.6% / 65.233% 96.8%, curve to 56.529% 94.6% with 60.881% 96.8% / 58.705% 94.6%, curve to 50% 96.8% with 54.353% 94.6% / 52.176% 96.8%, curve to 43.471% 94.6% with 47.824% 96.8% / 45.647% 94.6%, curve to 36.943% 96.8% with 41.295% 94.6% / 39.119% 96.8%, curve to 30.414% 94.6% with 34.767% 96.8% / 32.59% 94.6%, curve to 23.886% 96.8% with 28.238% 94.6% / 26.062% 96.8%, curve to 17.357% 94.6% with 21.71% 96.8% / 19.533% 94.6%, curve to 10.829% 96.8% with 15.181% 94.6% / 13.005% 96.617%, curve to 4.3% 95.7% with 8.653% 96.983% / 5.572% 97.407%, curve to 3.2% 86.56% with 3.029% 93.993% / 3.017% 89.607%, curve to 5.4% 77.42% with 3.383% 83.513% / 5.4% 80.467%, curve to 3.2% 68.28% with 5.4% 74.373% / 3.2% 71.327%, curve to 5.4% 59.14% with 3.2% 65.233% / 5.4% 62.187%, curve to 3.2% 50% with 5.4% 56.093% / 3.2% 53.047%, curve to 5.4% 40.86% with 3.2% 46.953% / 5.4% 43.907%, curve to 3.2% 31.72% with 5.4% 37.813% / 3.2% 34.767%, curve to 5.4% 22.58% with 3.2% 28.673% / 5.4% 25.627%, curve to 3.2% 13.44% with 5.4% 19.533% / 3.383% 16.487%, curve to 4.3% 4.3% with 3.017% 10.393% / 3.029% 6.007%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "soft-stamp",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--soft-stamp"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--soft-stamp svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "callout",
+            "coupon",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "standard",
+          "symmetry": "bilateral",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8
+          }
+        },
+        "safeInset": {
+          "top": 8,
+          "right": 8,
+          "bottom": 8,
+          "left": 8
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Soft Stamp\" (ID: soft-stamp). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--soft-stamp\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "sun-coin",
+      "name": "Sun Coin",
+      "family": "emblem",
+      "description": "A fine twelve-beat seal that reads as warm rather than spiky.",
+      "className": "svhape--sun-coin",
+      "tags": [
+        "badge",
+        "capacity:sparse",
+        "family:emblem",
+        "radial",
+        "regular",
+        "seal",
+        "use:badge",
+        "use:price",
+        "use:seal"
+      ],
+      "recommendedFor": [
+        "awards",
+        "prices",
+        "small illustrations"
+      ],
+      "selection": {
+        "uses": [
+          "badge",
+          "price",
+          "seal"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "sparse",
+        "symmetry": "radial",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 19,
+          "right": 19,
+          "bottom": 19,
+          "left": 19
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 24,
+        "anchors": [
+          [
+            50,
+            6.6
+          ],
+          [
+            59.473,
+            14.647
+          ],
+          [
+            71.7,
+            12.414
+          ],
+          [
+            75.88,
+            24.12
+          ],
+          [
+            87.586,
+            28.3
+          ],
+          [
+            85.353,
+            40.527
+          ],
+          [
+            93.4,
+            50
+          ],
+          [
+            85.353,
+            59.473
+          ],
+          [
+            87.586,
+            71.7
+          ],
+          [
+            75.88,
+            75.88
+          ],
+          [
+            71.7,
+            87.586
+          ],
+          [
+            59.473,
+            85.353
+          ],
+          [
+            50,
+            93.4
+          ],
+          [
+            40.527,
+            85.353
+          ],
+          [
+            28.3,
+            87.586
+          ],
+          [
+            24.12,
+            75.88
+          ],
+          [
+            12.414,
+            71.7
+          ],
+          [
+            14.647,
+            59.473
+          ],
+          [
+            6.6,
+            50
+          ],
+          [
+            14.647,
+            40.527
+          ],
+          [
+            12.414,
+            28.3
+          ],
+          [
+            24.12,
+            24.12
+          ],
+          [
+            28.3,
+            12.414
+          ],
+          [
+            40.527,
+            14.647
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 50% 6.6%, curve to 59.473% 14.647% with 53.158% 6.6% / 55.856% 13.678%, curve to 71.7% 12.414% with 63.09% 15.616% / 68.966% 10.835%, curve to 75.88% 24.12% with 74.435% 13.993% / 73.232% 21.472%, curve to 87.586% 28.3% with 78.528% 26.768% / 86.007% 25.566%, curve to 85.353% 40.527% with 89.165% 31.035% / 84.384% 36.91%, curve to 93.4% 50% with 86.322% 44.144% / 93.4% 46.842%, curve to 85.353% 59.473% with 93.4% 53.158% / 86.322% 55.856%, curve to 87.586% 71.7% with 84.384% 63.09% / 89.165% 68.966%, curve to 75.88% 75.88% with 86.007% 74.435% / 78.528% 73.232%, curve to 71.7% 87.586% with 73.232% 78.528% / 74.435% 86.007%, curve to 59.473% 85.353% with 68.966% 89.165% / 63.09% 84.384%, curve to 50% 93.4% with 55.856% 86.322% / 53.158% 93.4%, curve to 40.527% 85.353% with 46.842% 93.4% / 44.144% 86.322%, curve to 28.3% 87.586% with 36.91% 84.384% / 31.035% 89.165%, curve to 24.12% 75.88% with 25.566% 86.007% / 26.768% 78.528%, curve to 12.414% 71.7% with 21.472% 73.232% / 13.993% 74.435%, curve to 14.647% 59.473% with 10.835% 68.966% / 15.616% 63.09%, curve to 6.6% 50% with 13.678% 55.856% / 6.6% 53.158%, curve to 14.647% 40.527% with 6.6% 46.842% / 13.678% 44.144%, curve to 12.414% 28.3% with 15.616% 36.91% / 10.835% 31.035%, curve to 24.12% 24.12% with 13.993% 25.566% / 21.472% 26.768%, curve to 28.3% 12.414% with 26.768% 21.472% / 25.566% 13.993%, curve to 40.527% 14.647% with 31.035% 10.835% / 36.91% 15.616%, curve to 50% 6.6% with 44.144% 13.678% / 46.842% 6.6%, close)",
+        "sourceDigest": "sha256-5ff45caa90399da8e941b22831802753da385d0a991723cf4e4844a4e5b0dbbc"
+      },
+      "fallback": {
+        "borderRadius": "50%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--sun-coin svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--sun-coin",
+        "standaloneCss": ".svhape--sun-coin {\n  border-radius: 50%;\n  overflow: hidden;\n}\n\n.svhape--sun-coin.svhape--padded {\n  padding: 19%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--sun-coin {\n    border-radius: 0;\n    clip-path: shape(from 50% 6.6%, curve to 59.473% 14.647% with 53.158% 6.6% / 55.856% 13.678%, curve to 71.7% 12.414% with 63.09% 15.616% / 68.966% 10.835%, curve to 75.88% 24.12% with 74.435% 13.993% / 73.232% 21.472%, curve to 87.586% 28.3% with 78.528% 26.768% / 86.007% 25.566%, curve to 85.353% 40.527% with 89.165% 31.035% / 84.384% 36.91%, curve to 93.4% 50% with 86.322% 44.144% / 93.4% 46.842%, curve to 85.353% 59.473% with 93.4% 53.158% / 86.322% 55.856%, curve to 87.586% 71.7% with 84.384% 63.09% / 89.165% 68.966%, curve to 75.88% 75.88% with 86.007% 74.435% / 78.528% 73.232%, curve to 71.7% 87.586% with 73.232% 78.528% / 74.435% 86.007%, curve to 59.473% 85.353% with 68.966% 89.165% / 63.09% 84.384%, curve to 50% 93.4% with 55.856% 86.322% / 53.158% 93.4%, curve to 40.527% 85.353% with 46.842% 93.4% / 44.144% 86.322%, curve to 28.3% 87.586% with 36.91% 84.384% / 31.035% 89.165%, curve to 24.12% 75.88% with 25.566% 86.007% / 26.768% 78.528%, curve to 12.414% 71.7% with 21.472% 73.232% / 13.993% 74.435%, curve to 14.647% 59.473% with 10.835% 68.966% / 15.616% 63.09%, curve to 6.6% 50% with 13.678% 55.856% / 6.6% 53.158%, curve to 14.647% 40.527% with 6.6% 46.842% / 13.678% 44.144%, curve to 12.414% 28.3% with 15.616% 36.91% / 10.835% 31.035%, curve to 24.12% 24.12% with 13.993% 25.566% / 21.472% 26.768%, curve to 28.3% 12.414% with 26.768% 21.472% / 25.566% 13.993%, curve to 40.527% 14.647% with 31.035% 10.835% / 36.91% 15.616%, curve to 50% 6.6% with 44.144% 13.678% / 46.842% 6.6%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "sun-coin",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--sun-coin"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--sun-coin svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "badge",
+            "price",
+            "seal"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "sparse",
+          "symmetry": "radial",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 19,
+            "right": 19,
+            "bottom": 19,
+            "left": 19
+          }
+        },
+        "safeInset": {
+          "top": 19,
+          "right": 19,
+          "bottom": 19,
+          "left": 19
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Sun Coin\" (ID: sun-coin). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--sun-coin\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 19% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "tidepool",
+      "name": "Tidepool",
+      "family": "frame",
+      "description": "Deeper alternating pockets make a confident display container.",
+      "className": "svhape--tidepool",
+      "tags": [
+        "bold",
+        "capacity:standard",
+        "container",
+        "display",
+        "family:frame",
+        "organic",
+        "use:card",
+        "use:media",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "campaign panels",
+        "event cards",
+        "image frames"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "media",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "standard",
+        "symmetry": "none",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 11,
+          "right": 11,
+          "bottom": 11,
+          "left": 11
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 36,
+        "anchors": [
+          [
+            5.7,
+            6
+          ],
+          [
+            14.151,
+            3.55
+          ],
+          [
+            27.825,
+            8.45
+          ],
+          [
+            36.276,
+            4.481
+          ],
+          [
+            49.95,
+            7.519
+          ],
+          [
+            58.401,
+            3.55
+          ],
+          [
+            72.075,
+            8.45
+          ],
+          [
+            80.526,
+            4.481
+          ],
+          [
+            94.2,
+            6
+          ],
+          [
+            96.4,
+            16.902
+          ],
+          [
+            92,
+            23.64
+          ],
+          [
+            95.564,
+            34.542
+          ],
+          [
+            92.836,
+            41.28
+          ],
+          [
+            96.4,
+            52.182
+          ],
+          [
+            92,
+            58.92
+          ],
+          [
+            95.564,
+            69.822
+          ],
+          [
+            92.836,
+            76.56
+          ],
+          [
+            96.4,
+            87.462
+          ],
+          [
+            94.2,
+            94.2
+          ],
+          [
+            87.439,
+            96.75
+          ],
+          [
+            76.5,
+            91.65
+          ],
+          [
+            69.739,
+            95.781
+          ],
+          [
+            58.8,
+            92.619
+          ],
+          [
+            52.039,
+            96.75
+          ],
+          [
+            41.1,
+            91.65
+          ],
+          [
+            34.339,
+            95.781
+          ],
+          [
+            23.4,
+            92.619
+          ],
+          [
+            16.639,
+            96.75
+          ],
+          [
+            5.7,
+            94.2
+          ],
+          [
+            3.6,
+            80.572
+          ],
+          [
+            7.8,
+            72.15
+          ],
+          [
+            4.398,
+            58.522
+          ],
+          [
+            7.002,
+            50.1
+          ],
+          [
+            3.6,
+            36.472
+          ],
+          [
+            7.8,
+            28.05
+          ],
+          [
+            4.398,
+            14.422
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 5.7% 6%, curve to 14.151% 3.55% with 7.326% 4.188% / 10.464% 3.142%, curve to 27.825% 8.45% with 17.839% 3.958% / 24.138% 8.295%, curve to 36.276% 4.481% with 31.513% 8.605% / 32.589% 4.636%, curve to 49.95% 7.519% with 39.964% 4.326% / 46.263% 7.674%, curve to 58.401% 3.55% with 53.638% 7.364% / 54.714% 3.395%, curve to 72.075% 8.45% with 62.089% 3.705% / 68.388% 8.295%, curve to 80.526% 4.481% with 75.763% 8.605% / 76.839% 4.889%, curve to 94.2% 6% with 84.214% 4.073% / 91.554% 3.93%, curve to 96.4% 16.902% with 96.846% 8.07% / 96.767% 13.962%, curve to 92% 23.64% with 96.033% 19.842% / 92.139% 20.7%, curve to 95.564% 34.542% with 91.861% 26.58% / 95.425% 31.602%, curve to 92.836% 41.28% with 95.703% 37.482% / 92.697% 38.34%, curve to 96.4% 52.182% with 92.975% 44.22% / 96.539% 49.242%, curve to 92% 58.92% with 96.261% 55.122% / 92.139% 55.98%, curve to 95.564% 69.822% with 91.861% 61.86% / 95.425% 66.882%, curve to 92.836% 76.56% with 95.703% 72.762% / 92.697% 73.62%, curve to 96.4% 87.462% with 92.975% 79.5% / 96.173% 84.522%, curve to 94.2% 94.2% with 96.627% 90.402% / 95.694% 92.652%, curve to 87.439% 96.75% with 92.707% 95.748% / 90.389% 97.175%, curve to 76.5% 91.65% with 84.489% 96.325% / 79.45% 91.812%, curve to 69.739% 95.781% with 73.55% 91.489% / 72.689% 95.62%, curve to 58.8% 92.619% with 66.789% 95.943% / 61.75% 92.458%, curve to 52.039% 96.75% with 55.85% 92.781% / 54.989% 96.912%, curve to 41.1% 91.65% with 49.089% 96.589% / 44.05% 91.812%, curve to 34.339% 95.781% with 38.15% 91.489% / 37.289% 95.62%, curve to 23.4% 92.619% with 31.389% 95.943% / 26.35% 92.458%, curve to 16.639% 96.75% with 20.45% 92.781% / 19.589% 96.487%, curve to 5.7% 94.2% with 13.689% 97.014% / 7.873% 96.896%, curve to 3.6% 80.572% with 3.527% 91.504% / 3.25% 84.247%, curve to 7.8% 72.15% with 3.95% 76.897% / 7.667% 75.825%, curve to 4.398% 58.522% with 7.933% 68.475% / 4.531% 62.197%, curve to 7.002% 50.1% with 4.265% 54.847% / 7.135% 53.775%, curve to 3.6% 36.472% with 6.869% 46.425% / 3.467% 40.147%, curve to 7.8% 28.05% with 3.733% 32.797% / 7.667% 31.725%, curve to 4.398% 14.422% with 7.933% 24.375% / 4.748% 18.097%, curve to 5.7% 6% with 4.048% 10.747% / 4.075% 7.812%, close)",
+        "sourceDigest": "sha256-d4cd0b4817249beb266d37cbdc3d94073631981258d77eedfa477d09bc36175f"
+      },
+      "fallback": {
+        "borderRadius": "32px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--tidepool svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--tidepool",
+        "standaloneCss": ".svhape--tidepool {\n  border-radius: 32px;\n  overflow: hidden;\n}\n\n.svhape--tidepool.svhape--padded {\n  padding: 11%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--tidepool {\n    border-radius: 0;\n    clip-path: shape(from 5.7% 6%, curve to 14.151% 3.55% with 7.326% 4.188% / 10.464% 3.142%, curve to 27.825% 8.45% with 17.839% 3.958% / 24.138% 8.295%, curve to 36.276% 4.481% with 31.513% 8.605% / 32.589% 4.636%, curve to 49.95% 7.519% with 39.964% 4.326% / 46.263% 7.674%, curve to 58.401% 3.55% with 53.638% 7.364% / 54.714% 3.395%, curve to 72.075% 8.45% with 62.089% 3.705% / 68.388% 8.295%, curve to 80.526% 4.481% with 75.763% 8.605% / 76.839% 4.889%, curve to 94.2% 6% with 84.214% 4.073% / 91.554% 3.93%, curve to 96.4% 16.902% with 96.846% 8.07% / 96.767% 13.962%, curve to 92% 23.64% with 96.033% 19.842% / 92.139% 20.7%, curve to 95.564% 34.542% with 91.861% 26.58% / 95.425% 31.602%, curve to 92.836% 41.28% with 95.703% 37.482% / 92.697% 38.34%, curve to 96.4% 52.182% with 92.975% 44.22% / 96.539% 49.242%, curve to 92% 58.92% with 96.261% 55.122% / 92.139% 55.98%, curve to 95.564% 69.822% with 91.861% 61.86% / 95.425% 66.882%, curve to 92.836% 76.56% with 95.703% 72.762% / 92.697% 73.62%, curve to 96.4% 87.462% with 92.975% 79.5% / 96.173% 84.522%, curve to 94.2% 94.2% with 96.627% 90.402% / 95.694% 92.652%, curve to 87.439% 96.75% with 92.707% 95.748% / 90.389% 97.175%, curve to 76.5% 91.65% with 84.489% 96.325% / 79.45% 91.812%, curve to 69.739% 95.781% with 73.55% 91.489% / 72.689% 95.62%, curve to 58.8% 92.619% with 66.789% 95.943% / 61.75% 92.458%, curve to 52.039% 96.75% with 55.85% 92.781% / 54.989% 96.912%, curve to 41.1% 91.65% with 49.089% 96.589% / 44.05% 91.812%, curve to 34.339% 95.781% with 38.15% 91.489% / 37.289% 95.62%, curve to 23.4% 92.619% with 31.389% 95.943% / 26.35% 92.458%, curve to 16.639% 96.75% with 20.45% 92.781% / 19.589% 96.487%, curve to 5.7% 94.2% with 13.689% 97.014% / 7.873% 96.896%, curve to 3.6% 80.572% with 3.527% 91.504% / 3.25% 84.247%, curve to 7.8% 72.15% with 3.95% 76.897% / 7.667% 75.825%, curve to 4.398% 58.522% with 7.933% 68.475% / 4.531% 62.197%, curve to 7.002% 50.1% with 4.265% 54.847% / 7.135% 53.775%, curve to 3.6% 36.472% with 6.869% 46.425% / 3.467% 40.147%, curve to 7.8% 28.05% with 3.733% 32.797% / 7.667% 31.725%, curve to 4.398% 14.422% with 7.933% 24.375% / 4.748% 18.097%, curve to 5.7% 6% with 4.048% 10.747% / 4.075% 7.812%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "tidepool",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--tidepool"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--tidepool svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "media",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "standard",
+          "symmetry": "none",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 11,
+            "right": 11,
+            "bottom": 11,
+            "left": 11
+          }
+        },
+        "safeInset": {
+          "top": 11,
+          "right": 11,
+          "bottom": 11,
+          "left": 11
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.1.0 shape \"Tidepool\" (ID: tidepool). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--tidepool\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 11% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/storypixel/svhapes/v0.1.0/schema/svhape.schema.json",
+  "title": "Svhapes generated catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "packageVersion", "generatorVersion", "shapeCount", "shapes"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "0.1.0" },
+    "packageVersion": { "type": "string" },
+    "generatorVersion": { "type": "string" },
+    "shapeCount": { "type": "integer", "minimum": 18 },
+    "shapes": {
+      "type": "array",
+      "minItems": 18,
+      "items": { "$ref": "#/$defs/shape" }
+    }
+  },
+  "$defs": {
+    "insets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top", "right", "bottom", "left"],
+      "properties": {
+        "top": { "type": "number", "minimum": 0, "maximum": 50 },
+        "right": { "type": "number", "minimum": 0, "maximum": 50 },
+        "bottom": { "type": "number", "minimum": 0, "maximum": 50 },
+        "left": { "type": "number", "minimum": 0, "maximum": 50 }
+      }
+    },
+    "aspect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "preferred", "max"],
+      "properties": {
+        "min": { "type": "number", "exclusiveMinimum": 0 },
+        "preferred": { "type": "number", "exclusiveMinimum": 0 },
+        "max": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uses", "aspect", "contentCapacity", "safeInset", "symmetry", "balance", "edgeActivity"],
+      "properties": {
+        "uses": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "aspect": { "$ref": "#/$defs/aspect" },
+        "contentCapacity": { "enum": ["decorative", "sparse", "standard", "dense"] },
+        "safeInset": { "$ref": "#/$defs/insets" },
+        "symmetry": { "enum": ["none", "horizontal", "vertical", "bilateral", "radial", "approximate"] },
+        "balance": { "enum": ["centered", "top-heavy", "bottom-heavy", "left-heavy", "right-heavy", "diagonal"] },
+        "edgeActivity": { "enum": ["calm", "moderate", "active"] }
+      }
+    },
+    "point": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        { "type": "number", "minimum": 0, "maximum": 100 },
+        { "type": "number", "minimum": 0, "maximum": 100 }
+      ],
+      "items": false
+    },
+    "shape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "family", "description", "className", "tags", "recommendedFor", "selection", "geometry", "fallback", "snippets", "agent"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "family": { "enum": ["frame", "blob", "scalloped", "asymmetric", "emblem"] },
+        "description": { "type": "string", "minLength": 1 },
+        "className": { "type": "string", "pattern": "^svhape--[a-z0-9-]+$" },
+        "tags": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "recommendedFor": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "selection": { "$ref": "#/$defs/selection" },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "anchorCount", "anchors", "closed", "continuity", "tension", "precision", "cssShape", "sourceDigest"],
+          "properties": {
+            "kind": { "const": "closed-catmull-rom" },
+            "anchorCount": { "type": "integer", "minimum": 4 },
+            "anchors": { "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/point" } },
+            "closed": { "const": true },
+            "continuity": { "const": "c1" },
+            "tension": { "type": "number", "minimum": 0, "maximum": 1 },
+            "precision": { "type": "integer", "minimum": 0, "maximum": 6 },
+            "cssShape": { "type": "string", "pattern": "^shape\\(" },
+            "sourceDigest": { "type": "string", "pattern": "^sha256-[a-f0-9]{64}$" }
+          }
+        },
+        "fallback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["borderRadius"],
+          "properties": { "borderRadius": { "type": "string", "minLength": 1 } }
+        },
+        "snippets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["html", "selector", "standaloneCss"],
+          "properties": {
+            "html": { "type": "string" },
+            "selector": { "type": "string" },
+            "standaloneCss": { "type": "string" }
+          }
+        },
+        "agent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["shapeId", "stylesheet", "classes", "optionalClasses", "optionalWrapperClass", "html", "selection", "safeInset", "constraints", "prompt"],
+          "properties": {
+            "shapeId": { "type": "string" },
+            "stylesheet": { "type": "string", "format": "uri" },
+            "classes": { "type": "array", "items": { "type": "string" } },
+            "optionalClasses": { "type": "array", "items": { "type": "string" } },
+            "optionalWrapperClass": { "type": "string" },
+            "html": { "type": "string" },
+            "selection": { "$ref": "#/$defs/selection" },
+            "safeInset": { "$ref": "#/$defs/insets" },
+            "constraints": { "type": "array", "items": { "type": "string" } },
+            "prompt": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

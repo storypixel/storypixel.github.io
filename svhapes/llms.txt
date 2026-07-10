@@ -1,0 +1,68 @@
+# Svhapes v0.1.0
+
+> Smooth, dependency-free CSS shapes for people and coding agents. The spelling “Svhapes” is intentional.
+
+Canonical repository: https://github.com/storypixel/svhapes
+Human demo: https://iamnotsam.com/svhapes/
+Stylesheet: https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.min.css
+Catalog: ./dist/catalog.json
+Schema: ./schema/svhape.schema.json
+License: MIT
+
+## Agent procedure
+
+1. Read `dist/catalog.json`; do not scrape the demo page.
+2. Filter `shapes` by `selection.uses`, supported aspect range, content capacity, and required tags.
+3. Select a stable `id`; never invent a shape ID or edit `geometry.cssShape` manually.
+4. Include the immutable v0.1.0 stylesheet URL.
+5. Apply `svhape` and the published `className`.
+6. Add `svhape--padded` only when library-managed padding is appropriate.
+7. Use `svhape-shadow` on an outer wrapper if a shadow is required.
+8. Keep meaningful content inside `selection.safeInset` and preserve the fallback.
+9. Do not communicate essential state or meaning through silhouette alone.
+
+## Selection rules
+
+- `selection.aspect.min <= width / height <= selection.aspect.max` is a hard constraint.
+- Capacity order is `decorative < sparse < standard < dense`.
+- A requested content capacity requires a shape of equal or greater capacity.
+- Required tags are AND filters.
+- Prefer the closest `selection.aspect.preferred` after hard filters.
+- Break remaining ties by stable ASCII `id`.
+- If no shape matches, return `NO_MATCH`; do not silently substitute a decorative shape.
+
+## CSS integration
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.min.css">
+
+<div class="svhape-shadow">
+  <div class="svhape svhape--golden-tide svhape--padded">
+    Content
+  </div>
+</div>
+```
+
+Optional class `svhape--desktop-only` disables advanced clipping below 640px.
+
+## CLI
+
+```text
+svhapes list [--family F] [--tag T]... [--ratio N] [--capacity C] [--format table|ids|json]
+svhapes show <id> [--format text|json]
+svhapes css <id> [--shadow] [--format css|json]
+svhapes prompt <id> [--format text|json]
+```
+
+Exit codes: 0 success, 2 invalid arguments, 3 unknown shape or no match, 5 local catalog I/O failure.
+
+## JavaScript generation
+
+Import `pointsToShape` from `src/index.js` or `dist/svhapes.js`. Points are `[x, y]` percentage pairs inside a 0..100 box. The default closed Catmull–Rom conversion uses `tension: 0` and `precision: 3`.
+
+## Important constraints
+
+- `clip-path` clips ordinary box shadows; use the wrapper.
+- Fallbacks preserve readability, not silhouette fidelity.
+- Safe insets are conservative design guidance, not proof against every content layout.
+- Do not publish to npm or change stable IDs without explicit maintainer authority.

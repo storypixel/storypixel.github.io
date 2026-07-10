@@ -1,0 +1,53 @@
+{
+  "name": "svhapes",
+  "version": "0.1.0",
+  "description": "Smooth, copyable CSS shapes for people and agents.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Sam Wilson",
+  "homepage": "https://iamnotsam.com/svhapes/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/storypixel/svhapes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/storypixel/svhapes/issues"
+  },
+  "keywords": [
+    "css",
+    "clip-path",
+    "shape",
+    "bezier",
+    "catmull-rom",
+    "design-system",
+    "agent-friendly"
+  ],
+  "files": [
+    "bin",
+    "dist",
+    "schema",
+    "src",
+    "AGENTS.md",
+    "LICENSE",
+    "README.md",
+    "llms.txt"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./css": "./dist/svhapes.css",
+    "./catalog": "./dist/catalog.json",
+    "./schema": "./schema/svhape.schema.json"
+  },
+  "bin": {
+    "svhapes": "./bin/svhapes.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "npm run build && node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

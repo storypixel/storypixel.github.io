@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Svhapes agent interface preview</title>
+  <desc id="desc">Machine-readable catalog metadata and a stable Svhapes CLI command.</desc>
+  <rect width="1200" height="800" fill="#191a16"/>
+  <rect x="72" y="72" width="1056" height="656" rx="28" fill="#23251f" stroke="#d7fb54" stroke-opacity=".45"/>
+  <circle cx="112" cy="112" r="9" fill="#ff745f"/>
+  <circle cx="142" cy="112" r="9" fill="#f6bd57"/>
+  <circle cx="172" cy="112" r="9" fill="#74d7c4"/>
+  <text x="112" y="190" fill="#d7fb54" font-family="monospace" font-size="23">$ svhapes prompt golden-tide --format json</text>
+  <text x="112" y="250" fill="#f2f0e7" font-family="monospace" font-size="20">{</text>
+  <text x="148" y="290" fill="#74d7c4" font-family="monospace" font-size="20">"shapeId"</text>
+  <text x="280" y="290" fill="#f2f0e7" font-family="monospace" font-size="20">: "golden-tide",</text>
+  <text x="148" y="330" fill="#74d7c4" font-family="monospace" font-size="20">"classes"</text>
+  <text x="268" y="330" fill="#f2f0e7" font-family="monospace" font-size="20">: ["svhape", "svhape--golden-tide"],</text>
+  <text x="148" y="370" fill="#74d7c4" font-family="monospace" font-size="20">"contentCapacity"</text>
+  <text x="376" y="370" fill="#f2f0e7" font-family="monospace" font-size="20">: "dense",</text>
+  <text x="148" y="410" fill="#74d7c4" font-family="monospace" font-size="20">"continuity"</text>
+  <text x="304" y="410" fill="#f2f0e7" font-family="monospace" font-size="20">: "c1",</text>
+  <text x="148" y="450" fill="#74d7c4" font-family="monospace" font-size="20">"fallback"</text>
+  <text x="280" y="450" fill="#f2f0e7" font-family="monospace" font-size="20">: "24px"</text>
+  <text x="112" y="490" fill="#f2f0e7" font-family="monospace" font-size="20">}</text>
+  <path d="M785 226C827 204 861 231 898 218C940 202 970 231 1013 221C1032 263 1015 294 1027 327C1040 363 1016 393 1027 428C1013 463 978 451 949 466C916 482 892 451 860 468C827 485 799 453 768 466C742 432 757 401 744 370C731 338 757 308 744 276C756 246 783 253 785 226Z" fill="#d7fb54"/>
+  <text x="823" y="338" fill="#191a16" font-family="Georgia,serif" font-size="34">Agent-ready.</text>
+  <text x="807" y="378" fill="#191a16" font-family="Arial,sans-serif" font-size="16">No path guessing.</text>
+</svg>
