@@ -6,11 +6,22 @@ import test from 'node:test';
 import {
   catmullRomToBezier,
   definitions,
+  filletPoints,
+  makeRepeatingEdgeShape,
+  makeRepeatingRadialShape,
+  makeSuperellipseShape,
   measureTangentContinuity,
   pointsToShape,
   shapeToCss,
   validatePoints,
 } from '../src/index.js';
+
+function assertBounded(points) {
+  for (const [x, y] of points) {
+    assert.ok(x >= 0 && x <= 100);
+    assert.ok(y >= 0 && y <= 100);
+  }
+}
 
 test('pointsToShape emits a closed percentage-based CSS shape', () => {
   const shape = pointsToShape([[5, 5], [95, 5], [95, 95], [5, 95]]);
@@ -52,6 +63,49 @@ test('invalid anchors fail before CSS generation', () => {
   assert.throws(() => validatePoints([[0, 0], [100, 0], [100, 100]]), /at least 4/);
   assert.throws(() => validatePoints([[0, 0], [101, 0], [100, 100], [0, 100]]), /0\.\.100/);
   assert.throws(() => validatePoints([[0, 0], [100, 0], [100, Number.NaN], [0, 100]]), /finite number/);
+});
+
+test('filletPoints rounds each corner without hand-authored control points', () => {
+  const square = [[10, 10], [90, 10], [90, 90], [10, 90]];
+  const rounded = filletPoints(square, { radius: 0.2 });
+  assert.equal(rounded.length, square.length * 2);
+  assert.deepEqual(rounded.slice(0, 2), [[10, 26], [26, 10]]);
+  assertBounded(rounded);
+  assert.deepEqual(filletPoints(square, { radius: 0 }), square);
+  const mixed = filletPoints(square, { radius: [0, 0.2, 0.2, 0.2] });
+  assert.equal(mixed.length, 7);
+  assert.equal(new Set(mixed.map(JSON.stringify)).size, mixed.length);
+  assert.doesNotThrow(() => catmullRomToBezier(mixed));
+  const triangle = filletPoints([[10, 10], [90, 10], [50, 90]], { radius: 0.15 });
+  assert.equal(triangle.length, 6);
+  assert.throws(() => filletPoints(square, { radius: 0.51 }), /between 0 and 0.5/);
+  assert.throws(() => filletPoints([[10, 10], [10, 10], [90, 90], [10, 90]]), /zero-length/);
+});
+
+test('repeating helpers expose the repetition count as a small deterministic API', () => {
+  const edge = makeRepeatingEdgeShape({ repeats: 5, inset: 5, amplitude: 1 });
+  const radial = makeRepeatingRadialShape({ repeats: 7 });
+  assert.equal(radial.length, 14);
+  assert.ok(edge.length > 0);
+  assertBounded(edge);
+  assertBounded(radial);
+  assert.throws(() => makeRepeatingEdgeShape({ repeats: 4, amplitude: 100 }), /0\.\.100/);
+  assert.throws(() => makeRepeatingEdgeShape({ repeats: 4, inset: -5 }), /0\.\.100/);
+  assert.throws(() => makeRepeatingRadialShape({ repeats: 6, radius: [90, 90] }), /0\.\.100/);
+  assert.throws(() => makeRepeatingRadialShape({ repeats: 6, amplitude: Number.NaN }), /finite number/);
+  assert.throws(() => makeRepeatingEdgeShape({ repeats: 0 }), /at least 1/);
+  assert.throws(() => makeRepeatingRadialShape({ repeats: 2 }), /at least 3/);
+});
+
+test('superellipse builder covers ellipse-to-squircle presets responsively', () => {
+  const squircle = makeSuperellipseShape({ exponent: 4, points: 16, radius: [40, 35] });
+  const ellipse = makeSuperellipseShape({ exponent: 2, points: 16, radius: [40, 35] });
+  assert.equal(squircle.length, 16);
+  assert.equal(ellipse.length, 16);
+  assert.notDeepEqual(squircle, ellipse);
+  assertBounded(squircle);
+  assert.throws(() => makeSuperellipseShape({ exponent: 0 }), /greater than 0/);
+  assert.throws(() => makeSuperellipseShape({ points: 7 }), /at least 8/);
 });
 
 test('standalone CSS preserves fallback and progressive enhancement', () => {

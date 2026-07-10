@@ -23,7 +23,7 @@ Or use it with no build step straight from a CDN (see the CSS and browser-import
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.min.css"
+  href="https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.min.css"
 >
 ```
 
@@ -41,7 +41,7 @@ Or use it with no build step straight from a CDN (see the CSS and browser-import
 - `svhape-shadow` belongs on a parent because `clip-path` clips ordinary box shadows.
 - `svhape--desktop-only` returns to the rounded fallback below 640px.
 
-Browse all 18 stable IDs in the [demo](https://iamnotsam.com/svhapes/) or run the CLI.
+Browse all 23 stable IDs in the [demo](https://iamnotsam.com/svhapes/) or run the CLI.
 
 ## Motion
 
@@ -86,7 +86,7 @@ element.style.clipPath = clipPath;
 For a direct browser import:
 
 ```js
-import { pointsToShape } from 'https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.js';
+import { pointsToShape } from 'https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.js';
 ```
 
 Useful exports:
@@ -96,10 +96,45 @@ Useful exports:
 - `measureTangentContinuity(segments)`
 - `makeEdgeShape(config)`
 - `makeRadialShape(config)`
+- `filletPoints(points, options)` — add responsive corner fillets without hand-calculating handles.
+- `makeRepeatingEdgeShape(config)` — give every edge the same repeat count.
+- `makeRepeatingRadialShape(config)` — express radial rhythm as a lobe repeat count.
+- `makeSuperellipseShape(config)` — move from ellipse (`exponent: 2`) to squircle (`exponent: 4`) and beyond.
 - `shapeToCss(shape, options)`
 - `definitions` and `getDefinition(id)`
 
 Coordinates use a `0..100` percentage reference box. `tension` ranges from `0` for the standard smooth conversion to `1`, which collapses the control handles onto their anchors and produces straight segments. Output precision defaults to three decimals.
+
+### Geometry builders
+
+The builders cover the shape requests that are otherwise tedious to express with raw `shape()` commands:
+
+```js
+import {
+  filletPoints,
+  makeRepeatingEdgeShape,
+  makeSuperellipseShape,
+  pointsToShape,
+} from 'svhapes';
+
+const roundedPanel = pointsToShape(filletPoints([
+  [5, 5], [95, 5], [95, 95], [5, 95],
+], { radius: 0.2 }));
+
+const repeatingBanner = pointsToShape(makeRepeatingEdgeShape({
+  repeats: 5,
+  amplitude: 1.25,
+}));
+
+const squircle = pointsToShape(makeSuperellipseShape({
+  exponent: 4,
+  radius: [44, 42],
+}));
+```
+
+`filletPoints()` treats `radius` as a ratio of the shorter adjacent edge (0–0.5), so the same geometry stays proportional at every size. `makeSuperellipseShape()` uses normalized percentage coordinates; `exponent: 2` is an ellipse, `4` is a squircle-like frame, and larger values become squarer. The repeating helpers keep patterns deterministic while leaving per-side asymmetry available through `makeEdgeShape()`.
+
+These APIs are deliberately library-level approximations of active CSS Shapes discussions: [fillet/rounding commands](https://github.com/w3c/csswg-drafts/issues/12768), [repeating segments](https://github.com/w3c/csswg-drafts/issues/13862), and [superellipse basics](https://github.com/w3c/csswg-drafts/issues/11620). They generate today’s `shape()` values; they do not polyfill browser layout proposals.
 
 `shapeToCss()` accepts generated `shape()` values, simple class selectors, and numeric CSS radius values. It rejects declaration delimiters and compound selector syntax; it is a serializer for developer-authored geometry, not a general-purpose CSS sanitizer.
 

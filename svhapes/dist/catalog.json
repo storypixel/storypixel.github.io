@@ -1,9 +1,9 @@
 {
   "$schema": "../schema/svhape.schema.json",
   "schemaVersion": "0.1.0",
-  "packageVersion": "0.1.0",
-  "generatorVersion": "0.1.0",
-  "shapeCount": 18,
+  "packageVersion": "0.2.1",
+  "generatorVersion": "0.2.1",
+  "shapeCount": 23,
   "shapes": [
     {
       "id": "cloud-frame",
@@ -223,7 +223,7 @@
       },
       "agent": {
         "shapeId": "cloud-frame",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--cloud-frame"
@@ -268,7 +268,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Cloud Frame\" (ID: cloud-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--cloud-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Cloud Frame\" (ID: cloud-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--cloud-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -401,7 +401,7 @@
       },
       "agent": {
         "shapeId": "coral-bloom",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--coral-bloom"
@@ -446,7 +446,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Coral Bloom\" (ID: coral-bloom). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--coral-bloom\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Coral Bloom\" (ID: coral-bloom). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--coral-bloom\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -731,7 +731,7 @@
       },
       "agent": {
         "shapeId": "deckle",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--deckle"
@@ -776,7 +776,153 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Deckle\" (ID: deckle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--deckle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Deckle\" (ID: deckle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--deckle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "fillet-frame",
+      "name": "Fillet Frame",
+      "family": "frame",
+      "description": "A near-rectangular frame with explicit, even corner fillets for a calm silhouette.",
+      "className": "svhape--fillet-frame",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "content-safe",
+        "family:frame",
+        "fillet",
+        "rounded",
+        "use:card",
+        "use:form",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "article cards",
+        "documentation",
+        "forms"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "form",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1.1,
+          "preferred": 1.5,
+          "max": 2.25
+        },
+        "contentCapacity": "dense",
+        "symmetry": "bilateral",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 8,
+        "anchors": [
+          [
+            4,
+            23
+          ],
+          [
+            22,
+            5
+          ],
+          [
+            78,
+            5
+          ],
+          [
+            96,
+            23
+          ],
+          [
+            96,
+            77
+          ],
+          [
+            78,
+            95
+          ],
+          [
+            22,
+            95
+          ],
+          [
+            4,
+            77
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 4% 23%, curve to 22% 5% with 7% 11% / 9.667% 8%, curve to 78% 5% with 34.333% 2% / 65.667% 2%, curve to 96% 23% with 90.333% 8% / 93% 11%, curve to 96% 77% with 99% 35% / 99% 65%, curve to 78% 95% with 93% 89% / 90.333% 92%, curve to 22% 95% with 65.667% 98% / 34.333% 98%, curve to 4% 77% with 9.667% 92% / 7% 89%, curve to 4% 23% with 1% 65% / 1% 35%, close)",
+        "sourceDigest": "sha256-c873ec319297ae30eaf4c74a4e5846cf015e72ca36ff9dd77238bb05b6efadee"
+      },
+      "fallback": {
+        "borderRadius": "22px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--fillet-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--fillet-frame",
+        "standaloneCss": ".svhape--fillet-frame {\n  border-radius: 22px;\n  overflow: hidden;\n}\n\n.svhape--fillet-frame.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--fillet-frame {\n    border-radius: 0;\n    clip-path: shape(from 4% 23%, curve to 22% 5% with 7% 11% / 9.667% 8%, curve to 78% 5% with 34.333% 2% / 65.667% 2%, curve to 96% 23% with 90.333% 8% / 93% 11%, curve to 96% 77% with 99% 35% / 99% 65%, curve to 78% 95% with 93% 89% / 90.333% 92%, curve to 22% 95% with 65.667% 98% / 34.333% 98%, curve to 4% 77% with 9.667% 92% / 7% 89%, curve to 4% 23% with 1% 65% / 1% 35%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "fillet-frame",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--fillet-frame"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--fillet-frame svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "form",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1.1,
+            "preferred": 1.5,
+            "max": 2.25
+          },
+          "contentCapacity": "dense",
+          "symmetry": "bilateral",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.2.1 shape \"Fillet Frame\" (ID: fillet-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--fillet-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.1 and 2.25; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -983,7 +1129,7 @@
       },
       "agent": {
         "shapeId": "golden-tide",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--golden-tide"
@@ -1029,7 +1175,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Golden Tide\" (ID: golden-tide). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--golden-tide\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.15 and 2; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Golden Tide\" (ID: golden-tide). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--golden-tide\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.15 and 2; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1138,7 +1284,7 @@
       },
       "agent": {
         "shapeId": "halo-five",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--halo-five"
@@ -1183,7 +1329,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Halo Five\" (ID: halo-five). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--halo-five\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Halo Five\" (ID: halo-five). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--halo-five\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1324,7 +1470,7 @@
       },
       "agent": {
         "shapeId": "ink-drop",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--ink-drop"
@@ -1369,7 +1515,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Ink Drop\" (ID: ink-drop). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--ink-drop\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Ink Drop\" (ID: ink-drop). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--ink-drop\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1548,7 +1694,7 @@
       },
       "agent": {
         "shapeId": "linen",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--linen"
@@ -1592,7 +1738,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Linen\" (ID: linen). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--linen\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 7% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Linen\" (ID: linen). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--linen\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 7% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1739,7 +1885,7 @@
       },
       "agent": {
         "shapeId": "longwave",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--longwave"
@@ -1783,7 +1929,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Longwave\" (ID: longwave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--longwave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.5 and 3; 2 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Longwave\" (ID: longwave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--longwave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.5 and 3; 2 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1970,7 +2116,7 @@
       },
       "agent": {
         "shapeId": "meadow-frame",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--meadow-frame"
@@ -2014,7 +2160,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Meadow Frame\" (ID: meadow-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--meadow-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Meadow Frame\" (ID: meadow-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--meadow-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2203,7 +2349,7 @@
       },
       "agent": {
         "shapeId": "north-wind",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--north-wind"
@@ -2248,7 +2394,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"North Wind\" (ID: north-wind). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--north-wind\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"North Wind\" (ID: north-wind). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--north-wind\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2459,7 +2605,7 @@
       },
       "agent": {
         "shapeId": "paper-drift",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--paper-drift"
@@ -2503,7 +2649,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Paper Drift\" (ID: paper-drift). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--paper-drift\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 9% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Paper Drift\" (ID: paper-drift). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--paper-drift\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 9% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2620,7 +2766,7 @@
       },
       "agent": {
         "shapeId": "petal-seal",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--petal-seal"
@@ -2665,7 +2811,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Petal Seal\" (ID: petal-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--petal-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 23% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Petal Seal\" (ID: petal-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--petal-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 23% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2838,7 +2984,7 @@
       },
       "agent": {
         "shapeId": "quiet-coast",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--quiet-coast"
@@ -2883,7 +3029,507 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Quiet Coast\" (ID: quiet-coast). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--quiet-coast\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Quiet Coast\" (ID: quiet-coast). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--quiet-coast\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "repeat-seal",
+      "name": "Repeat Seal",
+      "family": "emblem",
+      "description": "A deterministic radial repeat helper for badges that need a measured, even rhythm.",
+      "className": "svhape--repeat-seal",
+      "tags": [
+        "badge",
+        "capacity:decorative",
+        "family:emblem",
+        "radial",
+        "repeating",
+        "seal",
+        "use:badge",
+        "use:seal",
+        "use:sticker"
+      ],
+      "recommendedFor": [
+        "badges",
+        "small illustrations",
+        "stamps"
+      ],
+      "selection": {
+        "uses": [
+          "badge",
+          "seal",
+          "sticker"
+        ],
+        "aspect": {
+          "min": 0.8,
+          "preferred": 1,
+          "max": 1.25
+        },
+        "contentCapacity": "decorative",
+        "symmetry": "radial",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 20,
+        "anchors": [
+          [
+            50,
+            7.1
+          ],
+          [
+            60.846,
+            16.618
+          ],
+          [
+            74.574,
+            16.177
+          ],
+          [
+            79.28,
+            28.727
+          ],
+          [
+            90.8,
+            36.743
+          ],
+          [
+            85.1,
+            50
+          ],
+          [
+            89.762,
+            62.919
+          ],
+          [
+            79.28,
+            71.273
+          ],
+          [
+            75.216,
+            84.707
+          ],
+          [
+            60.846,
+            83.382
+          ],
+          [
+            50,
+            91.808
+          ],
+          [
+            38.816,
+            84.421
+          ],
+          [
+            24.784,
+            84.707
+          ],
+          [
+            21.604,
+            70.631
+          ],
+          [
+            10.238,
+            62.919
+          ],
+          [
+            13.808,
+            50
+          ],
+          [
+            9.2,
+            36.743
+          ],
+          [
+            21.604,
+            29.369
+          ],
+          [
+            25.426,
+            16.177
+          ],
+          [
+            38.816,
+            15.579
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 50% 7.1%, curve to 60.846% 16.618% with 53.672% 7.273% / 56.75% 15.105%, curve to 74.574% 16.177% with 64.942% 18.131% / 71.502% 14.159%, curve to 79.28% 28.727% with 77.646% 18.195% / 76.576% 25.299%, curve to 90.8% 36.743% with 81.984% 32.155% / 89.83% 33.198%, curve to 85.1% 50% with 91.77% 40.289% / 85.273% 45.637%, curve to 89.762% 62.919% with 84.927% 54.363% / 90.732% 59.374%, curve to 79.28% 71.273% with 88.792% 66.465% / 81.704% 67.642%, curve to 75.216% 84.707% with 76.856% 74.904% / 78.288% 82.689%, curve to 60.846% 83.382% with 72.144% 86.725% / 65.049% 82.199%, curve to 50% 91.808% with 56.643% 84.566% / 53.672% 91.635%, curve to 38.816% 84.421% with 46.328% 91.981% / 43.019% 85.605%, curve to 24.784% 84.707% with 34.613% 83.238% / 27.653% 87.005%, curve to 21.604% 70.631% with 21.915% 82.409% / 24.028% 74.262%, curve to 10.238% 62.919% with 19.18% 67% / 11.537% 66.358%, curve to 13.808% 50% with 8.939% 59.481% / 13.981% 54.363%, curve to 9.2% 36.743% with 13.635% 45.637% / 7.901% 40.182%, curve to 21.604% 29.369% with 10.499% 33.305% / 18.9% 32.797%, curve to 25.426% 16.177% with 24.308% 25.941% / 22.557% 18.475%, curve to 38.816% 15.579% with 28.295% 13.879% / 34.72% 17.092%, curve to 50% 7.1% with 42.912% 14.066% / 46.328% 6.927%, close)",
+        "sourceDigest": "sha256-b2ff0f7e0fada9218fb07a731c1cf4a4a44d5c76f92c17b86e9edf8e64d3a3de"
+      },
+      "fallback": {
+        "borderRadius": "48%"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--repeat-seal svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--repeat-seal",
+        "standaloneCss": ".svhape--repeat-seal {\n  border-radius: 48%;\n  overflow: hidden;\n}\n\n.svhape--repeat-seal.svhape--padded {\n  padding: 22%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--repeat-seal {\n    border-radius: 0;\n    clip-path: shape(from 50% 7.1%, curve to 60.846% 16.618% with 53.672% 7.273% / 56.75% 15.105%, curve to 74.574% 16.177% with 64.942% 18.131% / 71.502% 14.159%, curve to 79.28% 28.727% with 77.646% 18.195% / 76.576% 25.299%, curve to 90.8% 36.743% with 81.984% 32.155% / 89.83% 33.198%, curve to 85.1% 50% with 91.77% 40.289% / 85.273% 45.637%, curve to 89.762% 62.919% with 84.927% 54.363% / 90.732% 59.374%, curve to 79.28% 71.273% with 88.792% 66.465% / 81.704% 67.642%, curve to 75.216% 84.707% with 76.856% 74.904% / 78.288% 82.689%, curve to 60.846% 83.382% with 72.144% 86.725% / 65.049% 82.199%, curve to 50% 91.808% with 56.643% 84.566% / 53.672% 91.635%, curve to 38.816% 84.421% with 46.328% 91.981% / 43.019% 85.605%, curve to 24.784% 84.707% with 34.613% 83.238% / 27.653% 87.005%, curve to 21.604% 70.631% with 21.915% 82.409% / 24.028% 74.262%, curve to 10.238% 62.919% with 19.18% 67% / 11.537% 66.358%, curve to 13.808% 50% with 8.939% 59.481% / 13.981% 54.363%, curve to 9.2% 36.743% with 13.635% 45.637% / 7.901% 40.182%, curve to 21.604% 29.369% with 10.499% 33.305% / 18.9% 32.797%, curve to 25.426% 16.177% with 24.308% 25.941% / 22.557% 18.475%, curve to 38.816% 15.579% with 28.295% 13.879% / 34.72% 17.092%, curve to 50% 7.1% with 42.912% 14.066% / 46.328% 6.927%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "repeat-seal",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--repeat-seal"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--repeat-seal svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "badge",
+            "seal",
+            "sticker"
+          ],
+          "aspect": {
+            "min": 0.8,
+            "preferred": 1,
+            "max": 1.25
+          },
+          "contentCapacity": "decorative",
+          "symmetry": "radial",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 22,
+            "right": 22,
+            "bottom": 22,
+            "left": 22
+          }
+        },
+        "safeInset": {
+          "top": 22,
+          "right": 22,
+          "bottom": 22,
+          "left": 22
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.2.1 shape \"Repeat Seal\" (ID: repeat-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--repeat-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "repeat-wave",
+      "name": "Repeat Wave",
+      "family": "scalloped",
+      "description": "A balanced repeating edge pattern with the same number of beats on every side.",
+      "className": "svhape--repeat-wave",
+      "tags": [
+        "balanced",
+        "capacity:standard",
+        "container",
+        "family:scalloped",
+        "repeating",
+        "scalloped",
+        "use:banner",
+        "use:callout",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "announcement cards",
+        "banners",
+        "event panels"
+      ],
+      "selection": {
+        "uses": [
+          "banner",
+          "callout",
+          "panel"
+        ],
+        "aspect": {
+          "min": 1,
+          "preferred": 1.5,
+          "max": 2.5
+        },
+        "contentCapacity": "standard",
+        "symmetry": "bilateral",
+        "balance": "centered",
+        "edgeActivity": "active",
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 48,
+        "anchors": [
+          [
+            5,
+            5
+          ],
+          [
+            14.271,
+            3.65
+          ],
+          [
+            20,
+            6.35
+          ],
+          [
+            29.271,
+            4.163
+          ],
+          [
+            35,
+            5.837
+          ],
+          [
+            44.271,
+            3.65
+          ],
+          [
+            50,
+            6.35
+          ],
+          [
+            59.271,
+            4.163
+          ],
+          [
+            65,
+            5.837
+          ],
+          [
+            74.271,
+            3.65
+          ],
+          [
+            80,
+            6.35
+          ],
+          [
+            89.271,
+            4.163
+          ],
+          [
+            95,
+            5
+          ],
+          [
+            96.35,
+            10.729
+          ],
+          [
+            93.65,
+            20
+          ],
+          [
+            95.837,
+            25.729
+          ],
+          [
+            94.163,
+            35
+          ],
+          [
+            96.35,
+            40.729
+          ],
+          [
+            93.65,
+            50
+          ],
+          [
+            95.837,
+            55.729
+          ],
+          [
+            94.163,
+            65
+          ],
+          [
+            96.35,
+            70.729
+          ],
+          [
+            93.65,
+            80
+          ],
+          [
+            95.837,
+            85.729
+          ],
+          [
+            95,
+            95
+          ],
+          [
+            85.729,
+            96.35
+          ],
+          [
+            80,
+            93.65
+          ],
+          [
+            70.729,
+            95.837
+          ],
+          [
+            65,
+            94.163
+          ],
+          [
+            55.729,
+            96.35
+          ],
+          [
+            50,
+            93.65
+          ],
+          [
+            40.729,
+            95.837
+          ],
+          [
+            35,
+            94.163
+          ],
+          [
+            25.729,
+            96.35
+          ],
+          [
+            20,
+            93.65
+          ],
+          [
+            10.729,
+            95.837
+          ],
+          [
+            5,
+            95
+          ],
+          [
+            3.65,
+            89.271
+          ],
+          [
+            6.35,
+            80
+          ],
+          [
+            4.163,
+            74.271
+          ],
+          [
+            5.837,
+            65
+          ],
+          [
+            3.65,
+            59.271
+          ],
+          [
+            6.35,
+            50
+          ],
+          [
+            4.163,
+            44.271
+          ],
+          [
+            5.837,
+            35
+          ],
+          [
+            3.65,
+            29.271
+          ],
+          [
+            6.35,
+            20
+          ],
+          [
+            4.163,
+            14.271
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 5% 5%, curve to 14.271% 3.65% with 6.685% 3.23% / 11.771% 3.425%, curve to 20% 6.35% with 16.771% 3.875% / 17.5% 6.265%, curve to 29.271% 4.163% with 22.5% 6.435% / 26.771% 4.249%, curve to 35% 5.837% with 31.771% 4.078% / 32.5% 5.922%, curve to 44.271% 3.65% with 37.5% 5.752% / 41.771% 3.565%, curve to 50% 6.35% with 46.771% 3.736% / 47.5% 6.265%, curve to 59.271% 4.163% with 52.5% 6.435% / 56.771% 4.249%, curve to 65% 5.837% with 61.771% 4.078% / 62.5% 5.922%, curve to 74.271% 3.65% with 67.5% 5.752% / 71.771% 3.565%, curve to 80% 6.35% with 76.771% 3.736% / 77.5% 6.265%, curve to 89.271% 4.163% with 82.5% 6.435% / 86.771% 4.388%, curve to 95% 5% with 91.771% 3.938% / 93.82% 3.906%, curve to 96.35% 10.729% with 96.18% 6.094% / 96.575% 8.229%, curve to 93.65% 20% with 96.125% 13.229% / 93.736% 17.5%, curve to 95.837% 25.729% with 93.565% 22.5% / 95.752% 23.229%, curve to 94.163% 35% with 95.923% 28.229% / 94.078% 32.5%, curve to 96.35% 40.729% with 94.249% 37.5% / 96.435% 38.229%, curve to 93.65% 50% with 96.265% 43.229% / 93.736% 47.5%, curve to 95.837% 55.729% with 93.565% 52.5% / 95.752% 53.229%, curve to 94.163% 65% with 95.923% 58.229% / 94.078% 62.5%, curve to 96.35% 70.729% with 94.249% 67.5% / 96.435% 68.229%, curve to 93.65% 80% with 96.265% 73.229% / 93.736% 77.5%, curve to 95.837% 85.729% with 93.565% 82.5% / 95.612% 83.229%, curve to 95% 95% with 96.062% 88.229% / 96.685% 93.23%, curve to 85.729% 96.35% with 93.315% 96.77% / 88.229% 96.575%, curve to 80% 93.65% with 83.229% 96.125% / 82.5% 93.736%, curve to 70.729% 95.837% with 77.5% 93.565% / 73.229% 95.752%, curve to 65% 94.163% with 68.229% 95.923% / 67.5% 94.078%, curve to 55.729% 96.35% with 62.5% 94.249% / 58.229% 96.435%, curve to 50% 93.65% with 53.229% 96.265% / 52.5% 93.736%, curve to 40.729% 95.837% with 47.5% 93.565% / 43.229% 95.752%, curve to 35% 94.163% with 38.229% 95.923% / 37.5% 94.078%, curve to 25.729% 96.35% with 32.5% 94.249% / 28.229% 96.435%, curve to 20% 93.65% with 23.229% 96.265% / 22.5% 93.736%, curve to 10.729% 95.837% with 17.5% 93.565% / 13.229% 95.612%, curve to 5% 95% with 8.229% 96.062% / 6.18% 96.094%, curve to 3.65% 89.271% with 3.82% 93.906% / 3.425% 91.771%, curve to 6.35% 80% with 3.875% 86.771% / 6.265% 82.5%, curve to 4.163% 74.271% with 6.435% 77.5% / 4.249% 76.771%, curve to 5.837% 65% with 4.078% 71.771% / 5.922% 67.5%, curve to 3.65% 59.271% with 5.752% 62.5% / 3.565% 61.771%, curve to 6.35% 50% with 3.736% 56.771% / 6.265% 52.5%, curve to 4.163% 44.271% with 6.435% 47.5% / 4.249% 46.771%, curve to 5.837% 35% with 4.078% 41.771% / 5.922% 37.5%, curve to 3.65% 29.271% with 5.752% 32.5% / 3.565% 31.771%, curve to 6.35% 20% with 3.736% 26.771% / 6.265% 22.5%, curve to 4.163% 14.271% with 6.435% 17.5% / 4.388% 16.771%, curve to 5% 5% with 3.938% 11.771% / 3.315% 6.77%, close)",
+        "sourceDigest": "sha256-f7b77246f51a30444776d35658656ffd3dd7b3282e221fb093726e81546f446d"
+      },
+      "fallback": {
+        "borderRadius": "24px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--repeat-wave svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--repeat-wave",
+        "standaloneCss": ".svhape--repeat-wave {\n  border-radius: 24px;\n  overflow: hidden;\n}\n\n.svhape--repeat-wave.svhape--padded {\n  padding: 10%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--repeat-wave {\n    border-radius: 0;\n    clip-path: shape(from 5% 5%, curve to 14.271% 3.65% with 6.685% 3.23% / 11.771% 3.425%, curve to 20% 6.35% with 16.771% 3.875% / 17.5% 6.265%, curve to 29.271% 4.163% with 22.5% 6.435% / 26.771% 4.249%, curve to 35% 5.837% with 31.771% 4.078% / 32.5% 5.922%, curve to 44.271% 3.65% with 37.5% 5.752% / 41.771% 3.565%, curve to 50% 6.35% with 46.771% 3.736% / 47.5% 6.265%, curve to 59.271% 4.163% with 52.5% 6.435% / 56.771% 4.249%, curve to 65% 5.837% with 61.771% 4.078% / 62.5% 5.922%, curve to 74.271% 3.65% with 67.5% 5.752% / 71.771% 3.565%, curve to 80% 6.35% with 76.771% 3.736% / 77.5% 6.265%, curve to 89.271% 4.163% with 82.5% 6.435% / 86.771% 4.388%, curve to 95% 5% with 91.771% 3.938% / 93.82% 3.906%, curve to 96.35% 10.729% with 96.18% 6.094% / 96.575% 8.229%, curve to 93.65% 20% with 96.125% 13.229% / 93.736% 17.5%, curve to 95.837% 25.729% with 93.565% 22.5% / 95.752% 23.229%, curve to 94.163% 35% with 95.923% 28.229% / 94.078% 32.5%, curve to 96.35% 40.729% with 94.249% 37.5% / 96.435% 38.229%, curve to 93.65% 50% with 96.265% 43.229% / 93.736% 47.5%, curve to 95.837% 55.729% with 93.565% 52.5% / 95.752% 53.229%, curve to 94.163% 65% with 95.923% 58.229% / 94.078% 62.5%, curve to 96.35% 70.729% with 94.249% 67.5% / 96.435% 68.229%, curve to 93.65% 80% with 96.265% 73.229% / 93.736% 77.5%, curve to 95.837% 85.729% with 93.565% 82.5% / 95.612% 83.229%, curve to 95% 95% with 96.062% 88.229% / 96.685% 93.23%, curve to 85.729% 96.35% with 93.315% 96.77% / 88.229% 96.575%, curve to 80% 93.65% with 83.229% 96.125% / 82.5% 93.736%, curve to 70.729% 95.837% with 77.5% 93.565% / 73.229% 95.752%, curve to 65% 94.163% with 68.229% 95.923% / 67.5% 94.078%, curve to 55.729% 96.35% with 62.5% 94.249% / 58.229% 96.435%, curve to 50% 93.65% with 53.229% 96.265% / 52.5% 93.736%, curve to 40.729% 95.837% with 47.5% 93.565% / 43.229% 95.752%, curve to 35% 94.163% with 38.229% 95.923% / 37.5% 94.078%, curve to 25.729% 96.35% with 32.5% 94.249% / 28.229% 96.435%, curve to 20% 93.65% with 23.229% 96.265% / 22.5% 93.736%, curve to 10.729% 95.837% with 17.5% 93.565% / 13.229% 95.612%, curve to 5% 95% with 8.229% 96.062% / 6.18% 96.094%, curve to 3.65% 89.271% with 3.82% 93.906% / 3.425% 91.771%, curve to 6.35% 80% with 3.875% 86.771% / 6.265% 82.5%, curve to 4.163% 74.271% with 6.435% 77.5% / 4.249% 76.771%, curve to 5.837% 65% with 4.078% 71.771% / 5.922% 67.5%, curve to 3.65% 59.271% with 5.752% 62.5% / 3.565% 61.771%, curve to 6.35% 50% with 3.736% 56.771% / 6.265% 52.5%, curve to 4.163% 44.271% with 6.435% 47.5% / 4.249% 46.771%, curve to 5.837% 35% with 4.078% 41.771% / 5.922% 37.5%, curve to 3.65% 29.271% with 5.752% 32.5% / 3.565% 31.771%, curve to 6.35% 20% with 3.736% 26.771% / 6.265% 22.5%, curve to 4.163% 14.271% with 6.435% 17.5% / 4.388% 16.771%, curve to 5% 5% with 3.938% 11.771% / 3.315% 6.77%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "repeat-wave",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--repeat-wave"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--repeat-wave svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "banner",
+            "callout",
+            "panel"
+          ],
+          "aspect": {
+            "min": 1,
+            "preferred": 1.5,
+            "max": 2.5
+          },
+          "contentCapacity": "standard",
+          "symmetry": "bilateral",
+          "balance": "centered",
+          "edgeActivity": "active",
+          "safeInset": {
+            "top": 10,
+            "right": 10,
+            "bottom": 10,
+            "left": 10
+          }
+        },
+        "safeInset": {
+          "top": 10,
+          "right": 10,
+          "bottom": 10,
+          "left": 10
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.2.1 shape \"Repeat Wave\" (ID: repeat-wave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--repeat-wave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3006,7 +3652,7 @@
       },
       "agent": {
         "shapeId": "river-pebble",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--river-pebble"
@@ -3050,7 +3696,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"River Pebble\" (ID: river-pebble). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--river-pebble\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"River Pebble\" (ID: river-pebble). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--river-pebble\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3247,7 +3893,7 @@
       },
       "agent": {
         "shapeId": "riverbank",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--riverbank"
@@ -3292,7 +3938,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Riverbank\" (ID: riverbank). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--riverbank\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.75 and 1.75; 1.15 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Riverbank\" (ID: riverbank). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--riverbank\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.75 and 1.75; 1.15 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3553,7 +4199,7 @@
       },
       "agent": {
         "shapeId": "soft-stamp",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--soft-stamp"
@@ -3598,7 +4244,475 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Soft Stamp\" (ID: soft-stamp). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--soft-stamp\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Soft Stamp\" (ID: soft-stamp). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--soft-stamp\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "soft-superellipse",
+      "name": "Soft Superellipse",
+      "family": "frame",
+      "description": "A lower-exponent superellipse that sits between an ellipse and a squircle.",
+      "className": "svhape--soft-superellipse",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "family:frame",
+        "responsive",
+        "soft",
+        "superellipse",
+        "use:card",
+        "use:media",
+        "use:panel"
+      ],
+      "recommendedFor": [
+        "feature panels",
+        "media frames",
+        "profile cards"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "media",
+          "panel"
+        ],
+        "aspect": {
+          "min": 0.85,
+          "preferred": 1.4,
+          "max": 2.25
+        },
+        "contentCapacity": "dense",
+        "symmetry": "bilateral",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 13,
+          "right": 13,
+          "bottom": 13,
+          "left": 13
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 28,
+        "anchors": [
+          [
+            50,
+            10
+          ],
+          [
+            66.157,
+            10.671
+          ],
+          [
+            75.217,
+            12.686
+          ],
+          [
+            82.112,
+            16.053
+          ],
+          [
+            87.342,
+            20.807
+          ],
+          [
+            91.045,
+            27.075
+          ],
+          [
+            93.261,
+            35.312
+          ],
+          [
+            94,
+            50
+          ],
+          [
+            93.261,
+            64.688
+          ],
+          [
+            91.045,
+            72.925
+          ],
+          [
+            87.342,
+            79.193
+          ],
+          [
+            82.112,
+            83.947
+          ],
+          [
+            75.217,
+            87.314
+          ],
+          [
+            66.157,
+            89.329
+          ],
+          [
+            50,
+            90
+          ],
+          [
+            33.843,
+            89.329
+          ],
+          [
+            24.783,
+            87.314
+          ],
+          [
+            17.888,
+            83.947
+          ],
+          [
+            12.658,
+            79.193
+          ],
+          [
+            8.955,
+            72.925
+          ],
+          [
+            6.739,
+            64.688
+          ],
+          [
+            6,
+            50
+          ],
+          [
+            6.739,
+            35.312
+          ],
+          [
+            8.955,
+            27.075
+          ],
+          [
+            12.658,
+            20.807
+          ],
+          [
+            17.888,
+            16.053
+          ],
+          [
+            24.783,
+            12.686
+          ],
+          [
+            33.843,
+            10.671
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 50% 10%, curve to 66.157% 10.671% with 55.386% 10% / 61.954% 10.223%, curve to 75.217% 12.686% with 70.36% 11.119% / 72.558% 11.789%, curve to 82.112% 16.053% with 77.876% 13.583% / 80.091% 14.7%, curve to 87.342% 20.807% with 84.133% 17.407% / 85.853% 18.97%, curve to 91.045% 27.075% with 88.831% 22.644% / 90.059% 24.658%, curve to 93.261% 35.312% with 92.032% 29.493% / 92.768% 31.491%, curve to 94% 50% with 93.754% 39.133% / 94% 45.104%, curve to 93.261% 64.688% with 94% 54.896% / 93.754% 60.867%, curve to 91.045% 72.925% with 92.768% 68.509% / 92.032% 70.508%, curve to 87.342% 79.193% with 90.059% 75.343% / 88.831% 77.356%, curve to 82.112% 83.947% with 85.853% 81.03% / 84.133% 82.594%, curve to 75.217% 87.314% with 80.091% 85.301% / 77.876% 86.417%, curve to 66.157% 89.329% with 72.558% 88.211% / 70.36% 88.881%, curve to 50% 90% with 61.954% 89.777% / 55.386% 90%, curve to 33.843% 89.329% with 44.614% 90% / 38.046% 89.777%, curve to 24.783% 87.314% with 29.64% 88.881% / 27.442% 88.211%, curve to 17.888% 83.947% with 22.124% 86.417% / 19.909% 85.301%, curve to 12.658% 79.193% with 15.867% 82.594% / 14.147% 81.03%, curve to 8.955% 72.925% with 11.169% 77.356% / 9.942% 75.343%, curve to 6.739% 64.688% with 7.969% 70.508% / 7.232% 68.509%, curve to 6% 50% with 6.247% 60.867% / 6% 54.896%, curve to 6.739% 35.312% with 6% 45.104% / 6.247% 39.133%, curve to 8.955% 27.075% with 7.232% 31.491% / 7.969% 29.493%, curve to 12.658% 20.807% with 9.942% 24.658% / 11.169% 22.644%, curve to 17.888% 16.053% with 14.147% 18.97% / 15.867% 17.407%, curve to 24.783% 12.686% with 19.909% 14.7% / 22.124% 13.583%, curve to 33.843% 10.671% with 27.442% 11.789% / 29.64% 11.119%, curve to 50% 10% with 38.046% 10.223% / 44.614% 10%, close)",
+        "sourceDigest": "sha256-26d414f9482f2dfd816015e875216f109e52c043ef4fb8d3abd65711bf75dae7"
+      },
+      "fallback": {
+        "borderRadius": "34px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--soft-superellipse svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--soft-superellipse",
+        "standaloneCss": ".svhape--soft-superellipse {\n  border-radius: 34px;\n  overflow: hidden;\n}\n\n.svhape--soft-superellipse.svhape--padded {\n  padding: 13%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--soft-superellipse {\n    border-radius: 0;\n    clip-path: shape(from 50% 10%, curve to 66.157% 10.671% with 55.386% 10% / 61.954% 10.223%, curve to 75.217% 12.686% with 70.36% 11.119% / 72.558% 11.789%, curve to 82.112% 16.053% with 77.876% 13.583% / 80.091% 14.7%, curve to 87.342% 20.807% with 84.133% 17.407% / 85.853% 18.97%, curve to 91.045% 27.075% with 88.831% 22.644% / 90.059% 24.658%, curve to 93.261% 35.312% with 92.032% 29.493% / 92.768% 31.491%, curve to 94% 50% with 93.754% 39.133% / 94% 45.104%, curve to 93.261% 64.688% with 94% 54.896% / 93.754% 60.867%, curve to 91.045% 72.925% with 92.768% 68.509% / 92.032% 70.508%, curve to 87.342% 79.193% with 90.059% 75.343% / 88.831% 77.356%, curve to 82.112% 83.947% with 85.853% 81.03% / 84.133% 82.594%, curve to 75.217% 87.314% with 80.091% 85.301% / 77.876% 86.417%, curve to 66.157% 89.329% with 72.558% 88.211% / 70.36% 88.881%, curve to 50% 90% with 61.954% 89.777% / 55.386% 90%, curve to 33.843% 89.329% with 44.614% 90% / 38.046% 89.777%, curve to 24.783% 87.314% with 29.64% 88.881% / 27.442% 88.211%, curve to 17.888% 83.947% with 22.124% 86.417% / 19.909% 85.301%, curve to 12.658% 79.193% with 15.867% 82.594% / 14.147% 81.03%, curve to 8.955% 72.925% with 11.169% 77.356% / 9.942% 75.343%, curve to 6.739% 64.688% with 7.969% 70.508% / 7.232% 68.509%, curve to 6% 50% with 6.247% 60.867% / 6% 54.896%, curve to 6.739% 35.312% with 6% 45.104% / 6.247% 39.133%, curve to 8.955% 27.075% with 7.232% 31.491% / 7.969% 29.493%, curve to 12.658% 20.807% with 9.942% 24.658% / 11.169% 22.644%, curve to 17.888% 16.053% with 14.147% 18.97% / 15.867% 17.407%, curve to 24.783% 12.686% with 19.909% 14.7% / 22.124% 13.583%, curve to 33.843% 10.671% with 27.442% 11.789% / 29.64% 11.119%, curve to 50% 10% with 38.046% 10.223% / 44.614% 10%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "soft-superellipse",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--soft-superellipse"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--soft-superellipse svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "media",
+            "panel"
+          ],
+          "aspect": {
+            "min": 0.85,
+            "preferred": 1.4,
+            "max": 2.25
+          },
+          "contentCapacity": "dense",
+          "symmetry": "bilateral",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 13,
+            "right": 13,
+            "bottom": 13,
+            "left": 13
+          }
+        },
+        "safeInset": {
+          "top": 13,
+          "right": 13,
+          "bottom": 13,
+          "left": 13
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.2.1 shape \"Soft Superellipse\" (ID: soft-superellipse). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--soft-superellipse\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.85 and 2.25; 1.4 is preferred. Keep meaningful content inside the published 13% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+      }
+    },
+    {
+      "id": "squircle",
+      "name": "Squircle",
+      "family": "frame",
+      "description": "A responsive superellipse that keeps a rectangular feel while softening every corner.",
+      "className": "svhape--squircle",
+      "tags": [
+        "capacity:dense",
+        "container",
+        "family:frame",
+        "rounded",
+        "squircle",
+        "superellipse",
+        "use:card",
+        "use:panel",
+        "use:shell"
+      ],
+      "recommendedFor": [
+        "app shells",
+        "cards",
+        "navigation panels"
+      ],
+      "selection": {
+        "uses": [
+          "card",
+          "panel",
+          "shell"
+        ],
+        "aspect": {
+          "min": 0.9,
+          "preferred": 1.25,
+          "max": 2
+        },
+        "contentCapacity": "dense",
+        "symmetry": "bilateral",
+        "balance": "centered",
+        "edgeActivity": "calm",
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        }
+      },
+      "geometry": {
+        "kind": "closed-catmull-rom",
+        "anchorCount": 32,
+        "anchors": [
+          [
+            50,
+            8
+          ],
+          [
+            68.993,
+            8.405
+          ],
+          [
+            76.6,
+            9.63
+          ],
+          [
+            82.051,
+            11.702
+          ],
+          [
+            86.159,
+            14.682
+          ],
+          [
+            89.21,
+            18.695
+          ],
+          [
+            91.331,
+            24.018
+          ],
+          [
+            92.585,
+            31.449
+          ],
+          [
+            93,
+            50
+          ],
+          [
+            92.585,
+            68.551
+          ],
+          [
+            91.331,
+            75.982
+          ],
+          [
+            89.21,
+            81.305
+          ],
+          [
+            86.159,
+            85.318
+          ],
+          [
+            82.051,
+            88.298
+          ],
+          [
+            76.6,
+            90.37
+          ],
+          [
+            68.993,
+            91.595
+          ],
+          [
+            50,
+            92
+          ],
+          [
+            31.007,
+            91.595
+          ],
+          [
+            23.4,
+            90.37
+          ],
+          [
+            17.949,
+            88.298
+          ],
+          [
+            13.841,
+            85.318
+          ],
+          [
+            10.79,
+            81.305
+          ],
+          [
+            8.669,
+            75.982
+          ],
+          [
+            7.415,
+            68.551
+          ],
+          [
+            7,
+            50
+          ],
+          [
+            7.415,
+            31.449
+          ],
+          [
+            8.669,
+            24.018
+          ],
+          [
+            10.79,
+            18.695
+          ],
+          [
+            13.841,
+            14.682
+          ],
+          [
+            17.949,
+            11.702
+          ],
+          [
+            23.4,
+            9.63
+          ],
+          [
+            31.007,
+            8.405
+          ]
+        ],
+        "closed": true,
+        "continuity": "c1",
+        "tension": 0,
+        "precision": 3,
+        "cssShape": "shape(from 50% 8%, curve to 68.993% 8.405% with 56.331% 8% / 64.56% 8.133%, curve to 76.6% 9.63% with 73.426% 8.677% / 74.424% 9.081%, curve to 82.051% 11.702% with 78.776% 10.18% / 80.458% 10.86%, curve to 86.159% 14.682% with 83.644% 12.544% / 84.966% 13.517%, curve to 89.21% 18.695% with 87.352% 15.848% / 88.348% 17.139%, curve to 91.331% 24.018% with 90.072% 20.251% / 90.769% 21.892%, curve to 92.585% 31.449% with 91.894% 26.144% / 92.307% 27.119%, curve to 93% 50% with 92.863% 35.779% / 93% 43.816%, curve to 92.585% 68.551% with 93% 56.184% / 92.863% 64.221%, curve to 91.331% 75.982% with 92.307% 72.881% / 91.894% 73.856%, curve to 89.21% 81.305% with 90.769% 78.108% / 90.072% 79.749%, curve to 86.159% 85.318% with 88.348% 82.861% / 87.352% 84.153%, curve to 82.051% 88.298% with 84.966% 86.483% / 83.644% 87.456%, curve to 76.6% 90.37% with 80.458% 89.14% / 78.776% 89.821%, curve to 68.993% 91.595% with 74.424% 90.92% / 73.426% 91.323%, curve to 50% 92% with 64.56% 91.867% / 56.331% 92%, curve to 31.007% 91.595% with 43.669% 92% / 35.44% 91.867%, curve to 23.4% 90.37% with 26.574% 91.323% / 25.576% 90.92%, curve to 17.949% 88.298% with 21.224% 89.821% / 19.542% 89.14%, curve to 13.841% 85.318% with 16.356% 87.456% / 15.034% 86.483%, curve to 10.79% 81.305% with 12.648% 84.153% / 11.652% 82.861%, curve to 8.669% 75.982% with 9.928% 79.749% / 9.232% 78.108%, curve to 7.415% 68.551% with 8.107% 73.856% / 7.693% 72.881%, curve to 7% 50% with 7.137% 64.221% / 7% 56.184%, curve to 7.415% 31.449% with 7% 43.816% / 7.137% 35.779%, curve to 8.669% 24.018% with 7.693% 27.119% / 8.107% 26.144%, curve to 10.79% 18.695% with 9.232% 21.892% / 9.928% 20.251%, curve to 13.841% 14.682% with 11.652% 17.139% / 12.648% 15.848%, curve to 17.949% 11.702% with 15.034% 13.517% / 16.356% 12.544%, curve to 23.4% 9.63% with 19.542% 10.86% / 21.224% 10.18%, curve to 31.007% 8.405% with 25.576% 9.081% / 26.574% 8.677%, curve to 50% 8% with 35.44% 8.133% / 43.669% 8%, close)",
+        "sourceDigest": "sha256-90f0d10e309307e91cb9de093138ddc1097872a1f1688564b73da3f32c68c7c4"
+      },
+      "fallback": {
+        "borderRadius": "28px"
+      },
+      "snippets": {
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--squircle svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selector": ".svhape.svhape--squircle",
+        "standaloneCss": ".svhape--squircle {\n  border-radius: 28px;\n  overflow: hidden;\n}\n\n.svhape--squircle.svhape--padded {\n  padding: 12%;\n}\n\n@supports (clip-path: shape(from 0 0, line to 100% 0, line to 100% 100%, close)) {\n  .svhape--squircle {\n    border-radius: 0;\n    clip-path: shape(from 50% 8%, curve to 68.993% 8.405% with 56.331% 8% / 64.56% 8.133%, curve to 76.6% 9.63% with 73.426% 8.677% / 74.424% 9.081%, curve to 82.051% 11.702% with 78.776% 10.18% / 80.458% 10.86%, curve to 86.159% 14.682% with 83.644% 12.544% / 84.966% 13.517%, curve to 89.21% 18.695% with 87.352% 15.848% / 88.348% 17.139%, curve to 91.331% 24.018% with 90.072% 20.251% / 90.769% 21.892%, curve to 92.585% 31.449% with 91.894% 26.144% / 92.307% 27.119%, curve to 93% 50% with 92.863% 35.779% / 93% 43.816%, curve to 92.585% 68.551% with 93% 56.184% / 92.863% 64.221%, curve to 91.331% 75.982% with 92.307% 72.881% / 91.894% 73.856%, curve to 89.21% 81.305% with 90.769% 78.108% / 90.072% 79.749%, curve to 86.159% 85.318% with 88.348% 82.861% / 87.352% 84.153%, curve to 82.051% 88.298% with 84.966% 86.483% / 83.644% 87.456%, curve to 76.6% 90.37% with 80.458% 89.14% / 78.776% 89.821%, curve to 68.993% 91.595% with 74.424% 90.92% / 73.426% 91.323%, curve to 50% 92% with 64.56% 91.867% / 56.331% 92%, curve to 31.007% 91.595% with 43.669% 92% / 35.44% 91.867%, curve to 23.4% 90.37% with 26.574% 91.323% / 25.576% 90.92%, curve to 17.949% 88.298% with 21.224% 89.821% / 19.542% 89.14%, curve to 13.841% 85.318% with 16.356% 87.456% / 15.034% 86.483%, curve to 10.79% 81.305% with 12.648% 84.153% / 11.652% 82.861%, curve to 8.669% 75.982% with 9.928% 79.749% / 9.232% 78.108%, curve to 7.415% 68.551% with 8.107% 73.856% / 7.693% 72.881%, curve to 7% 50% with 7.137% 64.221% / 7% 56.184%, curve to 7.415% 31.449% with 7% 43.816% / 7.137% 35.779%, curve to 8.669% 24.018% with 7.693% 27.119% / 8.107% 26.144%, curve to 10.79% 18.695% with 9.232% 21.892% / 9.928% 20.251%, curve to 13.841% 14.682% with 11.652% 17.139% / 12.648% 15.848%, curve to 17.949% 11.702% with 15.034% 13.517% / 16.356% 12.544%, curve to 23.4% 9.63% with 19.542% 10.86% / 21.224% 10.18%, curve to 31.007% 8.405% with 25.576% 9.081% / 26.574% 8.677%, curve to 50% 8% with 35.44% 8.133% / 43.669% 8%, close);\n  }\n}"
+      },
+      "agent": {
+        "shapeId": "squircle",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "classes": [
+          "svhape",
+          "svhape--squircle"
+        ],
+        "optionalClasses": [
+          "svhape--padded",
+          "svhape--desktop-only"
+        ],
+        "optionalWrapperClass": "svhape-shadow",
+        "html": "<div class=\"svhape-shadow\">\n  <div class=\"svhape svhape--squircle svhape--padded\">\n    Your content\n  </div>\n</div>",
+        "selection": {
+          "uses": [
+            "card",
+            "panel",
+            "shell"
+          ],
+          "aspect": {
+            "min": 0.9,
+            "preferred": 1.25,
+            "max": 2
+          },
+          "contentCapacity": "dense",
+          "symmetry": "bilateral",
+          "balance": "centered",
+          "edgeActivity": "calm",
+          "safeInset": {
+            "top": 12,
+            "right": 12,
+            "bottom": 12,
+            "left": 12
+          }
+        },
+        "safeInset": {
+          "top": 12,
+          "right": 12,
+          "bottom": 12,
+          "left": 12
+        },
+        "constraints": [
+          "Keep meaningful content inside the published safe inset.",
+          "Do not encode essential information in the silhouette.",
+          "Do not invent or edit the generated shape path.",
+          "Retain the rounded fallback."
+        ],
+        "prompt": "Use Svhapes v0.2.1 shape \"Squircle\" (ID: squircle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--squircle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.9 and 2; 1.25 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3763,7 +4877,7 @@
       },
       "agent": {
         "shapeId": "sun-coin",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--sun-coin"
@@ -3808,7 +4922,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Sun Coin\" (ID: sun-coin). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--sun-coin\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 19% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Sun Coin\" (ID: sun-coin). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--sun-coin\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 19% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -4021,7 +5135,7 @@
       },
       "agent": {
         "shapeId": "tidepool",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--tidepool"
@@ -4066,7 +5180,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.1.0 shape \"Tidepool\" (ID: tidepool). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.css Apply classes \"svhape svhape--tidepool\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 11% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.1 shape \"Tidepool\" (ID: tidepool). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--tidepool\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 11% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     }
   ]

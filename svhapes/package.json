@@ -1,6 +1,6 @@
 {
   "name": "svhapes",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Smooth, copyable CSS shapes for people and agents.",
   "type": "module",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "./schema": "./schema/svhape.schema.json"
   },
   "bin": {
-    "svhapes": "./bin/svhapes.js"
+    "svhapes": "bin/svhapes.js"
   },
   "scripts": {
     "build": "node scripts/build.mjs",

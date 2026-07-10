@@ -1,4 +1,4 @@
-const INSTALL_SNIPPET = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.min.css">';
+const INSTALL_SNIPPET = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.min.css">';
 const MARKUP_SNIPPET = `<div class="svhape-shadow">
   <div class="svhape svhape--golden-tide svhape--padded">
     Your content
@@ -45,6 +45,25 @@ const MOTION_SNIPPETS = Object.freeze({
 @media (prefers-reduced-motion: reduce) {
   .svhape-motion--hover { transition: none; }
 }`,
+});
+const BUILDER_SNIPPETS = Object.freeze({
+  fillet: `import { filletPoints, pointsToShape } from 'svhapes';
+
+const clipPath = pointsToShape(filletPoints([
+  [5, 5], [95, 5], [95, 95], [5, 95],
+], { radius: 0.2 }));`,
+  repeat: `import { makeRepeatingEdgeShape, pointsToShape } from 'svhapes';
+
+const clipPath = pointsToShape(makeRepeatingEdgeShape({
+  repeats: 5,
+  amplitude: 1.25,
+}));`,
+  squircle: `import { makeSuperellipseShape, pointsToShape } from 'svhapes';
+
+const clipPath = pointsToShape(makeSuperellipseShape({
+  exponent: 4,
+  radius: [44, 42],
+}));`,
 });
 // Mono + dither tone cycle; golden-tide is the single accent in the catalog view.
 const TONES = ['fill-gray', 'fill-dither-light', 'fill-ink', 'fill-dither-dark'];
@@ -238,6 +257,17 @@ for (const button of document.querySelectorAll('[data-copy-motion]')) {
   button.addEventListener('click', () => {
     const type = button.dataset.copyMotion;
     copyText(MOTION_SNIPPETS[type], `${type} motion CSS`);
+  });
+}
+
+for (const code of document.querySelectorAll('[data-builder-code]')) {
+  code.textContent = BUILDER_SNIPPETS[code.dataset.builderCode];
+}
+
+for (const button of document.querySelectorAll('[data-copy-builder]')) {
+  button.addEventListener('click', () => {
+    const type = button.dataset.copyBuilder;
+    copyText(BUILDER_SNIPPETS[type], `${type} builder JS`);
   });
 }
 

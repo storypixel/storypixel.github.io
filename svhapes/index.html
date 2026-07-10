@@ -31,6 +31,7 @@
         <a href="#catalog">Shapes</a>
         <a href="#use">Use</a>
         <a href="#motion">Motion</a>
+        <a href="#builders">Builders</a>
         <a href="#agents">Agents</a>
         <a href="https://github.com/storypixel/svhapes">GitHub ↗</a>
       </nav>
@@ -64,7 +65,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="#catalog">Browse 18 shapes</a>
+          <a class="button button-primary" href="#catalog">Browse 23 shapes</a>
           <button class="button button-secondary" type="button" data-copy-install>
             Copy the stylesheet
           </button>
@@ -95,7 +96,7 @@
               <button type="button" data-copy-install>Copy</button>
             </header>
             <pre><code>&lt;link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.min.css"&gt;</code></pre>
+  href="https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.min.css"&gt;</code></pre>
           </article>
           <article class="code-panel">
             <header>
@@ -175,6 +176,62 @@
         <p class="motion-note">
           <strong>Compatibility rule:</strong> arbitrary Svhape IDs are not guaranteed to morph into one another.
           Use wrapper transforms for catalog-to-catalog transitions, or generate two same-anchor shapes yourself.
+        </p>
+      </section>
+
+      <section class="builders-section" id="builders" aria-labelledby="builders-title">
+        <div class="section-heading">
+          <p class="eyebrow">Geometry helpers</p>
+          <h2 id="builders-title">Generate the interesting edge.</h2>
+          <p>
+            Fillet corners, repeat a measured rhythm, or start with a squircle. Each recipe stays in the
+            same normalized coordinate system and is ready to paste into a project.
+          </p>
+        </div>
+
+        <div class="builder-grid">
+          <article class="builder-card">
+            <div class="builder-preview builder-preview--fillet svhape-shadow">
+              <div class="svhape svhape--fillet-frame fill-accent"><strong>FILLET</strong></div>
+            </div>
+            <div class="builder-card-body">
+              <p class="builder-label">01 / FILLET</p>
+              <p>Round every corner with one responsive ratio instead of calculating entry points by hand.</p>
+              <pre class="builder-code"><code data-builder-code="fillet"></code></pre>
+              <button type="button" data-copy-builder="fillet">Copy JS</button>
+            </div>
+          </article>
+
+          <article class="builder-card">
+            <div class="builder-preview builder-preview--repeat svhape-shadow">
+              <div class="svhape svhape--repeat-wave fill-ink"><strong>REPEAT</strong></div>
+            </div>
+            <div class="builder-card-body">
+              <p class="builder-label">02 / REPEAT</p>
+              <p>Give all four edges the same number of beats, or switch to the lower-level API for asymmetry.</p>
+              <pre class="builder-code"><code data-builder-code="repeat"></code></pre>
+              <button type="button" data-copy-builder="repeat">Copy JS</button>
+            </div>
+          </article>
+
+          <article class="builder-card">
+            <div class="builder-preview builder-preview--squircle svhape-shadow">
+              <div class="svhape svhape--squircle fill-gray"><strong>SQUIRCLE</strong></div>
+            </div>
+            <div class="builder-card-body">
+              <p class="builder-label">03 / SUPERELLIPSE</p>
+              <p>Move from an ellipse to a more rectangular contour with one exponent. Four is a good squircle start.</p>
+              <pre class="builder-code"><code data-builder-code="squircle"></code></pre>
+              <button type="button" data-copy-builder="squircle">Copy JS</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="builder-note">
+          Inspired by open CSS Shapes conversations about <a href="https://github.com/w3c/csswg-drafts/issues/12768">fillets</a>,
+          <a href="https://github.com/w3c/csswg-drafts/issues/13862">repeating segments</a>, and
+          <a href="https://github.com/w3c/csswg-drafts/issues/11620">superellipses</a>. These helpers generate today’s CSS;
+          they do not wait for browser-level layout features.
         </p>
       </section>
 

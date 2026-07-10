@@ -9,5 +9,12 @@ export {
   validatePoints,
 } from './core.js';
 
-export { makeEdgeShape, makeRadialShape } from './builders.js';
+export {
+  filletPoints,
+  makeEdgeShape,
+  makeRadialShape,
+  makeRepeatingEdgeShape,
+  makeRepeatingRadialShape,
+  makeSuperellipseShape,
+} from './builders.js';
 export { definitions, getDefinition } from './definitions.js';

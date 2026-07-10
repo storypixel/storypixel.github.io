@@ -14,6 +14,9 @@ Svhapes is a dependency-free CSS and JavaScript shape library. Its public API is
 
 - IDs are stable kebab-case API identifiers.
 - Points use percentage coordinates in a 100 × 100 reference box.
+- `filletPoints()` uses a 0–0.5 ratio of the shorter adjacent edge; keep that contract responsive.
+- Repeating helpers should remain deterministic wrappers around the edge/radial generators.
+- `makeSuperellipseShape()` uses `exponent: 2` for an ellipse and `4` for a squircle-like contour.
 - Closed Catmull–Rom conversion must remain tangent-continuous after configured rounding.
 - Every definition needs a conventional `fallbackRadius` and a conservative `safeInset`.
 - Decorative clipping must not be the only way important information is conveyed.

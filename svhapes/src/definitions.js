@@ -1,5 +1,12 @@
 import { PHI } from './core.js';
-import { makeEdgeShape, makeRadialShape } from './builders.js';
+import {
+  filletPoints,
+  makeEdgeShape,
+  makeRadialShape,
+  makeRepeatingEdgeShape,
+  makeRepeatingRadialShape,
+  makeSuperellipseShape,
+} from './builders.js';
 
 function normalizeSafeInset(value) {
   if (typeof value === 'number') {
@@ -41,6 +48,20 @@ const edge = (metadata, geometry) => createDefinition({
   },
 }, metadata, makeEdgeShape(geometry));
 
+const repeatEdge = (metadata, geometry) => createDefinition({
+  family: 'scalloped',
+  precision: 3,
+  tension: 0,
+  selection: {
+    uses: ['card', 'panel'],
+    aspect: { min: 1, preferred: 1.5, max: 2.5 },
+    contentCapacity: 'standard',
+    symmetry: 'bilateral',
+    balance: 'centered',
+    edgeActivity: 'active',
+  },
+}, metadata, makeRepeatingEdgeShape(geometry));
+
 const radial = (metadata, geometry) => createDefinition({
   family: 'blob',
   precision: 3,
@@ -54,6 +75,34 @@ const radial = (metadata, geometry) => createDefinition({
     edgeActivity: 'moderate',
   },
 }, metadata, makeRadialShape(geometry));
+
+const repeatRadial = (metadata, geometry) => createDefinition({
+  family: 'emblem',
+  precision: 3,
+  tension: 0,
+  selection: {
+    uses: ['badge', 'media'],
+    aspect: { min: 0.8, preferred: 1, max: 1.25 },
+    contentCapacity: 'sparse',
+    symmetry: 'radial',
+    balance: 'centered',
+    edgeActivity: 'active',
+  },
+}, metadata, makeRepeatingRadialShape(geometry));
+
+const generatedFrame = (metadata, points) => createDefinition({
+  family: 'frame',
+  precision: 3,
+  tension: 0,
+  selection: {
+    uses: ['card', 'panel'],
+    aspect: { min: 1, preferred: 1.5, max: 2.5 },
+    contentCapacity: 'dense',
+    symmetry: 'bilateral',
+    balance: 'centered',
+    edgeActivity: 'calm',
+  },
+}, metadata, points);
 
 export const definitions = [
   edge({
@@ -422,6 +471,95 @@ export const definitions = [
     amplitude: 0.105,
     secondaryRatio: 0.66,
     phase: -Math.PI / 2.1,
+  }),
+  generatedFrame({
+    id: 'fillet-frame',
+    name: 'Fillet Frame',
+    description: 'A near-rectangular frame with explicit, even corner fillets for a calm silhouette.',
+    tags: ['fillet', 'rounded', 'content-safe', 'container'],
+    recommendedFor: ['article cards', 'documentation', 'forms'],
+    safeInset: 10,
+    fallbackRadius: '22px',
+    selection: {
+      uses: ['card', 'form', 'panel'],
+      aspect: { min: 1.1, preferred: 1.5, max: 2.25 },
+    },
+  }, filletPoints([
+    [4, 5],
+    [96, 5],
+    [96, 95],
+    [4, 95],
+  ], { radius: 0.2 })),
+  generatedFrame({
+    id: 'squircle',
+    name: 'Squircle',
+    description: 'A responsive superellipse that keeps a rectangular feel while softening every corner.',
+    tags: ['superellipse', 'squircle', 'rounded', 'container'],
+    recommendedFor: ['app shells', 'cards', 'navigation panels'],
+    safeInset: 12,
+    fallbackRadius: '28px',
+    selection: {
+      uses: ['card', 'panel', 'shell'],
+      aspect: { min: 0.9, preferred: 1.25, max: 2 },
+      symmetry: 'bilateral',
+      edgeActivity: 'calm',
+    },
+  }, makeSuperellipseShape({ exponent: 4, radius: [43, 42], points: 32 })),
+  generatedFrame({
+    id: 'soft-superellipse',
+    name: 'Soft Superellipse',
+    description: 'A lower-exponent superellipse that sits between an ellipse and a squircle.',
+    tags: ['superellipse', 'soft', 'responsive', 'container'],
+    recommendedFor: ['media frames', 'profile cards', 'feature panels'],
+    safeInset: 13,
+    fallbackRadius: '34px',
+    selection: {
+      uses: ['card', 'media', 'panel'],
+      aspect: { min: 0.85, preferred: 1.4, max: 2.25 },
+      symmetry: 'bilateral',
+    },
+  }, makeSuperellipseShape({ exponent: 3, center: [50, 50], radius: [44, 40], points: 28 })),
+  repeatEdge({
+    id: 'repeat-wave',
+    name: 'Repeat Wave',
+    family: 'scalloped',
+    description: 'A balanced repeating edge pattern with the same number of beats on every side.',
+    tags: ['repeating', 'scalloped', 'balanced', 'container'],
+    recommendedFor: ['announcement cards', 'banners', 'event panels'],
+    safeInset: 10,
+    fallbackRadius: '24px',
+    selection: {
+      uses: ['banner', 'callout', 'panel'],
+      contentCapacity: 'standard',
+      symmetry: 'bilateral',
+      edgeActivity: 'active',
+    },
+  }, {
+    repeats: 5,
+    inset: 5,
+    amplitude: 1.35,
+    spacingRatio: PHI,
+    secondaryRatio: 0.62,
+    spacingPhase: { top: 1, bottom: 1 },
+  }),
+  repeatRadial({
+    id: 'repeat-seal',
+    name: 'Repeat Seal',
+    description: 'A deterministic radial repeat helper for badges that need a measured, even rhythm.',
+    tags: ['repeating', 'radial', 'seal', 'badge'],
+    recommendedFor: ['badges', 'stamps', 'small illustrations'],
+    safeInset: 22,
+    fallbackRadius: '48%',
+    selection: {
+      uses: ['badge', 'seal', 'sticker'],
+      contentCapacity: 'decorative',
+    },
+  }, {
+    repeats: 10,
+    center: [50, 50],
+    radius: [39, 39],
+    amplitude: 0.1,
+    secondaryRatio: 0.72,
   }),
 ];
 
