@@ -5,7 +5,9 @@ const MARKUP_SNIPPET = `<div class="svhape-shadow">
   </div>
 </div>`;
 const AGENT_COMMAND = 'svhapes prompt golden-tide --format json';
-const COLORS = ['#d7fb54', '#ff745f', '#5872ff', '#74d7c4', '#f6bd57', '#d39cff'];
+// Mono + dither tone cycle; golden-tide is the single accent in the catalog view.
+const TONES = ['fill-gray', 'fill-dither-light', 'fill-ink', 'fill-dither-dark'];
+const ACCENT_SHAPE_ID = 'golden-tide';
 
 const grid = document.querySelector('[data-shape-grid]');
 const filters = document.querySelector('[data-filters]');
@@ -70,8 +72,8 @@ function renderCard(shape, index) {
   const shadow = document.createElement('div');
   shadow.className = 'shape-preview-shadow svhape-shadow';
   const preview = document.createElement('div');
-  preview.className = `shape-preview svhape ${shape.className}`;
-  preview.style.setProperty('--shape-color', COLORS[index % COLORS.length]);
+  const tone = shape.id === ACCENT_SHAPE_ID ? 'fill-accent' : TONES[index % TONES.length];
+  preview.className = `shape-preview svhape ${shape.className} ${tone}`;
   preview.style.setProperty('--preview-padding', `${Math.max(18, shape.selection.safeInset.top + 10)}px`);
 
   const family = document.createElement('span');

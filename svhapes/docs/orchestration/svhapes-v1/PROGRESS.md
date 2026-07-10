@@ -43,7 +43,8 @@ The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, d
 | Browser console | Pass | No error-level logs |
 | Release tag/CDN | Pass | `v0.1.0` tag pushed; jsDelivr CSS/ESM and raw GitHub schema returned HTTP 200 |
 | Live iamnotsam demo | Pass | `/svhapes/`, `/svhapes/dist/catalog.json`, and `/svhapes/llms.txt` returned HTTP 200; browser rendered 18 cards |
-| Site deployment | Pass | GitHub Pages workflow run `29107585112` completed successfully |
+| Site deployment | Pass | GitHub Pages workflow run `29111201035` completed successfully |
+| npm distribution | Pass | `svhapes@0.1.0` is public/latest; clean temp install and ESM import smoke test passed |
 
 ## Decisions and changed assumptions
 
@@ -56,14 +57,14 @@ The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, d
 ## Risks, blockers, and approval gates
 
 - No current blocker.
-- npm publication remains out of scope and unauthorized.
+- npm publication is complete for `0.1.0`; future releases remain gated by explicit versioning authority.
 
 ## Repository state
 
 - **Worktree:** `/Users/swilson/projects/command-center/projects/active/svhapes`
 - **Branch:** `main` (clean; `origin/main` at reviewed release commit)
 - **Relevant changes:** Source, generated distributions, tests, demo, docs, and orchestration artifacts committed and pushed
-- **Site worktree:** `/Users/swilson/projects/command-center/projects/active/storypixel.github.io`, clean `master` at pushed commit `02d13e0`
+- **Site worktree:** `/Users/swilson/projects/command-center/projects/active/storypixel.github.io`, clean `master` at pushed commit `cd35845`
 - **Unrelated user changes preserved:** Yes; work is isolated from dirty command-center files and the clean iamnotsam repo.
 
 ## Next action

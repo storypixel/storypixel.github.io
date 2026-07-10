@@ -10,7 +10,7 @@
 - **Decision:** Provide generated `dist/svhapes.css`, ESM exports, and a small CLI without framework dependencies.
 - **Rationale:** The core value is inclusion and copyability, matching the Chia reference's no-build philosophy.
 - **Source:** User request and local Chia evidence.
-- **Consequences:** React wrappers and npm publication are optional follow-ups rather than release dependencies.
+- **Consequences:** React wrappers remain optional; npm publication was added later as an explicitly authorized distribution follow-up.
 - **Revisit when:** Consumers demonstrate demand for framework packages.
 
 ### D-002 — Use generated closed splines as the source of truth
@@ -58,9 +58,18 @@
 - **Consequences:** The public repository remains CDN/package source while iamnotsam owns the human demo URL.
 - **Revisit when:** Svhapes needs an independent docs domain.
 
+### D-007 — Publish the tested package to npm
+
+- **Status:** Accepted
+- **Decision:** Publish `svhapes@0.1.0` to npm and document npm installation alongside the GitHub/CDN paths.
+- **Rationale:** npm gives JavaScript consumers and agents a conventional package install path while preserving the zero-dependency browser distribution.
+- **Source:** Explicit follow-up user request.
+- **Consequences:** Future npm versions require an explicit versioning decision and the configured trusted-publishing workflow.
+- **Revisit when:** The package distribution model changes.
+
 ## Open questions
 
 | ID | Question | Why it matters | Owner | Blocking? |
 |---|---|---|---|---|
-| Q-001 | Publish to npm in a later release? | Would provide a versioned package CDN and `npx` installation path. | User | No |
+| Q-001 | Publish to npm in a later release? | Would provide a versioned package CDN and `npx` installation path. | User | Resolved by D-007 |
 | Q-002 | Add a visual anchor editor? | Would expand Svhapes from catalog to authoring tool. | User | No |

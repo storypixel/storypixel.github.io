@@ -7,8 +7,14 @@
       name="description"
       content="Svhapes is a copyable CSS shape library for people and coding agents. No dependencies, no framework, no pointy little nipples."
     />
-    <meta name="theme-color" content="#f2f0e7" />
+    <meta name="theme-color" content="#f2f2f0" />
     <title>Svhapes — CSS with better edges</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=Geist+Mono:wght@400..700&display=swap"
+    />
     <link rel="stylesheet" href="./dist/svhapes.css" />
     <link rel="stylesheet" href="./demo/site.css" />
     <script type="module" src="./demo/app.js"></script>
@@ -31,6 +37,7 @@
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-wordmark" aria-hidden="true">Svhapes</div>
         <div class="hero-copy">
           <p class="eyebrow">A deliberately misspelled CSS shape library</p>
           <h1 id="hero-title">Better edges.<br />Zero tracing.</h1>
@@ -38,27 +45,28 @@
             Smooth, responsive containers you can copy, include, or ask an agent to use.
             No dependencies. No framework. No pointy little nipples.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#catalog">Browse 18 shapes</a>
-            <button class="button button-secondary" type="button" data-copy-install>
-              Copy the stylesheet
-            </button>
-          </div>
         </div>
 
         <div class="hero-stage" aria-label="Three example Svhapes">
           <div class="hero-shape hero-shape-back svhape-shadow" aria-hidden="true">
-            <div class="svhape svhape--coral-bloom"></div>
+            <div class="svhape svhape--coral-bloom fill-dither-light"></div>
           </div>
           <div class="hero-shape hero-shape-middle svhape-shadow" aria-hidden="true">
-            <div class="svhape svhape--river-pebble"></div>
+            <div class="svhape svhape--river-pebble fill-ink"></div>
           </div>
           <div class="hero-shape hero-shape-front svhape-shadow" aria-hidden="true">
-            <div class="svhape svhape--golden-tide">
+            <div class="svhape svhape--golden-tide fill-accent">
               <span>shape()</span>
               <strong>without the<br />shape anxiety</strong>
             </div>
           </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalog">Browse 18 shapes</a>
+          <button class="button button-secondary" type="button" data-copy-install>
+            Copy the stylesheet
+          </button>
         </div>
       </section>
 
@@ -122,7 +130,7 @@
               <circle cx="11" cy="11" r="7"></circle>
               <path d="m16 16 4 4"></path>
             </svg>
-            <input type="search" placeholder="Search by name, use, or mood" data-search />
+            <input type="search" id="shape-search" name="shape-search" placeholder="Search by name, use, or mood" data-search />
           </label>
           <div class="filter-row" data-filters role="group" aria-label="Shape family"></div>
         </div>
@@ -136,7 +144,7 @@
 
       <section class="agents-section" id="agents" aria-labelledby="agents-title">
         <div class="agents-stage svhape-shadow" aria-hidden="true">
-          <div class="svhape svhape--longwave"></div>
+          <div class="svhape svhape--longwave fill-dither-dark"></div>
         </div>
         <div class="agents-copy">
           <p class="eyebrow">Agentically friendly, for real</p>

@@ -7,7 +7,7 @@
 ## Outcomes and non-goals
 
 - **Outcome:** A public, tested shape library and copy/paste catalog available from GitHub and iamnotsam.
-- **Non-goal:** npm publication or a graphical shape editor.
+- **Non-goal:** A graphical shape editor; npm publication was completed as an explicitly authorized follow-up.
 
 ## Validation strategy
 
@@ -89,7 +89,7 @@ T-001 + T-002 -> T-003 -> T-004 -> T-005 -> T-007 -> T-010 -> T-011 -> T-012
 |---|---|---|---|
 | G-001 | Create and push public `storypixel/svhapes` | Current user request | Approved |
 | G-002 | Push iamnotsam integration and deploy GitHub Pages | Current user request | Approved |
-| G-003 | Publish npm package | New explicit request | Out of scope |
+| G-003 | Publish npm package | Explicit follow-up user request | Complete (`svhapes@0.1.0`) |
 
 ## Risks and rollback
 
