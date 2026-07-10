@@ -5,6 +5,47 @@ const MARKUP_SNIPPET = `<div class="svhape-shadow">
   </div>
 </div>`;
 const AGENT_COMMAND = 'svhapes prompt golden-tide --format json';
+const MOTION_SNIPPETS = Object.freeze({
+  float: `@media (prefers-reduced-motion: no-preference) {
+  .svhape-motion--float {
+    animation: svhapes-float 5s ease-in-out infinite;
+  }
+}
+
+@keyframes svhapes-float {
+  50% { transform: translateY(-8px) rotate(1deg); }
+}`,
+  morph: `@supports (clip-path: shape(from 0 0, line to 100% 0, close)) {
+  .svhape-motion--morph {
+    animation: svhapes-morph 6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes svhapes-morph {
+  from {
+    clip-path: shape(from 8% 12%, curve to 30% 5% with 11.5% 4.83% / 22.33% 5.5%, curve to 54% 9% with 37.67% 4.5% / 46% 9.17%, curve to 78% 4% with 62% 8.83% / 71.33% 3.33%, curve to 94% 13% with 84.67% 4.67% / 91.67% 5.33%, curve to 92% 50% with 96.33% 20.67% / 91.83% 37.5%, curve to 95% 88% with 92.17% 62.5% / 98.67% 80.67%, curve to 70% 94% with 91.33% 95.33% / 78% 93.67%, curve to 47% 90% with 62% 94.33% / 54.83% 89.67%, curve to 23% 96% with 39.17% 90.33% / 30% 97%, curve to 5% 84% with 16% 95% / 7.33% 92%, curve to 9% 48% with 2.67% 76% / 8.5% 60%, curve to 8% 12% with 9.5% 36% / 4.5% 19.17%, close);
+  }
+  to {
+    clip-path: shape(from 5% 21%, curve to 24% 4% with 7% 13.17% / 16.5% 5.5%, curve to 50% 12% with 31.5% 2.5% / 41.33% 12.17%, curve to 76% 3% with 58.67% 11.83% / 68.5% 1.5%, curve to 95% 21% with 83.5% 4.5% / 93% 13.5%, curve to 88% 48% with 97% 28.5% / 87.83% 38.33%, curve to 96% 79% with 88.17% 57.67% / 99.17% 70.83%, curve to 69% 97% with 92.83% 87.17% / 76.67% 95.83%, curve to 50% 86% with 61.33% 98.17% / 56.83% 85.83%, curve to 28% 98% with 43.17% 86.17% / 35.83% 99.17%, curve to 3% 79% with 20.17% 96.83% / 5.67% 86.83%, curve to 12% 51% with 0.33% 71.17% / 11.67% 60.67%, curve to 5% 21% with 12.33% 41.33% / 3% 28.83%, close);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svhape-motion--morph { animation: none; }
+}`,
+  hover: `.svhape-motion--hover {
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.svhape-motion--hover:hover,
+.svhape-motion--hover:focus-visible {
+  transform: translateY(-5px) rotate(-0.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svhape-motion--hover { transition: none; }
+}`,
+});
 // Mono + dither tone cycle; golden-tide is the single accent in the catalog view.
 const TONES = ['fill-gray', 'fill-dither-light', 'fill-ink', 'fill-dither-dark'];
 const ACCENT_SHAPE_ID = 'golden-tide';
@@ -188,6 +229,17 @@ for (const button of document.querySelectorAll('[data-copy-install]')) {
 
 document.querySelector('[data-copy-markup]').addEventListener('click', () => copyText(MARKUP_SNIPPET, 'Markup'));
 document.querySelector('[data-copy-agent-command]').addEventListener('click', () => copyText(AGENT_COMMAND, 'Agent command'));
+
+for (const code of document.querySelectorAll('[data-motion-code]')) {
+  code.textContent = MOTION_SNIPPETS[code.dataset.motionCode];
+}
+
+for (const button of document.querySelectorAll('[data-copy-motion]')) {
+  button.addEventListener('click', () => {
+    const type = button.dataset.copyMotion;
+    copyText(MOTION_SNIPPETS[type], `${type} motion CSS`);
+  });
+}
 
 const supportsShape = CSS.supports(
   'clip-path',

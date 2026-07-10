@@ -55,6 +55,14 @@ The package is public at https://www.npmjs.com/package/svhapes. For a browser-on
 
 Optional class `svhape--desktop-only` disables advanced clipping below 640px.
 
+## Motion contract
+
+- Animate the unclipped wrapper for transforms, hover/focus lifts, and floating motion.
+- Direct `shape()` morphing requires matching command keywords, order, and control-point counts in both keyframes.
+- Do not assume two arbitrary catalog IDs can morph into one another; use a wrapper transform instead.
+- Gate non-essential motion with `prefers-reduced-motion: no-preference` and provide a static fallback.
+- Keep focus treatment on an unclipped wrapper or inner control; do not animate away a visible focus ring.
+
 ## CLI
 
 ```text

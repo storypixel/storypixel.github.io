@@ -30,6 +30,7 @@
       <nav aria-label="Primary navigation">
         <a href="#catalog">Shapes</a>
         <a href="#use">Use</a>
+        <a href="#motion">Motion</a>
         <a href="#agents">Agents</a>
         <a href="https://github.com/storypixel/svhapes">GitHub ↗</a>
       </nav>
@@ -112,6 +113,69 @@
         <div class="support-note" data-support-note role="status">
           Checking advanced shape support…
         </div>
+      </section>
+
+      <section class="motion-section" id="motion" aria-labelledby="motion-title">
+        <div class="section-heading">
+          <p class="eyebrow">Motion, with guardrails</p>
+          <h2 id="motion-title">Animate the wrapper. Morph the path only when it can interpolate.</h2>
+          <p>
+            The safest motion is a transform on the unclipped wrapper. Direct contour morphing also works,
+            but only when both shapes use the same command sequence and control-point count.
+          </p>
+        </div>
+
+        <div class="motion-grid">
+          <article class="motion-card">
+            <div class="motion-preview motion-preview--float svhape-shadow svhape-motion--float">
+              <div class="svhape svhape--golden-tide fill-accent">
+                <span>wrapper transform</span>
+                <strong>float</strong>
+              </div>
+            </div>
+            <div class="motion-card-body">
+              <p class="motion-label">01 / FLOAT</p>
+              <p>Animate the wrapper, not the clipped surface. Shadows and focus rings stay intact.</p>
+              <pre class="motion-code"><code data-motion-code="float"></code></pre>
+              <button type="button" data-copy-motion="float">Copy CSS</button>
+            </div>
+          </article>
+
+          <article class="motion-card">
+            <div class="motion-preview motion-preview--morph svhape-shadow">
+              <div class="svhape svhape--golden-tide fill-ink svhape-motion--morph">
+                <span>same commands</span>
+                <strong>morph</strong>
+              </div>
+            </div>
+            <div class="motion-card-body">
+              <p class="motion-label">02 / MORPH</p>
+              <p>Use matching shape() command lists for a smooth contour change. Svhapes keeps the math explicit.</p>
+              <pre class="motion-code"><code data-motion-code="morph"></code></pre>
+              <button type="button" data-copy-motion="morph">Copy CSS</button>
+            </div>
+          </article>
+
+          <article class="motion-card">
+            <div class="motion-preview motion-preview--hover svhape-shadow svhape-motion--hover" tabindex="0">
+              <div class="svhape svhape--river-pebble fill-gray">
+                <span>hover or focus</span>
+                <strong>lift</strong>
+              </div>
+            </div>
+            <div class="motion-card-body">
+              <p class="motion-label">03 / INTERACT</p>
+              <p>Give cards a small lift on hover and keyboard focus. Reduced-motion users get a static surface.</p>
+              <pre class="motion-code"><code data-motion-code="hover"></code></pre>
+              <button type="button" data-copy-motion="hover">Copy CSS</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="motion-note">
+          <strong>Compatibility rule:</strong> arbitrary Svhape IDs are not guaranteed to morph into one another.
+          Use wrapper transforms for catalog-to-catalog transitions, or generate two same-anchor shapes yourself.
+        </p>
       </section>
 
       <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">

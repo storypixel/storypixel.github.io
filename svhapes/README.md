@@ -43,6 +43,24 @@ Or use it with no build step straight from a CDN (see the CSS and browser-import
 
 Browse all 18 stable IDs in the [demo](https://iamnotsam.com/svhapes/) or run the CLI.
 
+## Motion
+
+Svhapes is animation-friendly, with one important rule: animate the unclipped wrapper for transforms, hover lifts, and floating motion. Direct `shape()` morphs are possible when both keyframes use the same command sequence and control-point count; arbitrary catalog shapes are not guaranteed to interpolate.
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .svhape-motion--float {
+    animation: svhapes-float 5s ease-in-out infinite;
+  }
+}
+
+@keyframes svhapes-float {
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+```
+
+The live demo includes wrapper motion, a same-command contour morph, and hover/focus motion with a reduced-motion fallback. This mirrors the current CSS Shapes interpolation rule and the open request for a higher-level fillet/rounding command ([CSSWG issue #12768](https://github.com/w3c/csswg-drafts/issues/12768)).
+
 ## Copy one shape instead
 
 Every catalog entry has `snippets.standaloneCss`, a complete class containing both its rounded fallback and `@supports` enhancement. The demo's **CSS** button copies that form.
