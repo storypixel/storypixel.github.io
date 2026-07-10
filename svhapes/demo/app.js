@@ -1,4 +1,4 @@
-const INSTALL_SNIPPET = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.min.css">';
+const INSTALL_SNIPPET = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svhapes@0.2.2/dist/svhapes.min.css">';
 const MARKUP_SNIPPET = `<div class="svhape-shadow">
   <div class="svhape svhape--golden-tide svhape--padded">
     Your content

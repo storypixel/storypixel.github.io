@@ -23,7 +23,7 @@ Or use it with no build step straight from a CDN (see the CSS and browser-import
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.min.css"
+  href="https://cdn.jsdelivr.net/npm/svhapes@0.2.2/dist/svhapes.min.css"
 >
 ```
 
@@ -86,7 +86,7 @@ element.style.clipPath = clipPath;
 For a direct browser import:
 
 ```js
-import { pointsToShape } from 'https://cdn.jsdelivr.net/npm/svhapes@0.2.1/dist/svhapes.js';
+import { pointsToShape } from 'https://cdn.jsdelivr.net/npm/svhapes@0.2.2/dist/svhapes.js';
 ```
 
 Useful exports:

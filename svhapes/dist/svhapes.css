@@ -1,4 +1,4 @@
-/* Svhapes v0.2.1 | MIT | https://github.com/storypixel/svhapes */
+/* Svhapes v0.2.2 | MIT | https://github.com/storypixel/svhapes */
 @layer svhapes {
   .svhape {
     border-radius: var(--svhape-fallback-radius, 24px);

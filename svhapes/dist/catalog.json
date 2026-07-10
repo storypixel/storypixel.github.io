@@ -1,8 +1,8 @@
 {
   "$schema": "../schema/svhape.schema.json",
   "schemaVersion": "0.1.0",
-  "packageVersion": "0.2.1",
-  "generatorVersion": "0.2.1",
+  "packageVersion": "0.2.2",
+  "generatorVersion": "0.2.2",
   "shapeCount": 23,
   "shapes": [
     {
@@ -223,7 +223,7 @@
       },
       "agent": {
         "shapeId": "cloud-frame",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--cloud-frame"
@@ -268,7 +268,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Cloud Frame\" (ID: cloud-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--cloud-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Cloud Frame\" (ID: cloud-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--cloud-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -401,7 +401,7 @@
       },
       "agent": {
         "shapeId": "coral-bloom",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--coral-bloom"
@@ -446,7 +446,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Coral Bloom\" (ID: coral-bloom). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--coral-bloom\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Coral Bloom\" (ID: coral-bloom). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--coral-bloom\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -731,7 +731,7 @@
       },
       "agent": {
         "shapeId": "deckle",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--deckle"
@@ -776,7 +776,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Deckle\" (ID: deckle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--deckle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Deckle\" (ID: deckle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--deckle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -877,7 +877,7 @@
       },
       "agent": {
         "shapeId": "fillet-frame",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--fillet-frame"
@@ -922,7 +922,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Fillet Frame\" (ID: fillet-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--fillet-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.1 and 2.25; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Fillet Frame\" (ID: fillet-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--fillet-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.1 and 2.25; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1129,7 +1129,7 @@
       },
       "agent": {
         "shapeId": "golden-tide",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--golden-tide"
@@ -1175,7 +1175,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Golden Tide\" (ID: golden-tide). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--golden-tide\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.15 and 2; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Golden Tide\" (ID: golden-tide). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--golden-tide\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.15 and 2; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1284,7 +1284,7 @@
       },
       "agent": {
         "shapeId": "halo-five",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--halo-five"
@@ -1329,7 +1329,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Halo Five\" (ID: halo-five). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--halo-five\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Halo Five\" (ID: halo-five). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--halo-five\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1470,7 +1470,7 @@
       },
       "agent": {
         "shapeId": "ink-drop",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--ink-drop"
@@ -1515,7 +1515,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Ink Drop\" (ID: ink-drop). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--ink-drop\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Ink Drop\" (ID: ink-drop). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--ink-drop\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1694,7 +1694,7 @@
       },
       "agent": {
         "shapeId": "linen",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--linen"
@@ -1738,7 +1738,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Linen\" (ID: linen). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--linen\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 7% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Linen\" (ID: linen). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--linen\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 7% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -1885,7 +1885,7 @@
       },
       "agent": {
         "shapeId": "longwave",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--longwave"
@@ -1929,7 +1929,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Longwave\" (ID: longwave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--longwave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.5 and 3; 2 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Longwave\" (ID: longwave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--longwave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1.5 and 3; 2 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2116,7 +2116,7 @@
       },
       "agent": {
         "shapeId": "meadow-frame",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--meadow-frame"
@@ -2160,7 +2160,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Meadow Frame\" (ID: meadow-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--meadow-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Meadow Frame\" (ID: meadow-frame). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--meadow-frame\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2349,7 +2349,7 @@
       },
       "agent": {
         "shapeId": "north-wind",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--north-wind"
@@ -2394,7 +2394,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"North Wind\" (ID: north-wind). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--north-wind\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"North Wind\" (ID: north-wind). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--north-wind\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2605,7 +2605,7 @@
       },
       "agent": {
         "shapeId": "paper-drift",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--paper-drift"
@@ -2649,7 +2649,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Paper Drift\" (ID: paper-drift). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--paper-drift\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 9% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Paper Drift\" (ID: paper-drift). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--paper-drift\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 9% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2766,7 +2766,7 @@
       },
       "agent": {
         "shapeId": "petal-seal",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--petal-seal"
@@ -2811,7 +2811,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Petal Seal\" (ID: petal-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--petal-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 23% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Petal Seal\" (ID: petal-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--petal-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 23% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -2984,7 +2984,7 @@
       },
       "agent": {
         "shapeId": "quiet-coast",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--quiet-coast"
@@ -3029,7 +3029,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Quiet Coast\" (ID: quiet-coast). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--quiet-coast\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Quiet Coast\" (ID: quiet-coast). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--quiet-coast\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3178,7 +3178,7 @@
       },
       "agent": {
         "shapeId": "repeat-seal",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--repeat-seal"
@@ -3223,7 +3223,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Repeat Seal\" (ID: repeat-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--repeat-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Repeat Seal\" (ID: repeat-seal). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--repeat-seal\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 22% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3484,7 +3484,7 @@
       },
       "agent": {
         "shapeId": "repeat-wave",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--repeat-wave"
@@ -3529,7 +3529,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Repeat Wave\" (ID: repeat-wave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--repeat-wave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Repeat Wave\" (ID: repeat-wave). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--repeat-wave\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3652,7 +3652,7 @@
       },
       "agent": {
         "shapeId": "river-pebble",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--river-pebble"
@@ -3696,7 +3696,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"River Pebble\" (ID: river-pebble). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--river-pebble\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"River Pebble\" (ID: river-pebble). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--river-pebble\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 20% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -3893,7 +3893,7 @@
       },
       "agent": {
         "shapeId": "riverbank",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--riverbank"
@@ -3938,7 +3938,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Riverbank\" (ID: riverbank). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--riverbank\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.75 and 1.75; 1.15 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Riverbank\" (ID: riverbank). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--riverbank\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.75 and 1.75; 1.15 is preferred. Keep meaningful content inside the published 10% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -4199,7 +4199,7 @@
       },
       "agent": {
         "shapeId": "soft-stamp",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--soft-stamp"
@@ -4244,7 +4244,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Soft Stamp\" (ID: soft-stamp). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--soft-stamp\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Soft Stamp\" (ID: soft-stamp). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--soft-stamp\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 8% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -4425,7 +4425,7 @@
       },
       "agent": {
         "shapeId": "soft-superellipse",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--soft-superellipse"
@@ -4470,7 +4470,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Soft Superellipse\" (ID: soft-superellipse). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--soft-superellipse\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.85 and 2.25; 1.4 is preferred. Keep meaningful content inside the published 13% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Soft Superellipse\" (ID: soft-superellipse). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--soft-superellipse\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.85 and 2.25; 1.4 is preferred. Keep meaningful content inside the published 13% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -4667,7 +4667,7 @@
       },
       "agent": {
         "shapeId": "squircle",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--squircle"
@@ -4712,7 +4712,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Squircle\" (ID: squircle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--squircle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.9 and 2; 1.25 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Squircle\" (ID: squircle). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--squircle\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.9 and 2; 1.25 is preferred. Keep meaningful content inside the published 12% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -4877,7 +4877,7 @@
       },
       "agent": {
         "shapeId": "sun-coin",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--sun-coin"
@@ -4922,7 +4922,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Sun Coin\" (ID: sun-coin). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--sun-coin\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 19% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Sun Coin\" (ID: sun-coin). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--sun-coin\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 0.8 and 1.25; 1 is preferred. Keep meaningful content inside the published 19% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     },
     {
@@ -5135,7 +5135,7 @@
       },
       "agent": {
         "shapeId": "tidepool",
-        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css",
+        "stylesheet": "https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css",
         "classes": [
           "svhape",
           "svhape--tidepool"
@@ -5180,7 +5180,7 @@
           "Do not invent or edit the generated shape path.",
           "Retain the rounded fallback."
         ],
-        "prompt": "Use Svhapes v0.2.1 shape \"Tidepool\" (ID: tidepool). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.1/dist/svhapes.css Apply classes \"svhape svhape--tidepool\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 11% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
+        "prompt": "Use Svhapes v0.2.2 shape \"Tidepool\" (ID: tidepool). Include https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.2.2/dist/svhapes.css Apply classes \"svhape svhape--tidepool\"; add \"svhape--padded\" when the library should supply padding. Use a parent with class \"svhape-shadow\" when the clipped container needs a shadow. Use it only between aspect ratios 1 and 2.5; 1.5 is preferred. Keep meaningful content inside the published 11% safe inset. Retain the rounded fallback. Do not invent or hand-edit the generated shape path. Do not encode essential meaning in the silhouette."
       }
     }
   ]

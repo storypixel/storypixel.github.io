@@ -178,10 +178,24 @@ export function filletPoints(points, { radius = 0.18, precision = 3 } = {}) {
     }
   });
 
-  return validatePoints(filleted, { minPoints: 3 }).map(([x, y]) => [
+  const rounded = validatePoints(filleted, { minPoints: 3 }).map(([x, y]) => [
     roundCoordinate(x, precision),
     roundCoordinate(y, precision),
   ]);
+
+  // Adjacent fillets that each consume half of a shared edge (radius 0.5)
+  // meet at the same midpoint. Collapse consecutive duplicates, including
+  // the closing wrap, so the contour never carries zero-length segments.
+  const deduped = rounded.filter((point, index) => {
+    const previous = rounded[(index - 1 + rounded.length) % rounded.length];
+    return point[0] !== previous[0] || point[1] !== previous[1];
+  });
+
+  if (deduped.length < 3) {
+    throw new RangeError('filleted contour collapsed below three distinct points');
+  }
+
+  return deduped;
 }
 
 /**

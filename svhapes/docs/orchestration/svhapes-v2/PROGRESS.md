@@ -2,12 +2,12 @@
 
 **Lane:** Feature
 **Status:** Complete
-**Updated:** 2026-07-10 15:00 CDT
-**Current step:** None — source and site are ready for npm auth/publication
+**Updated:** 2026-07-10 15:08 CDT
+**Current step:** None — v0.2.1 released and live
 
 ## Outcome status
 
-The geometry helpers, five catalog presets, copyable demo recipes, docs, validation, and mounted site build are complete. The source is pushed and tagged for `v0.2.1`; npm publication is the only remaining external action because the registry requires a one-time browser confirmation.
+The geometry helpers, five catalog presets, copyable demo recipes, docs, validation, npm package, and mounted site build are complete. `svhapes@0.2.1` is public/latest and the iamnotsam deployment serves the 23-shape catalog.
 
 ## Work items
 
@@ -19,8 +19,8 @@ The geometry helpers, five catalog presets, copyable demo recipes, docs, validat
 | T-004 | Catalog presets | Complete | Main | 23 deterministic shape IDs |
 | T-005 | Demo recipes | Complete | Main | Three live copyable Builder cards |
 | T-006 | Docs/agent guidance | Complete | Main | README, llms.txt, AGENTS.md |
-| T-007 | npm v0.2.1 release | Pending auth | Main | Browser OTP confirmation required |
-| T-008 | Site refresh/live verification | Complete locally | Main | Site build passes; Pages push waits on npm publication |
+| T-007 | npm v0.2.1 release | Complete | Main | Registry metadata, CDN, and clean install pass |
+| T-008 | Site refresh/live verification | Complete | Main | Pages run `29119807115` passed; live query serves 23 shapes |
 
 ## Validation evidence
 
@@ -33,7 +33,8 @@ The geometry helpers, five catalog presets, copyable demo recipes, docs, validat
 | 390px browser | Pass | `scrollWidth === clientWidth === 390`, no overflow |
 | Browser console | Pass | 0 errors after reload |
 | Site build | Pass | `npm run build` in storypixel.github.io |
-| npm publication | Pending auth | npm browser confirmation still required |
+| npm publication | Pass | `npm view` reports `0.2.1` latest; registry install/import/CLI smoke pass |
+| Live iamnotsam demo | Pass | `/svhapes/` and catalog query return 200 with 23-shape v0.2.1 content |
 
 ## Decisions and changed assumptions
 
@@ -43,16 +44,16 @@ The geometry helpers, five catalog presets, copyable demo recipes, docs, validat
 
 ## Risks, blockers, and approval gates
 
-- No blocker. npm and Pages publication are authorized for this feature.
+- No current blocker.
 - v0.2.0 remains an un-published Git tag from the first release attempt; fixes are released as `v0.2.1` per review guidance.
 
 ## Repository state
 
 - **Worktree:** `/Users/swilson/projects/command-center/projects/active/svhapes`
 - **Branch:** `main`
-- **Relevant changes:** `6e889aa` contains the final geometry/demo source; tag `v0.2.1` is pushed.
+- **Relevant changes:** `v0.2.1` is tagged and pushed; site master contains the matching submodule and deployment.
 - **Unrelated user changes preserved:** Yes.
 
 ## Next action
 
-Complete npm’s one-time browser authentication, publish `svhapes@0.2.1`, then push the site commit and verify Pages/live CDN responses.
+Maintain future shape additions from `src/definitions.js`; regenerate, test, and publish only with an explicit version decision.

@@ -82,6 +82,15 @@ test('filletPoints rounds each corner without hand-authored control points', () 
   assert.throws(() => filletPoints([[10, 10], [10, 10], [90, 90], [10, 90]]), /zero-length/);
 });
 
+test('filletPoints at radius 0.5 collapses shared midpoints instead of duplicating them', () => {
+  const square = [[10, 10], [90, 10], [90, 90], [10, 90]];
+  const maxed = filletPoints(square, { radius: 0.5 });
+  assert.equal(maxed.length, 4);
+  assert.equal(new Set(maxed.map(JSON.stringify)).size, maxed.length);
+  assert.deepEqual(maxed, [[50, 10], [90, 50], [50, 90], [10, 50]]);
+  assert.doesNotThrow(() => catmullRomToBezier(maxed));
+});
+
 test('repeating helpers expose the repetition count as a small deterministic API', () => {
   const edge = makeRepeatingEdgeShape({ repeats: 5, inset: 5, amplitude: 1 });
   const radial = makeRepeatingRadialShape({ repeats: 7 });
