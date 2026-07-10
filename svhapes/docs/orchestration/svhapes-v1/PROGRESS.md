@@ -1,13 +1,13 @@
 # Svhapes v0.1 — Progress
 
 **Lane:** Program
-**Status:** Active
-**Updated:** 2026-07-10 11:22 CDT
-**Current step:** W4 — Public repository and iamnotsam integration
+**Status:** Complete
+**Updated:** 2026-07-10 11:34 CDT
+**Current step:** None — v0.1.0 released and live
 
 ## Outcome status
 
-The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, deterministic CLI, agent contracts, editorial demo, and local validation are complete. The public repository still needs to be created and pushed; iamnotsam integration, independent review, deployment, and live verification remain.
+The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, deterministic CLI, agent contracts, editorial demo, public repository, and iamnotsam demo are complete. Release `v0.1.0` is tagged and pushed, the site integration is deployed, and the live user journeys have been verified.
 
 ## Work items
 
@@ -22,9 +22,9 @@ The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, d
 | T-007 | Catalog demo | Complete | Main | Desktop and 390px browser verification; 18 cards; no overflow |
 | T-008 | Copy actions | Complete | Main | Search narrowed to one shape and Golden Tide CSS copy produced success status |
 | T-009 | Human/agent docs | Complete | Main | README, `llms.txt`, schema, AGENTS, and catalog contracts |
-| T-010 | Public Svhapes repo | In progress | Main | Public repository created; final reviewed commit and v0.1.0 tag pending |
-| T-011 | iamnotsam mount/build | Pending | Main | Authorized |
-| T-012 | Site deployment/live verification | Pending | Main | Authorized |
+| T-010 | Public Svhapes repo | Complete | Main | `storypixel/svhapes` public; reviewed release commit `40b5528`; tag `v0.1.0` pushed |
+| T-011 | iamnotsam mount/build | Complete | Main | `public/svhapes` submodule mounted at `40b5528`; full site build passed |
+| T-012 | Site deployment/live verification | Complete | Main | Site commit `02d13e0` pushed; Pages run `29107585112` passed; live URLs verified |
 | T-013 | Independent integration review | Complete | Review agent | Ready after fixes; all three code-contract findings resolved locally |
 
 ## Validation evidence
@@ -41,6 +41,9 @@ The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, d
 | Desktop browser | Pass | 18 cards, `shape()` active, no horizontal overflow, search and copy verified |
 | 390px browser | Pass | 390px layout with no horizontal overflow; responsive navigation and hero verified |
 | Browser console | Pass | No error-level logs |
+| Release tag/CDN | Pass | `v0.1.0` tag pushed; jsDelivr CSS/ESM and raw GitHub schema returned HTTP 200 |
+| Live iamnotsam demo | Pass | `/svhapes/`, `/svhapes/dist/catalog.json`, and `/svhapes/llms.txt` returned HTTP 200; browser rendered 18 cards |
+| Site deployment | Pass | GitHub Pages workflow run `29107585112` completed successfully |
 
 ## Decisions and changed assumptions
 
@@ -58,10 +61,11 @@ The dependency-free engine, 18-shape catalog, generated CSS/JSON distribution, d
 ## Repository state
 
 - **Worktree:** `/Users/swilson/projects/command-center/projects/active/svhapes`
-- **Branch:** `main` (new local repository)
-- **Relevant changes:** Complete uncommitted v0.1 source, generated distributions, tests, demo, docs, and orchestration artifacts
+- **Branch:** `main` (clean; `origin/main` at reviewed release commit)
+- **Relevant changes:** Source, generated distributions, tests, demo, docs, and orchestration artifacts committed and pushed
+- **Site worktree:** `/Users/swilson/projects/command-center/projects/active/storypixel.github.io`, clean `master` at pushed commit `02d13e0`
 - **Unrelated user changes preserved:** Yes; work is isolated from dirty command-center files and the clean iamnotsam repo.
 
 ## Next action
 
-Commit and push the reviewed follow-up, tag that exact commit `v0.1.0`, verify immutable CDN/schema URLs, advance the iamnotsam gitlink, rebuild, then commit/push the site deployment.
+Maintain the catalog from `src/definitions.js`, regenerate with `npm run build`, and publish future releases only after an explicit versioning decision.

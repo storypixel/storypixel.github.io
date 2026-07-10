@@ -10,12 +10,20 @@ Svhapes turns normalized anchor points into responsive CSS `shape()` contours us
 
 **Agent entrypoint:** [`llms.txt`](./llms.txt)
 
+## Install
+
+```bash
+npm install svhapes
+```
+
+Or use it with no build step straight from a CDN (see the CSS and browser-import snippets below). The package is zero-dependency and ships ESM plus the generated CSS, catalog, and JSON schema.
+
 ## Include the CSS
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.min.css"
+  href="https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.min.css"
 >
 ```
 
@@ -60,7 +68,7 @@ element.style.clipPath = clipPath;
 For a direct browser import:
 
 ```js
-import { pointsToShape } from 'https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.js';
+import { pointsToShape } from 'https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.js';
 ```
 
 Useful exports:
@@ -79,10 +87,10 @@ Coordinates use a `0..100` percentage reference box. `tension` ranges from `0` f
 
 ## CLI and agents
 
-Install directly from GitHub or use a clone:
+Install from npm (or run once with `npx svhapes` without installing):
 
 ```bash
-npm install github:storypixel/svhapes
+npm install svhapes
 npx svhapes list --family frame --capacity dense
 npx svhapes show golden-tide --format json
 npx svhapes css golden-tide --shadow

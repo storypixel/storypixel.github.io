@@ -1,0 +1,36 @@
+name: Publish to npm
+
+# Publishes svhapes to npm via Trusted Publishing (OIDC) — no long-lived tokens.
+# Configure the trusted publisher at:
+#   https://www.npmjs.com/package/svhapes/access  (Trusted Publisher → GitHub Actions)
+# matching repo storypixel/svhapes and workflow file .github/workflows/publish.yml
+#
+# Release flow: bump version in package.json, then publish a GitHub Release for the
+# matching tag (e.g. v0.2.0). This workflow runs on that release and publishes.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # required for OIDC trusted publishing + provenance
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing requires npm >= 11.5.1
+      - run: npm install -g npm@latest
+
+      # Zero-dependency package: no install step needed. Build + test as a gate.
+      - run: npm test
+
+      - run: npm publish

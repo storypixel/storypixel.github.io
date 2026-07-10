@@ -86,7 +86,7 @@
               <button type="button" data-copy-install>Copy</button>
             </header>
             <pre><code>&lt;link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/storypixel/svhapes@v0.1.0/dist/svhapes.min.css"&gt;</code></pre>
+  href="https://cdn.jsdelivr.net/npm/svhapes@0.1.0/dist/svhapes.min.css"&gt;</code></pre>
           </article>
           <article class="code-panel">
             <header>
@@ -167,7 +167,8 @@
             every segment enters and exits its neighbors smoothly.
           </p>
         </div>
-        <pre class="maker-code"><code>import { pointsToShape } from 'svhapes';
+        <pre class="maker-code"><code># npm install svhapes
+import { pointsToShape } from 'svhapes';
 
 const clipPath = pointsToShape([
   [5, 8], [50, 3], [95, 8],

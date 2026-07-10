@@ -60,9 +60,9 @@
 - **Depends on:** W2, W3
 - **Provides:** Public source and live demo
 - **Tasks:**
-  - [ ] T-010 — Create, commit, and push public `storypixel/svhapes` v0.1.
-  - [ ] T-011 — Mount repository at `public/svhapes` and validate the site build.
-  - [ ] T-012 — Commit/push the site integration and verify live URLs.
+  - [x] T-010 — Create, commit, and push public `storypixel/svhapes` v0.1.
+  - [x] T-011 — Mount repository at `public/svhapes` and validate the site build.
+  - [x] T-012 — Commit/push the site integration and verify live URLs.
 - **Integration check:** GitHub and iamnotsam serve the same tested release.
 
 ### W5 — Independent integration review

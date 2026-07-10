@@ -9,6 +9,16 @@ Catalog: ./dist/catalog.json
 Schema: ./schema/svhape.schema.json
 License: MIT
 
+## Package distribution
+
+Install from npm when a JavaScript toolchain is available:
+
+```bash
+npm install svhapes
+```
+
+The package is public at https://www.npmjs.com/package/svhapes. For a browser-only stylesheet or ESM import, use the immutable CDN URLs documented below.
+
 ## Agent procedure
 
 1. Read `dist/catalog.json`; do not scrape the demo page.
@@ -65,4 +75,4 @@ Import `pointsToShape` from `src/index.js` or `dist/svhapes.js`. Points are `[x,
 - `clip-path` clips ordinary box shadows; use the wrapper.
 - Fallbacks preserve readability, not silhouette fidelity.
 - Safe insets are conservative design guidance, not proof against every content layout.
-- Do not publish to npm or change stable IDs without explicit maintainer authority.
+- Do not publish a new npm version or change stable IDs without explicit maintainer authority.
