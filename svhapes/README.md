@@ -125,6 +125,10 @@ npm run pack:check
 
 Edit `src/definitions.js`, not generated files in `dist/`. See [`AGENTS.md`](./AGENTS.md) for contribution contracts.
 
+## Credits
+
+Curve aesthetics informed by conversations with Steven Hernandez (SVH), whose golden-ratio instincts inspired the shape balance work.
+
 ## License
 
 MIT © Sam Wilson
