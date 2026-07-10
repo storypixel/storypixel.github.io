@@ -922,7 +922,9 @@ footer div a:hover {
 
 @media (max-width: 900px) {
   .agents-section {
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr): a plain 1fr's min-content sizing lets the nowrap
+       agent command force the column past the viewport */
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .agents-stage {
