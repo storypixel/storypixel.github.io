@@ -319,9 +319,9 @@
     const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
     const ICON_REPLAY = '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
 
-    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false, fakeDwell = null;
+    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false, fakeDwell = null, pauseAtDwellEnd = false;
     const DWELL_MS = 750; // hold this long at each beat node during playback
-    const PUMP_MS = 430;  // one pump-fake cock; a fake beat dwells long enough to show every rep
+    const PUMP_MS = 700;  // one pump-fake cock — slow enough to read as a deliberate shake; a fake beat dwells long enough to show every rep
     const SPEED = (opts.speed || 2) * 1.0; // play-units per second; default 2x for realistic pace. Pass speed:1 for the old pace.
 
     function render() {
@@ -435,13 +435,28 @@
           lastTs = ts; raf = requestAnimationFrame(frame); return;
         }
         dwellUntil = 0; fakeDwell = null; lastTs = ts;
+        // single-beat mode: the dwell was the last act of this advance — stop here
+        if (pauseAtDwellEnd) { pauseAtDwellEnd = false; render(); pause(); updateBtn(); return; }
       }
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
       let nt = t + dt * SPEED;
-      // single-beat advance: play to the target boundary and STOP there
+      // single-beat advance: play to the target boundary and STOP there.
+      // If the boundary ends a pump-fake beat, dwell first and animate the
+      // pumps (N slow cocks of the held ball) BEFORE stopping — otherwise the
+      // slideshow mode (the playbook's default) never shows the fake at all.
       if (stopAt != null && nt >= stopAt - 1e-6) {
-        t = stopAt; stopAt = null; render(); pause(); updateBtn(); return;
+        const node0 = stopAt;
+        t = stopAt; stopAt = null;
+        const fi0 = c.labels.findIndex((l) => Math.abs(l.t1 - node0) < 1e-6 && l.fakes && l.fakes.length);
+        if (fi0 >= 0) {
+          const fl0 = c.labels[fi0];
+          fakeDwell = { start: ts, elapsed: 0, reps: fl0.maxReps, actors: new Set(fl0.fakes.map((f) => f.key)), stepIdx: fi0 };
+          dwellUntil = ts + fl0.maxReps * PUMP_MS + 320;
+          pauseAtDwellEnd = true;
+          render(); lastTs = ts; raf = requestAnimationFrame(frame); return;
+        }
+        render(); pause(); updateBtn(); return;
       }
       // playing through: snap to each beat node, dwell, then continue
       const node = bounds.find((b) => b > t + 1e-6 && b <= nt + 1e-6 && b < c.totalDur - 1e-6);
@@ -475,7 +490,7 @@
     function play_() {
       playing = true; lastTs = 0; dwellUntil = 0; updateBtn(); raf = requestAnimationFrame(frame);
     }
-    function pause() { playing = false; loopMode = false; fakeDwell = null; cancelAnimationFrame(raf); updateBtn(); }
+    function pause() { playing = false; loopMode = false; fakeDwell = null; pauseAtDwellEnd = false; cancelAnimationFrame(raf); updateBtn(); }
 
     // play through ALL beats continuously and loop from the top — for the quiz,
     // where you study a play on repeat. pause()/any other control cancels it.
