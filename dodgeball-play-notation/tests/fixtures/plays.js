@@ -427,8 +427,8 @@
   "insides": {
     "id": "insides",
     "name": "Insides",
-    "badge": "4-ball offense",
-    "call": "\"Insides on 5\"",
+    "badge": "4-ball",
+    "call": "\"Insides 5, 1\"",
     "desc": "Four-ball call. The two middle players throw at the same number — here the 5th from the left — while the corners hold the other two balls and pump-fake to pull the block.",
     "setup": {
       "us": [
@@ -589,7 +589,7 @@
         ]
       },
       {
-        "label": "Step 3 — insides on 5: the two middles release",
+        "label": "Step 3 — insides 5, 1: the two middles release",
         "dur": 1,
         "throws": [
           {
@@ -621,8 +621,8 @@
   "insides-3": {
     "id": "insides-3",
     "name": "Insides — 3 balls",
-    "badge": "3-ball offense",
-    "call": "\"Insides on 5\"",
+    "badge": "3-ball",
+    "call": "\"Insides 5, 1\"",
     "desc": "The three-ball version of Insides: the two middle players still throw at the same number — here the 5th from the left — while the lone corner holder pump-fakes to pull the block.",
     "setup": {
       "us": [
@@ -770,7 +770,7 @@
         ]
       },
       {
-        "label": "Step 3 — insides on 5: the two middles release",
+        "label": "Step 3 — insides 5, 1: the two middles release",
         "dur": 1,
         "throws": [
           {
@@ -2009,8 +2009,8 @@
   "outsides": {
     "id": "outsides",
     "name": "Outsides",
-    "badge": "4-ball offense",
-    "call": "\"Outsides on 4\"",
+    "badge": "4-ball",
+    "call": "\"Outsides 4, 1\"",
     "desc": "Four-ball call. Both corners throw at the same number from opposite angles, so no single block covers both balls, while the middle two hold and pump-fake to pull the block.",
     "setup": {
       "us": [
@@ -2171,7 +2171,7 @@
         ]
       },
       {
-        "label": "Step 3 — outsides on 4: the two corners release",
+        "label": "Step 3 — outsides 4, 1: the two corners release",
         "dur": 1,
         "throws": [
           {
@@ -2203,8 +2203,8 @@
   "outsides-3": {
     "id": "outsides-3",
     "name": "Outsides — 3 balls",
-    "badge": "3-ball offense",
-    "call": "\"Outsides on 4\"",
+    "badge": "3-ball",
+    "call": "\"Outsides 4, 1\"",
     "desc": "The three-ball version of Outsides: both corners still throw at the same number from opposite angles, so no single block covers both balls, while the lone middle holder pump-fakes to pull the block.",
     "setup": {
       "us": [
@@ -2352,7 +2352,7 @@
         ]
       },
       {
-        "label": "Step 3 — outsides on 4: the two corners release",
+        "label": "Step 3 — outsides 4, 1: the two corners release",
         "dur": 1,
         "throws": [
           {
@@ -2679,7 +2679,7 @@
   "three-ball": {
     "id": "three-ball",
     "name": "3 Balls",
-    "badge": "3-ball offense",
+    "badge": "3-ball",
     "call": "\"meet in the middle\"",
     "desc": "With three balls we meet in the middle and step up to the line, then designate one or two throwers on a specific target. The odd man out pump-fakes.",
     "setup": {

@@ -1,9 +1,9 @@
 [Play "Outsides"]
-[Badge "4-ball offense"]
-[Call "Outsides on 4"]
+[Badge "4-ball"]
+[Call "Outsides 4, 1"]
 [Desc "Four-ball call. Both corners throw at the same number from opposite angles, so no single block covers both balls, while the middle two hold and pump-fake to pull the block."]
 [Balls "U:1458 T:37"]
 
 1. {Step 1 — ball-holders step up to the line} :0.9  U1458-line
 2. {Step 2 — middles pump-fake to pull the block} :1.1  U45?
-3. {Step 3 — outsides on 4: the two corners release} :1.0  U1@T4! U8@T4!
+3. {Step 3 — outsides 4, 1: the two corners release} :1.0  U1@T4! U8@T4!

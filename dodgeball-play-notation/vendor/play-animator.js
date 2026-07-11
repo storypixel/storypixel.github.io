@@ -1,10 +1,11 @@
 /* ============================================================================
- * VENDORED from storypixel/dodgeball-play-animator (play-animator.js).
- * CANONICAL SOURCE — DO NOT EDIT HERE.
- * The DBN spec/parser and the render engine evolve in the animator repo first;
- * re-vendor this file after upstream changes. Editing it here forks the
- * notation, which is exactly what this project must not do.
- * Upstream: https://github.com/storypixel/dodgeball-play-animator
+ * CANONICAL SOURCE — this file evolves HERE (dodgeball-play-notation).
+ * The storypixel/dodgeball-play-animator repo carries a synced MIRROR of this
+ * engine (see its "Sync engine from dodgeball-play-notation (canonical)"
+ * commits). After editing here: run scripts/stamp-version.sh, then copy this
+ * file (without this header) over play-animator.js in the animator repo.
+ * History note: the sync direction was animator→notation before 2026-06;
+ * older headers claiming the animator repo is canonical are obsolete.
  * ========================================================================== */
 /* Dodgeball Play Animator — self-contained, no dependencies.
  *
@@ -73,6 +74,10 @@
 .dbp__btn svg{width:20px;height:20px;fill:currentColor;pointer-events:none}
 .dbp__play{flex:1}
 .dbp__stepline{padding:4px 13px 0;font-size:.8rem;color:#555;min-height:1.2em}
+.dbp__fig{padding:5px 13px 2px;font-size:.78rem;color:#777;text-align:center;font-style:italic}
+.dbp-prose{margin:0 0 8px;font:inherit;color:inherit}
+.dbp-prose__call{font-weight:600;font-size:.95em}
+.dbp-prose__desc{margin:3px 0 0;font-size:.9em;color:#555;line-height:1.5}
 .dbp__step{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .dbp:focus{outline:none}
 .dbp:focus-visible{outline:2px solid #111;outline-offset:2px}
@@ -237,19 +242,26 @@
     opts = opts || {};
     const c = compile(play);
 
+    // Chess-notation default: the widget is just the court and its transport.
+    // Name/badge/call/desc/step-text belong to the surrounding page. Pass
+    // {chrome:"full"} (the editor does) to get the labelled authoring view.
+    const full = opts.chrome === "full";
+
     const root = document.createElement("div");
     root.className = "dbp";
-    root.innerHTML =
-      '<div class="dbp__head">' +
-      '<span class="dbp__name"></span>' +
-      (play.badge ? '<span class="dbp__badge"></span>' : "") +
-      (play.call ? '<span class="dbp__call"></span>' : "") +
-      "</div>" +
-      (play.desc ? '<div class="dbp__desc"></div>' : "");
-    root.querySelector(".dbp__name").textContent = play.name || "Play";
-    if (play.badge) root.querySelector(".dbp__badge").textContent = play.badge;
-    if (play.call) root.querySelector(".dbp__call").textContent = play.call;
-    if (play.desc) root.querySelector(".dbp__desc").textContent = play.desc;
+    if (full) {
+      root.innerHTML =
+        '<div class="dbp__head">' +
+        '<span class="dbp__name"></span>' +
+        (play.badge ? '<span class="dbp__badge"></span>' : "") +
+        (play.call ? '<span class="dbp__call"></span>' : "") +
+        "</div>" +
+        (play.desc ? '<div class="dbp__desc"></div>' : "");
+      root.querySelector(".dbp__name").textContent = play.name || "Play";
+      if (play.badge) root.querySelector(".dbp__badge").textContent = play.badge;
+      if (play.call) root.querySelector(".dbp__call").textContent = play.call;
+      if (play.desc) root.querySelector(".dbp__desc").textContent = play.desc;
+    }
 
     const stage = svg("svg", {
       class: "dbp__stage", viewBox: `0 0 ${VB_W} ${VB_H}`,
@@ -288,21 +300,35 @@
     ctrls.innerHTML = '<button class="dbp__btn dbp__play" aria-label="Play beat"></button>';
     root.appendChild(ctrls);
 
-    const stepLine = document.createElement("div");
-    stepLine.className = "dbp__stepline";
-    stepLine.innerHTML = '<span class="dbp__step"></span>';
-    root.appendChild(stepLine);
+    let stepEl = null;
+    if (full) {
+      const stepLine = document.createElement("div");
+      stepLine.className = "dbp__stepline";
+      stepLine.innerHTML = '<span class="dbp__step"></span>';
+      root.appendChild(stepLine);
 
-    const hint = document.createElement("div");
-    hint.className = "dbp__hint";
-    hint.textContent = "Keys: space play · ← → beat · R restart";
-    root.appendChild(hint);
+      const hint = document.createElement("div");
+      hint.className = "dbp__hint";
+      hint.textContent = "Keys: space play · ← → beat · R restart";
+      root.appendChild(hint);
+      stepEl = stepLine.querySelector(".dbp__step");
+    }
+
+    // optional figure caption ("Fig. 1") — the one piece of text a minimal
+    // widget may carry, chess-diagram style. Set via opts.caption or the
+    // host element's data-caption attribute.
+    const captionText = opts.caption || (container.getAttribute && container.getAttribute("data-caption")) || "";
+    if (captionText) {
+      const fig = document.createElement("div");
+      fig.className = "dbp__fig";
+      fig.textContent = captionText;
+      root.appendChild(fig);
+    }
 
     const playBtn = ctrls.querySelector(".dbp__play");
     const trackEl = scrubEl.querySelector(".dbp__track");
     const fillEl = scrubEl.querySelector(".dbp__fill");
     const thumbEl = scrubEl.querySelector(".dbp__thumb");
-    const stepEl = stepLine.querySelector(".dbp__step");
 
     // beat boundaries: [0, end-of-beat-1, …, totalDur]. One node per beat (slide),
     // placed on the track at the beat's start so nodes + thumb always align.
@@ -412,7 +438,7 @@
       // boundary, which would otherwise read as the next/throw beat).
       let cur = fakeDwell ? fakeDwell.stepIdx : c.labels.findIndex((l) => t < l.t1);
       if (cur < 0) cur = c.labels.length - 1;
-      stepEl.textContent = c.labels[cur]
+      if (stepEl) stepEl.textContent = c.labels[cur]
         ? (cur + 1) + "/" + c.labels.length + (c.labels[cur].text ? " · " + c.labels[cur].text : "")
         : "";
       beatNodes.forEach((d, i) => d.classList.toggle("dbp__node--on", i === cur));
@@ -561,6 +587,28 @@
       else if (e.key === "r" || e.key === "R" || e.key === "Home") { e.preventDefault(); replay(); }
     });
 
+    // minimal mode: the play's own prose (call + description) still renders,
+    // but OUTSIDE the widget frame — plain page text above the diagram, so the
+    // frame itself stays chess-clean. Suppress entirely with {prose:false}.
+    let proseEl = null;
+    if (!full && opts.prose !== false && (play.call || play.desc)) {
+      proseEl = document.createElement("div");
+      proseEl.className = "dbp-prose";
+      if (play.call) {
+        const callEl = document.createElement("div");
+        callEl.className = "dbp-prose__call";
+        callEl.textContent = play.call;
+        proseEl.appendChild(callEl);
+      }
+      if (play.desc) {
+        const descEl = document.createElement("p");
+        descEl.className = "dbp-prose__desc";
+        descEl.textContent = play.desc;
+        proseEl.appendChild(descEl);
+      }
+      container.appendChild(proseEl);
+    }
+
     container.appendChild(root);
     setT(0); updateBtn();
     if (opts.autoplay) playAll();
@@ -575,6 +623,7 @@
     function destroy() {
       pause();
       document.removeEventListener("visibilitychange", onVis);
+      if (proseEl && proseEl.parentNode) proseEl.parentNode.removeChild(proseEl);
       if (root.parentNode) root.parentNode.removeChild(root);
     }
 

@@ -52,7 +52,7 @@
       var host = document.createElement("div");
       els.stage.appendChild(host);
       var autoplay = qparam("autoplay") === "1";
-      state.mount = window.DodgeballPlay.mount(host, play, { autoplay: autoplay, loop: qparam("loop") === "1", speed: currentSpeed() });
+      state.mount = window.DodgeballPlay.mount(host, play, { chrome: "full", autoplay: autoplay, loop: qparam("loop") === "1", speed: currentSpeed() });
       var beats = (play.steps || []).length;
       setStatus("ok", "✓ " + (play.name || "play") + " — " + beats + " beat" + (beats === 1 ? "" : "s") + " parsed.");
       return play;
@@ -106,7 +106,7 @@
   }
 
   function loadExample(id) {
-    return fetch("examples/" + id + ".dbn?v=decfaa311b")
+    return fetch("examples/" + id + ".dbn?v=dd3699dde5")
       .then(function (r) { if (!r.ok) throw new Error("not found"); return r.text(); })
       .then(function (txt) {
         load(txt);
