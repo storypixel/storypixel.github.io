@@ -1,10 +1,11 @@
 /* ============================================================================
- * VENDORED from storypixel/dodgeball-play-animator (play-animator.js).
- * CANONICAL SOURCE — DO NOT EDIT HERE.
- * The DBN spec/parser and the render engine evolve in the animator repo first;
- * re-vendor this file after upstream changes. Editing it here forks the
- * notation, which is exactly what this project must not do.
- * Upstream: https://github.com/storypixel/dodgeball-play-animator
+ * CANONICAL SOURCE — this file evolves HERE (dodgeball-play-notation).
+ * The storypixel/dodgeball-play-animator repo carries a synced MIRROR of this
+ * engine (see its "Sync engine from dodgeball-play-notation (canonical)"
+ * commits). After editing here: run scripts/stamp-version.sh, then copy this
+ * file (without this header) over play-animator.js in the animator repo.
+ * History note: the sync direction was animator→notation before 2026-06;
+ * older headers claiming the animator repo is canonical are obsolete.
  * ========================================================================== */
 /* Dodgeball Play Animator — self-contained, no dependencies.
  *
@@ -73,6 +74,10 @@
 .dbp__btn svg{width:20px;height:20px;fill:currentColor;pointer-events:none}
 .dbp__play{flex:1}
 .dbp__stepline{padding:4px 13px 0;font-size:.8rem;color:#555;min-height:1.2em}
+.dbp__fig{padding:5px 13px 2px;font-size:.78rem;color:#777;text-align:center;font-style:italic}
+.dbp-prose{margin:0 0 8px;font:inherit;color:inherit}
+.dbp-prose__call{font-weight:600;font-size:.95em}
+.dbp-prose__desc{margin:3px 0 0;font-size:.9em;color:#555;line-height:1.5}
 .dbp__step{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .dbp:focus{outline:none}
 .dbp:focus-visible{outline:2px solid #111;outline-offset:2px}
@@ -132,8 +137,9 @@
       const dur = st.dur || 1;
       const lbl = { t0, t1: t0 + dur, text: st.label || "", fakes: [], maxReps: 0 };
       labels.push(lbl);
-      // pump-fakes are recorded on this beat's label (which actor, how many reps)
-      // so playback can DWELL on this beat and visibly cock the ball N times.
+      // Pump-fakes belong to this beat's live motion. Keep their metadata on the
+      // label for inspection, and carry the rep count into the step snapshot so
+      // actorAt() can animate them throughout the segment.
       (st.fakes || []).forEach((f) => {
         const a = actors.get(keyOf(f.team, f.n));
         const reps = f.reps || 1;
@@ -225,7 +231,10 @@
       // stuck pre-throw and the thrown ball "replenishes" in the hand.
       balls: t >= seg.t1 - 1e-6 ? b.balls : a.balls,
       out: t >= seg.t1 - 1e-6 ? b.out : a.out,
-      fake: a.fake,
+      // Momentary actions resolve into the destination snapshot for this step.
+      // Reading b.fake makes the pump happen during its authored beat instead
+      // of leaking into the following beat or appearing at the end boundary.
+      fake: b.fake,
       fakePhase: Math.max(0, Math.min(1, local)), // raw beat progress, for pump timing
       team: key.split("-")[0],
       n: key.split("-")[1],
@@ -237,19 +246,26 @@
     opts = opts || {};
     const c = compile(play);
 
+    // Chess-notation default: the widget is just the court and its transport.
+    // Name/badge/call/desc/step-text belong to the surrounding page. Pass
+    // {chrome:"full"} (the editor does) to get the labelled authoring view.
+    const full = opts.chrome === "full";
+
     const root = document.createElement("div");
     root.className = "dbp";
-    root.innerHTML =
-      '<div class="dbp__head">' +
-      '<span class="dbp__name"></span>' +
-      (play.badge ? '<span class="dbp__badge"></span>' : "") +
-      (play.call ? '<span class="dbp__call"></span>' : "") +
-      "</div>" +
-      (play.desc ? '<div class="dbp__desc"></div>' : "");
-    root.querySelector(".dbp__name").textContent = play.name || "Play";
-    if (play.badge) root.querySelector(".dbp__badge").textContent = play.badge;
-    if (play.call) root.querySelector(".dbp__call").textContent = play.call;
-    if (play.desc) root.querySelector(".dbp__desc").textContent = play.desc;
+    if (full) {
+      root.innerHTML =
+        '<div class="dbp__head">' +
+        '<span class="dbp__name"></span>' +
+        (play.badge ? '<span class="dbp__badge"></span>' : "") +
+        (play.call ? '<span class="dbp__call"></span>' : "") +
+        "</div>" +
+        (play.desc ? '<div class="dbp__desc"></div>' : "");
+      root.querySelector(".dbp__name").textContent = play.name || "Play";
+      if (play.badge) root.querySelector(".dbp__badge").textContent = play.badge;
+      if (play.call) root.querySelector(".dbp__call").textContent = play.call;
+      if (play.desc) root.querySelector(".dbp__desc").textContent = play.desc;
+    }
 
     const stage = svg("svg", {
       class: "dbp__stage", viewBox: `0 0 ${VB_W} ${VB_H}`,
@@ -288,21 +304,35 @@
     ctrls.innerHTML = '<button class="dbp__btn dbp__play" aria-label="Play beat"></button>';
     root.appendChild(ctrls);
 
-    const stepLine = document.createElement("div");
-    stepLine.className = "dbp__stepline";
-    stepLine.innerHTML = '<span class="dbp__step"></span>';
-    root.appendChild(stepLine);
+    let stepEl = null;
+    if (full) {
+      const stepLine = document.createElement("div");
+      stepLine.className = "dbp__stepline";
+      stepLine.innerHTML = '<span class="dbp__step"></span>';
+      root.appendChild(stepLine);
 
-    const hint = document.createElement("div");
-    hint.className = "dbp__hint";
-    hint.textContent = "Keys: space play · ← → beat · R restart";
-    root.appendChild(hint);
+      const hint = document.createElement("div");
+      hint.className = "dbp__hint";
+      hint.textContent = "Keys: space play · ← → beat · R restart";
+      root.appendChild(hint);
+      stepEl = stepLine.querySelector(".dbp__step");
+    }
+
+    // optional figure caption ("Fig. 1") — the one piece of text a minimal
+    // widget may carry, chess-diagram style. Set via opts.caption or the
+    // host element's data-caption attribute.
+    const captionText = opts.caption || (container.getAttribute && container.getAttribute("data-caption")) || "";
+    if (captionText) {
+      const fig = document.createElement("div");
+      fig.className = "dbp__fig";
+      fig.textContent = captionText;
+      root.appendChild(fig);
+    }
 
     const playBtn = ctrls.querySelector(".dbp__play");
     const trackEl = scrubEl.querySelector(".dbp__track");
     const fillEl = scrubEl.querySelector(".dbp__fill");
     const thumbEl = scrubEl.querySelector(".dbp__thumb");
-    const stepEl = stepLine.querySelector(".dbp__step");
 
     // beat boundaries: [0, end-of-beat-1, …, totalDur]. One node per beat (slide),
     // placed on the track at the beat's start so nodes + thumb always align.
@@ -319,9 +349,8 @@
     const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
     const ICON_REPLAY = '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
 
-    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false, fakeDwell = null;
+    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false;
     const DWELL_MS = 750; // hold this long at each beat node during playback
-    const PUMP_MS = 430;  // one pump-fake cock; a fake beat dwells long enough to show every rep
     const SPEED = (opts.speed || 2) * 1.0; // play-units per second; default 2x for realistic pace. Pass speed:1 for the old pace.
 
     function render() {
@@ -386,33 +415,31 @@
         const inFlight = c.throws.filter((th) => { const fl = Math.min(0.7, th.t1 - th.t0); return th.from === key && t >= th.t1 - fl && t < th.t1; }).length;
         const held = Math.max(0, a.balls - inFlight);
         if (!a.out && held > 0) {
-          // a pump-fake COCKS the ball toward the far line N times (the player
-          // stays put). Animated during the extended dwell on the fake beat
-          // (fakeDwell) so it reads as a clear cock-cock, not a mid-tween blur.
-          let fy = 0, lean = 0;
-          if (fakeDwell && fakeDwell.actors.has(key)) {
-            const reps = fakeDwell.reps;
-            const u = Math.min(1, (fakeDwell.elapsed || 0) / (reps * PUMP_MS)); // 0→1 over all pumps
-            const pump = Math.abs(Math.sin(u * reps * Math.PI));                 // N forward thrusts
-            const toward = a.team === "us" ? -1 : 1;                             // us cock up-court, them down
-            fy = toward * pump * 30;                                             // big thrust toward the far line
-            lean = toward * pump * 7;                                            // body cocks with it
+          // A pump-fake moves the held ball out and back on a 45° diagonal while
+          // the authored beat is playing. The player and the surrounding court
+          // stay still; each rep returns the ball to the hand before the next.
+          let fx = 0, fy = 0;
+          if (a.fake > 0) {
+            const reps = a.fake;
+            const u = Math.min(1, a.fakePhase);
+            const p = u >= 1 ? 1 : (u * reps) % 1;
+            const s = Math.sin(p * Math.PI);          // neutral → diagonal → neutral
+            const toward = a.team === "us" ? -1 : 1; // us fake up-court, them down
+            fx = s * 18;
+            fy = toward * s * 18;                    // equal axes = a true 45° path
           }
-          if (lean) g.setAttribute("transform", "translate(0," + lean.toFixed(2) + ")");
           const slots = [[22, -16], [22, 6]];
           for (let h = 0; h < Math.min(held, slots.length); h++) {
-            g.appendChild(svg("circle", { cx: X + slots[h][0], cy: Y + slots[h][1] + fy, r: 9, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
+            g.appendChild(svg("circle", { cx: X + slots[h][0] + fx, cy: Y + slots[h][1] + fy, r: 9, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
           }
         }
         layer.appendChild(g);
       });
 
       // step label + current-beat dot
-      // while pumping, keep the label on the pump-fake beat (the dwell sits on the
-      // boundary, which would otherwise read as the next/throw beat).
-      let cur = fakeDwell ? fakeDwell.stepIdx : c.labels.findIndex((l) => t < l.t1);
+      let cur = c.labels.findIndex((l) => t < l.t1);
       if (cur < 0) cur = c.labels.length - 1;
-      stepEl.textContent = c.labels[cur]
+      if (stepEl) stepEl.textContent = c.labels[cur]
         ? (cur + 1) + "/" + c.labels.length + (c.labels[cur].text ? " · " + c.labels[cur].text : "")
         : "";
       beatNodes.forEach((d, i) => d.classList.toggle("dbp__node--on", i === cur));
@@ -427,35 +454,25 @@
       if (!playing) return;
       if (!lastTs) lastTs = ts;
       // hold at a beat node (the animation pauses briefly at each stopping point).
-      // On a pump-fake beat, the hold is extended and the held ball is animated
-      // cocking toward the far line — so the fake is actually visible.
       if (dwellUntil) {
         if (ts < dwellUntil) {
-          if (fakeDwell) { fakeDwell.elapsed = ts - fakeDwell.start; render(); }
           lastTs = ts; raf = requestAnimationFrame(frame); return;
         }
-        dwellUntil = 0; fakeDwell = null; lastTs = ts;
+        dwellUntil = 0; lastTs = ts;
       }
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
       let nt = t + dt * SPEED;
-      // single-beat advance: play to the target boundary and STOP there
+      // single-beat advance: play to the target boundary and STOP there.
       if (stopAt != null && nt >= stopAt - 1e-6) {
-        t = stopAt; stopAt = null; render(); pause(); updateBtn(); return;
+        t = stopAt; stopAt = null;
+        render(); pause(); updateBtn(); return;
       }
       // playing through: snap to each beat node, dwell, then continue
       const node = bounds.find((b) => b > t + 1e-6 && b <= nt + 1e-6 && b < c.totalDur - 1e-6);
       if (node != null) {
         nt = node;
-        // if this beat ends on a pump-fake, dwell long enough to show every pump
-        const fi = c.labels.findIndex((l) => Math.abs(l.t1 - node) < 1e-6 && l.fakes && l.fakes.length);
-        if (fi >= 0) {
-          const fl = c.labels[fi];
-          fakeDwell = { start: ts, elapsed: 0, reps: fl.maxReps, actors: new Set(fl.fakes.map((f) => f.key)), stepIdx: fi };
-          dwellUntil = ts + fl.maxReps * PUMP_MS + 320;
-        } else {
-          dwellUntil = ts + DWELL_MS;
-        }
+        dwellUntil = ts + DWELL_MS;
       }
       t = nt;
       // slideshow default: stop at the end. loop() mode (used by the quiz) runs
@@ -475,7 +492,7 @@
     function play_() {
       playing = true; lastTs = 0; dwellUntil = 0; updateBtn(); raf = requestAnimationFrame(frame);
     }
-    function pause() { playing = false; loopMode = false; fakeDwell = null; cancelAnimationFrame(raf); updateBtn(); }
+    function pause() { playing = false; loopMode = false; cancelAnimationFrame(raf); updateBtn(); }
 
     // play through ALL beats continuously and loop from the top — for the quiz,
     // where you study a play on repeat. pause()/any other control cancels it.
@@ -546,6 +563,28 @@
       else if (e.key === "r" || e.key === "R" || e.key === "Home") { e.preventDefault(); replay(); }
     });
 
+    // minimal mode: the play's own prose (call + description) still renders,
+    // but OUTSIDE the widget frame — plain page text above the diagram, so the
+    // frame itself stays chess-clean. Suppress entirely with {prose:false}.
+    let proseEl = null;
+    if (!full && opts.prose !== false && (play.call || play.desc)) {
+      proseEl = document.createElement("div");
+      proseEl.className = "dbp-prose";
+      if (play.call) {
+        const callEl = document.createElement("div");
+        callEl.className = "dbp-prose__call";
+        callEl.textContent = play.call;
+        proseEl.appendChild(callEl);
+      }
+      if (play.desc) {
+        const descEl = document.createElement("p");
+        descEl.className = "dbp-prose__desc";
+        descEl.textContent = play.desc;
+        proseEl.appendChild(descEl);
+      }
+      container.appendChild(proseEl);
+    }
+
     container.appendChild(root);
     setT(0); updateBtn();
     if (opts.autoplay) playAll();
@@ -560,6 +599,7 @@
     function destroy() {
       pause();
       document.removeEventListener("visibilitychange", onVis);
+      if (proseEl && proseEl.parentNode) proseEl.parentNode.removeChild(proseEl);
       if (root.parentNode) root.parentNode.removeChild(root);
     }
 
