@@ -2,9 +2,10 @@
 [Play "Kill Left — 3 balls"]
 [Badge "left kill"]
 [Call "Kill left 2, 2"]
-[Desc "Kill Left with three balls: same call — the whole line pump-fakes in unison, then the two leftmost holders fire at their 2 on the count."]
+[Desc "Kill Left with three balls: the three ball-holders parley tightly in the middle and fan to the front line, then make two pump fakes before the two leftmost fire at their 2."]
 [Balls "U:345 T:378"]
 
-1. {Step 1 — ball-holders step up to the line} :0.9  U345-line
-2. {Step 2 — two pump-fakes in unison (freeze the defense)} :1.2  U345?2
-3. {Step 3 — kill left on 2: the two left holders release} :1.0  U3@T2! U4@T2!
+1. {Step 1 — ball-holders parley tightly in the middle} :0.8  U345-huddle
+2. {Step 2 — ball-holders fan to the front line} :0.9  U345-line
+3. {Step 3 — two pump fakes in unison (freeze the defense)} :1.2  U345?2
+4. {Step 4 — kill left on 2: the two left holders release} :1.0  U3@T2! U4@T2!

@@ -20,8 +20,8 @@ ok(run(["validate", "kill-left"]).includes("valid"), "validate accepts a good pl
 ok(runFail(["validate", "-"], '[Play "X"]\n1. {b} U9@Z9!\n') !== null, "validate exits non-zero on a bad play");
 
 const show = run(["show", "kill-left"]);
-ok(/Beat 1\/3/.test(show) && show.includes("pump-fake"), "show renders beats + actions");
-ok(/\bx\b/.test(run(["show", "kill-left"]).split("Beat 3")[1] || ""), "show marks an out player (x) after the throw");
+ok(/Beat 1\/4/.test(show) && show.includes("pump-fake"), "show renders beats + actions");
+ok(/\bx\b/.test(show.split("Beat 4")[1] || ""), "show marks an out player (x) after the throw");
 
 ok(run(["describe", "away"]).includes("throws at us 2"), "describe summarizes throws in words");
 

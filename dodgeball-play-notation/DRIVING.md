@@ -115,7 +115,6 @@ Every control has a `data-testid` and an ARIA label:
 | `dbn-input` | notation textarea |
 | `render-button` | render trigger |
 | `example-select` | example dropdown |
-| `speed-select` | playback speed (1× / 2× / 3×) |
 | `status` | status line (`role="status"`) |
 | `error-panel` | parse-error panel (`role="alert"`, `hidden` when valid) |
 | `preview-stage` | container holding the rendered `<svg>` |
@@ -148,6 +147,15 @@ const svg  = dbn.toSetupSVG(text);   // deterministic static SVG of the starting
 `toSetupSVG` renders the **still starting frame** (player positions + loose
 balls) — deterministic, good for visual diffing and snapshots. Animation is a
 browser concern; for motion use the live editor or the engine in a browser.
+
+## Formation choreography
+
+The implied setup places both teams close to their own back boundaries and
+uses nearly the full court width, so outside players 1 and 8 remain true
+wings. A called set offense normally starts with only its ball-holders moving
+to the tight `huddle` parley just forward of its back line, followed by those
+same holders moving to their assigned lanes at `line`. Players without balls
+stay back. Defensive calls and opening-rush plays normally omit the parley.
 
 Parse errors throw `Error("DBN parse error: …")` — wrap in try/catch to collect
 them headlessly.

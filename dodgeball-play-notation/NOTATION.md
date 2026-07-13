@@ -1,8 +1,3 @@
-<!-- ============================================================
-SYNCED COPY from storypixel/dodgeball-play-animator/NOTATION.md — CANONICAL SOURCE.
-Do not edit here; DBN spec changes go to the animator repo first, then re-sync.
-Upstream: https://github.com/storypixel/dodgeball-play-animator
-============================================================ -->
 # DBN — Dodgeball Notation (v0.2)
 
 A compact, human-writable, machine-feedable notation for dodgeball plays, in
@@ -10,10 +5,20 @@ the spirit of chess algebraic notation. A play written in DBN compiles to the
 play JSON the animator consumes, so anything you can write, the animator can
 render — and anyone can embed.
 
-The design rule, borrowed from chess: **you write intent; the engine owns
-aesthetics.** The default setup is implied, positions are lane-relative words,
-and ball-flight curves are computed. A full play is a handful of speakable
-lines:
+Two design rules, and they bind every future capability:
+
+1. Borrowed from chess: **you write intent; the engine owns aesthetics.** The
+   default setup is implied, positions are lane-relative words, and
+   ball-flight curves are computed.
+2. **No magic — notation for literally everything.** Anything the animator can
+   draw must be writable in DBN, and every named word's behavior must be
+   specified in this document with exact semantics (a `huddle` is not "roughly
+   a huddle"; it is the layout defined below). New engine abilities ship in
+   three parts or not at all: the notation token, the spec entry here, and a
+   test. If a behavior can't be written, overridden, or escaped by hand
+   (`(x,y)` always works), it doesn't belong in the engine.
+
+A full play is a handful of speakable lines:
 
 ```
 [Play "Home"]
@@ -37,17 +42,32 @@ Top-down "chess diagram." THEM on top, US on the bottom, center line across
 the middle.
 
 - **Lanes.** Each player owns the column they start in: `U4`'s lane is the 4th
-  from the left on our side. Lanes are parametric to team size (default 8 a
-  side; set `[Players "10"]` for 10s).
+  from the left on our side. Lanes use the full playable width, with the first
+  and last players close to their respective sidelines. They are parametric to
+  team size (default 8 a side; set `[Players "10"]` for 10s).
 - **Depths.** Four named depths, symmetric for both teams, each measured from
   that team's own point of view:
 
   | word | meaning | distance from center line |
   |------|---------|--------------------------|
-  | `line` | at the center line, attacking or grabbing | 5 |
+  | `line` | up at the center line with a standard small margin — the player circle (and a fully cocked pump-fake ball) always stays visibly behind the line | 8 |
   | `mid`  | throwing range, stepped up | 15 |
   | `deep` | fallen back after an attack | 25 |
-  | `back` | own back line (the default start) | 40 |
+  | `back` | own back line (the default start) | 45 |
+
+- **Huddle.** `huddle` is a single shoulder-to-shoulder rank in the horizontal
+  middle of a team's side, just forward of its own back line: the movers stand
+  touching (one player diameter apart, a hair of daylight), in left-to-right
+  order, centered on midcourt. A set offense gathers only its ball-holders
+  there (`U1458-huddle`). Players without balls stay back. Defensive calls and
+  the opening rush skip the parley.
+
+- **Group formations.** When several players move together to a named depth
+  (`U1458-line`), they do NOT keep their starting lanes: the group fans out
+  **one standard lane-unit apart, centered on the group's own lane mean**, in
+  left-to-right order (paths never cross). A lone mover (`U3-line`) goes
+  straight down its own lane. Need bespoke spacing? Use the escapes below —
+  every formation the engine can draw is writable by hand.
 
 - **Escapes**, rarely needed: a bare number is an exact depth in your own lane
   (`U5-68`), and `(x,y)` is a fixed point in the animator's 0..100 space
@@ -79,7 +99,7 @@ One token per action; the verb is a single symbol.
 
 | verb | token | meaning |
 |------|-------|---------|
-| run | `U3-line` / `U3-68` / `U3-(48,65)` | move (named depth, exact depth in lane, fixed point) |
+| run | `U3-line` / `U1458-huddle` / `U3-68` / `U3-(48,65)` | move (named formation/depth, exact depth in lane, fixed point) |
 | grab | `U9*` / `U9*2` | pick up the nearest loose ball / the two nearest |
 | run + grab | `U8-line*2` | move there and grab in one beat |
 | pass | `U8>U5` | toss to a teammate |
@@ -172,7 +192,7 @@ action    := actors ( run | grab | pass | throw | fake | block | catch | dodge |
            | "+" player
 actors    := ("U"|"T") DIGITS          (digits fan to a group when not a roster number)
 run       := "-" dest [ "*" [COUNT] ]
-dest      := "line" | "mid" | "deep" | "back" | NUMBER | "(" NUMBER "," NUMBER ")" | FILE RANK
+dest      := "huddle" | "line" | "mid" | "deep" | "back" | NUMBER | "(" NUMBER "," NUMBER ")" | FILE RANK
 grab      := "*" [ COUNT | ball ]
 pass      := ">" player
 throw     := "@" player [ outcome ] [ "~" SIGNED_INT ]

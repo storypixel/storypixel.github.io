@@ -5,7 +5,12 @@
 # (playbook-sync/sync.py hashes the same files, so both stay in lockstep).
 set -e
 cd "$(dirname "$0")/.."
-VER=$(cat vendor/play-animator.js vendor/dbn.js examples/*.dbn | md5 | cut -c1-10)
+# Normalize existing stamps before hashing so UI-only edits also produce a new,
+# deterministic cache key without making the script change on every run.
+VER=$({
+  cat vendor/play-animator.js vendor/dbn.js examples/*.dbn
+  sed -E 's/\?v=[0-9a-f]+/?v=STAMP/g' index.html src/editor.js
+} | md5 | cut -c1-10)
 # index.html: the three <script src> tags
 perl -0pi -e "s{(vendor/play-animator\.js|vendor/dbn\.js|src/editor\.js)(\?v=[0-9a-f]+)?}{\$1?v=$VER}g" index.html
 # src/editor.js: the examples/<id>.dbn fetch

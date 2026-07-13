@@ -35,6 +35,11 @@ The editor and its docs:
   every control, the `window.DBNEditor` surface stable, and the deep-link params
   working. If you add a control, give it a testid and document it in
   [`DRIVING.md`](DRIVING.md).
+- **No magic.** Every engine capability ships as notation + spec + test,
+  together: a token authors can write, exact semantics in
+  [`NOTATION.md`](NOTATION.md), and a regression test. Behavior that can't be
+  expressed or escaped in DBN (`(x,y)` is the universal escape) must not be
+  added to the engine. See NOTATION.md design rule #2.
 
 ## Running
 

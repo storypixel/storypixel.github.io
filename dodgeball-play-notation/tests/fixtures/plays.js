@@ -12,100 +12,100 @@
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -120,24 +120,24 @@
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              45
+              29.428571428571423,
+              42
             ]
           },
           {
             "team": "them",
             "n": 4,
             "to": [
-              44,
-              45
+              43.14285714285714,
+              42
             ]
           },
           {
             "team": "them",
             "n": 6,
             "to": [
-              68,
-              45
+              56.857142857142854,
+              42
             ]
           }
         ],
@@ -181,31 +181,31 @@
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              43.14285714285714,
+              58
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              56.857142857142854,
+              58
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              68,
-              55
+              70.57142857142857,
+              58
             ]
           },
           {
             "team": "them",
             "n": 2,
             "to": [
-              20,
+              29.428571428571423,
               25
             ]
           },
@@ -213,7 +213,7 @@
             "team": "them",
             "n": 4,
             "to": [
-              44,
+              43.14285714285714,
               25
             ]
           },
@@ -221,7 +221,7 @@
             "team": "them",
             "n": 6,
             "to": [
-              68,
+              56.857142857142854,
               25
             ]
           }
@@ -251,100 +251,100 @@
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -359,24 +359,24 @@
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              45
+              29.428571428571423,
+              42
             ]
           },
           {
             "team": "them",
             "n": 4,
             "to": [
-              44,
-              45
+              43.14285714285714,
+              42
             ]
           },
           {
             "team": "them",
             "n": 6,
             "to": [
-              68,
-              45
+              56.857142857142854,
+              42
             ]
           }
         ],
@@ -426,108 +426,108 @@
   },
   "insides": {
     "id": "insides",
-    "name": "Insides",
+    "name": "Inside",
     "badge": "4-ball",
-    "call": "\"Insides 5, 1\"",
-    "desc": "Four-ball call. The two middle players throw at the same number — here the 5th from the left — while the corners hold the other two balls and pump-fake to pull the block.",
+    "call": "\"Inside 5, 1\"",
+    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — while the corners make one pump fake to pull the block.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": true
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -535,45 +535,83 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 1,
             "to": [
-              8,
-              55
+              40.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              46.75,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              53.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 8,
             "to": [
-              92,
-              55
+              59.75,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — corners pump-fake to pull the block",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              29.42857142857143,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.142857142857146,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 8,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — corners make one pump fake to pull the block",
         "dur": 1.1,
         "fakes": [
           {
@@ -589,7 +627,7 @@
         ]
       },
       {
-        "label": "Step 3 — insides 5, 1: the two middles release",
+        "label": "Step 4 — inside 5, 1: the two middles release",
         "dur": 1,
         "throws": [
           {
@@ -620,108 +658,108 @@
   },
   "insides-3": {
     "id": "insides-3",
-    "name": "Insides — 3 balls",
+    "name": "Inside — 3 balls",
     "badge": "3-ball",
-    "call": "\"Insides 5, 1\"",
-    "desc": "The three-ball version of Insides: the two middle players still throw at the same number — here the 5th from the left — while the lone corner holder pump-fakes to pull the block.",
+    "call": "\"Inside 5, 1\"",
+    "desc": "The three-ball version of Inside: the three ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — while the lone corner makes one pump fake.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": true
         }
       ],
@@ -729,37 +767,67 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 1,
             "to": [
-              8,
-              55
+              43.5,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              50,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              56.5,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — the corner pump-fakes to pull the block",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              20.285714285714285,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              34,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              47.714285714285715,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — the corner makes one pump fake to pull the block",
         "dur": 1.1,
         "fakes": [
           {
@@ -770,7 +838,7 @@
         ]
       },
       {
-        "label": "Step 3 — insides 5, 1: the two middles release",
+        "label": "Step 4 — inside 5, 1: the two middles release",
         "dur": 1,
         "throws": [
           {
@@ -804,105 +872,105 @@
     "name": "Kill Left",
     "badge": "left kill",
     "call": "\"Kill left 2, 2\"",
-    "desc": "The two left-side ball-holders throw at one specified target after the whole line pump-fakes in unison. Called as \"kill left <target>, <pump-fakes>\" — here the two leftmost holders fire at their 2 on the count after two pump-fakes.",
+    "desc": "The four ball-holders parley tightly in the middle, fan to the front line, then make two pump fakes in unison. The two left-side holders fire at the specified target — here their 2.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -910,45 +978,83 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 3,
             "to": [
-              32,
-              55
+              40.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              46.75,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              53.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              68,
-              55
+              59.75,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 3,
+            "to": [
+              29.42857142857143,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.142857142857146,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — two pump fakes in unison (freeze the defense)",
         "dur": 1.2,
         "fakes": [
           {
@@ -974,7 +1080,7 @@
         ]
       },
       {
-        "label": "Step 3 — kill left on 2: the two left holders release",
+        "label": "Step 4 — kill left on 2: the two left holders release",
         "dur": 1,
         "throws": [
           {
@@ -1008,105 +1114,105 @@
     "name": "Kill Left — 3 balls",
     "badge": "left kill",
     "call": "\"Kill left 2, 2\"",
-    "desc": "Kill Left with three balls: same call — the whole line pump-fakes in unison, then the two leftmost holders fire at their 2 on the count.",
+    "desc": "Kill Left with three balls: the three ball-holders parley tightly in the middle and fan to the front line, then make two pump fakes before the two leftmost fire at their 2.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": true
         }
       ],
@@ -1114,37 +1220,67 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 3,
             "to": [
-              32,
-              55
+              43.5,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              50,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              56.5,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 3,
+            "to": [
+              29.428571428571423,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.14285714285714,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — two pump fakes in unison (freeze the defense)",
         "dur": 1.2,
         "fakes": [
           {
@@ -1165,7 +1301,7 @@
         ]
       },
       {
-        "label": "Step 3 — kill left on 2: the two left holders release",
+        "label": "Step 4 — kill left on 2: the two left holders release",
         "dur": 1,
         "throws": [
           {
@@ -1199,105 +1335,105 @@
     "name": "Kill Right",
     "badge": "right kill",
     "call": "\"Kill right 7, 2\"",
-    "desc": "The mirror of Kill Left: the two right-side ball-holders throw at one specified target after the whole line pump-fakes in unison. Called as \"kill right <target>, <pump-fakes>\" — here the two rightmost holders fire at their 7 on the count after two pump-fakes.",
+    "desc": "The mirror of Kill Left: the four ball-holders parley tightly in the middle, fan to the front line, then make two pump fakes in unison. The two right-side holders fire at the specified target — here their 7.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -1305,45 +1441,83 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 3,
             "to": [
-              32,
-              55
+              40.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              46.75,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              53.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              68,
-              55
+              59.75,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 3,
+            "to": [
+              29.42857142857143,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.142857142857146,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — two pump fakes in unison (freeze the defense)",
         "dur": 1.2,
         "fakes": [
           {
@@ -1369,7 +1543,7 @@
         ]
       },
       {
-        "label": "Step 3 — kill right on 7: the two right holders release",
+        "label": "Step 4 — kill right on 7: the two right holders release",
         "dur": 1,
         "throws": [
           {
@@ -1403,105 +1577,105 @@
     "name": "Kill Right — 3 balls",
     "badge": "right kill",
     "call": "\"Kill right 7, 2\"",
-    "desc": "Kill Right with three balls: same call — the whole line pump-fakes in unison, then the two rightmost holders fire at their 7 on the count.",
+    "desc": "Kill Right with three balls: the three ball-holders parley tightly in the middle and fan to the front line, then make two pump fakes before the two rightmost fire at their 7.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -1509,37 +1683,67 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              43.5,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              50,
+              87
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              68,
-              55
+              56.5,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — two pump-fakes in unison (freeze the defense)",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.14285714285714,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — two pump fakes in unison (freeze the defense)",
         "dur": 1.2,
         "fakes": [
           {
@@ -1560,7 +1764,7 @@
         ]
       },
       {
-        "label": "Step 3 — kill right on 7: the two right holders release",
+        "label": "Step 4 — kill right on 7: the two right holders release",
         "dur": 1,
         "throws": [
           {
@@ -1599,100 +1803,100 @@
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": true
         }
       ],
@@ -1707,7 +1911,7 @@
             "team": "us",
             "n": 4,
             "to": [
-              44,
+              43.14285714285714,
               65
             ]
           },
@@ -1715,40 +1919,40 @@
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              45
+              32.17142857142858,
+              42
             ]
           },
           {
             "team": "them",
             "n": 3,
             "to": [
-              32,
-              45
+              45.885714285714286,
+              42
             ]
           },
           {
             "team": "them",
             "n": 6,
             "to": [
-              68,
-              45
+              59.6,
+              42
             ]
           },
           {
             "team": "them",
             "n": 7,
             "to": [
-              80,
-              45
+              73.31428571428572,
+              42
             ]
           },
           {
             "team": "them",
             "n": 8,
             "to": [
-              92,
-              45
+              87.02857142857142,
+              42
             ]
           }
         ],
@@ -1801,100 +2005,100 @@
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -1909,24 +2113,24 @@
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              45
+              29.428571428571423,
+              42
             ]
           },
           {
             "team": "them",
             "n": 4,
             "to": [
-              44,
-              45
+              43.14285714285714,
+              42
             ]
           },
           {
             "team": "them",
             "n": 6,
             "to": [
-              68,
-              45
+              56.857142857142854,
+              42
             ]
           }
         ],
@@ -1970,24 +2174,24 @@
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              43.14285714285714,
+              58
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              56.857142857142854,
+              58
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              68,
-              55
+              70.57142857142857,
+              58
             ]
           }
         ],
@@ -2011,105 +2215,105 @@
     "name": "Outsides",
     "badge": "4-ball",
     "call": "\"Outsides 4, 1\"",
-    "desc": "Four-ball call. Both corners throw at the same number from opposite angles, so no single block covers both balls, while the middle two hold and pump-fake to pull the block.",
+    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. Both corners then throw at the same number from opposite angles while the middle two make one pump fake to pull the block.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": true
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -2117,45 +2321,83 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 1,
             "to": [
-              8,
-              55
+              40.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              46.75,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              53.25,
+              87
             ]
           },
           {
             "team": "us",
             "n": 8,
             "to": [
-              92,
-              55
+              59.75,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — middles pump-fake to pull the block",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              29.42857142857143,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.142857142857146,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 8,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — middles make one pump fake to pull the block",
         "dur": 1.1,
         "fakes": [
           {
@@ -2171,7 +2413,7 @@
         ]
       },
       {
-        "label": "Step 3 — outsides 4, 1: the two corners release",
+        "label": "Step 4 — outsides 4, 1: the two corners release",
         "dur": 1,
         "throws": [
           {
@@ -2205,105 +2447,105 @@
     "name": "Outsides — 3 balls",
     "badge": "3-ball",
     "call": "\"Outsides 4, 1\"",
-    "desc": "The three-ball version of Outsides: both corners still throw at the same number from opposite angles, so no single block covers both balls, while the lone middle holder pump-fakes to pull the block.",
+    "desc": "The three-ball version of Outsides: the three ball-holders parley tightly in the middle and fan to the front line. Both corners throw at the same number from opposite angles while the lone middle holder makes one pump fake.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": true
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": true
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": true
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": true
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": true
         }
       ],
@@ -2311,37 +2553,67 @@
     },
     "steps": [
       {
-        "label": "Step 1 — ball-holders step up to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 1,
             "to": [
-              8,
-              55
+              43.5,
+              87
             ]
           },
           {
             "team": "us",
             "n": 4,
             "to": [
-              44,
-              55
+              50,
+              87
             ]
           },
           {
             "team": "us",
             "n": 8,
             "to": [
-              92,
-              55
+              56.5,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — the middle pump-fakes to pull the block",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              34,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              47.714285714285715,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 8,
+            "to": [
+              61.42857142857143,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — the middle makes one pump fake to pull the block",
         "dur": 1.1,
         "fakes": [
           {
@@ -2352,7 +2624,7 @@
         ]
       },
       {
-        "label": "Step 3 — outsides 4, 1: the two corners release",
+        "label": "Step 4 — outsides 4, 1: the two corners release",
         "dur": 1,
         "throws": [
           {
@@ -2391,100 +2663,100 @@
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": false
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": false
         }
       ],
@@ -2536,32 +2808,32 @@
             "team": "us",
             "n": 7,
             "to": [
-              80,
-              55
+              84.28571428571428,
+              58
             ]
           },
           {
             "team": "us",
             "n": 8,
             "to": [
-              92,
-              55
+              98,
+              58
             ]
           },
           {
             "team": "them",
             "n": 1,
             "to": [
-              8,
-              45
+              2.000000000000001,
+              42
             ]
           },
           {
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              45
+              15.714285714285715,
+              42
             ]
           }
         ],
@@ -2570,8 +2842,8 @@
             "team": "us",
             "n": 8,
             "balls": [
-              "uR2",
-              "uR3"
+              "uR3",
+              "uR2"
             ]
           },
           {
@@ -2606,7 +2878,7 @@
             "team": "us",
             "n": 5,
             "to": [
-              56,
+              56.857142857142854,
               68
             ]
           },
@@ -2614,7 +2886,7 @@
             "team": "them",
             "n": 1,
             "to": [
-              8,
+              2.000000000000001,
               25
             ]
           },
@@ -2622,7 +2894,7 @@
             "team": "them",
             "n": 2,
             "to": [
-              20,
+              15.714285714285715,
               25
             ]
           }
@@ -2648,16 +2920,16 @@
             "team": "them",
             "n": 1,
             "to": [
-              8,
-              10
+              2.000000000000001,
+              5
             ]
           },
           {
             "team": "them",
             "n": 2,
             "to": [
-              20,
-              10
+              15.714285714285715,
+              5
             ]
           }
         ],
@@ -2681,105 +2953,105 @@
     "name": "3 Balls",
     "badge": "3-ball",
     "call": "\"meet in the middle\"",
-    "desc": "With three balls we meet in the middle and step up to the line, then designate one or two throwers on a specific target. The odd man out pump-fakes.",
+    "desc": "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Two designated throwers attack a specific target while the odd holder pump-fakes.",
     "setup": {
       "us": [
         {
           "n": 1,
-          "x": 8,
-          "y": 90,
+          "x": 2,
+          "y": 95,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 90,
+          "x": 15.714285714285714,
+          "y": 95,
           "ball": false
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 90,
+          "x": 29.428571428571427,
+          "y": 95,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 90,
+          "x": 43.14285714285714,
+          "y": 95,
           "ball": true
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 90,
+          "x": 56.857142857142854,
+          "y": 95,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 90,
+          "x": 70.57142857142857,
+          "y": 95,
           "ball": true
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 90,
+          "x": 84.28571428571428,
+          "y": 95,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 90,
+          "x": 98,
+          "y": 95,
           "ball": false
         }
       ],
       "them": [
         {
           "n": 1,
-          "x": 8,
-          "y": 10,
+          "x": 2,
+          "y": 5,
           "ball": false
         },
         {
           "n": 2,
-          "x": 20,
-          "y": 10,
+          "x": 15.714285714285714,
+          "y": 5,
           "ball": true
         },
         {
           "n": 3,
-          "x": 32,
-          "y": 10,
+          "x": 29.428571428571427,
+          "y": 5,
           "ball": false
         },
         {
           "n": 4,
-          "x": 44,
-          "y": 10,
+          "x": 43.14285714285714,
+          "y": 5,
           "ball": false
         },
         {
           "n": 5,
-          "x": 56,
-          "y": 10,
+          "x": 56.857142857142854,
+          "y": 5,
           "ball": true
         },
         {
           "n": 6,
-          "x": 68,
-          "y": 10,
+          "x": 70.57142857142857,
+          "y": 5,
           "ball": false
         },
         {
           "n": 7,
-          "x": 80,
-          "y": 10,
+          "x": 84.28571428571428,
+          "y": 5,
           "ball": false
         },
         {
           "n": 8,
-          "x": 92,
-          "y": 10,
+          "x": 98,
+          "y": 5,
           "ball": true
         }
       ],
@@ -2787,37 +3059,67 @@
     },
     "steps": [
       {
-        "label": "Step 1 — meet in the middle, step to the line",
-        "dur": 0.9,
+        "label": "Step 1 — ball-holders parley tightly in the middle",
+        "dur": 0.8,
         "moves": [
           {
             "team": "us",
             "n": 4,
             "to": [
-              48,
-              55
+              43.5,
+              87
             ]
           },
           {
             "team": "us",
             "n": 5,
             "to": [
-              56,
-              55
+              50,
+              87
             ]
           },
           {
             "team": "us",
             "n": 6,
             "to": [
-              64,
-              55
+              56.5,
+              87
             ]
           }
         ]
       },
       {
-        "label": "Step 2 — the odd man pump-fakes",
+        "label": "Step 2 — ball-holders fan to the front line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              43.14285714285714,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "to": [
+              56.857142857142854,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              70.57142857142857,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Step 3 — the odd holder pump-fakes",
         "dur": 1.1,
         "fakes": [
           {
@@ -2828,7 +3130,7 @@
         ]
       },
       {
-        "label": "Step 3 — two throwers on 4",
+        "label": "Step 4 — two throwers on 4",
         "dur": 1,
         "throws": [
           {

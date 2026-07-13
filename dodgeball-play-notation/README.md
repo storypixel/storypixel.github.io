@@ -1,7 +1,20 @@
-# DBN Editor — Dodgeball Play Notation
+# Dodgeball Playbook — DBN Editor
 
-Write a dodgeball play in **DBN** (Dodgeball Notation) and watch it animate.
-Deep-linkable, and built to be driven by an agent with zero human clicking.
+Browse the full dodgeball playbook, open a dedicated page for any call, and
+watch its movement animate. Every play page includes the coaching call,
+description, step sequence, and an optional **DBN** notation editor.
+
+The root URL is the **All Plays** wiki index. `?play=insides`,
+`?play=home`, and the other deep links are the individual play pages.
+The system remains agent-drivable with zero human clicking.
+
+### Widget style isolation
+
+The play animator is a self-contained visual component. The playbook mounts it
+inside an open Shadow DOM root, and the engine installs its stylesheet inside
+that render root. Outer-page CSS must never target `.dbp` or its descendants.
+`tests/widget-isolation.test.js` enforces this boundary so redesigning the
+playbook shell cannot restyle the court, controls, typography, or animation.
 
 **▶ Live editor: https://iamnotsam.com/dodgeball-play-notation/**
 
@@ -63,11 +76,11 @@ is right without ever opening a browser.
 See **[DRIVING.md](DRIVING.md)** for copy-paste browser examples.
 
 Every control also carries a stable `data-testid` + ARIA label for browser
-automation: `dbn-input`, `render-button`, `example-select`, `speed-select`,
-`status`, `error-panel`, `preview-stage`.
+automation: `dbn-input`, `render-button`, `example-select`, `status`,
+`error-panel`, `preview-stage`.
 
-Plays animate at **2× by default** (realistic pace). Change it with the speed
-control (1× / 2× / 3×) or `?speed=<n>`.
+Plays animate at **2× by default** (realistic pace). Automation can override it
+with `?speed=<n>`; the reader UI intentionally has no speed selector.
 
 **Step-through**: the scrubber shows a marker per beat; the ◀ ▶ buttons step
 beat-to-beat and hold. **Keyboard** (focus the preview): space play/pause, ←/→
@@ -86,8 +99,8 @@ node tests/parse.test.js     # parity + headless smoke tests
 
 | Path | What |
 |------|------|
-| `index.html` | the editor (served at the Pages root URL) |
-| `src/editor.js` | UI wiring + the `window.DBNEditor` automation API |
+| `index.html` | playbook wiki shell, All Plays index, and play-page layout |
+| `src/editor.js` | wiki navigation, play metadata, editor wiring, and the `window.DBNEditor` automation API |
 | `src/dbn-headless.js` | pure-Node: DBN → play JSON + static setup SVG |
 | `vendor/dbn.js` | **canonical** DBN parser (vendored, do not edit) |
 | `vendor/play-animator.js` | **canonical** render engine (vendored, do not edit) |
@@ -99,13 +112,18 @@ node tests/parse.test.js     # parity + headless smoke tests
 
 ## Notation, in one screen
 
-- **Court**: each player owns a **lane**; destinations are named depths —
-  `line` / `mid` / `deep` / `back` — from each team's own point of view.
+- **Court**: each player owns a **lane** across the full playable width;
+  destinations are `huddle` or named depths — `line` / `mid` / `deep` /
+  `back` — from each team's own point of view.
   Escapes: a bare number is an exact depth in your lane (`U5-68`); `(x,y)` is
   a fixed point.
 - **Pieces**: `U1`…`Un` (us), `T1`…`Tn` (them). Run digits together to fan an
   action across a group: `T2468-line`, `U45?`.
-- **Setup**: implied (back lines). `[Balls "U:45 T:2468"]` says who's loaded;
+- **Setup**: implied (close to the back lines). Set offenses normally gather
+  only the ball-holders with `U1458-huddle`, then send those same holders to
+  their front-line lanes with `U1458-line`; players without balls stay back.
+  Defenses and opening rushes normally skip the parley.
+  `[Balls "U:45 T:2468"]` says who's loaded;
   `[Setup "rush"]` is the opening; explicit `DBF "…"` remains for arbitrary
   positions.
 - **Beats**: `1. {label} :dur  <actions>` — actions in a beat are simultaneous.

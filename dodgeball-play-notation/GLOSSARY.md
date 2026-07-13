@@ -9,7 +9,8 @@ the quick lookup.
 
 | Term | Meaning |
 |------|---------|
-| **lane** | the column a player starts in — `U4`'s lane is the 4th from our left. Lane-relative moves keep it. |
+| **lane** | the column a player starts in — `U4`'s lane is the 4th from our left. The outside lanes sit close to the sidelines; lane-relative moves keep the column. |
+| **`huddle`** | tight, staggered parley position for the ball-holders, centered on the team just forward of its own back line. |
 | **`line`** | at the center line (attack/grab position), your side of it. |
 | **`mid`** | throwing range, stepped up. |
 | **`deep`** | fallen back after an attack. |
@@ -29,14 +30,19 @@ the quick lookup.
 
 ## Setup
 
-The default setup is **implied**: both teams on their back lines, one per
-lane, nobody loaded. State only the diff:
+The default setup is **implied**: both teams close to their back lines, spread
+across the full playable width, nobody loaded. State only the diff:
 
 | Tag | Meaning |
 |-----|---------|
 | `[Balls "U:45 T:2468"]` | who starts loaded (digits per team; commas for 10+: `U:4,5,10`) |
 | `[Setup "rush"]` | opening rush: no one loaded; our 3 balls on the line right, their 3 left |
 | `DBF "U:… / T:… / B:…"` | full explicit setup (v0.1) for arbitrary positions; `[Balls]` overrides its flags |
+
+Set offenses normally begin with the ball-holders at `huddle`, then send those
+same holders to `line`: `U1458-huddle` followed by `U1458-line`. Players
+without balls stay back. Defensive calls normally skip that parley, as does an
+opening-rush play such as Pitch Back.
 
 ## Tags (metadata)
 
@@ -68,7 +74,7 @@ Separate beats by newline or `;`.
 
 | Verb | Token | Meaning |
 |------|-------|---------|
-| run / move | `U3-line` / `U3-68` / `U3-(48,65)` | named depth, exact depth in lane, or fixed point |
+| run / move | `U3-line` / `U1458-huddle` / `U3-68` / `U3-(48,65)` | named formation/depth, exact depth in lane, or fixed point |
 | grab (nearest) | `U9*` | pick up the nearest loose ball → loaded |
 | grab (count) | `U9*2` | pick up the two nearest loose balls |
 | grab (specific) | `U9*bU(88,50)` | pick up the named loose ball |

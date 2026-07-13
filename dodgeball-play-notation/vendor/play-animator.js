@@ -32,6 +32,8 @@
   // player (and a ball held at their side) never clips the edge — that inset is
   // the only "margin", and it's exactly the player radius, nothing wasted.
   const PR = 32;
+  const PLAYER_R = 28;
+  const PLAYER_LABEL_SIZE = 32;
   const px = (nx) => PR + (nx / 100) * (VB_W - 2 * PR);
   const py = (ny) => PR + (ny / 100) * (VB_H - 2 * PR);
 
@@ -47,32 +49,36 @@
     out: "#c4ccd2",        // eliminated player — grey ghost
   };
 
-  let stylesInjected = false;
-  function injectStyles() {
-    if (stylesInjected) return;
-    stylesInjected = true;
+  // Styles are installed per render root. This lets the player live inside a
+  // ShadowRoot, where page CSS cannot reach it, while preserving normal embeds.
+  const styledRoots = new WeakSet();
+  function injectStyles(container) {
+    const renderRoot = container && container.getRootNode ? container.getRootNode() : document;
+    if (styledRoots.has(renderRoot)) return;
     const css = `
-.dbp{font:400 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;border:1px solid #d4d4d4;overflow:hidden;background:#fff;color:#111;max-width:560px}
+.dbp{all:initial;display:block;box-sizing:border-box;font:400 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;border:2px solid #34424b;overflow:hidden;background:#fff;color:#111;max-width:560px;text-align:left;letter-spacing:normal;text-transform:none}
+.dbp,.dbp *,.dbp *::before,.dbp *::after{box-sizing:border-box}
 .dbp__head{display:flex;align-items:baseline;gap:8px;padding:11px 13px 6px;flex-wrap:wrap}
 .dbp__name{font-weight:700;font-size:1rem;letter-spacing:-.01em}
 .dbp__badge{font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:#666;border:1px solid #d4d4d4;border-radius:999px;padding:2px 7px}
 .dbp__call{color:#555;font-size:.85rem}
 .dbp__desc{padding:0 13px 9px;color:#555;font-size:.85rem}
-.dbp__stage{display:block;width:100%;height:auto;background:${COL.court};touch-action:none}
+.dbp__stage{display:block;width:100%;height:auto;border-bottom:2px solid #34424b;background:${COL.court};touch-action:none}
 .dbp__court{position:relative;line-height:0}
-/* the panel stacks under the court: [scrubber bar] then [play | next] bank,
-   so the bar is sandwiched cleanly between the court and the buttons. */
-.dbp__scrub{position:relative;height:26px;display:flex;align-items:center;cursor:pointer;padding:0 13px;touch-action:none}
-.dbp__track{position:relative;width:100%;height:6px;background:#d9dde3}
+/* The timeline is the entire band between court and button, not a smaller rail
+   floating inside it. The white handle stays fully contained at both ends. */
+.dbp__scrub{position:relative;height:40px;display:flex;align-items:center;cursor:pointer;padding:0;border-bottom:2px solid #34424b;background:#111;touch-action:none}
+.dbp__track{position:relative;width:100%;height:100%;border:0;background:#111;overflow:hidden}
+.dbp__track::before{content:"";position:absolute;z-index:1;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#fff}
 .dbp__fill{position:absolute;left:0;top:0;height:100%;width:0;background:#111}
-.dbp__node{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2px solid #b9bec4;background:#fff;pointer-events:none;transition:background-color .3s ease,border-color .3s ease}
-.dbp__node--on{background:#111;border-color:#111}
-.dbp__thumb{position:absolute;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;background:#111;box-shadow:0 1px 3px rgba(20,30,50,.35);pointer-events:none}
-.dbp__ctrls{display:flex;gap:8px;padding:8px 13px 11px}
-.dbp__btn{appearance:none;border:1px solid #d4d4d4;background:#fff;color:#111;border-radius:8px;height:46px;display:grid;place-items:center;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.dbp__node{position:absolute;z-index:2;top:50%;width:2px;height:14px;margin:-7px 0 0 -1px;border:0;background:#fff;pointer-events:none}
+.dbp__node--on{background:#fff}
+.dbp__thumb{position:absolute;z-index:3;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 0;background:#fff;box-shadow:none;transform:translateX(-50%);pointer-events:none}
+.dbp__ctrls{display:block;padding:12px}
+.dbp__btn{appearance:none;width:100%;height:46px;padding:0;border:2px solid #34424b;border-radius:0;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation}
 .dbp__btn:hover{background:#f2f2f2}
-.dbp__btn svg{width:20px;height:20px;fill:currentColor;pointer-events:none}
-.dbp__play{flex:1}
+.dbp__icon{width:20px;height:20px;fill:currentColor;pointer-events:none}
+.dbp__play{width:100%}
 .dbp__stepline{padding:4px 13px 0;font-size:.8rem;color:#555;min-height:1.2em}
 .dbp__fig{padding:5px 13px 2px;font-size:.78rem;color:#777;text-align:center;font-style:italic}
 .dbp-prose{margin:0 0 8px;font:inherit;color:inherit}
@@ -83,8 +89,10 @@
 .dbp:focus-visible{outline:2px solid #111;outline-offset:2px}
 .dbp__hint{padding:0 13px 9px;font-size:.68rem;color:#888}`;
     const s = document.createElement("style");
+    s.setAttribute("data-dbp-styles", "");
     s.textContent = css;
-    document.head.appendChild(s);
+    (renderRoot === document ? document.head : renderRoot).appendChild(s);
+    styledRoots.add(renderRoot);
   }
 
   const SVGNS = "http://www.w3.org/2000/svg";
@@ -95,6 +103,15 @@
   };
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+  const pumpShake = (u, reps) => {
+    const progress = Math.max(0, Math.min(1, u));
+    const cycles = Math.max(1, Math.round(reps || 1));
+    // Keep the oscillator at a constant frequency so every alternating peak is
+    // equal. A short symmetric amplitude ramp removes only the endpoint snap.
+    const edgeProgress = Math.min(1, progress / 0.1, (1 - progress) / 0.1);
+    const edgeEase = edgeProgress * edgeProgress * (3 - 2 * edgeProgress);
+    return Math.sin(2 * Math.PI * cycles * progress) * edgeEase;
+  };
 
   // ── compile a play into per-actor keyframe states + timed throw events ──
   function compile(play) {
@@ -242,7 +259,7 @@
   }
 
   function mount(container, play, opts) {
-    injectStyles();
+    injectStyles(container);
     opts = opts || {};
     const c = compile(play);
 
@@ -282,7 +299,7 @@
     // the parametric team-size files, so drawn labels would mislead.
     const court = svg("g", {});
     court.appendChild(svg("rect", { x: 0, y: 0, width: VB_W, height: VB_H, fill: COL.court }));
-    court.appendChild(svg("line", { x1: 0, y1: py(50), x2: VB_W, y2: py(50), stroke: COL.centerline, "stroke-width": 3, "stroke-dasharray": "11 9" }));
+    court.appendChild(svg("line", { x1: 0, y1: py(50), x2: VB_W, y2: py(50), stroke: COL.centerline, "stroke-width": 2, "stroke-dasharray": "11 9", "vector-effect": "non-scaling-stroke" }));
     stage.appendChild(court);
 
     const layer = svg("g", {});
@@ -345,9 +362,9 @@
       return node;
     });
 
-    const ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-    const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
-    const ICON_REPLAY = '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
+    const ICON_PLAY = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    const ICON_PAUSE = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+    const ICON_REPLAY = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
 
     let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false;
     const DWELL_MS = 750; // hold this long at each beat node during playback
@@ -401,10 +418,10 @@
         const fill = a.out ? COL.out : COL[a.team];
         const ghost = a.out ? 0.4 : 1;
         // the player stands still — a pump-fake shakes the BALL, not the body (below)
-        const c1 = svg("circle", { cx: X, cy: Y, r: 19, fill, stroke: "#111111", "stroke-width": 2, opacity: ghost });
+        const c1 = svg("circle", { cx: X, cy: Y, r: PLAYER_R, fill, stroke: "#111111", "stroke-width": 2, "vector-effect": "non-scaling-stroke", opacity: ghost });
         g.appendChild(c1);
         const numFill = (a.team === "us" && !a.out) ? "#fff" : "#111";
-        const num = svg("text", { x: X, y: Y + 6, fill: numFill, "font-size": 18, "font-weight": 700, "text-anchor": "middle", opacity: ghost });
+        const num = svg("text", { x: X, y: Y + 10, fill: numFill, "font-size": PLAYER_LABEL_SIZE, "font-weight": 800, "text-anchor": "middle", opacity: ghost });
         num.textContent = a.n;
         g.appendChild(num);
         if (a.out) {
@@ -420,10 +437,7 @@
           // stay still; each rep returns the ball to the hand before the next.
           let fx = 0, fy = 0;
           if (a.fake > 0) {
-            const reps = a.fake;
-            const u = Math.min(1, a.fakePhase);
-            const p = u >= 1 ? 1 : (u * reps) % 1;
-            const s = Math.sin(p * Math.PI);          // neutral → diagonal → neutral
+            const s = pumpShake(a.fakePhase, a.fake); // equal travel through both diagonals
             const toward = a.team === "us" ? -1 : 1; // us fake up-court, them down
             fx = s * 18;
             fy = toward * s * 18;                    // equal axes = a true 45° path
@@ -445,7 +459,8 @@
       beatNodes.forEach((d, i) => d.classList.toggle("dbp__node--on", i === cur));
       const pct = c.totalDur > 0 ? 100 * t / c.totalDur : 0;
       fillEl.style.width = pct + "%";
-      thumbEl.style.left = pct + "%";
+      const thumbInset = 4 * (1 - 2 * pct / 100);
+      thumbEl.style.left = `calc(${pct}% + ${thumbInset}px)`;
     }
 
     function setT(nt) { t = Math.max(0, Math.min(c.totalDur, nt)); render(); }
