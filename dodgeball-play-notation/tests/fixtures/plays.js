@@ -177,7 +177,7 @@
       },
       {
         "label": "We press as their attackers regress — and counter",
-        "summary": "move · throw at 4",
+        "summary": "to the line · to deep · throw at 4",
         "dur": 1.2,
         "moves": [
           {
@@ -1954,15 +1954,15 @@
     "steps": [
       {
         "label": "They bring it up; we pass to the middle",
-        "summary": "move · pass",
+        "summary": "to the middle · to the line · pass",
         "dur": 1,
         "moves": [
           {
             "team": "us",
             "n": 4,
             "to": [
-              43.14285714285714,
-              65
+              50,
+              87
             ]
           },
           {
@@ -2221,7 +2221,7 @@
       },
       {
         "label": "Their attackers fall back — our line steps up, middle answers middle",
-        "summary": "move · throw at 4",
+        "summary": "to deep · to the line · throw at 4",
         "dur": 1.1,
         "moves": [
           {
@@ -2979,7 +2979,7 @@
       },
       {
         "label": "Pitch back — attacker steps up",
-        "summary": "move · pass",
+        "summary": "to deep · move · pass",
         "dur": 0.9,
         "moves": [
           {

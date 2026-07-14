@@ -60,7 +60,9 @@ the middle.
   touching (one player diameter apart, a hair of daylight), in left-to-right
   order, centered on midcourt. A set offense gathers only its ball-holders
   there (`U1458-huddle`). Players without balls stay back. Defensive calls and
-  the opening rush skip the parley.
+  the opening rush skip the parley. A LONE huddle
+  mover (`U4-huddle`) simply takes the parley spot at midcourt -- the "player
+  in the middle" position -- and its beat caption reads `to the middle`.
 
 - **Group formations.** When several players move together to a named depth
   (`U1458-line`), they do NOT keep their starting lanes: the group fans out

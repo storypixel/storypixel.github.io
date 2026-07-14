@@ -789,18 +789,25 @@
       const uniq = named.filter(function (d, i) {
         return named.indexOf(d) === i;
       });
-      if (uniq.length === 1 && named.length === acc.moves.length) {
-        const d = uniq[0];
+      // one phrase per named formation, in the order the beat mentions them;
+      // moves to exact depths or (x,y) points stay a plain "move".
+      uniq.forEach(function (d) {
+        const count = named.filter(function (x) {
+          return x === d;
+        }).length;
         summaryParts.push(
           d === "huddle"
-            ? "parley: call play and choose target"
+            ? count === 1
+              ? "to the middle"
+              : "parley: call play and choose target"
             : d === "line"
               ? "to the line"
               : d === "back"
                 ? "fall back"
                 : "to " + d,
         );
-      } else summaryParts.push("move");
+      });
+      if (named.length < acc.moves.length) summaryParts.push("move");
     }
     if (acc.grabs.length) summaryParts.push("grab");
     if (acc.passes.length) summaryParts.push("pass");

@@ -128,6 +128,26 @@ assert.deepStrictEqual(
   ["parley: call play and choose target", "to the line", "1 pump fake", "throw at 5"],
   "insides beats caption as parley / to the line / 1 pump fake / throw at 5",
 );
+// Middle: the lone bait player sits in the parley zone at midcourt — never
+// crowding the center line — and his solo huddle move captions "to the middle"
+const middle = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "middle.dbn"), "utf8"),
+    ),
+  ),
+);
+const bait = middle.steps[0].moves.find((m) => m.team === "us");
+assert.deepStrictEqual(
+  bait.to,
+  [50, 87],
+  "the middle bait player takes the parley spot, not a forward position",
+);
+assert.ok(
+  middle.steps[0].summary.startsWith("to the middle"),
+  "a lone huddle mover captions as taking the middle",
+);
+
 const killLeft = JSON.parse(
   JSON.stringify(
     ctx.DBN.parse(
