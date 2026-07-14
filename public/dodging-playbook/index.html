@@ -161,6 +161,15 @@
 <script src="/dodgeball-play-notation/vendor/play-animator.js?v=f7df62a3b3"></script>
 <script src="/dodgeball-play-notation/vendor/dbn.js?v=f7df62a3b3"></script>
 <script>
+  // Anchor aliases: #mirror resolves to #call-mirror (and #call-x to #x), so
+  // links written in either style land on the right play.
+  (function(){
+    var id = decodeURIComponent(location.hash.slice(1));
+    if(!id || document.getElementById(id)) return;
+    var alt = id.indexOf('call-') === 0 ? id.slice(5) : 'call-' + id;
+    var el = document.getElementById(alt);
+    if(el){ history.replaceState(null,'','#'+alt); el.scrollIntoView(); }
+  })();
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
       var url=location.origin+location.pathname+'#'+btn.dataset.anchor;
