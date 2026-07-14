@@ -93,6 +93,18 @@ assert.deepStrictEqual(
   [10, 50, 90],
   "defensive holders spread wide: left, middle, right",
 );
+// retreats fall straight back: the regressing attackers keep the width they
+// attacked with instead of re-fanning to the deep formation
+const regressors = mirrorPlay.steps[2].moves.filter((m) => m.team === "them");
+assert.deepStrictEqual(
+  regressors.map((m) => m.to),
+  [
+    [25, 25],
+    [50, 25],
+    [75, 25],
+  ],
+  "regressing attackers back-pedal straight from their attack positions",
+);
 
 const setOffenses = [
   "three-ball",

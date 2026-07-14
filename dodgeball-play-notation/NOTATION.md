@@ -75,9 +75,12 @@ the middle.
     clearly wider than the attack so a counter throw can threaten only one
     holder, but not pinned to the sidelines.
   - `huddle`: shoulder-to-shoulder (see above).
-  A lone mover (`U3-line`) goes straight down its own lane. Need bespoke
-  spacing? Use the escapes below -- every formation the engine can draw is
-  writable by hand.
+  A lone mover (`U3-line`) goes straight down its own lane.
+  **Retreats fall straight back:** a move to a DEEPER named depth keeps each
+  player's current x -- you back-pedal from where you stood, you don't re-fan.
+  Formations apply when a group advances (or gathers to the parley). Need
+  bespoke spacing? Use the escapes below -- every formation the engine can
+  draw is writable by hand.
 
 - **Escapes**, rarely needed: a bare number is an exact depth in your own lane
   (`U5-68`), and `(x,y)` is a fixed point in the animator's 0..100 space

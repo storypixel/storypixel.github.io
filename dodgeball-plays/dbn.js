@@ -659,18 +659,36 @@
         // group formations override per-player lanes: shoulder-to-shoulder
         // for a huddle, one lane-unit apart for a shared named depth.
         const destName = square.trim();
-        const groupX =
-          actors.length > 1 &&
-          (destName === "huddle" || DEPTH.hasOwnProperty(destName))
-            ? groupFormationX(actors, destName, ctx)
-            : null;
         const namedDest =
           destName === "huddle" || DEPTH.hasOwnProperty(destName)
             ? destName
             : null;
+        // retreats fall STRAIGHT back: a move to a deeper named depth keeps
+        // each player's current x — you back-pedal, you don't re-fan.
+        // Formations apply when a group advances (or gathers to the parley).
+        const retreatByTeam = {};
+        if (namedDest && DEPTH.hasOwnProperty(destName)) {
+          const byTeam = {};
+          actors.forEach(function (p) {
+            (byTeam[p.team] = byTeam[p.team] || []).push(p);
+          });
+          Object.keys(byTeam).forEach(function (team) {
+            const avg =
+              byTeam[team].reduce(function (sum, p) {
+                return sum + Math.abs(ctx.pos[keyOf(p)][1] - 50);
+              }, 0) / byTeam[team].length;
+            retreatByTeam[team] = DEPTH[destName] > avg + 0.001;
+          });
+        }
+        const groupX =
+          actors.length > 1 && namedDest
+            ? groupFormationX(actors, destName, ctx)
+            : null;
         actors.forEach(function (player) {
           const pos = parseDest(square, player, ctx);
-          if (groupX && groupX[keyOf(player)] != null)
+          if (namedDest && retreatByTeam[player.team])
+            pos[0] = ctx.pos[keyOf(player)][0];
+          else if (groupX && groupX[keyOf(player)] != null)
             pos[0] = groupX[keyOf(player)];
           acc.moves.push({ team: player.team, n: player.n, to: pos });
           acc.destNames.push(namedDest);
