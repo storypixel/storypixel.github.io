@@ -1,9 +1,9 @@
 [Play "Away"]
 [Badge "3-ball defense"]
-[Call "Away, 5"]
-[Desc "We're holding three balls on defense. The call names our counter-thrower — Away, 5 — and they pick their own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and the called thrower answers on the run."]
+[Call "Away, Maya"]
+[Desc "We're holding three balls on defense. The call names our counter-thrower by name — Away, Maya — because the number system counts THEIR line, not ours (here Maya is our 6). She picks her own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and Maya answers on the run — from the wing, cross-court. If the mirror-opposite player answered instead, that would just be Mirror."]
 [Balls "U:456 T:246"]
 
 1. {Their loaded attackers take the line} :1  T246-line T4?
 2. {They throw} :0.9  T4@U2%
-3. {We press up halfway as their attackers regress — and counter} :1.2  U456-deep T246-deep U5@T4!
+3. {We press up halfway as their attackers regress — the called wing counters} :1.2  U456-deep T246-deep U6@T4!

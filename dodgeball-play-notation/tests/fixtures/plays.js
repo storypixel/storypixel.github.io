@@ -6,8 +6,8 @@
     "id": "away",
     "name": "Away",
     "badge": "3-ball defense",
-    "call": "\"Away, 5\"",
-    "desc": "We're holding three balls on defense. The call names our counter-thrower — Away, 5 — and they pick their own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and the called thrower answers on the run.",
+    "call": "\"Away, Maya\"",
+    "desc": "We're holding three balls on defense. The call names our counter-thrower by name — Away, Maya — because the number system counts THEIR line, not ours (here Maya is our 6). She picks her own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and Maya answers on the run — from the wing, cross-court. If the mirror-opposite player answered instead, that would just be Mirror.",
     "setup": {
       "us": [
         {
@@ -176,7 +176,7 @@
         ]
       },
       {
-        "label": "We press up halfway as their attackers regress — and counter",
+        "label": "We press up halfway as their attackers regress — the called wing counters",
         "summary": "to deep · throw at 4",
         "dur": 1.2,
         "moves": [
@@ -233,7 +233,7 @@
           {
             "from": {
               "team": "us",
-              "n": 5
+              "n": 6
             },
             "to": {
               "team": "them",
@@ -248,8 +248,8 @@
     "id": "home",
     "name": "Home",
     "badge": "3-ball defense",
-    "call": "\"Home, 5\"",
-    "desc": "We're holding three balls on defense. The call names our thrower — Home, 5 — and they pick their own target. As their attack comes to the line, the called defender reads the throw and pre-counters: releasing first, from their own position, to hit the thrower before their ball lands.",
+    "call": "\"Home, Dana\"",
+    "desc": "We're holding three balls on defense. The call names our thrower by name — Home, Dana — because the number system counts THEIR line, not ours (here Dana is our 5). She picks her own target: as their attack comes to the line she reads the throw and pre-counters, releasing first from her own position to hit the thrower before their ball lands.",
     "setup": {
       "us": [
         {
