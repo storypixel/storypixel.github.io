@@ -48,6 +48,8 @@
   button.copylink.copied{background:buttonface;color:buttontext;border-color:buttonface}
   ul.calls{list-style:none;margin:0;padding:0 0 0 40px}
   ul.calls>li{margin:0 0 16px;padding:0;scroll-margin-top:8px}
+  /* a hairline between plays, like the section rules but inside the list */
+  ul.calls>li.call~li.call{border-top:1px solid #000;padding-top:16px;margin-top:20px}
   ul.calls>li:last-child{margin-bottom:0}
   ul.calls>li:target .term{background:#ffffcc;border-radius:0;padding:0 2px;margin:0 -2px}
   .term{font-weight:700}
@@ -67,10 +69,9 @@
 
   @media(max-width:899px){
     .wrap{margin:0;padding:0 0 35px}
-    ul.calls{padding-left:14px}
-    /* widgets break out of the list indent on small screens so the court sits
-       symmetric on the page (equal margins left and right) */
-    ul.calls>li>.db-inline,ul.calls>li>.db-insets{margin-left:-14px}
+    /* no list indent on small screens: definition, call, prose, and widget all
+       share one left edge, and the court sits symmetric on the page */
+    ul.calls{padding-left:0}
   }
 </style>
 </head>
@@ -156,9 +157,9 @@
 
   <footer>Dodging All Night, All Summer &middot; internal team reference</footer>
 </div>
-<script>window.DBV="ed21c7dc08";</script>
-<script src="/dodgeball-play-notation/vendor/play-animator.js?v=ed21c7dc08"></script>
-<script src="/dodgeball-play-notation/vendor/dbn.js?v=ed21c7dc08"></script>
+<script>window.DBV="efc37333e9";</script>
+<script src="/dodgeball-play-notation/vendor/play-animator.js?v=efc37333e9"></script>
+<script src="/dodgeball-play-notation/vendor/dbn.js?v=efc37333e9"></script>
 <script>
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
