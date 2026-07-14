@@ -70,12 +70,28 @@ assert.ok(
   line.every((m) => m.to[1] === 58),
   "the formation stops a standard margin short of the center line",
 );
-// spread evenly across the FULL width — spread shooters minimize what a
-// counter can hit and give different angles on a shared target
+// the ATTACK spreads across the middle half — angles on the target, but
+// close enough to protect the thrower after the release
 assert.deepStrictEqual(
   line.map((m) => Number(m.to[0].toFixed(6))),
-  [2, 34, 66, 98],
-  "the loaded players spread across the full width of the line",
+  [25, 41.666667, 58.333333, 75],
+  "the attacking line spreads across the middle half",
+);
+
+// defensive depths spread WIDE — clearly wider than the attack, not pinned
+// to the sidelines
+const mirrorPlay = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "mirror.dbn"), "utf8"),
+    ),
+  ),
+);
+const counters = mirrorPlay.steps[2].moves.filter((m) => m.team === "us");
+assert.deepStrictEqual(
+  counters.map((m) => m.to[0]),
+  [15, 50, 85],
+  "defensive holders spread wide: left, middle, right",
 );
 
 const setOffenses = [

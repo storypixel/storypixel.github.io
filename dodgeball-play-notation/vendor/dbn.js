@@ -300,11 +300,17 @@
         // the parley is the ONLY tight formation
         spacing = SHOULDER;
         center = 50;
+      } else if (dest === "line") {
+        // the ATTACKING formation: medium spread across the middle half of
+        // the width — enough for different angles, close enough that
+        // teammates can protect the thrower after the release.
+        spacing = ps.length > 1 ? 50 / (ps.length - 1) : 0;
+        center = 50;
       } else {
-        // named depths spread the group evenly across the FULL width (first
-        // and last near the sidelines): spread-out shooters minimize what a
-        // counter throw can hit and give different angles on a shared target.
-        spacing = ps.length > 1 ? 96 / (ps.length - 1) : 0;
+        // defensive postures (mid/deep/back) spread WIDE — clearly wider than
+        // the attack, so spread-out holders minimize what a counter throw can
+        // hit — but not pinned to the sidelines.
+        spacing = ps.length > 1 ? 70 / (ps.length - 1) : 0;
         center = 50;
       }
       ps.forEach(function (p, i) {

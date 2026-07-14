@@ -77,12 +77,12 @@ try {
   assert.deepStrictEqual(
     play.steps[0].moves.map((m) => [m.n, m.to[0], m.to[1]]),
     [
-      [2, 2, 42],
-      [4, 34, 42],
-      [6, 66, 42],
-      [8, 98, 42],
+      [2, 25, 42],
+      [4, 41.666666666666664, 42],
+      [6, 58.333333333333336, 42],
+      [8, 75, 42],
     ],
-    "group spreads across the full width, a margin short of the line",
+    "the attacking line spreads across the middle half",
   );
   assert.strictEqual(
     play.steps[1].throws[0].curve,

@@ -65,12 +65,19 @@ the middle.
   in the middle" position -- and its beat caption reads `to the middle`.
 
 - **Group formations.** When several players move together to a named depth
-  (`U1458-line`), they do NOT keep their starting lanes: the group spreads
-  **evenly across the full width** -- first and last near the sidelines, in
-  left-to-right order (paths never cross). Spread-out shooters minimize what a
-  counter throw can hit and give different angles on a shared target. A lone
-  mover (`U3-line`) goes straight down its own lane. Need bespoke spacing? Use
-  the escapes below -- every formation the engine can draw is writable by hand.
+  (`U1458-line`), they do NOT keep their starting lanes -- the group spreads
+  evenly around midcourt, in left-to-right order (paths never cross), and how
+  wide depends on the depth:
+  - `line` (the attacking formation): MEDIUM spread, across the middle half of
+    the width (25..75) -- different angles on the target, but close enough
+    that teammates can protect the thrower after the release.
+  - `mid` / `deep` / `back` (defensive postures): WIDE spread (15..85) --
+    clearly wider than the attack so a counter throw can threaten only one
+    holder, but not pinned to the sidelines.
+  - `huddle`: shoulder-to-shoulder (see above).
+  A lone mover (`U3-line`) goes straight down its own lane. Need bespoke
+  spacing? Use the escapes below -- every formation the engine can draw is
+  writable by hand.
 
 - **Escapes**, rarely needed: a bare number is an exact depth in your own lane
   (`U5-68`), and `(x,y)` is a fixed point in the animator's 0..100 space
