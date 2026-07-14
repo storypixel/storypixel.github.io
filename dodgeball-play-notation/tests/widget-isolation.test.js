@@ -124,6 +124,11 @@ assert.match(
 );
 assert.match(
   engine,
+  /\.dbp__btn\{[^}]*background:\$\{COL\.court\}/,
+  "play button shares the court's surface color",
+);
+assert.match(
+  engine,
   /PLAYER_LABEL_SIZE = 32/,
   "player labels remain readable when the SVG scales down",
 );

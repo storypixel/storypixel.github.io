@@ -80,8 +80,8 @@
 .dbp__node--on{background:#fff}
 .dbp__thumb{position:absolute;z-index:3;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 0;background:#fff;box-shadow:none;pointer-events:none}
 .dbp__ctrls{display:block;padding:12px}
-.dbp__btn{appearance:none;width:100%;height:46px;padding:0;border:2px solid #34424b;border-radius:0;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation}
-.dbp__btn:hover{background:#f2f2f2}
+.dbp__btn{appearance:none;width:100%;height:46px;padding:0;border:2px solid #34424b;border-radius:0;background:${COL.court};color:#111;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation}
+.dbp__btn:hover{background:#e2e8ee}
 .dbp__icon{width:20px;height:20px;fill:currentColor;pointer-events:none}
 .dbp__play{width:100%}
 .dbp__stepline{padding:4px 13px 0;font-size:.8rem;color:#555;min-height:1.2em}
