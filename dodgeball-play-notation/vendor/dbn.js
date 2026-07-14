@@ -297,15 +297,15 @@
       });
       let spacing, center;
       if (dest === "huddle") {
+        // the parley is the ONLY tight formation
         spacing = SHOULDER;
         center = 50;
       } else {
-        const roster = Object.keys(ctx.roster[team] || {}).length;
-        spacing = 96 / Math.max(1, roster - 1); // one standard lane unit (lanes span 2..98)
-        center =
-          ps.reduce(function (s, p) {
-            return s + ctx.lane[keyOf(p)];
-          }, 0) / ps.length;
+        // named depths spread the group evenly across the FULL width (first
+        // and last near the sidelines): spread-out shooters minimize what a
+        // counter throw can hit and give different angles on a shared target.
+        spacing = ps.length > 1 ? 96 / (ps.length - 1) : 0;
+        center = 50;
       }
       ps.forEach(function (p, i) {
         const x = center + (i - (ps.length - 1) / 2) * spacing;

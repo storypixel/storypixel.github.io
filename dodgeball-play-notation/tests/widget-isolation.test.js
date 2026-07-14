@@ -152,6 +152,23 @@ assert.match(
   /\.dbp__btn\{[^}]*background:\$\{COL\.court\}/,
   "play button shares the court's surface color",
 );
+// a dodge must read as a miss: the flight record carries the outcome, the
+// ball overshoots, and the target sidesteps
+assert.match(
+  engine,
+  /outcome: th\.outcome/,
+  "compiled flights carry their outcome",
+);
+assert.match(
+  engine,
+  /dodgeShift/,
+  "dodged targets sidestep while the ball passes",
+);
+assert.match(
+  engine,
+  /\(ta\.x - fa\.x\) \* 0\.3/,
+  "a dodged ball overshoots past the target",
+);
 assert.match(
   engine,
   /PLAYER_LABEL_SIZE = 32/,

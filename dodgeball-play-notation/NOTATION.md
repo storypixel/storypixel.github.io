@@ -65,11 +65,12 @@ the middle.
   in the middle" position -- and its beat caption reads `to the middle`.
 
 - **Group formations.** When several players move together to a named depth
-  (`U1458-line`), they do NOT keep their starting lanes: the group fans out
-  **one standard lane-unit apart, centered on the group's own lane mean**, in
-  left-to-right order (paths never cross). A lone mover (`U3-line`) goes
-  straight down its own lane. Need bespoke spacing? Use the escapes below --
-  every formation the engine can draw is writable by hand.
+  (`U1458-line`), they do NOT keep their starting lanes: the group spreads
+  **evenly across the full width** -- first and last near the sidelines, in
+  left-to-right order (paths never cross). Spread-out shooters minimize what a
+  counter throw can hit and give different angles on a shared target. A lone
+  mover (`U3-line`) goes straight down its own lane. Need bespoke spacing? Use
+  the escapes below -- every formation the engine can draw is writable by hand.
 
 - **Escapes**, rarely needed: a bare number is an exact depth in your own lane
   (`U5-68`), and `(x,y)` is a fixed point in the animator's 0..100 space
@@ -125,6 +126,10 @@ isn't what you mean.
 | caught | `U1@T3^` | T3 catches -- thrower U1 is out, THEM returns one |
 | dodged | `U1@T3%` | T3 evades -- nobody out |
 | blocked | `U1@T3#` | T3 blocks with a ball -- nobody out |
+
+**Dodges are visible.** A dodged ball (`%`) overshoots straight through where
+the target stood and keeps going, while the target sidesteps about a
+player-width and settles back -- the miss reads BEFORE any counter fires.
 
 **Curves are automatic.** Simultaneous throws at one target fan apart so both
 balls read; a dodged throw bows so the miss reads. Append `~<deg>` only to

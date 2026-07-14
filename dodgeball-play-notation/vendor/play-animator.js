@@ -228,6 +228,7 @@
           t0,
           t1: t0 + dur,
           curve: th.curve == null ? -22 : th.curve,
+          outcome: th.outcome,
         });
         const fa = actors.get(keyOf(th.from.team, th.from.n));
         if (fa) fa.balls = Math.max(0, fa.balls - 1);
@@ -510,6 +511,24 @@
       // own, slower pace over the full beat. FLIGHT is in play-seconds, so it stays
       // fast regardless of how long the beat is.
       const FLIGHT = 0.7;
+      // a dodge must READ: the target sidesteps a player-width while the ball
+      // overshoots straight through where they stood, then they settle back.
+      const DODGE_STEP = 6; // ≈ one player diameter, in court units
+      const DODGE_BACK = 0.35; // seconds to settle back after the miss
+      const dodgeShift = {};
+      c.throws.forEach((th) => {
+        if (th.outcome !== "dodged") return;
+        const flight = Math.min(FLIGHT, th.t1 - th.t0);
+        const rel = th.t1 - flight;
+        const stepStart = rel + 0.35 * flight;
+        if (t <= stepStart || t >= th.t1 + DODGE_BACK) return;
+        const stepOut = Math.min(1, (t - stepStart) / (flight * 0.65));
+        const settle = Math.max(0, Math.min(1, (t - th.t1) / DODGE_BACK));
+        const k = easeInOut(stepOut) * (1 - easeInOut(settle));
+        const ta = actorAt(c, th.to, th.t1);
+        const dir = ta.x <= 50 ? 1 : -1;
+        dodgeShift[th.to] = (dodgeShift[th.to] || 0) + dir * DODGE_STEP * k;
+      });
       c.throws.forEach((th) => {
         const flight = Math.min(FLIGHT, th.t1 - th.t0);
         const rel = th.t1 - flight; // release moment — ball leaves the hand here
@@ -517,10 +536,14 @@
         const e = (t - rel) / flight; // linear & fast
         const fa = actorAt(c, th.from, rel);
         const ta = actorAt(c, th.to, th.t1);
+        const miss = th.outcome === "dodged";
+        // the miss flies through the target's ORIGINAL spot and keeps going
+        const ex = miss ? Math.min(102, Math.max(-2, ta.x + (ta.x - fa.x) * 0.3)) : ta.x;
+        const ey = miss ? Math.min(102, Math.max(-2, ta.y + (ta.y - fa.y) * 0.3)) : ta.y;
         const arc = Math.sin(e * Math.PI) * th.curve;
         drawBall(
-          lerp(px(fa.x), px(ta.x), e),
-          lerp(py(fa.y), py(ta.y), e) + arc,
+          lerp(px(fa.x), px(ex), e),
+          lerp(py(fa.y), py(ey), e) + arc,
           11,
         );
       });
@@ -528,7 +551,10 @@
       // actors
       c.keys.forEach((key) => {
         const a = actorAt(c, key, t);
-        const X = px(a.x),
+        const shifted = dodgeShift[key]
+          ? Math.min(100, Math.max(0, a.x + dodgeShift[key]))
+          : a.x;
+        const X = px(shifted),
           Y = py(a.y);
         // out players fade to a grey ghost, but the red X stays full-strength on top
         const g = svg("g", {});

@@ -70,11 +70,12 @@ assert.ok(
   line.every((m) => m.to[1] === 58),
   "the formation stops a standard margin short of the center line",
 );
-// one standard lane-unit apart, centered — NOT their original lanes
+// spread evenly across the FULL width — spread shooters minimize what a
+// counter can hit and give different angles on a shared target
 assert.deepStrictEqual(
   line.map((m) => Number(m.to[0].toFixed(6))),
-  [29.428571, 43.142857, 56.857143, 70.571429],
-  "the loaded players fan out one lane-unit apart, centered on the group",
+  [2, 34, 66, 98],
+  "the loaded players spread across the full width of the line",
 );
 
 const setOffenses = [
