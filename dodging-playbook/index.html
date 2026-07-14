@@ -7,76 +7,68 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Dodging All Night, All Summer Playbook - Week 1</title>
 <style>
-  :root{--ink:#16181d;--muted:#5b626e;--line:#e6e8ec;--bg:#fff;--accent:#1f6feb;--accent-soft:#eef4ff;--radius:10px;--sbw:246px}
+  /* Deliberately plain HTML-reference-page presentation ("1995 mode") — the
+     same document shell as /dodgeball-play-notation/. The animated widgets
+     carry their own styling; the page around them is an unstyled serif doc. */
   *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body{margin:8px;background:#fff;color:#000;font:16px/1.25 "Times New Roman",Times,serif}
+  a{color:#0000ee;text-decoration:underline}
+  a:visited{color:#551a8b}
 
-  /* ---- glossary sidebar ---- */
-  .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sbw);overflow-y:auto;
-    background:#fbfcfe;border-right:1px solid var(--line);padding:20px 14px 40px;z-index:40}
-  .sidebar .brand{font-weight:700;font-size:.98rem;letter-spacing:-.01em;margin:0 4px 2px}
-  .sidebar .brand small{display:block;color:var(--muted);font-weight:500;font-size:.76rem;margin-top:2px}
-  .sidebar h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:20px 4px 6px}
-  .sidebar nav a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);
-    padding:6px 9px;border-radius:8px;font-size:.9rem;line-height:1.25}
-  .sidebar nav a:hover{background:var(--accent-soft)}
-  .sidebar nav a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
-  .sidebar nav a.play::before{content:"";width:7px;height:7px;border-radius:50%;background:#c7d2e0;flex:0 0 7px}
-  .sidebar nav a.play.off::before{background:#1f9d55}
-  .sidebar nav a.play.def::before{background:#e0603a}
-  .sidebar nav a.sec{color:var(--muted);font-size:.86rem;padding:5px 9px}
+  /* mobile-drawer chrome from the app-styled era: gone entirely */
+  .topbar,.backdrop,.hamburger{display:none}
 
-  /* ---- mobile top bar + hamburger ---- */
-  .topbar{display:none;position:sticky;top:0;z-index:20;align-items:center;gap:12px;
-    padding:10px 14px;background:rgba(255,255,255,.92);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
-  .hamburger{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;
-    width:40px;height:38px;padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}
-  .hamburger span{display:block;height:2px;background:var(--ink);border-radius:2px}
-  .topbar .tt{font-weight:600;font-size:.95rem}
-  .backdrop{position:fixed;inset:0;background:rgba(15,20,30,.36);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:35}
+  /* ---- glossary: a plain bordered Contents box at the top of the document ---- */
+  .sidebar{position:static;width:auto;max-width:900px;overflow:visible;background:#fff;
+    border:1px solid #000;padding:6px 10px 10px;margin:10px 0 14px;z-index:auto}
+  .sidebar .brand{font-weight:700;font-size:16px;margin:0}
+  .sidebar .brand small{display:inline;color:#000;font-weight:400;font-size:13px;margin-left:6px}
+  .sidebar .brand small::before{content:"("} .sidebar .brand small::after{content:")"}
+  .sidebar h3{font:bold 14px "Times New Roman",Times,serif;letter-spacing:0;text-transform:none;color:#000;margin:8px 0 2px}
+  .sidebar nav{margin:0}
+  .sidebar nav a{display:inline;padding:0;margin:0 14px 0 0;border-radius:0;color:#0000ee;text-decoration:underline;font-size:14px}
+  .sidebar nav a:visited{color:#551a8b}
+  .sidebar nav a:hover,.sidebar nav a.active{background:transparent}
+  .sidebar nav a.play::before,.sidebar nav a.play.off::before,.sidebar nav a.play.def::before{content:none}
+  .sidebar nav a.sec{color:#0000ee;font-size:14px;padding:0}
 
-  /* ---- main content ---- */
-  .wrap{max-width:680px;margin-left:var(--sbw);padding:26px 26px 72px}
-  header.top{padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
-  header.top h1{font-size:1.5rem;line-height:1.25;margin:0 0 4px;letter-spacing:-.01em}
-  header.top p{margin:0;color:var(--muted);font-size:.95rem}
-  header.top p a{color:var(--accent);text-decoration:none;font-weight:600}
-  section{margin:0 0 30px;scroll-margin-top:64px}
-  .h2row{display:flex;align-items:center;gap:8px;padding-top:18px;border-top:2px solid var(--ink);margin:0 0 12px}
+  /* ---- main content: one serif column ---- */
+  .wrap{max-width:900px;margin:0;padding:0 0 40px}
+  header.top{padding:0 0 10px;border-bottom:1px solid #000;margin-bottom:12px;text-align:center}
+  header.top h1{font:bold 32px/1.1 "Times New Roman",Times,serif;letter-spacing:0;margin:0 0 6px}
+  header.top p{margin:0;color:#000;font-size:16px}
+  header.top p a{color:#0000ee;text-decoration:underline;font-weight:400}
+  section{margin:0 0 22px;scroll-margin-top:8px}
+  .h2row{display:block;padding-top:10px;border-top:1px solid #000;margin:0 0 8px}
   section:first-of-type .h2row{border-top:none;padding-top:0}
-  h2{font-size:1.18rem;margin:0;letter-spacing:-.01em}
-  button.copylink{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:7px;font:inherit;font-size:.72rem;padding:3px 8px;cursor:pointer;line-height:1.4;white-space:nowrap}
-  button.copylink:active{background:var(--accent-soft);color:var(--accent);border-color:#cfe0ff}
-  button.copylink.copied{background:#e8f7ec;color:#1a7f37;border-color:#bfe6cb}
-  ul.calls{list-style:none;margin:0;padding:0}
-  ul.calls>li{margin:0 0 24px;padding:0;scroll-margin-top:64px}
+  h2{display:inline;font:bold 24px/1.2 "Times New Roman",Times,serif;font-variant:small-caps;letter-spacing:.01em;margin:0}
+  button.copylink{margin-left:8px;padding:1px 5px;border:2px outset buttonface;border-radius:0;
+    background:buttonface;color:buttontext;font:12px Arial,sans-serif;cursor:pointer;line-height:1.4;white-space:nowrap;vertical-align:2px}
+  button.copylink:active{border-style:inset}
+  button.copylink.copied{background:buttonface;color:buttontext;border-color:buttonface}
+  ul.calls{list-style:none;margin:0;padding:0 0 0 40px}
+  ul.calls>li{margin:0 0 16px;padding:0;scroll-margin-top:8px}
   ul.calls>li:last-child{margin-bottom:0}
-  ul.calls>li:target .term{background:var(--accent-soft);border-radius:4px;padding:0 4px;margin:0 -4px}
+  ul.calls>li:target .term{background:#ffffcc;border-radius:0;padding:0 2px;margin:0 -2px}
   .term{font-weight:700}
-  .db-insets{display:grid;gap:14px;margin:12px 0 2px}
-  .db-inline{margin:12px 0 2px}
+  .db-insets{display:grid;gap:12px;margin:10px 0 2px}
+  .db-inline{margin:10px 0 2px}
   .db-insets .db-inline{margin:0}
-  .db-inline .dbp{max-width:100%}
-  details.docfig{margin:10px 0 2px}
+  .db-inline .dbp{max-width:560px}
+  details.docfig{margin:8px 0 2px}
   li.figure details.docfig{margin:0}
-  details.docfig>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
-    color:var(--accent);font-size:.9rem;font-weight:600;padding:6px 11px;border:1px solid #cfe0ff;border-radius:999px;background:var(--accent-soft);user-select:none}
+  details.docfig>summary{list-style:none;cursor:pointer;display:inline;
+    color:#0000ee;font-size:15px;font-weight:400;padding:0;border:0;border-radius:0;background:transparent;text-decoration:underline;user-select:none}
   details.docfig>summary::-webkit-details-marker{display:none}
-  details.docfig>summary::before{content:"▸";font-size:.85em;transition:transform .15s ease}
-  details.docfig[open]>summary::before{transform:rotate(90deg)}
-  img.docimg{display:block;max-width:100%;height:auto;border-radius:8px;margin:10px 0 2px}
-  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  details.docfig>summary::before{content:"b8 ";font-size:.85em}
+  details.docfig[open]>summary::before{content:"be "}
+  img.docimg{display:block;max-width:100%;height:auto;border-radius:0;border:1px solid #000;margin:8px 0 2px}
+  footer{margin-top:30px;padding-top:10px;border-top:1px solid #000;color:#000;font-size:14px;text-align:center}
 
-  /* ---- mobile: sidebar becomes an off-canvas drawer behind a hamburger ---- */
   @media(max-width:899px){
-    .topbar{display:flex}
-    .wrap{margin-left:0;padding:20px 18px 64px}
-    .sidebar{transform:translateX(-100%);transition:transform .22s ease;box-shadow:0 0 40px rgba(20,30,50,.14);width:min(82vw,320px)}
-    body.nav-open .sidebar{transform:none}
-    body.nav-open .backdrop{opacity:1;pointer-events:auto}
-    body.nav-open{overflow:hidden}
+    .wrap{margin:0;padding:0 0 35px}
+    ul.calls{padding-left:14px}
   }
-  @media(min-width:900px){body{font-size:18px}header.top h1{font-size:1.85rem}}
 </style>
 </head>
 <body>
