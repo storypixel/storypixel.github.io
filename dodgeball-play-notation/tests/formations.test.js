@@ -315,4 +315,28 @@ assert.ok(
   "their offense falls back to deep during our press",
 );
 
+// pitch-back: rushers FETCH, they don't attack — down their own lanes to the
+// balls, then straight home after the grab
+const pitchBack = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "pitch-back.dbn"), "utf8"),
+    ),
+  ),
+);
+const rushX = pitchBack.steps[0].moves
+  .filter((m) => m.team === "us")
+  .map((m) => Number(m.to[0].toFixed(6)));
+assert.deepStrictEqual(
+  rushX,
+  [84.285714, 98],
+  "rushers run their OWN lanes to the balls, no formation spread",
+);
+const home = pitchBack.steps[2].moves.filter((m) => m.team === "us");
+assert.ok(
+  home.every((m) => m.to[1] === 95) &&
+    home.map((m) => Number(m.to[0].toFixed(6))).join() === rushX.join(),
+  "rushers regress straight back where they came from",
+);
+
 console.log("✓ formation geometry and offensive/defensive choreography");

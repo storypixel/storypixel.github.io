@@ -170,15 +170,20 @@ directly.
 
 ## 6. Worked example -- the opening rush
 
+Note the rush is written as LONE movers (`U7-line U8-line`), not a group
+(`U78-line`): rushers are fetching balls down their own lanes, not forming an
+attack, so the group spread must not apply. After the grab they regress
+straight home (`U78-deep`, then `U78-back`).
+
 ```
 [Play "Pitch Back"]
 [Badge "opening rush"]
 [Call "Pitch back"]
 [Setup "rush"]
 
-1. {Rush -- the two on the right grab our three (2 + 1)} :1.3  U78-line U8*2 U7* T12-line T1*2 T2*
-2. {Pitch back -- attacker steps up} :0.9  U8>U5 U5-68 T12-deep
-3. {Free look -- hit a regressing rusher} :1  U5@T2! T12-back
+1. {Rush -- the two on the right grab our three (2 + 1)} :1.3  U7-line U8-line U8*2 U7* T1-line T2-line T1*2 T2*
+2. {Pitch back -- rushers regress as the attacker steps up} :0.9  U8>U5 U78-deep U5-68 T12-deep
+3. {Free look -- hit a regressing rusher} :1  U5@T2! U78-back T12-back
 ```
 
 ## 7. Tags
