@@ -2236,8 +2236,8 @@
         ]
       },
       {
-        "label": "Their attackers fall back — our line steps up, middle answers middle",
-        "summary": "to deep · to the line · throw at 4",
+        "label": "Their attackers fall back — we step up about halfway, middle answers middle",
+        "summary": "to deep · throw at 4",
         "dur": 1.1,
         "moves": [
           {
@@ -2269,7 +2269,7 @@
             "n": 1,
             "to": [
               29.428571428571423,
-              58
+              75
             ]
           },
           {
@@ -2277,7 +2277,7 @@
             "n": 4,
             "to": [
               43.14285714285714,
-              58
+              75
             ]
           },
           {
@@ -2285,7 +2285,7 @@
             "n": 7,
             "to": [
               56.857142857142854,
-              58
+              75
             ]
           }
         ],

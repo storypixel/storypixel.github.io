@@ -31,7 +31,7 @@
     return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
   }
   function playMeta(id) { return PLAY_CATALOG.find(function (item) { return item.id === id; }) || null; }
-  function exampleUrl(id) { return "examples/" + id + ".dbn?v=e96decf8c5"; }
+  function exampleUrl(id) { return "examples/" + id + ".dbn?v=f408f9dd4c"; }
 
   function smartQuotedCall(value) {
     var text = String(value || "").trim();
@@ -332,11 +332,18 @@
     else {
       renderPlayIndex().then(function () {
         var target = play || decodeURIComponent(window.location.hash.slice(1));
+        // accept the playbook page's anchor style too (#call-mirror -> #mirror)
+        if (target && !document.getElementById(target) && target.indexOf("call-") === 0)
+          target = target.slice(5);
         if (play) {
           try { history.replaceState(null, "", window.location.pathname + "#" + encodeURIComponent(play)); } catch (e) {}
         }
         var el = target && document.getElementById(target);
-        if (el) el.scrollIntoView();
+        if (el) {
+          el.scrollIntoView();
+          // late layout (fonts, figures) can shift the target; settle once more
+          setTimeout(function () { el.scrollIntoView(); }, 400);
+        }
       });
     }
     document.documentElement.setAttribute("data-dbn-ready", "1");
