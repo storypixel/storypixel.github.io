@@ -138,6 +138,18 @@ seconds (default 1).
 <n>. {label} :dur  <action> <action> …
 ```
 
+**Beat captions.** Each beat also compiles a terse `summary` string derived
+strictly from its actions — `to the line`, `1 pump fake`, `throw at 5` —
+joined with `·` when a beat mixes kinds (`to the line · grab`).
+Named-formation moves use the formation word (`huddle` →
+`parley: call play and choose target`, `back` → `fall back`); moves to exact
+depths or `(x,y)` points summarize as `move`. The widget shows these as
+numbered STATES in a plain text strip above the court: `1. starting position`
+before anything runs, then `2. parley: call play and choose target`,
+`3. to the line`, … as each beat plays or lands. The `{label}` stays the long,
+human-authored form; hand-written play JSON can set `summary` on any step
+directly.
+
 ## 6. Worked example — the opening rush
 
 ```

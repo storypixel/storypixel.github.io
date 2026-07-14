@@ -114,6 +114,21 @@ assert.match(
 );
 assert.match(
   engine,
+  /\.dbp__caption\{[^}]*border-bottom:2px solid #34424b[^}]*background:#fff[^}]*text-align:left/,
+  "beat caption is a plain white left-aligned strip under the frame line",
+);
+assert.doesNotMatch(
+  engine,
+  /dbp__capbox/,
+  "the caption text carries no box of its own",
+);
+assert.match(
+  engine,
+  /1\. starting position/,
+  "state 1 is the untouched court, before any beat runs",
+);
+assert.match(
+  engine,
   /\.dbp__btn\{[^}]*border-radius:0/,
   "play button has square corners",
 );

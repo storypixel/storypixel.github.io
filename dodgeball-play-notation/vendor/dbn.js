@@ -618,6 +618,7 @@
       passes: [],
       throws: [],
       fakes: [],
+      destNames: [],
       blocks: [],
       catches: [],
       dodges: [],
@@ -665,11 +666,16 @@
           (destName === "huddle" || DEPTH.hasOwnProperty(destName))
             ? groupFormationX(actors, destName, ctx)
             : null;
+        const namedDest =
+          destName === "huddle" || DEPTH.hasOwnProperty(destName)
+            ? destName
+            : null;
         actors.forEach(function (player) {
           const pos = parseDest(square, player, ctx);
           if (groupX && groupX[keyOf(player)] != null)
             pos[0] = groupX[keyOf(player)];
           acc.moves.push({ team: player.team, n: player.n, to: pos });
+          acc.destNames.push(namedDest);
           beatPos[keyOf(player)] = pos.slice();
           for (let g = 0; g < grabCount; g++)
             addGrab(acc, player, takeNearestBall(ctx, pos));
@@ -772,8 +778,50 @@
       ctx.pos[k] = beatPos[k];
     });
 
+    // ── beat caption: a terse summary derived strictly from the actions ──
+    // ("parley", "1 pump fake", "throw at 5"). It lands in the compiled JSON
+    // as step.summary, so raw-JSON authors can write their own.
+    const summaryParts = [];
+    if (acc.moves.length) {
+      const named = acc.destNames.filter(function (d) {
+        return d != null;
+      });
+      const uniq = named.filter(function (d, i) {
+        return named.indexOf(d) === i;
+      });
+      if (uniq.length === 1 && named.length === acc.moves.length) {
+        const d = uniq[0];
+        summaryParts.push(
+          d === "huddle"
+            ? "parley: call play and choose target"
+            : d === "line"
+              ? "to the line"
+              : d === "back"
+                ? "fall back"
+                : "to " + d,
+        );
+      } else summaryParts.push("move");
+    }
+    if (acc.grabs.length) summaryParts.push("grab");
+    if (acc.passes.length) summaryParts.push("pass");
+    if (acc.fakes.length) {
+      let reps = 1;
+      acc.fakes.forEach(function (f) {
+        if ((f.reps || 1) > reps) reps = f.reps || 1;
+      });
+      summaryParts.push(reps + " pump fake" + (reps > 1 ? "s" : ""));
+    }
+    if (acc.throws.length) {
+      const targets = [];
+      acc.throws.forEach(function (th) {
+        if (targets.indexOf(th.to.n) < 0) targets.push(th.to.n);
+      });
+      summaryParts.push("throw at " + targets.join(" & "));
+    }
+
     const step = {};
     if (acc.label !== null) step.label = acc.label;
+    if (summaryParts.length) step.summary = summaryParts.join(" \u00b7 ");
     step.dur = acc.dur;
     [
       "moves",

@@ -114,6 +114,7 @@
     "steps": [
       {
         "label": "They bring it up to the line",
+        "summary": "to the line · 1 pump fake",
         "dur": 1,
         "moves": [
           {
@@ -151,6 +152,7 @@
       },
       {
         "label": "They throw",
+        "summary": "throw at 2",
         "dur": 0.9,
         "throws": [
           {
@@ -175,6 +177,7 @@
       },
       {
         "label": "We rush as they retreat — and counter",
+        "summary": "move · throw at 4",
         "dur": 1.2,
         "moves": [
           {
@@ -353,6 +356,7 @@
     "steps": [
       {
         "label": "They bring it up to the line",
+        "summary": "to the line · 1 pump fake",
         "dur": 1,
         "moves": [
           {
@@ -390,6 +394,7 @@
       },
       {
         "label": "Home — pre-counter beats their throw",
+        "summary": "throw at 5 & 4",
         "dur": 1,
         "throws": [
           {
@@ -536,6 +541,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -574,6 +580,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -612,6 +619,7 @@
       },
       {
         "label": "Step 3 — one pump fake in unison to pull the block",
+        "summary": "1 pump fake",
         "dur": 1.1,
         "fakes": [
           {
@@ -638,6 +646,7 @@
       },
       {
         "label": "Step 4 — inside 5, 1: the two middles release",
+        "summary": "throw at 5",
         "dur": 1,
         "throws": [
           {
@@ -778,6 +787,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -808,6 +818,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -838,6 +849,7 @@
       },
       {
         "label": "Step 3 — one pump fake in unison to pull the block",
+        "summary": "1 pump fake",
         "dur": 1.1,
         "fakes": [
           {
@@ -859,6 +871,7 @@
       },
       {
         "label": "Step 4 — inside 5, 1: the two middles release",
+        "summary": "throw at 5",
         "dur": 1,
         "throws": [
           {
@@ -999,6 +1012,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -1037,6 +1051,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -1075,6 +1090,7 @@
       },
       {
         "label": "Step 3 — two pump fakes in unison (freeze the defense)",
+        "summary": "2 pump fakes",
         "dur": 1.2,
         "fakes": [
           {
@@ -1101,6 +1117,7 @@
       },
       {
         "label": "Step 4 — kill left on 2: the two left holders release",
+        "summary": "throw at 2",
         "dur": 1,
         "throws": [
           {
@@ -1241,6 +1258,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -1271,6 +1289,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -1301,6 +1320,7 @@
       },
       {
         "label": "Step 3 — two pump fakes in unison (freeze the defense)",
+        "summary": "2 pump fakes",
         "dur": 1.2,
         "fakes": [
           {
@@ -1322,6 +1342,7 @@
       },
       {
         "label": "Step 4 — kill left on 2: the two left holders release",
+        "summary": "throw at 2",
         "dur": 1,
         "throws": [
           {
@@ -1462,6 +1483,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -1500,6 +1522,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -1538,6 +1561,7 @@
       },
       {
         "label": "Step 3 — two pump fakes in unison (freeze the defense)",
+        "summary": "2 pump fakes",
         "dur": 1.2,
         "fakes": [
           {
@@ -1564,6 +1588,7 @@
       },
       {
         "label": "Step 4 — kill right on 7: the two right holders release",
+        "summary": "throw at 7",
         "dur": 1,
         "throws": [
           {
@@ -1704,6 +1729,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -1734,6 +1760,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -1764,6 +1791,7 @@
       },
       {
         "label": "Step 3 — two pump fakes in unison (freeze the defense)",
+        "summary": "2 pump fakes",
         "dur": 1.2,
         "fakes": [
           {
@@ -1785,6 +1813,7 @@
       },
       {
         "label": "Step 4 — kill right on 7: the two right holders release",
+        "summary": "throw at 7",
         "dur": 1,
         "throws": [
           {
@@ -1925,6 +1954,7 @@
     "steps": [
       {
         "label": "They bring it up; we pass to the middle",
+        "summary": "move · pass",
         "dur": 1,
         "moves": [
           {
@@ -1991,6 +2021,7 @@
       },
       {
         "label": "Bait — they bite, he dodges",
+        "summary": "throw at 4",
         "dur": 1.1,
         "throws": [
           {
@@ -2127,6 +2158,7 @@
     "steps": [
       {
         "label": "They set at the line",
+        "summary": "to the line · 1 pump fake",
         "dur": 1,
         "moves": [
           {
@@ -2164,6 +2196,7 @@
       },
       {
         "label": "They throw",
+        "summary": "throw at 4",
         "dur": 0.9,
         "throws": [
           {
@@ -2188,6 +2221,7 @@
       },
       {
         "label": "Mirror — our line steps up, opposite defender throws back",
+        "summary": "to the line · throw at 4",
         "dur": 1,
         "moves": [
           {
@@ -2342,6 +2376,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -2380,6 +2415,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -2418,6 +2454,7 @@
       },
       {
         "label": "Step 3 — one pump fake in unison to pull the block",
+        "summary": "1 pump fake",
         "dur": 1.1,
         "fakes": [
           {
@@ -2444,6 +2481,7 @@
       },
       {
         "label": "Step 4 — outsides 4, 1: the two corners release",
+        "summary": "throw at 4",
         "dur": 1,
         "throws": [
           {
@@ -2584,6 +2622,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -2614,6 +2653,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -2644,6 +2684,7 @@
       },
       {
         "label": "Step 3 — one pump fake in unison to pull the block",
+        "summary": "1 pump fake",
         "dur": 1.1,
         "fakes": [
           {
@@ -2665,6 +2706,7 @@
       },
       {
         "label": "Step 4 — outsides 4, 1: the two corners release",
+        "summary": "throw at 4",
         "dur": 1,
         "throws": [
           {
@@ -2842,6 +2884,7 @@
     "steps": [
       {
         "label": "Rush — the two on the right grab our three (2 + 1)",
+        "summary": "to the line · grab",
         "dur": 1.3,
         "moves": [
           {
@@ -2912,6 +2955,7 @@
       },
       {
         "label": "Pitch back — attacker steps up",
+        "summary": "move · pass",
         "dur": 0.9,
         "moves": [
           {
@@ -2954,6 +2998,7 @@
       },
       {
         "label": "Free look — hit a regressing rusher",
+        "summary": "fall back · throw at 2",
         "dur": 1,
         "moves": [
           {
@@ -3100,6 +3145,7 @@
     "steps": [
       {
         "label": "Step 1 — ball-holders parley tightly in the middle",
+        "summary": "parley: call play and choose target",
         "dur": 0.8,
         "moves": [
           {
@@ -3130,6 +3176,7 @@
       },
       {
         "label": "Step 2 — ball-holders fan to the front line",
+        "summary": "to the line",
         "dur": 0.9,
         "moves": [
           {
@@ -3160,6 +3207,7 @@
       },
       {
         "label": "Step 3 — everyone with a ball pump-fakes",
+        "summary": "1 pump fake",
         "dur": 1.1,
         "fakes": [
           {
@@ -3181,6 +3229,7 @@
       },
       {
         "label": "Step 4 — two throwers on 4",
+        "summary": "throw at 4",
         "dur": 1,
         "throws": [
           {

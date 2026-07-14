@@ -115,6 +115,32 @@ for (const id of setOffenses) {
   }
 }
 
+// beat captions: every beat compiles a terse summary derived from its actions
+const insides = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "insides.dbn"), "utf8"),
+    ),
+  ),
+);
+assert.deepStrictEqual(
+  insides.steps.map((s) => s.summary),
+  ["parley: call play and choose target", "to the line", "1 pump fake", "throw at 5"],
+  "insides beats caption as parley / to the line / 1 pump fake / throw at 5",
+);
+const killLeft = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "kill-left.dbn"), "utf8"),
+    ),
+  ),
+);
+assert.deepStrictEqual(
+  killLeft.steps.map((s) => s.summary),
+  ["parley: call play and choose target", "to the line", "2 pump fakes", "throw at 2"],
+  "kill-left counts its two unison fakes in the caption",
+);
+
 for (const id of ["home", "away", "mirror", "pitch-back"]) {
   const source = fs.readFileSync(
     path.join(root, "examples", id + ".dbn"),

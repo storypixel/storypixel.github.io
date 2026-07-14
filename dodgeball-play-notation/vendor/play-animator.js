@@ -79,6 +79,7 @@
 .dbp__node{position:absolute;z-index:2;top:50%;width:2px;height:14px;margin:-7px 0 0 0;border:0;background:#fff;pointer-events:none}
 .dbp__node--on{background:#fff}
 .dbp__thumb{position:absolute;z-index:3;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 0;background:#fff;box-shadow:none;pointer-events:none}
+.dbp__caption{display:block;padding:8px 12px;border-bottom:2px solid #34424b;background:#fff;font-size:.85rem;color:#111;text-align:left}
 .dbp__ctrls{display:block;padding:12px}
 .dbp__btn{appearance:none;width:100%;height:46px;padding:0;border:2px solid #34424b;border-radius:0;background:${COL.court};color:#111;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation}
 .dbp__btn:hover{background:#e2e8ee}
@@ -173,6 +174,7 @@
         t0,
         t1: t0 + dur,
         text: st.label || "",
+        summary: st.summary || "",
         fakes: [],
         maxReps: 0,
       };
@@ -335,6 +337,17 @@
       role: "img",
       "aria-label": (play.name || "Dodgeball play") + " animation",
     });
+    // beat caption — a plain left-aligned text strip above the court naming
+    // the numbered state the court is in: "1. starting position" before
+    // anything happens, then "2. parley", "3. to the line", … as beats land.
+    // Only present when the play's steps carry summaries.
+    let capEl = null;
+    if (c.labels.some((l) => l.summary)) {
+      capEl = document.createElement("div");
+      capEl.className = "dbp__caption";
+      root.appendChild(capEl);
+    }
+
     const courtWrap = document.createElement("div");
     courtWrap.className = "dbp__court";
     courtWrap.appendChild(stage);
@@ -622,6 +635,16 @@
       beatNodes.forEach((d, i) =>
         d.classList.toggle("dbp__node--on", i === cur),
       );
+      if (capEl) {
+        // states, not beats: state 1 = the untouched court; entering beat k
+        // (playing or landed) is state k+1, described by that beat's summary.
+        const done = t <= 0 ? 0 : c.labels.filter((l) => l.t0 < t).length;
+        const lbl = c.labels[done - 1] || {};
+        capEl.textContent =
+          done === 0
+            ? "1. starting position"
+            : done + 1 + ". " + (lbl.summary || lbl.text || "");
+      }
       const pct = c.totalDur > 0 ? (100 * t) / c.totalDur : 0;
       fillEl.style.width = pct + "%";
       // left:p% + translateX(-p%) keeps the square flush inside the rail at
