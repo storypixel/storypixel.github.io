@@ -74,10 +74,10 @@
 <body>
 <div class="wrap">
   <h1>Playbook Quiz</h1>
-  <p class="sub">Know the calls? Watch each play and name it. Pass the quiz to get certified — a perfect score earns <b>the Connor Distinction</b>.</p>
+  <p class="sub">Know the calls? Watch each play and name it. Pass the quiz to get certified — a perfect score earns <b>the Conner Distinction</b>.</p>
 
   <section id="intro" class="screen on">
-    <p>Ten plays. For each, you'll watch the animation on loop and pick the call from four choices — no labels, no hints. Score <b>80%+</b> to certify; <b>100%</b> earns the Connor Distinction.</p>
+    <p>Ten plays. For each, you'll watch the animation on loop and pick the call from four choices — no labels, no hints. Score <b>80%+</b> to certify; <b>100%</b> earns the Conner Distinction.</p>
     <input class="name" id="who" maxlength="40" placeholder="Your name (for the certificate)" autocomplete="name">
     <button class="btn primary" id="begin">Begin</button>
   </section>
@@ -115,7 +115,7 @@
   // Cert IDs are a SHA-256 over the result + this issuer key. Recompute with the
   // same inputs to verify a screenshot is real — a forged card won't have a
   // matching ID unless the forger also knows this key and the exact answer trail.
-  var ISSUER = 'dodging-all-night-all-summer/connor';
+  var ISSUER = 'dodging-all-night-all-summer/conner';
   var cache = {}, quiz = [], qi = 0, score = 0, ctrl = null, answered = false, trail = '';
 
   var $ = function(id){ return document.getElementById(id); };
@@ -189,7 +189,7 @@
     var d=new Date();
     var date=d.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
     var iso=d.toISOString().slice(0,10);
-    var tier=perfect?'CONNOR DISTINCTION':(passed?'CERTIFIED':'NOT CERTIFIED');
+    var tier=perfect?'CONNER DISTINCTION':(passed?'CERTIFIED':'NOT CERTIFIED');
     var payload=[ISSUER, who, score+'/'+N, iso, tier, trail].join('|');
     var id=await certId(payload);
     var r=$('results');
@@ -198,7 +198,7 @@
       r.innerHTML=
         '<div class="cert'+(dist?' distinction':'')+'">'+
           '<div class="seal">'+(dist?'🏆':'🏅')+'</div>'+
-          '<div class="k">'+(dist?'The Connor Distinction':'Certified')+'</div>'+
+          '<div class="k">'+(dist?'The Conner Distinction':'Certified')+'</div>'+
           '<h2>Playbook Quiz</h2>'+
           '<div class="line">This certifies that</div>'+
           '<div class="who">'+esc(who)+'</div>'+
@@ -239,7 +239,7 @@
     x.textAlign='center';
     x.font='64px "Times New Roman",Times,serif'; x.fillText(d.dist?'\ud83c\udfc6':'\ud83c\udfc5', W/2, 118);
     x.fillStyle='#8a5a00'; x.font='bold 17px "Times New Roman",Times,serif';
-    x.fillText((d.dist?'T H E   C O N N O R   D I S T I N C T I O N':'C E R T I F I E D'), W/2, 158);
+    x.fillText((d.dist?'T H E   C O N N E R   D I S T I N C T I O N':'C E R T I F I E D'), W/2, 158);
     x.fillStyle='#3a2f10'; x.font='bold 44px "Times New Roman",Times,serif';
     x.fillText('Playbook Quiz', W/2, 212);
     x.fillStyle='#6b5a2a'; x.font='20px "Times New Roman",Times,serif';
