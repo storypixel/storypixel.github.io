@@ -68,6 +68,9 @@
   @media(max-width:899px){
     .wrap{margin:0;padding:0 0 35px}
     ul.calls{padding-left:14px}
+    /* widgets break out of the list indent on small screens so the court sits
+       symmetric on the page (equal margins left and right) */
+    ul.calls>li>.db-inline,ul.calls>li>.db-insets{margin-left:-14px}
   }
 </style>
 </head>
