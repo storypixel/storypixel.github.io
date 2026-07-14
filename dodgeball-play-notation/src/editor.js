@@ -31,7 +31,7 @@
     return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
   }
   function playMeta(id) { return PLAY_CATALOG.find(function (item) { return item.id === id; }) || null; }
-  function exampleUrl(id) { return "examples/" + id + ".dbn?v=38f8d5d6e0"; }
+  function exampleUrl(id) { return "examples/" + id + ".dbn?v=e96decf8c5"; }
 
   function smartQuotedCall(value) {
     var text = String(value || "").trim();

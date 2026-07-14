@@ -2020,10 +2020,22 @@
         ]
       },
       {
-        "label": "Bait — they bite, he dodges",
+        "label": "Bait — two of them bite, he dodges both",
         "summary": "throw at 4",
         "dur": 1.1,
         "throws": [
+          {
+            "from": {
+              "team": "them",
+              "n": 3
+            },
+            "to": {
+              "team": "us",
+              "n": 4
+            },
+            "outcome": "dodged",
+            "curve": -12
+          },
           {
             "from": {
               "team": "them",
@@ -2034,10 +2046,14 @@
               "n": 4
             },
             "outcome": "dodged",
-            "curve": 14
+            "curve": 12
           }
         ],
         "dodges": [
+          {
+            "team": "us",
+            "n": 4
+          },
           {
             "team": "us",
             "n": 4
