@@ -2,7 +2,7 @@
 <html lang="en" data-dbn-ready="0">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dodgeball Playbook</title>
 <meta name="description" content="A browsable dodgeball playbook with animated calls, step-by-step movement, and DBN notation.">
 <style>
@@ -11,6 +11,8 @@
     --line:#d9d5cc; --line-strong:#b7b1a7; --navy:#18324b; --navy-soft:#e8eef3;
     --red:#d94242; --red-soft:#f8e7e4; --gold:#e6ad3b; --ok:#28745a; --err:#b9342b;
     --shadow:0 18px 50px rgba(30,35,42,.08); --radius:14px;
+    --mobile-bottom-space:2.5rem; --mobile-gutter:1rem; --mobile-root-size:112.5%;
+    --mobile-top-space:.5rem; --play-max-width:520px; --touch-target:44px;
   }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
@@ -28,7 +30,7 @@
   .brand-mark { display:grid; width:38px; height:38px; place-items:center; border-radius:50%; background:var(--red); color:#fff;
     font-size:11px; font-weight:850; letter-spacing:.08em; box-shadow:inset 0 0 0 3px rgba(255,255,255,.26); }
   .brand-copy { display:flex; flex-direction:column; line-height:1.1; }
-  .brand-copy strong { font-size:15px; letter-spacing:.035em; text-transform:uppercase; }
+  .brand-title { font-size:15px; letter-spacing:.035em; text-transform:uppercase; }
   .brand-copy span { margin-top:4px; color:var(--muted); font-size:11px; }
   .top-links { display:flex; align-items:center; gap:18px; font-size:12px; font-weight:650; }
   .top-links a { color:var(--muted); text-decoration:none; }
@@ -140,7 +142,7 @@
     .play-heading .callout { min-width:0; }
   }
   @media (max-width:600px) { .index-row { grid-template-columns:1fr auto; gap:4px 12px; } .index-call { grid-column:1/-1; } .play-heading h1,.page-intro h1 { font-size:28px; } .card-head { align-items:flex-start; } }
-  @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; transition:none!important; } }
+  @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto; transition:none; } }
 
   /* 1995 mode: deliberately plain HTML-reference-page presentation. */
   html { scroll-behavior:auto; }
@@ -153,7 +155,7 @@
   .brand:visited { color:#000; }
   .brand-mark { display:none; }
   .brand-copy { display:block; line-height:1.15; }
-  .brand-copy strong { display:block; font:700 30px/1.05 "Times New Roman",Times,serif; letter-spacing:0; text-transform:uppercase; }
+  .brand-title { display:block; font:700 30px/1.05 "Times New Roman",Times,serif; letter-spacing:0; text-transform:uppercase; }
   .brand-copy span { display:block; margin-top:2px; color:#000; font-size:14px; }
   .top-links { display:block; margin-top:8px; font-size:14px; font-weight:400; }
   .top-links a { margin:0 6px; }
@@ -169,7 +171,7 @@
   .sidebar-heading { margin:0 0 8px; color:#000; font:bold 14px "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
   .all-plays-link { display:block; margin:0 0 14px; padding:0; color:#0000ee; font-weight:700; text-decoration:underline; }
   .all-plays-link:hover, body[data-view="all"] .all-plays-link { background:transparent; color:#0000ee; }
-  .all-plays-link span { display:inline; min-width:0; height:auto; margin-left:3px; padding:0; background:transparent!important; font-size:12px; }
+  .all-plays-link span { display:inline; min-width:0; height:auto; margin-left:3px; padding:0; background:transparent; font-size:12px; }
   .all-plays-link span::before { content:"("; } .all-plays-link span::after { content:")"; }
   .play-nav-group + .play-nav-group { margin-top:16px; }
   .play-nav-group h3 { margin:0 0 3px; color:#000; font:bold 14px "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
@@ -247,49 +249,92 @@
   }
 
   /* Outer shell: a deliberately unstyled serif document. */
-  body { margin:8px; background:#fff; color:#000; font:16px/1.25 "Times New Roman",Times,serif; }
+  body { margin:8px; background:#fff; color:#000; font:1rem/1.25 "Times New Roman",Times,serif; }
   a, .top-links a, .breadcrumb a, .play-nav a { color:#0000ee; text-decoration:underline; }
   a:visited, .top-links a:visited, .breadcrumb a:visited, .play-nav a:visited { color:#551a8b; }
   .topbar { position:static; display:block; min-height:0; padding:0 0 8px; border:0; border-bottom:1px solid #000; background:#fff; text-align:left; }
   .brand { display:block; color:#000; text-decoration:none; }
   .brand:visited { color:#000; }
-  .brand-copy strong { font:bold 32px/1 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
+  .brand-title { font:bold 2rem/1 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
   .brand-copy span { display:none; }
-  .top-links { display:block; margin-top:6px; font:16px "Times New Roman",Times,serif; }
+  .top-links { display:block; margin-top:6px; font:1rem "Times New Roman",Times,serif; }
   .top-links a { margin:0 10px 0 0; }
   .jump-control, .wiki-sidebar { display:none; }
   .wiki-shell { display:block; width:auto; min-height:0; margin:0; border:0; }
   .wiki-content { width:auto; max-width:900px; margin:0; padding:12px 0 40px; background:#fff; }
   .page-intro { display:block; margin-bottom:12px; }
-  .page-intro h1, .play-heading h1 { font:bold 28px/1.1 "Times New Roman",Times,serif; letter-spacing:0; }
-  .page-intro p, .play-heading .lead { margin:5px 0; color:#000; font-size:16px; }
-  .play-count { color:#000; font-size:14px; }
+  .page-intro h1, .play-heading h1 { font:bold 1.75rem/1.1 "Times New Roman",Times,serif; letter-spacing:0; }
+  .page-intro p, .play-heading .lead { margin:5px 0; color:#000; font-size:1rem; }
+  .play-count { color:#000; font-size:1rem; }
   .play-index { border-top:1px solid #000; }
   .index-group { display:block; border-bottom:1px solid #000; }
-  .index-group h2 { margin:10px 0 4px; padding:0; border:0; background:#fff; color:#000; font:bold 20px/1.2 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
+  .index-group h2 { margin:10px 0 4px; padding:0; border:0; background:#fff; color:#000; font:bold 1.25rem/1.2 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
   .index-list { margin:4px 0 12px 28px; }
   .index-row { color:#000; }
-  .index-call, .index-steps { color:#000; }
-  .breadcrumb { margin:0 0 10px; font-size:16px; }
+  .index-call, .index-steps { color:#000; font-size:1rem; }
+  .breadcrumb { margin:0 0 10px; font-size:1rem; }
   .play-heading { display:block; padding-bottom:8px; border-bottom:1px solid #000; }
-  .category-tag, .play-badge { display:block; padding:0; background:transparent; color:#000; font:normal 14px "Times New Roman",Times,serif; }
+  .category-tag, .play-badge { display:block; padding:0; background:transparent; color:#000; font:normal 1rem "Times New Roman",Times,serif; }
   .play-heading .callout { margin:6px 0 0; padding:0; border:0; background:#fff; }
-  .callout span { font:bold 16px "Times New Roman",Times,serif; }
-  .callout strong { font:normal 16px "Times New Roman",Times,serif; }
+  .callout span { font:bold 1rem "Times New Roman",Times,serif; }
+  .callout strong { font:normal 1rem "Times New Roman",Times,serif; }
   .play-layout { display:block; margin-top:12px; }
   .wiki-card, .animation-card, .steps-card { border:0; border-radius:0; background:transparent; }
   .card-head, .animation-card .card-head { min-height:0; padding:0 0 4px; border:0; }
-  .card-head h2 { font:bold 22px/1.2 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
-  .play-tools .btn, select, .btn { padding:1px 5px; border:2px outset buttonface; border-radius:0; background:buttonface; color:buttontext; font:13px Arial,sans-serif; }
+  .card-head h2 { font:bold 1.375rem/1.2 "Times New Roman",Times,serif; letter-spacing:0; text-transform:none; }
+  .play-tools .btn, select, .btn { padding:1px 5px; border:2px outset buttonface; border-radius:0; background:buttonface; color:buttontext; font:1rem Arial,sans-serif; }
   .preview-wrap { padding:4px 0 12px; background:#fff; }
   .steps-card { margin-top:10px; }
   .steps-card .card-head { padding:0; background:#fff; }
   .step-list { margin:3px 0 10px 24px; padding:0; }
   .step-list li { padding:2px 0; }
-  .step-list strong, .step-list span { font-family:"Times New Roman",Times,serif; }
+  .step-list strong, .step-list span { font-family:"Times New Roman",Times,serif; font-size:1rem; }
   .editor-drawer { margin-top:12px; border:1px solid #000; border-radius:0; }
   .editor-drawer-head { padding:3px 5px; border-bottom:1px solid #000; background:#fff; }
   .editor-drawer-head h2 { font-family:"Times New Roman",Times,serif; }
+
+  /* Responsive outer shell. */
+  .play-stage { margin-inline:auto; max-width:var(--play-max-width); width:min(100%,var(--play-max-width)); }
+  @media (max-width:700px) {
+    html { font-size:var(--mobile-root-size); }
+    body { font-size:1rem; line-height:1.4; margin:0; }
+    .topbar {
+      padding-bottom:var(--mobile-top-space);
+      padding-left:max(var(--mobile-gutter),env(safe-area-inset-left));
+      padding-right:max(var(--mobile-gutter),env(safe-area-inset-right));
+      padding-top:max(var(--mobile-top-space),env(safe-area-inset-top));
+    }
+    .wiki-content {
+      margin-inline:auto;
+      max-width:none;
+      padding-bottom:max(var(--mobile-bottom-space),env(safe-area-inset-bottom));
+      padding-left:max(var(--mobile-gutter),env(safe-area-inset-left));
+      padding-right:max(var(--mobile-gutter),env(safe-area-inset-right));
+      padding-top:var(--mobile-gutter);
+      width:100%;
+    }
+    .brand-title { font-size:clamp(1.5rem,8vw,1.75rem); line-height:1.05; white-space:nowrap; }
+    .btn, select { font-size:1rem; min-height:var(--touch-target); }
+  }
+
+  /* Inline play entries — the master list links jump to these anchors. */
+  .play-entry { padding-top:14px; border-top:1px solid #000; margin-top:22px; scroll-margin-top:10px; }
+  .play-entry h2 { margin:0; font:bold 24px/1.2 "Times New Roman",Times,serif; }
+  .play-entry .entry-variant { margin-left:8px; font:normal 15px "Times New Roman",Times,serif; color:#000; }
+  .play-entry .entry-call { margin:6px 0 0; font:bold 17px "Times New Roman",Times,serif; }
+  .play-entry .entry-desc { margin:6px 0 10px; font-size:16px; }
+  .play-entry .entry-stage { max-width:var(--play-max-width); margin:10px 0; }
+  .play-entry .entry-steps { margin:8px 0 10px 24px; padding:0; }
+  .play-entry .entry-steps li { padding:2px 0; }
+  .play-entry .entry-steps strong { font-weight:700; }
+  .play-entry .entry-steps span { margin-left:6px; color:#333; font-size:14px; }
+  .play-entry details.notation { margin:6px 0 4px; }
+  .play-entry details.notation > summary { display:inline; cursor:pointer; color:#0000ee; text-decoration:underline; user-select:none; }
+  .play-entry details.notation > summary::-webkit-details-marker { display:none; }
+  .play-entry details.notation > summary::before { content:"\25b8 "; font-size:.85em; }
+  .play-entry details.notation[open] > summary::before { content:"\25be "; }
+  .play-entry details.notation pre { margin:8px 0 0; padding:8px; border:1px solid #000; overflow-x:auto; font:13px/1.4 "Courier New",monospace; }
+  @media (max-width:700px) { .play-entry .entry-stage { max-width:none; } }
 </style>
 </head>
 <body data-view="loading">
@@ -298,7 +343,7 @@
 <header class="topbar">
   <a class="brand" href="./" aria-label="Dodgeball Playbook — all plays">
     <span class="brand-mark" aria-hidden="true">DB</span>
-    <span class="brand-copy"><strong>Dodgeball Playbook</strong><span>Dodgeball plays and diagrams</span></span>
+    <span class="brand-copy"><strong class="brand-title">Dodgeball Playbook</strong><span>Dodgeball plays and diagrams</span></span>
   </a>
   <nav class="top-links" aria-label="Reference links">
     <a href="./">All plays</a><a href="NOTATION.md">Notation</a><a href="GLOSSARY.md">Glossary</a><a href="DRIVING.md">Agent guide</a>
@@ -316,7 +361,7 @@
     <p class="sidebar-heading">Playbook</p>
     <a class="all-plays-link" href="./">All plays <span data-play-total>14</span></a>
     <nav class="play-nav" id="play-nav" aria-label="Plays by category"></nav>
-    <p class="sidebar-note">Every play has a shareable page, animated court, coaching call, and step-by-step sequence.</p>
+    <p class="sidebar-note">Every play lives on this page — share any link and it scrolls straight to the animated court and sequence.</p>
   </aside>
 
   <main class="wiki-content" id="content">
@@ -330,6 +375,7 @@
         <span class="play-count"><strong data-play-total>14</strong> documented plays</span>
       </div>
       <div class="play-index" id="play-index" aria-live="polite"><p class="empty-index">Loading plays…</p></div>
+      <div id="plays-doc" aria-label="Every play, in full"></div>
     </section>
 
     <article class="wiki-view" id="play-page" aria-labelledby="play-title">
@@ -370,9 +416,9 @@
   </main>
 </div>
 
-<script src="vendor/play-animator.js?v=820848f273"></script>
-<script src="vendor/dbn.js?v=820848f273"></script>
-<script src="src/editor.js?v=820848f273"></script>
+<script src="vendor/play-animator.js?v=19cd5a2bd0"></script>
+<script src="vendor/dbn.js?v=19cd5a2bd0"></script>
+<script src="src/editor.js?v=19cd5a2bd0"></script>
 <script>
   (function () {
     var btn = document.getElementById('code-toggle');

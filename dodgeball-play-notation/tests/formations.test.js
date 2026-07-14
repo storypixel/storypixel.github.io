@@ -153,4 +153,92 @@ for (const id of ["home", "away", "mirror", "pitch-back"]) {
   );
 }
 
+const mirror = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "mirror.dbn"), "utf8"),
+    ),
+  ),
+);
+assert.deepStrictEqual(
+  mirror.setup.us.filter((p) => p.ball).map((p) => p.n),
+  [1, 4, 7],
+  "mirror spreads our three holders across left, middle, and right roles",
+);
+assert.deepStrictEqual(
+  mirror.steps[0].moves.map((m) => m.n),
+  [2, 4, 6],
+  "mirror sends only their loaded attackers to the line",
+);
+assert.deepStrictEqual(
+  mirror.steps[2].moves.filter((m) => m.team === "us").map((m) => m.n),
+  [1, 4, 7],
+  "all three mirror holders step to the line",
+);
+assert.deepStrictEqual(
+  mirror.steps[2].moves.filter((m) => m.team === "them").map((m) => m.n),
+  [2, 4, 6],
+  "their loaded attackers regress as our defense approaches",
+);
+assert.ok(
+  mirror.steps[2].moves
+    .filter((m) => m.team === "them")
+    .every((m) => m.to[1] === 25),
+  "their offense falls back to deep after the attack",
+);
+assert.deepStrictEqual(
+  [mirror.steps[1].throws[0].from.n, mirror.steps[2].throws[0].from.n],
+  [4, 4],
+  "the attacking middle holder is answered by our middle holder",
+);
+assert.deepStrictEqual(
+  [mirror.steps[1].throws.length, mirror.steps[2].throws.length],
+  [1, 1],
+  "mirror shows one attacking throw and one matching defensive throw",
+);
+assert.match(
+  mirror.desc,
+  /left answers left, middle answers middle, and right answers right/,
+  "mirror explains role-for-role matching instead of nearest-player matching",
+);
+assert.match(
+  mirror.desc,
+  /one-ball attack.*first thrower/,
+  "mirror defaults to answering the first thrower in a one-ball attack",
+);
+assert.match(
+  mirror.desc,
+  /multi-ball volley is a reset/,
+  "mirror does not imply that three defensive holders answer a volley",
+);
+
+const away = JSON.parse(
+  JSON.stringify(
+    ctx.DBN.parse(
+      fs.readFileSync(path.join(root, "examples", "away.dbn"), "utf8"),
+    ),
+  ),
+);
+assert.deepStrictEqual(
+  away.steps[0].moves.map((m) => m.n),
+  [2, 4, 6],
+  "away sends only their loaded attackers to the line",
+);
+assert.deepStrictEqual(
+  away.steps[2].moves.filter((m) => m.team === "us").map((m) => m.n),
+  [4, 5, 6],
+  "our away holders press the line together",
+);
+assert.deepStrictEqual(
+  away.steps[2].moves.filter((m) => m.team === "them").map((m) => m.n),
+  [2, 4, 6],
+  "their loaded attackers regress as our away defense presses",
+);
+assert.ok(
+  away.steps[2].moves
+    .filter((m) => m.team === "them")
+    .every((m) => m.to[1] === 25),
+  "their offense falls back to deep during our press",
+);
+
 console.log("✓ formation geometry and offensive/defensive choreography");

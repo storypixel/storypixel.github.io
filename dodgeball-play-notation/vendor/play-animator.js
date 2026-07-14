@@ -65,7 +65,7 @@
 .dbp__badge{font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:#666;border:1px solid #d4d4d4;border-radius:999px;padding:2px 7px}
 .dbp__call{color:#555;font-size:.85rem}
 .dbp__desc{padding:0 13px 9px;color:#555;font-size:.85rem}
-.dbp__stage{display:block;width:100%;height:auto;border-bottom:2px solid #34424b;background:${COL.court};touch-action:none}
+.dbp__stage{display:block;width:100%;height:auto;border-bottom:2px solid #34424b;background:${COL.court};touch-action:auto}
 .dbp__court{position:relative;line-height:0}
 /* The black band spans the widget's full width; the rail, ticks, and playhead
    inside it are inset by 12px each side — equal to the .dbp__ctrls inset — so
@@ -93,7 +93,8 @@
 .dbp__step{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .dbp:focus{outline:none}
 .dbp:focus-visible{outline:2px solid #111;outline-offset:2px}
-.dbp__hint{padding:0 13px 9px;font-size:.68rem;color:#888}`;
+.dbp__hint{padding:0 13px 9px;font-size:.68rem;color:#888}
+@media(max-width:480px){.dbp{font-size:16px}.dbp__caption{font-size:1rem}}`;
     const s = document.createElement("style");
     s.setAttribute("data-dbp-styles", "");
     s.textContent = css;

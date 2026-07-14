@@ -7,7 +7,7 @@
     "name": "Away",
     "badge": "3-ball defense",
     "call": "\"Away\"",
-    "desc": "We're holding three balls on defense. They attack the line first; when they throw we rush — as they retreat off the line, our three ball-holders surge forward and counter the thrower on the run.",
+    "desc": "We're holding three balls on defense. Only their loaded attackers come to the line; teammates without balls stay back. One holder throws. As their attackers regress, our three ball-holders press forward together and one counters the thrower on the run.",
     "setup": {
       "us": [
         {
@@ -113,7 +113,7 @@
     },
     "steps": [
       {
-        "label": "They bring it up to the line",
+        "label": "Their loaded attackers take the line",
         "summary": "to the line · 1 pump fake",
         "dur": 1,
         "moves": [
@@ -176,7 +176,7 @@
         ]
       },
       {
-        "label": "We rush as they retreat — and counter",
+        "label": "We press as their attackers regress — and counter",
         "summary": "move · throw at 4",
         "dur": 1.2,
         "moves": [
@@ -2051,14 +2051,14 @@
     "name": "Mirror",
     "badge": "3-ball defense",
     "call": "\"Mirror\"",
-    "desc": "We're holding three balls on defense. They set at the line to throw; the defender directly opposite the thrower has the green light. Our ball-holders step up to the line as the opposite defender fires straight back.",
+    "desc": "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws.",
     "setup": {
       "us": [
         {
           "n": 1,
           "x": 2,
           "y": 95,
-          "ball": false
+          "ball": true
         },
         {
           "n": 2,
@@ -2082,19 +2082,19 @@
           "n": 5,
           "x": 56.857142857142854,
           "y": 95,
-          "ball": true
+          "ball": false
         },
         {
           "n": 6,
           "x": 70.57142857142857,
           "y": 95,
-          "ball": true
+          "ball": false
         },
         {
           "n": 7,
           "x": 84.28571428571428,
           "y": 95,
-          "ball": false
+          "ball": true
         },
         {
           "n": 8,
@@ -2157,7 +2157,7 @@
     },
     "steps": [
       {
-        "label": "They set at the line",
+        "label": "Their loaded attackers take the line; middle shows",
         "summary": "to the line · 1 pump fake",
         "dur": 1,
         "moves": [
@@ -2195,7 +2195,7 @@
         ]
       },
       {
-        "label": "They throw",
+        "label": "Their middle throws",
         "summary": "throw at 4",
         "dur": 0.9,
         "throws": [
@@ -2220,10 +2220,42 @@
         ]
       },
       {
-        "label": "Mirror — our line steps up, opposite defender throws back",
-        "summary": "to the line · throw at 4",
-        "dur": 1,
+        "label": "Their attackers fall back — our line steps up, middle answers middle",
+        "summary": "move · throw at 4",
+        "dur": 1.1,
         "moves": [
+          {
+            "team": "them",
+            "n": 2,
+            "to": [
+              29.428571428571423,
+              25
+            ]
+          },
+          {
+            "team": "them",
+            "n": 4,
+            "to": [
+              43.14285714285714,
+              25
+            ]
+          },
+          {
+            "team": "them",
+            "n": 6,
+            "to": [
+              56.857142857142854,
+              25
+            ]
+          },
+          {
+            "team": "us",
+            "n": 1,
+            "to": [
+              29.428571428571423,
+              58
+            ]
+          },
           {
             "team": "us",
             "n": 4,
@@ -2234,17 +2266,9 @@
           },
           {
             "team": "us",
-            "n": 5,
+            "n": 7,
             "to": [
               56.857142857142854,
-              58
-            ]
-          },
-          {
-            "team": "us",
-            "n": 6,
-            "to": [
-              70.57142857142857,
               58
             ]
           }

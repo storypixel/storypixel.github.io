@@ -51,6 +51,16 @@ assert.match(
 );
 assert.match(
   engine,
+  /\.dbp__stage\{[^\n]*touch-action:auto/,
+  "vertical page scrolling remains available when a gesture starts on the court",
+);
+assert.match(
+  engine,
+  /\.dbp__scrub\{[^}]*touch-action:none/,
+  "only the draggable timeline claims its pointer gesture",
+);
+assert.match(
+  engine,
   /\.dbp__scrub\{[^}]*height:40px[^}]*padding:0 12px[^}]*background:#111/,
   "black band spans full width; scrub line is inset to the button's width",
 );
@@ -146,6 +156,11 @@ assert.match(
   engine,
   /PLAYER_LABEL_SIZE = 32/,
   "player labels remain readable when the SVG scales down",
+);
+assert.match(
+  engine,
+  /@media\(max-width:480px\)\{\.dbp\{font-size:16px\}\.dbp__caption\{font-size:1rem\}\}/,
+  "widget captions use a readable mobile type size inside the isolated styles",
 );
 
 console.log("  ✓ widget styles are isolated from the playbook page");

@@ -23,7 +23,7 @@
   ];
   var CATEGORY_LABELS = { offense:"Offense", defense:"Defense", situational:"Situational" };
   var els = {};
-  var state = { play:null, errors:[], mount:null, widgetRoot:null, ready:false, index:[] };
+  var state = { play:null, errors:[], mount:null, widgetRoot:null, ready:false, index:[], docMounts:[] };
 
   function $(id) { return document.getElementById(id); }
   function qparam(name) {
@@ -31,7 +31,7 @@
     return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
   }
   function playMeta(id) { return PLAY_CATALOG.find(function (item) { return item.id === id; }) || null; }
-  function exampleUrl(id) { return "examples/" + id + ".dbn?v=820848f273"; }
+  function exampleUrl(id) { return "examples/" + id + ".dbn?v=19cd5a2bd0"; }
 
   function smartQuotedCall(value) {
     var text = String(value || "").trim();
@@ -149,29 +149,6 @@
   function getText() { return els.input ? els.input.value : ""; }
   function isReady() { return state.ready; }
 
-  function updatePlayUrl(id) {
-    try {
-      var params = new URLSearchParams(window.location.search);
-      params.set("play", id); params.delete("dbn");
-      history.replaceState(null, "", "?" + params.toString());
-    } catch (e) {}
-  }
-
-  function loadExample(id, updateUrl) {
-    return fetch(exampleUrl(id))
-      .then(function (r) { if (!r.ok) throw new Error("not found"); return r.text(); })
-      .then(function (txt) {
-        if (els.exampleSel) els.exampleSel.value = id;
-        if (updateUrl !== false) updatePlayUrl(id);
-        load(txt);
-        return txt;
-      })
-      .catch(function () {
-        document.body.setAttribute("data-view", "all");
-        setStatus("err", "could not load example '" + id + "' (serve over http)");
-      });
-  }
-
   function makeNav() {
     if (!els.playNav || !els.exampleSel) return;
     els.playNav.innerHTML = "";
@@ -183,7 +160,7 @@
       section.appendChild(heading);
       PLAY_CATALOG.filter(function (item) { return item.category === category; }).forEach(function (item) {
         var link = document.createElement("a");
-        link.href = "?play=" + encodeURIComponent(item.id);
+        link.href = "#" + encodeURIComponent(item.id);
         link.dataset.playId = item.id;
         var label = document.createElement("span");
         label.textContent = item.label;
@@ -214,7 +191,7 @@
     row.className = "index-row";
     var link = document.createElement("a");
     link.className = "index-title";
-    link.href = "?play=" + encodeURIComponent(entry.meta.id);
+    link.href = "#" + encodeURIComponent(entry.meta.id);
     link.textContent = entry.play.name || entry.meta.label;
     var call = document.createElement("span");
     call.className = "index-call";
@@ -232,8 +209,8 @@
     setActiveNavigation(null);
     return Promise.all(PLAY_CATALOG.map(function (meta) {
       return fetch(exampleUrl(meta.id)).then(function (r) { if (!r.ok) throw new Error("not found"); return r.text(); })
-        .then(function (text) { return { meta:meta, play:window.DBN.parse(text) }; })
-        .catch(function () { return { meta:meta, play:{ name:meta.label, desc:"Play details unavailable.", steps:[] } }; });
+        .then(function (text) { return { meta:meta, text:text, play:window.DBN.parse(text) }; })
+        .catch(function () { return { meta:meta, text:"", play:{ name:meta.label, desc:"Play details unavailable.", steps:[] } }; });
     })).then(function (entries) {
       state.index = entries;
       els.playIndex.innerHTML = "";
@@ -248,13 +225,93 @@
           .forEach(function (entry) { list.appendChild(makeIndexRow(entry)); });
         section.appendChild(heading); section.appendChild(list); els.playIndex.appendChild(section);
       });
+      renderPlaysDoc(entries);
+    });
+  }
+
+  // Every play rendered inline on the master page: the index above links to
+  // these anchors, so a shared URL like #kill-left scrolls straight here.
+  function renderPlaysDoc(entries) {
+    if (!els.playsDoc) return;
+    state.docMounts.forEach(function (m) { if (m && m.destroy) m.destroy(); });
+    state.docMounts = [];
+    els.playsDoc.innerHTML = "";
+    entries.forEach(function (entry) {
+      var section = document.createElement("section");
+      section.className = "play-entry";
+      section.id = entry.meta.id;
+
+      var heading = document.createElement("h2");
+      heading.textContent = entry.play.name || entry.meta.label;
+      if (entry.meta.variant) {
+        var variant = document.createElement("span");
+        variant.className = "entry-variant";
+        variant.textContent = entry.meta.variant;
+        heading.appendChild(variant);
+      }
+      section.appendChild(heading);
+
+      if (entry.play.call) {
+        var call = document.createElement("p");
+        call.className = "entry-call";
+        call.textContent = smartQuotedCall(entry.play.call);
+        section.appendChild(call);
+      }
+      if (entry.play.desc) {
+        var desc = document.createElement("p");
+        desc.className = "entry-desc";
+        desc.textContent = entry.play.desc;
+        section.appendChild(desc);
+      }
+
+      var stage = document.createElement("div");
+      stage.className = "entry-stage";
+      var island = document.createElement("div");
+      island.setAttribute("data-dbp-island", "");
+      stage.appendChild(island);
+      section.appendChild(stage);
+      var root = island.attachShadow ? island.attachShadow({ mode:"open" }) : island;
+      var host = document.createElement("div");
+      root.appendChild(host);
+      try {
+        state.docMounts.push(window.DodgeballPlay.mount(host, entry.play, {
+          chrome:"minimal", prose:false, speed:currentSpeed(),
+        }));
+      } catch (e) { stage.remove(); }
+
+      var steps = entry.play.steps || [];
+      if (steps.length) {
+        var list = document.createElement("ol");
+        list.className = "entry-steps";
+        steps.forEach(function (step, index) {
+          var li = document.createElement("li");
+          var title = document.createElement("strong");
+          title.textContent = step.label || "Step " + (index + 1);
+          var detail = document.createElement("span");
+          detail.textContent = (step.dur || 1) + " sec · " + stepSummary(step);
+          li.appendChild(title); li.appendChild(detail); list.appendChild(li);
+        });
+        section.appendChild(list);
+      }
+
+      if (entry.text) {
+        var fig = document.createElement("details");
+        fig.className = "notation";
+        var summary = document.createElement("summary");
+        summary.textContent = "View notation";
+        var pre = document.createElement("pre");
+        pre.textContent = entry.text.trim();
+        fig.appendChild(summary); fig.appendChild(pre); section.appendChild(fig);
+      }
+
+      els.playsDoc.appendChild(section);
     });
   }
 
   function boot() {
     els.input = $("dbn-input"); els.stage = $("stage"); els.status = $("status"); els.errorPanel = $("error-panel");
     els.renderBtn = $("render-btn"); els.exampleSel = $("example-select");
-    els.playNav = $("play-nav"); els.playIndex = $("play-index");
+    els.playNav = $("play-nav"); els.playIndex = $("play-index"); els.playsDoc = $("plays-doc");
     makeNav();
     if (els.renderBtn) els.renderBtn.addEventListener("click", render);
     if (els.input) {
@@ -263,8 +320,8 @@
       els.input.addEventListener("keydown", function (e) { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") { e.preventDefault(); render(); } });
     }
     if (els.exampleSel) els.exampleSel.addEventListener("change", function () {
-      if (els.exampleSel.value) window.location.href = "?play=" + encodeURIComponent(els.exampleSel.value);
-      else window.location.href = "./";
+      if (els.exampleSel.value) window.location.hash = els.exampleSel.value;
+      else window.scrollTo(0, 0);
     });
 
     window.DBNEditor = { load:load, render:render, exportSVG:exportSVG, exportJSON:exportJSON, getErrors:getErrors, getPlay:getPlay, getText:getText, isReady:isReady, player:player };
@@ -272,8 +329,16 @@
     var dbn = qparam("dbn");
     var play = qparam("play");
     if (dbn != null) load(dbn);
-    else if (play) loadExample(play, false);
-    else renderPlayIndex();
+    else {
+      renderPlayIndex().then(function () {
+        var target = play || decodeURIComponent(window.location.hash.slice(1));
+        if (play) {
+          try { history.replaceState(null, "", window.location.pathname + "#" + encodeURIComponent(play)); } catch (e) {}
+        }
+        var el = target && document.getElementById(target);
+        if (el) el.scrollIntoView();
+      });
+    }
     document.documentElement.setAttribute("data-dbn-ready", "1");
   }
 

@@ -1,9 +1,9 @@
 [Play "Mirror"]
 [Badge "3-ball defense"]
 [Call "Mirror"]
-[Desc "We're holding three balls on defense. They set at the line to throw; the defender directly opposite the thrower has the green light. Our ball-holders step up to the line as the opposite defender fires straight back."]
-[Balls "U:456 T:246"]
+[Desc "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws."]
+[Balls "U:147 T:246"]
 
-1. {They set at the line} :1  T246-line T4?
-2. {They throw} :0.9  T4@U4%
-3. {Mirror — our line steps up, opposite defender throws back} :1  U456-line U4@T4!
+1. {Their loaded attackers take the line; middle shows} :1  T246-line T4?
+2. {Their middle throws} :0.9  T4@U4%
+3. {Their attackers fall back — our line steps up, middle answers middle} :1.1  T246-deep U147-line U4@T4!
