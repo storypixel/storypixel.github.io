@@ -28,32 +28,34 @@
 <div class="wrap">
   <header class="top">
     <h1>Example Playbook</h1>
-    <p>A tiny sample playbook &mdash; just a few plays, each animated. This isn't a team's real playbook; it's a demo of the format. Test yourself on the <a href="/certification/">Playbook Certification &rarr;</a></p>
+    <p>A tiny sample playbook &mdash; a few demo plays, each animated. These are not a team's real calls; they show the format: bring shooters to the line, split the targets.</p>
   </header>
   <main id="doc"></main>
-  <footer>Built on <a href="/dodgeball-play-notation/">DBN</a> &mdash; same engine and plays as the <a href="/dodging-playbook">team playbook</a>.</footer>
+  <footer>Built on <a href="/dodgeball-play-notation/">DBN</a> &mdash; the demo plays above are written inline on this page.</footer>
 </div>
 <script src="/dodgeball-play-notation/vendor/play-animator.js"></script>
 <script src="/dodgeball-play-notation/vendor/dbn.js"></script>
 <script>
-  (function(){
-    // a small, varied sample: one opener, one 4-ball, one kill, one defense
-    var SAMPLE = ['pitch-back','insides','kill-right','away'];
+  // Demo plays only — authored inline, never the team's real calls. dbn.js
+  // auto-mounts every [data-db-play-dbn] element from its text content.
+  window.addEventListener('DOMContentLoaded', function(){
     var doc = document.getElementById('doc');
-    var chain = Promise.resolve();
-    SAMPLE.forEach(function(id){
-      var slot = document.createElement('div'); slot.className = 'card';
+    var PLAYS = [
+'[Play "Threes"]\n[Badge "3-ball demo"]\n[Call "Threes — 2, 5, 7"]\n[Desc "The base pattern: three ball-holders step to the line together and each picks a different target, so no single block or dodge covers the volley."]\n[Balls "U:246 T:357"]\n\n1. {Three holders take the line} :1  U246-line\n2. {Spread — three different targets} :1.1  U2@T2! U4@T5! U6@T7%',
+'[Play "Threes, 1"]\n[Badge "3-ball demo"]\n[Call "Threes — 2, 5, 7 — one fake"]\n[Desc "Same spread, sold with one pump fake in unison before the release. The fake pulls blocks and early dodges; the real throws land a beat later."]\n[Balls "U:345 T:246"]\n\n1. {Three holders take the line} :1  U345-line\n2. {One pump fake in unison} :1.1  U345?\n3. {Release at three different targets} :1  U3@T2! U4@T4! U5@T6%',
+'[Play "Threes, wide"]\n[Badge "3-ball demo"]\n[Call "Threes wide — cross it"]\n[Desc "The wide variation: corners and the middle take the line. The middle keeps faking while the corners cross their throws to opposite-side targets."]\n[Balls "U:158 T:357"]\n\n1. {Corners and middle take the line} :1  U158-line\n2. {Middle sells the fake; corners cross} :1.2  U5? U1@T5! U8@T3%',
+'[Play "Counter"]\n[Badge "defense demo"]\n[Call "Counter"]\n[Desc "A simple defensive answer: they bring three up and throw; the target dodges. As their attackers fall back off the line, two of our holders step up about halfway and counter the thrower on the run."]\n[Balls "U:37 T:456"]\n\n1. {They bring three up} :1  T456-line T5?\n2. {They throw — we dodge} :0.9  T5@U4%\n3. {They fall back — two counters step up halfway and answer} :1.1  T456-deep U37-deep U3@T5% U7@T5!'
+    ];
+    PLAYS.forEach(function(src){
+      var slot = document.createElement('div');
+      slot.className = 'card';
+      slot.setAttribute('data-db-play-dbn', '');
+      slot.setAttribute('data-loop', '');
+      slot.textContent = src;
       doc.appendChild(slot);
-      chain = chain.then(function(){
-        return fetch('/dodgeball-play-notation/examples/' + id + '.dbn').then(function(r){ return r.ok ? r.text() : null; }).then(function(t){
-          if(!t){ slot.remove(); return; }
-          var play = (window.DBN && window.DBN.parse) ? window.DBN.parse(t) : null;
-          if(play && window.DodgeballPlay){ DodgeballPlay.mount(slot, play, { autoplay:false, loop:true }); }
-          else { slot.remove(); }
-        }).catch(function(){ slot.remove(); });
-      });
     });
-  })();
+    if (window.DBN && window.DBN.autoInit) window.DBN.autoInit();
+  });
 </script>
 </body>
 </html>
