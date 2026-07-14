@@ -90,7 +90,7 @@ const mirrorPlay = JSON.parse(
 const counters = mirrorPlay.steps[2].moves.filter((m) => m.team === "us");
 assert.deepStrictEqual(
   counters.map((m) => m.to[0]),
-  [15, 50, 85],
+  [10, 50, 90],
   "defensive holders spread wide: left, middle, right",
 );
 

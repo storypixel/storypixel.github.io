@@ -71,7 +71,7 @@ the middle.
   - `line` (the attacking formation): MEDIUM spread, across the middle half of
     the width (25..75) -- different angles on the target, but close enough
     that teammates can protect the thrower after the release.
-  - `mid` / `deep` / `back` (defensive postures): WIDE spread (15..85) --
+  - `mid` / `deep` / `back` (defensive postures): WIDE spread (10..90) --
     clearly wider than the attack so a counter throw can threaten only one
     holder, but not pinned to the sidelines.
   - `huddle`: shoulder-to-shoulder (see above).

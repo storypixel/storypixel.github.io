@@ -302,7 +302,7 @@
         // defensive postures (mid/deep/back) spread WIDE — clearly wider than
         // the attack, so spread-out holders minimize what a counter throw can
         // hit — but not pinned to the sidelines.
-        spacing = ps.length > 1 ? 70 / (ps.length - 1) : 0;
+        spacing = ps.length > 1 ? 80 / (ps.length - 1) : 0;
         center = 50;
       }
       ps.forEach(function (p, i) {
