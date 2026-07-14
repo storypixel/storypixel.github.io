@@ -11,7 +11,7 @@
      same document shell as /dodgeball-play-notation/. The animated widgets
      carry their own styling; the page around them is an unstyled serif doc. */
   *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-  body{margin:8px;background:#fff;color:#000;font:16px/1.25 "Times New Roman",Times,serif}
+  body{margin:0;background:#fff;color:#000;font:16px/1.25 "Times New Roman",Times,serif}
   a{color:#0000ee;text-decoration:underline}
   a:visited{color:#551a8b}
 
@@ -19,8 +19,8 @@
   .topbar,.backdrop,.hamburger{display:none}
 
   /* ---- glossary: a plain bordered Contents box at the top of the document ---- */
-  .sidebar{position:static;width:auto;max-width:900px;overflow:visible;background:#fff;
-    border:1px solid #000;padding:6px 10px 10px;margin:10px 0 14px;z-index:auto}
+  .sidebar{position:static;width:min(100% - 32px,900px);max-width:900px;overflow:visible;background:#fff;
+    border:1px solid #000;padding:6px 10px 10px;margin:10px auto 14px;z-index:auto}
   .sidebar .brand{font-weight:700;font-size:16px;margin:0}
   .sidebar .brand small{display:inline;color:#000;font-weight:400;font-size:13px;margin-left:6px}
   .sidebar .brand small::before{content:"("} .sidebar .brand small::after{content:")"}
@@ -33,7 +33,7 @@
   .sidebar nav a.sec{color:#0000ee;font-size:14px;padding:0}
 
   /* ---- main content: one serif column ---- */
-  .wrap{max-width:900px;margin:0;padding:0 0 40px}
+  .wrap{width:min(100% - 32px,900px);max-width:900px;margin:0 auto;padding:0 0 40px}
   header.top{padding:0 0 10px;border-bottom:1px solid #000;margin-bottom:12px;text-align:center}
   header.top h1{font:bold 32px/1.1 "Times New Roman",Times,serif;letter-spacing:0;margin:0 0 6px}
   header.top p{margin:0;color:#000;font-size:16px}
@@ -56,7 +56,7 @@
   .db-insets{display:grid;gap:12px;margin:10px 0 2px}
   .db-inline{margin:10px 0 2px}
   .db-insets .db-inline{margin:0}
-  .db-inline .dbp{max-width:560px}
+  .db-inline .dbp{width:100%;max-width:560px;margin:0 auto}
   details.docfig{margin:8px 0 2px}
   li.figure details.docfig{margin:0}
   details.docfig>summary{list-style:none;cursor:pointer;display:inline;
@@ -68,10 +68,23 @@
   footer{margin-top:30px;padding-top:10px;border-top:1px solid #000;color:#000;font-size:14px;text-align:center}
 
   @media(max-width:899px){
-    .wrap{margin:0;padding:0 0 35px}
+    body{font-size:18px;line-height:1.35}
+    .sidebar{width:min(100% - 28px,900px);margin:12px auto 16px;padding:8px 10px 10px}
+    .sidebar .brand{font-size:17px}
+    .sidebar .brand small{font-size:14px}
+    .sidebar h3{font-size:15px}
+    .sidebar nav a,.sidebar nav a.sec{font-size:15px}
+    .wrap{width:min(100% - 28px,900px);margin:0 auto;padding:0 0 38px}
+    header.top h1{font-size:30px}
+    header.top p{font-size:17px}
+    section{margin-bottom:26px}
+    h2{font-size:26px}
+    button.copylink{font-size:13px;padding:2px 6px;vertical-align:3px}
     /* no list indent on small screens: definition, call, prose, and widget all
        share one left edge, and the court sits symmetric on the page */
     ul.calls{padding-left:0}
+    ul.calls>li{margin-bottom:18px}
+    .db-inline{margin:12px 0 4px}
   }
 </style>
 </head>
