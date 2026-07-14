@@ -161,14 +161,31 @@
 <script src="/dodgeball-play-notation/vendor/play-animator.js?v=f7df62a3b3"></script>
 <script src="/dodgeball-play-notation/vendor/dbn.js?v=f7df62a3b3"></script>
 <script>
-  // Anchor aliases: #mirror resolves to #call-mirror (and #call-x to #x), so
-  // links written in either style land on the right play.
+  // Anchor handling: #mirror resolves to #call-mirror (and #call-x to #x), and
+  // because the play widgets mount async and grow the page after the browser's
+  // native jump, we keep re-aligning the target until layout settles (or the
+  // reader scrolls on their own).
   (function(){
     var id = decodeURIComponent(location.hash.slice(1));
-    if(!id || document.getElementById(id)) return;
-    var alt = id.indexOf('call-') === 0 ? id.slice(5) : 'call-' + id;
-    var el = document.getElementById(alt);
-    if(el){ history.replaceState(null,'','#'+alt); el.scrollIntoView(); }
+    if(!id) return;
+    var el = document.getElementById(id);
+    if(!el){
+      var alt = id.indexOf('call-') === 0 ? id.slice(5) : 'call-' + id;
+      el = document.getElementById(alt);
+      if(el) history.replaceState(null,'','#'+alt);
+    }
+    if(!el) return;
+    var cancelled = false;
+    ['wheel','touchstart','keydown'].forEach(function(ev){
+      addEventListener(ev, function(){ cancelled = true; }, {once:true, passive:true});
+    });
+    var tries = 0;
+    (function settle(){
+      if(cancelled || tries++ > 14) return;
+      var t = el.getBoundingClientRect().top;
+      if(Math.abs(t) > 8) el.scrollIntoView();
+      setTimeout(settle, 250);
+    })();
   })();
   document.querySelectorAll('button.copylink').forEach(function(btn){
     btn.addEventListener('click',function(){
