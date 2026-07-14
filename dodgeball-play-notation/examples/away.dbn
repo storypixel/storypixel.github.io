@@ -1,9 +1,9 @@
 [Play "Away"]
 [Badge "3-ball defense"]
-[Call "Away"]
-[Desc "We're holding three balls on defense. Only their loaded attackers come to the line; teammates without balls stay back. One holder throws. As their attackers regress, our three ball-holders press forward together and one counters the thrower on the run."]
+[Call "Away, 5"]
+[Desc "We're holding three balls on defense. The call names our counter-thrower — Away, 5 — and they pick their own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and the called thrower answers on the run."]
 [Balls "U:456 T:246"]
 
 1. {Their loaded attackers take the line} :1  T246-line T4?
 2. {They throw} :0.9  T4@U2%
-3. {We press as their attackers regress — and counter} :1.2  U456-line T246-deep U5@T4!
+3. {We press up halfway as their attackers regress — and counter} :1.2  U456-deep T246-deep U5@T4!

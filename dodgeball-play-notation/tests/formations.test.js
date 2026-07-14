@@ -161,6 +161,31 @@ assert.deepStrictEqual(
   "kill-left counts its two unison fakes in the caption",
 );
 
+// regress-and-pursue: on any beat where their attackers fall back while our
+// counters advance, the counters stop at deep (halfway) — never at the line.
+for (const id of ["home", "away", "mirror", "middle"]) {
+  const play = JSON.parse(
+    JSON.stringify(
+      ctx.DBN.parse(
+        fs.readFileSync(path.join(root, "examples", id + ".dbn"), "utf8"),
+      ),
+    ),
+  );
+  play.steps.forEach((step, i) => {
+    const moves = step.moves || [];
+    const theirRegress = moves.some((m) => m.team === "them" && m.to[1] <= 25);
+    const ours = moves.filter((m) => m.team === "us");
+    if (theirRegress && ours.length) {
+      ours.forEach((m) =>
+        assert.ok(
+          m.to[1] >= 75,
+          id + " beat " + (i + 1) + ": counters pursue to halfway, never past deep (y=" + m.to[1] + ")",
+        ),
+      );
+    }
+  });
+}
+
 for (const id of ["home", "away", "mirror", "pitch-back"]) {
   const source = fs.readFileSync(
     path.join(root, "examples", id + ".dbn"),

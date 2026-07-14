@@ -35,6 +35,10 @@ The editor and its docs:
   every control, the `window.DBNEditor` surface stable, and the deep-link params
   working. If you add a control, give it a testid and document it in
   [`DRIVING.md`](DRIVING.md).
+- **Choreography conventions bind every play.** When their attackers regress
+  off the line, our counters pursue only to `deep` (about halfway) — never to
+  the line. Conventions like this are enforced by `tests/formations.test.js`;
+  if you author a new one, add its test in the same commit.
 - **No magic.** Every engine capability ships as notation + spec + test,
   together: a token authors can write, exact semantics in
   [`NOTATION.md`](NOTATION.md), and a regression test. Behavior that can't be

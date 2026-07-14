@@ -1,7 +1,7 @@
 [Play "Mirror"]
 [Badge "3-ball defense"]
 [Call "Mirror"]
-[Desc "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws."]
+[Desc "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws. Unlike Home and Away, no thrower is called — position decides."]
 [Balls "U:147 T:246"]
 
 1. {Their loaded attackers take the line; middle shows} :1  T246-line T4?

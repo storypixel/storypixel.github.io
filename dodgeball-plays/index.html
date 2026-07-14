@@ -58,7 +58,7 @@
         var slot = document.createElement('div'); slot.className = 'play';
         doc.appendChild(slot);
         chain = chain.then(function(){
-          return fetch(BASE + id + '.dbn').then(function(r){ return r.ok ? r.text() : null; }).then(function(t){
+          return fetch(BASE + id + '.dbn', {cache:'no-cache'}).then(function(r){ return r.ok ? r.text() : null; }).then(function(t){
             if(!t) { slot.remove(); return; }
             var play = (window.DBN && window.DBN.parse) ? window.DBN.parse(t) : null;
             if(play && window.DodgeballPlay){

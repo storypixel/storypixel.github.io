@@ -125,7 +125,7 @@
 
   function load(id){
     if(cache[id]) return Promise.resolve(cache[id]);
-    return fetch('/dodgeball-play-notation/examples/'+id+'.dbn').then(function(r){return r.text();})
+    return fetch('/dodgeball-play-notation/examples/'+id+'.dbn', {cache:'no-cache'}).then(function(r){return r.text();})
       .then(function(t){ cache[id]=window.DBN.parse(t); return cache[id]; });
   }
 
@@ -208,8 +208,10 @@
           '<div class="line">Score <span class="score">'+score+'/'+N+' ('+pct+'%)</span> · '+date+'</div>'+
           '<div class="vid">CERT ID '+id+'<small>Verifiable — recomputed from name, score, date &amp; answer trail.</small></div>'+
         '</div>'+
-        '<p style="text-align:center;color:var(--muted);font-size:.9rem">Screenshot to keep your '+(dist?'Distinction':'certification')+'.</p>'+
-        '<button class="btn primary" id="again">Take it again</button>';
+        '<button class="btn primary" id="share">Copy certificate image</button>'+
+        '<p id="sharenote" style="text-align:center;font-weight:700;min-height:22px;margin:10px 0"></p>'+
+        '<button class="btn" id="again" style="text-align:center">Take it again</button>';
+      lastCert={dist:dist, who:who, scoreText:score+'/'+N+' ('+pct+'%)', date:date, id:id};
     } else {
       r.innerHTML=
         '<div class="fail">'+
@@ -220,11 +222,82 @@
         '<button class="btn primary" id="again">Try again</button>';
     }
     show('results');
+    if($('share')) $('share').onclick=function(){ shareCert(); };
     $('again').onclick=function(){ show('intro'); };
+  }
+
+  // ── share: draw the certificate to a canvas and copy/share it as a PNG ──
+  var lastCert = null;
+  function certImage(d){
+    var W=900,H=640,S=2;
+    var c=document.createElement('canvas'); c.width=W*S; c.height=H*S;
+    var x=c.getContext('2d'); x.scale(S,S);
+    x.fillStyle=d.dist?'#fdf6dd':'#fffdf6'; x.fillRect(0,0,W,H);
+    x.strokeStyle=d.dist?'#9a6b00':'#b8860b';
+    x.lineWidth=4; x.strokeRect(12,12,W-24,H-24);
+    x.lineWidth=1.5; x.strokeRect(22,22,W-44,H-44);
+    x.textAlign='center';
+    x.font='64px "Times New Roman",Times,serif'; x.fillText(d.dist?'\ud83c\udfc6':'\ud83c\udfc5', W/2, 118);
+    x.fillStyle='#8a5a00'; x.font='bold 17px "Times New Roman",Times,serif';
+    x.fillText((d.dist?'T H E   C O N N O R   D I S T I N C T I O N':'C E R T I F I E D'), W/2, 158);
+    x.fillStyle='#3a2f10'; x.font='bold 44px "Times New Roman",Times,serif';
+    x.fillText('Playbook Quiz', W/2, 212);
+    x.fillStyle='#6b5a2a'; x.font='20px "Times New Roman",Times,serif';
+    x.fillText('This certifies that', W/2, 258);
+    x.fillStyle='#3a2f10'; x.font='bold 36px "Times New Roman",Times,serif';
+    x.fillText(d.who, W/2, 312);
+    var w=x.measureText(d.who).width;
+    x.strokeStyle='#b8860b'; x.lineWidth=2;
+    x.beginPath(); x.moveTo(W/2-w/2-14,326); x.lineTo(W/2+w/2+14,326); x.stroke();
+    x.fillStyle='#6b5a2a'; x.font='20px "Times New Roman",Times,serif';
+    x.fillText(d.dist?'named every call flawlessly — a perfect run of the playbook.':'has demonstrated command of the team\u2019s dodgeball calls.', W/2, 372);
+    x.font='bold 24px "Times New Roman",Times,serif'; x.fillStyle='#3a2f10';
+    x.fillText('Score '+d.scoreText+'  \u00b7  '+d.date, W/2, 424);
+    x.strokeStyle='#c9ad5a'; x.lineWidth=1; x.setLineDash([4,4]);
+    x.beginPath(); x.moveTo(120,486); x.lineTo(W-120,486); x.stroke(); x.setLineDash([]);
+    x.fillStyle='#7a6320'; x.font='bold 18px "Courier New",monospace';
+    x.fillText('CERT ID '+d.id, W/2, 522);
+    x.fillStyle='#9a8038'; x.font='14px "Courier New",monospace';
+    x.fillText('Verifiable \u2014 recomputed from name, score, date & answer trail.', W/2, 548);
+    x.fillStyle='#9a8038'; x.font='15px "Times New Roman",Times,serif';
+    x.fillText('iamnotsam.com/playbook-quiz', W/2, 592);
+    return new Promise(function(res){ c.toBlob(res, 'image/png'); });
+  }
+  async function shareCert(btn){
+    if(!lastCert) return;
+    var note=$('sharenote');
+    try{
+      // promise-valued ClipboardItem keeps the write inside the tap gesture
+      // (required on iOS Safari); Chrome 106+ accepts it too.
+      var item=new ClipboardItem({'image/png': certImage(lastCert)});
+      await navigator.clipboard.write([item]);
+      note.textContent='Copied! Paste it in the group chat.';
+      return;
+    }catch(e){}
+    try{
+      var blob=await certImage(lastCert);
+      var file=new File([blob],'playbook-quiz.png',{type:'image/png'});
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({files:[file],title:'Playbook Quiz'});
+        note.textContent='';
+        return;
+      }
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob); a.download='playbook-quiz.png'; a.click();
+      note.textContent='Saved as an image \u2014 share it from your photos.';
+    }catch(e2){ note.textContent='Could not share on this browser \u2014 screenshot instead.'; }
   }
 
   $('begin').onclick=start;
   $('who').addEventListener('keydown', function(e){ if(e.key==='Enter') start(); });
+  if(/[?&]debugcert=(\d)/.test(location.search)){
+    var lvl=RegExp.$1;
+    quiz=shuffle(PLAYS).slice(0,N); trail='';
+    score = lvl==='2' ? N : 8;
+    for(var i=0;i<N;i++) trail += (i<score?'1':'0');
+    $('who').value='Preview Player';
+    results();
+  }
   $('replay').onclick=function(){ if(ctrl) ctrl.loop(); };
   $('next').onclick=next;
 })();

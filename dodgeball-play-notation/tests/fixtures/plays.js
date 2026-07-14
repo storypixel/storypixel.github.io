@@ -6,8 +6,8 @@
     "id": "away",
     "name": "Away",
     "badge": "3-ball defense",
-    "call": "\"Away\"",
-    "desc": "We're holding three balls on defense. Only their loaded attackers come to the line; teammates without balls stay back. One holder throws. As their attackers regress, our three ball-holders press forward together and one counters the thrower on the run.",
+    "call": "\"Away, 5\"",
+    "desc": "We're holding three balls on defense. The call names our counter-thrower — Away, 5 — and they pick their own target, typically whoever just threw. Only their loaded attackers come to the line; as they regress after the throw, our three holders press up about halfway and the called thrower answers on the run.",
     "setup": {
       "us": [
         {
@@ -176,8 +176,8 @@
         ]
       },
       {
-        "label": "We press as their attackers regress — and counter",
-        "summary": "to the line · to deep · throw at 4",
+        "label": "We press up halfway as their attackers regress — and counter",
+        "summary": "to deep · throw at 4",
         "dur": 1.2,
         "moves": [
           {
@@ -185,7 +185,7 @@
             "n": 4,
             "to": [
               43.14285714285714,
-              58
+              75
             ]
           },
           {
@@ -193,7 +193,7 @@
             "n": 5,
             "to": [
               56.857142857142854,
-              58
+              75
             ]
           },
           {
@@ -201,7 +201,7 @@
             "n": 6,
             "to": [
               70.57142857142857,
-              58
+              75
             ]
           },
           {
@@ -248,8 +248,8 @@
     "id": "home",
     "name": "Home",
     "badge": "3-ball defense",
-    "call": "\"Home\"",
-    "desc": "We're holding three balls on defense. They bring their balls up to the line to attack; the designated defender reads the throw and pre-counters — releasing first, from their own position, to hit the thrower before their ball lands.",
+    "call": "\"Home, 5\"",
+    "desc": "We're holding three balls on defense. The call names our thrower — Home, 5 — and they pick their own target. As their attack comes to the line, the called defender reads the throw and pre-counters: releasing first, from their own position, to hit the thrower before their ball lands.",
     "setup": {
       "us": [
         {
@@ -2067,7 +2067,7 @@
     "name": "Mirror",
     "badge": "3-ball defense",
     "call": "\"Mirror\"",
-    "desc": "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws.",
+    "desc": "Our three ball-holders are spread across left, middle, and right on defense. Mirror is called against a one-ball attack: the first thrower triggers one matching defender, not the nearest player. The roles stay matched: left answers left, middle answers middle, and right answers right. Only their loaded attackers come forward; teammates without balls stay back. As our holders step to the line, their attackers fall back and only the matching holder fires. A multi-ball volley is a reset, not three mirror throws. Unlike Home and Away, no thrower is called — position decides.",
     "setup": {
       "us": [
         {
