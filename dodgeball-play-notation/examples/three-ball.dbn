@@ -2,10 +2,10 @@
 [Play "3 Balls"]
 [Badge "3-ball"]
 [Call "meet in the middle"]
-[Desc "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Two designated throwers attack a specific target while the odd holder pump-fakes."]
+[Desc "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Everyone with a ball pump-fakes in unison; the two designated throwers then attack a specific target."]
 [Balls "U:456 T:258"]
 
 1. {Step 1 — ball-holders parley tightly in the middle} :0.8  U456-huddle
 2. {Step 2 — ball-holders fan to the front line} :0.9  U456-line
-3. {Step 3 — the odd holder pump-fakes} :1.1  U6?
+3. {Step 3 — everyone with a ball pump-fakes} :1.1  U456?
 4. {Step 4 — two throwers on 4} :1.0  U4@T4! U5@T4!

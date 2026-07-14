@@ -429,7 +429,7 @@
     "name": "Inside",
     "badge": "4-ball",
     "call": "\"Inside 5, 1\"",
-    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — while the corners make one pump fake to pull the block.",
+    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — after all four holders make one pump fake in unison to pull the block.",
     "setup": {
       "us": [
         {
@@ -611,12 +611,22 @@
         ]
       },
       {
-        "label": "Step 3 — corners make one pump fake to pull the block",
+        "label": "Step 3 — one pump fake in unison to pull the block",
         "dur": 1.1,
         "fakes": [
           {
             "team": "us",
             "n": 1,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 5,
             "reps": 1
           },
           {
@@ -661,7 +671,7 @@
     "name": "Inside — 3 balls",
     "badge": "3-ball",
     "call": "\"Inside 5, 1\"",
-    "desc": "The three-ball version of Inside: the three ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — while the lone corner makes one pump fake.",
+    "desc": "The three-ball version of Inside: the three ball-holders parley tightly in the middle and fan to the front line. The two middle holders throw at the same number — here the 5th from the left — after all three holders make one pump fake in unison.",
     "setup": {
       "us": [
         {
@@ -827,12 +837,22 @@
         ]
       },
       {
-        "label": "Step 3 — the corner makes one pump fake to pull the block",
+        "label": "Step 3 — one pump fake in unison to pull the block",
         "dur": 1.1,
         "fakes": [
           {
             "team": "us",
             "n": 1,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 5,
             "reps": 1
           }
         ]
@@ -2215,7 +2235,7 @@
     "name": "Outsides",
     "badge": "4-ball",
     "call": "\"Outsides 4, 1\"",
-    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. Both corners then throw at the same number from opposite angles while the middle two make one pump fake to pull the block.",
+    "desc": "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. Both corners then throw at the same number from opposite angles after all four holders make one pump fake in unison to pull the block.",
     "setup": {
       "us": [
         {
@@ -2397,9 +2417,14 @@
         ]
       },
       {
-        "label": "Step 3 — middles make one pump fake to pull the block",
+        "label": "Step 3 — one pump fake in unison to pull the block",
         "dur": 1.1,
         "fakes": [
+          {
+            "team": "us",
+            "n": 1,
+            "reps": 1
+          },
           {
             "team": "us",
             "n": 4,
@@ -2408,6 +2433,11 @@
           {
             "team": "us",
             "n": 5,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 8,
             "reps": 1
           }
         ]
@@ -2447,7 +2477,7 @@
     "name": "Outsides — 3 balls",
     "badge": "3-ball",
     "call": "\"Outsides 4, 1\"",
-    "desc": "The three-ball version of Outsides: the three ball-holders parley tightly in the middle and fan to the front line. Both corners throw at the same number from opposite angles while the lone middle holder makes one pump fake.",
+    "desc": "The three-ball version of Outsides: the three ball-holders parley tightly in the middle and fan to the front line. Both corners throw at the same number from opposite angles after all three holders make one pump fake in unison.",
     "setup": {
       "us": [
         {
@@ -2613,12 +2643,22 @@
         ]
       },
       {
-        "label": "Step 3 — the middle makes one pump fake to pull the block",
+        "label": "Step 3 — one pump fake in unison to pull the block",
         "dur": 1.1,
         "fakes": [
           {
             "team": "us",
+            "n": 1,
+            "reps": 1
+          },
+          {
+            "team": "us",
             "n": 4,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 8,
             "reps": 1
           }
         ]
@@ -2953,7 +2993,7 @@
     "name": "3 Balls",
     "badge": "3-ball",
     "call": "\"meet in the middle\"",
-    "desc": "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Two designated throwers attack a specific target while the odd holder pump-fakes.",
+    "desc": "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Everyone with a ball pump-fakes in unison; the two designated throwers then attack a specific target.",
     "setup": {
       "us": [
         {
@@ -3119,9 +3159,19 @@
         ]
       },
       {
-        "label": "Step 3 — the odd holder pump-fakes",
+        "label": "Step 3 — everyone with a ball pump-fakes",
         "dur": 1.1,
         "fakes": [
+          {
+            "team": "us",
+            "n": 4,
+            "reps": 1
+          },
+          {
+            "team": "us",
+            "n": 5,
+            "reps": 1
+          },
           {
             "team": "us",
             "n": 6,

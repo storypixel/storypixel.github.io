@@ -27,7 +27,8 @@
   // ── court geometry (normalized play coords are 0..100 in both axes) ──
   // x = court width  (players spread 1..N left→right)
   // y = court depth  (0 = THEIR back line, 50 = center line, 100 = OUR back line)
-  const VB_W = 1000, VB_H = 660;
+  const VB_W = 1000,
+    VB_H = 660;
   // The court fills the whole frame. Players are inset by PR so an end-line
   // player (and a ball held at their side) never clips the edge — that inset is
   // the only "margin", and it's exactly the player radius, nothing wasted.
@@ -38,22 +39,23 @@
   const py = (ny) => PR + (ny / 100) * (VB_H - 2 * PR);
 
   const COL = {
-    us: "#111111",         // our team — solid black piece
-    them: "#ffffff",       // their team — white piece, told apart by the dark outline
-    ball: "#e23150",       // ball — red dot
-    court: "#eef1f4",      // board surface — solid light
-    frame: "#34424b",      // board frame — dark slate
-    line: "#34424b",       // court boundary / center line
+    us: "#111111", // our team — solid black piece
+    them: "#ffffff", // their team — white piece, told apart by the dark outline
+    ball: "#e23150", // ball — red dot
+    court: "#eef1f4", // board surface — solid light
+    frame: "#34424b", // board frame — dark slate
+    line: "#34424b", // court boundary / center line
     centerline: "#34424b", // halfway line, dashed
-    text: "#111111",       // ink
-    out: "#c4ccd2",        // eliminated player — grey ghost
+    text: "#111111", // ink
+    out: "#c4ccd2", // eliminated player — grey ghost
   };
 
   // Styles are installed per render root. This lets the player live inside a
   // ShadowRoot, where page CSS cannot reach it, while preserving normal embeds.
   const styledRoots = new WeakSet();
   function injectStyles(container) {
-    const renderRoot = container && container.getRootNode ? container.getRootNode() : document;
+    const renderRoot =
+      container && container.getRootNode ? container.getRootNode() : document;
     if (styledRoots.has(renderRoot)) return;
     const css = `
 .dbp{all:initial;display:block;box-sizing:border-box;font:400 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;border:2px solid #34424b;overflow:hidden;background:#fff;color:#111;max-width:560px;text-align:left;letter-spacing:normal;text-transform:none}
@@ -65,15 +67,18 @@
 .dbp__desc{padding:0 13px 9px;color:#555;font-size:.85rem}
 .dbp__stage{display:block;width:100%;height:auto;border-bottom:2px solid #34424b;background:${COL.court};touch-action:none}
 .dbp__court{position:relative;line-height:0}
-/* The timeline is the entire band between court and button, not a smaller rail
-   floating inside it. The white handle stays fully contained at both ends. */
-.dbp__scrub{position:relative;height:40px;display:flex;align-items:center;cursor:pointer;padding:0;border-bottom:2px solid #34424b;background:#111;touch-action:none}
-.dbp__track{position:relative;width:100%;height:100%;border:0;background:#111;overflow:hidden}
+/* The black band spans the widget's full width; the rail, ticks, and playhead
+   inside it are inset by 12px each side — equal to the .dbp__ctrls inset — so
+   the scrub line's ends align with the play button's edges. */
+.dbp__scrub{position:relative;height:40px;display:flex;align-items:center;cursor:pointer;padding:0 12px;border-bottom:2px solid #34424b;background:#111;touch-action:none}
+/* No overflow clipping: the ticks at 0% and 100% are centered on the rail's
+   ends and must render at full width, same as the interior ticks. */
+.dbp__track{position:relative;width:100%;height:100%;border:0;background:#111}
 .dbp__track::before{content:"";position:absolute;z-index:1;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#fff}
 .dbp__fill{position:absolute;left:0;top:0;height:100%;width:0;background:#111}
-.dbp__node{position:absolute;z-index:2;top:50%;width:2px;height:14px;margin:-7px 0 0 -1px;border:0;background:#fff;pointer-events:none}
+.dbp__node{position:absolute;z-index:2;top:50%;width:2px;height:14px;margin:-7px 0 0 0;border:0;background:#fff;pointer-events:none}
 .dbp__node--on{background:#fff}
-.dbp__thumb{position:absolute;z-index:3;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 0;background:#fff;box-shadow:none;transform:translateX(-50%);pointer-events:none}
+.dbp__thumb{position:absolute;z-index:3;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 0;background:#fff;box-shadow:none;pointer-events:none}
 .dbp__ctrls{display:block;padding:12px}
 .dbp__btn{appearance:none;width:100%;height:46px;padding:0;border:2px solid #34424b;border-radius:0;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;user-select:none;touch-action:manipulation}
 .dbp__btn:hover{background:#f2f2f2}
@@ -102,7 +107,8 @@
     return el;
   };
   const lerp = (a, b, t) => a + (b - a) * t;
-  const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+  const easeInOut = (t) =>
+    t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   const pumpShake = (u, reps) => {
     const progress = Math.max(0, Math.min(1, u));
     const cycles = Math.max(1, Math.round(reps || 1));
@@ -120,10 +126,14 @@
     const seed = (team, list) =>
       (list || []).forEach((a) =>
         actors.set(keyOf(team, a.n), {
-          team, n: a.n, x: a.x, y: a.y,
-          balls: a.balls != null ? a.balls : (a.ball ? 1 : 0),
-          out: false, fake: 0,
-        })
+          team,
+          n: a.n,
+          x: a.x,
+          y: a.y,
+          balls: a.balls != null ? a.balls : a.ball ? 1 : 0,
+          out: false,
+          fake: 0,
+        }),
       );
     seed("us", play.setup.us);
     seed("them", play.setup.them);
@@ -131,13 +141,20 @@
     // boundary snapshots: states[i] = positions/flags entering step i
     const snapshot = () => {
       const m = {};
-      actors.forEach((v, k) => (m[k] = { x: v.x, y: v.y, balls: v.balls, out: v.out, fake: v.fake }));
+      actors.forEach(
+        (v, k) =>
+          (m[k] = { x: v.x, y: v.y, balls: v.balls, out: v.out, fake: v.fake }),
+      );
       return m;
     };
 
     // loose balls sitting on the court (e.g. on the center line at the rush)
     const freeBalls = (play.setup.balls || []).map((b) => ({
-      id: b.id, x: b.x, y: b.y, side: b.side || null, gone: Infinity,
+      id: b.id,
+      x: b.x,
+      y: b.y,
+      side: b.side || null,
+      gone: Infinity,
     }));
     const freeById = {};
     freeBalls.forEach((b) => (freeById[b.id] = b));
@@ -152,7 +169,13 @@
 
     steps.forEach((st) => {
       const dur = st.dur || 1;
-      const lbl = { t0, t1: t0 + dur, text: st.label || "", fakes: [], maxReps: 0 };
+      const lbl = {
+        t0,
+        t1: t0 + dur,
+        text: st.label || "",
+        fakes: [],
+        maxReps: 0,
+      };
       labels.push(lbl);
       // Pump-fakes belong to this beat's live motion. Keep their metadata on the
       // label for inspection, and carry the rep count into the step snapshot so
@@ -167,7 +190,10 @@
       // moves resolve by the END of the step
       (st.moves || []).forEach((mv) => {
         const a = actors.get(keyOf(mv.team, mv.n));
-        if (a && mv.to) { a.x = mv.to[0]; a.y = mv.to[1]; }
+        if (a && mv.to) {
+          a.x = mv.to[0];
+          a.y = mv.to[1];
+        }
       });
       // grabs: a rusher collects one or more loose balls. The ball leaves the
       // floor at the START of the grab (gone = t0) and eases into the grabber's
@@ -180,7 +206,13 @@
           const fb = freeById[id];
           if (fb) {
             fb.gone = t0;
-            grabEvents.push({ to: keyOf(gr.team, gr.n), t0: t0, t1: t0 + dur, fromX: fb.x, fromY: fb.y });
+            grabEvents.push({
+              to: keyOf(gr.team, gr.n),
+              t0: t0,
+              t1: t0 + dur,
+              fromX: fb.x,
+              fromY: fb.y,
+            });
           }
         });
         if (a) a.balls += ids.length;
@@ -190,7 +222,8 @@
         throws.push({
           from: keyOf(th.from.team, th.from.n),
           to: keyOf(th.to.team, th.to.n),
-          t0, t1: t0 + dur,
+          t0,
+          t1: t0 + dur,
           curve: th.curve == null ? -22 : th.curve,
         });
         const fa = actors.get(keyOf(th.from.team, th.from.n));
@@ -211,7 +244,9 @@
         throws.push({
           from: keyOf(ps.from.team, ps.from.n),
           to: keyOf(ps.to.team, ps.to.n),
-          t0, t1: t0 + dur, pass: true,
+          t0,
+          t1: t0 + dur,
+          pass: true,
           curve: ps.curve == null ? -14 : ps.curve,
         });
         const fa = actors.get(keyOf(ps.from.team, ps.from.n));
@@ -225,7 +260,15 @@
       t0 += dur;
     });
 
-    return { keys: [...actors.keys()], states, throws, grabs: grabEvents, labels, totalDur, freeBalls };
+    return {
+      keys: [...actors.keys()],
+      states,
+      throws,
+      grabs: grabEvents,
+      labels,
+      totalDur,
+      freeBalls,
+    };
   }
 
   // interpolate an actor's pos/flags at absolute time t
@@ -235,7 +278,8 @@
     let i = 0;
     for (; i < labels.length; i++) if (t < labels[i].t1) break;
     if (i >= labels.length) i = labels.length - 1;
-    const a = states[i][key], b = states[i + 1] ? states[i + 1][key] : a;
+    const a = states[i][key],
+      b = states[i + 1] ? states[i + 1][key] : a;
     const seg = labels[i] || { t0: 0, t1: 1 };
     const local = seg.t1 > seg.t0 ? (t - seg.t0) / (seg.t1 - seg.t0) : 1;
     const e = easeInOut(Math.max(0, Math.min(1, local)));
@@ -279,14 +323,17 @@
         "</div>" +
         (play.desc ? '<div class="dbp__desc"></div>' : "");
       root.querySelector(".dbp__name").textContent = play.name || "Play";
-      if (play.badge) root.querySelector(".dbp__badge").textContent = play.badge;
+      if (play.badge)
+        root.querySelector(".dbp__badge").textContent = play.badge;
       if (play.call) root.querySelector(".dbp__call").textContent = play.call;
       if (play.desc) root.querySelector(".dbp__desc").textContent = play.desc;
     }
 
     const stage = svg("svg", {
-      class: "dbp__stage", viewBox: `0 0 ${VB_W} ${VB_H}`,
-      role: "img", "aria-label": (play.name || "Dodgeball play") + " animation",
+      class: "dbp__stage",
+      viewBox: `0 0 ${VB_W} ${VB_H}`,
+      role: "img",
+      "aria-label": (play.name || "Dodgeball play") + " animation",
     });
     const courtWrap = document.createElement("div");
     courtWrap.className = "dbp__court";
@@ -298,8 +345,21 @@
     // are authored in raw (x,y) and the fixed a–j/1–10 grid no longer matches
     // the parametric team-size files, so drawn labels would mislead.
     const court = svg("g", {});
-    court.appendChild(svg("rect", { x: 0, y: 0, width: VB_W, height: VB_H, fill: COL.court }));
-    court.appendChild(svg("line", { x1: 0, y1: py(50), x2: VB_W, y2: py(50), stroke: COL.centerline, "stroke-width": 2, "stroke-dasharray": "11 9", "vector-effect": "non-scaling-stroke" }));
+    court.appendChild(
+      svg("rect", { x: 0, y: 0, width: VB_W, height: VB_H, fill: COL.court }),
+    );
+    court.appendChild(
+      svg("line", {
+        x1: 0,
+        y1: py(50),
+        x2: VB_W,
+        y2: py(50),
+        stroke: COL.centerline,
+        "stroke-width": 2,
+        "stroke-dasharray": "11 9",
+        "vector-effect": "non-scaling-stroke",
+      }),
+    );
     stage.appendChild(court);
 
     const layer = svg("g", {});
@@ -312,13 +372,15 @@
     const scrubEl = document.createElement("div");
     scrubEl.className = "dbp__scrub";
     scrubEl.setAttribute("aria-label", "Scrub through the play");
-    scrubEl.innerHTML = '<div class="dbp__track"><div class="dbp__fill"></div><div class="dbp__thumb"></div></div>';
+    scrubEl.innerHTML =
+      '<div class="dbp__track"><div class="dbp__fill"></div><div class="dbp__thumb"></div></div>';
     root.appendChild(scrubEl);
 
     // single full-width play button: each press advances one beat and stops
     const ctrls = document.createElement("div");
     ctrls.className = "dbp__ctrls";
-    ctrls.innerHTML = '<button class="dbp__btn dbp__play" aria-label="Play beat"></button>';
+    ctrls.innerHTML =
+      '<button class="dbp__btn dbp__play" aria-label="Play beat"></button>';
     root.appendChild(ctrls);
 
     let stepEl = null;
@@ -338,7 +400,10 @@
     // optional figure caption ("Fig. 1") — the one piece of text a minimal
     // widget may carry, chess-diagram style. Set via opts.caption or the
     // host element's data-caption attribute.
-    const captionText = opts.caption || (container.getAttribute && container.getAttribute("data-caption")) || "";
+    const captionText =
+      opts.caption ||
+      (container.getAttribute && container.getAttribute("data-caption")) ||
+      "";
     if (captionText) {
       const fig = document.createElement("div");
       fig.className = "dbp__fig";
@@ -352,21 +417,38 @@
     const thumbEl = scrubEl.querySelector(".dbp__thumb");
 
     // beat boundaries: [0, end-of-beat-1, …, totalDur]. One node per beat (slide),
-    // placed on the track at the beat's start so nodes + thumb always align.
+    // placed on the track at the beat's start so nodes + thumb always align,
+    // plus a terminus tick at 100% marking the end of the play.
     const bounds = [0].concat(c.labels.map((l) => l.t1));
     const beatNodes = c.labels.map((l, i) => {
       const node = document.createElement("div");
       node.className = "dbp__node";
-      node.style.left = (100 * l.t0 / c.totalDur) + "%";
+      const nodePct = c.totalDur > 0 ? (100 * l.t0) / c.totalDur : 0;
+      node.style.left = nodePct + "%";
+      node.style.transform = `translateX(-${nodePct}%)`;
       trackEl.appendChild(node);
       return node;
     });
+    const endNode = document.createElement("div");
+    endNode.className = "dbp__node dbp__node--end";
+    endNode.style.left = "100%";
+    endNode.style.transform = "translateX(-100%)";
+    trackEl.appendChild(endNode);
 
-    const ICON_PLAY = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-    const ICON_PAUSE = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
-    const ICON_REPLAY = '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
+    const ICON_PLAY =
+      '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    const ICON_PAUSE =
+      '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+    const ICON_REPLAY =
+      '<svg class="dbp__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>';
 
-    let playing = false, t = 0, raf = 0, lastTs = 0, dwellUntil = 0, stopAt = null, loopMode = false;
+    let playing = false,
+      t = 0,
+      raf = 0,
+      lastTs = 0,
+      dwellUntil = 0,
+      stopAt = null,
+      loopMode = false;
     const DWELL_MS = 750; // hold this long at each beat node during playback
     const SPEED = (opts.speed || 2) * 1.0; // play-units per second; default 2x for realistic pace. Pass speed:1 for the old pace.
 
@@ -379,18 +461,34 @@
       // Every moving interval is half-open [t0, t1) so no two passes (or a pass
       // and a held dot) ever cover the same frame — no ball is drawn twice.
       const drawBall = (cx, cy, r) =>
-        layer.appendChild(svg("circle", { cx: cx, cy: cy, r: r || 10, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
-      const HX = 22, HY = -16; // hand slot — matches the first held-dot slot below
+        layer.appendChild(
+          svg("circle", {
+            cx: cx,
+            cy: cy,
+            r: r || 10,
+            fill: COL.ball,
+            stroke: "#8c1024",
+            "stroke-width": 1.5,
+          }),
+        );
+      const HX = 22,
+        HY = -16; // hand slot — matches the first held-dot slot below
 
       // 1) loose balls still on the floor (a grabbed ball leaves at its grab start)
-      c.freeBalls.forEach((b) => { if (t < b.gone) drawBall(px(b.x), py(b.y), 10); });
+      c.freeBalls.forEach((b) => {
+        if (t < b.gone) drawBall(px(b.x), py(b.y), 10);
+      });
 
       // 2) grab tweens: the ball eases from the floor into the grabber's hand
       c.grabs.forEach((g) => {
         if (t < g.t0 || t >= g.t1) return;
         const e = easeInOut((t - g.t0) / Math.max(1e-6, g.t1 - g.t0));
         const ga = actorAt(c, g.to, t);
-        drawBall(lerp(px(g.fromX), px(ga.x) + HX, e), lerp(py(g.fromY), py(ga.y) + HY, e), 10);
+        drawBall(
+          lerp(px(g.fromX), px(ga.x) + HX, e),
+          lerp(py(g.fromY), py(ga.y) + HY, e),
+          10,
+        );
       });
 
       // 3) in-flight throws / passes: a fast snap over a short window at the END
@@ -406,45 +504,105 @@
         const fa = actorAt(c, th.from, rel);
         const ta = actorAt(c, th.to, th.t1);
         const arc = Math.sin(e * Math.PI) * th.curve;
-        drawBall(lerp(px(fa.x), px(ta.x), e), lerp(py(fa.y), py(ta.y), e) + arc, 11);
+        drawBall(
+          lerp(px(fa.x), px(ta.x), e),
+          lerp(py(fa.y), py(ta.y), e) + arc,
+          11,
+        );
       });
 
       // actors
       c.keys.forEach((key) => {
         const a = actorAt(c, key, t);
-        const X = px(a.x), Y = py(a.y);
+        const X = px(a.x),
+          Y = py(a.y);
         // out players fade to a grey ghost, but the red X stays full-strength on top
         const g = svg("g", {});
         const fill = a.out ? COL.out : COL[a.team];
         const ghost = a.out ? 0.4 : 1;
         // the player stands still — a pump-fake shakes the BALL, not the body (below)
-        const c1 = svg("circle", { cx: X, cy: Y, r: PLAYER_R, fill, stroke: "#111111", "stroke-width": 2, "vector-effect": "non-scaling-stroke", opacity: ghost });
+        const c1 = svg("circle", {
+          cx: X,
+          cy: Y,
+          r: PLAYER_R,
+          fill,
+          stroke: "#111111",
+          "stroke-width": 2,
+          "vector-effect": "non-scaling-stroke",
+          opacity: ghost,
+        });
         g.appendChild(c1);
-        const numFill = (a.team === "us" && !a.out) ? "#fff" : "#111";
-        const num = svg("text", { x: X, y: Y + 10, fill: numFill, "font-size": PLAYER_LABEL_SIZE, "font-weight": 800, "text-anchor": "middle", opacity: ghost });
+        const numFill = a.team === "us" && !a.out ? "#fff" : "#111";
+        const num = svg("text", {
+          x: X,
+          y: Y + 10,
+          fill: numFill,
+          "font-size": PLAYER_LABEL_SIZE,
+          "font-weight": 800,
+          "text-anchor": "middle",
+          opacity: ghost,
+        });
         num.textContent = a.n;
         g.appendChild(num);
         if (a.out) {
-          g.appendChild(svg("line", { class: "dbp__outx", x1: X - 15, y1: Y - 15, x2: X + 15, y2: Y + 15, stroke: "#111111", "stroke-width": 4.5, "stroke-linecap": "round" }));
-          g.appendChild(svg("line", { class: "dbp__outx", x1: X + 15, y1: Y - 15, x2: X - 15, y2: Y + 15, stroke: "#111111", "stroke-width": 4.5, "stroke-linecap": "round" }));
+          g.appendChild(
+            svg("line", {
+              class: "dbp__outx",
+              x1: X - 15,
+              y1: Y - 15,
+              x2: X + 15,
+              y2: Y + 15,
+              stroke: "#111111",
+              "stroke-width": 4.5,
+              "stroke-linecap": "round",
+            }),
+          );
+          g.appendChild(
+            svg("line", {
+              class: "dbp__outx",
+              x1: X + 15,
+              y1: Y - 15,
+              x2: X - 15,
+              y2: Y + 15,
+              stroke: "#111111",
+              "stroke-width": 4.5,
+              "stroke-linecap": "round",
+            }),
+          );
         }
         // held balls — one dot per ball; a ball mid-flight is already off the hand
-        const inFlight = c.throws.filter((th) => { const fl = Math.min(0.7, th.t1 - th.t0); return th.from === key && t >= th.t1 - fl && t < th.t1; }).length;
+        const inFlight = c.throws.filter((th) => {
+          const fl = Math.min(0.7, th.t1 - th.t0);
+          return th.from === key && t >= th.t1 - fl && t < th.t1;
+        }).length;
         const held = Math.max(0, a.balls - inFlight);
         if (!a.out && held > 0) {
           // A pump-fake moves the held ball out and back on a 45° diagonal while
           // the authored beat is playing. The player and the surrounding court
           // stay still; each rep returns the ball to the hand before the next.
-          let fx = 0, fy = 0;
+          let fx = 0,
+            fy = 0;
           if (a.fake > 0) {
             const s = pumpShake(a.fakePhase, a.fake); // equal travel through both diagonals
             const toward = a.team === "us" ? -1 : 1; // us fake up-court, them down
             fx = s * 18;
-            fy = toward * s * 18;                    // equal axes = a true 45° path
+            fy = toward * s * 18; // equal axes = a true 45° path
           }
-          const slots = [[22, -16], [22, 6]];
+          const slots = [
+            [22, -16],
+            [22, 6],
+          ];
           for (let h = 0; h < Math.min(held, slots.length); h++) {
-            g.appendChild(svg("circle", { cx: X + slots[h][0] + fx, cy: Y + slots[h][1] + fy, r: 9, fill: COL.ball, stroke: "#8c1024", "stroke-width": 1.5 }));
+            g.appendChild(
+              svg("circle", {
+                cx: X + slots[h][0] + fx,
+                cy: Y + slots[h][1] + fy,
+                r: 9,
+                fill: COL.ball,
+                stroke: "#8c1024",
+                "stroke-width": 1.5,
+              }),
+            );
           }
         }
         layer.appendChild(g);
@@ -453,17 +611,29 @@
       // step label + current-beat dot
       let cur = c.labels.findIndex((l) => t < l.t1);
       if (cur < 0) cur = c.labels.length - 1;
-      if (stepEl) stepEl.textContent = c.labels[cur]
-        ? (cur + 1) + "/" + c.labels.length + (c.labels[cur].text ? " · " + c.labels[cur].text : "")
-        : "";
-      beatNodes.forEach((d, i) => d.classList.toggle("dbp__node--on", i === cur));
-      const pct = c.totalDur > 0 ? 100 * t / c.totalDur : 0;
+      if (stepEl)
+        stepEl.textContent = c.labels[cur]
+          ? cur +
+            1 +
+            "/" +
+            c.labels.length +
+            (c.labels[cur].text ? " · " + c.labels[cur].text : "")
+          : "";
+      beatNodes.forEach((d, i) =>
+        d.classList.toggle("dbp__node--on", i === cur),
+      );
+      const pct = c.totalDur > 0 ? (100 * t) / c.totalDur : 0;
       fillEl.style.width = pct + "%";
-      const thumbInset = 4 * (1 - 2 * pct / 100);
-      thumbEl.style.left = `calc(${pct}% + ${thumbInset}px)`;
+      // left:p% + translateX(-p%) keeps the square flush inside the rail at
+      // both ends, so nothing ever extends past the play button's edges.
+      thumbEl.style.left = pct + "%";
+      thumbEl.style.transform = `translateX(-${pct}%)`;
     }
 
-    function setT(nt) { t = Math.max(0, Math.min(c.totalDur, nt)); render(); }
+    function setT(nt) {
+      t = Math.max(0, Math.min(c.totalDur, nt));
+      render();
+    }
 
     function frame(ts) {
       if (!playing) return;
@@ -471,20 +641,29 @@
       // hold at a beat node (the animation pauses briefly at each stopping point).
       if (dwellUntil) {
         if (ts < dwellUntil) {
-          lastTs = ts; raf = requestAnimationFrame(frame); return;
+          lastTs = ts;
+          raf = requestAnimationFrame(frame);
+          return;
         }
-        dwellUntil = 0; lastTs = ts;
+        dwellUntil = 0;
+        lastTs = ts;
       }
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
       let nt = t + dt * SPEED;
       // single-beat advance: play to the target boundary and STOP there.
       if (stopAt != null && nt >= stopAt - 1e-6) {
-        t = stopAt; stopAt = null;
-        render(); pause(); updateBtn(); return;
+        t = stopAt;
+        stopAt = null;
+        render();
+        pause();
+        updateBtn();
+        return;
       }
       // playing through: snap to each beat node, dwell, then continue
-      const node = bounds.find((b) => b > t + 1e-6 && b <= nt + 1e-6 && b < c.totalDur - 1e-6);
+      const node = bounds.find(
+        (b) => b > t + 1e-6 && b <= nt + 1e-6 && b < c.totalDur - 1e-6,
+      );
       if (node != null) {
         nt = node;
         dwellUntil = ts + DWELL_MS;
@@ -493,25 +672,58 @@
       // slideshow default: stop at the end. loop() mode (used by the quiz) runs
       // through continuously, dwelling at the end, then restarts from the top.
       if (t >= c.totalDur) {
-        if (loopMode) { t = c.totalDur; render(); dwellUntil = ts + DWELL_MS * 1.5; t = 0; lastTs = ts; raf = requestAnimationFrame(frame); return; }
-        t = c.totalDur; render(); pause(); updateBtn(); return;
+        if (loopMode) {
+          t = c.totalDur;
+          render();
+          dwellUntil = ts + DWELL_MS * 1.5;
+          t = 0;
+          lastTs = ts;
+          raf = requestAnimationFrame(frame);
+          return;
+        }
+        t = c.totalDur;
+        render();
+        pause();
+        updateBtn();
+        return;
       }
       render();
       raf = requestAnimationFrame(frame);
     }
     function updateBtn() {
       const atEnd = t >= c.totalDur;
-      playBtn.innerHTML = playing ? ICON_PAUSE : (atEnd ? ICON_REPLAY : ICON_PLAY);
-      playBtn.setAttribute("aria-label", playing ? "Pause" : (atEnd ? "Restart" : "Play beat"));
+      playBtn.innerHTML = playing
+        ? ICON_PAUSE
+        : atEnd
+          ? ICON_REPLAY
+          : ICON_PLAY;
+      playBtn.setAttribute(
+        "aria-label",
+        playing ? "Pause" : atEnd ? "Restart" : "Play beat",
+      );
     }
     function play_() {
-      playing = true; lastTs = 0; dwellUntil = 0; updateBtn(); raf = requestAnimationFrame(frame);
+      playing = true;
+      lastTs = 0;
+      dwellUntil = 0;
+      updateBtn();
+      raf = requestAnimationFrame(frame);
     }
-    function pause() { playing = false; loopMode = false; cancelAnimationFrame(raf); updateBtn(); }
+    function pause() {
+      playing = false;
+      loopMode = false;
+      cancelAnimationFrame(raf);
+      updateBtn();
+    }
 
     // play through ALL beats continuously and loop from the top — for the quiz,
     // where you study a play on repeat. pause()/any other control cancels it.
-    function loop() { stopAt = null; loopMode = true; setT(0); play_(); }
+    function loop() {
+      stopAt = null;
+      loopMode = true;
+      setT(0);
+      play_();
+    }
 
     // play the current beat's motion and STOP at the next node. A play is a
     // slideshow: each press advances one beat and stops; it does not run through.
@@ -519,26 +731,47 @@
       const eps = 1e-4;
       if (t >= c.totalDur - eps) t = 0; // at the end → restart from the top
       let nxt = c.totalDur;
-      for (const b of bounds) { if (b > t + eps) { nxt = b; break; } }
-      stopAt = nxt; play_();
+      for (const b of bounds) {
+        if (b > t + eps) {
+          nxt = b;
+          break;
+        }
+      }
+      stopAt = nxt;
+      play_();
     }
     // advance one slide: play the next beat's motion and stop at its end
     function nextBeat() {
       const eps = 1e-4;
       if (t >= c.totalDur - eps) return;
       let nxt = c.totalDur;
-      for (const b of bounds) { if (b > t + eps) { nxt = b; break; } }
-      stopAt = nxt; play_();
+      for (const b of bounds) {
+        if (b > t + eps) {
+          nxt = b;
+          break;
+        }
+      }
+      stopAt = nxt;
+      play_();
     }
     // go back one slide (instant)
     function prevBeat() {
       const eps = 1e-4;
-      stopAt = null; pause();
+      stopAt = null;
+      pause();
       let prev = 0;
-      for (const b of bounds) { if (b < t - eps) prev = b; else break; }
-      setT(prev); updateBtn();
+      for (const b of bounds) {
+        if (b < t - eps) prev = b;
+        else break;
+      }
+      setT(prev);
+      updateBtn();
     }
-    function replay() { stopAt = null; setT(0); playAll(); }
+    function replay() {
+      stopAt = null;
+      setT(0);
+      playAll();
+    }
 
     playBtn.addEventListener("click", () => (playing ? pause() : playAll()));
 
@@ -546,16 +779,29 @@
     function seekFromEvent(e) {
       const r = trackEl.getBoundingClientRect();
       const frac = r.width > 0 ? (e.clientX - r.left) / r.width : 0;
-      stopAt = null; setT(Math.max(0, Math.min(1, frac)) * c.totalDur); updateBtn();
+      stopAt = null;
+      setT(Math.max(0, Math.min(1, frac)) * c.totalDur);
+      updateBtn();
     }
     let scrubbing = false;
     scrubEl.addEventListener("pointerdown", (e) => {
-      scrubbing = true; pause();
-      try { scrubEl.setPointerCapture(e.pointerId); } catch (_) {}
-      seekFromEvent(e); e.preventDefault();
+      scrubbing = true;
+      pause();
+      try {
+        scrubEl.setPointerCapture(e.pointerId);
+      } catch (_) {}
+      seekFromEvent(e);
+      e.preventDefault();
     });
-    scrubEl.addEventListener("pointermove", (e) => { if (scrubbing) seekFromEvent(e); });
-    const endScrub = (e) => { scrubbing = false; try { scrubEl.releasePointerCapture(e.pointerId); } catch (_) {} };
+    scrubEl.addEventListener("pointermove", (e) => {
+      if (scrubbing) seekFromEvent(e);
+    });
+    const endScrub = (e) => {
+      scrubbing = false;
+      try {
+        scrubEl.releasePointerCapture(e.pointerId);
+      } catch (_) {}
+    };
     scrubEl.addEventListener("pointerup", endScrub);
     scrubEl.addEventListener("pointercancel", endScrub);
 
@@ -563,19 +809,38 @@
     // typing in any input/textarea elsewhere on the page is never hijacked.
     // Click anywhere on the player to focus it; Tab also reaches it.
     root.tabIndex = 0;
-    root.setAttribute("aria-label",
-      "Dodgeball play animation. Keys: space play/pause, left and right arrows step beat, R replay.");
+    root.setAttribute(
+      "aria-label",
+      "Dodgeball play animation. Keys: space play/pause, left and right arrows step beat, R replay.",
+    );
     root.addEventListener("mousedown", () => {
-      if (!root.contains(document.activeElement)) root.focus({ preventScroll: true });
+      if (!root.contains(document.activeElement))
+        root.focus({ preventScroll: true });
     });
     root.addEventListener("keydown", (e) => {
       const ae = document.activeElement;
       // let native control keys work when a form control inside the player is focused
-      if (ae && (ae.tagName === "INPUT" || ae.tagName === "TEXTAREA" || ae.tagName === "SELECT" || ae.isContentEditable)) return;
-      if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); playing ? pause() : playAll(); }
-      else if (e.key === "ArrowRight") { e.preventDefault(); nextBeat(); }
-      else if (e.key === "ArrowLeft") { e.preventDefault(); prevBeat(); }
-      else if (e.key === "r" || e.key === "R" || e.key === "Home") { e.preventDefault(); replay(); }
+      if (
+        ae &&
+        (ae.tagName === "INPUT" ||
+          ae.tagName === "TEXTAREA" ||
+          ae.tagName === "SELECT" ||
+          ae.isContentEditable)
+      )
+        return;
+      if (e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        playing ? pause() : playAll();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        nextBeat();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prevBeat();
+      } else if (e.key === "r" || e.key === "R" || e.key === "Home") {
+        e.preventDefault();
+        replay();
+      }
     });
 
     // minimal mode: the play's own prose (call + description) still renders,
@@ -601,11 +866,14 @@
     }
 
     container.appendChild(root);
-    setT(0); updateBtn();
+    setT(0);
+    updateBtn();
     if (opts.autoplay) playAll();
 
     // a hidden tab must not keep an animation loop alive
-    const onVis = () => { if (document.hidden && playing) pause(); };
+    const onVis = () => {
+      if (document.hidden && playing) pause();
+    };
     document.addEventListener("visibilitychange", onVis);
 
     // hosts that remount (the DBN editor re-renders on every edit) must call
@@ -614,11 +882,22 @@
     function destroy() {
       pause();
       document.removeEventListener("visibilitychange", onVis);
-      if (proseEl && proseEl.parentNode) proseEl.parentNode.removeChild(proseEl);
+      if (proseEl && proseEl.parentNode)
+        proseEl.parentNode.removeChild(proseEl);
       if (root.parentNode) root.parentNode.removeChild(root);
     }
 
-    return { play: playAll, pause, seek: setT, next: nextBeat, prev: prevBeat, replay, loop, destroy, el: root };
+    return {
+      play: playAll,
+      pause,
+      seek: setT,
+      next: nextBeat,
+      prev: prevBeat,
+      replay,
+      loop,
+      destroy,
+      el: root,
+    };
   }
 
   function autoInit() {
@@ -628,7 +907,10 @@
       el.__dbpMounted = true;
       const id = el.getAttribute("data-db-play");
       const play = db[id];
-      if (!play) { el.textContent = "[unknown play: " + id + "]"; return; }
+      if (!play) {
+        el.textContent = "[unknown play: " + id + "]";
+        return;
+      }
       mount(el, play, {
         autoplay: el.hasAttribute("data-autoplay"),
         loop: el.hasAttribute("data-loop"),

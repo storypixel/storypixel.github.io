@@ -105,6 +105,14 @@ for (const id of setOffenses) {
     holders,
     id + " sends only those ball holders to the front line",
   );
+  const fakeStep = play.steps.find((s) => s.fakes && s.fakes.length);
+  if (fakeStep) {
+    assert.deepStrictEqual(
+      fakeStep.fakes.map((f) => f.n).sort((a, b) => a - b),
+      holders,
+      id + ": in a faking play, everyone who has a ball fakes",
+    );
+  }
 }
 
 for (const id of ["home", "away", "mirror", "pitch-back"]) {

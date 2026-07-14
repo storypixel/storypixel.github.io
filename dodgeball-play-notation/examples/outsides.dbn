@@ -1,10 +1,10 @@
 [Play "Outsides"]
 [Badge "4-ball"]
 [Call "Outsides 4, 1"]
-[Desc "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. Both corners then throw at the same number from opposite angles while the middle two make one pump fake to pull the block."]
+[Desc "Four-ball call. The four ball-holders parley tightly in the middle and fan to the front line. Both corners then throw at the same number from opposite angles after all four holders make one pump fake in unison to pull the block."]
 [Balls "U:1458 T:37"]
 
 1. {Step 1 — ball-holders parley tightly in the middle} :0.8  U1458-huddle
 2. {Step 2 — ball-holders fan to the front line} :0.9  U1458-line
-3. {Step 3 — middles make one pump fake to pull the block} :1.1  U45?
+3. {Step 3 — one pump fake in unison to pull the block} :1.1  U1458?
 4. {Step 4 — outsides 4, 1: the two corners release} :1.0  U1@T4! U8@T4!

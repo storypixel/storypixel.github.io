@@ -51,8 +51,8 @@ assert.match(
 );
 assert.match(
   engine,
-  /\.dbp__scrub\{[^}]*height:40px[^}]*padding:0[^}]*background:#111/,
-  "timeline is a black band filling its control row",
+  /\.dbp__scrub\{[^}]*height:40px[^}]*padding:0 12px[^}]*background:#111/,
+  "black band spans full width; scrub line is inset to the button's width",
 );
 assert.match(
   engine,
@@ -68,6 +68,34 @@ assert.match(
   engine,
   /\.dbp__node\{[^}]*border:0/,
   "timeline nodes are unboxed ticks",
+);
+// Flush-ends system: every tick and the playhead use left:p% +
+// translateX(-p%), so at 0% and 100% they sit fully inside the rail and the
+// scrub line's outer extents match the play button's edges exactly.
+assert.match(
+  engine,
+  /node\.style\.transform = `translateX\(-\$\{nodePct\}%\)`/,
+  "ticks travel flush within the rail (left:p% + translateX(-p%))",
+);
+assert.match(
+  engine,
+  /thumbEl\.style\.transform = `translateX\(-\$\{pct\}%\)`/,
+  "the playhead travels flush within the rail, never past the button edges",
+);
+assert.doesNotMatch(
+  engine,
+  /\.dbp__(?:node|thumb)\{[^}]*translateX\(-50%\)/,
+  "no static centering transform may fight the flush-ends positioning",
+);
+assert.doesNotMatch(
+  engine,
+  /\.dbp__track\{[^}]*overflow:hidden/,
+  "the track must not clip the edge ticks to half width",
+);
+assert.match(
+  engine,
+  /dbp__node--end/,
+  "a terminus tick marks the end of the play",
 );
 assert.match(
   engine,
