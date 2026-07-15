@@ -1,0 +1,34 @@
+# DBN — Dodgeball Notation
+
+A chess-style notation for dodgeball plays that compiles to animated overhead
+court diagrams. Plain JS, no build, no dependencies.
+
+## Read first
+- Spec (exact token semantics + EBNF): https://iamnotsam.com/dodgeball-play-notation/NOTATION.md
+- Agent guide (window.DBNEditor automation API, test ids, deep links): https://iamnotsam.com/dodgeball-play-notation/DRIVING.md
+- Glossary of dodgeball terms: https://iamnotsam.com/dodgeball-play-notation/GLOSSARY.md
+
+## Machine surfaces
+- Render arbitrary notation: https://iamnotsam.com/dodgeball-play-notation/?dbn=<url-encoded DBN>
+- Play files (plain text): https://iamnotsam.com/dodgeball-play-notation/examples/<id>.dbn
+  ids: pitch-back three-ball insides insides-3 outsides outsides-3 kill-left
+  kill-left-3 kill-right kill-right-3 home away mirror middle
+- Every play is an anchor on one page: https://iamnotsam.com/dodgeball-play-notation/#<id>
+- Engine (two script tags, auto-mounts [data-db-play-dbn] elements):
+  https://iamnotsam.com/dodgeball-play-notation/vendor/play-animator.js
+  https://iamnotsam.com/dodgeball-play-notation/vendor/dbn.js
+- JS API: DBN.parse(text) -> play JSON; DodgeballPlay.mount(el, play, opts) -> controller
+  {play, pause, seek, next, prev, replay, loop, destroy, el}
+
+## Live examples
+- Overview / how to adopt: https://iamnotsam.com/dbn/
+- A real team's playbook: https://iamnotsam.com/dodging-playbook/
+- Neutral demo playbook: https://iamnotsam.com/playbook-example/
+- Quiz built on the same files: https://iamnotsam.com/playbook-quiz/
+
+## Source
+- https://github.com/storypixel/dodgeball-play-notation (canonical: notation, engine, spec, tests)
+- https://github.com/storypixel/dodgeball-play-animator (mirror + scroll-through viewer)
+
+House rule: no magic — every engine capability ships as notation token + spec
+entry + test, or not at all. The (x,y) escape always works.
