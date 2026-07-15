@@ -31,7 +31,7 @@
     <p>A tiny sample playbook &mdash; a few demo plays, each animated. These are not a team's real calls; they show the format: bring shooters to the line, split the targets.</p>
   </header>
   <main id="doc"></main>
-  <footer>Built on <a href="/dodgeball-play-notation/">DBN</a> &mdash; the demo plays above are written inline on this page.</footer>
+  <footer>The demo plays above are written inline on this page.</footer>
 </div>
 <script src="/dodgeball-play-notation/vendor/play-animator.js"></script>
 <script src="/dodgeball-play-notation/vendor/dbn.js"></script>
@@ -41,6 +41,7 @@
   window.addEventListener('DOMContentLoaded', function(){
     var doc = document.getElementById('doc');
     var PLAYS = [
+'[Play "Pitch Back"]\n[Badge "opening rush"]\n[Call "Pitch back"]\n[Desc "Opening rush. The two right players sprint their own lanes to the center-line balls and grab three (one grabs two, one grabs one), then pitch one back to an attacker who steps up and picks off a backpedaling rusher. After the grab the rushers regress straight home."]\n[Setup "rush"]\n\n1. {Rush — the two on the right grab three (2 + 1)} :1.3  U7-line U8-line U8*2 U7* T1-line T2-line T1*2 T2*\n2. {Pitch back — rushers regress as the attacker steps up} :0.9  U8>U5 U78-deep U5-68 T12-deep\n3. {Free look — hit a regressing rusher} :1  U5@T2! U78-back T12-back',
 '[Play "Threes"]\n[Badge "3-ball demo"]\n[Call "Threes — 2, 5, 7"]\n[Desc "The base pattern: three ball-holders step to the line together and each picks a different target, so no single block or dodge covers the volley."]\n[Balls "U:246 T:357"]\n\n1. {Three holders take the line} :1  U246-line\n2. {Spread — three different targets} :1.1  U2@T2! U4@T5! U6@T7%',
 '[Play "Threes, 1"]\n[Badge "3-ball demo"]\n[Call "Threes — 2, 5, 7 — one fake"]\n[Desc "Same spread, sold with one pump fake in unison before the release. The fake pulls blocks and early dodges; the real throws land a beat later."]\n[Balls "U:345 T:246"]\n\n1. {Three holders take the line} :1  U345-line\n2. {One pump fake in unison} :1.1  U345?\n3. {Release at three different targets} :1  U3@T2! U4@T4! U5@T6%',
 '[Play "Threes, wide"]\n[Badge "3-ball demo"]\n[Call "Threes wide — cross it"]\n[Desc "The wide variation: corners and the middle take the line. The middle keeps faking while the corners cross their throws to opposite-side targets."]\n[Balls "U:158 T:357"]\n\n1. {Corners and middle take the line} :1  U158-line\n2. {Middle sells the fake; corners cross} :1.2  U5? U1@T5! U8@T3%',
