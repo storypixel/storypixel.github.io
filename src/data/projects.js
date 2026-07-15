@@ -48,6 +48,16 @@ export const projects = [
         external: true,
     },
     {
+        id: 'callbook',
+        title: 'Callbook',
+        category: 'Animated Dodgeball Playbooks',
+        size: 'full',
+        image: '/callbook/preview.svg',
+        color: '#eef1f4',
+        url: '/callbook/',
+        external: true,
+    },
+    {
         id: 'phenyl',
         title: 'Phenyl',
         category: 'Perfumery / AI Concierge',
