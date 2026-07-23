@@ -1,9 +1,14 @@
 import React, { useRef, useMemo, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const GradientPlane = () => {
     const meshRef = useRef();
+    // Scale the plane to the camera's visible area. A fixed 2x2 plane fills
+    // the viewport HEIGHT at fov 90 / z=1, but on wide screens the visible
+    // width is height x aspect — the gradient rendered as a centered strip.
+    // viewport is reactive, so window resizes keep it edge-to-edge.
+    const { viewport } = useThree();
 
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
@@ -101,8 +106,8 @@ const GradientPlane = () => {
     });
 
     return (
-        <mesh ref={meshRef}>
-            <planeGeometry args={[2, 2]} />
+        <mesh ref={meshRef} scale={[viewport.width, viewport.height, 1]}>
+            <planeGeometry args={[1, 1]} />
             <shaderMaterial
                 vertexShader={vertexShader}
                 fragmentShader={fragmentShader}
