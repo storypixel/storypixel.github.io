@@ -1,4 +1,4 @@
-import{b as l,j as e,m as n,L as c}from"./vendor-CI4CKsaM.js";import{N as h,p as x}from"./index-B9SYasG9.js";import{C as y,u as v,a as i,b as g}from"./three-CJ_X06kl.js";const p=()=>{const t=l.useRef(),{viewport:r}=v(),s=l.useMemo(()=>({uTime:{value:0},uColor1:{value:new i("#1a1a2e")},uColor2:{value:new i("#4a90a4")},uColor3:{value:new i("#7b68ee")},uColor4:{value:new i("#20b2aa")},uColor5:{value:new i("#2d1b69")}}),[]),a=`
+import{b as l,j as e,m as n,L as c}from"./vendor-CI4CKsaM.js";import{N as h,p as x}from"./index-DzhYdr_U.js";import{C as y,u as v,a as i,b as g}from"./three-CJ_X06kl.js";const p=()=>{const t=l.useRef(),{viewport:r}=v(),s=l.useMemo(()=>({uTime:{value:0},uColor1:{value:new i("#1a1a2e")},uColor2:{value:new i("#4a90a4")},uColor3:{value:new i("#7b68ee")},uColor4:{value:new i("#20b2aa")},uColor5:{value:new i("#2d1b69")}}),[]),a=`
         varying vec2 vUv;
         void main() {
             vUv = uv;
