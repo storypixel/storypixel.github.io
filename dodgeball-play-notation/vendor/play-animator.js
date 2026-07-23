@@ -395,7 +395,7 @@
     const ctrls = document.createElement("div");
     ctrls.className = "dbp__ctrls";
     ctrls.innerHTML =
-      '<button class="dbp__btn dbp__play" aria-label="Play beat"></button>';
+      '<button class="dbp__btn dbp__play" aria-label="Play"></button>';
     root.appendChild(ctrls);
 
     let stepEl = null;
@@ -749,7 +749,7 @@
           : ICON_PLAY;
       playBtn.setAttribute(
         "aria-label",
-        playing ? "Pause" : atEnd ? "Restart" : "Play beat",
+        playing ? "Pause" : atEnd ? "Restart" : "Play",
       );
     }
     function play_() {
@@ -775,19 +775,13 @@
       play_();
     }
 
-    // play the current beat's motion and STOP at the next node. A play is a
-    // slideshow: each press advances one beat and stops; it does not run through.
+    // play THROUGH the whole play with a brief dwell at each beat marker,
+    // then stop at the end. Single-beat stepping stays available via
+    // next()/prev() and the arrow keys.
     function playAll() {
       const eps = 1e-4;
       if (t >= c.totalDur - eps) t = 0; // at the end → restart from the top
-      let nxt = c.totalDur;
-      for (const b of bounds) {
-        if (b > t + eps) {
-          nxt = b;
-          break;
-        }
-      }
-      stopAt = nxt;
+      stopAt = null;
       play_();
     }
     // advance one slide: play the next beat's motion and stop at its end
