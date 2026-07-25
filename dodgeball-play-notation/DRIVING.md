@@ -131,6 +131,36 @@ Every control has a `data-testid` and an ARIA label:
 
 ---
 
+## Describe-a-play converter (compose.html + server/convert.mjs)
+
+`compose.html` is the copy-the-prompt surface: one button copies a
+self-contained prompt for any chatbot (the prompt embeds the served
+`NOTATION.md` plus example plays, so it can never drift from the spec), and
+the page links every rule doc. Paste the AI's answer back and it validates and
+animates. The page makes no model calls of its own.
+
+Agents should skip the page: https://iamnotsam.com/callbook/agent.md is the
+step-by-step ("using this URL, make me a play where ...").
+
+The service (`server/convert.mjs`, zero-dependency node >= 18) backs the
+machine surfaces. `POST /validate` is the free, no-LLM parse check (open CORS;
+returns a ready-made animated `view` link; send a real User-Agent). `POST
+/convert` takes {"description"} and does the full conversion server-side --
+spec-as-prompt against an OpenAI-compatible endpoint (`CONVERT_BASE` /
+`CONVERT_MODEL` / `CONVERT_API_KEY`), reply validated with
+`src/dbn-headless.js` plus one repair retry, per-IP and daily rate limits:
+
+    POST https://callbook.klerb.io/validate
+    {"dbn": "[Play ...]"}  ->  {"valid": true, "name", "beats", "view"}
+
+    POST https://callbook.klerb.io/convert
+    {"description": "We have balls on 4 and 5..."}
+    -> {"dbn": "[Play ...]", "name": "...", "beats": 3}
+
+Page output is validated by `DBN.parse`, previewed by the real engine in a
+shadow root, and emitted as a `data-db-play-dbn` embed snippet plus an
+`index.html?dbn=` editor deep link. Invariants: `tests/compose.test.js`.
+
 ## Pure-Node headless (no browser)
 
 For CI or an agent without a DOM:

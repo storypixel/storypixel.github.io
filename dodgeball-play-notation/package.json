@@ -7,15 +7,17 @@
   "main": "src/dbn-headless.js",
   "scripts": {
     "dbn": "node bin/dbn.js",
-    "test": "node tests/parse.test.js && node tests/formations.test.js && node tests/cli.test.js && node tests/widget-isolation.test.js && node tests/presentation.test.js && node tests/animation.test.js",
+    "test": "node tests/parse.test.js && node tests/formations.test.js && node tests/cli.test.js && node tests/widget-isolation.test.js && node tests/compose.test.js && node tests/presentation.test.js && node tests/animation.test.js",
     "serve": "python3 -m http.server 8770"
   },
   "files": [
     "bin/",
+    "server/",
     "src/",
     "vendor/",
     "examples/",
     "index.html",
+    "compose.html",
     "NOTATION.md",
     "GLOSSARY.md",
     "DRIVING.md"

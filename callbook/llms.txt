@@ -4,12 +4,18 @@ A chess-style notation for dodgeball plays that compiles to animated overhead
 court diagrams. Plain JS, no build, no dependencies.
 
 ## Read first
+- Agent quickstart (a human says "using this URL, make me a play" — step-by-step,
+  with a free validate endpoint): https://iamnotsam.com/callbook/agent.md
 - Spec (exact token semantics + EBNF): https://iamnotsam.com/dodgeball-play-notation/NOTATION.md
 - Agent guide (window.DBNEditor automation API, test ids, deep links): https://iamnotsam.com/dodgeball-play-notation/DRIVING.md
 - Glossary of dodgeball terms: https://iamnotsam.com/dodgeball-play-notation/GLOSSARY.md
 
 ## Machine surfaces
 - Render arbitrary notation: https://iamnotsam.com/dodgeball-play-notation/?dbn=<url-encoded DBN>
+- Describe-a-play converter (English -> LLM -> DBN -> embed; the prompt embeds the live
+  NOTATION.md so it never drifts): https://iamnotsam.com/dodgeball-play-notation/compose.html
+- Converter API (rate-limited): POST https://callbook.klerb.io/convert
+  {"description": "..."} -> {"dbn": "[Play ...]", "name", "beats"} — reply is pre-validated by the real parser
 - Play files (plain text): https://iamnotsam.com/dodgeball-play-notation/examples/<id>.dbn
   ids: pitch-back three-ball insides insides-3 outsides outsides-3 kill-left
   kill-left-3 kill-right kill-right-3 home away mirror middle

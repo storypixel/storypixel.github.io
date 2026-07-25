@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Callbook — Describe a Play</title>
+<meta name="description" content="Describe a dodgeball play in plain English and convert it to DBN notation with any AI — then embed the animated play anywhere.">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#fff; color:#111; font:16px/1.6 Georgia,"Times New Roman",serif; }
+  .wrap { max-width:720px; margin:0 auto; padding:28px 16px 80px; }
+  h1 { font-size:1.9rem; font-weight:normal; margin:0 0 4px; }
+  .tagline { color:#555; margin:0 0 18px; }
+  hr { border:0; border-top:1px solid #ccc; margin:26px 0; }
+  h2 { font-size:1rem; font-variant:small-caps; letter-spacing:.08em; margin:0 0 10px; }
+  p { margin:0 0 12px; }
+  .small { font-size:.85rem; color:#555; }
+  textarea, input[type="password"] {
+    width:100%; padding:10px; border:1px solid #999; background:#fffdf8;
+    font:14px/1.5 "Courier New",Courier,monospace; color:#111;
+  }
+  textarea:focus, input:focus { outline:2px solid #18324b; }
+  #describe { font-family:Georgia,"Times New Roman",serif; font-size:15px; }
+  button {
+    font:inherit; font-size:.9rem; padding:7px 14px; margin:8px 8px 0 0;
+    border:1px solid #111; background:#fff; color:#111; cursor:pointer; border-radius:0;
+  }
+  button:hover { background:#f0ede6; }
+  button:disabled { color:#999; border-color:#999; cursor:default; background:#fff; }
+  .status { font-size:.85rem; margin:8px 0 0; min-height:1.3em; }
+  .status.ok { color:#28745a; }
+  .status.err { color:#b9342b; }
+  .status.busy { color:#555; font-style:italic; }
+  pre {
+    padding:10px; border:1px solid #999; background:#f6f3ec; overflow-x:auto;
+    font:12px/1.5 "Courier New",Courier,monospace; white-space:pre-wrap; word-break:break-all;
+  }
+  #stage { margin:14px 0 0; }
+  a { color:#18324b; }
+  footer { margin-top:40px; font-size:.85rem; color:#555; }
+  label { font-size:.9rem; }
+  @media(max-width:480px){ .wrap { padding-left:12px; padding-right:12px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Describe a play</h1>
+  <p class="tagline">Plain English in, <a href="NOTATION.md">DBN notation</a> out, animated play anywhere.</p>
+
+  <h2>1. Describe your play</h2>
+  <p class="small">Say it like a coach would. Who has balls, who moves where, who throws at whom, what happens.</p>
+  <textarea id="describe" rows="5" placeholder="Example: We have balls on 4, 5, and 6. They bring three attackers to the line and their middle one pump fakes. When their middle throws at our 5, she dodges and our 5 counters and hits the thrower."></textarea>
+
+  <hr>
+
+  <h2>2. Copy the prompt</h2>
+  <p>Copy this prompt, paste it into whatever AI you use — ChatGPT, Claude, Gemini — and paste the notation it returns into step 3. The prompt carries the live rules, so your AI needs no other context.</p>
+  <button id="copy-prompt">Copy the prompt</button>
+  <p class="status" id="prompt-status"></p>
+  <textarea id="prompt-out" rows="8" spellcheck="false" readonly hidden aria-label="The prompt, ready to copy"></textarea>
+  <p class="small">The rules it teaches your AI:</p>
+  <ul class="small">
+    <li><a href="NOTATION.md">The notation rules</a> — every token, formation, and outcome, with exact semantics</li>
+    <li><a href="https://iamnotsam.com/callbook/agent.md">The rules for AI agents</a> — tell an agent <i>“Using this URL, make me a play where…”</i> and it does all of this itself</li>
+    <li><a href="GLOSSARY.md">Glossary</a> — the dodgeball terms</li>
+    <li><a href="DRIVING.md">Automation guide</a> — deep links, window API, headless CLI, validate endpoint</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. The notation</h2>
+  <p class="small">Paste the notation your AI returned. It validates and animates as you type — edit freely.</p>
+  <textarea id="dbn" rows="10" spellcheck="false" placeholder='[Play "My Play"]&#10;[Balls "U:45 T:246"]&#10;&#10;1. {They bring it up} T246-line T4?&#10;2. {Counter} T4@U5% U5@T4!'></textarea>
+  <p class="status" id="dbn-status"></p>
+  <div id="stage"></div>
+
+  <hr>
+
+  <h2>4. Share it</h2>
+  <p class="small">Paste this snippet into any web page — the play animates in place. Or open it in the editor to keep tweaking.</p>
+  <pre id="embed-snippet">Write a valid play above and the embed code appears here.</pre>
+  <button id="copy-embed" disabled>Copy embed code</button>
+  <button id="copy-dbn" disabled>Copy notation</button>
+  <a id="editor-link" href="index.html" style="display:none">Open in the editor →</a>
+  <p class="status" id="share-status"></p>
+
+  <footer>
+    Part of <a href="https://iamnotsam.com/callbook/">Callbook</a> ·
+    <a href="NOTATION.md">the notation spec</a> ·
+    <a href="index.html">play editor</a>
+  </footer>
+</div>
+
+<script src="vendor/play-animator.js"></script>
+<script src="vendor/dbn.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var ENGINE_BASE = "https://iamnotsam.com/dodgeball-play-notation/";
+  var els = {};
+  ["describe","copy-prompt","prompt-status","prompt-out",
+   "dbn","dbn-status","stage","embed-snippet","copy-embed",
+   "copy-dbn","editor-link","share-status"].forEach(function (id) {
+    els[id.replace(/-([a-z])/g, function (_, c) { return c.toUpperCase(); })] = document.getElementById(id);
+  });
+
+  // The spec IS the prompt: NOTATION.md is fetched live so the converter can
+  // never drift from the notation it targets (no-magic rule — one source of
+  // truth). A few worked examples anchor the style.
+  var spec = null;
+  var EXAMPLES = ["home.dbn", "insides.dbn", "pitch-back.dbn"];
+  function fetchText(url) {
+    return fetch(url, { cache: "no-cache" }).then(function (r) {
+      if (!r.ok) throw new Error("fetch " + url + " -> " + r.status);
+      return r.text();
+    });
+  }
+  var specReady = Promise.all(
+    [fetchText("NOTATION.md")].concat(EXAMPLES.map(function (f) { return fetchText("examples/" + f); }))
+  ).then(function (parts) {
+    spec = { notation: parts[0], examples: parts.slice(1) };
+    return spec;
+  });
+
+  function buildSystemPrompt(s) {
+    return [
+      "You convert plain-English dodgeball play descriptions into DBN (Dodgeball Notation).",
+      "",
+      "The full spec is included below so this works even without web access.",
+      "Canonical sources, if you can fetch: " + ENGINE_BASE + "NOTATION.md",
+      "and https://iamnotsam.com/callbook/agent.md (agent step-by-step, incl. a free validate endpoint).",
+      "",
+      "Rules:",
+      "- Reply with ONLY the DBN play text. No code fences, no commentary, no explanation.",
+      "- Start with [Play \"...\"], add [Balls \"...\"] when anyone starts loaded, then numbered beats.",
+      "- Prefer named formations (huddle, line, mid, deep, back) over coordinates; use exact depths or (x,y) only when the description demands it.",
+      "- Every beat gets a short {label} written the way a coach talks.",
+      "- Keep it minimal: only the players the description mentions act; everyone else stays put.",
+      "- If the description is ambiguous, pick the most conventional reading and encode it — do not ask questions.",
+      "",
+      "The full DBN specification:",
+      "",
+      s.notation,
+      "",
+      "Example plays in DBN:",
+      "",
+      s.examples.join("\n\n---\n\n"),
+    ].join("\n");
+  }
+
+  function buildClipboardPrompt(s, description) {
+    // With a description the prompt is complete; without one it ends by
+    // telling the AI to ask -- the user answers in chat, nothing to edit.
+    var tail = description
+      ? "Convert this play description to DBN (reply with only the notation):\n\n" + description
+      : "The user will describe their play in their next message. Reply now with " +
+        "exactly: \"Ready -- describe your play.\" Then convert their description " +
+        "to DBN, replying with only the notation.";
+    return buildSystemPrompt(s) + "\n\n---\n\n" + tail;
+  }
+
+  function setStatus(el, cls, msg) {
+    el.className = "status" + (cls ? " " + cls : "");
+    el.textContent = msg || "";
+  }
+
+  function copyTextFallback(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      if (ok) resolve(); else reject(new Error("copy blocked — select the text and copy manually"));
+    });
+  }
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      // the async API can reject (focus, permissions) — fall back, don't fail
+      return navigator.clipboard.writeText(text).catch(function () {
+        return copyTextFallback(text);
+      });
+    }
+    return copyTextFallback(text);
+  }
+
+  // ── The one button: copy a self-contained prompt for any chatbot ────────
+  // With a description the prompt converts it directly; without one the
+  // prompt has the AI ask, so the user answers in chat -- never edits the
+  // pasted prompt.
+  els.copyPrompt.addEventListener("click", function () {
+    var description = els.describe.value.trim();
+    setStatus(els.promptStatus, "busy", "Building prompt…");
+    specReady.then(function (s) {
+      var prompt = buildClipboardPrompt(s, description);
+      return copyText(prompt).then(function () {
+        els.promptOut.hidden = true;
+        setStatus(els.promptStatus, "ok", description
+          ? "✓ Prompt copied — paste it into your AI, then paste its answer into step 3."
+          : "✓ Prompt copied — paste it into your AI, it will ask for your play; paste its answer into step 3.");
+      }, function () {
+        // Clipboard blocked (embedded browsers, strict permissions): show the
+        // prompt pre-selected so copying is one keystroke, never a dead end.
+        els.promptOut.value = prompt;
+        els.promptOut.hidden = false;
+        els.promptOut.focus();
+        els.promptOut.select();
+        setStatus(els.promptStatus, "ok",
+          "The prompt is below, already selected — copy it (Ctrl/Cmd-C or long-press), paste it into your AI.");
+      });
+    }).catch(function (e) {
+      setStatus(els.promptStatus, "err", "✗ " + (e && e.message || e));
+    });
+  });
+
+  // ── Validation + live preview + share outputs ───────────────────────────
+  var mount = null;
+  function renderDbn() {
+    var text = els.dbn.value;
+    if (!text.trim()) {
+      setStatus(els.dbnStatus, "", "");
+      els.stage.innerHTML = "";
+      els.embedSnippet.textContent = "Write a valid play above and the embed code appears here.";
+      els.copyEmbed.disabled = true;
+      els.copyDbn.disabled = true;
+      els.editorLink.style.display = "none";
+      return;
+    }
+    var play;
+    try {
+      play = window.DBN.parse(text);
+    } catch (e) {
+      setStatus(els.dbnStatus, "err", "✗ " + ((e && e.message) || e));
+      els.copyEmbed.disabled = true;
+      els.editorLink.style.display = "none";
+      return;
+    }
+    var beats = (play.steps || []).length;
+    setStatus(els.dbnStatus, "ok", "✓ " + (play.name || "play") + " — " + beats + " beat" + (beats === 1 ? "" : "s") + " parsed.");
+    try {
+      if (mount && mount.destroy) mount.destroy();
+      els.stage.innerHTML = "";
+      var island = document.createElement("div");
+      els.stage.appendChild(island);
+      var root = island.attachShadow ? island.attachShadow({ mode: "open" }) : island;
+      var host = document.createElement("div");
+      root.appendChild(host);
+      mount = window.DodgeballPlay.mount(host, play, { chrome: "minimal", prose: false });
+    } catch (e) {
+      setStatus(els.dbnStatus, "err", "✗ render error: " + ((e && e.message) || e));
+      return;
+    }
+    var escaped = text.replace(/&/g, "&amp;").replace(/'/g, "&#39;");
+    els.embedSnippet.textContent =
+      "<div data-db-play-dbn='\n" + escaped + "\n'></div>\n" +
+      '<script src="' + ENGINE_BASE + 'vendor/play-animator.js"><\/script>\n' +
+      '<script src="' + ENGINE_BASE + 'vendor/dbn.js"><\/script>';
+    els.copyEmbed.disabled = false;
+    els.copyDbn.disabled = false;
+    els.editorLink.href = "index.html?dbn=" + encodeURIComponent(text);
+    els.editorLink.style.display = "inline";
+  }
+  var renderTimer = null;
+  els.dbn.addEventListener("input", function () {
+    clearTimeout(renderTimer);
+    renderTimer = setTimeout(renderDbn, 250);
+  });
+
+  els.copyEmbed.addEventListener("click", function () {
+    copyText(els.embedSnippet.textContent).then(function () {
+      setStatus(els.shareStatus, "ok", "✓ Embed code copied.");
+    });
+  });
+  els.copyDbn.addEventListener("click", function () {
+    copyText(els.dbn.value).then(function () {
+      setStatus(els.shareStatus, "ok", "✓ Notation copied.");
+    });
+  });
+})();
+</script>
+</body>
+</html>
