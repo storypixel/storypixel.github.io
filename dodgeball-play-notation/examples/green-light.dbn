@@ -1,0 +1,8 @@
+[Play "Green Light"]
+[Badge "designated thrower"]
+[Call "Green Light, Jordan"]
+[Desc "One designated player has permission to throw at the target of their choosing. The call names that player; everyone else holds and protects the ball count. In this example Jordan is our 4 and takes the line alone before choosing a target."]
+[Balls "U:246 T:357"]
+
+1. {Green Light — the designated holder steps up alone} :1  U4-line
+2. {The designated holder chooses the target and throws} :1  U4@T4!

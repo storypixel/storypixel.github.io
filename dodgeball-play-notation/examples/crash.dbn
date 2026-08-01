@@ -1,0 +1,9 @@
+[Play "Crash"]
+[Badge "majority counter"]
+[Call "Crash"]
+[Desc "Call Crash when we have the player majority. As soon as one opponent throws, two or more of our ball holders rush the line together and throw at that player. It is the counter to a double post: their release is the trigger, and both of our holders attack the same thrower before that player can recover."]
+[Balls "U:37 T:246"]
+
+1. {Their ball holders take the line} :1  T246-line
+2. {One opponent throws — that release triggers Crash} :0.9  T4@U5%
+3. {Our two holders rush together and throw at the thrower} :1.1  U37-line U3@T4! U7@T4!

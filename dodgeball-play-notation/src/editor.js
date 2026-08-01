@@ -19,6 +19,8 @@
     { id:"home", label:"Home", category:"defense" },
     { id:"away", label:"Away", category:"defense" },
     { id:"mirror", label:"Mirror", category:"defense" },
+    { id:"green-light", label:"Green Light", category:"defense" },
+    { id:"crash", label:"Crash", category:"defense" },
     { id:"middle", label:"Middle", category:"situational" },
   ];
   var CATEGORY_LABELS = { offense:"Offense", defense:"Defense", situational:"Situational" };
