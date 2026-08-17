@@ -1,9 +1,8 @@
 [Play "Green Light"]
 [Badge "designated thrower"]
 [Call "Green Light, Jordan"]
-[Desc "Everyone on offense holding a ball parlays and takes the line together, but only the green-lit player throws. The call names the thrower; everyone else advances as cover and holds their ball. In this example our ball-holders are 2, 4 and 6, and Jordan (our 4) is green-lit."]
+[Desc "One designated player has permission to throw at the target of their choosing. The call names that player; everyone else holds and protects the ball count. In this example Jordan is our 4 and takes the line alone before choosing a target."]
 [Balls "U:246 T:357"]
 
-1. {Ball-holders parlay} :0.8  U246-huddle
-2. {All ball-holders take the line together} :0.9  U246-line
-3. {Only the green-lit player throws, the rest hold} :1  U4@T4!
+1. {Green Light — the designated holder steps up alone} :1  U4-line
+2. {The designated holder chooses the target and throws} :1  U4@T4!
