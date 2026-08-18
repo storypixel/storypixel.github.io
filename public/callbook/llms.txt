@@ -17,8 +17,8 @@ court diagrams. Plain JS, no build, no dependencies.
 - Converter API (rate-limited): POST https://callbook.klerb.io/convert
   {"description": "..."} -> {"dbn": "[Play ...]", "name", "beats"} — reply is pre-validated by the real parser
 - Play files (plain text): https://iamnotsam.com/dodgeball-play-notation/examples/<id>.dbn
-  ids: pitch-back three-ball insides insides-3 outsides outsides-3 kill-left
-  kill-left-3 kill-right kill-right-3 home away mirror middle
+  ids: pitch-back insides insides-3 outsides outsides-3 kill-left
+  kill-left-3 kill-right kill-right-3 home away mirror middle green-light crash
 - Every play is an anchor on one page: https://iamnotsam.com/dodgeball-play-notation/#<id>
 - Engine (two script tags, auto-mounts [data-db-play-dbn] elements):
   https://iamnotsam.com/dodgeball-play-notation/vendor/play-animator.js
