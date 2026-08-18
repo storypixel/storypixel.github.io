@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dodgeball Play Generator</title>
+<style>
+  :root { --bg:#0f1216; --panel:#171b21; --line:#262c34; --ink:#e7edf3; --mut:#8a94a0; --acc:#3ea6ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:760px; margin:0 auto; padding:28px 18px 80px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  p.sub { color:var(--mut); margin:0 0 22px; }
+  label { display:block; font-size:13px; color:var(--mut); margin:0 0 6px; }
+  textarea { width:100%; min-height:120px; resize:vertical; background:var(--panel); border:1px solid var(--line);
+    border-radius:10px; color:var(--ink); padding:12px 14px; font:inherit; }
+  textarea:focus { outline:none; border-color:var(--acc); }
+  .row { display:flex; gap:10px; align-items:center; margin:14px 0 0; }
+  button { background:var(--acc); color:#04121f; border:0; border-radius:9px; padding:11px 18px; font:600 15px/1 inherit;
+    cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  button.ghost { background:transparent; color:var(--acc); border:1px solid var(--line); }
+  .status { color:var(--mut); font-size:13px; }
+  .out { margin-top:26px; display:none; }
+  .out.show { display:block; }
+  .preview { background:#0b0e12; border:1px solid var(--line); border-radius:12px; padding:16px; min-height:220px; }
+  .embed { margin-top:16px; }
+  pre { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; overflow:auto;
+    font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; color:#cbd5e1; white-space:pre-wrap; word-break:break-word; }
+  .err { color:#ff8a8a; }
+  .examples { margin-top:10px; font-size:13px; color:var(--mut); }
+  .examples a { color:var(--acc); text-decoration:none; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Dodgeball Play Generator</h1>
+  <p class="sub">Describe a play in plain English. It writes the notation, checks it compiles, and hands you an embed you can paste on any site.</p>
+
+  <label for="desc">Play description</label>
+  <textarea id="desc" placeholder="e.g. Opening rush — all six sprint the line, our two fastest grab the center balls, the rest peel to the back wall and set a wall of four."></textarea>
+  <div class="examples">Try:
+    <a data-ex="Opening rush: all six sprint the center line, our two fastest grab the middle balls and pull back, the other four form a wall along the back and wait for the counter.">opening rush</a> ·
+    <a data-ex="Bait play: we send two up to the line to draw throws, they pump fake, and when their thrower commits we counter across the court to catch him out.">bait & counter</a> ·
+    <a data-ex="Zone defense: three across the front deflect and block, two in the back catch anything deep, one roamer floats to grab loose balls.">zone defense</a>
+  </div>
+
+  <div class="row">
+    <button id="go">Generate</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <div class="out" id="out">
+    <label>Preview</label>
+    <div class="preview" id="preview"></div>
+    <div class="embed">
+      <label>Copy-paste embed <span style="color:var(--mut)">(paste into any web page)</span></label>
+      <pre id="embed"></pre>
+      <div class="row">
+        <button class="ghost" id="copy">Copy embed</button>
+        <span class="status" id="copied"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="dbn.js"></script>
+<script src="play-animator.js"></script>
+<script>
+  var $ = function (id) { return document.getElementById(id); };
+  var lastEmbed = "";
+
+  Array.prototype.forEach.call(document.querySelectorAll(".examples a"), function (a) {
+    a.addEventListener("click", function () { $("desc").value = a.getAttribute("data-ex"); $("desc").focus(); });
+  });
+
+  // Render the inline-DBN from an embed string into the live preview.
+  function renderPreview(embedHtml) {
+    var m = embedHtml.match(/<div data-db-play-dbn[^>]*>([\s\S]*?)<\/div>/i);
+    var dbn = m ? m[1].replace(/&lt;/g, "<").replace(/&amp;/g, "&").trim() : "";
+    var host = $("preview");
+    host.innerHTML = "";
+    var el = document.createElement("div");
+    host.appendChild(el);
+    try {
+      var play = window.DBN.parse(dbn);
+      window.DodgeballPlay.mount(el, play, { loop: true, autoplay: true });
+    } catch (e) { host.innerHTML = '<span class="err">preview error: ' + e.message + "</span>"; }
+  }
+
+  $("go").addEventListener("click", async function () {
+    var desc = $("desc").value.trim();
+    if (!desc) { $("status").textContent = "Type a description first."; return; }
+    $("go").disabled = true; $("status").textContent = "Thinking through the play…"; $("out").classList.remove("show");
+    try {
+      var r = await fetch("/generate", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: desc })
+      });
+      var j = await r.json();
+      if (!r.ok || j.error) throw new Error(j.error || ("HTTP " + r.status));
+      lastEmbed = j.embed;
+      $("embed").textContent = j.embed;
+      renderPreview(j.embed);
+      $("out").classList.add("show");
+      $("status").textContent = "Done. Compiles clean.";
+    } catch (e) {
+      $("status").innerHTML = '<span class="err">' + e.message + "</span>";
+    } finally { $("go").disabled = false; }
+  });
+
+  $("copy").addEventListener("click", function () {
+    navigator.clipboard.writeText(lastEmbed).then(function () {
+      $("copied").textContent = "Copied ✓"; setTimeout(function () { $("copied").textContent = ""; }, 1800);
+    });
+  });
+</script>
+</body>
+</html>
