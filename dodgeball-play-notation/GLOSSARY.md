@@ -23,7 +23,7 @@ the quick lookup.
 
 | Token | Meaning |
 |-------|---------|
-| `U1`…`Un` | US players, left → right. `T1`…`Tn` THEM. Team size from setup (default 8; `[Players "10"]`). |
+| `U1`…`Un` | US players, left → right **from our left**. `T1`…`Tn` THEM — numbered from **our** left too, not from theirs. The animator uses one shared lane map for both teams with no mirroring, so `T1` stands opposite `U1` on the same side of the court. Team size from setup (default 8; `[Players "10"]`). |
 | `T2468` | a **group** — the digits fan one action across players 2, 4, 6, 8. A real roster number (`T10` in 10s) always wins over expansion. |
 | `*` (suffix in DBF) | the player is **loaded**, e.g. `U1*`. |
 | `bU` / `bT` / `bN` | a loose ball, owner = ours / theirs / neutral. |

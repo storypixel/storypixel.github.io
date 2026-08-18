@@ -244,6 +244,412 @@
       }
     ]
   },
+  "crash": {
+    "id": "crash",
+    "name": "Crash",
+    "badge": "majority counter",
+    "call": "\"Crash\"",
+    "desc": "Call Crash when we have the player majority. As soon as one opponent throws, two or more of our ball holders rush the line together and throw at that player. It is the counter to a double post: their release is the trigger, and both of our holders attack the same thrower before that player can recover.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 2,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 15.714285714285714,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 29.428571428571427,
+          "y": 95,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 43.14285714285714,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56.857142857142854,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 70.57142857142857,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 84.28571428571428,
+          "y": 95,
+          "ball": true
+        },
+        {
+          "n": 8,
+          "x": 98,
+          "y": 95,
+          "ball": false
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 2,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 15.714285714285714,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 3,
+          "x": 29.428571428571427,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 43.14285714285714,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56.857142857142854,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 70.57142857142857,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 7,
+          "x": 84.28571428571428,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 98,
+          "y": 5,
+          "ball": false
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Their ball holders take the line",
+        "summary": "to the line",
+        "dur": 1,
+        "moves": [
+          {
+            "team": "them",
+            "n": 2,
+            "to": [
+              25,
+              42
+            ]
+          },
+          {
+            "team": "them",
+            "n": 4,
+            "to": [
+              50,
+              42
+            ]
+          },
+          {
+            "team": "them",
+            "n": 6,
+            "to": [
+              75,
+              42
+            ]
+          }
+        ]
+      },
+      {
+        "label": "One opponent throws — that release triggers Crash",
+        "summary": "throw at 5",
+        "dur": 0.9,
+        "throws": [
+          {
+            "from": {
+              "team": "them",
+              "n": 4
+            },
+            "to": {
+              "team": "us",
+              "n": 5
+            },
+            "outcome": "dodged",
+            "curve": 14
+          }
+        ],
+        "dodges": [
+          {
+            "team": "us",
+            "n": 5
+          }
+        ]
+      },
+      {
+        "label": "Our two holders rush together and throw at the thrower",
+        "summary": "to the line · throw at 4",
+        "dur": 1.1,
+        "moves": [
+          {
+            "team": "us",
+            "n": 3,
+            "to": [
+              25,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 7,
+            "to": [
+              75,
+              58
+            ]
+          }
+        ],
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 3
+            },
+            "to": {
+              "team": "them",
+              "n": 4
+            },
+            "curve": -12
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 7
+            },
+            "to": {
+              "team": "them",
+              "n": 4
+            },
+            "curve": 12
+          }
+        ]
+      }
+    ]
+  },
+  "green-light": {
+    "id": "green-light",
+    "name": "Green Light",
+    "badge": "designated thrower",
+    "call": "\"Green Light, Jordan\"",
+    "desc": "Everyone on offense holding a ball parlays and takes the line together, but only the green-lit player throws. The call names the thrower; everyone else advances as cover and holds their ball. In this example our ball-holders are 2, 4 and 6, and Jordan (our 4) is green-lit.",
+    "setup": {
+      "us": [
+        {
+          "n": 1,
+          "x": 2,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 15.714285714285714,
+          "y": 95,
+          "ball": true
+        },
+        {
+          "n": 3,
+          "x": 29.428571428571427,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 4,
+          "x": 43.14285714285714,
+          "y": 95,
+          "ball": true
+        },
+        {
+          "n": 5,
+          "x": 56.857142857142854,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 6,
+          "x": 70.57142857142857,
+          "y": 95,
+          "ball": true
+        },
+        {
+          "n": 7,
+          "x": 84.28571428571428,
+          "y": 95,
+          "ball": false
+        },
+        {
+          "n": 8,
+          "x": 98,
+          "y": 95,
+          "ball": false
+        }
+      ],
+      "them": [
+        {
+          "n": 1,
+          "x": 2,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 2,
+          "x": 15.714285714285714,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 3,
+          "x": 29.428571428571427,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 4,
+          "x": 43.14285714285714,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 5,
+          "x": 56.857142857142854,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 6,
+          "x": 70.57142857142857,
+          "y": 5,
+          "ball": false
+        },
+        {
+          "n": 7,
+          "x": 84.28571428571428,
+          "y": 5,
+          "ball": true
+        },
+        {
+          "n": 8,
+          "x": 98,
+          "y": 5,
+          "ball": false
+        }
+      ],
+      "balls": []
+    },
+    "steps": [
+      {
+        "label": "Ball-holders parlay",
+        "summary": "parley: call play and choose target",
+        "dur": 0.8,
+        "moves": [
+          {
+            "team": "us",
+            "n": 2,
+            "to": [
+              43.5,
+              87
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              50,
+              87
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              56.5,
+              87
+            ]
+          }
+        ]
+      },
+      {
+        "label": "All ball-holders take the line together",
+        "summary": "to the line",
+        "dur": 0.9,
+        "moves": [
+          {
+            "team": "us",
+            "n": 2,
+            "to": [
+              25,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 4,
+            "to": [
+              50,
+              58
+            ]
+          },
+          {
+            "team": "us",
+            "n": 6,
+            "to": [
+              75,
+              58
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Only the green-lit player throws, the rest hold",
+        "summary": "throw at 4",
+        "dur": 1,
+        "throws": [
+          {
+            "from": {
+              "team": "us",
+              "n": 4
+            },
+            "to": {
+              "team": "them",
+              "n": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
   "home": {
     "id": "home",
     "name": "Home",
@@ -3100,231 +3506,6 @@
               "team": "them",
               "n": 2
             }
-          }
-        ]
-      }
-    ]
-  },
-  "three-ball": {
-    "id": "three-ball",
-    "name": "3 Balls",
-    "badge": "3-ball",
-    "call": "\"meet in the middle\"",
-    "desc": "With three balls the three ball-holders parley tightly in the middle, then fan across the front line. Everyone with a ball pump-fakes in unison; the two designated throwers then attack a specific target.",
-    "setup": {
-      "us": [
-        {
-          "n": 1,
-          "x": 2,
-          "y": 95,
-          "ball": false
-        },
-        {
-          "n": 2,
-          "x": 15.714285714285714,
-          "y": 95,
-          "ball": false
-        },
-        {
-          "n": 3,
-          "x": 29.428571428571427,
-          "y": 95,
-          "ball": false
-        },
-        {
-          "n": 4,
-          "x": 43.14285714285714,
-          "y": 95,
-          "ball": true
-        },
-        {
-          "n": 5,
-          "x": 56.857142857142854,
-          "y": 95,
-          "ball": true
-        },
-        {
-          "n": 6,
-          "x": 70.57142857142857,
-          "y": 95,
-          "ball": true
-        },
-        {
-          "n": 7,
-          "x": 84.28571428571428,
-          "y": 95,
-          "ball": false
-        },
-        {
-          "n": 8,
-          "x": 98,
-          "y": 95,
-          "ball": false
-        }
-      ],
-      "them": [
-        {
-          "n": 1,
-          "x": 2,
-          "y": 5,
-          "ball": false
-        },
-        {
-          "n": 2,
-          "x": 15.714285714285714,
-          "y": 5,
-          "ball": true
-        },
-        {
-          "n": 3,
-          "x": 29.428571428571427,
-          "y": 5,
-          "ball": false
-        },
-        {
-          "n": 4,
-          "x": 43.14285714285714,
-          "y": 5,
-          "ball": false
-        },
-        {
-          "n": 5,
-          "x": 56.857142857142854,
-          "y": 5,
-          "ball": true
-        },
-        {
-          "n": 6,
-          "x": 70.57142857142857,
-          "y": 5,
-          "ball": false
-        },
-        {
-          "n": 7,
-          "x": 84.28571428571428,
-          "y": 5,
-          "ball": false
-        },
-        {
-          "n": 8,
-          "x": 98,
-          "y": 5,
-          "ball": true
-        }
-      ],
-      "balls": []
-    },
-    "steps": [
-      {
-        "label": "Step 1 — ball-holders parley tightly in the middle",
-        "summary": "parley: call play and choose target",
-        "dur": 0.8,
-        "moves": [
-          {
-            "team": "us",
-            "n": 4,
-            "to": [
-              43.5,
-              87
-            ]
-          },
-          {
-            "team": "us",
-            "n": 5,
-            "to": [
-              50,
-              87
-            ]
-          },
-          {
-            "team": "us",
-            "n": 6,
-            "to": [
-              56.5,
-              87
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Step 2 — ball-holders fan to the front line",
-        "summary": "to the line",
-        "dur": 0.9,
-        "moves": [
-          {
-            "team": "us",
-            "n": 4,
-            "to": [
-              25,
-              58
-            ]
-          },
-          {
-            "team": "us",
-            "n": 5,
-            "to": [
-              50,
-              58
-            ]
-          },
-          {
-            "team": "us",
-            "n": 6,
-            "to": [
-              75,
-              58
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Step 3 — everyone with a ball pump-fakes",
-        "summary": "1 pump fake",
-        "dur": 1.1,
-        "fakes": [
-          {
-            "team": "us",
-            "n": 4,
-            "reps": 1
-          },
-          {
-            "team": "us",
-            "n": 5,
-            "reps": 1
-          },
-          {
-            "team": "us",
-            "n": 6,
-            "reps": 1
-          }
-        ]
-      },
-      {
-        "label": "Step 4 — two throwers on 4",
-        "summary": "throw at 4",
-        "dur": 1,
-        "throws": [
-          {
-            "from": {
-              "team": "us",
-              "n": 4
-            },
-            "to": {
-              "team": "them",
-              "n": 4
-            },
-            "curve": -12
-          },
-          {
-            "from": {
-              "team": "us",
-              "n": 5
-            },
-            "to": {
-              "team": "them",
-              "n": 4
-            },
-            "curve": 12
           }
         ]
       }

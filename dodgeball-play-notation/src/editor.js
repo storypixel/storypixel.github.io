@@ -7,7 +7,6 @@
 
   var PLAY_CATALOG = [
     { id:"pitch-back", label:"Pitch Back", category:"offense" },
-    { id:"three-ball", label:"3 Balls", category:"offense" },
     { id:"insides", label:"Inside", variant:"4 ball", category:"offense" },
     { id:"insides-3", label:"Inside", variant:"3 ball", category:"offense" },
     { id:"outsides", label:"Outsides", variant:"4 ball", category:"offense" },
@@ -19,7 +18,7 @@
     { id:"home", label:"Home", category:"defense" },
     { id:"away", label:"Away", category:"defense" },
     { id:"mirror", label:"Mirror", category:"defense" },
-    { id:"green-light", label:"Green Light", category:"defense" },
+    { id:"green-light", label:"Green Light", category:"offense" },
     { id:"crash", label:"Crash", category:"defense" },
     { id:"middle", label:"Middle", category:"situational" },
   ];

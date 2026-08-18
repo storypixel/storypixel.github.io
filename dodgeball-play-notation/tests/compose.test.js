@@ -40,8 +40,8 @@ assert.match(
 );
 assert.match(
   page,
-  /buildClipboardPrompt/,
-  "copy-prompt path builds a standalone prompt",
+  /buildPrompt/,
+  "copy-prompt builds a standalone prompt",
 );
 assert.match(page, /copy-prompt/, "copy-prompt button exists");
 assert.match(
@@ -63,7 +63,6 @@ assert.match(
   "links the rules for AI agents",
 );
 assert.match(page, /href="GLOSSARY\.md"/, "links the glossary");
-assert.match(page, /href="DRIVING\.md"/, "links the automation guide");
 assert.doesNotMatch(
   page,
   /api\.anthropic\.com|x-api-key|anthropic-version|callbook\.klerb\.io\/convert/,

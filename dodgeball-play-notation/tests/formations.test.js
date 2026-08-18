@@ -107,7 +107,6 @@ assert.deepStrictEqual(
 );
 
 const setOffenses = [
-  "three-ball",
   "insides",
   "insides-3",
   "outsides",
