@@ -1,8 +1,8 @@
 [Play "Crash"]
 [Badge "majority press"]
 [Call "Crash"]
-[Desc "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and attacks at close range — overwhelming their outnumbered side before it can reset. We initiate; nothing about this play waits on the other team."]
+[Desc "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and all throw at ONE called target — a synchronized barrage from different angles is nearly impossible to dodge or catch. We initiate; nothing about this play waits on the other team."]
 [Balls "U:357"]
 
 1. {Crash — every holder charges the line together} :1  U357-line
-2. {Attack at close range} :1  U3@T3! U5@T5! U7@T7!
+2. {All balls on the called target} :1  U3@T5! U5@T5! U7@T5!

@@ -249,7 +249,7 @@
     "name": "Crash",
     "badge": "majority press",
     "call": "\"Crash\"",
-    "desc": "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and attacks at close range — overwhelming their outnumbered side before it can reset. We initiate; nothing about this play waits on the other team.",
+    "desc": "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and all throw at ONE called target — a synchronized barrage from different angles is nearly impossible to dodge or catch. We initiate; nothing about this play waits on the other team.",
     "setup": {
       "us": [
         {
@@ -386,8 +386,8 @@
         ]
       },
       {
-        "label": "Attack at close range",
-        "summary": "throw at 3 & 5 & 7",
+        "label": "All balls on the called target",
+        "summary": "throw at 5",
         "dur": 1,
         "throws": [
           {
@@ -397,8 +397,9 @@
             },
             "to": {
               "team": "them",
-              "n": 3
-            }
+              "n": 5
+            },
+            "curve": -24
           },
           {
             "from": {
@@ -417,8 +418,9 @@
             },
             "to": {
               "team": "them",
-              "n": 7
-            }
+              "n": 5
+            },
+            "curve": 24
           }
         ]
       }
