@@ -247,9 +247,9 @@
   "crash": {
     "id": "crash",
     "name": "Crash",
-    "badge": "majority counter",
+    "badge": "majority press",
     "call": "\"Crash\"",
-    "desc": "An offensive press for when we have the player majority. The moment an opponent throws, that release is the trigger: two or more of our ball holders crash the line together and attack the thrower before they can recover.",
+    "desc": "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and attacks at close range — overwhelming their outnumbered side before it can reset. We initiate; nothing about this play waits on the other team.",
     "setup": {
       "us": [
         {
@@ -280,7 +280,7 @@
           "n": 5,
           "x": 56.857142857142854,
           "y": 95,
-          "ball": false
+          "ball": true
         },
         {
           "n": 6,
@@ -312,7 +312,7 @@
           "n": 2,
           "x": 15.714285714285714,
           "y": 5,
-          "ball": true
+          "ball": false
         },
         {
           "n": 3,
@@ -324,7 +324,7 @@
           "n": 4,
           "x": 43.14285714285714,
           "y": 5,
-          "ball": true
+          "ball": false
         },
         {
           "n": 5,
@@ -336,7 +336,7 @@
           "n": 6,
           "x": 70.57142857142857,
           "y": 5,
-          "ball": true
+          "ball": false
         },
         {
           "n": 7,
@@ -355,65 +355,9 @@
     },
     "steps": [
       {
-        "label": "Their ball holders take the line",
+        "label": "Crash — every holder charges the line together",
         "summary": "to the line",
         "dur": 1,
-        "moves": [
-          {
-            "team": "them",
-            "n": 2,
-            "to": [
-              25,
-              42
-            ]
-          },
-          {
-            "team": "them",
-            "n": 4,
-            "to": [
-              50,
-              42
-            ]
-          },
-          {
-            "team": "them",
-            "n": 6,
-            "to": [
-              75,
-              42
-            ]
-          }
-        ]
-      },
-      {
-        "label": "One opponent throws — that release triggers Crash",
-        "summary": "throw at 5",
-        "dur": 0.9,
-        "throws": [
-          {
-            "from": {
-              "team": "them",
-              "n": 4
-            },
-            "to": {
-              "team": "us",
-              "n": 5
-            },
-            "outcome": "dodged",
-            "curve": 14
-          }
-        ],
-        "dodges": [
-          {
-            "team": "us",
-            "n": 5
-          }
-        ]
-      },
-      {
-        "label": "Our two holders rush together and throw at the thrower",
-        "summary": "to the line · throw at 4",
-        "dur": 1.1,
         "moves": [
           {
             "team": "us",
@@ -425,13 +369,26 @@
           },
           {
             "team": "us",
+            "n": 5,
+            "to": [
+              50,
+              58
+            ]
+          },
+          {
+            "team": "us",
             "n": 7,
             "to": [
               75,
               58
             ]
           }
-        ],
+        ]
+      },
+      {
+        "label": "Attack at close range",
+        "summary": "throw at 3 & 5 & 7",
+        "dur": 1,
         "throws": [
           {
             "from": {
@@ -440,9 +397,18 @@
             },
             "to": {
               "team": "them",
-              "n": 4
+              "n": 3
+            }
+          },
+          {
+            "from": {
+              "team": "us",
+              "n": 5
             },
-            "curve": -12
+            "to": {
+              "team": "them",
+              "n": 5
+            }
           },
           {
             "from": {
@@ -451,9 +417,8 @@
             },
             "to": {
               "team": "them",
-              "n": 4
-            },
-            "curve": 12
+              "n": 7
+            }
           }
         ]
       }

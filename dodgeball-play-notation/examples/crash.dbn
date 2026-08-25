@@ -1,9 +1,8 @@
 [Play "Crash"]
-[Badge "majority counter"]
+[Badge "majority press"]
 [Call "Crash"]
-[Desc "An offensive press for when we have the player majority. The moment an opponent throws, that release is the trigger: two or more of our ball holders crash the line together and attack the thrower before they can recover."]
-[Balls "U:37 T:246"]
+[Desc "An offensive press for when we have the player majority. On the call, every ball holder charges the line together and attacks at close range — overwhelming their outnumbered side before it can reset. We initiate; nothing about this play waits on the other team."]
+[Balls "U:357"]
 
-1. {Their ball holders take the line} :1  T246-line
-2. {One opponent throws — that release triggers Crash} :0.9  T4@U5%
-3. {Our two holders rush together and throw at the thrower} :1.1  U37-line U3@T4! U7@T4!
+1. {Crash — every holder charges the line together} :1  U357-line
+2. {Attack at close range} :1  U3@T3! U5@T5! U7@T7!
