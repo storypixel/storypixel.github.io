@@ -249,7 +249,7 @@
     "name": "Crash",
     "badge": "majority counter",
     "call": "\"Crash\"",
-    "desc": "Call Crash when we have the player majority. As soon as one opponent throws, two or more of our ball holders rush the line together and throw at that player. It is the counter to a double post: their release is the trigger, and both of our holders attack the same thrower before that player can recover.",
+    "desc": "An offensive press for when we have the player majority. The moment an opponent throws, that release is the trigger: two or more of our ball holders crash the line together and attack the thrower before they can recover.",
     "setup": {
       "us": [
         {
