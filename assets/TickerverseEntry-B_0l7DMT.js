@@ -1,0 +1,1 @@
+import{b as r,j as t}from"./vendor-CI4CKsaM.js";function n(){const e=`/tickerverse/${window.location.search}${window.location.hash}`;return r.useEffect(()=>{window.location.replace(e)},[e]),t.jsx("a",{href:e,children:"Open Tickerverse"})}export{n as default};
