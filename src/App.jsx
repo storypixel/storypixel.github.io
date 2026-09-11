@@ -26,7 +26,7 @@ const PhenylPromo = lazy(() => import('./components/PhenylPromo'));
 const SureladderPromo = lazy(() => import('./components/SureladderPromo'));
 const DIYDailyExamples = lazy(() => import('./components/clients/DIYDailyExamples'));
 const DIYDailyExample = lazy(() => import('./components/clients/DIYDailyExample'));
-const TickerversePromo = lazy(() => import('./components/clients/TickerversePromo'));
+const TickerversePromo = lazy(() => import('./components/clients/TickerverseEntry'));
 
 function HomePage() {
     return (
