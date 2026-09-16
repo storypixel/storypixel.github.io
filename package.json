@@ -6,11 +6,9 @@
   "homepage": "https://iamnotsam.com",
   "scripts": {
     "dev": "vite",
-    "build": "git submodule update --init --recursive && vite build",
+    "build": "git submodule update --init --recursive && vite build && mkdir -p dist/calcuweight && cp dist/index.html dist/calcuweight/index.html",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tickerverse:blender": "blender --background --python scripts/blender/tickerverse_scene.py -- --input-district public/models/tickerverse/period-financial-district.glb --man-image public/images/tickerverse/tickerville-man-photo.png --blend public/models/tickerverse/tickerverse-scene.blend --glb public/models/tickerverse/tickerverse-scene.glb",
-    "dev:tickerverse-authored": "VITE_TICKERVERSE_AUTHORED_SCENE=1 vite",
     "predeploy": "npm run build && cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist"
   },
