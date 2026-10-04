@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#06100d" />
+    <meta name="description" content="Setup help, troubleshooting, downloads, and direct support for Utter on macOS." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Utter Support" />
+    <meta property="og:description" content="Setup help, troubleshooting, downloads, and direct support for Utter on macOS." />
+    <meta property="og:url" content="https://iamnotsam.com/utter/support/" />
+    <meta property="og:image" content="https://iamnotsam.com/utter/assets/app-store/utter-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Utter Support</title>
+    <link rel="canonical" href="https://iamnotsam.com/utter/support/" />
+    <link rel="apple-touch-icon" href="/utter/assets/utter-icon.png" />
+    <link rel="icon" type="image/png" href="/utter/assets/utter-icon.png" />
+    <link rel="stylesheet" href="/utter/site.css" />
+  </head>
+  <body>
+    <header class="shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand" href="/utter/">
+          <img src="/utter/assets/utter-icon.png" alt="" width="34" height="34" />
+          <span>Utter</span>
+        </a>
+        <div class="nav-links">
+          <a href="/utter/support/" aria-current="page">Support</a>
+          <a href="/utter/privacy/">Privacy</a>
+          <a class="nav-download" href="https://github.com/storypixel/utter-releases/releases/latest">Download</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="page-hero">
+        <div class="eyebrow">Utter support</div>
+        <h1>Let’s get you talking again.</h1>
+        <p>Start with the quick fixes below. If Utter still is not behaving, email Sam directly and include your macOS version plus what happened.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:sam@iamnotsam.com?subject=Utter%20support">Email support</a>
+          <a class="button" href="https://github.com/storypixel/utter-releases/releases/latest">Get the latest version</a>
+        </div>
+      </section>
+
+      <div class="page-layout">
+        <nav class="side-index" aria-label="Support topics">
+          <a href="#setup">First setup</a>
+          <a href="#not-hearing">Utter cannot hear me</a>
+          <a href="#not-typing">Utter cannot type</a>
+          <a href="#voice">Only My Voice</a>
+          <a href="#updates">Updates</a>
+          <a href="#data">Reset or remove data</a>
+          <a href="#requirements">Requirements</a>
+        </nav>
+
+        <div class="content-stack">
+          <section class="support-card" id="setup">
+            <h2>First setup</h2>
+            <ol>
+              <li>Open Utter and allow Microphone access.</li>
+              <li>Enable Utter in System Settings → Privacy &amp; Security → Accessibility.</li>
+              <li>Let the first speech model download finish. It is about 630 MB.</li>
+              <li>Click into any text field, turn Utter on from the menu bar, and start talking.</li>
+            </ol>
+            <p>Utter lives in the menu bar. You can also turn it on and off with Control–Option–Space.</p>
+          </section>
+
+          <section class="support-card" id="not-hearing">
+            <h2>Utter cannot hear me</h2>
+            <ul>
+              <li>Open Utter’s panel and confirm the switch is on and the status says Listening.</li>
+              <li>Choose the correct microphone from the bottom of the panel.</li>
+              <li>In System Settings → Privacy &amp; Security → Microphone, make sure Utter is enabled.</li>
+              <li>If a wireless receiver is selected, confirm its transmitter is on. Utter will skip inputs that only send digital silence.</li>
+              <li>Calls temporarily take priority over the mic. Utter resumes automatically when the call ends.</li>
+            </ul>
+          </section>
+
+          <section class="support-card" id="not-typing">
+            <h2>Utter hears me but does not type</h2>
+            <ul>
+              <li>Enable Utter in System Settings → Privacy &amp; Security → Accessibility.</li>
+              <li>Click back into the text field where you want the words to appear.</li>
+              <li>Utter deliberately does not type into password or secure fields.</li>
+              <li>Utter will not press Return in terminal apps unless you remove that app from the ignored list.</li>
+              <li>If dictation is paused, say “start listening.” If it is fully off, click the menu-bar dot or use the keyboard shortcut.</li>
+            </ul>
+          </section>
+
+          <section class="support-card" id="voice">
+            <h2>Only My Voice</h2>
+            <p>Choose Learn My Voice from Utter’s menu and read the five sentences. The resulting voice profile stays on your Mac. Choose Relearn My Voice to replace it, or turn Only My Voice off from the same menu.</p>
+            <p>Very short commands are allowed through even when voice filtering is on, because there is not enough audio for a reliable voice match.</p>
+          </section>
+
+          <section class="support-card" id="updates">
+            <h2>Updates</h2>
+            <p>Release builds use Sparkle to check for signed Utter updates. Choose Check for Updates from the menu at any time. You can also download the newest notarized version from the public release page.</p>
+            <p><a href="https://github.com/storypixel/utter-releases/releases/latest">Open the latest Utter release</a></p>
+          </section>
+
+          <section class="support-card" id="data">
+            <h2>Reset or remove local data</h2>
+            <p>Utter stores its models, preferences, and optional voice profile only on this Mac.</p>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Replace the voice profile</strong>
+                <span>Choose Relearn My Voice from Utter’s menu.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Remove the voice profile</strong>
+                <span>Quit Utter, then delete <code>~/Library/Application Support/Utter/voice-profile.json</code>.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Remove downloaded models</strong>
+                <span>Quit Utter, then delete the models inside <code>~/Library/Application Support/Utter</code>.</span>
+              </div>
+              <div class="mini-card">
+                <strong>Uninstall</strong>
+                <span>Quit Utter and move Utter.app to the Trash. Remove the Application Support folder if you also want to delete local models and the voice profile.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="support-card" id="requirements">
+            <h2>System requirements</h2>
+            <ul>
+              <li>Apple silicon Mac</li>
+              <li>macOS 14 or later</li>
+              <li>About 630 MB for the initial speech model, plus a smaller voice-recognition model if you enable Only My Voice</li>
+              <li>Microphone and Accessibility permissions</li>
+              <li>Apple Intelligence on macOS 26 or later for optional on-device rewriting</li>
+            </ul>
+          </section>
+
+          <section class="support-card">
+            <h2>Still need help?</h2>
+            <p>Email <a href="mailto:sam@iamnotsam.com?subject=Utter%20support">sam@iamnotsam.com</a>. Please include your Mac model, macOS version, Utter version, and a short description of what you expected and what happened.</p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer shell">
+      <span>© 2026 Jeremy Wilson. Utter support.</span>
+      <div class="footer-links">
+        <a href="/utter/">Utter</a>
+        <a href="/utter/privacy/">Privacy</a>
+        <a href="mailto:sam@iamnotsam.com">Email support</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#06100d" />
+    <meta name="description" content="Utter privacy policy: speech, text, and voice recognition are processed locally on your Mac and are not collected by Utter." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Utter Privacy Policy" />
+    <meta property="og:description" content="How Utter processes speech, text, voice recognition, permissions, and local app data on your Mac." />
+    <meta property="og:url" content="https://iamnotsam.com/utter/privacy/" />
+    <meta property="og:image" content="https://iamnotsam.com/utter/assets/app-store/utter-1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Utter Privacy Policy</title>
+    <link rel="canonical" href="https://iamnotsam.com/utter/privacy/" />
+    <link rel="apple-touch-icon" href="/utter/assets/utter-icon.png" />
+    <link rel="icon" type="image/png" href="/utter/assets/utter-icon.png" />
+    <link rel="stylesheet" href="/utter/site.css" />
+  </head>
+  <body>
+    <header class="shell">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand" href="/utter/">
+          <img src="/utter/assets/utter-icon.png" alt="" width="34" height="34" />
+          <span>Utter</span>
+        </a>
+        <div class="nav-links">
+          <a href="/utter/support/">Support</a>
+          <a href="/utter/privacy/" aria-current="page">Privacy</a>
+          <a class="nav-download" href="https://github.com/storypixel/utter-releases/releases/latest">Download</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="page-hero">
+        <div class="eyebrow">Privacy policy</div>
+        <h1>Your words stay yours.</h1>
+        <p>Utter is designed to turn speech into text without operating an account system or receiving your audio, transcripts, selected text, or voice profile.</p>
+        <div class="policy-meta">
+          <span>Effective October 4, 2026</span>
+          <span>Applies to Utter for macOS</span>
+        </div>
+      </section>
+
+      <div class="page-layout">
+        <nav class="side-index" aria-label="Privacy policy sections">
+          <a href="#summary">Summary</a>
+          <a href="#processing">On-device processing</a>
+          <a href="#storage">Local storage</a>
+          <a href="#network">Network activity</a>
+          <a href="#permissions">Permissions</a>
+          <a href="#third-parties">Components</a>
+          <a href="#choices">Your choices</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="content-stack">
+          <section class="policy-block policy-summary" id="summary">
+            <h2>Summary</h2>
+            <p>Utter does not collect, sell, share, or use your personal data for tracking. There is no Utter account, cloud transcription service, advertising system, or analytics service.</p>
+            <p>For App Store privacy disclosure purposes, Utter’s data practice is <strong>Data Not Collected</strong>.</p>
+          </section>
+
+          <section class="policy-block" id="processing">
+            <h2>Speech, text, and rewriting are processed on your Mac</h2>
+            <ul>
+              <li>Microphone audio is held in memory long enough to detect speech and transcribe it with a local Whisper model.</li>
+              <li>Utter does not save microphone recordings or dictated text.</li>
+              <li>Accessibility access lets Utter type, select, and replace text in the app you are using. That text is not sent to Utter or stored in an Utter account.</li>
+              <li>Optional rewriting uses Apple’s on-device Foundation Models framework when Apple Intelligence is available. Utter does not send the selected text to a third-party cloud model.</li>
+              <li>Utter may temporarily use the macOS clipboard to type or replace text. It restores the previous clipboard contents and does not transmit them.</li>
+            </ul>
+          </section>
+
+          <section class="policy-block" id="storage">
+            <h2>Information stored locally</h2>
+            <p>Utter stores only what it needs on your Mac:</p>
+            <ul>
+              <li>Downloaded speech and speaker-recognition model files.</li>
+              <li>App preferences such as microphone order, custom phrases, quiet-time settings, and ignored apps.</li>
+              <li>An optional numerical voice profile if you complete Learn My Voice. The profile contains voice embeddings, not the audio recordings you read.</li>
+              <li>A status log at <code>~/Library/Logs/Utter.log</code>. It records operational events such as model readiness, durations, confidence, and character counts. It does not record the words you dictated or the selected text you rewrote.</li>
+            </ul>
+            <p>This local information is not uploaded to an Utter server.</p>
+          </section>
+
+          <section class="policy-block" id="network">
+            <h2>Network activity</h2>
+            <p>Utter uses the internet only for software resources, not to process your content:</p>
+            <ul>
+              <li>On first use, Utter downloads the speech model and, if needed, the speaker-recognition model. The models are then used locally.</li>
+              <li>Release builds use Sparkle to read Utter’s public update feed on GitHub and download a signed update when you approve it.</li>
+            </ul>
+            <p>These requests may reveal ordinary connection information such as your IP address to the hosting provider. Utter does not include your audio, transcript, selected text, voice profile, clipboard, or app activity in those requests.</p>
+          </section>
+
+          <section class="policy-block" id="permissions">
+            <h2>macOS permissions</h2>
+            <ul>
+              <li><strong>Microphone:</strong> hears speech for local transcription and optional voice matching.</li>
+              <li><strong>Accessibility:</strong> types into other apps and performs the spoken selection, editing, and navigation commands you request.</li>
+              <li><strong>Login item:</strong> optional. Utter adds itself only if you turn on Start at Login.</li>
+            </ul>
+            <p>You can revoke Microphone or Accessibility permission at any time in System Settings → Privacy &amp; Security. Features that depend on a revoked permission will stop working.</p>
+          </section>
+
+          <section class="policy-block" id="third-parties">
+            <h2>Open-source components</h2>
+            <p>Utter includes WhisperKit for local transcription, FluidAudio for local speaker recognition, and Sparkle for signed software updates. These components support the functions described above. Utter does not integrate advertising, tracking, or behavioral analytics SDKs.</p>
+          </section>
+
+          <section class="policy-block" id="choices">
+            <h2>Your choices and deletion</h2>
+            <ul>
+              <li>Turn Only My Voice off from Utter’s menu at any time.</li>
+              <li>Choose Relearn My Voice to replace the local voice profile.</li>
+              <li>Delete <code>~/Library/Application Support/Utter/voice-profile.json</code> while Utter is quit to remove the profile.</li>
+              <li>Delete the Utter Application Support folder to remove downloaded models and the optional voice profile.</li>
+              <li>Move Utter.app to the Trash to uninstall the application.</li>
+            </ul>
+            <p>Because Utter does not receive or maintain an account or cloud copy of this information, there is no server-side personal data for Utter to export or delete.</p>
+          </section>
+
+          <section class="policy-block">
+            <h2>Changes to this policy</h2>
+            <p>If Utter’s data practices change, this page will be updated before the new practice is introduced in a public release. The effective date at the top will also change.</p>
+          </section>
+
+          <section class="policy-block" id="contact">
+            <h2>Contact</h2>
+            <p>Utter is developed by Jeremy Wilson in Austin, Texas. Questions about this policy or the app can be sent to <a href="mailto:sam@iamnotsam.com?subject=Utter%20privacy">sam@iamnotsam.com</a>.</p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer shell">
+      <span>© 2026 Jeremy Wilson. Utter privacy policy.</span>
+      <div class="footer-links">
+        <a href="/utter/">Utter</a>
+        <a href="/utter/support/">Support</a>
+        <a href="mailto:sam@iamnotsam.com">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>
