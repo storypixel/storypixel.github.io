@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1440, initial-scale=1" />
+    <title>Utter App Store screenshots</title>
+    <style>
+      :root {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+        color: #f2f7f4;
+        background: #06100d;
+        font-synthesis: none;
+      }
+
+      * { box-sizing: border-box; }
+      body { width: 1440px; margin: 0; background: #06100d; }
+
+      .frame {
+        position: relative;
+        width: 1440px;
+        height: 900px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 86% 8%, rgba(46, 214, 95, 0.22), transparent 31rem),
+          radial-gradient(circle at 12% 84%, rgba(86, 225, 210, 0.11), transparent 28rem),
+          #06100d;
+      }
+
+      .frame::before {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(221, 255, 237, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(221, 255, 237, 0.025) 1px, transparent 1px);
+        background-size: 46px 46px;
+        content: "";
+      }
+
+      .inner { position: relative; z-index: 1; height: 100%; padding: 74px 90px; }
+      .brand { display: flex; gap: 14px; align-items: center; font-size: 25px; font-weight: 700; }
+      .brand img { width: 48px; height: 48px; border-radius: 13px; }
+      .kicker { color: #68ff8d; font-size: 17px; font-weight: 750; letter-spacing: 0.14em; text-transform: uppercase; }
+      h1 { margin: 26px 0 24px; font-size: 92px; font-weight: 630; line-height: 0.94; letter-spacing: -0.065em; }
+      h1 em { color: #68ff8d; font-style: normal; }
+      .lede { max-width: 670px; margin: 0; color: #a7b8af; font-size: 27px; line-height: 1.45; }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+      .pill { padding: 12px 18px; border: 1px solid rgba(207, 247, 225, 0.18); border-radius: 999px; background: rgba(255,255,255,0.05); color: #dbe8e1; font-size: 17px; font-weight: 650; }
+      .pill.green { border-color: rgba(104,255,141,0.44); color: #68ff8d; }
+
+      .one .inner { display: grid; grid-template-columns: 0.95fr 0.78fr; gap: 80px; align-items: center; }
+      .one .app-wrap { position: relative; display: grid; height: 750px; place-items: center; }
+      .one .app-wrap::before { position: absolute; inset: 62px -36px 10px 12px; border: 1px solid rgba(104,255,141,0.2); border-radius: 50%; content: ""; }
+      .one .panel { position: relative; width: 438px; padding: 11px; border: 1px solid rgba(216,255,231,0.2); border-radius: 30px; background: rgba(255,255,255,0.07); box-shadow: 0 40px 110px rgba(0,0,0,0.5); transform: rotate(-1.7deg); }
+      .one .panel img { display: block; width: 100%; border-radius: 22px; }
+      .one .floating-icon { position: absolute; top: 82px; right: 18px; width: 128px; padding: 10px; border: 1px solid rgba(216,255,231,0.16); border-radius: 34px; background: rgba(6,16,13,0.82); box-shadow: 0 28px 70px rgba(0,0,0,0.42); transform: rotate(7deg); }
+      .one .floating-icon img { display: block; width: 100%; border-radius: 25px; }
+
+      .two .inner { display: grid; grid-template-rows: auto 1fr; gap: 44px; }
+      .two .top { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: end; }
+      .two h1 { margin-bottom: 0; font-size: 78px; }
+      .two .lede { align-self: end; font-size: 24px; }
+      .command-stage { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 24px; min-height: 470px; }
+      .commands { display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 34px; border: 1px solid rgba(104,255,141,0.22); border-radius: 30px; background: linear-gradient(145deg, rgba(46,214,95,0.13), rgba(255,255,255,0.025)); }
+      .command { padding: 19px 22px; border: 1px solid rgba(207,247,225,0.13); border-radius: 18px; background: rgba(0,0,0,0.18); color: #dce8e2; font-size: 23px; font-weight: 650; }
+      .command strong { color: #68ff8d; }
+      .summary { display: grid; padding: 42px; place-items: center; border: 1px solid rgba(207,247,225,0.13); border-radius: 30px; background: #101613; box-shadow: 0 32px 90px rgba(0,0,0,0.38); }
+      .summary img { display: block; width: 100%; border-radius: 12px; }
+
+      .three .inner { display: grid; grid-template-columns: 0.78fr 1.05fr; gap: 70px; align-items: center; }
+      .three h1 { font-size: 78px; }
+      .three .window { position: relative; height: 770px; display: grid; place-items: center; }
+      .three .window::before { position: absolute; inset: 90px 4px 20px 80px; border: 1px solid rgba(86,225,210,0.17); border-radius: 50%; content: ""; }
+      .three .window-card { position: relative; width: 645px; padding: 10px; border: 1px solid rgba(207,247,225,0.17); border-radius: 28px; background: rgba(255,255,255,0.055); box-shadow: 0 38px 100px rgba(0,0,0,0.46); transform: rotate(1.2deg); }
+      .three .window-card img { display: block; width: 100%; border-radius: 20px; }
+      .note { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: center; margin-top: 34px; color: #a7b8af; font-size: 19px; line-height: 1.4; }
+      .note-mark { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 14px; background: rgba(46,214,95,0.14); color: #68ff8d; font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <section class="frame one" id="frame-1">
+      <div class="inner">
+        <div>
+          <div class="brand"><img src="../../../public/utter/assets/utter-icon.png" alt="" />Utter</div>
+          <p class="kicker">Hands-free dictation for Mac</p>
+          <h1>Talk. Your Mac <em>types.</em></h1>
+          <p class="lede">Write anywhere, send messages, and keep moving without reaching for the keyboard.</p>
+          <div class="pill-row">
+            <span class="pill green">On-device speech</span>
+            <span class="pill">No account</span>
+            <span class="pill">No subscription</span>
+          </div>
+        </div>
+        <div class="app-wrap">
+          <div class="panel"><img src="../../../public/utter/assets/panel.png" alt="" /></div>
+          <div class="floating-icon"><img src="../../../public/utter/assets/utter-icon.png" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame two" id="frame-2">
+      <div class="inner">
+        <div class="top">
+          <div>
+            <div class="brand"><img src="../../../public/utter/assets/utter-icon.png" alt="" />Utter</div>
+            <h1>Say what happens <em>next.</em></h1>
+          </div>
+          <p class="lede">Send, clear, switch apps, select text, and rewrite the selection with natural voice commands.</p>
+        </div>
+        <div class="command-stage">
+          <div class="commands">
+            <div class="command"><strong>“enter”</strong> sends it</div>
+            <div class="command"><strong>“select all”</strong> highlights it</div>
+            <div class="command"><strong>“make it friendlier”</strong> rewrites it</div>
+            <div class="command"><strong>“never mind”</strong> clears it</div>
+          </div>
+          <div class="summary"><img src="../../../public/utter/assets/summary.png" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame three" id="frame-3">
+      <div class="inner">
+        <div>
+          <div class="brand"><img src="../../../public/utter/assets/utter-icon.png" alt="" />Utter</div>
+          <p class="kicker">Your language, your workflow</p>
+          <h1>Make the commands <em>yours.</em></h1>
+          <p class="lede">Change the phrases for sending, clearing, rewriting, pausing, and resuming.</p>
+          <div class="note"><span class="note-mark">AI</span><span>On supported Macs, Apple Intelligence rewrites selected text entirely on device.</span></div>
+          <div class="note"><span class="note-mark">◎</span><span>Optional voice learning helps Utter focus on you, not the room.</span></div>
+        </div>
+        <div class="window">
+          <div class="window-card"><img src="../../../public/utter/assets/window.png" alt="" /></div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
