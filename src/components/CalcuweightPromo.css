@@ -1,3 +1,22 @@
+/* The app's palette: navy wood, cream type, orange actions (AppThemeColors.swift) */
+body.calcuweight-theme {
+  --bg-color: #171a21;
+  --text-primary: #f2e0d5;
+  --text-secondary: #bfb5a8;
+  --border-color: rgba(242, 224, 213, 0.12);
+  --cw-orange: #d18034;
+  --cw-orange-deep: #b86a24;
+  --cw-surface: #2b303d;
+  --cw-cream: #f2d6c7;
+  --cw-teal: #50b2a7;
+  background-color: var(--bg-color);
+  background-image:
+    linear-gradient(rgba(23, 26, 33, 0.82), rgba(23, 26, 33, 0.82)),
+    url('/images/calcuweight/wood-grain.webp');
+  background-size: auto, 512px;
+  color: var(--text-primary);
+}
+
 .calcuweight-page {
   min-height: 100vh;
   padding-bottom: 10vh;
@@ -14,8 +33,9 @@
   min-height: 80vh;
   margin: 0 var(--spacing-container) 6rem;
   overflow: hidden;
-  border-radius: 8px;
-  background: #000;
+  border-radius: 16px;
+  background: #0f121c;
+  box-shadow: 0 0 0 1px var(--border-color);
 }
 
 .calcuweight-hero-media {
@@ -23,8 +43,8 @@
   inset: 0;
   z-index: 0;
   display: flex;
-  opacity: 0.3;
-  filter: grayscale(100%) brightness(0.7);
+  opacity: 0.35;
+  filter: sepia(35%) saturate(80%) brightness(0.7);
 }
 
 .calcuweight-hero-media-panel {
@@ -44,10 +64,11 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+    rgba(15, 18, 28, 0.95) 0%,
+    rgba(15, 18, 28, 0.55) 50%,
+    rgba(15, 18, 28, 0.1) 100%
+  ),
+  radial-gradient(circle at 75% 55%, rgba(209, 128, 52, 0.22), transparent 55%);
 }
 
 .calcuweight-hero-grid {
@@ -73,7 +94,7 @@
 .calcuweight-hero-title {
   max-width: 11ch;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 4.5rem;
   font-weight: 400;
   line-height: 1.1;
@@ -82,7 +103,7 @@
 .calcuweight-hero-subtitle {
   max-width: 34rem;
   margin-bottom: 2.5rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -95,11 +116,16 @@
   justify-content: center;
   min-height: 3.5rem;
   padding: 1rem 2rem;
-  border-radius: 999px;
-  background: #fff;
-  color: #000;
-  font-size: 1rem;
-  font-weight: 500;
+  /* The app's chamfered action button */
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0 50%);
+  background: var(--cw-orange);
+  color: #fff;
+  /* Large bold type: white on this orange is about 3:1, which passes only at this size */
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
@@ -212,6 +238,63 @@
   font-size: 0.85rem;
 }
 
+.calcuweight-button:hover,
+.calcuweight-button:focus-visible {
+  background: var(--cw-orange-deep);
+}
+
+.calcuweight-feature-number,
+.calcuweight-section-marker,
+.calcuweight-page .section-label {
+  color: var(--cw-orange);
+}
+
+.calcuweight-feature-title {
+  color: var(--cw-cream);
+}
+
+.calcuweight-text-link {
+  text-decoration-color: var(--cw-orange);
+}
+
+/* Screens: a swipeable row of the App Store screenshots */
+.calcuweight-screens {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1rem var(--spacing-container) 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--spacing-container);
+  scrollbar-width: thin;
+  scrollbar-color: var(--cw-surface) transparent;
+}
+
+.calcuweight-screens:focus-visible {
+  outline: 2px solid var(--cw-orange);
+  outline-offset: -2px;
+}
+
+.calcuweight-screen {
+  flex: 0 0 clamp(200px, 22vw, 280px);
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.calcuweight-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 0 0 1px var(--border-color), 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.calcuweight-screen figcaption {
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 @media (max-width: 1024px) {
   .calcuweight-hero-grid {
     grid-template-columns: 1fr;
@@ -262,5 +345,15 @@
 
   .phone-3d {
     min-height: 27rem;
+  }
+
+  .calcuweight-screens {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    scroll-padding: 0 1rem;
+  }
+
+  .calcuweight-screen {
+    flex-basis: 62vw;
   }
 }

@@ -8,28 +8,41 @@ import './CalcuweightPromo.css';
 
 const HERO_IMAGES = projectDetails.calcuweight.heroImages.slice(0, 3);
 
+const SHOT = (name) => `/images/calcuweight/2026-10/${name}.webp`;
+
 const PHONE_SCREENSHOTS = [
-    '/images/calcuweight/01-onboarding.webp',
-    '/images/calcuweight/05-main-workout.webp',
-    '/images/calcuweight/06-percentage-grid.webp',
-    '/images/calcuweight/07-multiple-lifts.webp',
+    SHOT('workout'),
+    SHOT('plate-loader'),
+    SHOT('percentages'),
+    SHOT('your-lifts'),
+];
+
+const SCREENS = [
+    { src: SHOT('workout'), caption: 'Your workout, every weight worked out' },
+    { src: SHOT('plate-loader'), caption: 'What goes on each side, and how many reps' },
+    { src: SHOT('scan'), caption: 'Snap the whiteboard' },
+    { src: SHOT('percentages'), caption: 'Pick percentages, see the weight' },
+    { src: SHOT('your-lifts'), caption: 'Your lifts, one tap to add' },
+    { src: SHOT('plate-sheet'), caption: 'Missing a plate? Say so' },
+    { src: SHOT('pr-history'), caption: 'Every PR, kept' },
+    { src: SHOT('equipment'), caption: 'Your bar and plates' },
 ];
 
 const FEATURES = [
     {
         number: '01',
-        title: 'Photo Magic',
-        text: "Snap the gym's whiteboard. App reads percentages and calculates your weights.",
+        title: 'Snap the Whiteboard',
+        text: "Take a photo of the gym's whiteboard. Calcuweight reads the lifts, percentages and reps, and works out every weight from your PRs.",
     },
     {
         number: '02',
-        title: 'Voice Input',
-        text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and see your plate breakdowns instantly. Completely hands-free.',
+        title: 'Plates, Each Side',
+        text: 'See exactly what to load, like "3× 45, 35 lb", with the reps for that set beside the bar. It only uses the plates you actually have.',
     },
     {
         number: '03',
-        title: 'Zero Mental Math',
-        text: 'Your PRs are saved. Pick percentages. See exact plate breakdowns. Done.',
+        title: 'Hands-Free',
+        text: 'Say "80% deadlifts, then 70, 80, 90 percent back squats" and the whole workout appears. Swipe between sets without putting the bar down.',
     },
 ];
 
@@ -53,6 +66,9 @@ const reveal = {
 const CalcuweightPromo = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
+        // The app's own palette (wood, navy, cream, orange) for this page only
+        document.body.classList.add('calcuweight-theme');
+        return () => document.body.classList.remove('calcuweight-theme');
     }, []);
 
     return (
@@ -133,6 +149,22 @@ const CalcuweightPromo = () => {
                                     </p>
                                 </div>
                             </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="calcuweight-section calcuweight-screens-section">
+                    <div className="page-grid">
+                        <motion.h2 {...reveal} className="section-label">
+                            Screens
+                        </motion.h2>
+                    </div>
+                    <div className="calcuweight-screens" tabIndex={0} aria-label="App screenshots">
+                        {SCREENS.map((screen) => (
+                            <figure key={screen.src} className="calcuweight-screen">
+                                <img src={screen.src} alt={screen.caption} loading="lazy" decoding="async" width="660" height="1434" />
+                                <figcaption>{screen.caption}</figcaption>
+                            </figure>
                         ))}
                     </div>
                 </section>
