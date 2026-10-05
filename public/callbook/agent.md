@@ -60,6 +60,13 @@ turn the human's description into valid DBN and hand back links.
 
 ## More surfaces
 
+- Guided authoring and local library: https://iamnotsam.com/dodgeball-play-notation/builder.html
+  Build an editable link with `builder.html#dbn=` plus URL-encoded DBN. This opens
+  the exact source in the DBN tab. Saved plays are device-local; a link contains
+  the entire play and is readable by anyone who has it.
+- Declare prerequisites with `RequiresPlayers`, `RequiresBalls`, `Burden`,
+  `ThrowClock`, `Blocking`, and `OpponentState` when known. Keep `Ruleset` and
+  `AdaptedFrom` provenance explicit; a tag is not tournament certification.
 - Glossary of dodgeball terms: https://iamnotsam.com/dodgeball-play-notation/GLOSSARY.md
 - Deeper automation (window API, headless CLI): https://iamnotsam.com/dodgeball-play-notation/DRIVING.md
 - Machine index: https://iamnotsam.com/callbook/llms.txt
