@@ -1,0 +1,18 @@
+[Play "Cover and Retreat - six-player example"]
+[Badge "adapted training example"]
+[Desc "Two throwers attack while two loaded teammates cover the retreat. Six-player foam illustration adapted from British Dodgeball's five-ball cover coaching, not a reconstruction of a team possession. The four live players must fill four distinct loaded roles. Recheck the clock and opponent pressure before advancing."]
+[Players "6"]
+[Ruleset "usad-foam-2026"]
+[AdaptedFrom "british-cloth-5ball"]
+[RequiresPlayers "U:4-6 T:1-6"]
+[RequiresBalls "U:4 T:0-2"]
+[Burden "us"]
+[ThrowClock "3+"]
+[Blocking "allowed"]
+[OpponentState "holding"]
+[Balls "U:2346 T:15"]
+
+1. {Loaded players take the line} :1 U2346-line
+2. {Two throw; two hold as cover} :1 U2@T5% U4@T5% U36?
+3. {Throwers fall back under cover} :1 U24-back U36?
+4. {Cover players retreat with their balls} :1 U36-back

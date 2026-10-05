@@ -27,6 +27,14 @@
 
   const FILES = "abcdefghij";
   const TEAM = { U: "us", T: "them" };
+  const CONDITION_TAGS = ["ruleset", "adaptedfrom", "requiresplayers", "requiresballs",
+    "playeradvantage", "burden", "throwclock", "blocking", "opponentstate"];
+  const CONDITION_CHOICES = {
+    playerAdvantage: ["us", "them", "even"],
+    burden: ["us", "them"],
+    blocking: ["allowed", "no-blocking"],
+    opponentState: ["holding", "attacking", "retreating"],
+  };
 
   // ── v0.2 court vocabulary ──
   // Lanes: player n's home column. Use nearly the full playable width so the
@@ -86,10 +94,118 @@
     const tagRe = /^\s*\[([A-Za-z][A-Za-z0-9_-]*)\s+"((?:\\.|[^"\\])*)"\]\s*/;
     let m;
     while ((m = tagRe.exec(rest))) {
-      tags[m[1].toLowerCase()] = unescapeString(m[2]);
+      const key = m[1].toLowerCase();
+      if (CONDITION_TAGS.indexOf(key) >= 0 && Object.prototype.hasOwnProperty.call(tags, key))
+        fail("duplicate [" + m[1] + "] tag");
+      tags[key] = unescapeString(m[2]);
       rest = rest.slice(m[0].length);
     }
     return { tags: tags, rest: rest };
+  }
+
+  function rulesetId(raw, label) {
+    if (typeof raw !== "string") fail(label + " must be a string");
+    const value = String(raw).trim().toLowerCase();
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value))
+      fail(label + " must be a ruleset id, e.g. usad-foam-2026");
+    return value;
+  }
+
+  function conditionRange(raw, label, minimum, decimal) {
+    const number = decimal ? "\\d+(?:\\.\\d+)?" : "\\d+";
+    const match = new RegExp("^(" + number + ")(?:(\\+)|-(" + number + "))?$").exec(raw.trim());
+    if (!match) fail(label + " expects a count, minimum (4+), or range (2-4)");
+    const min = Number(match[1]);
+    const max = match[2] ? null : Number(match[3] || match[1]);
+    if (min < minimum || min > Number.MAX_SAFE_INTEGER ||
+        (max !== null && (max < min || max > Number.MAX_SAFE_INTEGER)))
+      fail("invalid range in " + label + ": " + raw);
+    return { min: min, max: max };
+  }
+
+  function teamConditions(raw, label, minimum) {
+    const result = {};
+    raw.trim().split(/\s+/).forEach(function (token) {
+      const match = /^([UT]):(.+)$/i.exec(token);
+      if (!match) fail(label + " expects U:<count> and/or T:<count>");
+      const team = TEAM[match[1].toUpperCase()];
+      if (result[team]) fail("duplicate team in " + label);
+      result[team] = conditionRange(match[2], label, minimum, false);
+    });
+    return result;
+  }
+
+  function conditionChoice(raw, key) {
+    const value = String(raw).trim().toLowerCase();
+    if (CONDITION_CHOICES[key].indexOf(value) < 0)
+      fail(key + " expects " + CONDITION_CHOICES[key].join(" / "));
+    return value;
+  }
+
+  function parseConditions(tags) {
+    const c = {};
+    if (tags.requiresplayers != null) c.livePlayers = teamConditions(tags.requiresplayers, "[RequiresPlayers]", 1);
+    if (tags.requiresballs != null) c.balls = teamConditions(tags.requiresballs, "[RequiresBalls]", 0);
+    Object.keys(CONDITION_CHOICES).forEach(function (key) {
+      if (tags[key.toLowerCase()] != null) c[key] = conditionChoice(tags[key.toLowerCase()], key);
+    });
+    if (tags.throwclock != null) c.throwClock = conditionRange(tags.throwclock, "[ThrowClock]", 0, true);
+    // Reject an advantage that cannot occur anywhere within the stated ranges.
+    if (c.livePlayers && c.livePlayers.us && c.livePlayers.them && c.playerAdvantage) {
+      const u = c.livePlayers.us, t = c.livePlayers.them;
+      const umax = u.max === null ? Infinity : u.max, tmax = t.max === null ? Infinity : t.max;
+      if ((c.playerAdvantage === "us" && umax <= t.min) ||
+          (c.playerAdvantage === "them" && tmax <= u.min) ||
+          (c.playerAdvantage === "even" && (umax < t.min || tmax < u.min)))
+        fail("[PlayerAdvantage] contradicts [RequiresPlayers]");
+    }
+    return c;
+  }
+
+  // Explicit snapshots only: illustrated setup and animation durations are not
+  // live-game facts, and burden must come from the event's actual rules/referee.
+  function checkConditions(play, state) {
+    state = state == null ? {} : state;
+    if (typeof state !== "object" || Array.isArray(state)) fail("condition state must be an object");
+    const c = play.conditions || {}, unmet = [], unknown = [];
+    function check(key, value, test) {
+      if (value == null) unknown.push(key);
+      else if (!test(value)) unmet.push(key);
+    }
+    function count(value, key, decimal) {
+      if (value == null) return value;
+      if (typeof value !== "number" || !Number.isFinite(value) || value < 0 ||
+          value > Number.MAX_SAFE_INTEGER || (!decimal && !Number.isInteger(value)))
+        fail("state." + key + " must be a nonnegative " + (decimal ? "number" : "integer"));
+      return value;
+    }
+    function teamCount(key, team) {
+      const group = state[key];
+      if (group != null && (typeof group !== "object" || Array.isArray(group)))
+        fail("state." + key + " must contain us/them counts");
+      return count(group == null ? null : group[team], key + "." + team, false);
+    }
+    function inRange(value, range) {
+      return value >= range.min && (range.max === null || value <= range.max);
+    }
+    if (play.ruleset) check("ruleset", state.ruleset, function (v) { return rulesetId(v, "state.ruleset") === play.ruleset; });
+    ["livePlayers", "balls"].forEach(function (key) {
+      if (!c[key]) return;
+      ["us", "them"].forEach(function (team) {
+        if (c[key][team]) check(key + "." + team, teamCount(key, team), function (v) { return inRange(v, c[key][team]); });
+      });
+    });
+    if (c.playerAdvantage) {
+      const u = teamCount("livePlayers", "us"), t = teamCount("livePlayers", "them");
+      check("playerAdvantage", u == null || t == null ? null : u === t ? "even" : u > t ? "us" : "them",
+        function (v) { return v === c.playerAdvantage; });
+    }
+    if (c.burden) check("burden", state.burden, function (v) { return conditionChoice(v, "burden") === c.burden; });
+    if (c.throwClock) check("throwClock", count(state.throwClock, "throwClock", true), function (v) { return inRange(v, c.throwClock); });
+    ["blocking", "opponentState"].forEach(function (key) {
+      if (c[key]) check(key, state[key], function (v) { return conditionChoice(v, key) === c[key]; });
+    });
+    return { matches: unmet.length ? false : unknown.length ? null : true, unmet: unmet, unknown: unknown };
   }
 
   function readDbf(text) {
@@ -871,19 +987,25 @@
     return step;
   }
 
-  function parseBeats(text, setup) {
+  function parseBeats(text, setup, options) {
     const chunks = beatChunks(text);
+    if (options.maxSteps && chunks.length > options.maxSteps)
+      fail("preview supports up to " + options.maxSteps + " steps");
     const ctx = runtimeFor(setup);
     return chunks.map(function (chunk) {
       return parseBeat(chunk, ctx);
     });
   }
 
-  function parse(text) {
+  function parse(text, options) {
+    options = options || {};
     if (typeof text !== "string") fail("input must be a string");
     const tagRead = readTags(text.replace(/\r\n?/g, "\n"));
     const dbfRead = readDbf(tagRead.rest);
     const tags = tagRead.tags;
+    // Browser importers can bound allocation before expanding an implied lineup.
+    if (dbfRead.dbf == null && options.maxPlayers && (parseInt(tags.players, 10) || 8) > options.maxPlayers)
+      fail("preview supports up to " + options.maxPlayers + " players per side");
     let setup;
     if (dbfRead.dbf != null) {
       setup = parseDbf(dbfRead.dbf);
@@ -900,6 +1022,8 @@
     } else {
       setup = impliedSetup(tags);
     }
+    if (options.maxPlayers && (setup.us.length > options.maxPlayers || setup.them.length > options.maxPlayers))
+      fail("preview supports up to " + options.maxPlayers + " players per side");
     const name = tags.play || tags.name || tags.id || "Untitled Play";
     const play = {
       id: tags.id || slugify(name),
@@ -914,8 +1038,12 @@
     if (tags.desc != null) play.desc = tags.desc;
     if (tags.description != null && play.desc == null)
       play.desc = tags.description;
+    if (tags.ruleset != null) play.ruleset = rulesetId(tags.ruleset, "[Ruleset]");
+    if (tags.adaptedfrom != null) play.adaptedFrom = rulesetId(tags.adaptedfrom, "[AdaptedFrom]");
+    const conditions = parseConditions(tags);
+    if (Object.keys(conditions).length) play.conditions = conditions;
     play.setup = setup;
-    play.steps = parseBeats(dbfRead.rest, setup);
+    play.steps = parseBeats(dbfRead.rest, setup, options);
     return play;
   }
 
@@ -947,7 +1075,7 @@
       });
   }
 
-  global.DBN = { parse: parse, autoInit: autoInit };
+  global.DBN = { parse: parse, checkConditions: checkConditions, autoInit: autoInit };
   if (global.document) {
     if (global.document.readyState !== "loading") autoInit();
     else global.document.addEventListener("DOMContentLoaded", autoInit);

@@ -33,4 +33,23 @@ ok(run(["describe", "-"], scaffold).includes("pump-fake"), "the scaffold describ
 
 ok(run(["link", "kill-left"]).startsWith("https://iamnotsam.com/"), "link emits a live preview URL");
 
+const conditions = `[Play "Condition test"]
+[Ruleset "usad-foam-2026"] [AdaptedFrom "wdbf-cloth-2026"]
+[RequiresPlayers "U:4+ T:1-6"] [RequiresBalls "U:4 T:0-2"]
+[PlayerAdvantage "us"] [Burden "us"] [ThrowClock "3+"]
+[Blocking "allowed"] [OpponentState "holding"]
+1. U1?
+`;
+const description = run(["describe", "-"], conditions);
+ok(description.includes("Requires live players: us 4+, them 1-6") &&
+  description.includes("Requires held balls: us 4, them 0-2"), "describe shows typed player and ball requirements");
+ok(description.includes("Ruleset: usad-foam-2026") && description.includes("Adapted from: wdbf-cloth-2026") &&
+  description.includes("Player advantage: us") && description.includes("Burden: us") &&
+  description.includes("Throw clock: 3+ seconds remaining") && description.includes("Blocking: allowed") &&
+  description.includes("Opponent state: holding"), "describe shows ruleset and situation conditions");
+ok(run(["validate", "-"], conditions).includes("tournament legality not checked"), "validate distinguishes syntax from live eligibility");
+ok(run(["show", "-"], conditions).includes("Requires live players:"), "show retains conditions beside the diagram");
+ok(JSON.parse(run(["json", "-"], conditions)).conditions.livePlayers.us.min === 4, "json exports machine-readable conditions");
+ok(runFail(["validate", "-"], '[Play "X"] [RequiresPlayers "U:3-1"]') !== null, "validate rejects malformed condition ranges");
+
 console.log(`\n${pass} CLI checks passed.`);

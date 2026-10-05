@@ -34,12 +34,16 @@
     throw new Error("DBN parser not loaded (vendor/dbn.js)");
   }
 
-  function parse(text) {
-    return getParser().parse(text);
+  function parse(text, options) {
+    return getParser().parse(text, options);
   }
 
   function toJSON(text, pretty) {
     return JSON.stringify(parse(text), null, pretty ? 2 : 0);
+  }
+
+  function checkConditions(playOrText, state) {
+    return getParser().checkConditions(typeof playOrText === "string" ? parse(playOrText) : playOrText, state);
   }
 
   // ── deterministic static SVG of the starting setup ──
@@ -88,5 +92,5 @@
     ].join("");
   }
 
-  return { parse, toJSON, toSetupSVG };
+  return { parse, toJSON, toSetupSVG, checkConditions };
 });

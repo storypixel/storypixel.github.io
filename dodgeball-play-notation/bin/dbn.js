@@ -120,6 +120,21 @@ function courtGrid(actors) {
 }
 
 // ── commands ──
+function describeConditions(play) {
+  const c = play.conditions || {};
+  const range = (r) => r.max === null ? `${r.min}+` : r.min === r.max ? String(r.min) : `${r.min}-${r.max}`;
+  const sides = (r) => ["us", "them"].filter((t) => r[t]).map((t) => `${t} ${range(r[t])}`).join(", ");
+  if (play.ruleset) console.log(`Ruleset: ${play.ruleset}`);
+  if (play.adaptedFrom) console.log(`Adapted from: ${play.adaptedFrom}`);
+  if (c.livePlayers) console.log(`Requires live players: ${sides(c.livePlayers)}`);
+  if (c.balls) console.log(`Requires held balls: ${sides(c.balls)}`);
+  if (c.playerAdvantage) console.log(`Player advantage: ${c.playerAdvantage}`);
+  if (c.burden) console.log(`Burden: ${c.burden}`);
+  if (c.throwClock) console.log(`Throw clock: ${range(c.throwClock)} seconds remaining`);
+  if (c.blocking) console.log(`Blocking: ${c.blocking}`);
+  if (c.opponentState) console.log(`Opponent state: ${c.opponentState}`);
+}
+
 const commands = {
   validate(arg) {
     let play;
@@ -127,6 +142,8 @@ const commands = {
     const nSteps = (play.steps || []).length;
     const us = (play.setup?.us || []).length, them = (play.setup?.them || []).length;
     console.log(`✓ valid — "${play.name}" · ${us}v${them} · ${nSteps} beat${nSteps === 1 ? "" : "s"}`);
+    describeConditions(play);
+    if (play.conditions || play.ruleset) console.log("Conditions parsed; live game state and tournament legality not checked.");
   },
 
   show(arg) {
@@ -134,6 +151,7 @@ const commands = {
     const beats = simulate(play);
     const only = flags.beat != null ? Number(flags.beat) - 1 : null;
     console.log(`${play.name}${play.call ? `  —  ${play.call}` : ""}\n${"═".repeat(52)}`);
+    describeConditions(play);
     console.log("  THEM ▲ (top)          [ o = ball · x = out ]          US ▼ (bottom)\n");
     beats.forEach((b) => {
       if (only != null && b.i !== only) return;
@@ -149,6 +167,7 @@ const commands = {
     console.log(`# ${play.name}${play.badge ? ` (${play.badge})` : ""}`);
     if (play.call) console.log(`Call: ${play.call}`);
     if (play.desc) console.log(play.desc);
+    describeConditions(play);
     console.log("");
     beats.forEach((b) => console.log(`${b.i + 1}. ${b.label}\n   - ${beatActions(b).join("\n   - ")}`));
   },
@@ -177,6 +196,8 @@ const commands = {
     const name = arg || "New Play";
     // clean, valid play → stdout (so `dbn new X > play.dbn` writes a parseable file)
     process.stdout.write(`[Play "${name}"]
+[RequiresPlayers "U:2+ T:1+"]
+[RequiresBalls "U:2+"]
 [Balls "U:34"]
 
 1. {Step up}      :0.9  U34-line
@@ -190,6 +211,8 @@ grammar:
   fake   U3?  ·  U3?2 (×reps)       group: U34-line = #3 and #4 together
   throw  U3@T2!  hit  ·  @T2^ caught  ·  @T2%  dodged  ·  @T2#  blocked
   grab   U9*      pass  U8>U5        balls: [Balls "U:34"] = our 3 and 4 hold
+  conditions: [RequiresPlayers "U:2+ T:1+"] [RequiresBalls "U:2+"]
+  context: [Burden "us"] [ThrowClock "3+"] [Blocking "allowed"]
 next:  dbn validate <file> && dbn show <file>   ·   preview: dbn link <file> --autoplay
 full grammar: NOTATION.md\n`);
   },

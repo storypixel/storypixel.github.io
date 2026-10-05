@@ -1,26 +1,19 @@
 # Contributing
 
-This repo is the **standalone editor** for DBN. DBN itself — the notation spec
-and parser — is **canonical and lives elsewhere**. That split drives every rule
-here.
+This repo is the **standalone editor** and current canonical source for DBN.
+The source headers supersede the older upstream-vendoring instructions.
 
 ## The one hard rule: DBN is canonical, do not fork it
 
-- `vendor/dbn.js` (parser) and `vendor/play-animator.js` (engine) are **vendored
-  copies**. Do **not** edit them here. Notation or engine changes go to
-  [storypixel/dodgeball-play-animator][engine] **first**, then re-vendor:
-  ```bash
-  cp ~/…/dodgeball-play-animator/{dbn.js,play-animator.js,NOTATION.md} ./vendor/  # then re-add the vendor header
-  ```
-- `NOTATION.md` here is a **synced copy** of the canonical spec — edit it
-  upstream, not here.
-- Found a parser bug or want a new DBN feature? **Route it through the fleet**
-  (california-tom / zerocool) so the notation evolves in one place. Don't patch
-  around it in the editor.
+- `vendor/dbn.js` (parser), `vendor/play-animator.js` (engine), and `NOTATION.md`
+  evolve here. The [animator repo][engine] carries a synced mirror, not an
+  independent implementation. Do not work around parser behavior in the editor.
+- Run `scripts/stamp-version.sh` when preparing changed assets for release.
+  Synchronizing mirrors and deploying remain separate, explicitly authorized steps.
 
 ## What you can change here
 
-The editor and its docs:
+The parser, engine, spec, editor and docs:
 
 - `src/editor.js` — UI + the `window.DBNEditor` automation API
 - `src/dbn-headless.js` — pure-Node DBN → JSON / static SVG

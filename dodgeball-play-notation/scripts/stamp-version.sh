@@ -9,10 +9,11 @@ cd "$(dirname "$0")/.."
 # deterministic cache key without making the script change on every run.
 VER=$({
   cat vendor/play-animator.js vendor/dbn.js examples/*.dbn
-  sed -E 's/\?v=[0-9a-f]+/?v=STAMP/g' index.html src/editor.js
+  sed -E 's/\?v=[0-9a-f]+/?v=STAMP/g' index.html src/editor.js builder.html src/builder.js src/builder-model.js src/builder.css
 } | md5 | cut -c1-10)
 # index.html: the three <script src> tags
 perl -0pi -e "s{(vendor/play-animator\.js|vendor/dbn\.js|src/editor\.js)(\?v=[0-9a-f]+)?}{\$1?v=$VER}g" index.html
+perl -0pi -e "s{(vendor/play-animator\.js|vendor/dbn\.js|src/builder(?:-model)?\.js|src/builder\.css)(\?v=[0-9a-f]+)?}{\$1?v=$VER}g" builder.html
 # src/editor.js: the examples/<id>.dbn fetch
 perl -0pi -e "s{\.dbn(\?v=[0-9a-f]+)?\"}{.dbn?v=$VER\"}g" src/editor.js
 echo "stamped v=$VER"

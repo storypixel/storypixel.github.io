@@ -1,9 +1,7 @@
 # Glossary — DBN (Dodgeball Notation)
 
 Every DBN token and what it maps to. The authoritative spec is
-[`NOTATION.md`](NOTATION.md) (synced from the canonical
-[animator repo](https://github.com/storypixel/dodgeball-play-animator)); this is
-the quick lookup.
+[`NOTATION.md`](NOTATION.md) in this repository; this is the quick lookup.
 
 ## Court & destinations
 
@@ -54,6 +52,26 @@ opening-rush play such as Pitch Back.
 | `[Call "…"]` | the captain's call — no escaped quotes needed, the renderer adds them |
 | `[Desc "…"]` | description |
 | `[Players "…"]` | team size for the implied setup (default 8) |
+
+## Play prerequisites
+
+These optional tags describe when to use a play, not which players to draw.
+Counts use `4` (exact), `4+` (minimum), or `2-4` (inclusive range).
+
+| Tag | Meaning |
+|-----|---------|
+| `[Ruleset "usad-foam-2026"]` | target ruleset ID, not automatic rules enforcement |
+| `[AdaptedFrom "wdbf-cloth-2026"]` | source-format ID for an adaptation |
+| `[RequiresPlayers "U:4+ T:1-6"]` | live players remaining, not roster size or player numbers |
+| `[RequiresBalls "U:4 T:0-2"]` | counts of balls held by live players, not loose/retriever balls |
+| `[PlayerAdvantage "us"]` | `us`, `them`, or `even` live-player advantage |
+| `[Burden "them"]` | side required to throw, `us` or `them` |
+| `[ThrowClock "3+"]` | minimum remaining seconds; exact/ranged decimals also work |
+| `[Blocking "allowed"]` | `allowed` or `no-blocking` |
+| `[OpponentState "retreating"]` | `holding`, `attacking`, or `retreating` (regressing) |
+
+Omit unrestricted fields. All declared conditions must hold at entry.
+See [exact semantics and checking API](NOTATION.md#play-conditions).
 
 ## Movetext — beats
 

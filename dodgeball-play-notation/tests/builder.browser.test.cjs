@@ -1,0 +1,88 @@
+const assert = require("node:assert/strict");
+const path = require("node:path");
+const fs = require("node:fs");
+const { chromium } = require(process.env.PLAYWRIGHT_PATH || "playwright");
+const url = process.env.BUILDER_URL || "http://127.0.0.1:8774/builder.html";
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 2 });
+    const page = await context.newPage(); const errors = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    await page.goto(url); await page.waitForFunction(() => window.CallbookEditor?.getPlay());
+    assert.equal(await page.locator("#validation-status").innerText(), "Valid DBN");
+    const stage = page.locator("#preview .dbp__stage");
+    assert.ok(await stage.locator("circle").count() >= 16);
+    if (process.env.COURT_IMAGE) await stage.screenshot({ path: process.env.COURT_IMAGE, scale: "device" });
+    const before = await stage.screenshot();
+    await page.evaluate(() => window.CallbookEditor.player().seek(.45));
+    const after = await stage.screenshot(); assert.notDeepEqual(before, after, "court pixels change when stepping through a play");
+    await page.locator("#play-name").fill("My counter");
+    await page.waitForFunction(() => window.CallbookEditor.getPlay()?.name === "My counter");
+    await page.locator("#save-play").click();
+    assert.match(await page.locator("#output-status").innerText(), /Saved/);
+    await page.reload(); await page.waitForFunction(() => window.CallbookEditor?.getPlay()?.name === "My counter");
+    assert.equal(await page.locator("#saved-plays option").count(), 2);
+    await page.locator("#conditions-details summary").click();
+    await page.getByLabel("Live players", { exact: true }).fill("U:5+ T:1-8");
+    await page.waitForFunction(() => window.CallbookEditor.getPlay()?.conditions.livePlayers.us.min === 5);
+    await page.locator("#save-play").click();
+    await page.locator("#add-step").click();
+    assert.equal(await page.locator(".step").count(), 5);
+    await page.getByLabel("Move step 5 up", { exact: true }).click();
+    await page.getByLabel("Delete step 4", { exact: true }).click();
+    assert.equal(await page.locator(".step").count(), 4);
+    await page.locator("#notation-tab").click();
+    const source = await page.locator("#notation-source").inputValue();
+    await page.locator("#notation-source").fill('[Play "Bad"] [RequiresPlayers "U:4-2"]');
+    await page.waitForFunction(() => document.getElementById("validation-status").classList.contains("error"));
+    assert.equal(await page.locator("#share-play").isDisabled(), true);
+    assert.equal(await page.locator("#preview svg").count(), 0, "invalid source clears stale animation");
+    await page.locator("#notation-source").fill('[Players "100000000"] 1. U1-line');
+    await page.waitForFunction(() => document.getElementById("validation-status").textContent.includes("20 players"));
+    await page.locator("#notation-source").fill(source);
+    await page.waitForFunction(() => window.CallbookEditor.getPlay());
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.locator("#share-play").click();
+    const share = await page.evaluate(() => navigator.clipboard.readText());
+    assert.ok(share.includes("#dbn="));
+    const reader = await context.newPage(); await reader.goto(share); await reader.waitForFunction(() => window.CallbookEditor?.getPlay());
+    assert.equal(await reader.evaluate(() => window.CallbookEditor.getText()), source);
+    const downloadEvent = page.waitForEvent("download"); await page.locator("#download-play").click();
+    const download = await downloadEvent;
+    const downloaded = fs.readFileSync(await download.path(), "utf8"); assert.equal(downloaded, source);
+    page.on("dialog", (dialog) => dialog.accept());
+    await page.locator("#import-file").setInputFiles({ name: "counter.dbn", mimeType: "text/plain", buffer: Buffer.from(source.replace("My counter", "Imported counter")) });
+    await page.waitForFunction(() => window.CallbookEditor.getPlay()?.name === "Imported counter");
+    assert.equal(await page.evaluate(() => window.CallbookEditor.getMode()), "notation");
+    await page.locator("#save-play").click(); assert.equal(await page.locator("#saved-plays option").count(), 3);
+    await page.locator("#delete-saved").click(); assert.equal(await page.locator("#saved-plays option").count(), 2);
+    await page.locator("#load-example").click();
+    await page.locator("#play-name").fill("");
+    await page.waitForFunction(() => document.getElementById("validation-status").textContent.includes("name"));
+    await page.reload(); await page.waitForFunction(() => window.CallbookEditor);
+    assert.equal(await page.locator("#play-name").inputValue(), "", "incomplete draft survives reload");
+    await page.locator("#play-name").fill("Two throw, two cover");
+    await page.waitForFunction(() => window.CallbookEditor.getPlay());
+    for (const width of [320,390,768,1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.evaluate(() => { document.activeElement.blur(); window.scrollTo(0,0); });
+      await page.screenshot({ path: path.join("/tmp", "callbook-builder-" + width + ".png"), fullPage: true });
+      const sizes = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: innerWidth }));
+      assert.ok(sizes.scroll <= sizes.viewport, "no overflow at " + width);
+      assert.equal(await page.locator("#save-play").isEnabled(), true);
+    }
+    // Blocked device storage and clipboard still allow editing and export.
+    const limited = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    await limited.addInitScript(() => {
+      Storage.prototype.setItem = () => { throw new Error("Storage unavailable"); };
+      Object.defineProperty(navigator, "clipboard", { value: { writeText: () => Promise.reject(new Error("Blocked")) } });
+    });
+    const blocked = await limited.newPage(); await blocked.goto(url); await blocked.waitForFunction(() => window.CallbookEditor?.getPlay());
+    await blocked.locator("#save-play").click(); assert.match(await blocked.locator("#output-status").innerText(), /unavailable/);
+    await blocked.locator("#share-play").click(); assert.equal(await blocked.locator("#share-fallback").isVisible(), true);
+    assert.ok((await blocked.locator("#share-url").inputValue()).includes("#dbn="));
+    assert.deepEqual(errors, []);
+    console.log("Browser PASS: preview movement, edit, conditions, steps, save/reload, shared source, download/import, delete, blocked storage/clipboard, 4 responsive widths.");
+  } finally { await browser.close(); }
+})().catch((error) => { console.error(error); process.exitCode = 1; });

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Play builder | Callbook</title>
+  <meta name="description" content="Write a dodgeball play, set its conditions, and watch it on the court. Build your own Callbook.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="https://iamnotsam.com/callbook/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="src/builder.css?v=5023973e06">
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to play</a>
+  <header class="topbar">
+    <a class="brand" href="https://iamnotsam.com/callbook/"><span class="brand-mark" aria-hidden="true"></span>Callbook</a>
+    <nav aria-label="Main"><a href="index.html">Playbook</a><a href="compose.html">AI prompt</a><a href="NOTATION.md">DBN reference</a></nav>
+  </header>
+  <main id="workspace" class="workspace">
+    <div class="titlebar"><div><p class="eyebrow">Your playbook</p><h1>Play builder</h1></div><p id="draft-status" role="status">Draft on this device</p></div>
+    <section class="library" aria-label="Saved plays">
+      <label for="saved-plays">My plays</label><select id="saved-plays"><option value="">Choose a saved play</option></select>
+      <button id="open-saved">Open</button><button id="delete-saved" class="icon-button" title="Delete saved play" aria-label="Delete saved play"><img src="assets/builder-icons/trash-2.svg" alt=""></button>
+      <span class="toolbar-gap"></span><button id="new-play"><img src="assets/builder-icons/plus.svg" alt="">New play</button><button id="load-example">Example</button>
+    </section>
+    <div class="editor-layout">
+      <section class="preview-column" aria-label="Play preview">
+        <div class="preview-heading"><h2 id="preview-title">Two throw, two cover</h2><span id="beat-count"></span></div>
+        <div id="preview" class="preview"></div>
+        <p id="validation-status" role="status"></p>
+        <dl id="conditions-summary" class="condition-summary"></dl>
+        <div class="output-actions">
+          <button id="save-play" class="primary"><img src="assets/builder-icons/save.svg" alt="">Save play</button>
+          <button id="share-play"><img src="assets/builder-icons/link.svg" alt="">Share</button>
+          <button id="download-play" class="icon-button" title="Download DBN" aria-label="Download DBN"><img src="assets/builder-icons/download.svg" alt=""></button>
+          <button id="import-play" class="icon-button" title="Import DBN" aria-label="Import DBN"><img src="assets/builder-icons/upload.svg" alt=""></button>
+          <input id="import-file" type="file" accept=".dbn,.txt,text/plain" hidden>
+        </div>
+        <p id="output-status" class="status" role="status"></p>
+        <label id="share-fallback" hidden>Share link<input id="share-url" type="url" readonly></label>
+        <p class="storage-note">Saved on this device. Anyone with a share link can read that play.</p>
+      </section>
+      <section class="entry-column" aria-label="Play entry">
+        <div class="tabs" role="tablist" aria-label="Entry mode"><button id="guided-tab" role="tab" aria-selected="true" aria-controls="guided-panel">Build</button><button id="notation-tab" role="tab" aria-selected="false" aria-controls="notation-panel" tabindex="-1">DBN</button></div>
+        <div id="guided-panel" role="tabpanel" aria-labelledby="guided-tab">
+          <form id="play-form" novalidate>
+            <div class="details-fields"><label>Play name<input id="play-name" maxlength="100" required></label><label>Call<input id="play-call" maxlength="140"></label><label class="full">Coaching notes<textarea id="play-description" rows="2" maxlength="3000"></textarea></label></div>
+            <details open><summary>Starting court</summary><div class="setup-fields"><label>Players per side<input id="player-count" type="number" min="1" max="8" step="1" required></label><fieldset><legend>Our ball holders</legend><div id="our-holders" class="holders"></div></fieldset><fieldset><legend>Their ball holders</legend><div id="their-holders" class="holders"></div></fieldset></div></details>
+            <details id="conditions-details"><summary>Play conditions <span id="condition-count"></span></summary><div class="condition-fields" id="condition-fields"></div></details>
+            <div class="sequence-heading"><h2>Sequence</h2><button id="add-step" type="button"><img src="assets/builder-icons/plus.svg" alt="">Add step</button></div>
+            <div id="steps"></div>
+          </form>
+        </div>
+        <div id="notation-panel" role="tabpanel" aria-labelledby="notation-tab" hidden><label for="notation-source">Dodgeball Notation</label><textarea id="notation-source" rows="22" spellcheck="false"></textarea><a href="NOTATION.md">Language reference</a></div>
+      </section>
+    </div>
+  </main>
+  <footer><a href="https://iamnotsam.com/callbook/">Callbook</a><span>Plays written in DBN</span><a href="https://github.com/storypixel/dodgeball-play-notation">Source</a></footer>
+  <script src="vendor/play-animator.js?v=5023973e06"></script><script src="vendor/dbn.js?v=5023973e06"></script><script src="src/builder-model.js?v=5023973e06"></script><script src="src/builder.js?v=5023973e06"></script>
+</body>
+</html>

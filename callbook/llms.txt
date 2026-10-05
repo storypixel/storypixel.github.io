@@ -11,6 +11,9 @@ court diagrams. Plain JS, no build, no dependencies.
 - Glossary of dodgeball terms: https://iamnotsam.com/dodgeball-play-notation/GLOSSARY.md
 
 ## Machine surfaces
+- Guided play builder and device-local library: https://iamnotsam.com/dodgeball-play-notation/builder.html
+- Editable DBN link: https://iamnotsam.com/dodgeball-play-notation/builder.html#dbn=<url-encoded DBN>
+  The URL contains the complete source. Local saves are not a cloud account.
 - Render arbitrary notation: https://iamnotsam.com/dodgeball-play-notation/?dbn=<url-encoded DBN>
 - Describe-a-play converter (English -> LLM -> DBN -> embed; the prompt embeds the live
   NOTATION.md so it never drifts): https://iamnotsam.com/dodgeball-play-notation/compose.html

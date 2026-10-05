@@ -193,6 +193,89 @@ straight home (`U78-deep`, then `U78-back`).
 call is something you shout, so the renderer adds them. `[Badge]`, `[Desc]`,
 `[Players]`, `[Balls]`, `[Setup]` as above.
 
+### Play conditions
+
+Conditions say when a play is usable. They do not change the illustrated
+setup or the actions. In particular, `[Players "8"]` draws eight per side;
+`[RequiresPlayers "U:4+"]` requires at least four live players on our side.
+It does not require all eight to remain alive, or renumber the survivors.
+
+```dbn
+[Play "Cover and Retreat"]
+[Players "6"]
+[Ruleset "usad-foam-2026"]
+[AdaptedFrom "british-cloth-5ball"]
+[RequiresPlayers "U:4-6 T:1-6"]
+[RequiresBalls "U:4 T:0-2"]
+[Burden "us"]
+[ThrowClock "3+"]
+[Blocking "allowed"]
+[OpponentState "holding"]
+[Balls "U:2346 T:15"]
+
+1. {Loaded players take the line} :1 U2346-line
+2. {Two throw; two hold as cover} :1 U2@T5% U4@T5% U36?
+3. {Throwers retreat under cover} :1 U24-back U36?
+4. {Cover players retreat} :1 U36-back
+```
+
+This is an authored training adaptation, not an official named play or a
+recorded team possession. The three-second threshold is an author-selected
+entry condition, not an official throw-clock duration. It leaves time for
+the illustrated advance and release. The source cover concept is from
+[British Dodgeball coaching](https://britishdodgeball.org/dodgeball-tactics/).
+A complete file is in `examples/conditions/cover-and-retreat.dbn`.
+Existing eight-player plays and defaults are unchanged.
+
+| Tag | Meaning and compiled field |
+|-----|----------------------------|
+| `[Ruleset "usad-foam-2026"]` | Target ruleset identifier, `play.ruleset` |
+| `[AdaptedFrom "wdbf-cloth-2026"]` | Source-format identifier, `play.adaptedFrom`; provenance, not an alternative eligible ruleset |
+| `[RequiresPlayers "U:4+ T:1-6"]` | Live players remaining, `play.conditions.livePlayers.us/them` |
+| `[RequiresBalls "U:4 T:0-2"]` | Balls currently held by live players on each team, `play.conditions.balls.us/them` |
+| `[PlayerAdvantage "us"]` | Which team has more live players: `us`, `them`, or `even`; `conditions.playerAdvantage` |
+| `[Burden "them"]` | Which team must throw: `us` or `them`; `conditions.burden` |
+| `[ThrowClock "3+"]` | Remaining throw-clock seconds at entry, `conditions.throwClock` |
+| `[Blocking "allowed"]` | `allowed` or `no-blocking`; `conditions.blocking` |
+| `[OpponentState "retreating"]` | Opponent trigger: `holding`, `attacking`, or `retreating`; `conditions.opponentState` |
+
+All tags are optional. Omitted fields mean unrestricted, not zero. Conditions
+combine with AND. Tag names, enum values, and ruleset IDs are case-insensitive;
+IDs compile to lowercase and use hyphen-separated ASCII letters/digits.
+IDs are open labels, not a built-in registry: an event-specific ID is valid.
+Include a version/year when rules change. Adaptation provenance alone does not
+impose a target ruleset requirement.
+
+Counts are whole numbers: `4` means exactly four, `4+` means at least four,
+and `2-4` means two through four inclusive. Player bounds start at 1; ball
+bounds may be 0. A team tag may contain `U:...`, `T:...`, or both, separated
+by whitespace. Here `U:4` is a count, unlike `[Balls "U:4"]`, which names
+player 4. Clock bounds also accept fractional seconds, such as `1.5-3`.
+Ranges compile to `{ min: number, max: number | null }`; `null` is unbounded.
+Values above `Number.MAX_SAFE_INTEGER`, reversed ranges, unknown enum values,
+duplicate condition tags/teams, and impossible player-advantage ranges fail
+with a DBN parse error. Older unrelated metadata behavior is unchanged.
+
+Opponent states describe the opponent or group the play targets: `holding`
+means retaining a ball without starting an attack; `attacking` means advancing
+or throwing; `retreating` means withdrawing after an attack (regressing).
+The caller supplies this observation. These are entry conditions, not claims
+that every opponent must stay in that state throughout the animation.
+
+**Scope of checking.** Counts alone do not guarantee that four distinct
+players hold the four balls or can fill the required roles. Held-ball counts
+exclude loose balls and retriever-held balls, so they are not a substitute for
+official burden possession. Ruleset tags do not enforce roster caps, set ball
+counts, alter the court, calculate burden, or certify legal choreography.
+Apply the event's rules and supply its current burden and phase. USA and WDBF
+remain separate labels; the checker does not equate them. Official references:
+[USA rules](https://usadodgeball.com/rules), [WDBF rules](https://worlddodgeballfederation.com/rules/).
+
+The checker does not guess conditions from the diagram, derive the throw clock
+from animation durations, or track live conditions beat by beat. Recheck when
+players, balls, phase or trigger change. Existing plays with no tags compile
+to the same JSON as before (no empty `conditions` object).
+
 ## 8. Compiling and embedding
 
 `DBN.parse(text)` returns the play object the engine eats:
@@ -201,6 +284,34 @@ call is something you shout, so the renderer adds them. `[Badge]`, `[Desc]`,
 const play = DBN.parse(dbnString);
 DodgeballPlay.mount(el, play, { autoplay: true });
 ```
+
+Check a parsed play against an explicit live-game snapshot:
+
+```js
+const result = DBN.checkConditions(play, {
+  ruleset: "usad-foam-2026",
+  livePlayers: { us: 4, them: 2 },
+  balls: { us: 4, them: 2 },
+  burden: "us",
+  throwClock: 3,
+  blocking: "allowed",
+  opponentState: "holding"
+});
+// { matches: true, unmet: [], unknown: [] }
+```
+
+`matches` is `false` when any known condition fails, `null` when none fail but
+required facts are missing, and `true` only when every declared condition is
+satisfied. `unmet` and `unknown` contain field paths, e.g. `livePlayers.us` or
+`burden`. Missing/`null` values are unknown. Malformed supplied values for
+required fields throw; numeric strings are not counts. State live-player
+counts may be zero, even though a playable condition requires at least one.
+Extra, unneeded snapshot fields are ignored. Neither argument is mutated.
+No declared conditions means `true`, not a guarantee of legal or effective play.
+
+The headless module exports `checkConditions(playOrText, state)` with the same
+result. CLI `json` preserves the typed fields; `describe`, `show` and `validate`
+display them. `validate` checks syntax, not live-state eligibility.
 
 Or drop notation straight into a page -- `dbn.js` auto-mounts any
 `data-db-play-dbn` element:

@@ -11,6 +11,15 @@ paths, fastest first. Everything below is copy-paste.
 
 ---
 
+## Check play prerequisites
+
+The parser preserves optional conditions in `play.conditions`, alongside
+`play.ruleset` and `play.adaptedFrom`. Call `window.DBN.checkConditions(play, state)`
+in the browser, or `require("./src/dbn-headless.js").checkConditions(playOrText, state)`
+in Node. Results distinguish matching, unmet, and unknown conditions. See
+[the condition grammar and snapshot schema](NOTATION.md#play-conditions).
+This checks declared entry conditions, not tournament legality or animation beats.
+
 ## 30-second version — load the same play two ways
 
 Take one play:
