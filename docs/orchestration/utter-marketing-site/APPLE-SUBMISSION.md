@@ -4,9 +4,9 @@
 
 | Field | Final URL | Ready |
 |---|---|---|
-| Marketing URL | `https://iamnotsam.com/utter/` | Built; publication pending push approval |
-| Support URL | `https://iamnotsam.com/utter/support/` | Built; publication pending push approval |
-| Privacy Policy URL | `https://iamnotsam.com/utter/privacy/` | Built; publication pending push approval |
+| Marketing URL | `https://iamnotsam.com/utter/` | Live and verified |
+| Support URL | `https://iamnotsam.com/utter/support/` | Live and verified |
+| Privacy Policy URL | `https://iamnotsam.com/utter/privacy/` | Live and verified |
 
 ## Mac screenshots
 
@@ -57,4 +57,3 @@ These answers must be revisited if the app adds analytics, accounts, cloud AI, c
 - Platform version fields, including Support URL and Marketing URL: <https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information>
 - Screenshot specifications: <https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications?page_id=111069>
 - Screenshot upload guidance: <https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots/>
-

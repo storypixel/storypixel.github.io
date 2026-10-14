@@ -47,7 +47,7 @@
 - **Provides:** Validated build and live URLs
 - **Tasks:**
   - [x] T-005 — Validate links, responsive renders, accessibility basics, and production build.
-  - [ ] T-006 — Publish and verify the three HTTPS URLs if the push gate is satisfied.
+  - [x] T-006 — Publish and verify the three HTTPS URLs if the push gate is satisfied.
 - **Integration check:** Live pages match the verified local build.
 
 ## Dependency graph
@@ -60,7 +60,7 @@ T-001 + T-002 -> T-003 -> T-004 -> T-005 -> T-006
 
 | Gate | Trigger | Required authority | Status |
 |---|---|---|---|
-| G-001 | Push website source to GitHub Pages | User must explicitly say “push” | Pending |
+| G-001 | Push website source to GitHub Pages | User must explicitly say “push” | Satisfied |
 
 ## Risks and rollback
 
